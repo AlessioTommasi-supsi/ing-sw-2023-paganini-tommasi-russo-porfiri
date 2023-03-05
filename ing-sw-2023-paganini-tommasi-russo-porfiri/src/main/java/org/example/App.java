@@ -12,8 +12,4 @@ public class App
         System.out.println( "Hello Gruppo!" );
 
     }
-
-
-    public App() {
-    }
 }
