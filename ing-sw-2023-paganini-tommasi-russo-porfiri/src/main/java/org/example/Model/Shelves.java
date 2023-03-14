@@ -7,6 +7,12 @@ import java.util.*;
  */
 public class Shelves {
 
+    private int filledCounter;
+
+    /**
+     *
+     */
+
     /**
      * Default constructor
      */
@@ -16,11 +22,7 @@ public class Shelves {
     /**
      * 
      */
-    private int filledCounter;
 
-    /**
-     * 
-     */
     public void Library() {
         // TODO implement here
     }

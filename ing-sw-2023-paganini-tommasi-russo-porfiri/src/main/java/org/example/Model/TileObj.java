@@ -8,24 +8,26 @@ import java.util.*;
 public class TileObj {
 
     /**
+     *
+     */
+    private String tipo;
+
+    /**
+     *
+     */
+    private TileType type;
+
+    /**
+     *
+     */
+
+    /**
      * Default constructor
      */
     public TileObj() {
     }
 
-    /**
-     * 
-     */
-    private String tipo;
 
-    /**
-     * 
-     */
-    private TileType type;
-
-    /**
-     * 
-     */
     public void TileObj() {
         // TODO implement here
     }

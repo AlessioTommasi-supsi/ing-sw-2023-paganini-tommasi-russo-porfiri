@@ -9,6 +9,17 @@ import java.util.*;
  */
 public class TilePosition {
 
+    private int x;
+
+    /**
+     *
+     */
+    private int y;
+
+    /**
+     * @return
+     */
+
     /**
      * Default constructor
      */
@@ -19,16 +30,7 @@ public class TilePosition {
      * 
      */
 
-    private int x;
 
-    /**
-     * 
-     */
-    private int y;
-
-    /**
-     * @return
-     */
     public boolean isEmpty() {
         // TODO implement here
         return false;
