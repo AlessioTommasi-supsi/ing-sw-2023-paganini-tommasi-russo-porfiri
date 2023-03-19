@@ -2,42 +2,19 @@ package org.example.Model;
 
 import java.util.*;
 
-/**
- * 
- */
+//CLASSE SCRITTA COME BOZZA SOLO PER POTER SCRIVERE TileObjBag!!
 public class TileObj {
-
-    /**
-     *
-     */
-    private String tipo;
-
-    /**
-     *
-     */
     private TileType type;
 
-    /**
-     *
-     */
-
-    /**
-     * Default constructor
-     */
-    public TileObj() {
+    public TileObj(TileType chosenType) {
+        this.type = chosenType;
     }
 
-
-    public void TileObj() {
-        // TODO implement here
+    public TileObj(TileObj tile){
+        this.type = tile.type;
     }
 
-    /**
-     * @return
-     */
     public TileType getType() {
-        // TODO implement here
-        return null;
+        return type;
     }
-
 }
