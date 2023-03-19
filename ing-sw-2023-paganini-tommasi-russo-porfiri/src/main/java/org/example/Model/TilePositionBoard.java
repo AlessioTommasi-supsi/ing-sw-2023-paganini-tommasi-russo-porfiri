@@ -48,10 +48,11 @@ public class TilePositionBoard {
             this.occupied= true;
         }
         else throw new Exception("tile already occupied, choose another TilePositionBoard");
+        //eccezione da definire a parte per bene.
     }
 
     public TileObj removeTile(){
-        if(this.tileInSlot != null){
+        if(this.tileInSlot != null && this.occupied == true){
             TileObj tempTile = new TileObj(this.tileInSlot);
             this.tileInSlot= null;
             this.occupied=false;
