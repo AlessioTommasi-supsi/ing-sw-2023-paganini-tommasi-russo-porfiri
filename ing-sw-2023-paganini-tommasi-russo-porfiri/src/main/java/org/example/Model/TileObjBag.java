@@ -30,12 +30,12 @@ public class TileObjBag {
         }
     }
 
-    public void shuffle(){
+    public void shuffleT(){
         Collections.shuffle(tiles);
     }
 
     public TileObj extractFromBag(){
-        this.shuffle();
+        this.shuffleT();
         TileObj tempTile = new TileObj(tiles.get(0));
         tiles.remove(0);
         return tempTile;
