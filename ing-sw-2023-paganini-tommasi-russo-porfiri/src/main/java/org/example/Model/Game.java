@@ -15,11 +15,16 @@ public class Game{
     private Player dealer;
     private StatoPartita stato;
 
+    private int Ranking[]=null;
+
+    private int point[] = null;
+
     public Game(int playerNumber, Player mazziere) {
         this.playerNumber = playerNumber;
         this.dealer =mazziere;
         players= new ArrayList<Player>();
         players.add(mazziere);
+        this.board = new Board();
     }
 
     public Board getBoard() {
@@ -38,16 +43,33 @@ public class Game{
         return new Player(dealer);
     }
 
-    public void addPlayer()throws Exception {
+    public void addPlayer(Player p)throws Exception {
         if (this.stato != StatoPartita.IN_ATTESA){
             throw new Exception("non si possono aggiungere giocatori se la partita non e in attesa!");
         }
 
-        
+        players.add(p);
+
+        if (this.playerNumber == this.players.size()) {
+            this.stato = StatoPartita.IN_CORSO;
+        }
+
     }
 
     public StatoPartita getStato() {
         return stato;
+    }
+
+
+    public void end(){
+        this.stato = StatoPartita.FINITA;
+
+        //calcolo i punti di ogni giocatore e ne faccio il ranking
+        //indice di ranking e endice dei giocatori quando si sono uniti alla partita.
+
+        point = new int[this.playerNumber];
+        this.
+
     }
 
 

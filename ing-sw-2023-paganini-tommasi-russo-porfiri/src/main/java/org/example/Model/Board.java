@@ -19,6 +19,9 @@ public class Board{
     private ArrayList<TilePosition> placement;
     private TileObjBag bag;
     private CommonDeck commonDeck;
+    private PersonalDeck personalDeck;
+
+
 
 
     //sara il gioco a creare i placement giusti in base a quante persone ho!!
@@ -34,6 +37,13 @@ public class Board{
         this.commonDeck = board.getCommonDeck();
     }
 
+    public Board() {
+        this.commonDeck = new CommonDeck();
+        this.personalDeck = new PersonalDeck();
+        this.bag = new TileObjBag();
+        //qui mi costruisco le posizioni (placement) in base al numero di giocatori!!
+
+    }
 
     public ArrayList<TilePosition> getPlacement() {
         return new ArrayList<TilePosition>(placement);
@@ -73,6 +83,19 @@ public class Board{
     public void setTile(TileObj t, int x, int y) {
         // TODO implement here
     }
+
+    // diminuisci i punti delle carte CommonCard in base al numero di persone
+    public void removeTile(int x, int y){
+
+        for (int i = 0; i < this.placement.size(); i++) {
+            if ((this.placement.get(i).getX() == x) && (this.placement.get(i).getY() == y)) {
+                if (!placement.isOccupied()) {
+
+                }
+            }
+        }
+    }
+
 
 
 }
