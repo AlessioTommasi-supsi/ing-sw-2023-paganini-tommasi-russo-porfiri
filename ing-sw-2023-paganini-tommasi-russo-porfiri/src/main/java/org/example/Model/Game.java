@@ -7,105 +7,48 @@ import java.util.*;
  * 
  * All'inizio della partita creo istanza della plancia e i posizionamenti metto un'eccezione per le posizioni sempre irregolari, un'altra eccezione per le posizioni non giocabili perché non ci sono abbastanza giocatori. Al livello filosofico mi serve capire cosa devo comunicare e in che caso mi ritrovo
  */
-public class Game {
+public class Game{
 
-    /**
-     * Default constructor
-     */
-    public Game() {
-    }
-
-    /**
-     * 
-     */
+    private Board board;
+    private ArrayList<Player> players;
     private int playerNumber;
+    private Player dealer;
+    private StatoPartita stato;
 
-    /**
-     * 
-     */
-    private Set<Player> giocatori;
-
-    /**
-     * 
-     */
-    private Player vincitore;
-
-    /**
-     * 
-     */
-    private int ranking;
-
-    /**
-     * @return
-     */
-    public void iniziaPartita() {
-        // TODO implement here
+    public Game(int playerNumber, Player mazziere) {
+        this.playerNumber = playerNumber;
+        this.dealer =mazziere;
+        players= new ArrayList<Player>();
+        players.add(mazziere);
     }
 
-    /**
-     * @return
-     */
-    public void finePartita() {
-        // TODO implement here
+    public Board getBoard() {
+        return new Board(board);
     }
 
-    /**
-     * 
-     */
-    public void Game() {
-        // TODO implement here
+    public ArrayList<Player> getPlayers() {
+        return new ArrayList<>(players);
     }
 
-    /**
-     * @return
-     */
-    public void getDealer() {
-        // TODO implement here
+    public int getPlayerNumber() {
+        return playerNumber;
     }
 
-    /**
-     *
-     */
-    public void getPlayers() {
-        // TODO implement here
+    public Player getDealer() {
+        return new Player(dealer);
     }
 
-    /**
-     * @return
-     */
-    public void start() {
-        // TODO implement here
+    public void addPlayer()throws Exception {
+        if (this.stato != StatoPartita.IN_ATTESA){
+            throw new Exception("non si possono aggiungere giocatori se la partita non e in attesa!");
+        }
+
+        
     }
 
-    /**
-     * qui richiamo calcola punteggi
-     * @return
-     */
-    public void end() {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    public void getPoints() {
-        // TODO implement here
-    }
-
-    /**
-     * @param id 
-     * @return
-     */
-    private int calculatePoints(int id) {
-        // TODO implement here
-        return 0;
+    public StatoPartita getStato() {
+        return stato;
     }
 
 
-    /**
-     * @param mazziere
-     */
-    private void setMazziere(Player mazziere) {
-        // TODO implement here
-    }
 }

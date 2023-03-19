@@ -15,26 +15,31 @@ import java.util.*;
 /**
  * 
  */
-public class Board {
-    private TilePosition placement[];
+public class Board{
+    private ArrayList<TilePosition> placement;
     private TileObjBag bag;
     private CommonDeck commonDeck;
 
 
     //sara il gioco a creare i placement giusti in base a quante persone ho!!
-    public Board(TilePosition[] placement, TileObjBag bag, CommonDeck commonDeck) {
+    public Board(ArrayList<TilePosition> placement, TileObjBag bag, CommonDeck commonDeck) {
         this.placement = placement;
         this.bag = bag;
         this.commonDeck = commonDeck;
     }
 
-    public TilePosition[] getPlacement() {
-        return placement;
+    public Board(Board board) {
+        this.placement = board.getPlacement();
+        this.bag = board.getBag();
+        this.commonDeck = board.getCommonDeck();
     }
 
-    public void setPlacement(TilePosition[] placement) {
-        this.placement = placement;
+
+    public ArrayList<TilePosition> getPlacement() {
+        return new ArrayList<TilePosition>(placement);
     }
+
+
 
     public TileObjBag getBag() {
         return bag;
@@ -68,5 +73,6 @@ public class Board {
     public void setTile(TileObj t, int x, int y) {
         // TODO implement here
     }
+
 
 }
