@@ -95,10 +95,13 @@ public class Board{
         return false;
     }
 
-    public TileObj remove1Tile(TilePositionBoard position){
-        if(tileIsRemovable(position));
-        TileObj tempTile = position.removeTile();
-        return tempTile;
+    public TileObj remove1Tile(TilePositionBoard position) throws Exception {
+        if(tileIsRemovable(position)){
+            TileObj tempTile = position.removeTile();
+            return tempTile;
+        }
+        else throw new Exception("impossibile rimuovere da questa posizione");
+
     }
 
     //public TileObj[] remove2Tile(qualcosa){...}
