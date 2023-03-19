@@ -1,19 +1,19 @@
 package org.example.Model;
 
-public class TilePositionBoard {
+public class TilePositionShelves {
     private int x;
     private int y;
     private TileObj tileInSlot;
     private boolean occupied;
 
-    public TilePositionBoard(int abscissa, int ordinate){
+    public TilePositionShelves(int abscissa, int ordinate){
         this.x= abscissa;
         this.y= ordinate;
         this.tileInSlot= null;
         this.occupied= false;
     }
 
-    public TilePositionBoard(int abscissa, int ordinate, TileObj tile){
+    public TilePositionShelves(int abscissa, int ordinate, TileObj tile){
         this.x= abscissa;
         this.y= ordinate;
         this.tileInSlot= tile;
@@ -50,15 +50,6 @@ public class TilePositionBoard {
         else throw new Exception("tile already occupied, choose another TilePositionBoard");
     }
 
-    public TileObj removeTile(){
-        if(this.tileInSlot != null){
-            TileObj tempTile = new TileObj(this.tileInSlot);
-            this.tileInSlot= null;
-            this.occupied=false;
-            return tempTile;
-        }
-        else throw new NullPointerException();
-    }
 
 
 }
