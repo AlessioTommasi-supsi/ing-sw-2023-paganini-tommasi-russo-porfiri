@@ -16,7 +16,7 @@ import java.util.*;
  * 
  */
 public class Board{
-    private ArrayList<TilePosition> placement;
+    private ArrayList<TilePositionBoard> placement;
     private TileObjBag bag;
     private CommonDeck commonDeck;
     private PersonalDeck personalDeck;
@@ -25,7 +25,7 @@ public class Board{
 
 
     //sara il gioco a creare i placement giusti in base a quante persone ho!!
-    public Board(ArrayList<TilePosition> placement, TileObjBag bag, CommonDeck commonDeck) {
+    public Board(ArrayList<TilePositionBoard> placement, TileObjBag bag, CommonDeck commonDeck) {
         this.placement = placement;
         this.bag = bag;
         this.commonDeck = commonDeck;
@@ -45,8 +45,8 @@ public class Board{
 
     }
 
-    public ArrayList<TilePosition> getPlacement() {
-        return new ArrayList<TilePosition>(placement);
+    public ArrayList<TilePositionBoard> getPlacement() {
+        return new ArrayList<TilePositionBoard>(placement);
     }
 
 
@@ -85,15 +85,23 @@ public class Board{
     }
 
     // diminuisci i punti delle carte CommonCard in base al numero di persone
-    public void removeTile(int x, int y){
-
+    public TileObj removeTile(int x, int y)throws Exception{
+        TileObj ap;
         for (int i = 0; i < this.placement.size(); i++) {
             if ((this.placement.get(i).getX() == x) && (this.placement.get(i).getY() == y)) {
-                if (!placement.isOccupied()) {
-
+                if (!placement.get(i).isOccupied()) {
+                    //devo ancora implementare la funzionalita che posso rimuovere delle tessere sse non sono bloccate da almeno 2 altre tessere!
+                    
+                    ap = placement.get(i).getTile();
+                    placement.remove(i);
+                    placement.add(i,new TilePositionBoard(x,y));
+                    return ap;
+                } else {
+                    throw new IllegalAccessException("non puoi rimuovere la tessera dalla posizione indicata poiche risulta essere una posizione vuota!! ");
                 }
             }
         }
+        throw new IllegalAccessException("la posizione indicata non e tra quelle disponibili del gioco.");
     }
 
 
