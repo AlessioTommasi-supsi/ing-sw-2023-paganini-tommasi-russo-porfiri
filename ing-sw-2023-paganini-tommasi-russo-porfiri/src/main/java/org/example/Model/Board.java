@@ -73,6 +73,12 @@ public class Board{
     }
 
     // diminuisci i punti delle carte CommonCard in base al numero di persone
+    public boolean isTileRemovible(int x, int y)throws Exception{
+        //controlli che la tssera non sia bloccata da altri!!
+        return true;
+    }
+
+
     public TileObj removeTile(int x, int y)throws Exception{
         TileObj ap;
         for (int i = 0; i < this.placement.size(); i++) {

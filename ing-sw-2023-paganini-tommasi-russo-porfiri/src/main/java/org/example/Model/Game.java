@@ -15,7 +15,7 @@ public class Game{
     private Player dealer;
     private StatoPartita stato;
 
-    private int Ranking[]=null;
+    private int ranking[]=null;
 
     private int point[] = null;
 
@@ -68,7 +68,13 @@ public class Game{
         //indice di ranking e endice dei giocatori quando si sono uniti alla partita.
 
         point = new int[this.playerNumber];
-        this.
+        this.ranking = new int[this.playerNumber];
+
+        for (int i = 0; i < players.size(); i++) {
+            point[i] = players.get(i).getShelves().calculatePoints();
+        }
+
+        //calcolo il massimo
 
     }
 
