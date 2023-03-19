@@ -68,18 +68,6 @@ public class Board{
     }
 
 
-
-
-    public Set<TilePosition> displayBoard() {
-        // TODO implement here
-        return null;
-    }
-
-
-    public void deleteTiles(Set<TilePosition> p) {
-        // TODO implement here
-    }
-
     public void setTile(TileObj t, int x, int y) {
         // TODO implement here
     }
@@ -91,7 +79,9 @@ public class Board{
             if ((this.placement.get(i).getX() == x) && (this.placement.get(i).getY() == y)) {
                 if (!placement.get(i).isOccupied()) {
                     //devo ancora implementare la funzionalita che posso rimuovere delle tessere sse non sono bloccate da almeno 2 altre tessere!
-                    
+
+                    //fine controllo tessere
+                    //aggiunta oggetto vuoto nella posizione e ritorno di tyleobject al chiamante
                     ap = placement.get(i).getTile();
                     placement.remove(i);
                     placement.add(i,new TilePositionBoard(x,y));
