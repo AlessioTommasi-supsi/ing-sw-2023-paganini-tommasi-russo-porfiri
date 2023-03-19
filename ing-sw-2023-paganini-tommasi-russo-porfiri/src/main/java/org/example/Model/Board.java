@@ -78,6 +78,33 @@ public class Board{
         return true;
     }
 
+    public boolean tileIsRemovable(TilePositionBoard position){
+        int x = position.getX();
+        int y = position.getY();
+
+        //la posizione è svuotabile se contiene un tile e ha almeno un lato adiacente libero
+        if(position.isOccupied()){
+            for(TilePositionBoard item : placement){
+                if (item.getX()== x-1 || item.getX()==x+1 || item.getY()==y-1 || item.getY()==y+1){
+                    if(!item.isOccupied()){
+                        return true; //lo slot position ha almeno un lato adiacente vuoto.
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public TileObj remove1Tile(TilePositionBoard position){
+        if(tileIsRemovable(position));
+        TileObj tempTile = position.removeTile();
+        return tempTile;
+    }
+
+    //public TileObj[] remove2Tile(qualcosa){...}
+    // public TileObj[] remove3Tile(qualcosa){...}
+
+
 
     public TileObj removeTile(int x, int y)throws Exception{
         TileObj ap;
