@@ -2,105 +2,68 @@ package org.example.Model;
 
 import java.util.*;
 
-/**
- * 
- */
 public class Player {
 
-
-    public Player() {
-    }
+    private int id;
+    private String username;
+    private boolean yourTurn;
+    private Shelves shelves;
+    private PersonalCard pC;
+    private int score;
 
     public Player(Player p) {
+        this.id = p.getId();
+        this.username = p.getUsername();
+        this.yourTurn = p.getTurn();
+        this.shelves = p.getShelves();
+        this.pC = p.getPC();
+        this.score = p.getScore();
     }
 
-
-    /**
-     * 
-     */
-    private int id;
-
-    /**
-     * 
-     */
-    private String username;
-
-    /**
-     * 
-     */
-    private String password;
-
-    /**
-     * 
-     */
-    private int playerPosition;
-
-    /**
-     * 
-     */
-    private boolean yourTurn;
-
-    /**
-     * @param id
-     */
-    public void Player(int id) {
-        // TODO implement here
+    public PersonalCard getPC() {
+        return pC;
     }
 
-    /**
-     * @param pt
-     */
-    private void putTile(Set<TilePosition> pt) {
-        // TODO implement here
+    public boolean getTurn() {
+        return yourTurn;
     }
 
-    /**
-     * @return
-     */
-    public int getPunti() {
-        // TODO implement here
-        return 0;
+    public String getUsername() {
+        return username;
     }
 
-    /**
-     * @param int pos 
-     * @return
-     */
-    public void setPlayerPosition(int pos) {
-        // TODO implement here
+    public int getId() {
+        return id;
     }
 
-    /**
-     * @return
-     */
     public Shelves getShelves() {
-        // TODO implement here
-        return null;
+        return shelves;
     }
 
-    /**
-     * @return
-     */
-    public void addPunti() {
-        // TODO implement here
+    public Player(int id, String username) {
+        this.id = id;
+        this.username = username;
+        this.yourTurn = false;
+        this.shelves = new Shelves();
+        this.pC = null;
     }
 
-    /**
-     * @param pos 
-     * @return
-     */
-    private Set<TileObj> getFromBoard(Set<TilePosition> pos) {
-        // TODO implement here
-        return null;
+    // Da inserire nel costruttore se ritenuto necessario
+    public void setPC(PersonalCard pc) {
+        this.pC = pc;
     }
 
-    /**
-     * invocabile solo da partita
-     * @return
-     */
-    public int calculatePoints() {
-        // TODO implement here
-        return 0;
+    public void putTile(Set<TilePositionShelves> pt) {
+        for (TilePositionShelves p : pt) {
+            shelves.addTile(p);
+        }
     }
 
+    public void addPoints(int add) {
+        this.score += add;
+    }
+
+    public int getScore() {
+        return score;
+    }
 }
