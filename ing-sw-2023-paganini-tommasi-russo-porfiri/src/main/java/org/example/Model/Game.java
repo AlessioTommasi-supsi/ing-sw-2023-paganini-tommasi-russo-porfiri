@@ -17,7 +17,6 @@ public class Game{
 
     private int ranking[]=null;
 
-    private int point[] = null;
 
     public Game(int playerNumber, Player mazziere) {
         this.playerNumber = playerNumber;
@@ -67,6 +66,8 @@ public class Game{
         //calcolo i punti di ogni giocatore e ne faccio il ranking
         //indice di ranking e endice dei giocatori quando si sono uniti alla partita.
 
+        int point[];
+        //funzionalita ranking!
         point = new int[this.playerNumber];
         this.ranking = new int[this.playerNumber];
 
@@ -74,8 +75,20 @@ public class Game{
             point[i] = players.get(i).getShelves().calculatePoints();
         }
 
-        //calcolo il massimo
-        
+        int index = -1;
+        int max =point[0];
+
+        for (int j = 0; j < this.playerNumber; j++) {
+            for (int i = 1; i < players.size() ; i++) {
+                if (point[i] > max) {
+                    max = point[i];
+                    index = i;
+                }
+            }
+            point[index] = -1;
+            this.ranking[j] = index;
+        }
+        //fine funzionalita ranking
 
     }
 
