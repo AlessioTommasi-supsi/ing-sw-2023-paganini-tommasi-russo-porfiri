@@ -11,7 +11,7 @@ public class TileObj {
     }
 
     public TileObj(TileObj tile){
-        this.type = tile.type;
+        this.type = tile.getType();
     }
 
     public TileType getType() {
