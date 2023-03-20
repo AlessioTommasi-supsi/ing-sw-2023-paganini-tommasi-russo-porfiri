@@ -85,7 +85,7 @@ public class Board{
         //la posizione è svuotabile se contiene un tile e ha almeno un lato adiacente libero
         if(position.isOccupied()){
             for(TilePositionBoard item : placement){
-                if (item.getX()== x-1 || item.getX()==x+1 || item.getY()==y-1 || item.getY()==y+1){
+                if ((item.getX()==x && (item.getY()==y-1 || item.getY()==y+1)) || ((item.getX()==x-1 || item.getX()==x+1) && item.getY()==y)) {
                     if(!item.isOccupied()){
                         return true; //lo slot position ha almeno un lato adiacente vuoto.
                     }
