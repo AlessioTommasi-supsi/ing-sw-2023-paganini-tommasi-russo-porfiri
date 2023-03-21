@@ -7,21 +7,27 @@ import java.util.*;
  */
 public class CommonCard {
 
+    private int points;
+    private TilePositionShelves correctPosition[];
+    private CommonObjective commonCardGoal;
     /**
      * Default constructor
      */
-    public CommonCard() {
+    public CommonCard(int points, int correctPosition[], CommonObjective commonCardGoal) {
+        this.points = points;
+        this.commonCardGoal = commonCardGoal;
     }
 
     /**
      * 
      */
-    public CommonObjective commonCardGoal;
 
     /**
      * 
      */
     public void CommonCard() {
+
+
         // TODO implement here
     }
 
