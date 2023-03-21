@@ -49,6 +49,9 @@ public class Board{
         return new ArrayList<TilePositionBoard>(placement);
     }
 
+    public ArrayList<TilePositionBoard> showBoard() {
+        return this.getPlacement();
+    }
 
 
     public TileObjBag getBag() {
@@ -129,8 +132,19 @@ public class Board{
 
     //devo ancora implementare la funzionalita che posso rimuovere delle tessere sse non sono bloccate da almeno 2 altre tessere!
     //fine controllo tessere
-    public ArrayList<TileObj> removeTyle(ArrayList<TilePositionBoard>){
+    public ArrayList<TileObj> removeTile(ArrayList<TilePositionBoard> tile_to_remove)throws Exception{
+        ArrayList<TileObj> tile_removed = new ArrayList<TileObj>();
+        for (int i = 0; i < tile_to_remove.size(); i++) {
+            if (!this.tileIsRemovable(tile_to_remove.get(i))) {
+                throw new Exception("impossibile rimuovere da questa posizione");
+            }
+        }
 
+        for (int i = 0; i < tile_to_remove.size(); i++) {
+            tile_removed.add(this.remove1Tile(tile_to_remove.get(i)));
+        }
+
+        return tile_removed;
     }
 
 
