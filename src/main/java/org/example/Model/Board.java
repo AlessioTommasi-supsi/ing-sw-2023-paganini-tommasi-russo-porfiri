@@ -97,7 +97,7 @@ public class Board{
         }
         return false;
     }
-
+//controller
     public TileObj remove1Tile(TilePositionBoard position) throws Exception {
         if(tileIsRemovable(position)){
             TileObj tempTile = position.removeTile();
