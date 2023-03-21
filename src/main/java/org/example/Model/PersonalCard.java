@@ -7,11 +7,14 @@ import java.util.*;
  * (chiedi martedi a prof!!!!) se supponiamo posiz random o dobbiamo usare quelle del gioco fisico!!
  */
 public class PersonalCard {
-
+    private TilePositionShelves positionShelves[] ;
+    private int points;
     /**
      * Default constructor
      */
-    public PersonalCard() {
+    public PersonalCard(int points, TilePositionShelves positionShelves[]) {
+        this.points = points;
+        this.positionShelves = positionShelves;
     }
 
     /**
