@@ -67,6 +67,7 @@ public class Game{
         //indice di ranking e endice dei giocatori quando si sono uniti alla partita.
 
         int point[];
+
         //funzionalita ranking!
         point = new int[this.playerNumber];
         this.ranking = new int[this.playerNumber];

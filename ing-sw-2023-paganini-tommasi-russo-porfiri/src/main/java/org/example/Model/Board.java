@@ -108,15 +108,12 @@ public class Board{
     // public TileObj[] remove3Tile(qualcosa){...}
 
 
-
-    public TileObj removeTile(int x, int y)throws Exception{
+    //QUESTO METODO Ea RICHIAMABILE  DA IsRemovable()
+    private TileObj removeTile(int x, int y)throws Exception{
         TileObj ap;
         for (int i = 0; i < this.placement.size(); i++) {
             if ((this.placement.get(i).getX() == x) && (this.placement.get(i).getY() == y)) {
                 if (!placement.get(i).isOccupied()) {
-                    //devo ancora implementare la funzionalita che posso rimuovere delle tessere sse non sono bloccate da almeno 2 altre tessere!
-
-                    //fine controllo tessere
                     //aggiunta oggetto vuoto nella posizione e ritorno di tyleobject al chiamante
                     ap = placement.get(i).getTile();
                     placement.remove(i);
@@ -130,6 +127,11 @@ public class Board{
         throw new IllegalAccessException("la posizione indicata non e tra quelle disponibili del gioco.");
     }
 
+    //devo ancora implementare la funzionalita che posso rimuovere delle tessere sse non sono bloccate da almeno 2 altre tessere!
+    //fine controllo tessere
+    public ArrayList<TileObj> removeTyle(ArrayList<TilePositionBoard>){
+
+    }
 
 
 }
