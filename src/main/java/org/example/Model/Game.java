@@ -73,7 +73,7 @@ public class Game{
         this.ranking = new int[this.playerNumber];
 
         for (int i = 0; i < players.size(); i++) {
-            point[i] = players.get(i).getShelves().calculatePoints();
+            point[i] = players.get(i).getShelves().getScore();
         }
 
         int index = -1;

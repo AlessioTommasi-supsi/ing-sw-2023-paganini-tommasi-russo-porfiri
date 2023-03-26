@@ -98,7 +98,7 @@ public class Board{
         return false;
     }
 //controller
-    public TileObj remove1Tile(TilePositionBoard position) throws Exception {
+    private TileObj remove1Tile(TilePositionBoard position) throws Exception {
         if(tileIsRemovable(position)){
             TileObj tempTile = position.removeTile();
             return tempTile;
@@ -112,23 +112,6 @@ public class Board{
 
 
     //QUESTO METODO Ea RICHIAMABILE  DA IsRemovable()
-    private TileObj removeTile(int x, int y)throws Exception{
-        TileObj ap;
-        for (int i = 0; i < this.placement.size(); i++) {
-            if ((this.placement.get(i).getX() == x) && (this.placement.get(i).getY() == y)) {
-                if (!placement.get(i).isOccupied()) {
-                    //aggiunta oggetto vuoto nella posizione e ritorno di tyleobject al chiamante
-                    ap = placement.get(i).getTile();
-                    placement.remove(i);
-                    placement.add(i,new TilePositionBoard(x,y));
-                    return ap;
-                } else {
-                    throw new IllegalAccessException("non puoi rimuovere la tessera dalla posizione indicata poiche risulta essere una posizione vuota!! ");
-                }
-            }
-        }
-        throw new IllegalAccessException("la posizione indicata non e tra quelle disponibili del gioco.");
-    }
 
     //devo ancora implementare la funzionalita che posso rimuovere delle tessere sse non sono bloccate da almeno 2 altre tessere!
     //fine controllo tessere
