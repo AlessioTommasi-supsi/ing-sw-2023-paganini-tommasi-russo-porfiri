@@ -1,7 +1,5 @@
 package org.example.Model;
 
-import java.util.*;
-
 
 public class Ranking {
     private int punteggio;
