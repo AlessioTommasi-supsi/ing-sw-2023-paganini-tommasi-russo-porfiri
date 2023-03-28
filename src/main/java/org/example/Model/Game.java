@@ -17,11 +17,15 @@ public class Game{
 
     private int ranking[]=null;
 
+    
+    private ArrayList<Ranking> rank;
 
     public Game(int playerNumber, Player mazziere) {
         this.playerNumber = playerNumber;
         this.dealer =mazziere;
         players= new ArrayList<Player>();
+        rank= new ArrayList<Ranking>();
+
         players.add(mazziere);
         this.board = new Board();
     }
@@ -61,6 +65,9 @@ public class Game{
 
 
     public void end(){
+        this.stato = StatoPartita.IN_CORSO;
+    }
+    public void end(){
         this.stato = StatoPartita.FINITA;
 
         //calcolo i punti di ogni giocatore e ne faccio il ranking
@@ -74,6 +81,7 @@ public class Game{
 
         for (int i = 0; i < players.size(); i++) {
             point[i] = players.get(i).getShelves().getScore();
+            rank.add(new Ranking(players.get(i), point[i]));
         }
 
         int index = -1;
@@ -91,6 +99,13 @@ public class Game{
         }
         //fine funzionalita ranking
 
+    }
+
+    public ArrayList<Ranking> getRanking() throws Exception{
+        if(this.stato != StatoPartita.FINITA;){
+            throw new Exception("non puoi prendere i punteggi perche la partita non e'ancora finita!");
+        }
+        return new ArrayList<Ranking>(rank);
     }
 
 
