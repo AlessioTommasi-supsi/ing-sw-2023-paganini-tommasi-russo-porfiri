@@ -35,14 +35,14 @@ public class TilePositionShelvesTest {
     }
 
     @Test
-    public void testIsOccupied() {
+    public void testIsOccupied() throws Exception {
         assertFalse(tilePosition.isOccupied());
         tilePosition.setTile(new TileObj(TileType.CAT));
         assertTrue(tilePosition.isOccupied());
     }
 
     @Test
-    public void testGetTile() {
+    public void testGetTile() throws Exception {
         assertNull(tilePosition.getTile());
         tilePosition.setTile(new TileObj(TileType.CAT));
         assertNotNull(tilePosition.getTile());
@@ -50,7 +50,7 @@ public class TilePositionShelvesTest {
     }
 
     @Test
-    public void testSetTile() {
+    public void testSetTile() throws Exception {
         assertNull(tilePosition.getTile());
         TileObj tile = new TileObj(TileType.TROPHY);
         tilePosition.setTile(tile);
