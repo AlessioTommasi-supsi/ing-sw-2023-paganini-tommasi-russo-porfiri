@@ -1,7 +1,7 @@
 package org.example.Model;
 
 public class CommonCardStrategy {
-    public void executeAlgorithm() {}
+    public boolean executeAlgorithm(String nameOfCard) {return false;}
     public void getAlgorithm() {
 
     }
