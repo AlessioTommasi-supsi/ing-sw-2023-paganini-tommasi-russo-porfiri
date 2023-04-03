@@ -3,58 +3,62 @@ package org.example;
 import org.example.Model.TileObj;
 import org.example.Model.TilePositionShelves;
 import org.example.Model.TileType;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.OrderWith;
-
+import org.example.Model.TileVariant;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import static org.junit.Assert.*;
+
 
 public class TilePositionShelvesTest {
 
-    private TilePositionShelves tilePosition;
+    private TilePositionShelves tilePositionShelves;
+    private TileObj tile;
 
-    @Before
+    @BeforeEach
     public void setUp() {
-        tilePosition = new TilePositionShelves(1, 2);
-    }
-
-    @After
-    public void tearDown() {
-        tilePosition = null;
+        tilePositionShelves = new TilePositionShelves(1, 2);
+        tile = new TileObj(TileType.CAT, TileVariant.VARIANT_ONE);
     }
 
     @Test
     public void testGetX() {
-        assertEquals(1, tilePosition.getX());
+        Assertions.assertEquals(1, tilePositionShelves.getX());
     }
 
     @Test
     public void testGetY() {
-        assertEquals(2, tilePosition.getY());
+        Assertions.assertEquals(2, tilePositionShelves.getY());
     }
 
     @Test
-    public void testIsOccupied() throws Exception {
-        assertFalse(tilePosition.isOccupied());
-        tilePosition.setTile(new TileObj(TileType.CAT));
-        assertTrue(tilePosition.isOccupied());
+    public void testIsOccupied() {
+        Assertions.assertFalse(tilePositionShelves.isOccupied());
+        try {
+            tilePositionShelves.setTile(tile);
+        }
+        catch (Exception e){
+            fail();
+        }
+        Assertions.assertTrue(tilePositionShelves.isOccupied());
     }
 
     @Test
-    public void testGetTile() throws Exception {
-        assertNull(tilePosition.getTile());
-        tilePosition.setTile(new TileObj(TileType.CAT));
-        assertNotNull(tilePosition.getTile());
-        assertEquals(TileType.CAT, tilePosition.getTile().getType());
+    public void testGetTile() {
+        Assertions.assertThrows(NullPointerException.class, () -> tilePositionShelves.getTile());
+        try {
+            tilePositionShelves.setTile(tile);
+        }
+        catch (Exception e){
+            fail();
+        }
+        Assertions.assertEquals(tile, tilePositionShelves.getTile());
     }
 
     @Test
     public void testSetTile() throws Exception {
-        assertNull(tilePosition.getTile());
-        TileObj tile = new TileObj(TileType.TROPHY);
-        tilePosition.setTile(tile);
-        assertNotNull(tilePosition.getTile());
-        assertEquals(TileType.TROPHY, tilePosition.getTile().getType());
+        Assertions.assertDoesNotThrow(() -> tilePositionShelves.setTile(tile));
+        TileObj anotherTile = new TileObj(TileType.CAT, TileVariant.VARIANT_TWO);
+        Assertions.assertThrows(Exception.class, () -> tilePositionShelves.setTile(anotherTile));
     }
 }
