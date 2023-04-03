@@ -43,8 +43,14 @@ public class CommonCardPosition implements CommonObjectiveInterface {
             if (counterTile == 15) { return true; }
             else { return false; }
         } else if (nameOfCard == "Diagonal") {
-
-            if (counterTile == 1) { return true; }
+            if ((shelf.getTilePosition(4, 0) != null)
+            || (shelf.getTilePosition(3, 1 ) != null)
+            || (shelf.getTilePosition(2, 2) != null)
+            || (shelf.getTilePosition(1, 3) != null)
+            || (shelf.getTilePosition(0, 4) != null)) {
+                counterTile++;
+            }
+            if (counterTile == 5) { return true; }
             else { return false; }
         }
         return false;
