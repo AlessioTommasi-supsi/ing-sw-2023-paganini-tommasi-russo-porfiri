@@ -1,16 +1,17 @@
 package org.example.Model;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CommonCardPosition implements CommonObjectiveInterface {
 
-    int countTiles = 0;
     private Shelves shelf;
-    boolean objectiveAchieved = false;
 
     public boolean executeAlgorithm(String nameOfCard) {
+        boolean objectiveAchieved = false;
         int counterTile = 0;
+        int counterShape = 0;
         switch (nameOfCard) {
             case "Angles" -> {
                 if ((shelf.getTilePosition(0, 0) != null)
@@ -105,6 +106,97 @@ public class CommonCardPosition implements CommonObjectiveInterface {
                 }
                 return objectiveAchieved;
             }
+            case "Vertical different six" -> {
+                List<TileType> tileTypes = new ArrayList<TileType>();
+                for(int i = 0; i < 5; i++) {
+                    if (shelf.getTilePosition(i, 0) != null) {
+                        tileTypes.add(shelf.getTilePosition(i, 0).getTile().getType());
+                        if (shelf.getTilePosition(i, 1) != null) {
+                            if (tileTypes.contains(shelf.getTilePosition(i, 1).getTile().getType())) {
+                                continue;
+                            } else {
+                                tileTypes.add(shelf.getTilePosition(i, 1).getTile().getType());
+                                if (shelf.getTilePosition(i, 2) != null) {
+                                    if (tileTypes.contains(shelf.getTilePosition(i, 2).getTile().getType())) {
+                                        continue;
+                                    } else {
+                                        tileTypes.add(shelf.getTilePosition(i, 2).getTile().getType());
+                                        if (shelf.getTilePosition(i, 3) != null) {
+                                            if (tileTypes.contains(shelf.getTilePosition(i, 3).getTile().getType())) {
+                                                continue;
+                                            } else {
+                                                tileTypes.add(shelf.getTilePosition(i, 3).getTile().getType());
+                                                if (shelf.getTilePosition(i, 4) != null) {
+                                                    if (tileTypes.contains(shelf.getTilePosition(i, 4).getTile().getType())) {
+                                                        continue;
+                                                    } else {
+                                                        tileTypes.add(shelf.getTilePosition(i, 4).getTile().getType());
+                                                        if (shelf.getTilePosition(i, 5) != null) {
+                                                            if (tileTypes.contains(shelf.getTilePosition(i, 5).getTile().getType())) {
+                                                                continue;
+                                                            } else {
+                                                                tileTypes.add(shelf.getTilePosition(i, 5).getTile().getType());
+                                                                counterShape++;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (counterShape == 2) {
+                        objectiveAchieved = true;
+                    }
+                }
+                return objectiveAchieved;
+            }
+            case "Row of 5 different tiles" -> {
+                List<TileType> tileTypes = new ArrayList<TileType>();
+                for(int i = 0; i < 6; i++) {
+                    if (shelf.getTilePosition(0, i) != null) {
+                        tileTypes.add(shelf.getTilePosition(0, i).getTile().getType());
+                        if (shelf.getTilePosition(1, i) != null) {
+                            if (tileTypes.contains(shelf.getTilePosition(1, i).getTile().getType())) {
+                                continue;
+                            } else {
+                                tileTypes.add(shelf.getTilePosition(1, i).getTile().getType());
+                                if (shelf.getTilePosition(2, i) != null) {
+                                    if (tileTypes.contains(shelf.getTilePosition(2, i).getTile().getType())) {
+                                        continue;
+                                    } else {
+                                        tileTypes.add(shelf.getTilePosition(2, i).getTile().getType());
+                                        if (shelf.getTilePosition(3, i) != null) {
+                                            if (tileTypes.contains(shelf.getTilePosition(3, i).getTile().getType())) {
+                                                continue;
+                                            } else {
+                                                tileTypes.add(shelf.getTilePosition(3, i).getTile().getType());
+                                                if (shelf.getTilePosition(4, i) != null) {
+                                                    if (tileTypes.contains(shelf.getTilePosition(4, i).getTile().getType())) {
+                                                        continue;
+                                                    } else {
+                                                        tileTypes.add(shelf.getTilePosition(4, i).getTile().getType());
+                                                                counterShape++;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (counterShape == 2) {
+                        objectiveAchieved = true;
+                    }
+                }
+                return objectiveAchieved;
+            }
+
         }
         return false;
     }
