@@ -1,6 +1,7 @@
 package org.example.Model;
 
 
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -107,8 +108,8 @@ public class CommonCardPosition implements CommonObjectiveInterface {
                 return objectiveAchieved;
             }
             case "Vertical different six" -> {
-                List<TileType> tileTypes = new ArrayList<TileType>();
                 for(int i = 0; i < 5; i++) {
+                    List<TileType> tileTypes = new ArrayList<TileType>();
                     if (shelf.getTilePosition(i, 0) != null) {
                         tileTypes.add(shelf.getTilePosition(i, 0).getTile().getType());
                         if (shelf.getTilePosition(i, 1) != null) {
@@ -156,8 +157,8 @@ public class CommonCardPosition implements CommonObjectiveInterface {
                 return objectiveAchieved;
             }
             case "Row of 5 different tiles" -> {
-                List<TileType> tileTypes = new ArrayList<TileType>();
                 for(int i = 0; i < 6; i++) {
+                    List<TileType> tileTypes = new ArrayList<TileType>();
                     if (shelf.getTilePosition(0, i) != null) {
                         tileTypes.add(shelf.getTilePosition(0, i).getTile().getType());
                         if (shelf.getTilePosition(1, i) != null) {
@@ -192,6 +193,134 @@ public class CommonCardPosition implements CommonObjectiveInterface {
                     }
                     if (counterShape == 2) {
                         objectiveAchieved = true;
+                    }
+                }
+                return objectiveAchieved;
+            }
+            case "Six Double Objective" -> {
+                boolean[][] alreadyPartOfShape = new boolean[5][6];
+                for (int j = 0; j < 6; j++) {
+                    for (int i = 0; i < 5; i++) {
+                        alreadyPartOfShape[i][j] = false;
+                    }
+                }
+                for (int j = 0; j < 6; j++) {
+                    for (int i = 0; i < 5; i++) {
+                        if ((shelf.getTilePosition(i, j) != null) && (!alreadyPartOfShape[i][j])) {
+                            TileType tileType = shelf.getTilePosition(i, j).getTile().getType();
+                            if(j+1 < 6) {
+                                if ((shelf.getTilePosition(i, j + 1) != null) && (!alreadyPartOfShape[i][j + 1]) && (shelf.getTilePosition(i, j + 1).getTile().getType() == tileType)) {
+                                    counterShape++;
+                                    if(counterShape == 6) {
+                                        objectiveAchieved = true;
+                                    }
+                                    alreadyPartOfShape[i][j] = true;
+                                    alreadyPartOfShape[i][j + 1] = true;
+                                    if(i+1 < 5) {
+                                        alreadyPartOfShape[i + 1][j + 1] = true;
+                                        alreadyPartOfShape[i + 1][j] = true;
+                                    }
+                                    if (j+2 < 6) {
+                                        alreadyPartOfShape[i][j+2] = true;
+                                    }
+                                } else {
+                                    continue;
+                                }
+                            }
+                        } else {
+                            continue;
+                        }
+                    }
+                }
+                return objectiveAchieved;
+            }
+            case "Vertical four" -> {
+                boolean[][] alreadyPartOfShape = new boolean[5][6];
+                for (int j = 0; j < 6; j++) {
+                    for (int i = 0; i < 5; i++) {
+                        alreadyPartOfShape[i][j] = false;
+                    }
+                }
+                for (int j = 0; j<6;j++) {
+                    for (int i = 0;i<5;i++) {
+                        if ((shelf.getTilePosition(i, j) != null) && (!alreadyPartOfShape[i][j])) {
+                            TileType tileType = shelf.getTilePosition(i, j).getTile().getType();
+                            if (j + 1 < 6) {
+                                if ((shelf.getTilePosition(i, j + 1) != null) && (!alreadyPartOfShape[i][j + 1]) && (shelf.getTilePosition(i, j + 1).getTile().getType() == tileType)) {
+                                    if (j+2 < 6) {
+                                        if ((shelf.getTilePosition(i, j + 2) != null) && (!alreadyPartOfShape[i][j + 2]) && (shelf.getTilePosition(i, j + 2).getTile().getType() == tileType)) {
+                                            if (j + 3 < 6) {
+                                                if ((shelf.getTilePosition(i, j + 3) != null) && (!alreadyPartOfShape[i][j + 3]) && (shelf.getTilePosition(i, j + 3).getTile().getType() == tileType)) {
+                                                    counterShape++;
+                                                    if(counterShape == 4) {
+                                                        objectiveAchieved = true;
+                                                        break;
+                                                    }
+                                                    alreadyPartOfShape[i][j] = true;
+                                                    alreadyPartOfShape[i][j+1] = true;
+                                                    alreadyPartOfShape[i][j+2] = true;
+                                                    alreadyPartOfShape[i][j+3] = true;
+                                                    if (i+1 < 5) {
+                                                        alreadyPartOfShape[i+1][j] = true;
+                                                        alreadyPartOfShape[i+1][j+1] = true;
+                                                        alreadyPartOfShape[i+1][j+2] = true;
+                                                        alreadyPartOfShape[i+1][j+3] = true;
+                                                    }
+                                                    if (j+4 < 6) {
+                                                        alreadyPartOfShape[i][j+4] = true;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                }
+                return objectiveAchieved;
+            }
+            case "Group of 4 tiles" -> {
+                boolean[][] alreadyPartOfShape = new boolean[5][6];
+                for (int j = 0; j < 6; j++) {
+                    for (int i = 0; i < 5; i++) {
+                        alreadyPartOfShape[i][j] = false;
+                    }
+                }
+                for(int j = 0; j<6;j++) {
+                    for (int i = 0;i<5;i++) {
+                        if ((shelf.getTilePosition(i, j) != null) && (!alreadyPartOfShape[i][j])) {
+                            TileType tileType = shelf.getTilePosition(i, j).getTile().getType();
+                            if (j + 1 < 6) {
+                                if ((shelf.getTilePosition(i, j + 1) != null) && (!alreadyPartOfShape[i][j + 1]) && (shelf.getTilePosition(i, j + 1).getTile().getType() == tileType)) {
+                                    if (i+1< 5) {
+                                        if ((shelf.getTilePosition(i+1, j) != null) && (!alreadyPartOfShape[i+1][j]) && (shelf.getTilePosition(i+1, j).getTile().getType() == tileType)) {
+                                            if ((shelf.getTilePosition(i+1, j+1) != null) && (!alreadyPartOfShape[i+1][j + 1]) && (shelf.getTilePosition(i+1, j + 1).getTile().getType() == tileType)) {
+                                                counterShape++;
+                                                if (counterShape == 2) {
+                                                    objectiveAchieved = true;
+                                                    break;
+                                                }
+                                                alreadyPartOfShape[i][j] = true;
+                                                alreadyPartOfShape[i][j+1] = true;
+                                                alreadyPartOfShape[i+1][j] = true;
+                                                alreadyPartOfShape[i+1][j+1] = true;
+                                                if (i+2 < 5) {
+                                                    alreadyPartOfShape[i+2][j] = true;
+                                                    alreadyPartOfShape[i+2][j+1] = true;
+                                                }
+                                                if (j+2 < 6) {
+                                                    alreadyPartOfShape[i][j+2] = true;
+                                                    alreadyPartOfShape[i+1][j+2] = true;
+                                                }
+                                            }
+                                        }
+
+                                        }
+                                }
+                            }
+                        }
                     }
                 }
                 return objectiveAchieved;
