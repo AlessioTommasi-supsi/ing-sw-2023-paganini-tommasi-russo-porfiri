@@ -325,7 +325,150 @@ public class CommonCardPosition implements CommonObjectiveInterface {
                 }
                 return objectiveAchieved;
             }
-
+            case "X" -> {
+                for(int j = 0; j<6;j++) {
+                    for (int i = 0; i < 5;i++) {
+                        if (shelf.getTilePosition(i,j) != null) {
+                            TileType tileType = shelf.getTilePosition(i,j).getTile().getType();
+                            if(j<4) {
+                                if(i<3) {
+                                    if ((shelf.getTilePosition(i + 1, j + 1) != null) && (shelf.getTilePosition(i + 1, j + 1).getTile().getType() == tileType)) {
+                                        if ((shelf.getTilePosition(i + 2, j) != null) && (shelf.getTilePosition(i + 2, j).getTile().getType() == tileType)) {
+                                            if ((shelf.getTilePosition(i, j + 2) != null) && (shelf.getTilePosition(i, j + 2).getTile().getType() == tileType)) {
+                                                if ((shelf.getTilePosition(i + 2, j + 2) != null) && (shelf.getTilePosition(i + 2, j + 2).getTile().getType() == tileType)) {
+                                                    objectiveAchieved = true;
+                                                }
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    if ((shelf.getTilePosition(i - 1, j + 1) != null) && (shelf.getTilePosition(i - 1, j + 1).getTile().getType() == tileType)) {
+                                        if ((shelf.getTilePosition(i - 2, j) != null) && (shelf.getTilePosition(i - 2, j).getTile().getType() == tileType)) {
+                                            if ((shelf.getTilePosition(i, j + 2) != null) && (shelf.getTilePosition(i, j + 2).getTile().getType() == tileType)) {
+                                                if ((shelf.getTilePosition(i - 2, j + 2) != null) && (shelf.getTilePosition(i - 2, j + 2).getTile().getType() == tileType)) {
+                                                    objectiveAchieved = true;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            } else {
+                                if(i<3) {
+                                    if ((shelf.getTilePosition(i + 1, j - 1) != null) && (shelf.getTilePosition(i + 1, j - 1).getTile().getType() == tileType)) {
+                                        if ((shelf.getTilePosition(i + 2, j) != null) && (shelf.getTilePosition(i + 2, j).getTile().getType() == tileType)) {
+                                            if ((shelf.getTilePosition(i, j - 2) != null) && (shelf.getTilePosition(i, j - 2).getTile().getType() == tileType)) {
+                                                if ((shelf.getTilePosition(i + 2, j - 2) != null) && (shelf.getTilePosition(i + 2, j - 2).getTile().getType() == tileType)) {
+                                                    objectiveAchieved = true;
+                                                }
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    if ((shelf.getTilePosition(i - 1, j - 1) != null) && (shelf.getTilePosition(i - 1, j - 1).getTile().getType() == tileType)) {
+                                        if ((shelf.getTilePosition(i - 2, j) != null) && (shelf.getTilePosition(i - 2, j).getTile().getType() == tileType)) {
+                                            if ((shelf.getTilePosition(i, j - 2) != null) && (shelf.getTilePosition(i, j - 2).getTile().getType() == tileType)) {
+                                                if ((shelf.getTilePosition(i - 2, j - 2) != null) && (shelf.getTilePosition(i - 2, j - 2).getTile().getType() == tileType)) {
+                                                    objectiveAchieved = true;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                return objectiveAchieved;
+            }
+            case "Three columns different types" -> {
+                for (int i = 0; i<6;i++) {
+                    List<TileType> tileTypes = new ArrayList<TileType>();
+                    if (shelf.getTilePosition(i, 0) != null) {
+                        tileTypes.add(shelf.getTilePosition(i, 0).getTile().getType());
+                        if((shelf.getTilePosition(i, 1) != null) && (tileTypes.size() < 4)) {
+                            if (!tileTypes.contains(shelf.getTilePosition(i,1).getTile().getType())) {
+                                tileTypes.add(shelf.getTilePosition(i,1).getTile().getType());
+                            }
+                            if((shelf.getTilePosition(i, 2) != null) && (tileTypes.size() < 4)) {
+                                if (!tileTypes.contains(shelf.getTilePosition(i, 2).getTile().getType())) {
+                                    tileTypes.add(shelf.getTilePosition(i, 2).getTile().getType());
+                                }
+                                if((shelf.getTilePosition(i, 3) != null) && (tileTypes.size() < 4)) {
+                                    if (!tileTypes.contains(shelf.getTilePosition(i, 3).getTile().getType())) {
+                                        tileTypes.add(shelf.getTilePosition(i, 3).getTile().getType());
+                                    }
+                                    if((shelf.getTilePosition(i, 4) != null) && (tileTypes.size() < 4)) {
+                                        if (!tileTypes.contains(shelf.getTilePosition(i, 4).getTile().getType())) {
+                                            tileTypes.add(shelf.getTilePosition(i, 4).getTile().getType());
+                                        }
+                                        counterShape++;
+                                        if (counterShape == 3) {
+                                            objectiveAchieved = true;
+                                            break;
+                                        }
+                                    }
+                                } else {
+                                    continue;
+                                }
+                            } else {
+                                continue;
+                            }
+                        } else {
+                            continue;
+                        }
+                    }
+                }
+                return objectiveAchieved;
+            }
+            case "Four rows different types" -> {
+                for (int j = 0; j < 6; j++) {
+                    List<TileType> tileTypes = new ArrayList<TileType>();
+                    if (shelf.getTilePosition(0, j) != null) {
+                        tileTypes.add(shelf.getTilePosition(0, j).getTile().getType());
+                        if((shelf.getTilePosition(1, j) != null) && (tileTypes.size() < 4)) {
+                            if (!tileTypes.contains(shelf.getTilePosition(1, j).getTile().getType())) {
+                                tileTypes.add(shelf.getTilePosition(1, j).getTile().getType());
+                            }
+                            if((shelf.getTilePosition(2, j) != null) && (tileTypes.size() < 4)) {
+                                if (!tileTypes.contains(shelf.getTilePosition(2, j).getTile().getType())) {
+                                    tileTypes.add(shelf.getTilePosition(2, j).getTile().getType());
+                                }
+                                if((shelf.getTilePosition(3, j) != null) && (tileTypes.size() < 4)) {
+                                    if (!tileTypes.contains(shelf.getTilePosition(3, j).getTile().getType())) {
+                                        tileTypes.add(shelf.getTilePosition(3, j).getTile().getType());
+                                    }
+                                    if((shelf.getTilePosition(4, j) != null) && (tileTypes.size() < 4)) {
+                                        if (!tileTypes.contains(shelf.getTilePosition(4, j).getTile().getType())) {
+                                            tileTypes.add(shelf.getTilePosition(4, j).getTile().getType());
+                                        }
+                                        if((shelf.getTilePosition(5, j) != null) && (tileTypes.size() < 4)) {
+                                            if (!tileTypes.contains(shelf.getTilePosition(5, j).getTile().getType())) {
+                                                tileTypes.add(shelf.getTilePosition(5, j).getTile().getType());
+                                            }
+                                            counterShape++;
+                                            if (counterShape == 4) {
+                                                objectiveAchieved = true;
+                                                break;
+                                            }
+                                        } else {
+                                            continue;
+                                        }
+                                    } else {
+                                        continue;
+                                    }
+                                } else {
+                                    continue;
+                                }
+                            } else {
+                                continue;
+                            }
+                        } else {
+                            continue;
+                        }
+                    }
+                }
+                return objectiveAchieved;
+            }
         }
         return false;
     }
