@@ -35,30 +35,29 @@ public class TilePositionBoard {
         else return false;
     }
 
-    public TileObj getTile(){
+    public TileObj getTile() throws PositionEmptyException {
         if(tileInSlot != null){
             return this.tileInSlot;
         }
-        else throw new NullPointerException();  //forse meglio usare un'eccezione personalizzata?
+        else throw new PositionEmptyException();
     }
 
-    public void setTile(TileObj tile) throws Exception {
+    public void setTile(TileObj tile) throws PositionAlreadyOccupiedException {
         if(this.occupied != true){
             this.tileInSlot= tile;
             this.occupied= true;
         }
-        else throw new Exception("tile already occupied, choose another TilePositionBoard");
-        //eccezione da definire a parte per bene.
+        else throw new PositionAlreadyOccupiedException();
     }
 
-    public TileObj removeTile(){
+    public TileObj removeTile() throws PositionEmptyException {
         if(this.tileInSlot != null && this.occupied == true){
             TileObj tempTile = new TileObj(this.tileInSlot);
             this.tileInSlot= null;
             this.occupied=false;
             return tempTile;
         }
-        else throw new NullPointerException();
+        else throw new PositionEmptyException();
     }
 
 
