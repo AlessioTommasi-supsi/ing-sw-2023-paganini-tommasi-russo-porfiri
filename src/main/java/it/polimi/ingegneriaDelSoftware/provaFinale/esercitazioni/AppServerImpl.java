@@ -71,7 +71,11 @@ public class AppServerImpl extends UnicastRemoteObject implements AppServer
 
     private static void startRMI() throws RemoteException {
         AppServerImpl server = getInstance();
-
+        try {
+            java.rmi.registry.LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
         Registry registry = LocateRegistry.getRegistry();
         registry.rebind("server", server);
     }
