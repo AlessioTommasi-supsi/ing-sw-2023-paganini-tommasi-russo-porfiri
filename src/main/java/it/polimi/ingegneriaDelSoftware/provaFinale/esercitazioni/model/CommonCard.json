@@ -1,0 +1,61 @@
+[
+  {
+    "name": "Six Double Objective",
+    "objective" : "Six separated groups each one composed of two adjacent tiles of the same type (not necessarily as showed in figure). Tiles in a group could be different from those in another group."
+  },
+
+  {
+    "name" : "Diagonal",
+    "objective" : "Five tiles of the same type that forms a diagonal."
+  },
+
+  {
+    "name" : "Angles",
+    "objective" : "Four tiles of the same type at the four angles of the Library."
+  },
+
+  {
+    "name" : "Four rows different types",
+    "objective" : "Four rows each one composed of five tiles of one, two or three different types. Different tiles can have different combinations of types."
+  },
+
+  {
+    "name" : "Vertical four",
+    "objective" : "Four separated groups each one composed of four adjacent tiles of the same type (not necessarily as showed in figure). Tiles in a group could be different from those in another group."
+  },
+
+  {
+    "name" : "Vertical different six",
+    "objective" : "Two columns each one composed of 6 different types of tiles."
+  },
+
+  {
+    "name" : "Group of 4 tiles",
+    "objective" : "Two separated groups composed of 4 tiles of the same type that creates a 2x2 square. Tiles of the two groups must be of the same type."
+  },
+
+  {
+    "name" : "Row of 5 different tiles",
+    "objective" : "Two rows each one composed of 5 different tiles type."
+  },
+
+  {
+    "name" : "Three columns different types",
+    "objective" : "Three columns each one composed of 6 tiles of one, two or three different tile types. Different columns can have different combinations of tile types."
+  },
+
+  {
+    "name" : "X",
+    "objective" : "Five tiles of the same type that creates an x."
+  },
+
+  {
+    "name" : "Eight tiles no restriction",
+    "objective" : "Eight tiles of the same type. No restrictions on the position of these tiles."
+  },
+
+  {
+    "name" : "Inferior diagonal",
+    "objective" : "Five columns of increasing or decreasing height: starting from left or right first column, every next column must be composed of an additional tile. Tiles can be of different types."
+  }
+]
