@@ -3,6 +3,7 @@ package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.view;
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.*;
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.util.Observable;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -66,7 +67,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
             try {
                 return Choice_my_shelfie.valueOf(input);
             } catch (IllegalArgumentException e) {
-                System.err.println("I don't know this sign: " + input);
+                System.err.println("I don't know this choiche: " + input);
                 System.err.println("Try again...");
             }
         }
@@ -74,7 +75,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
 
     public void update(TurnView model, Turn.Event arg) {
         switch (arg) {
-            case CPU_CHOICE -> showChoices(model);
+            case CPU_CHOICE -> showModel(model);
             case OUTCOME -> {
                 showOutcome(model);
                 this.setState(State.WAITING_FOR_PLAYER);
@@ -88,26 +89,34 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
         if (o == null) {
             return;
         }
-        /* Output Outcome */
+        /* IN BASE AI MESSAGGI DESCRITTI IN OUTCOME DECIDO COSA VISUALIZZARE!!*/
         switch (o) {
             //cosa devo stampare in base alle scelte fatte e ai risultati del model contenuti in o!!
             case WIN -> System.out.println("You win! :)");
             case DRAW -> System.out.println("Draw... -.-");
             case LOSE -> System.out.println("You lose! :(");
+            case ERROR -> System.out.println("AN EERROR HAVE OCCURRED! :'(");
         }
     }
 
-    private void showChoices(TurnView model) {
-        /*cosa ritorna elaborazione
-        Choice cpuChoice = model.getCpuChoice();
-        if (cpuChoice == null) {
-            return;
-        }
-        */
+    private void showModel(TurnView model) {
+        System.out.println("in attesa di risposta dal server... ");
+        try{
 
-        /* Show CPU's choice */
-        //System.out.println("CPU chose: " + cpuChoice);
-        System.out.println("nott fully implemented yet");
+            ArrayList<TilePositionBoard> disp_board= model.getGame().getBoard().showBoard();
+
+            for (int i = 0; i < disp_board.size(); i++) {
+                System.out.println(disp_board.get(i).getTile().toString());
+                System.out.println("X: "+disp_board.get(i).getX() + "Y: "+disp_board.get(i).getY());
+
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+        System.out.println("fine stampa model... ");
 
     }
 }

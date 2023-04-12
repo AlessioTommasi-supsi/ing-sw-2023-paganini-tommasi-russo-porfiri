@@ -19,5 +19,7 @@ public class AppClientRMI
 
         ClientImpl client = new ClientImpl(server.connect());
         client.run();
+
+
     }
 }

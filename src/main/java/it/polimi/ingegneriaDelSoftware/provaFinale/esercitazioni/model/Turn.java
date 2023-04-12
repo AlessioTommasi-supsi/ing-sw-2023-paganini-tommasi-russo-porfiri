@@ -4,10 +4,34 @@ import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.util.Observable
 
 public class Turn extends Observable<Turn.Event> {
 
+    private Choice_my_shelfie playerChoice;
+    private Choice cpuChoice;
+    private Outcome outcome;
+
+    private MyShelfie myShelfie;
+
+
+    private Game game;//viene assegnato per la prima volta dopo aver chiamato Myshelfie.join!
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    public MyShelfie getMyShelfie() {
+        return myShelfie;
+    }
+
+    public void setMyShelfie(MyShelfie myShelfie) {
+        this.myShelfie = myShelfie;
+    }
+
     public enum Event {
         PLAYER_CHOICE, CPU_CHOICE, OUTCOME
     }
-    private Choice_my_shelfie playerChoice;
     public Choice_my_shelfie getPlayerChoice() {
         return playerChoice;
     }
@@ -17,7 +41,6 @@ public class Turn extends Observable<Turn.Event> {
         setChangedAndNotifyObservers(Event.PLAYER_CHOICE);
     }
 
-    private Choice cpuChoice;
     public Choice getCpuChoice() {
         return cpuChoice;
     }
@@ -27,7 +50,6 @@ public class Turn extends Observable<Turn.Event> {
         setChangedAndNotifyObservers(Event.CPU_CHOICE);
     }
 
-    private Outcome outcome;
     public Outcome getOutcome() {
         return outcome;
     }
@@ -41,10 +63,14 @@ public class Turn extends Observable<Turn.Event> {
         outcome = null;
         cpuChoice = null;
         playerChoice = null;
+        myShelfie = null;
     }
 
     private void setChangedAndNotifyObservers(Event arg) {
         setChanged();
         notifyObservers(arg);
     }
+
+
+
 }
