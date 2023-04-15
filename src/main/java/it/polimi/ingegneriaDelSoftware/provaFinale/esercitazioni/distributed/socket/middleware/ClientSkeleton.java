@@ -2,7 +2,7 @@ package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.distributed.so
 
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.distributed.Client;
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.distributed.Server;
-import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Choice_my_shelfie;
+import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Choice;
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Turn;
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.TurnView;
 
@@ -50,9 +50,9 @@ public class ClientSkeleton implements Client {
     }
 
     public void receive(Server server) throws RemoteException {
-        Choice_my_shelfie c;
+        Choice c;
         try {
-            c = (Choice_my_shelfie) ois.readObject();
+            c = (Choice) ois.readObject();
         } catch (IOException e) {
             throw new RemoteException("Cannot receive choice from client", e);
         } catch (ClassNotFoundException e) {

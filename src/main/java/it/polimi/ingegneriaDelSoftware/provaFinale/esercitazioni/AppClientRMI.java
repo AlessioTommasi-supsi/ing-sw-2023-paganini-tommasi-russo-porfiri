@@ -7,18 +7,19 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
-/**
- * Hello world!
- *
- */
 public class AppClientRMI
 {
     public static void main( String[] args ) throws RemoteException, NotBoundException {
-        Registry registry = LocateRegistry.getRegistry();
-        AppServer server = (AppServer) registry.lookup("server");
+        try {
+            Registry registry = LocateRegistry.getRegistry();
+            AppServer server = (AppServer) registry.lookup("server");
 
-        ClientImpl client = new ClientImpl(server.connect());
-        client.run();
+            ClientImpl client = new ClientImpl(server.connect());
+            client.run();
+        }catch (Exception e){
+            System.out.println("errore nel main");
+            e.printStackTrace();
+        }
 
 
     }

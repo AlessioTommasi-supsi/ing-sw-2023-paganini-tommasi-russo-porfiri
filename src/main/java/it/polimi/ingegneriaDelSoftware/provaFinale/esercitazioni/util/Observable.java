@@ -1,5 +1,7 @@
 package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.util;
 
+import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Choice;
+
 import java.util.Vector;
 
 /**
@@ -29,7 +31,7 @@ import java.util.Vector;
  * empty. Two observers are considered the same if and only if the
  * {@code equals} method returns true for them.
  *
- * @see     #notifyObservers()
+ * @see     #notifyObservers(Choice)
  * @see     #notifyObservers(Enum) 
  * @see     Observer
  * @see     Observer#update(Observable, Enum)
@@ -75,25 +77,6 @@ public class Observable<Event extends Enum<Event>> {
         obs.removeElement(o);
     }
 
-    /**
-     * If this object has changed, as indicated by the
-     * {@code hasChanged} method, then notify all of its observers
-     * and then call the {@code clearChanged} method to
-     * indicate that this object has no longer changed.
-     * <p>
-     * Each observer has its {@code update} method called with two
-     * arguments: this observable object and {@code null}. In other
-     * words, this method is equivalent to:
-     * <blockquote>{@code
-     * notifyObservers(null)}</blockquote>
-     *
-     * @see     #clearChanged()
-     * @see     #hasChanged()
-     * @see     Observer#update(Observable, Enum) 
-     */
-    public void notifyObservers() {
-        notifyObservers(null);
-    }
 
     /**
      * If this object has changed, as indicated by the
@@ -161,7 +144,7 @@ public class Observable<Event extends Enum<Event>> {
      * This method is called automatically by the
      * {@code notifyObservers} methods.
      *
-     * @see     #notifyObservers()
+     * @see     #notifyObservers(Choice)
      * @see     #notifyObservers(Enum)
      */
     protected synchronized void clearChanged() {

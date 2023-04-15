@@ -1,6 +1,6 @@
 package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.distributed;
 
-import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Choice_my_shelfie;
+import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.*;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -17,5 +17,7 @@ public interface Server extends Remote {
      * @param client  the client that generated the event
      * @param arg     the choice made by the client
      */
-    void update(Client client, Choice_my_shelfie arg) throws RemoteException;
+
+    void update(Client client, Choice arg) throws RemoteException;
+
 }

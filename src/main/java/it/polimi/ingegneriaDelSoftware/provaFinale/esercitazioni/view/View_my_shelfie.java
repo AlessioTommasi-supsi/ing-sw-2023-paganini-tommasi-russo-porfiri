@@ -3,7 +3,6 @@ package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.view;
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.*;
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.util.Observable;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -42,14 +41,17 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                     } catch (InterruptedException e) {
                         System.err.println("Interrupted while waiting for server: " + e.getMessage());
                     }
+
                 }
             }
             System.out.println("--- WELCOME TO MY SHELFIE! ---");
             /* Player chooses */
-            Choice_my_shelfie c = askPlayer();
+            Choice_my_shelfie pc = askPlayer();
+
+            Choice c =new Choice(pc, 5);
             setState(State.WAITING_FOR_OUTCOME);
             setChanged();/*NOTIFICO AL SERER che del client ha fatto scelta!!*/
-            notifyObservers(c);
+            notifyObservers(c.getChoiche());
         }
     }
 
@@ -75,48 +77,26 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
 
     public void update(TurnView model, Turn.Event arg) {
         switch (arg) {
-            case CPU_CHOICE -> showModel(model);
+            //case CPU_CHOICE -> showModel(model);
             case OUTCOME -> {
-                showOutcome(model);
+                Outcome o = model.getOutcome();
+                if (o != null) {
+                    /* IN BASE AI MESSAGGI DESCRITTI IN OUTCOME DECIDO COSA VISUALIZZARE!!*/
+                    switch (o) {
+                        //cosa devo stampare in base alle scelte fatte e ai risultati del model contenuti in o!!
+                        case WIN -> System.out.println("You chose IMMMETTI_IN_LIBRERIA");
+                        case DRAW -> System.out.println("Draw... -.-");
+                        case LOSE -> System.out.println("You lose! :(");
+                        case ERROR -> System.out.println("AN EERROR HAVE OCCURRED! :'(");
+                    }
+                }
                 this.setState(State.WAITING_FOR_PLAYER);
             }
             default -> System.err.println("Ignoring event from " + model + ": " + arg);
         }
     }
 
-    private void showOutcome(TurnView model) {
-        Outcome o = model.getOutcome();
-        if (o == null) {
-            return;
-        }
-        /* IN BASE AI MESSAGGI DESCRITTI IN OUTCOME DECIDO COSA VISUALIZZARE!!*/
-        switch (o) {
-            //cosa devo stampare in base alle scelte fatte e ai risultati del model contenuti in o!!
-            case WIN -> System.out.println("You win! :)");
-            case DRAW -> System.out.println("Draw... -.-");
-            case LOSE -> System.out.println("You lose! :(");
-            case ERROR -> System.out.println("AN EERROR HAVE OCCURRED! :'(");
-        }
-    }
 
-    private void showModel(TurnView model) {
-        System.out.println("in attesa di risposta dal server... ");
-        try{
+    //ad ogni turno stampo la board!
 
-            ArrayList<TilePositionBoard> disp_board= model.getGame().getBoard().showBoard();
-
-            for (int i = 0; i < disp_board.size(); i++) {
-                System.out.println(disp_board.get(i).getTile().toString());
-                System.out.println("X: "+disp_board.get(i).getX() + "Y: "+disp_board.get(i).getY());
-
-            }
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-
-        System.out.println("fine stampa model... ");
-
-    }
 }
