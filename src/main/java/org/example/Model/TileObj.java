@@ -1,5 +1,7 @@
 package org.example.Model;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.*;
 
 
@@ -13,7 +15,7 @@ public class TileObj {
         this.variant = chosenVariant;
     }
 
-    public TileObj(TileObj tile) {
+    public TileObj(@NotNull TileObj tile) {
         this.type = tile.getType();
         this.variant = tile.getVariant();
     }

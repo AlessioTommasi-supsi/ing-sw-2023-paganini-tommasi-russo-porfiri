@@ -1,5 +1,7 @@
 package org.example.Model;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.*;
 
 public class TileObjBag {
@@ -24,10 +26,15 @@ public class TileObjBag {
         }
     }
 
-    public TileObjBag(TileObjBag bag){
-        for (TileObj t : bag) {
+    public TileObjBag(@NotNull TileObjBag bag){
+        for (TileObj t : bag.getTiles()) {
             this.tiles.add(new TileObj(t));
         }
+    }
+
+    public ArrayList<TileObj> getTiles() {
+        ArrayList<TileObj> tempTiles = new ArrayList<TileObj>(this.tiles);
+        return tempTiles;
     }
 
     public void shuffleT(){
