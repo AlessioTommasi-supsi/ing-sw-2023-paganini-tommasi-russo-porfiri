@@ -24,6 +24,12 @@ public class TileObjBag {
         }
     }
 
+    public TileObjBag(TileObjBag bag){
+        for (TileObj t : bag) {
+            this.tiles.add(new TileObj(t));
+        }
+    }
+
     public void shuffleT(){
         Collections.shuffle(tiles);
     }

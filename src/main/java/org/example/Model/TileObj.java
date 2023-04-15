@@ -2,7 +2,7 @@ package org.example.Model;
 
 import java.util.*;
 
-//CLASSE SCRITTA COME BOZZA SOLO PER POTER SCRIVERE TileObjBag!!
+
 public class TileObj {
     private TileType type;
     private TileVariant variant;
@@ -26,3 +26,4 @@ public class TileObj {
         return variant;
     }
 }
+

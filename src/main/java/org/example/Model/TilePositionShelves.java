@@ -16,7 +16,7 @@ public class TilePositionShelves {
     public TilePositionShelves(int abscissa, int ordinate, TileObj tile){
         this.x= abscissa;
         this.y= ordinate;
-        this.tileInSlot= tile;
+        this.tileInSlot= new TileObj(tile);
         this.occupied= true;
     }
 

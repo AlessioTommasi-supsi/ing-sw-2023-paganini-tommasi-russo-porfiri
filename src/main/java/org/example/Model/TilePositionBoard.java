@@ -16,8 +16,16 @@ public class TilePositionBoard {
     public TilePositionBoard(int abscissa, int ordinate, TileObj tile){
         this.x= abscissa;
         this.y= ordinate;
-        this.tileInSlot= tile;
+        this.tileInSlot= new TileObj(tile);
         this.occupied= true;
+    }
+
+    public TilePositionBoard(TilePositionBoard tp){
+        this.x= tp.getX();
+        this.y= tp.getY();
+        this.tileInSlot= new TileObj(tp.getTile());
+        this.occupied= tp.isOccupied();
+
     }
 
     public int getX(){

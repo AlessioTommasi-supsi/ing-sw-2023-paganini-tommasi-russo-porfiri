@@ -23,22 +23,32 @@ public class Board{
 
 
     //sara il gioco a creare i placement giusti in base a quante persone ho!!
-    public Board(ArrayList<TilePositionBoard> placement, TileObjBag bag, CommonDeck commonDeck) {
-        this.placement = placement;
-        this.bag = bag;
-        this.commonDeck = commonDeck;
+    public Board(ArrayList<TilePositionBoard> extPlacement, TileObjBag extBag, CommonDeck extCommonDeck, PersonalDeck extPersonalDeck) {
+
+        this.placement = new ArrayList<TilePositionBoard>;
+        for (TilePositionBoard p :extPlacement) {
+            this.placement.add(new TilePositionBoard(p));
+        }
+
+        this.bag= new TileObjBag(extBag);
+
+        this.commonDeck= extCommonDeck;     //da riscrivere
+        this.personalDeck= extPersonalDeck;  //da riscrivere
+
     }
 
-    public Board(Board board) {
-        this.placement = board.getPlacement();
-        this.bag = board.getBag();
-        this.commonDeck = board.getCommonDeck();
+    public Board(Board extBoard) {
+        this.placement= extBoard.getPlacement();
+        this.bag= extBoard.getBag();
+        this.commonDeck= extBoard.getCommonDeck();
+        this.personalDeck= extBoard.getPersonalDeck();
     }
 
     public Board() {
-        this.commonDeck = new CommonDeck();
-        this.personalDeck = new PersonalDeck();
+        this.placement = new ArrayList<TilePositionBoard>();
         this.bag = new TileObjBag();
+        this.commonDeck = new CommonDeck();       //da riscrivere
+        this.personalDeck = new PersonalDeck();   //da riscrivere
         //qui mi costruisco le posizioni (placement) in base al numero di giocatori!!
 
     }
@@ -47,21 +57,25 @@ public class Board{
         return new ArrayList<TilePositionBoard>(placement);
     }
 
+    public TileObjBag getBag() {
+        return new TileObjBag(this.bag);
+    }
+
+    public CommonDeck getCommonDeck() {
+        return commonDeck;  //da riscrivere
+    }
+
+    public PersonalDeck getPersonalDeck() {
+        return personalDeck;  //da riscrivere
+    }
+
     public ArrayList<TilePositionBoard> showBoard() {
         return this.getPlacement();
-    }
+    }  //fa stessa cosa di getPlacement
 
 
-    public TileObjBag getBag() {
-        return new Bag(bag);
-    }
+    // diminuisci i punti delle carte CommonCard in base al numero di persone (a quale metodo è riferito?)
 
-
-    // diminuisci i punti delle carte CommonCard in base al numero di persone
-    public boolean isTileRemovible(int x, int y)throws Exception{
-        //controlli che la tssera non sia bloccata da altri!!
-        return true;
-    }
 
     public boolean tileIsRemovable(TilePositionBoard position){
         int x = position.getX();
@@ -79,6 +93,7 @@ public class Board{
         }
         return false;
     }
+
 //controller
     private TileObj remove1Tile(TilePositionBoard position) throws Exception {
         if(tileIsRemovable(position)){
