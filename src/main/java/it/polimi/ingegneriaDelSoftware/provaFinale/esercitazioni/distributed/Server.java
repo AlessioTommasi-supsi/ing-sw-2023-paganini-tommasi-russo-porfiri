@@ -1,6 +1,6 @@
 package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.distributed;
 
-import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.*;
+import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Choice;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

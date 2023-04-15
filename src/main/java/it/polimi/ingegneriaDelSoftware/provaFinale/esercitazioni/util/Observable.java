@@ -1,7 +1,5 @@
 package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.util;
 
-import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Choice;
-
 import java.util.Vector;
 
 /**
@@ -31,7 +29,6 @@ import java.util.Vector;
  * empty. Two observers are considered the same if and only if the
  * {@code equals} method returns true for them.
  *
- * @see     #notifyObservers(Choice)
  * @see     #notifyObservers(Enum) 
  * @see     Observer
  * @see     Observer#update(Observable, Enum)
@@ -144,7 +141,6 @@ public class Observable<Event extends Enum<Event>> {
      * This method is called automatically by the
      * {@code notifyObservers} methods.
      *
-     * @see     #notifyObservers(Choice)
      * @see     #notifyObservers(Enum)
      */
     protected synchronized void clearChanged() {

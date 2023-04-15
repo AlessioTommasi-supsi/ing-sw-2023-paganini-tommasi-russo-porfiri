@@ -8,7 +8,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.RMIClientSocketFactory;
 import java.rmi.server.RMIServerSocketFactory;
 import java.rmi.server.UnicastRemoteObject;
-
+// GIITTTT PLSWORCK
 public class ClientImpl extends UnicastRemoteObject implements Client, Runnable {
 
     //TextualUI view = new TextualUI();

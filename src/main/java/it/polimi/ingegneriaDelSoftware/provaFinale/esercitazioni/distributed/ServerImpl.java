@@ -1,7 +1,7 @@
 package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.distributed;
 
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.controller.Game_spock;
-import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Choice_my_shelfie;
+import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Choice;
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Turn;
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.TurnView;
 
@@ -41,8 +41,9 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
         this.controller = new Game_spock(model, client);
     }
 
+
     @Override
-    public void update(Client client, Choice_my_shelfie arg) {
+    public void update(Client client, Choice arg) {
         this.controller.update(client, arg);
     }
 }

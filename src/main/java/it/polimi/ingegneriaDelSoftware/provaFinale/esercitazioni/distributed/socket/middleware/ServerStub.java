@@ -2,7 +2,7 @@ package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.distributed.so
 
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.distributed.Client;
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.distributed.Server;
-import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Choice_my_shelfie;
+import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Choice;
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Turn;
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.TurnView;
 
@@ -46,7 +46,7 @@ public class ServerStub implements Server {
     }
 
     @Override
-    public void update(Client client, Choice_my_shelfie arg) throws RemoteException {
+    public void update(Client client, Choice arg) throws RemoteException {
         try {
             oos.writeObject(arg);//scrivo al server
         } catch (IOException e) {
