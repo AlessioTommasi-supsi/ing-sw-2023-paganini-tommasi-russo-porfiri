@@ -1,14 +1,14 @@
 package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.distributed;
 
-import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Turn;
-import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.*;
-import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.view.*;
+import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Choice;
+import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.TurnView;
+import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.view.View_my_shelfie;
 
 import java.rmi.RemoteException;
 import java.rmi.server.RMIClientSocketFactory;
 import java.rmi.server.RMIServerSocketFactory;
 import java.rmi.server.UnicastRemoteObject;
-// GIITTTT PLSWORCK
+// GIITTTT PLSWORCK 2
 public class ClientImpl extends UnicastRemoteObject implements Client, Runnable {
 
     //TextualUI view = new TextualUI();
@@ -34,7 +34,7 @@ public class ClientImpl extends UnicastRemoteObject implements Client, Runnable 
         //ERRORE E'QUI!!! COME ARG VIENE VISTO COME UNA CHOICE_MY_SHELLFIE E NON COME CHOICHE!!
         view.addObserver((o, arg) -> {
             try {
-                server.update(this, new Choice(arg,null));
+                server.update(this, arg);
 
             } catch (RemoteException e) {
                 System.err.println("Unable to update the server: " + e.getMessage() + ". Skipping the update...");
@@ -43,7 +43,7 @@ public class ClientImpl extends UnicastRemoteObject implements Client, Runnable 
     }
 
     @Override
-    public void update(TurnView o, Turn.Event arg) {
+    public void update(TurnView o, Choice arg) {
         view.update(o, arg);
     }
 

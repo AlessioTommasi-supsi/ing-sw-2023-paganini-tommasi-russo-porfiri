@@ -3,7 +3,6 @@ package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.distributed.so
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.distributed.Client;
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.distributed.Server;
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Choice;
-import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Turn;
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.TurnView;
 
 import java.io.IOException;
@@ -65,9 +64,9 @@ public class ServerStub implements Server {
             throw new RemoteException("Cannot deserialize model view from client", e);
         }
 
-        Turn.Event arg;
+        Choice arg;
         try {//quando voglio ricevere argomenti
-            arg = (Turn.Event) ois.readObject();
+            arg = (Choice) ois.readObject();
         } catch (IOException e) {
             throw new RemoteException("Cannot receive event from client", e);
         } catch (ClassNotFoundException e) {

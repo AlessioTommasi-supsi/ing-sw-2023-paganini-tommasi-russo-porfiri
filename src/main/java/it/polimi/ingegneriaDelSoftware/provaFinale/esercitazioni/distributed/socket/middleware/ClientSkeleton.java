@@ -3,7 +3,6 @@ package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.distributed.so
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.distributed.Client;
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.distributed.Server;
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Choice;
-import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Turn;
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.TurnView;
 
 import java.io.IOException;
@@ -36,7 +35,7 @@ public class ClientSkeleton implements Client {
     }
 
     @Override
-    public void update(TurnView o, Turn.Event arg) throws RemoteException {
+    public void update(TurnView o, Choice arg) throws RemoteException {
         try {
             oos.writeObject(o);
         } catch (IOException e) {

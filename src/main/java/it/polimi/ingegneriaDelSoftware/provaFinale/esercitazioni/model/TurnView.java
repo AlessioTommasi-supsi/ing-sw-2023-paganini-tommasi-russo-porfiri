@@ -8,20 +8,27 @@ public class TurnView implements Serializable {
 
     private final Choice playerChoice;
     private final MyShelfie myShelfie;
-    private final Outcome outcome;
+    private  final Player player;
 
     private final Game game;
-    public Game getGame() {
-        return game;
-    }
-;
+
+
 
     public TurnView(Turn model) {
         this.playerChoice = model.getPlayerChoice();
-        this.outcome = model.getOutcome();
+        //this.outcome = model.getOutcome();
+        this.player = model.getCurrent_player();
         this.myShelfie = model.getMyShelfie();
         this.game = model.getGame();
 
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 
     public Choice getPlayerChoice() {
@@ -32,7 +39,12 @@ public class TurnView implements Serializable {
         return myShelfie;
     }
 
-    public Outcome getOutcome() {
-        return this.outcome;
+    @Override
+    public String toString() {
+        return "TurnView{" +
+                "playerChoice=" + playerChoice +
+                ", myShelfie=" + myShelfie +
+                ", game=" + game +
+                '}';
     }
 }

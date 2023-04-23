@@ -124,37 +124,4 @@ public class Game extends Observable<Game.Event> {
     }
 
 
-
-    /*-------------METODI PER RETE----------------------*/
-
-
-    public String getCpuChoice() {
-        return cpuChoice;
-    }
-
-    public void setCpuChoice(String cpuChoice) {
-        this.cpuChoice = cpuChoice;
-        setChangedAndNotifyObservers(Game.Event.CPU_CHOICE);
-    }
-
-    public String getOutcome() {
-        return outcome;
-    }
-    public void setOutcome(String outcome) {
-        this.outcome = outcome;
-        setChangedAndNotifyObservers(Game.Event.OUTCOME);/*ho creato messaggio da ritornare alle viste*/
-    }
-
-    public void clear() {
-        outcome = null;
-        cpuChoice = null;
-    }
-
-    private void setChangedAndNotifyObservers(Game.Event arg) {
-        setChanged();
-        notifyObservers(arg);
-    }
-
-    /*-------------FINE METODI PER RETE----------------------*/
-
 }

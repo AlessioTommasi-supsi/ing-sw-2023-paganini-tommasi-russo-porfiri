@@ -1,17 +1,12 @@
 package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.controller;
 
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.distributed.Client;
-import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.*;
-import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Outcome;
+import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Choice;
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Turn;
-
-import java.util.Random;
 
 public class Game_spock {
     private final Turn model;
     private final Client client;
-
-    private final Random RAND = new Random();
 
     public Game_spock(Turn model, Client client) {
         this.model = model;
@@ -23,23 +18,27 @@ public class Game_spock {
 
 
     public void update(Client o,Choice arg) {
+
+        System.out.println("Game_spock  update "+arg.getChoiche());
+
         if (!o.equals(client)) {
             System.err.println("CLient NON corretto! Discarding notification from " + o);
             return;
         }
-        //model.setPlayerChoice(arg);
+        //arg.setStato(Turn.Event.OUTCOME);//inutile perche in setPlayerChoice la setto come CPU_CHOICHE
+        model.setPlayerChoice(arg);
         //System.out.println(arg.getArgument().toString());
         switch (arg.getChoiche()) {
             case IMMMETTI_IN_LIBRERIA:
                 System.out.println(arg.getArgument().toString());
-                model.setOutcome(Outcome.WIN);
+                //model.setOutcome(Outcome.WIN);
             break;
             case PESCA_FROM_PLANCIA:
 
-                model.setOutcome(Outcome.LOSE);
+                //model.setOutcome(Outcome.LOSE);
             break;
             case TERMINA_TURNS:
-                model.setOutcome(Outcome.DRAW);
+                //model.setOutcome(Outcome.DRAW);
             break;
         }
 

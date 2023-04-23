@@ -4,12 +4,20 @@ import java.io.Serializable;
 
 public class Choice implements Serializable {
     private Choice_my_shelfie choiche;
-
+    private Turn.Event stato;
     private Object argument;
 
     public Choice(Choice_my_shelfie choiche, Object argument) {
         this.choiche = choiche;
         this.argument = argument;
+    }
+
+    public Turn.Event getStato() {
+        return stato;
+    }
+
+    public void setStato(Turn.Event stato) {
+        this.stato = stato;
     }
 
     public Choice_my_shelfie getChoiche() {
@@ -28,5 +36,11 @@ public class Choice implements Serializable {
         this.argument = argument;
     }
 
-
+    @Override
+    public String toString() {
+        return "Choice{" +
+                "choiche=" + choiche.toString() +
+                ", stato=" + stato.toString() +
+                '}';
+    }
 }

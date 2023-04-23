@@ -1,5 +1,7 @@
 package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.util;
 
+import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Choice;
+
 /**
  * A class can implement the {@code Observer} interface when it
  * wants to be informed of changes in observable objects.
@@ -13,7 +15,7 @@ package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.util;
  * @implNote
  * This class is a Generic Implementation of the deprecated {@link java.util.Observer}.
  */
-public interface Observer<SubjectType extends Observable<Event>, Event extends Enum<Event>> {
+public interface Observer<SubjectType extends Observable, Event extends Choice> {
     /**
      * This method is called whenever the observed object is changed. An
      * application calls an {@code Observable} object's

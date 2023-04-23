@@ -76,25 +76,6 @@ public class Controller1 {
             return;
         }
 
-        try {
-            switch (scelta_client) {
-                case PESCA_FROM_PLANCIA:
-                    model.setOutcome("hai selezionato: PESCA_FROM_PLANCIA" );
-                break;
-                case IMMMETTI_IN_LIBRERIA:
-                    model.setOutcome("hai selezionato: IMMMETTI_IN_LIBRERIA" );
-                break;
-                case TERMINA_TURNS:
-                    model.setOutcome("hai selezionato: TERMINA_TURNS" );
-                break;
-                default:
-                    throw new IllegalStateException("la scelta presente nel model non e'tra quelle possibili: " + model.getCpuChoice());
-            }
-
-        }catch (Exception e){
-            model.setOutcome("si e' verificato un errore: "+ e.getMessage() );
-            e.printStackTrace();
-        }
     }
 
 

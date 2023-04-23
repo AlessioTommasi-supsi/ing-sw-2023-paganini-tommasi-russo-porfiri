@@ -49,9 +49,12 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
             Choice_my_shelfie pc = askPlayer();
 
             Choice c =new Choice(pc, 5);
+
+            System.out.println("in attesa del server... ");
+
             setState(State.WAITING_FOR_OUTCOME);
             setChanged();/*NOTIFICO AL SERER che del client ha fatto scelta!!*/
-            notifyObservers(c.getChoiche());
+            notifyObservers(c);
         }
     }
 
@@ -75,13 +78,17 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
         }
     }
 
-    public void update(TurnView model, Turn.Event arg) {
-        switch (arg) {
+    public void update(TurnView model/*risposta dal server*/, Choice arg/*evento che il client ha scelto*/) {
+        switch (model.getPlayerChoice().getStato()) {
             //case CPU_CHOICE -> showModel(model);
             case OUTCOME -> {
-                Outcome o = model.getOutcome();
+                Choice_my_shelfie o = model.getPlayerChoice().getChoiche();
+
+                System.out.println("la scelta che hai fatto e': "+o.toString());
+
+                /**
                 if (o != null) {
-                    /* IN BASE AI MESSAGGI DESCRITTI IN OUTCOME DECIDO COSA VISUALIZZARE!!*/
+                    //IN BASE AI MESSAGGI DESCRITTI IN OUTCOME DECIDO COSA VISUALIZZARE!!
                     switch (o) {
                         //cosa devo stampare in base alle scelte fatte e ai risultati del model contenuti in o!!
                         case WIN -> System.out.println("You chose IMMMETTI_IN_LIBRERIA");
@@ -90,13 +97,18 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                         case ERROR -> System.out.println("AN EERROR HAVE OCCURRED! :'(");
                     }
                 }
+                */
+
                 this.setState(State.WAITING_FOR_PLAYER);
             }
-            default -> System.err.println("Ignoring event from " + model + ": " + arg);
+            default -> System.err.println("Ignoring event from " + model.toString() + ": " + arg.toString());
+
         }
+
+        System.out.println("il server ha risposto!");
+        this.setState(State.WAITING_FOR_PLAYER);
+
     }
 
-
-    //ad ogni turno stampo la board!
 
 }

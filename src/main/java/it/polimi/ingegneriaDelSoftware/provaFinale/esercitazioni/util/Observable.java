@@ -1,5 +1,7 @@
 package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.util;
 
+import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Choice;
+
 import java.util.Vector;
 
 /**
@@ -40,7 +42,7 @@ import java.util.Vector;
  */
 public class Observable<Event extends Enum<Event>> {
     private boolean changed = false;
-    private Vector<Observer<? extends Observable<Event>, Event>> obs;
+    private Vector<Observer<? extends Observable<Event>, Choice>> obs;
 
     /** Construct an Observable with zero Observers. */
 
@@ -57,7 +59,7 @@ public class Observable<Event extends Enum<Event>> {
      * @param   o   an observer to be added.
      * @throws NullPointerException   if the parameter o is null.
      */
-    public synchronized void addObserver(Observer<? extends Observable<Event>, Event> o) {
+    public synchronized void addObserver(Observer<? extends Observable<Event>, Choice> o) {
         if (o == null)
             throw new NullPointerException();
         if (!obs.contains(o)) {
@@ -70,7 +72,7 @@ public class Observable<Event extends Enum<Event>> {
      * Passing {@code null} to this method will have no effect.
      * @param   o   the observer to be deleted.
      */
-    public synchronized void deleteObserver(Observer<? extends Observable<Event>, Event> o) {
+    public synchronized void deleteObserver(Observer<? extends Observable<Event>, Choice> o) {
         obs.removeElement(o);
     }
 
@@ -89,7 +91,7 @@ public class Observable<Event extends Enum<Event>> {
      * @see     #hasChanged()
      * @see     Observer#update(Observable, Enum) 
      */
-    public void notifyObservers(Event arg) {
+    public void notifyObservers(Choice arg) {
         /*
          * a temporary array buffer, used as a snapshot of the state of
          * current Observers.
@@ -116,7 +118,7 @@ public class Observable<Event extends Enum<Event>> {
         }
 
         for (int i = arrLocal.length-1; i>=0; i--)
-            ((Observer<Observable<Event>, Event>)arrLocal[i]).update(this, arg);
+            ((Observer<Observable<Event>, Choice>)arrLocal[i]).update(this, arg);
     }
 
     /**

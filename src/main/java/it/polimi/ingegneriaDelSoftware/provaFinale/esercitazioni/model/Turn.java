@@ -5,7 +5,6 @@ import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.util.Observable
 public class Turn extends Observable<Turn.Event> {
 
     private Choice playerChoice;
-    private Outcome outcome;
 
     private MyShelfie myShelfie;
 
@@ -36,17 +35,26 @@ public class Turn extends Observable<Turn.Event> {
     //SETTER PART
     public void setCurrent_player(Player current_player) {
         this.current_player = current_player;
-        setChangedAndNotifyObservers(Event.CPU_CHOICE);
+        this.playerChoice.setStato(Event.CPU_CHOICE);
+        setChangedAndNotifyObservers(
+                playerChoice
+        );
     }
     public void setGame(Game game) {
         this.game = game;
-        setChangedAndNotifyObservers(Event.CPU_CHOICE);
+        this.playerChoice.setStato(Event.CPU_CHOICE);
+        setChangedAndNotifyObservers(
+                playerChoice
+        );
     }
 
 
     public void setMyShelfie(MyShelfie myShelfie) {
         this.myShelfie = myShelfie;
-        setChangedAndNotifyObservers(Event.CPU_CHOICE);
+        this.playerChoice.setStato(Event.CPU_CHOICE);
+        setChangedAndNotifyObservers(
+                playerChoice
+        );
     }
 
     //OLD
@@ -56,25 +64,24 @@ public class Turn extends Observable<Turn.Event> {
 
     public void setPlayerChoice(Choice playerChoice) {
         this.playerChoice = playerChoice;
-        setChangedAndNotifyObservers(Event.PLAYER_CHOICE);
+
+        this.playerChoice.setStato(Event.CPU_CHOICE);
+        setChangedAndNotifyObservers(
+                playerChoice
+        );
+
+
     }
 
 
-    public Outcome getOutcome() {
-        return outcome;
-    }
 
-    public void setOutcome(Outcome outcome) {
-        this.outcome = outcome;
-        setChangedAndNotifyObservers(Event.OUTCOME);
-    }
 
     public void clear() {
-        outcome = null;
+        //outcome = null;
         playerChoice = null;
     }
 
-    private void setChangedAndNotifyObservers(Event arg) {
+    private void setChangedAndNotifyObservers(Choice arg) {
         setChanged();
         notifyObservers(arg);
     }
