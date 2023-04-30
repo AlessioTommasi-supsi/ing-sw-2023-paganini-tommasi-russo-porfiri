@@ -13,12 +13,6 @@ public class CommonCardPosition implements CommonObjectiveInterface {
         int counterShape = 0;
         switch (nameOfCard) {
             case "Angles" -> {
-                if ((player.getShelves().getTilePosition(0, 0) != null)
-                        && (player.getShelves().getTilePosition(0, 5) != null)
-                        && (player.getShelves().getTilePosition(4, 0) != null)
-                        && (player.getShelves().getTilePosition(4, 5) != null)) {
-                    objectiveAchieved = true;
-                }
                 if (player.getShelves().getTilePosition(0, 0) != null) {
                     TileType tileType = player.getShelves().getTilePosition(0,0).getTile().getType();
                     if (player.getShelves().getTilePosition(0,5) != null) {
@@ -463,7 +457,9 @@ public class CommonCardPosition implements CommonObjectiveInterface {
                                         if (!tileTypes.contains(player.getShelves().getTilePosition(i, 4).getTile().getType())) {
                                             tileTypes.add(player.getShelves().getTilePosition(i, 4).getTile().getType());
                                         }
-                                        counterShape++;
+                                        if (tileTypes.size() < 4) {
+                                            counterShape++;
+                                        }
                                         if (counterShape == 3) {
                                             objectiveAchieved = true;
                                             break;
