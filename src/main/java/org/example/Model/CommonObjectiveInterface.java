@@ -1,5 +1,5 @@
 package org.example.Model;
 
 public interface CommonObjectiveInterface {
-    boolean executeAlgorithm(String nameOfCard, Player player);
+    boolean executeAlgorithm(int index, Player player);
 }

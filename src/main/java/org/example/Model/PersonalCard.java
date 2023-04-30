@@ -98,7 +98,7 @@ public class PersonalCard {
         }
     }
 
-    private PersonalCardParser draw(Player player, ArrayList<PersonalCardParser> personalCards) {
+    private PersonalCardParser drawPersonal(Player player, ArrayList<PersonalCardParser> personalCards) {
         Random rand = new Random();
         int num = rand.nextInt(personalCards.size());
         PersonalCardParser personalCard = personalCards.get(num);

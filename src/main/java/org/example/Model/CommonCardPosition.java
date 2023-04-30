@@ -7,12 +7,12 @@ import java.util.List;
 
 public class CommonCardPosition implements CommonObjectiveInterface {
 
-    public boolean executeAlgorithm(String nameOfCard, Player player) {
+    public boolean executeAlgorithm(int index, Player player) {
         boolean objectiveAchieved = false;
         int counterTile = 0;
         int counterShape = 0;
-        switch (nameOfCard) {
-            case "Angles" -> {
+        switch (index) {
+            case 2 -> {
                 if (player.getShelves().getTilePosition(0, 0) != null) {
                     TileType tileType = player.getShelves().getTilePosition(0,0).getTile().getType();
                     if (player.getShelves().getTilePosition(0,5) != null) {
@@ -79,7 +79,7 @@ public class CommonCardPosition implements CommonObjectiveInterface {
                 }
                 return objectiveAchieved;
             }
-            case "Eight tiles no restriction" -> {
+            case 10 -> {
                 for (int i = 0; i < 5; i++) {
                     for (int j = 0; j < 6; j++) {
                         if (player.getShelves().getTilePosition(i, j) != null) {
@@ -93,7 +93,7 @@ public class CommonCardPosition implements CommonObjectiveInterface {
                     return false;
                 }
             }
-            case "Inferior diagonal" -> {
+            case 11 -> {
                 int i, j = 0;
                 int indexDecrescent = 6;
                 for (i = 0; i < 5; i++) {
@@ -112,7 +112,7 @@ public class CommonCardPosition implements CommonObjectiveInterface {
                     return false;
                 }
             }
-            case "Diagonal" -> {
+            case 1 -> {
                 if (player.getShelves().getTilePosition(0, 0) != null) {
                     TileType typeTile = player.getShelves().getTilePosition(0, 0).getTile().getType();
                     if ((player.getShelves().getTilePosition(1, 1) != null) && (player.getShelves().getTilePosition(1, 1).getTile().getType() == typeTile)) {
@@ -163,7 +163,7 @@ public class CommonCardPosition implements CommonObjectiveInterface {
                 }
                 return objectiveAchieved;
             }
-            case "Vertical different six" -> {
+            case 5 -> {
                 for(int i = 0; i < 5; i++) {
                     List<TileType> tileTypes = new ArrayList<TileType>();
                     if (player.getShelves().getTilePosition(i, 0) != null) {
@@ -212,7 +212,7 @@ public class CommonCardPosition implements CommonObjectiveInterface {
                 }
                 return objectiveAchieved;
             }
-            case "Row of 5 different tiles" -> {
+            case 7 -> {
                 for(int i = 0; i < 6; i++) {
                     List<TileType> tileTypes = new ArrayList<TileType>();
                     if (player.getShelves().getTilePosition(0, i) != null) {
@@ -253,7 +253,7 @@ public class CommonCardPosition implements CommonObjectiveInterface {
                 }
                 return objectiveAchieved;
             }
-            case "Six Double Objective" -> {
+            case 0 -> {
                 boolean[][] alreadyPartOfShape = new boolean[5][6];
                 for (int j = 0; j < 6; j++) {
                     for (int i = 0; i < 5; i++) {
@@ -290,7 +290,7 @@ public class CommonCardPosition implements CommonObjectiveInterface {
                 }
                 return objectiveAchieved;
             }
-            case "Vertical four" -> {
+            case 4 -> {
                 boolean[][] alreadyPartOfShape = new boolean[5][6];
                 for (int j = 0; j < 6; j++) {
                     for (int i = 0; i < 5; i++) {
@@ -337,7 +337,7 @@ public class CommonCardPosition implements CommonObjectiveInterface {
                 }
                 return objectiveAchieved;
             }
-            case "Group of 4 tiles" -> {
+            case 6 -> {
                 boolean[][] alreadyPartOfShape = new boolean[5][6];
                 for (int j = 0; j < 6; j++) {
                     for (int i = 0; i < 5; i++) {
@@ -381,7 +381,7 @@ public class CommonCardPosition implements CommonObjectiveInterface {
                 }
                 return objectiveAchieved;
             }
-            case "X" -> {
+            case 9 -> {
                 for(int j = 0; j<6;j++) {
                     for (int i = 0; i < 5;i++) {
                         if (player.getShelves().getTilePosition(i,j) != null) {
@@ -436,7 +436,7 @@ public class CommonCardPosition implements CommonObjectiveInterface {
                 }
                 return objectiveAchieved;
             }
-            case "Three columns different types" -> {
+            case 8 -> {
                 for (int i = 0; i<6;i++) {
                     List<TileType> tileTypes = new ArrayList<TileType>();
                     if (player.getShelves().getTilePosition(i, 0) != null) {
@@ -478,7 +478,7 @@ public class CommonCardPosition implements CommonObjectiveInterface {
                 }
                 return objectiveAchieved;
             }
-            case "Four rows different types" -> {
+            case 3 -> {
                 for (int j = 0; j < 6; j++) {
                     List<TileType> tileTypes = new ArrayList<TileType>();
                     if (player.getShelves().getTilePosition(0, j) != null) {
@@ -503,7 +503,9 @@ public class CommonCardPosition implements CommonObjectiveInterface {
                                             if (!tileTypes.contains(player.getShelves().getTilePosition(5, j).getTile().getType())) {
                                                 tileTypes.add(player.getShelves().getTilePosition(5, j).getTile().getType());
                                             }
-                                            counterShape++;
+                                            if (tileTypes.size() < 4) {
+                                                counterShape++;
+                                            }
                                             if (counterShape == 4) {
                                                 objectiveAchieved = true;
                                                 break;
