@@ -16,45 +16,43 @@ import java.util.*;
  * 
  */
 public class Board{
-    private ArrayList<TilePositionBoard> placement;
+    private ArrayList<TilePositionBoard> placements;
     private TileObjBag bag;
     private CommonDeck commonDeck;
     private PersonalDeck personalDeck;
 
 
-    //sara il gioco a creare i placement giusti in base a quante persone ho!!
-    public Board(ArrayList<TilePositionBoard> extPlacement, TileObjBag extBag, CommonDeck extCommonDeck, PersonalDeck extPersonalDeck) {
+    //sarà il gioco a creare i placements giusti in base a quante persone ho!
+    public Board(ArrayList<TilePositionBoard> extPlacements, TileObjBag extBag, CommonDeck extCommonDeck, PersonalDeck extPersonalDeck) {
 
-        this.placement = new ArrayList<TilePositionBoard>;
-        for (TilePositionBoard p :extPlacement) {
-            this.placement.add(new TilePositionBoard(p));
+        this.placements = new ArrayList<TilePositionBoard>();
+        for (TilePositionBoard p :extPlacements) {
+            this.placements.add(new TilePositionBoard(p));
         }
 
         this.bag= new TileObjBag(extBag);
-
         this.commonDeck= extCommonDeck;     //da riscrivere
         this.personalDeck= extPersonalDeck;  //da riscrivere
 
     }
 
     public Board(Board extBoard) {
-        this.placement= extBoard.getPlacement();
+        this.placements = extBoard.getPlacements();
         this.bag= extBoard.getBag();
         this.commonDeck= extBoard.getCommonDeck();
         this.personalDeck= extBoard.getPersonalDeck();
     }
 
     public Board() {
-        this.placement = new ArrayList<TilePositionBoard>();
+        this.placements = new ArrayList<TilePositionBoard>();
         this.bag = new TileObjBag();
         this.commonDeck = new CommonDeck();       //da riscrivere
         this.personalDeck = new PersonalDeck();   //da riscrivere
-        //qui mi costruisco le posizioni (placement) in base al numero di giocatori!!
 
     }
 
-    public ArrayList<TilePositionBoard> getPlacement() {
-        return new ArrayList<TilePositionBoard>(placement);
+    public ArrayList<TilePositionBoard> getPlacements() {
+        return new ArrayList<TilePositionBoard>(placements);
     }
 
     public TileObjBag getBag() {
@@ -70,12 +68,12 @@ public class Board{
     }
 
     public ArrayList<TilePositionBoard> showBoard() {
-        return this.getPlacement();
-    }  //fa stessa cosa di getPlacement
+        return this.getPlacements();
+    }  //fa stessa cosa di getPlacement (ci serve?)
 
-
-    // diminuisci i punti delle carte CommonCard in base al numero di persone (a quale metodo è riferito?)
-
+    public void setPlacements(ArrayList<TilePositionBoard> placements) {
+        this.placements = new ArrayList<TilePositionBoard>();
+    }
 
     public boolean tileIsRemovable(TilePositionBoard position){
         int x = position.getX();
@@ -83,7 +81,7 @@ public class Board{
 
         //la posizione è svuotabile se contiene un tile e ha almeno un lato adiacente libero
         if(position.isOccupied()){
-            for(TilePositionBoard item : placement){
+            for(TilePositionBoard item : placements){
                 if ((item.getX()==x && (item.getY()==y-1 || item.getY()==y+1)) || ((item.getX()==x-1 || item.getX()==x+1) && item.getY()==y)) {
                     if(!item.isOccupied()){
                         return true; //lo slot position ha almeno un lato adiacente vuoto.
@@ -94,37 +92,20 @@ public class Board{
         return false;
     }
 
-//controller
-    private TileObj remove1Tile(TilePositionBoard position) throws Exception {
-        if(tileIsRemovable(position)){
-            TileObj tempTile = position.removeTile();
-            return tempTile;
-        }
-        else throw new Exception("impossibile rimuovere da questa posizione");
 
-    }
+    public ArrayList<TileObj> removeTiles(ArrayList<TilePositionBoard> tilesToRemove) throws TilesAreNotRemovableException, PositionEmptyException {
+        ArrayList<TileObj> TilesRemoved = new ArrayList<TileObj>();
 
-    //public TileObj[] remove2Tile(qualcosa){...}
-    // public TileObj[] remove3Tile(qualcosa){...}
-
-
-    //QUESTO METODO Ea RICHIAMABILE  DA IsRemovable()
-
-    //devo ancora implementare la funzionalita che posso rimuovere delle tessere sse non sono bloccate da almeno 2 altre tessere!
-    //fine controllo tessere
-    public ArrayList<TileObj> removeTile(ArrayList<TilePositionBoard> tile_to_remove)throws Exception{
-        ArrayList<TileObj> tile_removed = new ArrayList<TileObj>();
-        for (int i = 0; i < tile_to_remove.size(); i++) {
-            if (!this.tileIsRemovable(tile_to_remove.get(i))) {
-                throw new Exception("impossibile rimuovere da questa posizione");
+        for (int i = 0; i < tilesToRemove.size(); i++) {
+            if (!this.tileIsRemovable(tilesToRemove.get(i))) {
+                throw new TilesAreNotRemovableException();
             }
         }
 
-        for (int i = 0; i < tile_to_remove.size(); i++) {
-            tile_removed.add(this.remove1Tile(tile_to_remove.get(i)));
+        for (int i = 0; i < tilesToRemove.size(); i++) {
+            TilesRemoved.add(tilesToRemove.get(i).removeTile());
         }
-
-        return tile_removed;
+        return TilesRemoved;
     }
 
 
