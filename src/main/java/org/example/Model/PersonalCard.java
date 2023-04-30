@@ -98,6 +98,14 @@ public class PersonalCard {
         }
     }
 
+    private PersonalCardParser draw(Player player, ArrayList<PersonalCardParser> personalCards) {
+        Random rand = new Random();
+        int num = rand.nextInt(personalCards.size());
+        PersonalCardParser personalCard = personalCards.get(num);
+        personalCards.remove(num);
+        return personalCard;
+    }
+
     private int checkPersonalCard(PersonalCardParser personalCardParser, Shelves shelf) throws PositionEmptyException {
         int counter = 0;
         if ((shelf.getTilePosition(personalCardParser.CatXPosition, personalCardParser.CatYPosition) != null) &&
