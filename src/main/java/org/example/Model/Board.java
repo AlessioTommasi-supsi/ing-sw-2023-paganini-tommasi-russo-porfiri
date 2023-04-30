@@ -48,8 +48,11 @@ public class Board{
     }  //fa stessa cosa di getPlacement (ci serve?)
 
 
-    public void setPlacements(ArrayList<TilePositionBoard> placements) {
+    public void setPlacements(ArrayList<TilePositionBoard> extPlacements) {
         this.placements = new ArrayList<TilePositionBoard>();
+        for (TilePositionBoard p :extPlacements) {
+            this.placements.add(new TilePositionBoard(p));
+        }
     }
 
 
@@ -79,7 +82,6 @@ public class Board{
                 throw new TilesAreNotRemovableException();
             }
         }
-
         for (int i = 0; i < tilesToRemove.size(); i++) {
             TilesRemoved.add(tilesToRemove.get(i).removeTile());
         }
