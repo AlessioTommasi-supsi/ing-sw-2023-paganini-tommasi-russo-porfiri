@@ -1,8 +1,10 @@
 package org.example.Model;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.*;
 
-//CLASSE SCRITTA COME BOZZA SOLO PER POTER SCRIVERE TileObjBag!!
+
 public class TileObj {
     private TileType type;
     private TileVariant variant;
@@ -13,7 +15,7 @@ public class TileObj {
         this.variant = chosenVariant;
     }
 
-    public TileObj(TileObj tile) {
+    public TileObj(@NotNull TileObj tile) {
         this.type = tile.getType();
         this.variant = tile.getVariant();
     }
@@ -26,3 +28,4 @@ public class TileObj {
         return variant;
     }
 }
+

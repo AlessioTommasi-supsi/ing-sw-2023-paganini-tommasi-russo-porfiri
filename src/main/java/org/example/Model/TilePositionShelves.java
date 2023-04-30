@@ -1,5 +1,7 @@
 package org.example.Model;
 
+import org.jetbrains.annotations.NotNull;
+
 public class TilePositionShelves {
     private int x;
     private int y;
@@ -16,8 +18,16 @@ public class TilePositionShelves {
     public TilePositionShelves(int abscissa, int ordinate, TileObj tile){
         this.x= abscissa;
         this.y= ordinate;
-        this.tileInSlot= tile;
+        this.tileInSlot= new TileObj(tile);
         this.occupied= true;
+    }
+
+    public TilePositionShelves(@NotNull TilePositionShelves tp){
+        this.x= tp.getX();
+        this.y= tp.getY();
+        this.tileInSlot= new TileObj(tp.getTile());
+        this.occupied= tp.isOccupied();
+
     }
 
     public int getX(){
@@ -32,12 +42,9 @@ public class TilePositionShelves {
         return this.occupied;
     }
 
-    public TileObj getTile() throws PositionEmptyException {
-        if(tileInSlot != null){
-            TileObj tempTile = new TileObj(tileInSlot.getType(), tileInSlot.getVariant());
-            return tempTile;
-        }
-        else throw new PositionEmptyException();
+    public TileObj getTile() {
+        TileObj tempTile = new TileObj(this.tileInSlot);
+        return tempTile;
     }
 
     public void setTile(TileObj tile) throws PositionAlreadyOccupiedException {
