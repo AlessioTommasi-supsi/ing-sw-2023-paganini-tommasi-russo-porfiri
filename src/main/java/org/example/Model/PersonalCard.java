@@ -101,33 +101,30 @@ public class PersonalCard {
     private int checkPersonalCard(PersonalCardParser personalCardParser, Shelves shelf) throws PositionEmptyException {
         int counter = 0;
         if ((shelf.getTilePosition(personalCardParser.CatXPosition, personalCardParser.CatYPosition) != null) &&
-                (shelf.getTilePosition(personalCardParser.CatXPosition, personalCardParser.CatYPosition).getTile().getType() == "CAT")) {
+                (shelf.getTilePosition(personalCardParser.CatXPosition, personalCardParser.CatYPosition).getTile().getType().equals("CAT"))) {
             counter++;
         }
         if ((shelf.getTilePosition(personalCardParser.BookXPosition, personalCardParser.BookYPosition) != null) &&
-                (shelf.getTilePosition(personalCardParser.BookXPosition, personalCardParser.BookYPosition).getTile().getType() == "CAT")) {
+                (shelf.getTilePosition(personalCardParser.BookXPosition, personalCardParser.BookYPosition).getTile().getType().equals("BOOK"))) {
             counter++;
         }
         if ((shelf.getTilePosition(personalCardParser.FrameXPosition, personalCardParser.FrameYPosition) != null) &&
-                (shelf.getTilePosition(personalCardParser.FrameXPosition, personalCardParser.FrameYPosition).getTile().getType() == "CAT")) {
+                (shelf.getTilePosition(personalCardParser.FrameXPosition, personalCardParser.FrameYPosition).getTile().getType().equals("FRAME"))) {
             counter++;
         }
         if ((shelf.getTilePosition(personalCardParser.TrophyXPosition, personalCardParser.TrophyYPosition) != null) &&
-                (shelf.getTilePosition(personalCardParser.TrophyXPosition, personalCardParser.TrophyYPosition).getTile().getType() == "CAT")) {
+                (shelf.getTilePosition(personalCardParser.TrophyXPosition, personalCardParser.TrophyYPosition).getTile().getType().equals("TROPHY"))) {
             counter++;
         }
         if ((shelf.getTilePosition(personalCardParser.GamesXPosition, personalCardParser.GamesYPosition) != null) &&
-                (shelf.getTilePosition(personalCardParser.GamesXPosition, personalCardParser.GamesYPosition).getTile().getType() == "CAT")) {
+                (shelf.getTilePosition(personalCardParser.GamesXPosition, personalCardParser.GamesYPosition).getTile().getType().equals("GAMES") )) {
             counter++;
         }
         if ((shelf.getTilePosition(personalCardParser.PlantXPosition, personalCardParser.PlantYPosition) != null) &&
-                (shelf.getTilePosition(personalCardParser.PlantXPosition, personalCardParser.PlantYPosition).getTile().getType() == "CAT")) {
+                (shelf.getTilePosition(personalCardParser.PlantXPosition, personalCardParser.PlantYPosition).getTile().getType().equals("PLANT"))) {
             counter++;
         }
         return counter;
     }
 
-    static void main() {
-
-    }
 }
