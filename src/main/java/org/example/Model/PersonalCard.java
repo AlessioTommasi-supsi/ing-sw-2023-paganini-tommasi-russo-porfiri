@@ -106,30 +106,30 @@ public class PersonalCard {
         return personalCard;
     }
 
-    private int checkPersonalCard(PersonalCardParser personalCardParser, Shelves shelf) throws PositionEmptyException {
+    private int checkPersonalCard(PersonalCardParser personalCardParser, Player player) throws PositionEmptyException {
         int counter = 0;
-        if ((shelf.getTilePosition(personalCardParser.CatXPosition, personalCardParser.CatYPosition) != null) &&
-                (shelf.getTilePosition(personalCardParser.CatXPosition, personalCardParser.CatYPosition).getTile().getType().equals("CAT"))) {
+        if ((player.getShelves().getTilePosition(personalCardParser.CatXPosition, personalCardParser.CatYPosition) != null) &&
+                (player.getShelves().getTilePosition(personalCardParser.CatXPosition, personalCardParser.CatYPosition).getTile().getType().equals("CAT"))) {
             counter++;
         }
-        if ((shelf.getTilePosition(personalCardParser.BookXPosition, personalCardParser.BookYPosition) != null) &&
-                (shelf.getTilePosition(personalCardParser.BookXPosition, personalCardParser.BookYPosition).getTile().getType().equals("BOOK"))) {
+        if ((player.getShelves().getTilePosition(personalCardParser.BookXPosition, personalCardParser.BookYPosition) != null) &&
+                (player.getShelves().getTilePosition(personalCardParser.BookXPosition, personalCardParser.BookYPosition).getTile().getType().equals("BOOK"))) {
             counter++;
         }
-        if ((shelf.getTilePosition(personalCardParser.FrameXPosition, personalCardParser.FrameYPosition) != null) &&
-                (shelf.getTilePosition(personalCardParser.FrameXPosition, personalCardParser.FrameYPosition).getTile().getType().equals("FRAME"))) {
+        if ((player.getShelves().getTilePosition(personalCardParser.FrameXPosition, personalCardParser.FrameYPosition) != null) &&
+                (player.getShelves().getTilePosition(personalCardParser.FrameXPosition, personalCardParser.FrameYPosition).getTile().getType().equals("FRAME"))) {
             counter++;
         }
-        if ((shelf.getTilePosition(personalCardParser.TrophyXPosition, personalCardParser.TrophyYPosition) != null) &&
-                (shelf.getTilePosition(personalCardParser.TrophyXPosition, personalCardParser.TrophyYPosition).getTile().getType().equals("TROPHY"))) {
+        if ((player.getShelves().getTilePosition(personalCardParser.TrophyXPosition, personalCardParser.TrophyYPosition) != null) &&
+                (player.getShelves().getTilePosition(personalCardParser.TrophyXPosition, personalCardParser.TrophyYPosition).getTile().getType().equals("TROPHY"))) {
             counter++;
         }
-        if ((shelf.getTilePosition(personalCardParser.GamesXPosition, personalCardParser.GamesYPosition) != null) &&
-                (shelf.getTilePosition(personalCardParser.GamesXPosition, personalCardParser.GamesYPosition).getTile().getType().equals("GAMES") )) {
+        if ((player.getShelves().getTilePosition(personalCardParser.GamesXPosition, personalCardParser.GamesYPosition) != null) &&
+                (player.getShelves().getTilePosition(personalCardParser.GamesXPosition, personalCardParser.GamesYPosition).getTile().getType().equals("GAMES") )) {
             counter++;
         }
-        if ((shelf.getTilePosition(personalCardParser.PlantXPosition, personalCardParser.PlantYPosition) != null) &&
-                (shelf.getTilePosition(personalCardParser.PlantXPosition, personalCardParser.PlantYPosition).getTile().getType().equals("PLANT"))) {
+        if ((player.getShelves().getTilePosition(personalCardParser.PlantXPosition, personalCardParser.PlantYPosition) != null) &&
+                (player.getShelves().getTilePosition(personalCardParser.PlantXPosition, personalCardParser.PlantYPosition).getTile().getType().equals("PLANT"))) {
             counter++;
         }
         return counter;

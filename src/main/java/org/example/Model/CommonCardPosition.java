@@ -7,26 +7,88 @@ import java.util.List;
 
 public class CommonCardPosition implements CommonObjectiveInterface {
 
-    private Shelves shelf;
-
-    public boolean executeAlgorithm(String nameOfCard) {
+    public boolean executeAlgorithm(String nameOfCard, Player player) {
         boolean objectiveAchieved = false;
         int counterTile = 0;
         int counterShape = 0;
         switch (nameOfCard) {
             case "Angles" -> {
-                if ((shelf.getTilePosition(0, 0) != null)
-                        && (shelf.getTilePosition(0, 5) != null)
-                        && (shelf.getTilePosition(4, 0) != null)
-                        && (shelf.getTilePosition(4, 5) != null)) {
+                if ((player.getShelves().getTilePosition(0, 0) != null)
+                        && (player.getShelves().getTilePosition(0, 5) != null)
+                        && (player.getShelves().getTilePosition(4, 0) != null)
+                        && (player.getShelves().getTilePosition(4, 5) != null)) {
                     objectiveAchieved = true;
+                }
+                if (player.getShelves().getTilePosition(0, 0) != null) {
+                    TileType tileType = player.getShelves().getTilePosition(0,0).getTile().getType();
+                    if (player.getShelves().getTilePosition(0,5) != null) {
+                        if (player.getShelves().getTilePosition(0,5).getTile().getType() == tileType) {
+                            if (player.getShelves().getTilePosition(4,0) != null) {
+                                if (player.getShelves().getTilePosition(4,0).getTile().getType() == tileType) {
+                                    if (player.getShelves().getTilePosition(4,5) != null) {
+                                        if (player.getShelves().getTilePosition(4,5).getTile().getType() == tileType) {
+                                            objectiveAchieved=true;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                if (player.getShelves().getTilePosition(0, 5) != null) {
+                    TileType tileType = player.getShelves().getTilePosition(0,5).getTile().getType();
+                    if (player.getShelves().getTilePosition(0,0) != null) {
+                        if (player.getShelves().getTilePosition(0,0).getTile().getType() == tileType) {
+                            if (player.getShelves().getTilePosition(4,0) != null) {
+                                if (player.getShelves().getTilePosition(4,0).getTile().getType() == tileType) {
+                                    if (player.getShelves().getTilePosition(4,5) != null) {
+                                        if (player.getShelves().getTilePosition(4,5).getTile().getType() == tileType) {
+                                            objectiveAchieved=true;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                if (player.getShelves().getTilePosition(4, 0) != null) {
+                    TileType tileType = player.getShelves().getTilePosition(4,0).getTile().getType();
+                    if (player.getShelves().getTilePosition(0,5) != null) {
+                        if (player.getShelves().getTilePosition(0,5).getTile().getType() == tileType) {
+                            if (player.getShelves().getTilePosition(0,0) != null) {
+                                if (player.getShelves().getTilePosition(0,0).getTile().getType() == tileType) {
+                                    if (player.getShelves().getTilePosition(4,5) != null) {
+                                        if (player.getShelves().getTilePosition(4,5).getTile().getType() == tileType) {
+                                            objectiveAchieved=true;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                if (player.getShelves().getTilePosition(4, 5) != null) {
+                    TileType tileType = player.getShelves().getTilePosition(4,5).getTile().getType();
+                    if (player.getShelves().getTilePosition(0,5) != null) {
+                        if (player.getShelves().getTilePosition(0,5).getTile().getType() == tileType) {
+                            if (player.getShelves().getTilePosition(4,0) != null) {
+                                if (player.getShelves().getTilePosition(4,0).getTile().getType() == tileType) {
+                                    if (player.getShelves().getTilePosition(0,0) != null) {
+                                        if (player.getShelves().getTilePosition(0,0).getTile().getType() == tileType) {
+                                            objectiveAchieved=true;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
                 return objectiveAchieved;
             }
             case "Eight tiles no restriction" -> {
                 for (int i = 0; i < 5; i++) {
                     for (int j = 0; j < 6; j++) {
-                        if (shelf.getTilePosition(i, j) != null) {
+                        if (player.getShelves().getTilePosition(i, j) != null) {
                             counterTile++;
                         }
                     }
@@ -42,7 +104,7 @@ public class CommonCardPosition implements CommonObjectiveInterface {
                 int indexDecrescent = 6;
                 for (i = 0; i < 5; i++) {
                     for (j = 0; j < indexDecrescent; j++) {
-                        if (shelf.getTilePosition(i, j) == null) {
+                        if (player.getShelves().getTilePosition(i, j) == null) {
                             break;
                         } else {
                             counterTile++;
@@ -57,48 +119,48 @@ public class CommonCardPosition implements CommonObjectiveInterface {
                 }
             }
             case "Diagonal" -> {
-                if (shelf.getTilePosition(0, 0) != null) {
-                    TileType typeTile = shelf.getTilePosition(0, 0).getTile().getType();
-                    if ((shelf.getTilePosition(1, 1) != null) && (shelf.getTilePosition(1, 1).getTile().getType() == typeTile)) {
-                        if ((shelf.getTilePosition(2, 2) != null) && (shelf.getTilePosition(2, 2).getTile().getType() == typeTile)) {
-                            if ((shelf.getTilePosition(3, 3) != null) && (shelf.getTilePosition(3, 3).getTile().getType() == typeTile)) {
-                                if ((shelf.getTilePosition(4, 4) != null) && (shelf.getTilePosition(4, 4).getTile().getType() == typeTile)) {
+                if (player.getShelves().getTilePosition(0, 0) != null) {
+                    TileType typeTile = player.getShelves().getTilePosition(0, 0).getTile().getType();
+                    if ((player.getShelves().getTilePosition(1, 1) != null) && (player.getShelves().getTilePosition(1, 1).getTile().getType() == typeTile)) {
+                        if ((player.getShelves().getTilePosition(2, 2) != null) && (player.getShelves().getTilePosition(2, 2).getTile().getType() == typeTile)) {
+                            if ((player.getShelves().getTilePosition(3, 3) != null) && (player.getShelves().getTilePosition(3, 3).getTile().getType() == typeTile)) {
+                                if ((player.getShelves().getTilePosition(4, 4) != null) && (player.getShelves().getTilePosition(4, 4).getTile().getType() == typeTile)) {
                                     objectiveAchieved = true;
                                 }
                             }
                         }
                     }
                 }
-                if (shelf.getTilePosition(0, 1) != null) {
-                    TileType typeTile = shelf.getTilePosition(1, 2).getTile().getType();
-                    if ((shelf.getTilePosition(1, 2) != null) && (shelf.getTilePosition(1, 2).getTile().getType() == typeTile)) {
-                        if ((shelf.getTilePosition(2, 3) != null) && (shelf.getTilePosition(2, 3).getTile().getType() == typeTile)) {
-                            if ((shelf.getTilePosition(3, 4) != null) && (shelf.getTilePosition(3, 4).getTile().getType() == typeTile)) {
-                                if ((shelf.getTilePosition(4, 5) != null) && (shelf.getTilePosition(4, 5).getTile().getType() == typeTile)) {
+                if (player.getShelves().getTilePosition(0, 1) != null) {
+                    TileType typeTile = player.getShelves().getTilePosition(1, 2).getTile().getType();
+                    if ((player.getShelves().getTilePosition(1, 2) != null) && (player.getShelves().getTilePosition(1, 2).getTile().getType() == typeTile)) {
+                        if ((player.getShelves().getTilePosition(2, 3) != null) && (player.getShelves().getTilePosition(2, 3).getTile().getType() == typeTile)) {
+                            if ((player.getShelves().getTilePosition(3, 4) != null) && (player.getShelves().getTilePosition(3, 4).getTile().getType() == typeTile)) {
+                                if ((player.getShelves().getTilePosition(4, 5) != null) && (player.getShelves().getTilePosition(4, 5).getTile().getType() == typeTile)) {
                                     objectiveAchieved = true;
                                 }
                             }
                         }
                     }
                 }
-                if (shelf.getTilePosition(4, 0) != null) {
-                    TileType typeTile = shelf.getTilePosition(4, 0).getTile().getType();
-                    if ((shelf.getTilePosition(3, 1) != null) && (shelf.getTilePosition(3, 1).getTile().getType() == typeTile)) {
-                        if ((shelf.getTilePosition(2, 2) != null) && (shelf.getTilePosition(2, 2).getTile().getType() == typeTile)) {
-                            if ((shelf.getTilePosition(1, 3) != null) && (shelf.getTilePosition(1, 3).getTile().getType() == typeTile)) {
-                                if ((shelf.getTilePosition(0, 4) != null) && (shelf.getTilePosition(0, 4).getTile().getType() == typeTile)) {
+                if (player.getShelves().getTilePosition(4, 0) != null) {
+                    TileType typeTile = player.getShelves().getTilePosition(4, 0).getTile().getType();
+                    if ((player.getShelves().getTilePosition(3, 1) != null) && (player.getShelves().getTilePosition(3, 1).getTile().getType() == typeTile)) {
+                        if ((player.getShelves().getTilePosition(2, 2) != null) && (player.getShelves().getTilePosition(2, 2).getTile().getType() == typeTile)) {
+                            if ((player.getShelves().getTilePosition(1, 3) != null) && (player.getShelves().getTilePosition(1, 3).getTile().getType() == typeTile)) {
+                                if ((player.getShelves().getTilePosition(0, 4) != null) && (player.getShelves().getTilePosition(0, 4).getTile().getType() == typeTile)) {
                                     objectiveAchieved = true;
                                 }
                             }
                         }
                     }
                 }
-                if (shelf.getTilePosition(4, 1) != null) {
-                    TileType typeTile = shelf.getTilePosition(4, 1).getTile().getType();
-                    if ((shelf.getTilePosition(3, 2) != null) && (shelf.getTilePosition(3, 2).getTile().getType() == typeTile)) {
-                        if ((shelf.getTilePosition(2, 3) != null) && (shelf.getTilePosition(2, 3).getTile().getType() == typeTile)) {
-                            if ((shelf.getTilePosition(1, 4) != null) && (shelf.getTilePosition(1, 4).getTile().getType() == typeTile)) {
-                                if ((shelf.getTilePosition(0, 5) != null) && (shelf.getTilePosition(0, 5).getTile().getType() == typeTile)) {
+                if (player.getShelves().getTilePosition(4, 1) != null) {
+                    TileType typeTile = player.getShelves().getTilePosition(4, 1).getTile().getType();
+                    if ((player.getShelves().getTilePosition(3, 2) != null) && (player.getShelves().getTilePosition(3, 2).getTile().getType() == typeTile)) {
+                        if ((player.getShelves().getTilePosition(2, 3) != null) && (player.getShelves().getTilePosition(2, 3).getTile().getType() == typeTile)) {
+                            if ((player.getShelves().getTilePosition(1, 4) != null) && (player.getShelves().getTilePosition(1, 4).getTile().getType() == typeTile)) {
+                                if ((player.getShelves().getTilePosition(0, 5) != null) && (player.getShelves().getTilePosition(0, 5).getTile().getType() == typeTile)) {
                                     objectiveAchieved = true;
                                 }
                             }
@@ -110,33 +172,33 @@ public class CommonCardPosition implements CommonObjectiveInterface {
             case "Vertical different six" -> {
                 for(int i = 0; i < 5; i++) {
                     List<TileType> tileTypes = new ArrayList<TileType>();
-                    if (shelf.getTilePosition(i, 0) != null) {
-                        tileTypes.add(shelf.getTilePosition(i, 0).getTile().getType());
-                        if (shelf.getTilePosition(i, 1) != null) {
-                            if (tileTypes.contains(shelf.getTilePosition(i, 1).getTile().getType())) {
+                    if (player.getShelves().getTilePosition(i, 0) != null) {
+                        tileTypes.add(player.getShelves().getTilePosition(i, 0).getTile().getType());
+                        if (player.getShelves().getTilePosition(i, 1) != null) {
+                            if (tileTypes.contains(player.getShelves().getTilePosition(i, 1).getTile().getType())) {
                                 continue;
                             } else {
-                                tileTypes.add(shelf.getTilePosition(i, 1).getTile().getType());
-                                if (shelf.getTilePosition(i, 2) != null) {
-                                    if (tileTypes.contains(shelf.getTilePosition(i, 2).getTile().getType())) {
+                                tileTypes.add(player.getShelves().getTilePosition(i, 1).getTile().getType());
+                                if (player.getShelves().getTilePosition(i, 2) != null) {
+                                    if (tileTypes.contains(player.getShelves().getTilePosition(i, 2).getTile().getType())) {
                                         continue;
                                     } else {
-                                        tileTypes.add(shelf.getTilePosition(i, 2).getTile().getType());
-                                        if (shelf.getTilePosition(i, 3) != null) {
-                                            if (tileTypes.contains(shelf.getTilePosition(i, 3).getTile().getType())) {
+                                        tileTypes.add(player.getShelves().getTilePosition(i, 2).getTile().getType());
+                                        if (player.getShelves().getTilePosition(i, 3) != null) {
+                                            if (tileTypes.contains(player.getShelves().getTilePosition(i, 3).getTile().getType())) {
                                                 continue;
                                             } else {
-                                                tileTypes.add(shelf.getTilePosition(i, 3).getTile().getType());
-                                                if (shelf.getTilePosition(i, 4) != null) {
-                                                    if (tileTypes.contains(shelf.getTilePosition(i, 4).getTile().getType())) {
+                                                tileTypes.add(player.getShelves().getTilePosition(i, 3).getTile().getType());
+                                                if (player.getShelves().getTilePosition(i, 4) != null) {
+                                                    if (tileTypes.contains(player.getShelves().getTilePosition(i, 4).getTile().getType())) {
                                                         continue;
                                                     } else {
-                                                        tileTypes.add(shelf.getTilePosition(i, 4).getTile().getType());
-                                                        if (shelf.getTilePosition(i, 5) != null) {
-                                                            if (tileTypes.contains(shelf.getTilePosition(i, 5).getTile().getType())) {
+                                                        tileTypes.add(player.getShelves().getTilePosition(i, 4).getTile().getType());
+                                                        if (player.getShelves().getTilePosition(i, 5) != null) {
+                                                            if (tileTypes.contains(player.getShelves().getTilePosition(i, 5).getTile().getType())) {
                                                                 continue;
                                                             } else {
-                                                                tileTypes.add(shelf.getTilePosition(i, 5).getTile().getType());
+                                                                tileTypes.add(player.getShelves().getTilePosition(i, 5).getTile().getType());
                                                                 counterShape++;
                                                             }
                                                         }
@@ -159,28 +221,28 @@ public class CommonCardPosition implements CommonObjectiveInterface {
             case "Row of 5 different tiles" -> {
                 for(int i = 0; i < 6; i++) {
                     List<TileType> tileTypes = new ArrayList<TileType>();
-                    if (shelf.getTilePosition(0, i) != null) {
-                        tileTypes.add(shelf.getTilePosition(0, i).getTile().getType());
-                        if (shelf.getTilePosition(1, i) != null) {
-                            if (tileTypes.contains(shelf.getTilePosition(1, i).getTile().getType())) {
+                    if (player.getShelves().getTilePosition(0, i) != null) {
+                        tileTypes.add(player.getShelves().getTilePosition(0, i).getTile().getType());
+                        if (player.getShelves().getTilePosition(1, i) != null) {
+                            if (tileTypes.contains(player.getShelves().getTilePosition(1, i).getTile().getType())) {
                                 continue;
                             } else {
-                                tileTypes.add(shelf.getTilePosition(1, i).getTile().getType());
-                                if (shelf.getTilePosition(2, i) != null) {
-                                    if (tileTypes.contains(shelf.getTilePosition(2, i).getTile().getType())) {
+                                tileTypes.add(player.getShelves().getTilePosition(1, i).getTile().getType());
+                                if (player.getShelves().getTilePosition(2, i) != null) {
+                                    if (tileTypes.contains(player.getShelves().getTilePosition(2, i).getTile().getType())) {
                                         continue;
                                     } else {
-                                        tileTypes.add(shelf.getTilePosition(2, i).getTile().getType());
-                                        if (shelf.getTilePosition(3, i) != null) {
-                                            if (tileTypes.contains(shelf.getTilePosition(3, i).getTile().getType())) {
+                                        tileTypes.add(player.getShelves().getTilePosition(2, i).getTile().getType());
+                                        if (player.getShelves().getTilePosition(3, i) != null) {
+                                            if (tileTypes.contains(player.getShelves().getTilePosition(3, i).getTile().getType())) {
                                                 continue;
                                             } else {
-                                                tileTypes.add(shelf.getTilePosition(3, i).getTile().getType());
-                                                if (shelf.getTilePosition(4, i) != null) {
-                                                    if (tileTypes.contains(shelf.getTilePosition(4, i).getTile().getType())) {
+                                                tileTypes.add(player.getShelves().getTilePosition(3, i).getTile().getType());
+                                                if (player.getShelves().getTilePosition(4, i) != null) {
+                                                    if (tileTypes.contains(player.getShelves().getTilePosition(4, i).getTile().getType())) {
                                                         continue;
                                                     } else {
-                                                        tileTypes.add(shelf.getTilePosition(4, i).getTile().getType());
+                                                        tileTypes.add(player.getShelves().getTilePosition(4, i).getTile().getType());
                                                                 counterShape++;
                                                     }
                                                 }
@@ -206,10 +268,10 @@ public class CommonCardPosition implements CommonObjectiveInterface {
                 }
                 for (int j = 0; j < 6; j++) {
                     for (int i = 0; i < 5; i++) {
-                        if ((shelf.getTilePosition(i, j) != null) && (!alreadyPartOfShape[i][j])) {
-                            TileType tileType = shelf.getTilePosition(i, j).getTile().getType();
+                        if ((player.getShelves().getTilePosition(i, j) != null) && (!alreadyPartOfShape[i][j])) {
+                            TileType tileType = player.getShelves().getTilePosition(i, j).getTile().getType();
                             if(j+1 < 6) {
-                                if ((shelf.getTilePosition(i, j + 1) != null) && (!alreadyPartOfShape[i][j + 1]) && (shelf.getTilePosition(i, j + 1).getTile().getType() == tileType)) {
+                                if ((player.getShelves().getTilePosition(i, j + 1) != null) && (!alreadyPartOfShape[i][j + 1]) && (player.getShelves().getTilePosition(i, j + 1).getTile().getType() == tileType)) {
                                     counterShape++;
                                     if(counterShape == 6) {
                                         objectiveAchieved = true;
@@ -243,14 +305,14 @@ public class CommonCardPosition implements CommonObjectiveInterface {
                 }
                 for (int j = 0; j<6;j++) {
                     for (int i = 0;i<5;i++) {
-                        if ((shelf.getTilePosition(i, j) != null) && (!alreadyPartOfShape[i][j])) {
-                            TileType tileType = shelf.getTilePosition(i, j).getTile().getType();
+                        if ((player.getShelves().getTilePosition(i, j) != null) && (!alreadyPartOfShape[i][j])) {
+                            TileType tileType = player.getShelves().getTilePosition(i, j).getTile().getType();
                             if (j + 1 < 6) {
-                                if ((shelf.getTilePosition(i, j + 1) != null) && (!alreadyPartOfShape[i][j + 1]) && (shelf.getTilePosition(i, j + 1).getTile().getType() == tileType)) {
+                                if ((player.getShelves().getTilePosition(i, j + 1) != null) && (!alreadyPartOfShape[i][j + 1]) && (player.getShelves().getTilePosition(i, j + 1).getTile().getType() == tileType)) {
                                     if (j+2 < 6) {
-                                        if ((shelf.getTilePosition(i, j + 2) != null) && (!alreadyPartOfShape[i][j + 2]) && (shelf.getTilePosition(i, j + 2).getTile().getType() == tileType)) {
+                                        if ((player.getShelves().getTilePosition(i, j + 2) != null) && (!alreadyPartOfShape[i][j + 2]) && (player.getShelves().getTilePosition(i, j + 2).getTile().getType() == tileType)) {
                                             if (j + 3 < 6) {
-                                                if ((shelf.getTilePosition(i, j + 3) != null) && (!alreadyPartOfShape[i][j + 3]) && (shelf.getTilePosition(i, j + 3).getTile().getType() == tileType)) {
+                                                if ((player.getShelves().getTilePosition(i, j + 3) != null) && (!alreadyPartOfShape[i][j + 3]) && (player.getShelves().getTilePosition(i, j + 3).getTile().getType() == tileType)) {
                                                     counterShape++;
                                                     if(counterShape == 4) {
                                                         objectiveAchieved = true;
@@ -290,13 +352,13 @@ public class CommonCardPosition implements CommonObjectiveInterface {
                 }
                 for(int j = 0; j<6;j++) {
                     for (int i = 0;i<5;i++) {
-                        if ((shelf.getTilePosition(i, j) != null) && (!alreadyPartOfShape[i][j])) {
-                            TileType tileType = shelf.getTilePosition(i, j).getTile().getType();
+                        if ((player.getShelves().getTilePosition(i, j) != null) && (!alreadyPartOfShape[i][j])) {
+                            TileType tileType = player.getShelves().getTilePosition(i, j).getTile().getType();
                             if (j + 1 < 6) {
-                                if ((shelf.getTilePosition(i, j + 1) != null) && (!alreadyPartOfShape[i][j + 1]) && (shelf.getTilePosition(i, j + 1).getTile().getType() == tileType)) {
+                                if ((player.getShelves().getTilePosition(i, j + 1) != null) && (!alreadyPartOfShape[i][j + 1]) && (player.getShelves().getTilePosition(i, j + 1).getTile().getType() == tileType)) {
                                     if (i+1< 5) {
-                                        if ((shelf.getTilePosition(i+1, j) != null) && (!alreadyPartOfShape[i+1][j]) && (shelf.getTilePosition(i+1, j).getTile().getType() == tileType)) {
-                                            if ((shelf.getTilePosition(i+1, j+1) != null) && (!alreadyPartOfShape[i+1][j + 1]) && (shelf.getTilePosition(i+1, j + 1).getTile().getType() == tileType)) {
+                                        if ((player.getShelves().getTilePosition(i+1, j) != null) && (!alreadyPartOfShape[i+1][j]) && (player.getShelves().getTilePosition(i+1, j).getTile().getType() == tileType)) {
+                                            if ((player.getShelves().getTilePosition(i+1, j+1) != null) && (!alreadyPartOfShape[i+1][j + 1]) && (player.getShelves().getTilePosition(i+1, j + 1).getTile().getType() == tileType)) {
                                                 counterShape++;
                                                 if (counterShape == 2) {
                                                     objectiveAchieved = true;
@@ -328,24 +390,24 @@ public class CommonCardPosition implements CommonObjectiveInterface {
             case "X" -> {
                 for(int j = 0; j<6;j++) {
                     for (int i = 0; i < 5;i++) {
-                        if (shelf.getTilePosition(i,j) != null) {
-                            TileType tileType = shelf.getTilePosition(i,j).getTile().getType();
+                        if (player.getShelves().getTilePosition(i,j) != null) {
+                            TileType tileType = player.getShelves().getTilePosition(i,j).getTile().getType();
                             if(j<4) {
                                 if(i<3) {
-                                    if ((shelf.getTilePosition(i + 1, j + 1) != null) && (shelf.getTilePosition(i + 1, j + 1).getTile().getType() == tileType)) {
-                                        if ((shelf.getTilePosition(i + 2, j) != null) && (shelf.getTilePosition(i + 2, j).getTile().getType() == tileType)) {
-                                            if ((shelf.getTilePosition(i, j + 2) != null) && (shelf.getTilePosition(i, j + 2).getTile().getType() == tileType)) {
-                                                if ((shelf.getTilePosition(i + 2, j + 2) != null) && (shelf.getTilePosition(i + 2, j + 2).getTile().getType() == tileType)) {
+                                    if ((player.getShelves().getTilePosition(i + 1, j + 1) != null) && (player.getShelves().getTilePosition(i + 1, j + 1).getTile().getType() == tileType)) {
+                                        if ((player.getShelves().getTilePosition(i + 2, j) != null) && (player.getShelves().getTilePosition(i + 2, j).getTile().getType() == tileType)) {
+                                            if ((player.getShelves().getTilePosition(i, j + 2) != null) && (player.getShelves().getTilePosition(i, j + 2).getTile().getType() == tileType)) {
+                                                if ((player.getShelves().getTilePosition(i + 2, j + 2) != null) && (player.getShelves().getTilePosition(i + 2, j + 2).getTile().getType() == tileType)) {
                                                     objectiveAchieved = true;
                                                 }
                                             }
                                         }
                                     }
                                 } else {
-                                    if ((shelf.getTilePosition(i - 1, j + 1) != null) && (shelf.getTilePosition(i - 1, j + 1).getTile().getType() == tileType)) {
-                                        if ((shelf.getTilePosition(i - 2, j) != null) && (shelf.getTilePosition(i - 2, j).getTile().getType() == tileType)) {
-                                            if ((shelf.getTilePosition(i, j + 2) != null) && (shelf.getTilePosition(i, j + 2).getTile().getType() == tileType)) {
-                                                if ((shelf.getTilePosition(i - 2, j + 2) != null) && (shelf.getTilePosition(i - 2, j + 2).getTile().getType() == tileType)) {
+                                    if ((player.getShelves().getTilePosition(i - 1, j + 1) != null) && (player.getShelves().getTilePosition(i - 1, j + 1).getTile().getType() == tileType)) {
+                                        if ((player.getShelves().getTilePosition(i - 2, j) != null) && (player.getShelves().getTilePosition(i - 2, j).getTile().getType() == tileType)) {
+                                            if ((player.getShelves().getTilePosition(i, j + 2) != null) && (player.getShelves().getTilePosition(i, j + 2).getTile().getType() == tileType)) {
+                                                if ((player.getShelves().getTilePosition(i - 2, j + 2) != null) && (player.getShelves().getTilePosition(i - 2, j + 2).getTile().getType() == tileType)) {
                                                     objectiveAchieved = true;
                                                 }
                                             }
@@ -354,20 +416,20 @@ public class CommonCardPosition implements CommonObjectiveInterface {
                                 }
                             } else {
                                 if(i<3) {
-                                    if ((shelf.getTilePosition(i + 1, j - 1) != null) && (shelf.getTilePosition(i + 1, j - 1).getTile().getType() == tileType)) {
-                                        if ((shelf.getTilePosition(i + 2, j) != null) && (shelf.getTilePosition(i + 2, j).getTile().getType() == tileType)) {
-                                            if ((shelf.getTilePosition(i, j - 2) != null) && (shelf.getTilePosition(i, j - 2).getTile().getType() == tileType)) {
-                                                if ((shelf.getTilePosition(i + 2, j - 2) != null) && (shelf.getTilePosition(i + 2, j - 2).getTile().getType() == tileType)) {
+                                    if ((player.getShelves().getTilePosition(i + 1, j - 1) != null) && (player.getShelves().getTilePosition(i + 1, j - 1).getTile().getType() == tileType)) {
+                                        if ((player.getShelves().getTilePosition(i + 2, j) != null) && (player.getShelves().getTilePosition(i + 2, j).getTile().getType() == tileType)) {
+                                            if ((player.getShelves().getTilePosition(i, j - 2) != null) && (player.getShelves().getTilePosition(i, j - 2).getTile().getType() == tileType)) {
+                                                if ((player.getShelves().getTilePosition(i + 2, j - 2) != null) && (player.getShelves().getTilePosition(i + 2, j - 2).getTile().getType() == tileType)) {
                                                     objectiveAchieved = true;
                                                 }
                                             }
                                         }
                                     }
                                 } else {
-                                    if ((shelf.getTilePosition(i - 1, j - 1) != null) && (shelf.getTilePosition(i - 1, j - 1).getTile().getType() == tileType)) {
-                                        if ((shelf.getTilePosition(i - 2, j) != null) && (shelf.getTilePosition(i - 2, j).getTile().getType() == tileType)) {
-                                            if ((shelf.getTilePosition(i, j - 2) != null) && (shelf.getTilePosition(i, j - 2).getTile().getType() == tileType)) {
-                                                if ((shelf.getTilePosition(i - 2, j - 2) != null) && (shelf.getTilePosition(i - 2, j - 2).getTile().getType() == tileType)) {
+                                    if ((player.getShelves().getTilePosition(i - 1, j - 1) != null) && (player.getShelves().getTilePosition(i - 1, j - 1).getTile().getType() == tileType)) {
+                                        if ((player.getShelves().getTilePosition(i - 2, j) != null) && (player.getShelves().getTilePosition(i - 2, j).getTile().getType() == tileType)) {
+                                            if ((player.getShelves().getTilePosition(i, j - 2) != null) && (player.getShelves().getTilePosition(i, j - 2).getTile().getType() == tileType)) {
+                                                if ((player.getShelves().getTilePosition(i - 2, j - 2) != null) && (player.getShelves().getTilePosition(i - 2, j - 2).getTile().getType() == tileType)) {
                                                     objectiveAchieved = true;
                                                 }
                                             }
@@ -383,23 +445,23 @@ public class CommonCardPosition implements CommonObjectiveInterface {
             case "Three columns different types" -> {
                 for (int i = 0; i<6;i++) {
                     List<TileType> tileTypes = new ArrayList<TileType>();
-                    if (shelf.getTilePosition(i, 0) != null) {
-                        tileTypes.add(shelf.getTilePosition(i, 0).getTile().getType());
-                        if((shelf.getTilePosition(i, 1) != null) && (tileTypes.size() < 4)) {
-                            if (!tileTypes.contains(shelf.getTilePosition(i,1).getTile().getType())) {
-                                tileTypes.add(shelf.getTilePosition(i,1).getTile().getType());
+                    if (player.getShelves().getTilePosition(i, 0) != null) {
+                        tileTypes.add(player.getShelves().getTilePosition(i, 0).getTile().getType());
+                        if((player.getShelves().getTilePosition(i, 1) != null) && (tileTypes.size() < 4)) {
+                            if (!tileTypes.contains(player.getShelves().getTilePosition(i,1).getTile().getType())) {
+                                tileTypes.add(player.getShelves().getTilePosition(i,1).getTile().getType());
                             }
-                            if((shelf.getTilePosition(i, 2) != null) && (tileTypes.size() < 4)) {
-                                if (!tileTypes.contains(shelf.getTilePosition(i, 2).getTile().getType())) {
-                                    tileTypes.add(shelf.getTilePosition(i, 2).getTile().getType());
+                            if((player.getShelves().getTilePosition(i, 2) != null) && (tileTypes.size() < 4)) {
+                                if (!tileTypes.contains(player.getShelves().getTilePosition(i, 2).getTile().getType())) {
+                                    tileTypes.add(player.getShelves().getTilePosition(i, 2).getTile().getType());
                                 }
-                                if((shelf.getTilePosition(i, 3) != null) && (tileTypes.size() < 4)) {
-                                    if (!tileTypes.contains(shelf.getTilePosition(i, 3).getTile().getType())) {
-                                        tileTypes.add(shelf.getTilePosition(i, 3).getTile().getType());
+                                if((player.getShelves().getTilePosition(i, 3) != null) && (tileTypes.size() < 4)) {
+                                    if (!tileTypes.contains(player.getShelves().getTilePosition(i, 3).getTile().getType())) {
+                                        tileTypes.add(player.getShelves().getTilePosition(i, 3).getTile().getType());
                                     }
-                                    if((shelf.getTilePosition(i, 4) != null) && (tileTypes.size() < 4)) {
-                                        if (!tileTypes.contains(shelf.getTilePosition(i, 4).getTile().getType())) {
-                                            tileTypes.add(shelf.getTilePosition(i, 4).getTile().getType());
+                                    if((player.getShelves().getTilePosition(i, 4) != null) && (tileTypes.size() < 4)) {
+                                        if (!tileTypes.contains(player.getShelves().getTilePosition(i, 4).getTile().getType())) {
+                                            tileTypes.add(player.getShelves().getTilePosition(i, 4).getTile().getType());
                                         }
                                         counterShape++;
                                         if (counterShape == 3) {
@@ -423,27 +485,27 @@ public class CommonCardPosition implements CommonObjectiveInterface {
             case "Four rows different types" -> {
                 for (int j = 0; j < 6; j++) {
                     List<TileType> tileTypes = new ArrayList<TileType>();
-                    if (shelf.getTilePosition(0, j) != null) {
-                        tileTypes.add(shelf.getTilePosition(0, j).getTile().getType());
-                        if((shelf.getTilePosition(1, j) != null) && (tileTypes.size() < 4)) {
-                            if (!tileTypes.contains(shelf.getTilePosition(1, j).getTile().getType())) {
-                                tileTypes.add(shelf.getTilePosition(1, j).getTile().getType());
+                    if (player.getShelves().getTilePosition(0, j) != null) {
+                        tileTypes.add(player.getShelves().getTilePosition(0, j).getTile().getType());
+                        if((player.getShelves().getTilePosition(1, j) != null) && (tileTypes.size() < 4)) {
+                            if (!tileTypes.contains(player.getShelves().getTilePosition(1, j).getTile().getType())) {
+                                tileTypes.add(player.getShelves().getTilePosition(1, j).getTile().getType());
                             }
-                            if((shelf.getTilePosition(2, j) != null) && (tileTypes.size() < 4)) {
-                                if (!tileTypes.contains(shelf.getTilePosition(2, j).getTile().getType())) {
-                                    tileTypes.add(shelf.getTilePosition(2, j).getTile().getType());
+                            if((player.getShelves().getTilePosition(2, j) != null) && (tileTypes.size() < 4)) {
+                                if (!tileTypes.contains(player.getShelves().getTilePosition(2, j).getTile().getType())) {
+                                    tileTypes.add(player.getShelves().getTilePosition(2, j).getTile().getType());
                                 }
-                                if((shelf.getTilePosition(3, j) != null) && (tileTypes.size() < 4)) {
-                                    if (!tileTypes.contains(shelf.getTilePosition(3, j).getTile().getType())) {
-                                        tileTypes.add(shelf.getTilePosition(3, j).getTile().getType());
+                                if((player.getShelves().getTilePosition(3, j) != null) && (tileTypes.size() < 4)) {
+                                    if (!tileTypes.contains(player.getShelves().getTilePosition(3, j).getTile().getType())) {
+                                        tileTypes.add(player.getShelves().getTilePosition(3, j).getTile().getType());
                                     }
-                                    if((shelf.getTilePosition(4, j) != null) && (tileTypes.size() < 4)) {
-                                        if (!tileTypes.contains(shelf.getTilePosition(4, j).getTile().getType())) {
-                                            tileTypes.add(shelf.getTilePosition(4, j).getTile().getType());
+                                    if((player.getShelves().getTilePosition(4, j) != null) && (tileTypes.size() < 4)) {
+                                        if (!tileTypes.contains(player.getShelves().getTilePosition(4, j).getTile().getType())) {
+                                            tileTypes.add(player.getShelves().getTilePosition(4, j).getTile().getType());
                                         }
-                                        if((shelf.getTilePosition(5, j) != null) && (tileTypes.size() < 4)) {
-                                            if (!tileTypes.contains(shelf.getTilePosition(5, j).getTile().getType())) {
-                                                tileTypes.add(shelf.getTilePosition(5, j).getTile().getType());
+                                        if((player.getShelves().getTilePosition(5, j) != null) && (tileTypes.size() < 4)) {
+                                            if (!tileTypes.contains(player.getShelves().getTilePosition(5, j).getTile().getType())) {
+                                                tileTypes.add(player.getShelves().getTilePosition(5, j).getTile().getType());
                                             }
                                             counterShape++;
                                             if (counterShape == 4) {
