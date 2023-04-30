@@ -4,11 +4,11 @@ import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.distributed.Cli
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Choice;
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Turn;
 
-public class Game_spock {
+public class Controller {
     private final Turn model;
     private final Client client;
 
-    public Game_spock(Turn model, Client client) {
+    public Controller(Turn model, Client client) {
         this.model = model;
         this.client = client;
     }

@@ -1,6 +1,6 @@
 package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.distributed;
 
-import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.controller.Game_spock;
+import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.controller.Controller;
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Choice;
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Turn;
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.TurnView;
@@ -13,7 +13,7 @@ import java.rmi.server.UnicastRemoteObject;
 public class ServerImpl extends UnicastRemoteObject implements Server {
 
     private Turn model;
-    private Game_spock controller;
+    private Controller controller;
 
     public ServerImpl() throws RemoteException {
         super();
@@ -38,7 +38,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
             }
         });
 
-        this.controller = new Game_spock(model, client);
+        this.controller = new Controller(model, client);
     }
 
 
