@@ -17,63 +17,41 @@ import java.util.*;
  */
 public class Board{
     private ArrayList<TilePositionBoard> placements;
-    private TileObjBag bag;
-    private CommonDeck commonDeck;
-    private PersonalDeck personalDeck;
 
-
+    
     //sarà il gioco a creare i placements giusti in base a quante persone ho!
-    public Board(ArrayList<TilePositionBoard> extPlacements, TileObjBag extBag, CommonDeck extCommonDeck, PersonalDeck extPersonalDeck) {
-
+    public Board(ArrayList<TilePositionBoard> extPlacements) {
         this.placements = new ArrayList<TilePositionBoard>();
         for (TilePositionBoard p :extPlacements) {
             this.placements.add(new TilePositionBoard(p));
         }
-
-        this.bag= new TileObjBag(extBag);
-        this.commonDeck= extCommonDeck;     //da riscrivere
-        this.personalDeck= extPersonalDeck;  //da riscrivere
-
     }
+
 
     public Board(Board extBoard) {
         this.placements = extBoard.getPlacements();
-        this.bag= extBoard.getBag();
-        this.commonDeck= extBoard.getCommonDeck();
-        this.personalDeck= extBoard.getPersonalDeck();
     }
+
 
     public Board() {
         this.placements = new ArrayList<TilePositionBoard>();
-        this.bag = new TileObjBag();
-        this.commonDeck = new CommonDeck();       //da riscrivere
-        this.personalDeck = new PersonalDeck();   //da riscrivere
-
     }
+
 
     public ArrayList<TilePositionBoard> getPlacements() {
         return new ArrayList<TilePositionBoard>(placements);
     }
 
-    public TileObjBag getBag() {
-        return new TileObjBag(this.bag);
-    }
-
-    public CommonDeck getCommonDeck() {
-        return commonDeck;  //da riscrivere
-    }
-
-    public PersonalDeck getPersonalDeck() {
-        return personalDeck;  //da riscrivere
-    }
 
     public ArrayList<TilePositionBoard> showBoard() {
         return this.getPlacements();
     }  //fa stessa cosa di getPlacement (ci serve?)
 
+
     public void setPlacements(ArrayList<TilePositionBoard> placements) {
         this.placements = new ArrayList<TilePositionBoard>();
     }
+
 
     public boolean tileIsRemovable(TilePositionBoard position){
         int x = position.getX();
