@@ -1,15 +1,31 @@
 package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model;
 
-import java.util.*;
+import java.io.Serializable;
+import java.util.Random;
+import java.util.Set;
 
-public class Player {
+public class Player implements Serializable {
 
-    private int id;
+    private int id;//deve essere univoco
     private String username;
     private boolean yourTurn;
+
+    public void setShelves(Shelves shelves) {
+        this.shelves = shelves;
+    }
+
     private Shelves shelves;
     private PersonalCard pC;
     private int score;
+
+    public Player(String username) {
+        this.id = new Random().nextInt();
+        this.username = username;
+        this.yourTurn = false;
+        this.shelves = new Shelves();
+        this.pC = null;
+        this.score = 0;
+    }
 
     public Player(Player p) {
         this.id = p.getId();

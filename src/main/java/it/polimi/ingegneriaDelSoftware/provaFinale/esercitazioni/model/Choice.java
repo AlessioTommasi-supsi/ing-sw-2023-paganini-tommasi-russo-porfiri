@@ -7,9 +7,12 @@ public class Choice implements Serializable {
     private Turn.Event stato;
     private Object argument;
 
-    public Choice(Choice_my_shelfie choiche, Object argument) {
+    private Player player;
+
+    public Choice(Choice_my_shelfie choiche,Player player, Object argument) {
         this.choiche = choiche;
         this.argument = argument;
+        this.player = player;
     }
 
     public Turn.Event getStato() {
@@ -36,11 +39,21 @@ public class Choice implements Serializable {
         this.argument = argument;
     }
 
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
     @Override
     public String toString() {
         return "Choice{" +
-                "choiche=" + choiche.toString() +
-                ", stato=" + stato.toString() +
+                "choiche=" + choiche +
+                ", stato=" + stato +
+                ", argument=" + argument +
+                ", player=" + player +
                 '}';
     }
 }

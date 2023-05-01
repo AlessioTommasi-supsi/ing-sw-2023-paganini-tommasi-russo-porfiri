@@ -2,6 +2,7 @@ package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.controller;
 
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.distributed.Client;
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Choice;
+import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.MyShelfie;
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Turn;
 
 public class Controller {
@@ -18,36 +19,52 @@ public class Controller {
 
 
     public void update(Client o,Choice arg) {
+        try {
+            System.out.println("Controller  update "+arg.getChoiche());
 
-        System.out.println("Game_spock  update "+arg.getChoiche());
+            if (!o.equals(client)) {
+                System.err.println("CLient NON corretto! Discarding notification from " + o);
+                return;
+            }
+            //arg.setStato(Turn.Event.OUTCOME);//inutile perche in setPlayerChoice la setto come CPU_CHOICHE
+            model.setPlayerChoice(arg);
+            //System.out.println(arg.getArgument().toString());
+            switch (arg.getChoiche()) {
+                case JOIN_GAME:
+                    if (model.getMyShelfie() == null) {
+                        model.setMyShelfie(new MyShelfie());
+                    }
+                    int numero_giocatori = (Integer) arg.getArgument();
+                    model.setGame(model.getMyShelfie().joinGame(numero_giocatori,arg.getPlayer()));
 
-        if (!o.equals(client)) {
-            System.err.println("CLient NON corretto! Discarding notification from " + o);
-            return;
+
+                break;
+                case IMMMETTI_IN_LIBRERIA:
+                    //prima devo aver fatto pesca from plancia!!
+                    /**
+                     * arg.getArgument{
+                     *     ArrayList <TilePositionShelves>
+                     * }
+                     * */
+                    //System.out.println(arg.getArgument().toString());
+                    System.out.println("hai scelto immetti in libreria");
+
+                    //model.setOutcome(Outcome.WIN);
+                    break;
+                case PESCA_FROM_PLANCIA:
+
+                    //model.setOutcome(Outcome.LOSE);
+                    break;
+                case TERMINA_TURNS:
+                    //model.setOutcome(Outcome.DRAW);
+                    break;
+            }
+        }catch (Exception e){
+            model.errore = e.toString();
         }
-        //arg.setStato(Turn.Event.OUTCOME);//inutile perche in setPlayerChoice la setto come CPU_CHOICHE
-        model.setPlayerChoice(arg);
-        //System.out.println(arg.getArgument().toString());
-        switch (arg.getChoiche()) {
-            case IMMMETTI_IN_LIBRERIA:
-                System.out.println(arg.getArgument().toString());
-                //model.setOutcome(Outcome.WIN);
-            break;
-            case PESCA_FROM_PLANCIA:
 
-                //model.setOutcome(Outcome.LOSE);
-            break;
-            case TERMINA_TURNS:
-                //model.setOutcome(Outcome.DRAW);
-            break;
-        }
 
-        //OLD
-
-        /* CPU chooses */
-        //elaborazioni sul model part
-        //model.setCpuChoice(askCpu());
-        /* Clean State */
+        model.NotifyClient();
         model.clear();
     }
 

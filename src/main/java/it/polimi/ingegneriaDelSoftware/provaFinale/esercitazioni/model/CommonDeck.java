@@ -1,13 +1,12 @@
 package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model;
 
-import java.util.ArrayList;
-import java.util.*;
+import java.io.Serializable;
 
 
 /**
  * 
  */
-public class CommonDeck {
+public class CommonDeck implements Serializable {
 
     /**
      * Default constructor

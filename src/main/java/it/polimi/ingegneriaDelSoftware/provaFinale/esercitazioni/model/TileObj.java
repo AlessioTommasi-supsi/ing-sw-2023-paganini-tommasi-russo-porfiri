@@ -1,7 +1,9 @@
 package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model;
 
+import java.io.Serializable;
+
 //CLASSE SCRITTA COME BOZZA SOLO PER POTER SCRIVERE TileObjBag!!
-public class TileObj {
+public class TileObj implements Serializable {
     private TileType type;
     private TileVariant variant;
 

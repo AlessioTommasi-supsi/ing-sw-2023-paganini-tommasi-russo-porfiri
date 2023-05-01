@@ -1,6 +1,7 @@
 package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model;
 
-import java.util.*;
+import java.io.Serializable;
+import java.util.ArrayList;
 /**
  * Faccio un array dove per ogni riga ho una mappa con il tipo di tessera come chiave e poi tutti i dati associati a quella tessera così d
  *
@@ -15,7 +16,7 @@ import java.util.*;
 /**
  * 
  */
-public class Board{
+public class Board implements Serializable {
     private ArrayList<TilePositionBoard> placement;
     private TileObjBag bag;
     private CommonDeck commonDeck;

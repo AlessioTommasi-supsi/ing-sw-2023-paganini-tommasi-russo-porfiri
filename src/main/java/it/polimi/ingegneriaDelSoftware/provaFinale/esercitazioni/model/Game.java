@@ -2,14 +2,15 @@ package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model;
 
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.util.Observable;
 
-import java.util.*;
+import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * I giocatori entrano sequenzialmente all'interno della partita. La posizione del giocatore in partita è data in base all'ordine di entrata, quindi la posizione è l'indice dell'array
  * 
  * All'inizio della partita creo istanza della plancia e i posizionamenti metto un'eccezione per le posizioni sempre irregolari, un'altra eccezione per le posizioni non giocabili perché non ci sono abbastanza giocatori. Al livello filosofico mi serve capire cosa devo comunicare e in che caso mi ritrovo
  */
-public class Game extends Observable<Game.Event> {
+public class Game extends Observable<Game.Event> implements Serializable {
 
     private Board board;
     private ArrayList<Player> players;//ordinato in base all ordine nel quale i giocaori si sono uniti alla patrita e quindi anche in ordine di chi tocca a giocare!
@@ -46,7 +47,7 @@ public class Game extends Observable<Game.Event> {
     }
 
     public Board getBoard() {
-        return new Board(board);
+        return board;
     }
 
     public ArrayList<Player> getPlayers() {

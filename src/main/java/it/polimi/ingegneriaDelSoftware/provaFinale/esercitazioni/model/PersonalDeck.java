@@ -1,12 +1,11 @@
 package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model;
 
-import java.util.ArrayList;
-import java.util.*;
+import java.io.Serializable;
 
 /**
  * 
  */
-public class PersonalDeck {
+public class PersonalDeck implements Serializable {
 
     /**
      * Default constructor

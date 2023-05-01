@@ -1,6 +1,8 @@
 package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model;
 
-public class Shelves {
+import java.io.Serializable;
+
+public class Shelves implements Serializable {
 
     private int filledCounter;
     private TilePositionShelves[][] tilePositions;

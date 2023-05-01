@@ -8,27 +8,30 @@ public class TurnView implements Serializable {
 
     private final Choice playerChoice;
     private final MyShelfie myShelfie;
-    private  final Player player;
+    private  final Player current_player;
 
-    private final Game game;
+    private final Game current_game;
+
+    private final String errore;
 
 
+    //non avrebbe senso tornare solo la board????
 
     public TurnView(Turn model) {
         this.playerChoice = model.getPlayerChoice();
-        //this.outcome = model.getOutcome();
-        this.player = model.getCurrent_player();
+        this.current_player = model.getCurrent_player();
         this.myShelfie = model.getMyShelfie();
-        this.game = model.getGame();
+        this.current_game = model.getGame();
+        this.errore = model.errore;
 
     }
 
-    public Game getGame() {
-        return game;
+    public Game getCurrentGame() {
+        return current_game;
     }
 
-    public Player getPlayer() {
-        return player;
+    public Player getCurrentPlayer() {
+        return current_player;
     }
 
     public Choice getPlayerChoice() {
@@ -44,7 +47,8 @@ public class TurnView implements Serializable {
         return "TurnView{" +
                 "playerChoice=" + playerChoice +
                 ", myShelfie=" + myShelfie +
-                ", game=" + game +
+                ", game=" + current_game +
+                ", errore=" + errore +
                 '}';
     }
 }

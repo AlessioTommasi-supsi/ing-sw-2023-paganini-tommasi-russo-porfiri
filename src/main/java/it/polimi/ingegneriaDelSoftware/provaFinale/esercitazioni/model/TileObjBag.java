@@ -1,8 +1,10 @@
 package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model;
 
-import java.util.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
 
-public class TileObjBag {
+public class TileObjBag implements Serializable {
 
     private ArrayList<TileObj> tiles;
 

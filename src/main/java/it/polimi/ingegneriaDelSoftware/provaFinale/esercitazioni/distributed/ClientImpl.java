@@ -11,7 +11,6 @@ import java.rmi.server.UnicastRemoteObject;
 // GIITTTT PLSWORCK 2
 public class ClientImpl extends UnicastRemoteObject implements Client, Runnable {
 
-    //TextualUI view = new TextualUI();
     View_my_shelfie view = new View_my_shelfie();
 
     public ClientImpl(Server server) throws RemoteException {

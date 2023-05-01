@@ -1,12 +1,12 @@
 package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model;
 
-import java.util.*;
+import java.io.Serializable;
 
 /**
  * compra gioco fisico per mapparlo
  * (chiedi martedi a prof!!!!) se supponiamo posiz random o dobbiamo usare quelle del gioco fisico!!
  */
-public class PersonalCard {
+public class PersonalCard implements Serializable {
     private TilePositionShelves positionShelves[] ;
     private int points;
     /**

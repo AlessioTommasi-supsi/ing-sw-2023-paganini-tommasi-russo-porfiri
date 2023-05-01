@@ -6,7 +6,8 @@ public class Turn extends Observable<Turn.Event> {
 
     private Choice playerChoice;
 
-    private MyShelfie myShelfie;
+    public String errore = "";
+    private MyShelfie myShelfie = null;
 
     private Player current_player;
 
@@ -16,6 +17,12 @@ public class Turn extends Observable<Turn.Event> {
         PLAYER_CHOICE, CPU_CHOICE, OUTCOME
     }
 
+    public void NotifyClient(){
+        this.playerChoice.setStato(Event.CPU_CHOICE);
+        setChangedAndNotifyObservers(
+                playerChoice
+        );
+    }
 
     //GETTER PART
     public MyShelfie getMyShelfie() {
@@ -26,8 +33,6 @@ public class Turn extends Observable<Turn.Event> {
         return current_player;
     }
 
-
-
     public Game getGame() {
         return game;
     }
@@ -35,26 +40,15 @@ public class Turn extends Observable<Turn.Event> {
     //SETTER PART
     public void setCurrent_player(Player current_player) {
         this.current_player = current_player;
-        this.playerChoice.setStato(Event.CPU_CHOICE);
-        setChangedAndNotifyObservers(
-                playerChoice
-        );
+
     }
     public void setGame(Game game) {
         this.game = game;
-        this.playerChoice.setStato(Event.CPU_CHOICE);
-        setChangedAndNotifyObservers(
-                playerChoice
-        );
     }
 
 
     public void setMyShelfie(MyShelfie myShelfie) {
         this.myShelfie = myShelfie;
-        this.playerChoice.setStato(Event.CPU_CHOICE);
-        setChangedAndNotifyObservers(
-                playerChoice
-        );
     }
 
     //OLD
@@ -64,13 +58,6 @@ public class Turn extends Observable<Turn.Event> {
 
     public void setPlayerChoice(Choice playerChoice) {
         this.playerChoice = playerChoice;
-
-        this.playerChoice.setStato(Event.CPU_CHOICE);
-        setChangedAndNotifyObservers(
-                playerChoice
-        );
-
-
     }
 
 

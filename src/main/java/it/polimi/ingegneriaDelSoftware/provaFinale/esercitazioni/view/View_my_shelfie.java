@@ -17,6 +17,8 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
     private State state = State.WAITING_FOR_PLAYER;
     private final Object lock = new Object();
 
+    private Player player;
+
     private State getState() {
         synchronized (lock) {
             return state;
@@ -32,29 +34,40 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
 
     @Override
     public void run() {
-        //noinspection InfiniteLoopStatement
-        while (true) {
-            while (getState() == State.WAITING_FOR_OUTCOME) {
-                synchronized (lock) {
-                    try {
-                        lock.wait();
-                    } catch (InterruptedException e) {
-                        System.err.println("Interrupted while waiting for server: " + e.getMessage());
+        try {
+            //creazione del giocatore
+            System.out.println("BENVENUTO NUOVO GIOCATORE! per iniziare a giocare devi immettere i tuoi dati");
+            System.out.println("username: ");
+            Scanner s = new Scanner(System.in);
+            this.player = new Player(s.next());
+
+            //fine creazione
+            //noinspection InfiniteLoopStatement
+            while (true) {
+                while (getState() == State.WAITING_FOR_OUTCOME) {
+                    synchronized (lock) {
+                        try {
+                            lock.wait();
+                        } catch (InterruptedException e) {
+                            System.err.println("Interrupted while waiting for server: " + e.getMessage());
+                        }
+
                     }
-
                 }
+                System.out.println("--- WELCOME TO MY SHELFIE! ---");
+                /* Player chooses */
+                Choice_my_shelfie pc = askPlayer();
+
+                Choice c =new Choice(pc,player, 5);
+
+                System.out.println("in attesa del server... ");
+
+                setState(State.WAITING_FOR_OUTCOME);
+                setChanged();/*NOTIFICO AL SERER che del client ha fatto scelta!!*/
+                notifyObservers(c);
             }
-            System.out.println("--- WELCOME TO MY SHELFIE! ---");
-            /* Player chooses */
-            Choice_my_shelfie pc = askPlayer();
-
-            Choice c =new Choice(pc, 5);
-
-            System.out.println("in attesa del server... ");
-
-            setState(State.WAITING_FOR_OUTCOME);
-            setChanged();/*NOTIFICO AL SERER che del client ha fatto scelta!!*/
-            notifyObservers(c);
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
@@ -70,6 +83,13 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
         while (true) {
             String input = s.next();
             try {
+                switch (Choice_my_shelfie.valueOf(input)){
+                    case SHOW_MY_SHELVS:
+                        System.out.println("your current shelves is: ");
+                        System.out.println("");
+                        this.player.getShelves().displayShelves();
+                        return askPlayer();
+                }
                 return Choice_my_shelfie.valueOf(input);
             } catch (IllegalArgumentException e) {
                 System.err.println("I don't know this choiche: " + input);
@@ -80,26 +100,14 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
 
     public void update(TurnView model/*risposta dal server*/, Choice arg/*evento che il client ha scelto*/) {
         switch (model.getPlayerChoice().getStato()) {
-            //case CPU_CHOICE -> showModel(model);
-            case OUTCOME -> {
+            case CPU_CHOICE -> {
                 Choice_my_shelfie o = model.getPlayerChoice().getChoiche();
-
                 System.out.println("la scelta che hai fatto e': "+o.toString());
-
-                /**
-                if (o != null) {
-                    //IN BASE AI MESSAGGI DESCRITTI IN OUTCOME DECIDO COSA VISUALIZZARE!!
-                    switch (o) {
-                        //cosa devo stampare in base alle scelte fatte e ai risultati del model contenuti in o!!
-                        case WIN -> System.out.println("You chose IMMMETTI_IN_LIBRERIA");
-                        case DRAW -> System.out.println("Draw... -.-");
-                        case LOSE -> System.out.println("You lose! :(");
-                        case ERROR -> System.out.println("AN EERROR HAVE OCCURRED! :'(");
+                switch (model.getPlayerChoice().getChoiche()){
+                    case IMMMETTI_IN_LIBRERIA -> {
+                        this.player.setShelves(model.getCurrentPlayer().getShelves());
                     }
                 }
-                */
-
-                this.setState(State.WAITING_FOR_PLAYER);
             }
             default -> System.err.println("Ignoring event from " + model.toString() + ": " + arg.toString());
 

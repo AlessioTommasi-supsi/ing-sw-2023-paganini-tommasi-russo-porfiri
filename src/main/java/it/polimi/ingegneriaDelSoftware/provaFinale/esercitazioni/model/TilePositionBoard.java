@@ -1,6 +1,8 @@
 package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model;
 
-public class TilePositionBoard {
+import java.io.Serializable;
+
+public class TilePositionBoard implements Serializable {
     private int x;
     private int y;
     private TileObj tileInSlot;
