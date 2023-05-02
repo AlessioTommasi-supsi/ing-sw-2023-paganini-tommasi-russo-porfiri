@@ -21828,7 +21828,7 @@
 													},
 													"font": "Arial;13;0",
 													"left": 323,
-													"top": 383,
+													"top": 359,
 													"width": 164.0107421875,
 													"height": 13,
 													"alpha": -4.514994382073455,
@@ -21851,7 +21851,7 @@
 													"visible": false,
 													"font": "Arial;13;0",
 													"left": 407,
-													"top": 369,
+													"top": 345,
 													"height": 13,
 													"alpha": 1.5707963267948966,
 													"distance": 25,
@@ -21872,7 +21872,7 @@
 													"visible": false,
 													"font": "Arial;13;0",
 													"left": 407,
-													"top": 404,
+													"top": 380,
 													"height": 13,
 													"alpha": -1.5707963267948966,
 													"distance": 10,
@@ -21892,7 +21892,7 @@
 													},
 													"font": "Arial;13;0",
 													"left": 581,
-													"top": 400,
+													"top": 376,
 													"width": 14,
 													"height": 29
 												}
@@ -21904,7 +21904,7 @@
 											"tail": {
 												"$ref": "AAAAAAGH11jGSBMWOoU="
 											},
-											"points": "234:400;581:400",
+											"points": "234:376;581:376",
 											"nameLabel": {
 												"$ref": "AAAAAAGH12LR6hRQ8hc="
 											},
@@ -22858,9 +22858,9 @@
 													"font": "Arial;13;0",
 													"left": 163.578125,
 													"top": 461,
-													"width": 94.1962890625,
+													"width": 64.578125,
 													"height": 13,
-													"text": "drawFromBoard"
+													"text": "illegalDraw"
 												},
 												{
 													"_type": "LabelView",
@@ -22957,7 +22957,7 @@
 														"$ref": "AAAAAAGH15NBdUTDupY="
 													},
 													"font": "Arial;13;0",
-													"left": 107.578125,
+													"left": 131.578125,
 													"top": 421,
 													"width": 171.548828125,
 													"height": 13,
@@ -22970,7 +22970,7 @@
 														"$ref": "AAAAAAGH15NBdUTDupY="
 													},
 													"font": "Arial;13;1",
-													"left": 77,
+													"left": 101,
 													"top": 421,
 													"width": 25.578125,
 													"height": 13,
@@ -23004,15 +23004,15 @@
 																	},
 																	"visible": false,
 																	"font": "Arial;13;0",
-																	"left": 92,
+																	"left": 116,
 																	"top": 454,
 																	"height": 13
 																}
 															],
 															"font": "Arial;13;0",
-															"left": 72,
+															"left": 96,
 															"top": 439,
-															"width": 1169,
+															"width": 1145,
 															"height": 43,
 															"guardLabel": {
 																"$ref": "AAAAAAGH15NBgUTTjK0="
@@ -23020,16 +23020,16 @@
 														}
 													],
 													"font": "Arial;13;0",
-													"left": 72,
+													"left": 96,
 													"top": 439,
-													"width": 1169,
+													"width": 1145,
 													"height": 43
 												}
 											],
 											"font": "Arial;13;0",
-											"left": 72,
+											"left": 96,
 											"top": 416,
-											"width": 1169,
+											"width": 1145,
 											"height": 1337,
 											"nameLabel": {
 												"$ref": "AAAAAAGH15NBdUTE/A8="
@@ -23646,7 +23646,7 @@
 														"$ref": "AAAAAAGH15pNfkUHKB8="
 													},
 													"edgePosition": 1,
-													"text": "13 : notEnoughSpaceColummExceptionMessage"
+													"text": "13 : notEnoughSpaceColumnExceptionMessage"
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -24182,7 +24182,7 @@
 														"$ref": "AAAAAAGH17WaLEZS3NE="
 													},
 													"font": "Arial;13;0",
-													"left": 75.578125,
+													"left": 91.578125,
 													"top": 101,
 													"width": 194.8701171875,
 													"height": 13,
@@ -24195,7 +24195,7 @@
 														"$ref": "AAAAAAGH17WaLEZS3NE="
 													},
 													"font": "Arial;13;1",
-													"left": 45,
+													"left": 61,
 													"top": 101,
 													"width": 25.578125,
 													"height": 13,
@@ -24229,15 +24229,15 @@
 																	},
 																	"visible": false,
 																	"font": "Arial;13;0",
-																	"left": 60,
+																	"left": 76,
 																	"top": 134,
 																	"height": 13
 																}
 															],
 															"font": "Arial;13;0",
-															"left": 40,
+															"left": 56,
 															"top": 119,
-															"width": 1585,
+															"width": 1569,
 															"height": 43,
 															"guardLabel": {
 																"$ref": "AAAAAAGH17WaNkZi6V8="
@@ -24245,16 +24245,16 @@
 														}
 													],
 													"font": "Arial;13;0",
-													"left": 40,
+													"left": 56,
 													"top": 119,
-													"width": 1585,
+													"width": 1569,
 													"height": 43
 												}
 											],
 											"font": "Arial;13;0",
-											"left": 40,
+											"left": 56,
 											"top": 96,
-											"width": 1585,
+											"width": 1569,
 											"height": 2225,
 											"nameLabel": {
 												"$ref": "AAAAAAGH17WaLEZTo2s="
@@ -24782,7 +24782,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGH10dKuBJvUwM="
 									},
-									"name": "notEnoughSpaceColummExceptionMessage",
+									"name": "notEnoughSpaceColumnExceptionMessage",
 									"source": {
 										"$ref": "AAAAAAGH11jwBBMvm/8="
 									},
@@ -25031,7 +25031,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGH10dKuBJvUwM="
 									},
-									"name": "drawFromBoard",
+									"name": "illegalDraw",
 									"interactionOperator": "loop",
 									"operands": [
 										{
