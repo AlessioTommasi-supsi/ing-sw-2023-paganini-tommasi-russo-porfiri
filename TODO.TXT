@@ -27,7 +27,7 @@ X DOMENICA
 	TileObjBag
 	TILE OBJ
 	-BOARD: PARTE DI CHECK SE UNA TESSERA E' RIMOVIBILE
-->FARE CASI DI TEST DEL MODEL
+->FARE CASI DI TEST DEL MODELX
 
 
 ------------------------------------------------------------------------------------------------------------------------
