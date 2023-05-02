@@ -77,15 +77,21 @@ public class Board{
     public ArrayList<TileObj> removeTiles(ArrayList<TilePositionBoard> tilesToRemove) throws TilesAreNotRemovableException, PositionEmptyException {
         ArrayList<TileObj> TilesRemoved = new ArrayList<TileObj>();
 
-        for (int i = 0; i < tilesToRemove.size(); i++) {
-            if (!this.tileIsRemovable(tilesToRemove.get(i))) {
-                throw new TilesAreNotRemovableException();
+        if((tilesToRemove.size() < 1) || (tilesToRemove.size() > 3)){
+            throw new TilesAreNotRemovableException();
+        }
+        else {
+            for (int i = 0; i < tilesToRemove.size(); i++) {
+                if (!this.tileIsRemovable(tilesToRemove.get(i))) {
+                    throw new TilesAreNotRemovableException();
+                }
             }
+            for (int i = 0; i < tilesToRemove.size(); i++) {
+                TilesRemoved.add(tilesToRemove.get(i).removeTile());
+            }
+            return TilesRemoved;
         }
-        for (int i = 0; i < tilesToRemove.size(); i++) {
-            TilesRemoved.add(tilesToRemove.get(i).removeTile());
-        }
-        return TilesRemoved;
+
     }
 
 
