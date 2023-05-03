@@ -1,16 +1,15 @@
 package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model;
 
-import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.util.Observable;
-
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * I giocatori entrano sequenzialmente all'interno della partita. La posizione del giocatore in partita è data in base all'ordine di entrata, quindi la posizione è l'indice dell'array
  * 
  * All'inizio della partita creo istanza della plancia e i posizionamenti metto un'eccezione per le posizioni sempre irregolari, un'altra eccezione per le posizioni non giocabili perché non ci sono abbastanza giocatori. Al livello filosofico mi serve capire cosa devo comunicare e in che caso mi ritrovo
  */
-public class Game extends Observable<Game.Event> implements Serializable {
+public class Game implements Serializable {
 
     private Board board;
     private ArrayList<Player> players;//ordinato in base all ordine nel quale i giocaori si sono uniti alla patrita e quindi anche in ordine di chi tocca a giocare!
@@ -20,21 +19,7 @@ public class Game extends Observable<Game.Event> implements Serializable {
 
     private int ranking[]=null;
 
-    //mi serve per dire a che giocaore tocca in questo turno!!
-    private int turno;
-
     private ArrayList<Ranking> rank;
-
-    /*------------- ATTRIBUTI RETE----------------------*/
-
-    private String cpuChoice;
-
-    private String outcome;
-
-    public enum Event { /*possibili stati della rete*/
-        PLAYER_CHOICE, CPU_CHOICE, OUTCOME
-    }
-/*-------------FINE ATTRIBUTI RETE----------------------*/
 
     public Game(int playerNumber, Player mazziere) {
         this.playerNumber = playerNumber;
@@ -124,5 +109,16 @@ public class Game extends Observable<Game.Event> implements Serializable {
         return new ArrayList<Ranking>(rank);
     }
 
-
+    @Override
+    public String toString() {
+        return "Game{" +
+                "board=" + board +
+                ", players=" + players.toString() +
+                ", playerNumber=" + playerNumber +
+                ", dealer=" + dealer +
+                ", stato=" + stato +
+                ", ranking=" + Arrays.toString(ranking) +
+                ", rank=" + rank +
+                '}';
+    }
 }

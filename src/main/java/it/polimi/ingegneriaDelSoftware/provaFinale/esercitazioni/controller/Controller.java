@@ -2,6 +2,7 @@ package it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.controller;
 
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.distributed.Client;
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Choice;
+import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Choice_my_shelfie;
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.MyShelfie;
 import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Turn;
 
@@ -20,15 +21,16 @@ public class Controller {
 
     public void update(Client o,Choice arg) {
         try {
-            System.out.println("Controller  update "+arg.getChoiche());
 
             if (!o.equals(client)) {
                 System.err.println("CLient NON corretto! Discarding notification from " + o);
                 return;
             }
-            //arg.setStato(Turn.Event.OUTCOME);//inutile perche in setPlayerChoice la setto come CPU_CHOICHE
+
             model.setPlayerChoice(arg);
-            //System.out.println(arg.getArgument().toString());
+            if (arg.getChoiche() != Choice_my_shelfie.GET_STATE)
+                System.out.println("hai effettuato la seguente scelta: "+arg.toString());
+
             switch (arg.getChoiche()) {
                 case JOIN_GAME:
                     if (model.getMyShelfie() == null) {
@@ -53,16 +55,17 @@ public class Controller {
                     break;
                 case PESCA_FROM_PLANCIA:
 
-                    //model.setOutcome(Outcome.LOSE);
                     break;
                 case TERMINA_TURNS:
-                    //model.setOutcome(Outcome.DRAW);
+
                     break;
             }
         }catch (Exception e){
             model.errore = e.toString();
         }
 
+        if (arg.getChoiche() != Choice_my_shelfie.GET_STATE)
+            System.out.println("Risposta: "+model.toString());
 
         model.NotifyClient();
         model.clear();

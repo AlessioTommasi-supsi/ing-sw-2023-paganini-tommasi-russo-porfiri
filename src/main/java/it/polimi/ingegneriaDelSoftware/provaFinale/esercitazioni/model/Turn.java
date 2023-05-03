@@ -72,7 +72,16 @@ public class Turn extends Observable<Turn.Event> {
         setChanged();
         notifyObservers(arg);
     }
+    
 
-
-
+    @Override
+    public String toString() {
+        return "Turn{'\n'" +
+                "'\n'playerChoice=" + playerChoice +
+                "'\n', errore='" + errore + '\'' +
+                "'\n', myShelfie=" + myShelfie +
+                "'\n', current_player=" + current_player +
+                "'\n', game=" + game +
+                '}';
+    }
 }

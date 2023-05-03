@@ -38,10 +38,25 @@ public class MyShelfie implements Serializable {
         }
         //non esistono partite in attesa con quel numero di giocatori
         Game g =null;
+
         if (i == games.size()) {
-            g=new Game(intPlayerNumber, p);
+            try {
+                //System.out.println("game create: ");
+                g=new Game(intPlayerNumber, p);
+                //System.out.println("game created succesfull: ");
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
             games.add(g);
         }
         return g;
+    }
+
+    @Override
+    public String toString() {
+        return "MyShelfie{" +
+                "games=" + games.toString() +
+                '}';
     }
 }
