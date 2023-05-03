@@ -12,11 +12,15 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class ServerImpl extends UnicastRemoteObject implements Server {
 
-    private Turn model= null;
+    public Turn model= null;
     private Controller controller= null;
 
     public ServerImpl() throws RemoteException {
         super();
+    }
+    public ServerImpl(Turn model) throws RemoteException {
+        super();
+        this.model = model;
     }
 
     public ServerImpl(int port) throws RemoteException {

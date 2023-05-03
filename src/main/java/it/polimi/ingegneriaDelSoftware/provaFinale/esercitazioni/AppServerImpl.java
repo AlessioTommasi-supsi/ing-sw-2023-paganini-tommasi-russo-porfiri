@@ -19,7 +19,7 @@ public class AppServerImpl extends UnicastRemoteObject implements AppServer
 
     private static AppServerImpl instance;
 
-    private Server serverImpl=null;
+    private ServerImpl serverImpl=null;
 
     private final ExecutorService executorService = Executors.newCachedThreadPool();
 
@@ -115,6 +115,8 @@ public class AppServerImpl extends UnicastRemoteObject implements AppServer
     public Server connect() throws RemoteException {
         if(this.serverImpl == null)
             this.serverImpl =new ServerImpl();
+        else
+            this.serverImpl =new ServerImpl(this.serverImpl.model);
         return this.serverImpl;
     }
 }
