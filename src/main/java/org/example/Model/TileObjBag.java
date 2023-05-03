@@ -5,10 +5,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.*;
 
 public class TileObjBag {
-
     private ArrayList<TileObj> tiles;
 
     public TileObjBag(){
+        this.tiles = new ArrayList<TileObj>();
 
         //6 types of Item tiles, 132 in total, 22 of each type.
         for( TileType type : TileType.values() ){
