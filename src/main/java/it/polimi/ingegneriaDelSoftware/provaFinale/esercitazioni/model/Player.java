@@ -10,9 +10,7 @@ public class Player implements Serializable {
     private String username;
     private boolean yourTurn;
 
-    public void setShelves(Shelves shelves) {
-        this.shelves = shelves;
-    }
+
 
     private Shelves shelves;
     private PersonalCard pC;
@@ -81,5 +79,21 @@ public class Player implements Serializable {
 
     public int getScore() {
         return score;
+    }
+
+    public void setShelves(Shelves shelves) {
+        this.shelves = shelves;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", yourTurn=" + yourTurn +
+                ", shelves=" + shelves +
+                ", pC=" + pC +
+                ", score=" + score +
+                '}';
     }
 }

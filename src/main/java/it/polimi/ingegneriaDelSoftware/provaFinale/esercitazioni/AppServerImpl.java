@@ -19,6 +19,8 @@ public class AppServerImpl extends UnicastRemoteObject implements AppServer
 
     private static AppServerImpl instance;
 
+    private Server serverImpl=null;
+
     private final ExecutorService executorService = Executors.newCachedThreadPool();
 
     protected AppServerImpl() throws RemoteException {
@@ -111,6 +113,8 @@ public class AppServerImpl extends UnicastRemoteObject implements AppServer
 
     @Override
     public Server connect() throws RemoteException {
-        return new ServerImpl();
+        if(this.serverImpl == null)
+            this.serverImpl =new ServerImpl();
+        return this.serverImpl;
     }
 }

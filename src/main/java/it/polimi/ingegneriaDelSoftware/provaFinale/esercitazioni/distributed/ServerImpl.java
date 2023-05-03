@@ -12,8 +12,8 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class ServerImpl extends UnicastRemoteObject implements Server {
 
-    private Turn model;
-    private Controller controller;
+    private Turn model= null;
+    private Controller controller= null;
 
     public ServerImpl() throws RemoteException {
         super();
@@ -29,7 +29,11 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 
     @Override
     public void register(Client client) {
-        this.model = new Turn();
+        //piu controller ma i controller hanno lo stesso model!
+        if (this.model == null) {
+            System.err.println("new model");
+            this.model = new Turn();
+        }
         this.model.addObserver((o, arg) -> {
             try {
                 client.update(new TurnView(model), arg);
@@ -37,8 +41,9 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
                 System.err.println("Unable to update the client: " + e.getMessage() + ". Skipping the update...");
             }
         });
-
-        this.controller = new Controller(model, client);
+        //if (this.controller == null) {
+            this.controller = new Controller(model, client);
+        //}
     }
 
 
