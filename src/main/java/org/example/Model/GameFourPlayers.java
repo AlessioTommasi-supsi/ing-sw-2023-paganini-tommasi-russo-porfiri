@@ -1,8 +1,9 @@
 package org.example.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class GameFourPlayers extends Game {
+public class GameFourPlayers extends Game implements Serializable {
     public GameFourPlayers(int playerNumber, Player dealer){
         super(playerNumber, dealer);
     }

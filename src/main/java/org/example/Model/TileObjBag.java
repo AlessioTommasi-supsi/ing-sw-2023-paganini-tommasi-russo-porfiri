@@ -2,9 +2,10 @@ package org.example.Model;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class TileObjBag {
+public class TileObjBag implements Serializable {
     private ArrayList<TileObj> tiles;
 
     public TileObjBag(){

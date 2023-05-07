@@ -1,20 +1,20 @@
 package org.example.Model;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * 
  */
-public class CommonCard {
+public class CommonCard  implements Serializable {
 
     private int points;
     private TilePositionShelves correctPosition[];
-    private CommonObjective commonCardGoal;
     private int index;
     /**
      * Default constructor
      */
-    public CommonCard(int points, int correctPosition[], CommonObjective commonCardGoal, int index) {
+    public CommonCard(int points, int correctPosition[], int index) {
         this.points = points;
         this.index = index;
     }

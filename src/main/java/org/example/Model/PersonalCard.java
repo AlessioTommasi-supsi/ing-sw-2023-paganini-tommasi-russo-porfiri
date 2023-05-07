@@ -1,6 +1,7 @@
 package org.example.Model;
 
 import java.io.Reader;
+import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.Array;
@@ -14,14 +15,14 @@ import org.json.JSONObject;
  * compra gioco fisico per mapparlo
  * (chiedi martedi a prof!!!!) se supponiamo posiz random o dobbiamo usare quelle del gioco fisico!!
  */
-public class PersonalCard {
+public class PersonalCard implements Serializable {
     private TilePositionShelves positionShelves[] ;
     private int points;
     /**
      * Default constructor
      */
-    public PersonalCard(int points, TilePositionShelves positionShelves[]) {
-        this.points = points;
+    public PersonalCard(TilePositionShelves positionShelves[]) {
+        this.points = 0;
         this.positionShelves = positionShelves;
     }
 
@@ -33,7 +34,6 @@ public class PersonalCard {
     /**
      * 
      */
-    private PersonalObjective personalCardGoal;
 
     /**
      * @return
@@ -60,10 +60,7 @@ public class PersonalCard {
     /**
      * @return
      */
-    public PersonalObjective getGoal() {
-        // TODO implement here
-        return null;
-    }
+
 
     public void GsonParse() {
         try {

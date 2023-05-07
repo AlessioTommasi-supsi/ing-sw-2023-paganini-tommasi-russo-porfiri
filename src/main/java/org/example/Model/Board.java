@@ -1,5 +1,6 @@
 package org.example.Model;
 
+import java.io.Serializable;
 import java.util.*;
 /**
  * Faccio un array dove per ogni riga ho una mappa con il tipo di tessera come chiave e poi tutti i dati associati a quella tessera così d
@@ -15,7 +16,7 @@ import java.util.*;
 /**
  * 
  */
-public class Board{
+public class Board implements Serializable {
     private ArrayList<TilePositionBoard> placements;
     private TileObjBag bag;
 

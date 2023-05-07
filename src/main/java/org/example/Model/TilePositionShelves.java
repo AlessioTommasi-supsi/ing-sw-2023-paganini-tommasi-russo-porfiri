@@ -2,7 +2,9 @@ package org.example.Model;
 
 import org.jetbrains.annotations.NotNull;
 
-public class TilePositionShelves {
+import java.io.Serializable;
+
+public class TilePositionShelves implements Serializable {
     private int x;
     private int y;
     private TileObj tileInSlot;

@@ -1,0 +1,93 @@
+package org.example.Model;
+
+import org.example.Model.*;
+import org.example.distributed.*;
+import org.example.util.*;
+import org.example.view.*;
+import org.example.controller.*;
+
+import java.io.Serializable;
+
+public class Turn extends Observable<Turn.Event> implements Serializable {
+
+    private Choice playerChoice;
+
+    public String errore = "";
+    private MyShelfie myShelfie = null;
+
+    private Player current_player;
+
+    private Game game = null;//viene assegnato per la prima volta dopo aver chiamato Myshelfie.join!
+
+    public enum Event {
+        PLAYER_CHOICE, CPU_CHOICE, OUTCOME
+    }
+
+    public void NotifyClient(){
+        this.playerChoice.setStato(Event.CPU_CHOICE);
+        setChangedAndNotifyObservers(
+                playerChoice
+        );
+    }
+
+    //GETTER PART
+    public MyShelfie getMyShelfie() {
+        return myShelfie;
+    }
+
+    public Player getCurrent_player() {
+        return current_player;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    //SETTER PART
+    public void setCurrent_player(Player current_player) {
+        this.current_player = current_player;
+
+    }
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+
+    public void setMyShelfie(MyShelfie myShelfie) {
+        this.myShelfie = myShelfie;
+    }
+
+    //OLD
+    public Choice getPlayerChoice() {
+        return playerChoice;
+    }
+
+    public void setPlayerChoice(Choice playerChoice) {
+        this.playerChoice = playerChoice;
+    }
+
+
+
+
+    public void clear() {
+        //outcome = null;
+        playerChoice = null;
+    }
+
+    private void setChangedAndNotifyObservers(Choice arg) {
+        setChanged();
+        notifyObservers(arg);
+    }
+    
+
+    @Override
+    public String toString() {
+        return "Turn{'\n'" +
+                "'\n'playerChoice=" + playerChoice +
+                "'\n', errore='" + errore + '\'' +
+                "'\n', myShelfie=" + myShelfie +
+                "'\n', current_player=" + current_player +
+                "'\n', game=" + game +
+                '}';
+    }
+}

@@ -1,34 +1,40 @@
 package org.example.Model;
 
+import java.io.Serializable;
 import java.util.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * I giocatori entrano sequenzialmente all'interno della partita. La posizione del giocatore in partita è data in base all'ordine di entrata, quindi la posizione è l'indice dell'array
- * 
+ *
  * All'inizio della partita creo istanza della plancia e i posizionamenti metto un'eccezione per le posizioni sempre irregolari, un'altra eccezione per le posizioni non giocabili perché non ci sono abbastanza giocatori. Al livello filosofico mi serve capire cosa devo comunicare e in che caso mi ritrovo
  */
-public abstract class Game{
+public abstract class Game implements Serializable {
 
-    protected Board board;
-    protected ArrayList<Player> players;
-    protected int playerNumber;
-    protected Player dealer;
-    protected StatoPartita stato;
-    protected int ranking[]=null;
-    protected ArrayList<Ranking> rank;
+    private Board board;
+    private ArrayList<Player> players;//ordinato in base all ordine nel quale i giocaori si sono uniti alla patrita e quindi anche in ordine di chi tocca a giocare!
+    private int playerNumber;//numeri di giocatori che ci sono in questa partita!
+    private Player dealer;
+    private StatoPartita stato;
+
+    private int ranking[]=null;
+
+    private ArrayList<Ranking> rank;
 
     public Game(int playerNumber, Player mazziere) {
         this.playerNumber = playerNumber;
         this.dealer =mazziere;
         players= new ArrayList<Player>();
         rank= new ArrayList<Ranking>();
+
         players.add(mazziere);
         this.board = new Board();
     }
 
-
     public Board getBoard() {
-        return new Board(board);
+        return board;
     }
 
     public ArrayList<Player> getPlayers() {
@@ -61,7 +67,7 @@ public abstract class Game{
     }
 
 
-    public void end(){
+    public void start_partita(){
         this.stato = StatoPartita.IN_CORSO;
     }
     public void end(){
@@ -77,7 +83,7 @@ public abstract class Game{
         this.ranking = new int[this.playerNumber];
 
         for (int i = 0; i < players.size(); i++) {
-            point[i] = players.get(i).getShelves().getScore();
+            //point[i] = players.get(i).getShelves().getScore();
             rank.add(new Ranking(players.get(i), point[i]));
         }
 
@@ -99,13 +105,28 @@ public abstract class Game{
     }
 
     public ArrayList<Ranking> getRanking() throws Exception{
-        if(this.stato != StatoPartita.FINITA;){
+        if(this.stato != StatoPartita.FINITA){
             throw new Exception("non puoi prendere i punteggi perche la partita non e'ancora finita!");
         }
         return new ArrayList<Ranking>(rank);
     }
 
+    @Override
+    public String toString() {
+        return "Game{" +
+                "board=" + board +
+                ", players=" + players.toString() +
+                ", playerNumber=" + playerNumber +
+                ", dealer=" + dealer +
+                ", stato=" + stato +
+                ", ranking=" + Arrays.toString(ranking) +
+                ", rank=" + rank +
+                '}';
+    }
 
     public abstract void BuildBoard();
 
+    public ArrayList<Ranking> getRank() {
+        return rank;
+    }
 }

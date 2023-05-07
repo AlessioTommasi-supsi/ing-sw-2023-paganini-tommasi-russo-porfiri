@@ -1,6 +1,8 @@
 package org.example.Model;
 
-public class PositionEmptyException extends Exception {
+import java.io.Serializable;
+
+public class PositionEmptyException extends Exception implements Serializable {
     public PositionEmptyException(){
         super("This position is empty, does not contain any tile");
     }

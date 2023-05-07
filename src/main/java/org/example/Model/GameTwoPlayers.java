@@ -1,6 +1,8 @@
 package org.example.Model;
 
-public class GameTwoPlayers extends Game{
+import java.io.Serializable;
+
+public class GameTwoPlayers extends Game implements Serializable {
     public GameTwoPlayers(int playerNumber, Player dealer){
         super(playerNumber, dealer);
     }

@@ -1,11 +1,12 @@
 package org.example.Model;
 
 
+import java.io.Serializable;
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommonCardPosition implements CommonObjectiveInterface {
+public class CommonCardPosition implements Serializable {
 
     public boolean executeAlgorithm(int index, Player player) {
         boolean objectiveAchieved = false;
@@ -21,54 +22,6 @@ public class CommonCardPosition implements CommonObjectiveInterface {
                                 if (player.getShelves().getTilePosition(4,0).getTile().getType() == tileType) {
                                     if (player.getShelves().getTilePosition(4,5) != null) {
                                         if (player.getShelves().getTilePosition(4,5).getTile().getType() == tileType) {
-                                            objectiveAchieved=true;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                if (player.getShelves().getTilePosition(0, 5) != null) {
-                    TileType tileType = player.getShelves().getTilePosition(0,5).getTile().getType();
-                    if (player.getShelves().getTilePosition(0,0) != null) {
-                        if (player.getShelves().getTilePosition(0,0).getTile().getType() == tileType) {
-                            if (player.getShelves().getTilePosition(4,0) != null) {
-                                if (player.getShelves().getTilePosition(4,0).getTile().getType() == tileType) {
-                                    if (player.getShelves().getTilePosition(4,5) != null) {
-                                        if (player.getShelves().getTilePosition(4,5).getTile().getType() == tileType) {
-                                            objectiveAchieved=true;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                if (player.getShelves().getTilePosition(4, 0) != null) {
-                    TileType tileType = player.getShelves().getTilePosition(4,0).getTile().getType();
-                    if (player.getShelves().getTilePosition(0,5) != null) {
-                        if (player.getShelves().getTilePosition(0,5).getTile().getType() == tileType) {
-                            if (player.getShelves().getTilePosition(0,0) != null) {
-                                if (player.getShelves().getTilePosition(0,0).getTile().getType() == tileType) {
-                                    if (player.getShelves().getTilePosition(4,5) != null) {
-                                        if (player.getShelves().getTilePosition(4,5).getTile().getType() == tileType) {
-                                            objectiveAchieved=true;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                if (player.getShelves().getTilePosition(4, 5) != null) {
-                    TileType tileType = player.getShelves().getTilePosition(4,5).getTile().getType();
-                    if (player.getShelves().getTilePosition(0,5) != null) {
-                        if (player.getShelves().getTilePosition(0,5).getTile().getType() == tileType) {
-                            if (player.getShelves().getTilePosition(4,0) != null) {
-                                if (player.getShelves().getTilePosition(4,0).getTile().getType() == tileType) {
-                                    if (player.getShelves().getTilePosition(0,0) != null) {
-                                        if (player.getShelves().getTilePosition(0,0).getTile().getType() == tileType) {
                                             objectiveAchieved=true;
                                         }
                                     }

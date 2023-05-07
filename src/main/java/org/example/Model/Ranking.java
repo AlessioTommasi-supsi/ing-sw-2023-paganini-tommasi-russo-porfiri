@@ -1,7 +1,9 @@
 package org.example.Model;
 
 
-public class Ranking {
+import java.io.Serializable;
+
+public class Ranking implements Serializable {
     private int punteggio;
     private Player player;
 

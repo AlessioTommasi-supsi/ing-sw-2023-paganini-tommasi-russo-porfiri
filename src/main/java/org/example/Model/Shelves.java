@@ -1,6 +1,8 @@
 package org.example.Model;
 
-public class Shelves {
+import java.io.Serializable;
+
+public class Shelves implements Serializable {
 
     private int filledCounter;
     private TilePositionShelves[][] tilePositions;
