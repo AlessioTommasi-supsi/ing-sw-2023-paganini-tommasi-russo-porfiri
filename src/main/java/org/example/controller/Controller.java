@@ -28,10 +28,10 @@ public class Controller {
             }
 
             model.setPlayerChoice(arg);
-            if (arg.getChoiche() != Choice_my_shelfie.GET_STATE)
+            if (arg.getChoice() != Choice_my_shelfie.GET_STATE)
                 System.out.println("hai effettuato la seguente scelta: "+arg.toString());
 
-            switch (arg.getChoiche()) {
+            switch (arg.getChoice()) {
                 case JOIN_GAME:
                     if (model.getMyShelfie() == null) {
                         model.setMyShelfie(new MyShelfie());
@@ -64,7 +64,7 @@ public class Controller {
             model.errore = e.toString();
         }
 
-        if (arg.getChoiche() != Choice_my_shelfie.GET_STATE)
+        if (arg.getChoice() != Choice_my_shelfie.GET_STATE)
             System.out.println("Risposta: "+model.toString());
 
         model.NotifyClient();

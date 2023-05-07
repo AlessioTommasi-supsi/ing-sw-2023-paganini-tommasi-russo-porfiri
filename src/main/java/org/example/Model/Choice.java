@@ -3,14 +3,14 @@ package org.example.Model;
 import java.io.Serializable;
 
 public class Choice implements Serializable {
-    private Choice_my_shelfie choiche;
+    private Choice_my_shelfie choice;
     private Turn.Event stato;
     private Object argument;
 
     private Player player;
 
-    public Choice(Choice_my_shelfie choiche,Player player, Object argument) {
-        this.choiche = choiche;
+    public Choice(Choice_my_shelfie choice, Player player, Object argument) {
+        this.choice = choice;
         this.argument = argument;
         this.player = player;
     }
@@ -23,12 +23,12 @@ public class Choice implements Serializable {
         this.stato = stato;
     }
 
-    public Choice_my_shelfie getChoiche() {
-        return choiche;
+    public Choice_my_shelfie getChoice() {
+        return choice;
     }
 
-    public void setChoiche(Choice_my_shelfie choiche) {
-        this.choiche = choiche;
+    public void setChoice(Choice_my_shelfie choice) {
+        this.choice = choice;
     }
 
     public Object getArgument() {
@@ -50,7 +50,7 @@ public class Choice implements Serializable {
     @Override
     public String toString() {
         return "Choice{" +
-                "choiche=" + choiche +
+                "choiche=" + choice +
                 ", stato=" + stato +
                 ", argument=" + argument +
                 ", player=" + player +

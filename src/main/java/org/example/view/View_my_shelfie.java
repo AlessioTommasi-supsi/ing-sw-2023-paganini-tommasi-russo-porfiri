@@ -119,9 +119,9 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
         try {
             switch (model.getPlayerChoice().getStato()) {
                 case CPU_CHOICE -> {
-                    Choice_my_shelfie o = model.getPlayerChoice().getChoiche();
+                    Choice_my_shelfie o = model.getPlayerChoice().getChoice();
                     System.out.println("la scelta che hai fatto e': "+o.toString());
-                    switch (model.getPlayerChoice().getChoiche()){
+                    switch (model.getPlayerChoice().getChoice()){
                         case IMMMETTI_IN_LIBRERIA:
                             //aggiorno la libreria del client!
                             this.player.setShelves(model.getCurrentPlayer().getShelves());
