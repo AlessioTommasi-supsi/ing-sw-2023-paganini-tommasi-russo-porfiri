@@ -134,7 +134,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
 
 
                                 try {
-                                    Thread.sleep(10000);
+                                    Thread.sleep(1000);
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();
                                 }

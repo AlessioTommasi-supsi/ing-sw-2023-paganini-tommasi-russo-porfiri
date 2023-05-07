@@ -19,7 +19,7 @@ public class AppServerImpl extends UnicastRemoteObject implements AppServer
 
     private static AppServerImpl instance;
 
-    private ServerImpl serverImpl=null;
+    private static ServerImpl serverImpl=null;
 
     private final ExecutorService executorService = Executors.newCachedThreadPool();
 
@@ -90,10 +90,13 @@ public class AppServerImpl extends UnicastRemoteObject implements AppServer
                 instance.executorService.submit(() -> {
                     try {
                         ClientSkeleton clientSkeleton = new ClientSkeleton(socket);
-                        Server server = new ServerImpl();
-                        server.register(clientSkeleton);
+                        if(serverImpl == null)
+                            serverImpl =new ServerImpl();
+                        else
+                            serverImpl =new ServerImpl(serverImpl.model);
+                        serverImpl.register(clientSkeleton);
                         while (true) {
-                            clientSkeleton.receive(server);
+                            clientSkeleton.receive(serverImpl);
                         }
                     } catch (RemoteException e) {
                         System.err.println("Cannot receive from client. Closing this connection...");
