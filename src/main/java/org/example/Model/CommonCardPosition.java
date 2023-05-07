@@ -67,22 +67,26 @@ public class CommonCardPosition implements Serializable {
                     }
                     indexDecrescent--;
                 }
-                counterTile = 0;
-                indexDecrescent = 6;
-                for (i = 4; i >=0; i--) {
-                    for (j = 0; j < indexDecrescent; j++) {
-                        if (player.getShelves().getTilePosition(i, j) == null) {
-                            break;
-                        } else {
-                            counterTile++;
-                        }
-                    }
-                    indexDecrescent--;
-                }
                 if (counterTile == 15) {
                     return true;
                 } else {
-                    return false;
+                    counterTile = 0;
+                    indexDecrescent = 6;
+                    for (i = 4; i >=0; i--) {
+                        for (j = 0; j < indexDecrescent; j++) {
+                            if (player.getShelves().getTilePosition(i, j) == null) {
+                                break;
+                            } else {
+                                counterTile++;
+                            }
+                        }
+                        indexDecrescent--;
+                    }
+                    if (counterTile == 15) {
+                        return true;
+                    } else {
+                        return false;
+                    }
                 }
             }
             case 1 -> {
