@@ -37,6 +37,10 @@ public class TileObjBag {
         return tempTiles;
     }
 
+    public int BagSize(){
+        return tiles.size();
+    }
+
     public void shuffleT(){
         Collections.shuffle(tiles);
     }

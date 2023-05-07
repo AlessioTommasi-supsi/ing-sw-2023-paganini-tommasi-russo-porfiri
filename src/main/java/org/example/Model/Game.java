@@ -7,28 +7,25 @@ import java.util.*;
  * 
  * All'inizio della partita creo istanza della plancia e i posizionamenti metto un'eccezione per le posizioni sempre irregolari, un'altra eccezione per le posizioni non giocabili perché non ci sono abbastanza giocatori. Al livello filosofico mi serve capire cosa devo comunicare e in che caso mi ritrovo
  */
-public class Game{
+public abstract class Game{
 
-    private Board board;
-    private ArrayList<Player> players;
-    private int playerNumber;
-    private Player dealer;
-    private StatoPartita stato;
-
-    private int ranking[]=null;
-
-    
-    private ArrayList<Ranking> rank;
+    protected Board board;
+    protected ArrayList<Player> players;
+    protected int playerNumber;
+    protected Player dealer;
+    protected StatoPartita stato;
+    protected int ranking[]=null;
+    protected ArrayList<Ranking> rank;
 
     public Game(int playerNumber, Player mazziere) {
         this.playerNumber = playerNumber;
         this.dealer =mazziere;
         players= new ArrayList<Player>();
         rank= new ArrayList<Ranking>();
-
         players.add(mazziere);
         this.board = new Board();
     }
+
 
     public Board getBoard() {
         return new Board(board);
@@ -108,5 +105,7 @@ public class Game{
         return new ArrayList<Ranking>(rank);
     }
 
+
+    public abstract void BuildBoard();
 
 }

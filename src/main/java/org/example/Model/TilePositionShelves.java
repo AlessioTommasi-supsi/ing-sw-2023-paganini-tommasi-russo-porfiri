@@ -48,7 +48,7 @@ public class TilePositionShelves {
     }
 
     public void setTile(TileObj tile) throws PositionAlreadyOccupiedException {
-        if(this.occupied == false){
+        if(!this.occupied){
             this.tileInSlot= tile;
             this.occupied= true;
         }

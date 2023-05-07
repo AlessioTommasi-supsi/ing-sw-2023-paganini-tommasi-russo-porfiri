@@ -48,7 +48,7 @@ public class TilePositionBoard {
     }
 
     public void setTile(TileObj tile) throws PositionAlreadyOccupiedException {
-        if(this.occupied == false){
+        if(!this.occupied){
             this.tileInSlot= tile;
             this.occupied= true;
         }
@@ -56,7 +56,7 @@ public class TilePositionBoard {
     }
 
     public TileObj removeTile() throws PositionEmptyException {
-        if(this.tileInSlot != null && this.occupied == true){
+        if(this.tileInSlot != null && this.occupied){
             TileObj tempTile = new TileObj(this.tileInSlot);
             this.tileInSlot= null;
             this.occupied=false;

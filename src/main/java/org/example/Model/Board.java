@@ -17,29 +17,39 @@ import java.util.*;
  */
 public class Board{
     private ArrayList<TilePositionBoard> placements;
+    private TileObjBag bag;
 
     
     //sarà il gioco a creare i placements giusti in base a quante persone ho!
-    public Board(ArrayList<TilePositionBoard> extPlacements) {
+    public Board(ArrayList<TilePositionBoard> extPlacements, TileObjBag extBag) {
         this.placements = new ArrayList<TilePositionBoard>();
         for (TilePositionBoard p :extPlacements) {
             this.placements.add(new TilePositionBoard(p));
         }
+        this.bag= new TileObjBag(extBag);
     }
 
 
     public Board(Board extBoard) {
         this.placements = extBoard.getPlacements();
+        this.bag= extBoard.getBag();
     }
 
 
     public Board() {
         this.placements = new ArrayList<TilePositionBoard>();
+        this.bag = new TileObjBag();
+        protoBoard();
+        addTiles();
     }
 
 
     public ArrayList<TilePositionBoard> getPlacements() {
         return new ArrayList<TilePositionBoard>(placements);
+    }
+
+    public TileObjBag getBag() {
+        return new TileObjBag(this.bag);
     }
 
 
@@ -49,11 +59,56 @@ public class Board{
 
 
     public void setPlacements(ArrayList<TilePositionBoard> extPlacements) {
-        this.placements = new ArrayList<TilePositionBoard>();
-        for (TilePositionBoard p :extPlacements) {
-            this.placements.add(new TilePositionBoard(p));
+        this.placements.addAll(extPlacements);
+    }
+
+
+    private void protoBoard(){
+        int i=1;
+        int j;
+
+        for(j=4; j<6; j++){
+            this.placements.add(new TilePositionBoard(i,j));
+        }
+        i=2;
+        for(j=3; j<6; j++){
+            this.placements.add(new TilePositionBoard(i,j));
+        }
+        i=3;
+        for(j=1; j<7; j++){
+            this.placements.add(new TilePositionBoard(i,j));
+        }
+        i=4;
+        for(j=1; j<8; j++){
+            this.placements.add(new TilePositionBoard(i,j));
+        }
+        i=5;
+        for(j=2; j<8; j++){
+            this.placements.add(new TilePositionBoard(i,j));
+        }
+        i=6;
+        for(j=3; j<6; j++){
+            this.placements.add(new TilePositionBoard(i,j));
+        }
+        i=7;
+        for(j=3; j<5; j++){
+            this.placements.add(new TilePositionBoard(i,j));
         }
     }
+
+
+    public void addTiles(){
+        for(TilePositionBoard p : this.placements){
+            if(this.bag.BagSize()!= 0){
+                try {
+                    p.setTile(this.bag.extractFromBag());
+                } catch (PositionAlreadyOccupiedException e) {
+                    continue;
+                }
+            }
+            else break;
+        }
+    }  //metodo che userò anche per riempire la board quando vuota
 
 
     public boolean tileIsRemovable(TilePositionBoard position){
@@ -94,5 +149,7 @@ public class Board{
 
     }
 
+
+    //metodo che verifica che la board è vuota oppure contiene ancora solo tessere isolate
 
 }
