@@ -33,10 +33,18 @@ public class CommonCardPosition implements Serializable {
                 return objectiveAchieved;
             }
             case 10 -> {
+                TileType tileType = null;
                 for (int i = 0; i < 5; i++) {
                     for (int j = 0; j < 6; j++) {
-                        if (player.getShelves().getTilePosition(i, j) != null) {
-                            counterTile++;
+                        if (tileType == null) {
+                            if (player.getShelves().getTilePosition(i, j) != null) {
+                                tileType = player.getShelves().getTilePosition(i, j).getTile().getType();
+                                counterTile++;
+                            }
+                        } else {
+                            if ((player.getShelves().getTilePosition(i, j) != null) && (player.getShelves().getTilePosition(i,j).getTile().getType() == tileType)) {
+                                counterTile++;
+                            }
                         }
                     }
                 }
@@ -47,9 +55,21 @@ public class CommonCardPosition implements Serializable {
                 }
             }
             case 11 -> {
-                int i, j = 0;
+                int i, j;
                 int indexDecrescent = 6;
                 for (i = 0; i < 5; i++) {
+                    for (j = 0; j < indexDecrescent; j++) {
+                        if (player.getShelves().getTilePosition(i, j) == null) {
+                            break;
+                        } else {
+                            counterTile++;
+                        }
+                    }
+                    indexDecrescent--;
+                }
+                counterTile = 0;
+                indexDecrescent = 6;
+                for (i = 4; i >=0; i--) {
                     for (j = 0; j < indexDecrescent; j++) {
                         if (player.getShelves().getTilePosition(i, j) == null) {
                             break;
