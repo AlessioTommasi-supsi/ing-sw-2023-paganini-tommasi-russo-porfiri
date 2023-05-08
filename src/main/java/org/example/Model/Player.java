@@ -22,7 +22,7 @@ public class Player implements Serializable {
     }
 
     public Player(String username) {
-        this.id = Globals.incrementPlayer_id();
+        this.id = Globals.incrementPlayerId();
         this.username = username;
         this.yourTurn = false;
         this.shelves = new Shelves();
@@ -91,6 +91,23 @@ public class Player implements Serializable {
                 ", pC=" + pC +
                 ", score=" + score +
                 '}';
+    }
+
+    public int calculateCommonPoints() {
+
+    }
+
+    public int calculatePersonalPoints() {
+        //TODO
+        return pC.checkPersonalCard(new PersonalCardParser(), this);
+    }
+
+    public int calculateAdjacentPoints() {
+
+    }
+
+    public void calcOverallScore() {
+        this.score = calculateCommonPoints() + calculatePersonalPoints() + calculateAdjacentPoints();
     }
 
 }

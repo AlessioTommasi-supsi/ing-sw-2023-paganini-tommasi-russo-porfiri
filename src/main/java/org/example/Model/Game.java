@@ -11,8 +11,8 @@ import java.util.Arrays;
  */
 public abstract class Game implements Serializable {
 
-    private Player current_player;
-    private int current_game_id;
+    private Player currentPlayer;
+    private int currentGameId;
 
     private Board board;
     private ArrayList<Player> players;//ordinato in base all ordine nel quale i giocaori si sono uniti alla patrita e quindi anche in ordine di chi tocca a giocare!
@@ -29,7 +29,7 @@ public abstract class Game implements Serializable {
         this.dealer =mazziere;
         players= new ArrayList<Player>();
         rank= new ArrayList<Ranking>();
-        this.current_game_id = Globals.increment_Game_id();
+        this.currentGameId = Globals.increment_Game_id();
         players.add(mazziere);
         this.board = new Board();
     }
@@ -135,12 +135,12 @@ public abstract class Game implements Serializable {
 
     public abstract void BuildBoard();  //Factory Method
 
-    public Player getCurrent_player() {
-        return current_player;
+    public Player getCurrentPlayer() {
+        return currentPlayer;
     }
 
-    public int getCurrent_game_id() {
-        return current_game_id;
+    public int getCurrentGameId() {
+        return currentGameId;
     }
 
     public Board getBoard() {
@@ -154,5 +154,20 @@ public abstract class Game implements Serializable {
             }
         }
         return null;
+    }
+
+    public ArrayList setRanking() {
+        while(Player p : players){
+            p.calcOverallScore();
+        }
+
+        Collections.sort(players, new Comparator<Player>()) {
+            @Override
+            public int compare(Player p1, Player p2) {
+                return p2.getScore() - p1.getScore();
+            }
+        }
+
+        this.rank.addAll(players);
     }
 }

@@ -103,7 +103,7 @@ public class PersonalCard implements Serializable {
         return personalCard;
     }
 
-    private int checkPersonalCard(PersonalCardParser personalCardParser, Player player) throws PositionEmptyException {
+    public int checkPersonalCard(PersonalCardParser personalCardParser, Player player) throws PositionEmptyException {
         int counter = 0;
         if ((player.getShelves().getTilePosition(personalCardParser.CatXPosition, personalCardParser.CatYPosition) != null) &&
                 (player.getShelves().getTilePosition(personalCardParser.CatXPosition, personalCardParser.CatYPosition).getTile().getType().equals("CAT"))) {
