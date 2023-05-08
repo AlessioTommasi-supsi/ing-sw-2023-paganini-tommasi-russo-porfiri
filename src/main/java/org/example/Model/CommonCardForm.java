@@ -1,6 +1,14 @@
 package org.example.Model;
 
-public class CommonCardForm{
+import java.io.Serializable;
+
+public class CommonCardForm extends CommonCard implements Serializable {
+    private int points;
+    private int index;
+    public CommonCardForm(int points, int index) {
+        this.points = points;
+        this.index = index;
+    }
     public boolean executeAlgorithm(int index, Player player) {
         boolean objectiveAchieved = false;
         int counterShape = 0;

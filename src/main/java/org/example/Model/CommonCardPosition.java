@@ -6,7 +6,13 @@ import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommonCardPosition implements Serializable {
+public class CommonCardPosition extends CommonCard implements Serializable {
+    private int points;
+    private int index;
+    public CommonCardPosition(int points, int index) {
+        this.points = points;
+        this.index = index;
+    }
 
     public boolean executeAlgorithm(int index, Player player) {
         boolean objectiveAchieved = false;

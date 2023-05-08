@@ -6,41 +6,30 @@ import java.util.*;
 /**
  * 
  */
-public class CommonCard  implements Serializable {
+public abstract class CommonCard  implements Serializable {
 
-    private int points;
-    private TilePositionShelves correctPosition[];
-    private int index;
-    /**
-     * Default constructor
-     */
-    public CommonCard(int points, int correctPosition[], int index) {
-        this.points = points;
-        this.index = index;
-    }
 
-    public CommonCard drawCommon(int points, int indexAlreadyDrew) {
+    public CommonCard drawCommon(int points, List<CommonCard> commonCardList) {
         Random rand = new Random();
-        int index = rand.nextInt(12);
-        while (index == indexAlreadyDrew) {
-            index = rand.nextInt(12);
+        int index = rand.nextInt(commonCardList.size());
+        CommonCard commonCard = null;
+        if((index == 0)
+            || (index == 4)
+            || (index == 6)
+            || (index == 1)
+            || (index == 9)) {
+            commonCard = new CommonCardForm(0, index);
+        } else if ((index == 5) || (index == 7)) {
+            commonCard = new CommonCardRowColumn(0, index);
+        } else if ((index == 3) || (index == 8)) {
+            commonCard = new CommonCardRowColumnMinMax(0, index);
+        } else if ((index == 11)
+                || (index == 10)
+                || (index == 2)) {
+            commonCard = new CommonCardPosition(0, index);
         }
-        CommonCard commonCard = new CommonCard(points, null, index);
-        indexAlreadyDrew = index;
+        commonCardList.remove(index);
         return commonCard;
-    }
-
-    /**
-     * 
-     */
-
-    /**
-     * 
-     */
-    public void CommonCard() {
-
-
-        // TODO implement here
     }
 
 }
