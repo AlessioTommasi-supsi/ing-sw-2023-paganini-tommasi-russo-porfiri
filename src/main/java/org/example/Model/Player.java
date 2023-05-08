@@ -93,17 +93,53 @@ public class Player implements Serializable {
                 '}';
     }
 
-    public int calculateCommonPoints() {
-
+    public int calculateCommonPoints(CommonCard cC) {
+        //TODO implementare variabili e metodi per common card
+        int points = cC.getPoints();
+        if(points > 3) {
+            cC.updatePoints(points - 2);
+            return points;
+        }
+        return 0;
     }
 
     public int calculatePersonalPoints() {
-        //TODO
+        //TODO funzionamento del parser?
         return pC.checkPersonalCard(new PersonalCardParser(), this);
     }
 
     public int calculateAdjacentPoints() {
+        int counter;
+        boolean stopCycle;
+        List<Integer> validGroups = new ArrayList<>();
+        TileObj prevTile = null;
 
+        for (int i = 0; i < 6; i++) {
+            counter = 0;
+            stopCycle = false;
+
+            for (int j = 0; j < 5 && !stopCycle; j++) {
+                if (!Shelves.TilePositionShelves[i][j].occupied) {
+                    continue;
+                } else if (counter == 0) {
+                    prevTile = Shelves.TilePositionShelves[i][j].TileObj;
+                    counter++;
+                    continue;
+                }
+
+                if (Shelves.TilePositionShelves[i][j].TileObj.type.equals(prevTile.type)) {
+                    counter++;
+                } else {
+                    counter = 0;
+                }
+
+                if (counter > 0) {
+                    validGroups.add(counter);
+                }
+            }
+        }
+
+        //TODO La parte del calcolo punteggio. Verificare fattibilità algoritmo
     }
 
     public void calcOverallScore() {
