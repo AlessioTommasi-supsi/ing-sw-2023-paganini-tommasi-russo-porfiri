@@ -13,7 +13,7 @@ import java.util.Comparator;
  */
 public abstract class Game implements Serializable {
 
-    private Player currentPlayer;
+    private Player currentPlayer= null;
     private int currentGameId;
 
     private Board board;
@@ -37,6 +37,8 @@ public abstract class Game implements Serializable {
         this.currentGameId = Globals.increment_Game_id();
         players.add(mazziere);
         this.board = new Board();
+        //currentplayer viene detto solo quando la partita passa da in attesa ad in corso!
+
     }
 
     public Board getInstanceBoard() {
@@ -64,6 +66,7 @@ public abstract class Game implements Serializable {
 
         if (this.playerNumber == this.players.size()) {
             this.stato = StatoPartita.IN_CORSO;
+            this.currentPlayer = this.players.get(0);//il primo giocatore e' quello che inizia!
         }
 
     }

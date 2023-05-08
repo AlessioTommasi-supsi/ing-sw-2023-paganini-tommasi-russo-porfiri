@@ -131,22 +131,23 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
     }
 
     public void update(TurnView model/*risposta dal server*/, Choice arg/*evento che il client remoto ha scelto*/) {
-        //System.out.println(arg.toString());
 
+        if (current_game_id == -1){ //inizializzazione di tutte le variabili di gioco
+            joining_part(model,arg);
+        }else {
+            //ho gia fatto join!
+            choiche_part( model, arg);
+        }
+
+    }
+
+    public void joining_part(TurnView model,Choice arg) {
         //USERNAME DEVE ESSERE UNIVOCO
-        if(arg.getPlayer().getUsername().equals( this.player.getUsername())){//versione di prova che mi risponde sse sono io che ho fatto scelta
-        //if (model.getMyShelfie().getGame(this.current_game_id).getCurrent_player().equals(this.player)) {//versione corretta
-            System.out.println(this.player.toString());
-
-            try {
+        if (this.player != null) {
+            if(arg.getPlayer().getUsername().equals( this.player.getUsername())){
                 switch (model.getPlayerChoice().getStato()) {
                     case CPU_CHOICE -> {
                         switch (model.getPlayerChoice().getChoice()) {
-                            case IMMMETTI_IN_LIBRERIA:
-                                //aggiorno la libreria del client!
-                                this.player.setShelves(model.getMyShelfie().getGame(this.current_game_id).getPlayer(this.player.getId()).getShelves());
-                            break;
-
                             case JOIN_GAME:
                                 this.player.setId(arg.getPlayer().getId());
                                 //aggiorno la variabile this.current_game_id e current_game
@@ -160,35 +161,64 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                                     }
                                     if (is_player_in_this_game == true){
                                         switch (model.getMyShelfie().getGames().get(i).getStato()) {//le partite saranno o in attesa o in corso!
-                                            case IN_CORSO:
+                                            case IN_CORSO://non dovrebbe mai arrivarci!
                                                 System.out.println("ti sei unito ad una partita e la partita e' in corso!");
                                                 this.current_game_id = model.getMyShelfie().getGames().get(i).getCurrentGameId();
                                                 this.current_game = model.getMyShelfie().getGames().get(i);
-                                            break;
+                                                break;
                                             case IN_ATTESA://siccome non esiste una partita di un solo giocatore entrero sempre qui!
                                                 System.out.println("ti sei unito ad una partita e la partita e' in attesa di altri giocatori!");
                                                 this.current_game_id = model.getMyShelfie().getGames().get(i).getCurrentGameId();
                                                 this.current_game = model.getMyShelfie().getGames().get(i);
-                                            break;
+                                                break;
                                         }
                                     }
                                 }
                                 //stampo i dati della partita a cui mi sono unito.
-                            break;
+                                break;
                             default:
-                                System.err.println("not implemented yet");
+                                System.err.println("devi prima unirti al gioco!");
                         }
                     }
                     default -> System.err.println("errore stato! Ignoring event from " + model.toString() + ": " + arg.toString());
                 }
-            } catch (Exception e) {
-                System.out.println("gioco che ha generato errore: " + model.getMyShelfie().getGame(this.current_game_id).toString());
-                e.printStackTrace();
+
+                System.out.println("il server ha risposto!");
+                //this.setState(State.WAITING_FOR_PLAYER);
             }
-            System.out.println("il server ha risposto!");
         }
-        this.setState(State.WAITING_FOR_PLAYER);
+
     }
 
+    public void choiche_part(TurnView model,Choice arg) {
+        if (model.getMyShelfie().getGame(this.current_game_id).getCurrentPlayer() != null) {
+            if (model.getMyShelfie().getGame(this.current_game_id).getCurrentPlayer().getId() == this.player.getId()) {//versione corretta
+                try {
+                    switch (model.getPlayerChoice().getStato()) {
+                        case CPU_CHOICE -> {
+                            switch (model.getPlayerChoice().getChoice()) {
+                                case IMMMETTI_IN_LIBRERIA:
+                                    //aggiorno la libreria del client!
+                                    this.player.setShelves(model.getMyShelfie().getGame(this.current_game_id).getPlayer(this.player.getId()).getShelves());
+                                    break;
+
+
+                                default:
+                                    System.err.println("not implemented yet");
+                            }
+                        }
+                        default -> System.err.println("errore stato! Ignoring event from " + model.toString() + ": " + arg.toString());
+                    }
+                } catch (Exception e) {
+                    System.out.println("gioco che ha generato errore: " + model.getMyShelfie().getGame(this.current_game_id).toString());
+                    e.printStackTrace();
+                }
+                System.out.println("il server ha risposto!");
+                this.setState(State.WAITING_FOR_PLAYER);
+            }
+        }
+
+    }
 
 }
+
