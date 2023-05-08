@@ -20,7 +20,6 @@ public class GameThreePlayers extends Game implements Serializable {
         tempP.add(new TilePositionBoard(6,6));
         tempP.add(new TilePositionBoard(8,3));
 
-        this.board.setPlacements(tempP);
-        this.board.addTiles();
+        setBoard(tempP);
     }
 }
