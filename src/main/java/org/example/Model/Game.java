@@ -21,8 +21,9 @@ public abstract class Game implements Serializable {
     private int playerNumber;//numeri di giocatori che ci sono in questa partita!
     private Player dealer;
     private StatoPartita stato=StatoPartita.IN_ATTESA;
-    private StatoPartita stato;
     private ArrayList<PersonalCardParser> personalCardDeck = new ArrayList<>();
+    private int pointInitialization1 = 8;
+    private int pointInitialization2 = 8;
 
     private int ranking[]=null;
 
@@ -158,6 +159,27 @@ public abstract class Game implements Serializable {
             }
         }
         return null;
+    }
+
+    public void updatePointsCommon(int countPoints, boolean objectiveAchieved, int numOfPlayer, Player player) {
+        int pointsToSub = 0;  //punti da sottrarre a ogni completamento
+        if ((numOfPlayer == 4) || (numOfPlayer == 3)) {
+            pointsToSub = 2;
+        } else if (numOfPlayer == 2) {
+            pointsToSub = 4;
+        }
+        if (!player.getIsCommonCard1Completed()) {   //se il player completa l'obiettivo aggiungi i punti altrimenti no
+            if (objectiveAchieved) {
+                countPoints = countPoints + this.pointInitialization1;   //aggiorna i punti
+                pointInitialization1 = pointInitialization1 - pointsToSub; // sottrai i punti
+            }
+        }
+        if (!player.getIsCommonCard2Completed()) {
+            if (objectiveAchieved) {
+                countPoints = this.pointInitialization2;
+                pointInitialization2 = pointInitialization2 - pointsToSub;
+            }
+        }
     }
 
     /*NON FUNZIONANTE

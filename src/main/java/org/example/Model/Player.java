@@ -10,7 +10,11 @@ public class Player implements Serializable {
     private boolean yourTurn;
     private Shelves shelves;
     private PersonalCard pC;
+    private CommonCard commonCard1;
+    private CommonCard commonCard2;
     private int score;
+    private boolean isCommonCard1Completed = false;
+    private boolean isCommonCard2Completed = false;
 
     public Player(Player p) {
         this.id = p.getId();
@@ -28,6 +32,14 @@ public class Player implements Serializable {
         this.shelves = new Shelves();
         this.pC = null;
         this.score = 0;
+    }
+
+    public boolean getIsCommonCard1Completed() {
+        return isCommonCard1Completed;
+    }
+
+    public boolean getIsCommonCard2Completed() {
+        return isCommonCard2Completed;
     }
 
     public PersonalCard getPC() {
@@ -58,6 +70,14 @@ public class Player implements Serializable {
         this.pC = null;
     }
 
+    public CommonCard getCommonCard1() {
+        return commonCard1;
+    }
+
+    public CommonCard getCommonCard2() {
+        return commonCard2;
+    }
+
     // Da inserire nel costruttore se ritenuto necessario
     public void setPC(PersonalCard pc) {
         this.pC = pc;
@@ -79,6 +99,22 @@ public class Player implements Serializable {
 
     public void setShelves(Shelves shelves) {
         this.shelves = shelves;
+    }
+
+    private void addPointsPersonal(int counterCondition, int countPoints) {         //in base a quante condizioni si soddisfanno aggiungi tot punti
+        if ((counterCondition == 1) || (counterCondition == 2)) {
+            countPoints++;                                                  //incrementi dei valori scritti sulle personalCard, vanno chiamati solo quando viene aggiunta una condizione soddisfatta
+        } else if ((counterCondition == 3) || (counterCondition == 4)) {
+            countPoints = countPoints + 2;
+        } else if ((counterCondition == 5) || (counterCondition == 6)) {
+            countPoints = countPoints + 3;
+        }
+    }
+
+    public void updatePoints(int counterConditionBefore, int counterConditionAfter, int countPoints) {
+        if (counterConditionAfter == counterConditionBefore + 1) {             //controllo se il numero di condizioni è aumentato, se si aggiungo
+            addPointsPersonal(counterConditionAfter, countPoints);
+        }
     }
 
     @Override

@@ -8,6 +8,7 @@ import java.util.*;
  */
 public abstract class CommonCard  implements Serializable {
 
+    boolean objectiveAlreadyCompleted;
 
     public CommonCard drawCommon(int points, List<CommonCard> commonCardList) {
         Random rand = new Random();
@@ -31,5 +32,7 @@ public abstract class CommonCard  implements Serializable {
         commonCardList.remove(index);
         return commonCard;
     }
+
+
 
 }
