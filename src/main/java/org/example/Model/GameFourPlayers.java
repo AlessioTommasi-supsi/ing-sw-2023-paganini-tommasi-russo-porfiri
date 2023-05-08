@@ -29,7 +29,6 @@ public class GameFourPlayers extends Game implements Serializable {
         tempP.add(new TilePositionBoard(7,5));
         tempP.add(new TilePositionBoard(8,4));
 
-        this.getInstanceBoard().setPlacements(tempP);
-        this.getInstanceBoard().addTiles();
+        setBoard(tempP);
     }
 }
