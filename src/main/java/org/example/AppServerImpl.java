@@ -1,6 +1,7 @@
 package org.example;
 import org.example.Model.*;
 import org.example.distributed.*;
+import org.example.distributed.socket.middleware.*;
 import org.example.util.*;
 import org.example.view.*;
 import org.example.controller.*;
@@ -77,6 +78,7 @@ public class AppServerImpl extends UnicastRemoteObject implements AppServer
         try {
             java.rmi.registry.LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
         } catch (RemoteException e) {
+            System.err.println("error starting rmi");
             e.printStackTrace();
         }
         Registry registry = LocateRegistry.getRegistry();

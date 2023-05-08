@@ -163,6 +163,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
         System.out.println("il server ha risposto!");
         this.setState(State.WAITING_FOR_PLAYER);
 
+
     }
 
 

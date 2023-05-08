@@ -21,6 +21,15 @@ public class Player implements Serializable {
         this.score = p.getScore();
     }
 
+    public Player(String username) {
+        this.id = new Random().nextInt();
+        this.username = username;
+        this.yourTurn = false;
+        this.shelves = new Shelves();
+        this.pC = null;
+        this.score = 0;
+    }
+
     public PersonalCard getPC() {
         return pC;
     }
@@ -67,4 +76,21 @@ public class Player implements Serializable {
     public int getScore() {
         return score;
     }
+
+    public void setShelves(Shelves shelves) {
+        this.shelves = shelves;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", yourTurn=" + yourTurn +
+                ", shelves=" + shelves +
+                ", pC=" + pC +
+                ", score=" + score +
+                '}';
+    }
+
 }

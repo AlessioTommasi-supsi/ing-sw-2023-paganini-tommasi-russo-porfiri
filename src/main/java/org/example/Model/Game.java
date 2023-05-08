@@ -1,8 +1,6 @@
 package org.example.Model;
 
 import java.io.Serializable;
-import java.util.*;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -13,15 +11,15 @@ import java.util.Arrays;
  */
 public abstract class Game implements Serializable {
 
-    private Board board;
-    private ArrayList<Player> players;//ordinato in base all ordine nel quale i giocaori si sono uniti alla patrita e quindi anche in ordine di chi tocca a giocare!
-    private int playerNumber;//numeri di giocatori che ci sono in questa partita!
-    private Player dealer;
-    private StatoPartita stato;
+    protected Board board;
+    protected ArrayList<Player> players;//ordinato in base all ordine nel quale i giocaori si sono uniti alla patrita e quindi anche in ordine di chi tocca a giocare!
+    protected int playerNumber;//numeri di giocatori che ci sono in questa partita!
+    protected Player dealer;
+    protected StatoPartita stato;
 
-    private int ranking[]=null;
+    protected int ranking[]=null;
 
-    private ArrayList<Ranking> rank;
+    protected ArrayList<Ranking> rank;
 
     public Game(int playerNumber, Player mazziere) {
         this.playerNumber = playerNumber;
@@ -33,7 +31,7 @@ public abstract class Game implements Serializable {
         this.board = new Board();
     }
 
-    public Board getBoard() {
+    public Board getInstanceBoard() {
         return board;
     }
 

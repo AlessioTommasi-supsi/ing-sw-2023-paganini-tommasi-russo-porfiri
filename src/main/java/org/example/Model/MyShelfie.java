@@ -39,7 +39,7 @@ public class MyShelfie implements Serializable {
         Game g =null;
 
         if (i == games.size()) {
-            g=new Game(intPlayerNumber, p);
+            //g=new Game(intPlayerNumber, p);
 
             games.add(g);
         }

@@ -1,7 +1,10 @@
 package org.example.distributed;
 
-import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Choice;
-
+import org.example.Model.*;
+import org.example.distributed.*;
+import org.example.util.*;
+import org.example.view.*;
+import org.example.controller.*;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 

@@ -1,9 +1,10 @@
 package org.example.distributed.socket.middleware;
 
-import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.distributed.Client;
-import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.distributed.Server;
-import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.Choice;
-import it.polimi.ingegneriaDelSoftware.provaFinale.esercitazioni.model.TurnView;
+import org.example.Model.*;
+import org.example.distributed.*;
+import org.example.util.*;
+import org.example.view.*;
+import org.example.controller.*;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

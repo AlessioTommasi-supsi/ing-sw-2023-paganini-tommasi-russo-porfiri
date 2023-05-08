@@ -25,7 +25,7 @@ public class CommonCard  implements Serializable {
         while (index == indexAlreadyDrew) {
             index = rand.nextInt(12);
         }
-        CommonCard commonCard = new CommonCard(points, null, null, index);
+        CommonCard commonCard = new CommonCard(points, null, index);
         indexAlreadyDrew = index;
         return commonCard;
     }
