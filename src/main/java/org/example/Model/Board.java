@@ -2,20 +2,8 @@ package org.example.Model;
 
 import java.io.Serializable;
 import java.util.*;
-/**
- * Faccio un array dove per ogni riga ho una mappa con il tipo di tessera come chiave e poi tutti i dati associati a quella tessera così d
- *
- * Per istanziare la plancia posso fare un ARRAY di ArrayList :
- * 1)      0 -> 1-> 2
- * 2)      0->1->2->3
- * 3)      0->1->2->3->4
- * 4)      0->1->2
- *
- * Faccio un quadrato e poi aggiungo quelli "extra
- */
-/**
- * 
- */
+
+
 public class Board implements Serializable {
     private ArrayList<TilePositionBoard> placements;
     private TileObjBag bag;
@@ -52,7 +40,6 @@ public class Board implements Serializable {
     public TileObjBag getBag() {
         return new TileObjBag(this.bag);
     }
-
 
     public ArrayList<TilePositionBoard> showBoard() {
         return this.getPlacements();
@@ -151,6 +138,46 @@ public class Board implements Serializable {
     }
 
 
-    //metodo che verifica che la board è vuota oppure contiene ancora solo tessere isolate
+    public boolean BoardIsEmpty(){
+        for(TilePositionBoard t : this.placements){
+            if(t.isOccupied()){
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    //la Board va ripristinata in due casi: se contiene solo tessere isolate, oppure se non contiene alcuna tessera.
+    public boolean BoardNeedsRestore(){
+        int x,y;
+
+        if(BoardIsEmpty()){
+            return true;
+        }
+        
+        for(TilePositionBoard t : this.placements) {
+            if(t.isOccupied()){
+                x = t.getX();
+                y = t.getY();
+                for (TilePositionBoard item : placements) {
+                    if ((item.getX() == x && (item.getY() == y - 1 || item.getY() == y + 1)) || ((item.getX() == x - 1 || item.getX() == x + 1) && item.getY() == y)) {
+                        if (item.isOccupied()) {
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+
+    public void restoreBoard(){
+        if(BoardNeedsRestore()){
+            addTiles();
+        }
+    }
+
 
 }
