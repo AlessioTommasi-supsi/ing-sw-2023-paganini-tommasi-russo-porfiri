@@ -7,6 +7,7 @@ public class Player implements Serializable {
 
     private int id;
     private String username;
+    //USERNAME DEVE ESSERE UNIVOCO
     private boolean yourTurn;
     private Shelves shelves;
     private PersonalCard pC;
@@ -26,7 +27,8 @@ public class Player implements Serializable {
     }
 
     public Player(String username) {
-        this.id = Globals.incrementPlayerId();
+        //this.id = Globals.incrementPlayerId();
+        this.id = -1;//non ancora inizializzato, sara fatto dal controller in join_game
         this.username = username;
         this.yourTurn = false;
         this.shelves = new Shelves();
@@ -141,6 +143,10 @@ public class Player implements Serializable {
 
     public int calculateAdjacentPoints() {
         return -1;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void calcOverallScore() {

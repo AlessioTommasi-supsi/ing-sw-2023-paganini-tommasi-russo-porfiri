@@ -30,8 +30,8 @@ public class Controller {
                         model.setMyShelfie(new MyShelfie());
                     }
                     int numero_giocatori = (Integer) arg.getArgument();
+                    arg.getPlayer().setId(Globals.incrementPlayerId());
                     model.getMyShelfie().joinGame(numero_giocatori,arg.getPlayer());
-
                 break;
                 case IMMMETTI_IN_LIBRERIA:
                     //prima devo aver fatto pesca from plancia!!

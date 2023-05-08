@@ -73,7 +73,6 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                     setChanged();/*NOTIFICO AL SERER che del client ha fatto scelta!!*/
                     notifyObservers(c);
                 }else {
-
                     Choice_my_shelfie pc = askPlayerChoicheMyShelfie();
                     Object argument = askPlayerArgumentMyshelfie(pc);
 
@@ -133,9 +132,12 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
 
     public void update(TurnView model/*risposta dal server*/, Choice arg/*evento che il client remoto ha scelto*/) {
         //System.out.println(arg.toString());
-        //System.out.println(this.player.toString());
-        if(arg.getPlayer().getId() == this.player.getId()){//versione di prova che mi risponde sse sono io che ho fatto scelta
+
+        //USERNAME DEVE ESSERE UNIVOCO
+        if(arg.getPlayer().getUsername().equals( this.player.getUsername())){//versione di prova che mi risponde sse sono io che ho fatto scelta
         //if (model.getMyShelfie().getGame(this.current_game_id).getCurrent_player().equals(this.player)) {//versione corretta
+            System.out.println(this.player.toString());
+
             try {
                 switch (model.getPlayerChoice().getStato()) {
                     case CPU_CHOICE -> {
@@ -146,6 +148,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                             break;
 
                             case JOIN_GAME:
+                                this.player.setId(arg.getPlayer().getId());
                                 //aggiorno la variabile this.current_game_id e current_game
                                 for (int i = 0; i < model.getMyShelfie().getGames().size(); i++) {
                                     boolean is_player_in_this_game = false;
@@ -155,18 +158,18 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                                             break;
                                         }
                                     }
-                                    if (is_player_in_this_game = true){
+                                    if (is_player_in_this_game == true){
                                         switch (model.getMyShelfie().getGames().get(i).getStato()) {//le partite saranno o in attesa o in corso!
                                             case IN_CORSO:
                                                 System.out.println("ti sei unito ad una partita e la partita e' in corso!");
                                                 this.current_game_id = model.getMyShelfie().getGames().get(i).getCurrentGameId();
                                                 this.current_game = model.getMyShelfie().getGames().get(i);
-                                                break;
+                                            break;
                                             case IN_ATTESA://siccome non esiste una partita di un solo giocatore entrero sempre qui!
                                                 System.out.println("ti sei unito ad una partita e la partita e' in attesa di altri giocatori!");
                                                 this.current_game_id = model.getMyShelfie().getGames().get(i).getCurrentGameId();
                                                 this.current_game = model.getMyShelfie().getGames().get(i);
-                                                break;
+                                            break;
                                         }
                                     }
                                 }
