@@ -21,6 +21,9 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
     private final Object lock = new Object();
 
     private Player player;
+    private Game current_game= null;
+
+    private int current_game_id = -1; //verra assegnato dopo aver fatto join_game!!
 
     private State getState() {
         synchronized (lock) {
@@ -34,7 +37,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
             lock.notifyAll();
         }
     }
-
+    //PRIMA ESECUZIONE
     @Override
     public void run() {
         try {
@@ -54,21 +57,35 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                         } catch (InterruptedException e) {
                             System.err.println("Interrupted while waiting for server: " + e.getMessage());
                         }
-
                     }
                 }
-                System.out.println("--- WELCOME TO MY SHELFIE! ---");
-                /* Player chooses */
-                Choice_my_shelfie pc = askPlayerChoicheMyShelfie();
-                Object argument = askPlayerArgumentMyshelfie(pc);
+                if (this.current_game == null) {
+                    System.out.println("--- WELCOME TO MY SHELFIE! ---");
+                    /* Player chooses  POSSIBLE ONLY JOINGAME! */
+                    Choice_my_shelfie pc = Choice_my_shelfie.JOIN_GAME;
+                    Object argument = askPlayerArgumentMyshelfie(pc);
 
-                Choice c =new Choice(pc,player, argument);
+                    Choice c =new Choice(pc,player, argument);
 
-                System.out.println("in attesa del server... ");
+                    System.out.println("in attesa del server... ");
 
-                setState(State.WAITING_FOR_OUTCOME);
-                setChanged();/*NOTIFICO AL SERER che del client ha fatto scelta!!*/
-                notifyObservers(c);
+                    setState(State.WAITING_FOR_OUTCOME);
+                    setChanged();/*NOTIFICO AL SERER che del client ha fatto scelta!!*/
+                    notifyObservers(c);
+                }else {
+
+                    Choice_my_shelfie pc = askPlayerChoicheMyShelfie();
+                    Object argument = askPlayerArgumentMyshelfie(pc);
+
+                    Choice c =new Choice(pc,player, argument);
+
+                    System.out.println("in attesa del server... ");
+
+                    setState(State.WAITING_FOR_OUTCOME);
+                    setChanged();/*NOTIFICO AL SERER che del client ha fatto scelta!!*/
+                    notifyObservers(c);
+                }
+
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -87,7 +104,6 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
         }
         return null;
     }
-
     public Choice_my_shelfie askPlayerChoicheMyShelfie() {
         Scanner s = new Scanner(System.in);
         System.out.println("is your turn! Make your choice: ");
@@ -115,55 +131,35 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
         }
     }
 
-    public void update(TurnView model/*risposta dal server*/, Choice arg/*evento che il client ha scelto*/) {
-        try {
-            switch (model.getPlayerChoice().getStato()) {
-                case CPU_CHOICE -> {
-                    Choice_my_shelfie o = model.getPlayerChoice().getChoice();
-                    System.out.println("la scelta che hai fatto e': "+o.toString());
-                    switch (model.getPlayerChoice().getChoice()){
-                        case IMMMETTI_IN_LIBRERIA:
-                            //aggiorno la libreria del client!
-                            this.player.setShelves(model.getCurrentPlayer().getShelves());
-                            break;
+    public void update(TurnView model/*risposta dal server*/, Choice arg/*evento che il client remoto ha scelto*/) {
+        if(arg.getPlayer().equals(this.player)){//versione di prova che mi risponde sse sono io che ho fatto scelta
+        //if (model.getMyShelfie().getGame(this.current_game_id).getCurrent_player().equals(this.player)) {//versione corretta
+            try {
+                switch (model.getPlayerChoice().getStato()) {
+                    case CPU_CHOICE -> {
+                        Choice_my_shelfie o = model.getPlayerChoice().getChoice();
+                        System.out.println("la scelta che hai fatto e': " + o.toString());
+                        switch (model.getPlayerChoice().getChoice()) {
+                            case IMMMETTI_IN_LIBRERIA:
+                                //aggiorno la libreria del client!
+                                this.player.setShelves(model.getMyShelfie().getGame(this.current_game_id).getPlayer(this.player.getId()).getShelves());
+                                break;
 
-                        case JOIN_GAME:
-                        case GET_STATE:
-                            if (
-                                    model.getCurrentGame().getStato() != StatoPartita.IN_CORSO ||
-                                            this.player.getId() != model.getCurrentPlayer().getId()
-                            ) {
-                                System.out.println("aspetta il tuo turno!  "+ model.getCurrentGame().toString() );
+                            case JOIN_GAME:
 
-
-                                try {
-                                    Thread.sleep(1000);
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
-
-                                Choice c =new Choice(Choice_my_shelfie.GET_STATE,player, null);
-
-                                setState(State.WAITING_FOR_OUTCOME);
-                                setChanged();/*NOTIFICO AL SERER che del client ha fatto scelta!!*/
-                                notifyObservers(c);
-                                return;
-                            }
+                            default:
+                                System.err.println("not implemented yet");
+                        }
                     }
+                    default -> System.err.println("errore stato! Ignoring event from " + model.toString() + ": " + arg.toString());
                 }
-                default -> System.err.println("Ignoring event from " + model.toString() + ": " + arg.toString());
-
+            } catch (Exception e) {
+                System.out.println("gioco che ha generato errore: " + model.getMyShelfie().getGame(this.current_game_id).toString());
+                e.printStackTrace();
             }
-        }catch (Exception e){
-            System.out.println("gioco che ha generato errore: "+model.getCurrentGame().toString());
-            e.printStackTrace();
+            System.out.println("il server ha risposto!");
         }
-
-
-        System.out.println("il server ha risposto!");
         this.setState(State.WAITING_FOR_PLAYER);
-
-
     }
 
 

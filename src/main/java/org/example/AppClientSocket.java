@@ -7,10 +7,6 @@ import org.example.view.*;
 import org.example.controller.*;
 import java.rmi.RemoteException;
 
-/**
- * Hello world!
- *
- */
 public class AppClientSocket
 {
     public static void main( String[] args ) throws RemoteException {

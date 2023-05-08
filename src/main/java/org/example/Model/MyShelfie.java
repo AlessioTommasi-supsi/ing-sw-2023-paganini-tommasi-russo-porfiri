@@ -52,4 +52,16 @@ public class MyShelfie implements Serializable {
                 "games=" + games.toString() +
                 '}';
     }
+
+    public ArrayList<Game> getGames() {
+        return games;
+    }
+    public Game getGame(int id_game) {
+        for (int i = 0; i < games.size(); i++) {
+            if (id_game == games.get(i).getCurrent_game_id()){
+                return games.get(i);
+            }
+        }
+        return null;
+    }
 }

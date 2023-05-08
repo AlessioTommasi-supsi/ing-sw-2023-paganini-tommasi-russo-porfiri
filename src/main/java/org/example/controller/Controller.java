@@ -19,17 +19,10 @@ public class Controller {
 
 
 
-    public void update(Client o,Choice arg) {
+    public synchronized void update(Client o,Choice arg) {
         try {
-
-            if (!o.equals(client)) {
-                System.err.println("CLient NON corretto! Discarding notification from " + o);
-                return;
-            }
-
+            
             model.setPlayerChoice(arg);
-            if (arg.getChoice() != Choice_my_shelfie.GET_STATE)
-                System.out.println("hai effettuato la seguente scelta: "+arg.toString());
 
             switch (arg.getChoice()) {
                 case JOIN_GAME:
@@ -37,7 +30,6 @@ public class Controller {
                         model.setMyShelfie(new MyShelfie());
                     }
                     int numero_giocatori = (Integer) arg.getArgument();
-                    model.setGame(model.getMyShelfie().joinGame(numero_giocatori,arg.getPlayer()));
 
 
                 break;
@@ -64,8 +56,6 @@ public class Controller {
             model.errore = e.toString();
         }
 
-        if (arg.getChoice() != Choice_my_shelfie.GET_STATE)
-            System.out.println("Risposta: "+model.toString());
 
         model.NotifyClient();
         model.clear();
