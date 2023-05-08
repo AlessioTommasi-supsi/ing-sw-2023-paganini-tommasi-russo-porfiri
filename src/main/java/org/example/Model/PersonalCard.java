@@ -62,7 +62,7 @@ public class PersonalCard implements Serializable {
      */
 
 
-    public void GsonParse() {
+    public void GsonParse(ArrayList<PersonalCardParser> personalCardParsers) {
         try {
             // create Gson instance
             Gson gson = new Gson();
@@ -73,7 +73,6 @@ public class PersonalCard implements Serializable {
             // convert a JSON string to a User object
             PersonalCardParser[] user = gson.fromJson(reader,PersonalCardParser[].class);
 
-            ArrayList<PersonalCardParser> personalCardParsers = new ArrayList<PersonalCardParser>();
             personalCardParsers.add(user[0]);
             personalCardParsers.add(user[1]);
             personalCardParsers.add(user[2]);

@@ -19,6 +19,7 @@ public abstract class Game implements Serializable {
     private int playerNumber;//numeri di giocatori che ci sono in questa partita!
     private Player dealer;
     private StatoPartita stato;
+    private ArrayList<PersonalCardParser> personalCardDeck = new ArrayList<>();
 
     private int ranking[]=null;
 
