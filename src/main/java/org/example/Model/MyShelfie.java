@@ -9,7 +9,7 @@ public class MyShelfie implements Serializable {
         games = new ArrayList<Game>();
     }
 
-    public Game joinGame(int intPlayerNumber, Player p ) throws Exception{
+    public void joinGame(int intPlayerNumber, Player p ) throws Exception{
         //controllo che il player non sia gia attivo in qualche altra partita
         for (Game game: games) {
             switch (game.getStato()){
@@ -29,7 +29,6 @@ public class MyShelfie implements Serializable {
                 case IN_ATTESA:
                     if (game.getPlayerNumber() == intPlayerNumber) {
                         game.addPlayer(p);
-                        return game;
                     }
                     break;
             }
@@ -40,10 +39,21 @@ public class MyShelfie implements Serializable {
 
         if (i == games.size()) {
             //g=new Game(intPlayerNumber, p);
-
+            switch (intPlayerNumber){
+                case 2:
+                    g=new GameTwoPlayers(intPlayerNumber,p);
+                break;
+                case 3:
+                    g=new GameThreePlayers(intPlayerNumber, p);
+                break;
+                case 4:
+                    g=new GameFourPlayers(intPlayerNumber, p);
+                break;
+                default:
+                    throw new IllegalArgumentException("numero di giocatori non consentito!");
+            }
             games.add(g);
         }
-        return g;
     }
 
     @Override

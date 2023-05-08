@@ -29,7 +29,7 @@ public abstract class Game implements Serializable {
         this.dealer =mazziere;
         players= new ArrayList<Player>();
         rank= new ArrayList<Ranking>();
-
+        this.current_game_id = Globals.increment_Game_id();
         players.add(mazziere);
         this.board = new Board();
     }

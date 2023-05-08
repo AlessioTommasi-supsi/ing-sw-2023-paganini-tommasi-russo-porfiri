@@ -21,7 +21,7 @@ public class Controller {
 
     public synchronized void update(Client o,Choice arg) {
         try {
-            
+
             model.setPlayerChoice(arg);
 
             switch (arg.getChoice()) {
@@ -30,7 +30,7 @@ public class Controller {
                         model.setMyShelfie(new MyShelfie());
                     }
                     int numero_giocatori = (Integer) arg.getArgument();
-
+                    model.getMyShelfie().joinGame(numero_giocatori,arg.getPlayer());
 
                 break;
                 case IMMMETTI_IN_LIBRERIA:

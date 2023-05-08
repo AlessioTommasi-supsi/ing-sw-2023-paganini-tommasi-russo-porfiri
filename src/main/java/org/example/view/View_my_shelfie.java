@@ -143,9 +143,25 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                             case IMMMETTI_IN_LIBRERIA:
                                 //aggiorno la libreria del client!
                                 this.player.setShelves(model.getMyShelfie().getGame(this.current_game_id).getPlayer(this.player.getId()).getShelves());
-                                break;
+                            break;
 
                             case JOIN_GAME:
+                                //aggiorno la variabile this.current_game_id  e current_game
+                                for (int i = 0; i < model.getMyShelfie().getGames().size(); i++) {
+                                    if (model.getMyShelfie().getGames().get(i).getPlayers().contains(player)) {
+                                         switch(model.getMyShelfie().getGames().get(i).getStato() ) {//le partite saranno o in attesa o in corso!
+                                             case IN_CORSO:
+                                                 System.out.println("ti sei unito ad una partita e la partita e' in corso!");
+                                             break;
+                                             case IN_ATTESA:
+                                                 System.out.println("ti sei unito ad una partita e la partita e' in attesa di altri giocatori");
+                                             break;
+
+                                        }
+                                    }
+
+                                }
+                                //stampo i dati della partita a cui mi sono unito.
 
                             default:
                                 System.err.println("not implemented yet");

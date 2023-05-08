@@ -22,7 +22,7 @@ public class Player implements Serializable {
     }
 
     public Player(String username) {
-        this.id = new Random().nextInt();
+        this.id = Globals.incrementPlayer_id();
         this.username = username;
         this.yourTurn = false;
         this.shelves = new Shelves();
