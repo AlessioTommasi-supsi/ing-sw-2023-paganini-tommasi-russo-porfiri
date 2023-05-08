@@ -94,16 +94,17 @@ public class Player implements Serializable {
     }
 
     public int calculateCommonPoints() {
-
+        return -1;
     }
 
     public int calculatePersonalPoints() {
         //TODO
-        return pC.checkPersonalCard(new PersonalCardParser(), this);
+        //return pC.checkPersonalCard(new PersonalCardParser(), this);
+        return -1;
     }
 
     public int calculateAdjacentPoints() {
-
+        return -1;
     }
 
     public void calcOverallScore() {

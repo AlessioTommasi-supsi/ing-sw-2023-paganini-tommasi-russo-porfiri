@@ -3,6 +3,8 @@ package org.example.Model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * I giocatori entrano sequenzialmente all'interno della partita. La posizione del giocatore in partita è data in base all'ordine di entrata, quindi la posizione è l'indice dell'array
@@ -18,6 +20,7 @@ public abstract class Game implements Serializable {
     private ArrayList<Player> players;//ordinato in base all ordine nel quale i giocaori si sono uniti alla patrita e quindi anche in ordine di chi tocca a giocare!
     private int playerNumber;//numeri di giocatori che ci sono in questa partita!
     private Player dealer;
+    private StatoPartita stato=StatoPartita.IN_ATTESA;
     private StatoPartita stato;
     private ArrayList<PersonalCardParser> personalCardDeck = new ArrayList<>();
 
@@ -76,7 +79,7 @@ public abstract class Game implements Serializable {
         this.stato = StatoPartita.FINITA;
 
         //calcolo i punti di ogni giocatore e ne faccio il ranking
-        //indice di ranking e endice dei giocatori quando si sono uniti alla partita.
+        //indice di ranking e Indice dei giocatori quando si sono uniti alla partita.
 
         int point[];
 
@@ -157,6 +160,7 @@ public abstract class Game implements Serializable {
         return null;
     }
 
+    /*NON FUNZIONANTE
     public ArrayList setRanking() {
         while(Player p : players){
             p.calcOverallScore();
@@ -171,4 +175,6 @@ public abstract class Game implements Serializable {
 
         this.rank.addAll(players);
     }
+
+     */
 }

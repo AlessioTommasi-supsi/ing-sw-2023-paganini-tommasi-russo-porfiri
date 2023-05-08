@@ -50,10 +50,10 @@ public class Choice implements Serializable {
     @Override
     public String toString() {
         return "Choice{" +
-                "choiche=" + choice +
+                "choiche=" + choice.toString() +
                 ", stato=" + stato +
-                ", argument=" + argument +
-                ", player=" + player +
+                ", argument=" + argument.toString() +
+                ", player=" + player.toString() +
                 '}';
     }
 }

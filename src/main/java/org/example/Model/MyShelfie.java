@@ -30,7 +30,7 @@ public class MyShelfie implements Serializable {
                     if (game.getPlayerNumber() == intPlayerNumber) {
                         game.addPlayer(p);
                     }
-                    break;
+                break;
             }
             i++;
         }
@@ -68,7 +68,7 @@ public class MyShelfie implements Serializable {
     }
     public Game getGame(int id_game) {
         for (int i = 0; i < games.size(); i++) {
-            if (id_game == games.get(i).getCurrent_game_id()){
+            if (id_game == games.get(i).getCurrentGameId()){
                 return games.get(i);
             }
         }
