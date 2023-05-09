@@ -176,6 +176,42 @@ public abstract class Game implements Serializable {
 
     }
 
+    public void drawCommon() {
+        Random rand = new Random();
+        int index1 = rand.nextInt(12);
+        if((index1 == 0)
+                || (index1 == 4)
+                || (index1 == 6)
+                || (index1 == 1)
+                || (index1 == 9)) {
+            common1 = new CommonCardForm(0, index1);
+        } else if ((index1 == 5) || (index1 == 7)) {
+            common1 = new CommonCardRowColumn(0, index1);
+        } else if ((index1 == 3) || (index1 == 8)) {
+            common1 = new CommonCardRowColumnMinMax(0, index1);
+        } else {
+            common1 = new CommonCardPosition(0, index1);
+        }
+        int index2 = rand.nextInt(12);
+        while(index2==index1) {
+            index2 = rand.nextInt(12);
+        }
+        if((index2 == 0)
+                || (index2 == 4)
+                || (index2 == 6)
+                || (index2 == 1)
+                || (index2 == 9)) {
+            common2 = new CommonCardForm(0, index2);
+        } else if ((index2 == 5) || (index2 == 7)) {
+            common2 = new CommonCardRowColumn(0, index2);
+        } else if ((index2 == 3) || (index2 == 8)) {
+            common2 = new CommonCardRowColumnMinMax(0, index2);
+        } else {
+            common2 = new CommonCardPosition(0, index2);
+        }
+    }
+
+
 
     @Override
     public String toString() {
