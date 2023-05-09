@@ -1,12 +1,10 @@
 # Progetto di ingegneria del software
-Groppo GC28 composto DA alessio, emanuele, mattia, giampiero
+
 
 
 <h1 align="center">
   <br>
-  <a href="http://www.amitmerchant.com/electron-markdownify"><img src="https://raw.githubusercontent.com/amitmerchant1990/electron-markdownify/master/app/img/markdownify.png" alt="MyShelfie" width="200"></a>
-  <br>
-  MyShelfie
+    Gruppo GC28 composto DA alessio, emanuele, mattia, giampiero
   <br>
 </h1>
 
@@ -14,13 +12,7 @@ Groppo GC28 composto DA alessio, emanuele, mattia, giampiero
 
 ## Key Features
 
-* LivePreview - Make changes, See changes
-  - Instantly see what your Markdown documents look like in HTML as you create them.
-* Sync Scrolling
-  - While you type, LivePreview will automatically scroll to the current location you're editing.
-* GitHub Flavored Markdown  
-* Syntax highlighting
-* [KaTeX](https://khan.github.io/KaTeX/) Support
+* [download detailed rolebook here!](https://github.com/AlessioTommasi-polimi/ing-sw-2023-paganini-tommasi-russo-porfiri/blob/main/documentation/MyShelfie_Rulebook_ITA.pdf) Support
 * Dark/Light mode
 * Toolbar for basic Markdown formatting
 * Supports multiple cursors
