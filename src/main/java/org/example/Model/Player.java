@@ -114,7 +114,7 @@ public class Player implements Serializable {
         //TODO implementare variabili e metodi per common card
         int points = cC.getPoints();
         if(points > 3) {
-            cC.updatePoints(points - 2);
+            updatePoints(points - 2);
             return points;
         }
         return 0;

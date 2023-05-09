@@ -8,8 +8,8 @@ import java.util.List;
 
 public class CommonCardPosition extends CommonCard implements Serializable {
 
-    public CommonCardPosition(int points, int index) {
-        super(points, index);
+    public CommonCardPosition(int index) {
+        super(index);
     }
 
 

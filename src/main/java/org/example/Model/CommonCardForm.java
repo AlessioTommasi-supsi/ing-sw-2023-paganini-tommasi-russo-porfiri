@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 public class CommonCardForm extends CommonCard implements Serializable {
 
-    public CommonCardForm(int points, int index) {
-        super(points, index);
+    public CommonCardForm(int index) {
+        super(index);
     }
 
     @Override

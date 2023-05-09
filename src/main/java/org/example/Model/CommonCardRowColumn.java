@@ -6,8 +6,8 @@ import java.util.List;
 
 public class CommonCardRowColumn extends CommonCard implements Serializable {
 
-    public CommonCardRowColumn(int points, int index) {
-        super(points, index);
+    public CommonCardRowColumn(int index) {
+        super(index);
     }
 
     @Override

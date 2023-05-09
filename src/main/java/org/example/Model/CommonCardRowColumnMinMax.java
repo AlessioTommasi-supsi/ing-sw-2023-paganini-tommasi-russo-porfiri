@@ -6,8 +6,8 @@ import java.util.List;
 
 public class CommonCardRowColumnMinMax extends CommonCard implements Serializable {
 
-    public CommonCardRowColumnMinMax(int points, int index) {
-        super(points, index);
+    public CommonCardRowColumnMinMax(int index) {
+        super(index);
     }
 
 

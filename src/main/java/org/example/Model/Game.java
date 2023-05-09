@@ -184,30 +184,29 @@ public abstract class Game implements Serializable {
                 || (index1 == 6)
                 || (index1 == 1)
                 || (index1 == 9)) {
-            common1 = new CommonCardForm(0, index1);
+            common1 = new CommonCardForm(index1);
         } else if ((index1 == 5) || (index1 == 7)) {
-            common1 = new CommonCardRowColumn(0, index1);
+            common1 = new CommonCardRowColumn(index1);
         } else if ((index1 == 3) || (index1 == 8)) {
-            common1 = new CommonCardRowColumnMinMax(0, index1);
+            common1 = new CommonCardRowColumnMinMax(index1);
         } else {
-            common1 = new CommonCardPosition(0, index1);
+            common1 = new CommonCardPosition(index1);
         }
         int index2 = rand.nextInt(12);
         while(index2==index1) {
             index2 = rand.nextInt(12);
         }
-        if((index2 == 0)
-                || (index2 == 4)
+        if((index2 == 0)  || (index2 == 4)
                 || (index2 == 6)
                 || (index2 == 1)
                 || (index2 == 9)) {
-            common2 = new CommonCardForm(0, index2);
+            common2 = new CommonCardForm(index2);
         } else if ((index2 == 5) || (index2 == 7)) {
-            common2 = new CommonCardRowColumn(0, index2);
+            common2 = new CommonCardRowColumn(index2);
         } else if ((index2 == 3) || (index2 == 8)) {
-            common2 = new CommonCardRowColumnMinMax(0, index2);
+            common2 = new CommonCardRowColumnMinMax(index2);
         } else {
-            common2 = new CommonCardPosition(0, index2);
+            common2 = new CommonCardPosition(index2);
         }
     }
 
@@ -240,21 +239,25 @@ public abstract class Game implements Serializable {
 
     
 
-    public void updatePointsCommon(int countPoints, boolean objectiveAchieved, int numOfPlayer, Player player) {
+    public void updatePointsCommon() {
         int pointsToSub = 0;  //punti da sottrarre a ogni completamento
-        if ((numOfPlayer == 4) || (numOfPlayer == 3)) {
+        if ((this.playerNumber == 4) || (this.playerNumber == 3)) {
             pointsToSub = 2;
-        } else if (numOfPlayer == 2) {
+        } else if (this.playerNumber == 2) {
             pointsToSub = 4;
         }
-        if (!player.getIsCommonCard1Completed()) {   //se il player completa l'obiettivo aggiungi i punti altrimenti no
-            if (objectiveAchieved) {
-                countPoints = countPoints + this.pointInitialization1;   //aggiorna i punti
+        if (!currentPlayer.getIsCommonCard1Completed()) {
+            common1.executeAlgorithm(currentPlayer);
+            //se il player completa l'obiettivo aggiungi i punti altrimenti no
+            if (common1.isObjectiveAlreadyCompleted()) {
+                currentPlayer.getScore() += this.pointInitialization1;   //aggiorna i punti
                 pointInitialization1 = pointInitialization1 - pointsToSub; // sottrai i punti
             }
         }
-        if (!player.getIsCommonCard2Completed()) {
-            if (objectiveAchieved) {
+        if (!currentPlayer.getIsCommonCard2Completed()) {
+            common2.executeAlgorithm(currentPlayer);
+
+            if (common2.isObjectiveAlreadyCompleted()) {
                 countPoints = this.pointInitialization2;
                 pointInitialization2 = pointInitialization2 - pointsToSub;
             }
