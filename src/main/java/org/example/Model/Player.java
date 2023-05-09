@@ -109,37 +109,57 @@ public class Player implements Serializable {
     }
 
     public int calculateAdjacentPoints() {
-        int counter;
-        boolean stopCycle;
-        List<Integer> validGroups = new ArrayList<>();
-        TileObj prevTile = null;
+        int tilesCounter;
+        int totalPoints = 0;
+        boolean[][] visited = new boolean[6][5];
 
-        for (int i = 0; i < 6; i++) {
-            counter = 0;
-            stopCycle = false;
-
-            for (int j = 0; j < 5 && !stopCycle; j++) {
-                if (!Shelves.TilePositionShelves[i][j].occupied) {
-                    continue;
-                } else if (counter == 0) {
-                    prevTile = Shelves.TilePositionShelves[i][j].TileObj;
-                    counter++;
+        // Scansione delle tessere nello Shelf
+        for (int row = 0; row < 6; row++) {
+            for (int col = 0; col < 5; col++) {
+                if(visited[row][col] == true) {
                     continue;
                 }
-
-                if (Shelves.TilePositionShelves[i][j].TileObj.type.equals(prevTile.type)) {
-                    counter++;
+                tilesCounter = calculateGroupCounter(row, col, visited, 0, true, 0, shelves.tilePosition[row][col].tileInSlot.type);
+                if (tilesCounter == 3) {
+                    return 2;
+                } else if (tilesCounter == 4) {
+                    return 3;
+                } else if (tilesCounter == 5) {
+                    return 5;
+                } else if (tilesCounter >= 6) {
+                    return 8;
                 } else {
-                    counter = 0;
-                }
-
-                if (counter > 0) {
-                    validGroups.add(counter);
+                    return 0;
                 }
             }
         }
+    }
 
-        //TODO La parte del calcolo punteggio. Verificare fattibilità algoritmo
+    private int calculateGroupCounter(int row, int col, boolean[][] visited, int counter, boolean starter, int totCounter, TileType prevType) {
+        if (row < 0 || row >= 5 || col < 0 || col >= 6 || visited[row][col] || shelves.tilePositions[row][col].tileInSlot.type.equals(prevType)) {
+            return counter;
+        }
+
+        visited[row][col] = true;
+        counter ++;
+        TileObj currTile = shelves[row][col];
+
+        if (row - 1 >= 0 && shelves.tilePositions[row - 1][col] != null && shelves.tilePositions[row - 1][col].type.equals(currentTile.type)) {
+            totCounter += calculateGroupScore(row - 1, col, visited, counter, false, totCounter, prevType);
+        }
+        if (row + 1 < shelf.length && shelves.tilePositions[row + 1][col] != null && shelves.tilePositions[row + 1][col].type.equals(currentTile.type)) {
+            totCounter += calculateGroupScore(row + 1, col, visited, counter, false, totCounter, prevType);
+        }
+        if (col - 1 >= 0 && shelves.tilePositions[row][col - 1] != null && shelves.tilePositions[row][col - 1].type.equals(currentTile.type)) {
+            totCounter += calculateGroupScore(row, col - 1, visited, counter, false, totCounter, prevType);
+        }
+        if (col + 1 < shelf[row].length && shelves.tilePositions[row][col + 1] != null && shelves.tilePositions[row][col + 1].type.equals(currentTile.type)) {
+            totCounter += calculateGroupScore(row, col + 1, visited, counter, false, totCounter, prevType);
+        }
+
+        if (starter == true) {
+            return totCounter;
+        }
     }
 
     public void calcOverallScore() {
