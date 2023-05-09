@@ -3,8 +3,6 @@ package org.example.Model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 
 /**
  * I giocatori entrano sequenzialmente all'interno della partita. La posizione del giocatore in partita è data in base all'ordine di entrata, quindi la posizione è l'indice dell'array
@@ -15,7 +13,6 @@ public abstract class Game implements Serializable {
 
     private Player currentPlayer= null;
     private int currentGameId;
-
     private Board board;
     private ArrayList<Player> players;//ordinato in base all ordine nel quale i giocaori si sono uniti alla patrita e quindi anche in ordine di chi tocca a giocare!
     private int playerNumber;//numeri di giocatori che ci sono in questa partita!
@@ -24,9 +21,7 @@ public abstract class Game implements Serializable {
     private ArrayList<PersonalCardParser> personalCardDeck = new ArrayList<>();
     private int pointInitialization1 = 8;
     private int pointInitialization2 = 8;
-
     private int ranking[]=null;
-
     private ArrayList<Ranking> rank;
 
     public Game(int playerNumber, Player mazziere) {
@@ -37,6 +32,8 @@ public abstract class Game implements Serializable {
         this.currentGameId = Globals.increment_Game_id();
         players.add(mazziere);
         this.board = new Board();
+        buildBoard();
+
         //currentplayer viene detto solo quando la partita passa da in attesa ad in corso!
 
     }
@@ -141,7 +138,7 @@ public abstract class Game implements Serializable {
         this.board.addTiles();
     }
 
-    public abstract void BuildBoard();  //Factory Method
+    public abstract void buildBoard();  //Factory Method
 
     public Player getCurrentPlayer() {
         return currentPlayer;

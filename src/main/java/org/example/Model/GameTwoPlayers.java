@@ -8,7 +8,7 @@ public class GameTwoPlayers extends Game implements Serializable {
     }
 
     @Override
-    public void BuildBoard() {
+    public void buildBoard() {
         return;
     }
 
