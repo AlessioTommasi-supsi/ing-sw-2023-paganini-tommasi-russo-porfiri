@@ -138,7 +138,7 @@ public class Board implements Serializable {
     }
 
 
-    public boolean BoardIsEmpty(){
+    public boolean boardIsEmpty(){
         for(TilePositionBoard t : this.placements){
             if(t.isOccupied()){
                 return false;
@@ -149,10 +149,10 @@ public class Board implements Serializable {
 
 
     //la Board va ripristinata in due casi: se contiene solo tessere isolate, oppure se non contiene alcuna tessera.
-    public boolean BoardNeedsRestore(){
+    public boolean boardNeedsRestore(){
         int x,y;
 
-        if(BoardIsEmpty()){
+        if(boardIsEmpty()){
             return true;
         }
         
@@ -174,7 +174,7 @@ public class Board implements Serializable {
 
 
     public void restoreBoard(){
-        if(BoardNeedsRestore()){
+        if(boardNeedsRestore()){
             addTiles();
         }
     }
