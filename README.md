@@ -12,12 +12,8 @@
 
 ## Key Features
 
-* [download detailed rolebook here!](https://github.com/AlessioTommasi-polimi/ing-sw-2023-paganini-tommasi-russo-porfiri/blob/main/documentation/MyShelfie_Rulebook_ITA.pdf) Support
-* Dark/Light mode
-* Toolbar for basic Markdown formatting
-* Supports multiple cursors
-* Save the Markdown preview as PDF
-* Emoji support in preview :tada:
+* [download detailed rolebook here!](https://github.com/AlessioTommasi-polimi/ing-sw-2023-paganini-tommasi-russo-porfiri/blob/main/documentation/MyShelfie_Rulebook_ITA.pdf)
+
 * App will keep alive in tray for quick usage
 * Full screen mode
   - Write distraction free.
