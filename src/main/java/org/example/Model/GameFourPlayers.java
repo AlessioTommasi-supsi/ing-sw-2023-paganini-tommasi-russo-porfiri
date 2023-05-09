@@ -9,7 +9,7 @@ public class GameFourPlayers extends Game implements Serializable {
     }
 
     @Override
-    public void BuildBoard() {
+    public void buildBoard() {
         ArrayList<TilePositionBoard> tempP = new ArrayList<TilePositionBoard>();
         tempP.add(new TilePositionBoard(0,5));
         tempP.add(new TilePositionBoard(2,2));

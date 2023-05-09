@@ -7,6 +7,7 @@ public class Player implements Serializable {
 
     private int id;
     private String username;
+    //USERNAME DEVE ESSERE UNIVOCO
     private boolean yourTurn;
     private Shelves shelves;
     private PersonalCard pC;
@@ -81,6 +82,22 @@ public class Player implements Serializable {
         this.shelves = shelves;
     }
 
+    private void addPointsPersonal(int counterCondition, int countPoints) {         //in base a quante condizioni si soddisfanno aggiungi tot punti
+        if ((counterCondition == 1) || (counterCondition == 2)) {
+            countPoints++;                                                  //incrementi dei valori scritti sulle personalCard, vanno chiamati solo quando viene aggiunta una condizione soddisfatta
+        } else if ((counterCondition == 3) || (counterCondition == 4)) {
+            countPoints = countPoints + 2;
+        } else if ((counterCondition == 5) || (counterCondition == 6)) {
+            countPoints = countPoints + 3;
+        }
+    }
+
+    public void updatePoints(int counterConditionBefore, int counterConditionAfter, int countPoints) {
+        if (counterConditionAfter == counterConditionBefore + 1) {             //controllo se il numero di condizioni è aumentato, se si aggiungo
+            addPointsPersonal(counterConditionAfter, countPoints);
+        }
+    }
+
     @Override
     public String toString() {
         return "Player{" +
@@ -105,13 +122,20 @@ public class Player implements Serializable {
 
     public int calculatePersonalPoints() {
         //TODO funzionamento del parser?
-        return pC.checkPersonalCard(new PersonalCardParser(), this);
+        return -1;
+        //return pC.checkPersonalCard(new PersonalCardParser(), this);
     }
 
     public int calculateAdjacentPoints() {
         int tilesCounter;
         int totalPoints = 0;
         boolean[][] visited = new boolean[6][5];
+
+        for (int row = 0; rows < 6; rows++) {
+            for (int col = 0; col < 5; col++) {
+                visited[row][col] = false;
+            }
+        }
 
         // Scansione delle tessere nello Shelf
         for (int row = 0; row < 6; row++) {

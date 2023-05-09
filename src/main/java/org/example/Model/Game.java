@@ -11,17 +11,17 @@ import java.util.Arrays;
  */
 public abstract class Game implements Serializable {
 
-    private Player currentPlayer;
+    private Player currentPlayer= null;
     private int currentGameId;
-
     private Board board;
     private ArrayList<Player> players;//ordinato in base all ordine nel quale i giocaori si sono uniti alla patrita e quindi anche in ordine di chi tocca a giocare!
     private int playerNumber;//numeri di giocatori che ci sono in questa partita!
     private Player dealer;
-    private StatoPartita stato;
-
+    private StatoPartita stato=StatoPartita.IN_ATTESA;
+    private ArrayList<PersonalCardParser> personalCardDeck = new ArrayList<>();
+    private int pointInitialization1 = 8;
+    private int pointInitialization2 = 8;
     private int ranking[]=null;
-
     private ArrayList<Ranking> rank;
 
     public Game(int playerNumber, Player mazziere) {
@@ -32,6 +32,10 @@ public abstract class Game implements Serializable {
         this.currentGameId = Globals.increment_Game_id();
         players.add(mazziere);
         this.board = new Board();
+        buildBoard();
+
+        //currentplayer viene detto solo quando la partita passa da in attesa ad in corso!
+
     }
 
     public Board getInstanceBoard() {
@@ -59,6 +63,7 @@ public abstract class Game implements Serializable {
 
         if (this.playerNumber == this.players.size()) {
             this.stato = StatoPartita.IN_CORSO;
+            this.currentPlayer = this.players.get(0);//il primo giocatore e' quello che inizia!
         }
 
     }
@@ -75,7 +80,7 @@ public abstract class Game implements Serializable {
         this.stato = StatoPartita.FINITA;
 
         //calcolo i punti di ogni giocatore e ne faccio il ranking
-        //indice di ranking e endice dei giocatori quando si sono uniti alla partita.
+        //indice di ranking e Indice dei giocatori quando si sono uniti alla partita.
 
         int point[];
 
@@ -133,7 +138,7 @@ public abstract class Game implements Serializable {
         this.board.addTiles();
     }
 
-    public abstract void BuildBoard();  //Factory Method
+    public abstract void buildBoard();  //Factory Method
 
     public Player getCurrentPlayer() {
         return currentPlayer;
@@ -156,6 +161,28 @@ public abstract class Game implements Serializable {
         return null;
     }
 
+    public void updatePointsCommon(int countPoints, boolean objectiveAchieved, int numOfPlayer, Player player) {
+        int pointsToSub = 0;  //punti da sottrarre a ogni completamento
+        if ((numOfPlayer == 4) || (numOfPlayer == 3)) {
+            pointsToSub = 2;
+        } else if (numOfPlayer == 2) {
+            pointsToSub = 4;
+        }
+        if (!player.getIsCommonCard1Completed()) {   //se il player completa l'obiettivo aggiungi i punti altrimenti no
+            if (objectiveAchieved) {
+                countPoints = countPoints + this.pointInitialization1;   //aggiorna i punti
+                pointInitialization1 = pointInitialization1 - pointsToSub; // sottrai i punti
+            }
+        }
+        if (!player.getIsCommonCard2Completed()) {
+            if (objectiveAchieved) {
+                countPoints = this.pointInitialization2;
+                pointInitialization2 = pointInitialization2 - pointsToSub;
+            }
+        }
+    }
+
+    /*NON FUNZIONANTE
     public ArrayList setRanking() {
         while(Player p : players){
             p.calcOverallScore();
@@ -170,4 +197,6 @@ public abstract class Game implements Serializable {
 
         this.rank.addAll(players);
     }
+
+     */
 }

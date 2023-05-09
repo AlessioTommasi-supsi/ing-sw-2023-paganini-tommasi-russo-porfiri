@@ -1,9 +1,16 @@
 package org.example.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommonCardRowColumnMinMax {
+public class CommonCardRowColumnMinMax extends CommonCard implements Serializable {
+    private int points;
+    private int index;
+    public CommonCardRowColumnMinMax(int points, int index) {
+        this.points = points;
+        this.index = index;
+    }
     public boolean executeAlgorithm(int index, Player player) {
         int counterShape = 0;
         boolean objectiveAchieved = false;
