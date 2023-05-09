@@ -3,16 +3,16 @@ package org.example.Model;
 import java.io.Serializable;
 
 public class CommonCardForm extends CommonCard implements Serializable {
-    private int points;
-    private int index;
+
     public CommonCardForm(int points, int index) {
-        this.points = points;
-        this.index = index;
+        super(points, index);
     }
-    public boolean executeAlgorithm(int index, Player player) {
+
+    @Override
+    public boolean executeAlgorithm(Player player) {
         boolean objectiveAchieved = false;
         int counterShape = 0;
-        switch (index) {
+        switch (getIndex()) {
             case 1 -> {
                 if (player.getShelves().getTilePosition(0, 0) != null) {
                     TileType typeTile = player.getShelves().getTilePosition(0, 0).getTile().getType();

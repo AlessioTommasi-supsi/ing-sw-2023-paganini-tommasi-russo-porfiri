@@ -31,4 +31,17 @@ public class GameFourPlayers extends Game implements Serializable {
 
         setBoard(tempP);
     }
+
+
+    @Override
+    public void defineCommonCardScores() {
+        int[] tempScores = new int[5];
+        tempScores[0] = 0;
+        for (int i = 1; i < 5; i++) {
+            tempScores[i] = i*2;
+        }
+        setCommonCardScores(tempScores);
+    }
+
+
 }

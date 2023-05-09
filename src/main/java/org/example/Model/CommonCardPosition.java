@@ -7,18 +7,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CommonCardPosition extends CommonCard implements Serializable {
-    private int points;
-    private int index;
+
     public CommonCardPosition(int points, int index) {
-        this.points = points;
-        this.index = index;
+        super(points, index);
     }
 
-    public boolean executeAlgorithm(int index, Player player) {
+
+    @Override
+    public boolean executeAlgorithm(Player player) {
         boolean objectiveAchieved = false;
         int counterTile = 0;
         int counterShape = 0;
-        switch (index) {
+        switch (getIndex()) {
             case 2 -> {
                 if (player.getShelves().getTilePosition(0, 0) != null) {
                     TileType tileType = player.getShelves().getTilePosition(0,0).getTile().getType();

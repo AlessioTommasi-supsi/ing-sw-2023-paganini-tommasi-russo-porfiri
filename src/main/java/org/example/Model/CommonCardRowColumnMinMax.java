@@ -5,16 +5,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CommonCardRowColumnMinMax extends CommonCard implements Serializable {
-    private int points;
-    private int index;
+
     public CommonCardRowColumnMinMax(int points, int index) {
-        this.points = points;
-        this.index = index;
+        super(points, index);
     }
-    public boolean executeAlgorithm(int index, Player player) {
+
+
+    @Override
+    public boolean executeAlgorithm(Player player) {
         int counterShape = 0;
         boolean objectiveAchieved = false;
-        switch(index) {
+        switch(getIndex()) {
             case 8 -> {
                 for (int i = 0; i<6;i++) {
                     List<TileType> tileTypes = new ArrayList<TileType>();

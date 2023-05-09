@@ -3,6 +3,7 @@ package org.example.Model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 /**
  * I giocatori entrano sequenzialmente all'interno della partita. La posizione del giocatore in partita è data in base all'ordine di entrata, quindi la posizione è l'indice dell'array
@@ -23,6 +24,10 @@ public abstract class Game implements Serializable {
     private int pointInitialization2 = 8;
     private int ranking[]=null;
     private ArrayList<Ranking> rank;
+    private int[] commonCardScores;
+    private CommonCard common1;
+    private CommonCard common2;
+
 
     public Game(int playerNumber, Player mazziere) {
         this.playerNumber = playerNumber;
@@ -54,6 +59,69 @@ public abstract class Game implements Serializable {
         return new Player(dealer);
     }
 
+
+    public int[] getCommonCardScores() {
+        return commonCardScores;
+    }
+
+    public void setCommonCardScores(int[] commonCardScores) {
+        this.commonCardScores = commonCardScores;
+    }
+
+    public CommonCard getCommon1() {
+        return common1;
+    }
+
+    public void setCommon1(CommonCard common1) {
+        this.common1 = common1;
+    }
+
+    public CommonCard getCommon2() {
+        return common2;
+    }
+
+    public void setCommon2(CommonCard common2) {
+        this.common2 = common2;
+    }
+
+    public StatoPartita getStato() {
+        return stato;
+    }
+
+    public ArrayList<Ranking> getRanking() throws Exception{
+        if(this.stato != StatoPartita.FINITA){
+            throw new Exception("non puoi prendere i punteggi perche la partita non e'ancora finita!");
+        }
+        return new ArrayList<Ranking>(rank);
+    }
+
+    public ArrayList<Ranking> getRank() {
+        return rank;
+    }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public int getCurrentGameId() {
+        return currentGameId;
+    }
+
+    public Board getBoard() {
+        return new Board(board);
+    }
+
+    public Player getPlayer(int id_player) {
+        for (int i = 0; i < players.size(); i++) {
+            if (id_player == players.get(i).getId()){
+                return players.get(i);
+            }
+        }
+        return null;
+    }
+
+
+
     public void addPlayer(Player p)throws Exception {
         if (this.stato != StatoPartita.IN_ATTESA){
             throw new Exception("non si possono aggiungere giocatori se la partita non e in attesa!");
@@ -68,14 +136,12 @@ public abstract class Game implements Serializable {
 
     }
 
-    public StatoPartita getStato() {
-        return stato;
-    }
-
 
     public void start_partita(){
         this.stato = StatoPartita.IN_CORSO;
     }
+
+
     public void end(){
         this.stato = StatoPartita.FINITA;
 
@@ -110,12 +176,6 @@ public abstract class Game implements Serializable {
 
     }
 
-    public ArrayList<Ranking> getRanking() throws Exception{
-        if(this.stato != StatoPartita.FINITA){
-            throw new Exception("non puoi prendere i punteggi perche la partita non e'ancora finita!");
-        }
-        return new ArrayList<Ranking>(rank);
-    }
 
     @Override
     public String toString() {
@@ -129,37 +189,20 @@ public abstract class Game implements Serializable {
                 ", rank=" + rank +
                 '}';
     }
-    public ArrayList<Ranking> getRank() {
-        return rank;
-    }
+
 
     public void setBoard(ArrayList<TilePositionBoard> extP){
         this.board.setPlacements(extP);
         this.board.addTiles();
     }
 
+
     public abstract void buildBoard();  //Factory Method
 
-    public Player getCurrentPlayer() {
-        return currentPlayer;
-    }
+    public abstract void defineCommonCardScores();
 
-    public int getCurrentGameId() {
-        return currentGameId;
-    }
 
-    public Board getBoard() {
-        return new Board(board);
-    }
-
-    public Player getPlayer(int id_player) {
-        for (int i = 0; i < players.size(); i++) {
-            if (id_player == players.get(i).getId()){
-                return players.get(i);
-            }
-        }
-        return null;
-    }
+    
 
     public void updatePointsCommon(int countPoints, boolean objectiveAchieved, int numOfPlayer, Player player) {
         int pointsToSub = 0;  //punti da sottrarre a ogni completamento
@@ -181,6 +224,9 @@ public abstract class Game implements Serializable {
             }
         }
     }
+
+
+
 
     /*NON FUNZIONANTE
     public ArrayList setRanking() {

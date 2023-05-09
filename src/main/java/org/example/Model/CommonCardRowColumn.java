@@ -5,16 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CommonCardRowColumn extends CommonCard implements Serializable {
-    private int points;
-    private int index;
+
     public CommonCardRowColumn(int points, int index) {
-        this.points = points;
-        this.index = index;
+        super(points, index);
     }
-    public boolean executeAlgortihm(int index, Player player) {
+
+    @Override
+    public boolean executeAlgorithm(Player player) {
         int counterShape = 0;
         boolean objectiveAchieved = false;
-        switch(index) {
+        switch(getIndex()) {
             case 7 -> {
                 for(int i = 0; i < 6; i++) {
                     List<TileType> tileTypes = new ArrayList<TileType>();
