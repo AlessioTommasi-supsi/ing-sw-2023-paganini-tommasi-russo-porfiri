@@ -10,7 +10,7 @@ Groppo GC28 composto DA alessio, emanuele, mattia, giampiero
   <br>
 </h1>
 
-![alt text](https://github.com/AlessioTommasi-polimi/blob/main/ing-sw-2023-paganini-tommasi-russo-porfiri/ElementiGrafici/Publisher_material/Title.png?raw=true)
+![alt text](https://github.com/AlessioTommasi-polimi/ing-sw-2023-paganini-tommasi-russo-porfiri/blob/main/ElementiGrafici/Publisher_material/Title.png?raw=true)
 
 ## Key Features
 
