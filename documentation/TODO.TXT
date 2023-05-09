@@ -1,0 +1,56 @@
+# progetto
+Groppo GC28 composto DA alessio, emanuele, mattia, giampiero
+
+X DOMENICA
+--> IMPLEMENTARE MODEL
+
+->ALESSIO	
+	MYSHELFIE 
+	GAME 
+	BOARD
+	RANKING
+	STATO_PARTITA
+
+->GIAMPIERO
+	PLAYER
+	SHELF
+    TILE_POSITION_SHELVES
+
+	COMMON_CARD
+	COMMON DECK
+	PERSONAL_CARD
+	PERSONAL_DECK
+
+->EMANUELE
+	TYLE_TYPE
+	TYLE_POSITION_BOARD
+	TileObjBag
+	TILE OBJ
+	-BOARD: PARTE DI CHECK SE UNA TESSERA E' RIMOVIBILE
+->FARE CASI DI TEST DEL MODEL
+
+
+------------------------------------------------------------------------------------------------------------------------
+- createPlayer
+- createBoard
+- createShelves
+- createPDeck
+- createCDeck
++ initializeGame ( List<Player> )
+
+Si passa un comparatore per la TreeMap, che contiene id giocatore e punteggio del giocatore.
+Si può implementare un metodo nel controller che mi consente l'ordinamento runtime
+(Al contrario della classe specifica)
+
+Mancano i due costruttori in TilePositionBoard
+Anche in game and TilePositionShelves + getX getY in tilepositionshelves
+
+Singleton per istanza singola di myshelfie
+
+Singleton all'interno di ogni singolo controller
+
+Devo fare un update in cui all'interno gestisco l'eccezione del model con un try catch
+
+
+IDEA (?)
+board passo il numero di arraylist dei giocatori, uso singleton e factory
