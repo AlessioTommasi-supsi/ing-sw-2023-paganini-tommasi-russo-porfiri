@@ -10,7 +10,7 @@ Groppo GC28 composto DA alessio, emanuele, mattia, giampiero
   <br>
 </h1>
 
-![My Image](ElementiGrafici/Publisher_material/Title.png)
+![My Image](./ElementiGrafici/Publisher_material/Title.png)
 
 ## Key Features
 
