@@ -12,6 +12,10 @@ public class Player implements Serializable {
     private Shelves shelves;
     private PersonalCard pC;
     private int score;
+    private boolean isCommonCard1Completed = false;
+    private boolean isCommonCard2Completed = false;
+
+
 
     public Player(Player p) {
         this.id = p.getId();
@@ -29,6 +33,14 @@ public class Player implements Serializable {
         this.shelves = new Shelves();
         this.pC = null;
         this.score = 0;
+    }
+
+    public boolean isCommonCard1Completed() {
+        return isCommonCard1Completed;
+    }
+
+    public boolean isCommonCard2Completed() {
+        return isCommonCard2Completed;
     }
 
     public PersonalCard getPC() {
@@ -64,6 +76,14 @@ public class Player implements Serializable {
         this.pC = pc;
     }
 
+    public void setCommonCard1Completed(boolean commonCard1Completed) {
+        isCommonCard1Completed = commonCard1Completed;
+    }
+
+    public void setCommonCard2Completed(boolean commonCard2Completed) {
+        isCommonCard2Completed = commonCard2Completed;
+    }
+
     public void putTile(Set<TilePositionShelves> pt) {
         for (TilePositionShelves p : pt) {
             shelves.addTile(p);
@@ -72,6 +92,10 @@ public class Player implements Serializable {
 
     public void addPoints(int add) {
         this.score += add;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public int getScore() {

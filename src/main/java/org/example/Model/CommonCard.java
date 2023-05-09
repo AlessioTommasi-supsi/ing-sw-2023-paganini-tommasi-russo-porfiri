@@ -9,14 +9,9 @@ import java.util.*;
 public abstract class CommonCard  implements Serializable {
 
     private int index;
-    private boolean objectiveAlreadyCompleted;
 
     public int getIndex() {
         return index;
-    }
-
-    public boolean isObjectiveAlreadyCompleted() {
-        return objectiveAlreadyCompleted;  //cos'è?
     }
 
 

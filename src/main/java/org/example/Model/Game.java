@@ -12,7 +12,7 @@ import java.util.Random;
  */
 public abstract class Game implements Serializable {
 
-    private Player currentPlayer= null;
+    private Player currentPlayer;
     private int currentGameId;
     private Board board;
     private ArrayList<Player> players;//ordinato in base all ordine nel quale i giocaori si sono uniti alla patrita e quindi anche in ordine di chi tocca a giocare!
@@ -246,20 +246,20 @@ public abstract class Game implements Serializable {
         } else if (this.playerNumber == 2) {
             pointsToSub = 4;
         }
-        if (!currentPlayer.getIsCommonCard1Completed()) {
-            common1.executeAlgorithm(currentPlayer);
+        //se il player non ha ancora completato la commonCard
+        if (!currentPlayer.isCommonCard1Completed()) {
             //se il player completa l'obiettivo aggiungi i punti altrimenti no
-            if (common1.isObjectiveAlreadyCompleted()) {
-                currentPlayer.getScore() += this.pointInitialization1;   //aggiorna i punti
-                pointInitialization1 = pointInitialization1 - pointsToSub; // sottrai i punti
+            if (common1.executeAlgorithm(currentPlayer)) {
+                currentPlayer.setScore(currentPlayer.getScore() + this.pointInitialization1);   //aggiorna i punti
+                this.pointInitialization1 = this.pointInitialization1 - pointsToSub; // sottrai i punti
+                currentPlayer.setCommonCard1Completed(true);
             }
         }
-        if (!currentPlayer.getIsCommonCard2Completed()) {
-            common2.executeAlgorithm(currentPlayer);
-
-            if (common2.isObjectiveAlreadyCompleted()) {
-                countPoints = this.pointInitialization2;
-                pointInitialization2 = pointInitialization2 - pointsToSub;
+        if (!currentPlayer.isCommonCard2Completed()) {
+            if (common2.executeAlgorithm(currentPlayer)) {
+                currentPlayer.setScore(currentPlayer.getScore() + this.pointInitialization2);
+                this.pointInitialization2 = this.pointInitialization2 - pointsToSub;
+                currentPlayer.setCommonCard2Completed(true);
             }
         }
     }
