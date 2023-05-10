@@ -67,5 +67,8 @@ public class TilePositionBoard implements Serializable {
         else throw new PositionEmptyException();
     }
 
-
+    @Override
+    public String toString() {
+        return tileInSlot.toString();
+    }
 }

@@ -269,6 +269,10 @@ public abstract class Game implements Serializable {
         this.currentPlayer = this.players.get((this.players.indexOf(this.currentPlayer) + 1) % this.players.size());
     }
 
+    public Player precCurrentPlayer() {
+        return this.players.get((this.players.indexOf(this.currentPlayer) - 1) % this.players.size());
+    }
+
     /*NON FUNZIONANTE
     public ArrayList setRanking() {
         while(Player p : players){
