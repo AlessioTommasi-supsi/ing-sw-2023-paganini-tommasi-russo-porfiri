@@ -29,6 +29,7 @@ public class MyShelfie implements Serializable {
                 case IN_ATTESA:
                     if (game.getPlayerNumber() == intPlayerNumber) {
                         game.addPlayer(p);
+                        return;
                     }
                 break;
             }

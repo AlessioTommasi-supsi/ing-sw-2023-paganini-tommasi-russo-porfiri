@@ -48,7 +48,7 @@ public abstract class Game implements Serializable {
     }
 
     public ArrayList<Player> getPlayers() {
-        return new ArrayList<>(players);
+        return  players;
     }
 
     public int getPlayerNumber() {
@@ -56,7 +56,7 @@ public abstract class Game implements Serializable {
     }
 
     public Player getDealer() {
-        return new Player(dealer);
+        return dealer;
     }
 
 
@@ -92,7 +92,7 @@ public abstract class Game implements Serializable {
         if(this.stato != StatoPartita.FINITA){
             throw new Exception("non puoi prendere i punteggi perche la partita non e'ancora finita!");
         }
-        return new ArrayList<Ranking>(rank);
+        return rank;
     }
 
     public ArrayList<Ranking> getRank() {
@@ -108,7 +108,7 @@ public abstract class Game implements Serializable {
     }
 
     public Board getBoard() {
-        return new Board(board);
+        return board;
     }
 
     public Player getPlayer(int id_player) {
@@ -130,6 +130,7 @@ public abstract class Game implements Serializable {
         players.add(p);
 
         if (this.playerNumber == this.players.size()) {
+            //System.err.println(this.toString() +"this.players.size()= "+this.players.size());
             this.stato = StatoPartita.IN_CORSO;
             this.currentPlayer = this.players.get(0);//il primo giocatore e' quello che inizia!
         }

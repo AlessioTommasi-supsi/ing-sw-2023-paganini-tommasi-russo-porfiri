@@ -30,8 +30,14 @@ public class Controller {
                         model.setMyShelfie(new MyShelfie());
                     }
                     int numero_giocatori = (Integer) arg.getArgument();
+
                     arg.getPlayer().setId(Globals.incrementPlayerId());
                     model.getMyShelfie().joinGame(numero_giocatori,arg.getPlayer());
+                    /* //.DEBUG
+                    System.err.println("num Giochi: "+model.getMyShelfie().getGames().size());
+                    model.getMyShelfie().getGames().stream()
+                            .forEach(game -> System.out.println("nuovo gioco: "+game.toString()));
+                     */
                 break;
                 case IMMMETTI_IN_LIBRERIA:
                     //prima devo aver fatto pesca from plancia!!
@@ -50,7 +56,8 @@ public class Controller {
                     break;
                 case TERMINA_TURNS:
                     model.getMyShelfie().getGame((Integer) arg.getArgument()).nextCurrentPlayer();
-                    System.out.println("hai scelto termina turno");
+                    //System.out.println("hai scelto termina turno arg: "+arg.getArgument());
+                    //System.out.println("il prossimo giocatore e': "+model.getMyShelfie().getGame((Integer) arg.getArgument()).getCurrentPlayer().getId());
                     break;
             }
         }catch (Exception e){

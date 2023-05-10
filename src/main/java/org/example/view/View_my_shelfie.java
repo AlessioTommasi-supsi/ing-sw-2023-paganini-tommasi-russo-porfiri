@@ -139,6 +139,8 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
 
     public void update(TurnView model/*risposta dal server*/, Choice arg/*evento che il client remoto ha scelto*/) {
 
+
+
         if (current_game_id == -1){ //inizializzazione di tutte le variabili di gioco
             joining_part(model,arg);
         }else {
@@ -146,6 +148,9 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
             choiche_part( model, arg);
         }
 
+        /* //.DEBUG
+        System.err.println(this.toString());
+        */
     }
 
 
@@ -170,12 +175,17 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                                     if (is_player_in_this_game == true){
                                         switch (model.getMyShelfie().getGames().get(i).getStato()) {//le partite saranno o in attesa o in corso!
                                             case IN_CORSO://non dovrebbe mai arrivarci!
+                                                System.out.println();
                                                 System.out.println("ti sei unito ad una partita e la partita e' in corso!");
+                                                System.err.println("partita a cui ti sei unito in corso: "+model.getMyShelfie().getGames().get(i).toString());
+                                                System.out.println();
                                                 this.current_game_id = model.getMyShelfie().getGames().get(i).getCurrentGameId();
                                                 this.current_game = model.getMyShelfie().getGames().get(i);
                                                 break;
                                             case IN_ATTESA://siccome non esiste una partita di un solo giocatore entrero sempre qui!
                                                 System.out.println("ti sei unito ad una partita e la partita e' in attesa di altri giocatori!");
+                                                System.err.println("partita a cui ti sei unito in corso: "+model.getMyShelfie().getGames().get(i).toString());
+                                                System.out.println();
                                                 this.current_game_id = model.getMyShelfie().getGames().get(i).getCurrentGameId();
                                                 this.current_game = model.getMyShelfie().getGames().get(i);
                                                 break;
@@ -198,7 +208,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
 
     }
 
-    public void choiche_part(TurnView model,Choice arg) {
+    public void choiche_part(TurnView model, Choice arg) {
         if (model.getMyShelfie().getGame(this.current_game_id).getCurrentPlayer() != null) {
             if (model.getMyShelfie().getGame(this.current_game_id).getCurrentPlayer().getId() == this.player.getId()) {//versione corretta
                 try {
@@ -206,8 +216,9 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                         case CPU_CHOICE -> {
                             switch (model.getPlayerChoice().getChoice()) {
                                 case IMMMETTI_IN_LIBRERIA:
-                                    //aggiorno la libreria del client!
-                                    this.player.setShelves(model.getMyShelfie().getGame(this.current_game_id).getPlayer(this.player.getId()).getShelves());
+                                    //aggiorno client!
+                                    this.current_game =model.getMyShelfie().getGame(this.current_game_id);
+                                    this.player= this.current_game.getPlayer(this.player.getId());
                                 break;
 
                                 case TERMINA_TURNS:
@@ -233,6 +244,20 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
             }
         }
 
+
+
+    }
+
+
+    @Override
+    public String toString() {
+        return "View_my_shelfie{" +
+                "\nstate=" + state +
+                ",\n lock=" + lock +
+                ",\n player=" + player +
+                ",\n current_game=" + current_game +
+                ",\n current_game_id=" + current_game_id +
+                "\n}";
     }
 
 

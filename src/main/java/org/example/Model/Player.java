@@ -27,12 +27,18 @@ public class Player implements Serializable {
     }
 
     public Player(String username) {
-        this.id = Globals.incrementPlayerId();
+        //this.id = Globals.incrementPlayerId();//non puo funzionare dara sempre 1 perche ogni client esegue un nuovo programma!
+        this.id = -1;// -1 e poi viene assegnato id giusto da controller non appena si fa join_game!
+
         this.username = username;
         this.yourTurn = false;
         this.shelves = new Shelves();
         this.pC = null;
         this.score = 0;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public boolean isCommonCard1Completed() {
@@ -133,7 +139,7 @@ public class Player implements Serializable {
                 ", score=" + score +
                 '}';
     }
-
+    /* da qui in poi non funzionante
     public int calculateCommonPoints(CommonCard cC) {
         //TODO implementare variabili e metodi per common card
         int points = cC.getPoints();
@@ -213,5 +219,6 @@ public class Player implements Serializable {
     public void calcOverallScore() {
         this.score = calculateCommonPoints() + calculatePersonalPoints() + calculateAdjacentPoints();
     }
+    */
 
 }
