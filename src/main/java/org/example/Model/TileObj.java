@@ -28,5 +28,13 @@ public class TileObj implements Serializable {
     public TileVariant getVariant() {
         return variant;
     }
+
+    @Override
+    public String toString() {
+        return "TileObj{" +
+                "type=" + type.toString() +
+                ", variant=" + variant.toString() +
+                '}';
+    }
 }
 

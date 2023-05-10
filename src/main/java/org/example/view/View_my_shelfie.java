@@ -99,6 +99,8 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
             case JOIN_GAME:
                 System.out.println("insreisci numero di giocatori della partita: ");
             return  Integer.parseInt(s.next());
+            case TERMINA_TURNS:
+            return this.current_game_id;//oggetto da passare come argomento e' l'id della partita corrente.
 
         }
         return null;
@@ -119,7 +121,12 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                     case SHOW_MY_SHELVS:
                         System.out.println("your current shelves is: ");
                         System.out.println("");
-                        this.player.getShelves().displayShelves();
+                        try {
+                            this.player.getShelves().displayShelves();
+                        }catch (Exception e){
+                            System.err.println("Error occurred displayng your shelvs! ");
+                            e.printStackTrace();
+                        }
                         return askPlayerChoicheMyShelfie();
                 }
                 return Choice_my_shelfie.valueOf(input);
@@ -140,6 +147,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
         }
 
     }
+
 
     public void joining_part(TurnView model,Choice arg) {
         //USERNAME DEVE ESSERE UNIVOCO
@@ -200,8 +208,15 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                                 case IMMMETTI_IN_LIBRERIA:
                                     //aggiorno la libreria del client!
                                     this.player.setShelves(model.getMyShelfie().getGame(this.current_game_id).getPlayer(this.player.getId()).getShelves());
-                                    break;
+                                break;
 
+                                case TERMINA_TURNS:
+                                    System.out.println("hai terminato il tuo turno!");
+                                    System.out.println("ora tocca a: " + model.getMyShelfie().getGame(this.current_game_id).getCurrentPlayer().getUsername());
+                                break;
+
+                                case JOIN_GAME://non devo far nulla!
+                                break;
 
                                 default:
                                     System.err.println("not implemented yet");
@@ -219,6 +234,8 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
         }
 
     }
+
+
 
 }
 

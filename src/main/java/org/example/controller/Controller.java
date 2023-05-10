@@ -49,11 +49,13 @@ public class Controller {
 
                     break;
                 case TERMINA_TURNS:
-
+                    model.getMyShelfie().getGame((Integer) arg.getArgument()).nextCurrentPlayer();
+                    System.out.println("hai scelto termina turno");
                     break;
             }
         }catch (Exception e){
             model.errore = e.toString();
+            e.printStackTrace();
         }
 
 

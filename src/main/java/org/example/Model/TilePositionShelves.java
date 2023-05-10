@@ -57,6 +57,13 @@ public class TilePositionShelves implements Serializable {
         else throw new PositionAlreadyOccupiedException();
     }
 
-
-
+    @Override
+    public String toString() {
+        return "TilePositionShelves{" +
+                "x=" + x +
+                ", y=" + y +
+                ", tileInSlot=" + tileInSlot.toString() +
+                ", occupied=" + occupied +
+                '}';
+    }
 }

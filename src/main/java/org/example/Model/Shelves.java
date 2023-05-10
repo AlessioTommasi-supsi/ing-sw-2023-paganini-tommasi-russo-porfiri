@@ -19,7 +19,7 @@ public class Shelves implements Serializable {
     public void displayShelves() {
         for (int i = 0; i < 6; i++) {
             for(int j = 0; j < 5; j++) {
-                System.out.print(tilePositions[i][j] + " ");
+                System.out.print(tilePositions[i][j].toString() + " ");
             }
             System.out.println("");
         }
