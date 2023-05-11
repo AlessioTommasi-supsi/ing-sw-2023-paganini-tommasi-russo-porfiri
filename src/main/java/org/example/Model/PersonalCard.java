@@ -14,25 +14,34 @@ public class PersonalCard implements Serializable {
     private TilePositionShelves positionShelves[] ;
     private int points;
 
-    public PersonalCard(TilePositionShelves positionShelves[]) {
-        this.points = 0;
-        this.positionShelves = positionShelves;
+    public int CatXPosition;
+    public int CatYPosition;
+    public int BookXPosition;
+    public int BookYPosition;
+    public int FrameXPosition;
+    public int FrameYPosition;
+    public int TrophyXPosition;
+    public int TrophyYPosition;
+    public int GamesXPosition;
+    public int GamesYPosition;
+    public int PlantXPosition;
+    public int PlantYPosition;
+
+    public PersonalCard(int catXPosition, int catYPosition, int bookXPosition, int bookYPosition, int frameXPosition, int frameYPosition, int trophyXPosition, int trophyYPosition, int gamesXPosition, int gamesYPosition, int plantXPosition, int plantYPosition) {
+        CatXPosition = catXPosition;
+        CatYPosition = catYPosition;
+        BookXPosition = bookXPosition;
+        BookYPosition = bookYPosition;
+        FrameXPosition = frameXPosition;
+        FrameYPosition = frameYPosition;
+        TrophyXPosition = trophyXPosition;
+        TrophyYPosition = trophyYPosition;
+        GamesXPosition = gamesXPosition;
+        GamesYPosition = gamesYPosition;
+        PlantXPosition = plantXPosition;
+        PlantYPosition = plantYPosition;
     }
 
-
-    private int punti;
-
-
-
-    public void updatePunti() {
-        // TODO implement here
-    }
-
-
-    private int getPunti() {
-        // TODO implement here
-        return 0;
-    }
 
     /**
      * 
@@ -44,73 +53,10 @@ public class PersonalCard implements Serializable {
 
 
 
-    public void GsonParse(ArrayList<PersonalCardParser> personalCardParsers) {
-        try {
-            // create Gson instance
-            Gson gson = new Gson();
 
-            // create a reader
-            Reader reader = Files.newBufferedReader(Paths.get("PersonalCard.json"));
 
-            // convert a JSON string to a User object
-            PersonalCardParser[] user = gson.fromJson(reader,PersonalCardParser[].class);
 
-            personalCardParsers.add(user[0]);
-            personalCardParsers.add(user[1]);
-            personalCardParsers.add(user[2]);
-            personalCardParsers.add(user[3]);
-            personalCardParsers.add(user[4]);
-            personalCardParsers.add(user[5]);
-            personalCardParsers.add(user[6]);
-            personalCardParsers.add(user[7]);
-            personalCardParsers.add(user[8]);
-            personalCardParsers.add(user[9]);
-            personalCardParsers.add(user[10]);
-            personalCardParsers.add(user[11]);
 
-            // close reader
-            reader.close();
 
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    private PersonalCardParser drawPersonal(Player player, ArrayList<PersonalCardParser> personalCards) {
-        Random rand = new Random();
-        int num = rand.nextInt(personalCards.size());
-        PersonalCardParser personalCard = personalCards.get(num);
-        personalCards.remove(num);
-        return personalCard;
-    }
-
-    public int checkPersonalCard(PersonalCardParser personalCardParser, Player player) throws PositionEmptyException {
-        int counter = 0;
-        if ((player.getShelves().getTilePosition(personalCardParser.CatXPosition, personalCardParser.CatYPosition) != null) &&
-                (player.getShelves().getTilePosition(personalCardParser.CatXPosition, personalCardParser.CatYPosition).getTile().getType().equals("CAT"))) {
-            counter++;
-        }
-        if ((player.getShelves().getTilePosition(personalCardParser.BookXPosition, personalCardParser.BookYPosition) != null) &&
-                (player.getShelves().getTilePosition(personalCardParser.BookXPosition, personalCardParser.BookYPosition).getTile().getType().equals("BOOK"))) {
-            counter++;
-        }
-        if ((player.getShelves().getTilePosition(personalCardParser.FrameXPosition, personalCardParser.FrameYPosition) != null) &&
-                (player.getShelves().getTilePosition(personalCardParser.FrameXPosition, personalCardParser.FrameYPosition).getTile().getType().equals("FRAME"))) {
-            counter++;
-        }
-        if ((player.getShelves().getTilePosition(personalCardParser.TrophyXPosition, personalCardParser.TrophyYPosition) != null) &&
-                (player.getShelves().getTilePosition(personalCardParser.TrophyXPosition, personalCardParser.TrophyYPosition).getTile().getType().equals("TROPHY"))) {
-            counter++;
-        }
-        if ((player.getShelves().getTilePosition(personalCardParser.GamesXPosition, personalCardParser.GamesYPosition) != null) &&
-                (player.getShelves().getTilePosition(personalCardParser.GamesXPosition, personalCardParser.GamesYPosition).getTile().getType().equals("GAMES") )) {
-            counter++;
-        }
-        if ((player.getShelves().getTilePosition(personalCardParser.PlantXPosition, personalCardParser.PlantYPosition) != null) &&
-                (player.getShelves().getTilePosition(personalCardParser.PlantXPosition, personalCardParser.PlantYPosition).getTile().getType().equals("PLANT"))) {
-            counter++;
-        }
-        return counter;
-    }
 
 }

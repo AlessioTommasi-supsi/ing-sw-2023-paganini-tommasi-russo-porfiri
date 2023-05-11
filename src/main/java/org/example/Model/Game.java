@@ -1,6 +1,11 @@
 package org.example.Model;
 
+import com.google.gson.Gson;
+
+import java.io.Reader;
 import java.io.Serializable;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 /**
@@ -17,7 +22,7 @@ public abstract class Game implements Serializable {
     private int playerNumber;//numeri di giocatori che ci sono in questa partita!
     private Player dealer;
     private StatoPartita stato=StatoPartita.IN_ATTESA;
-    private ArrayList<PersonalCardParser> personalCardDeck = new ArrayList<>();
+    private ArrayList<PersonalCard> personalCardDeck = new ArrayList<>();
     private int pointInitialization1 = 8;
     private int pointInitialization2 = 8;
     private int ranking[]=null;
@@ -36,6 +41,7 @@ public abstract class Game implements Serializable {
         players.add(mazziere);
         this.board = new Board();
         buildBoard();
+        GsonParse(this.personalCardDeck);
 
         //currentplayer viene detto solo quando la partita passa da in attesa ad in corso!
 
@@ -118,13 +124,53 @@ public abstract class Game implements Serializable {
         return null;
     }
 
+    private void GsonParse(ArrayList<PersonalCard> personalCardParsers) {
+        try {
+            // create Gson instance
+            Gson gson = new Gson();
+
+            // create a reader
+            Reader reader = Files.newBufferedReader(Paths.get("PersonalCard.json"));
+
+            // convert a JSON string to a User object
+            PersonalCard[] user = gson.fromJson(reader,PersonalCard[].class);
+
+            personalCardParsers.add(user[0]);
+            personalCardParsers.add(user[1]);
+            personalCardParsers.add(user[2]);
+            personalCardParsers.add(user[3]);
+            personalCardParsers.add(user[4]);
+            personalCardParsers.add(user[5]);
+            personalCardParsers.add(user[6]);
+            personalCardParsers.add(user[7]);
+            personalCardParsers.add(user[8]);
+            personalCardParsers.add(user[9]);
+            personalCardParsers.add(user[10]);
+            personalCardParsers.add(user[11]);
+
+            // close reader
+            reader.close();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private PersonalCard drawPersonal() {
+        Random rand = new Random();
+        int num = rand.nextInt(this.personalCardDeck.size());
+        PersonalCard personalCard = this.personalCardDeck.get(num);
+        this.personalCardDeck.remove(num);
+        return personalCard;
+    }
+
 
 
     public void addPlayer(Player p)throws Exception {
         if (this.stato != StatoPartita.IN_ATTESA){
             throw new Exception("non si possono aggiungere giocatori se la partita non e in attesa!");
         }
-
+        p.setPC(drawPersonal());
         players.add(p);
 
         if (this.playerNumber == this.players.size()) {
@@ -141,7 +187,7 @@ public abstract class Game implements Serializable {
     }
 
 
-    public void end(){
+    public void end() throws Exception {
         this.stato = StatoPartita.FINITA;
 
         //calcolo i punti di ogni giocatore e ne faccio il ranking
@@ -214,6 +260,10 @@ public abstract class Game implements Serializable {
             common2 = new CommonCardPosition(index2);
         }
     }
+
+
+
+
 
 
 

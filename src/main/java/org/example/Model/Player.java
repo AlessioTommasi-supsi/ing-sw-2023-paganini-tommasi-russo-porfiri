@@ -14,6 +14,8 @@ public class Player implements Serializable {
     private int score=0;//aggiornato ad ogni turno per quanto riguarda obbiettivi comuni
     private boolean isCommonCard1Completed = false;
     private boolean isCommonCard2Completed = false;
+    private int countCondition = 0;
+
 
 
 
@@ -53,6 +55,8 @@ public class Player implements Serializable {
         return pC;
     }
 
+
+
     public boolean getTurn() {
         return yourTurn;
     }
@@ -69,12 +73,12 @@ public class Player implements Serializable {
         return shelves;
     }
 
-    public Player(int id, String username) {
+    public Player(int id, String username, PersonalCard pC) {
         this.id = id;
         this.username = username;
         this.yourTurn = false;
         this.shelves = new Shelves();
-        this.pC = null;
+        this.pC = pC;
     }
 
     // Da inserire nel costruttore se ritenuto necessario
@@ -113,21 +117,39 @@ public class Player implements Serializable {
         this.shelves = shelves;
     }
 
-    private void addPointsPersonal(int counterCondition, int countPoints) {         //in base a quante condizioni si soddisfanno aggiungi tot punti
-        if ((counterCondition == 1) || (counterCondition == 2)) {
-            countPoints++;                                                  //incrementi dei valori scritti sulle personalCard, vanno chiamati solo quando viene aggiunta una condizione soddisfatta
-        } else if ((counterCondition == 3) || (counterCondition == 4)) {
-            countPoints = countPoints + 2;
-        } else if ((counterCondition == 5) || (counterCondition == 6)) {
-            countPoints = countPoints + 3;
+    private int checkPersonalCard(PersonalCard personalCardParser) throws PositionEmptyException {
+        int counter = 0;
+        if ((getShelves().getTilePosition(personalCardParser.CatXPosition, personalCardParser.CatYPosition) != null) &&
+                (getShelves().getTilePosition(personalCardParser.CatXPosition, personalCardParser.CatYPosition).getTile().getType().equals("CAT"))) {
+            counter++;
         }
+        if ((getShelves().getTilePosition(personalCardParser.BookXPosition, personalCardParser.BookYPosition) != null) &&
+                (getShelves().getTilePosition(personalCardParser.BookXPosition, personalCardParser.BookYPosition).getTile().getType().equals("BOOK"))) {
+            counter++;
+        }
+        if ((getShelves().getTilePosition(personalCardParser.FrameXPosition, personalCardParser.FrameYPosition) != null) &&
+                (getShelves().getTilePosition(personalCardParser.FrameXPosition, personalCardParser.FrameYPosition).getTile().getType().equals("FRAME"))) {
+            counter++;
+        }
+        if ((getShelves().getTilePosition(personalCardParser.TrophyXPosition, personalCardParser.TrophyYPosition) != null) &&
+                (getShelves().getTilePosition(personalCardParser.TrophyXPosition, personalCardParser.TrophyYPosition).getTile().getType().equals("TROPHY"))) {
+            counter++;
+        }
+        if ((getShelves().getTilePosition(personalCardParser.GamesXPosition, personalCardParser.GamesYPosition) != null) &&
+                (getShelves().getTilePosition(personalCardParser.GamesXPosition, personalCardParser.GamesYPosition).getTile().getType().equals("GAMES") )) {
+            counter++;
+        }
+        if ((getShelves().getTilePosition(personalCardParser.PlantXPosition, personalCardParser.PlantYPosition) != null) &&
+                (getShelves().getTilePosition(personalCardParser.PlantXPosition, personalCardParser.PlantYPosition).getTile().getType().equals("PLANT"))) {
+            counter++;
+        }
+        return counter;
     }
 
-    public void updatePoints(int counterConditionBefore, int counterConditionAfter, int countPoints) {
-        if (counterConditionAfter == counterConditionBefore + 1) {             //controllo se il numero di condizioni è aumentato, se si aggiungo
-            addPointsPersonal(counterConditionAfter, countPoints);
-        }
-    }
+
+
+
+
 
     @Override
     public String toString() {
@@ -153,9 +175,24 @@ public class Player implements Serializable {
         return 0;
     }
     */
-    public int calculatePersonalPoints() {
-        //TODO funzionamento del parser?
-        return -1;
+    public int calculatePersonalPoints() throws Exception {
+        int counter = 0;
+        int pointAdded = 0;
+        counter = this.checkPersonalCard(getPC());
+        if (counter == 1) {
+            pointAdded++;
+        } else if (counter == 2) {
+            pointAdded = 2;
+        } else if (counter == 3) {
+            pointAdded = 4;
+        } else if (counter == 4) {
+            pointAdded = 6;
+        } else if (counter == 5) {
+            pointAdded = 9;
+        } else if (counter == 6) {
+            pointAdded = 12;
+        }
+        return pointAdded;
         //return pC.checkPersonalCard(new PersonalCardParser(), this);
     }
 
@@ -228,7 +265,7 @@ public class Player implements Serializable {
 
 
     //da chiamato in Game::end()!
-    public void calcOverallScore() {
+    public void calcOverallScore() throws Exception {
         this.score +=  calculatePersonalPoints() + calculateAdjacentPoints();
     }
 
