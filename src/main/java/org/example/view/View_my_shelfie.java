@@ -151,9 +151,54 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                 return  Integer.parseInt(s.next());
             case TERMINA_TURNS:
                 return this.current_game_id;//oggetto da passare come argomento e' l'id della partita corrente.
+
+
+
             case PESCA_FROM_PLANCIA:
-                System.out.println("inserisci il numero di tessere da pescare: ");
-                return Integer.parseInt(s.next());
+                while(true) {
+                    try{
+                        //faccio qui tutti i controlli cosi sono sicuro di passare al server solo i dati giusti tanto la board viene aggiornata ad ogni turno!
+                        try {
+                            System.out.println("inserisci il numero di tessere da pescare: ");
+                            int counter = Integer.parseInt(s.next());
+                            ArrayList<TilePositionBoard> tilesToRemove = new ArrayList<TilePositionBoard>();
+                            for (int i = 0; i < counter; i++) {
+                                System.out.println("inserisci la posizione x della tessera da pescare: ");
+                                int x = Integer.parseInt(s.next());
+                                System.out.println("inserisci la posizione y della tessera da pescare: ");
+                                tilesToRemove.add(new TilePositionBoard(x,Integer.parseInt(s.next())));
+                            }
+
+                            //RIMOZIONE DA BOARD:
+                            this.current_game.getBoard().removeTiles(tilesToRemove);
+
+                            System.out.println("inserisci la colonna della tua libreria dove mettere la tessera: ");
+                            int colum_of_shelves = Integer.parseInt(s.next());
+
+                            //INSERIMENTO IN SHELVS:
+                            //mancano metodi in player o Shelves per poterlo fare correttamente!
+                            return new Drow_from_board_Message(tilesToRemove,colum_of_shelves);
+                        }
+                        //ERRORI DI RIMOZIONE DA BOARD!
+                        catch (TilesAreNotRemovableException e){
+                            //non cé bisogno di rimettere le tessere nella board!
+                            e.printStackTrace();
+                            System.err.println("errore nell'inserimento dei dati!\n"+e.getMessage()+ "`\n riprova! \n");
+
+                        }catch (PositionEmptyException e) {
+                            //non cé bisogno di rimettere le tessere nella board!
+                            e.printStackTrace();
+                            System.err.println("errore nell'inserimento dei dati!\n"+e.getMessage()+ "`\n riprova! \n");
+                        }
+                        //ERRORI DI RIMOZIONE DA SHELVES
+                        //devo re inserire le tessere nella board!
+                    }catch (Exception e){
+                        System.err.println("generic error occurred! ");
+                        e.printStackTrace();
+                    }
+
+                }
+
 
         }
         return null;

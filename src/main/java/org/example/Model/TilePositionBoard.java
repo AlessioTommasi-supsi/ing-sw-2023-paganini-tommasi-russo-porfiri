@@ -69,6 +69,11 @@ public class TilePositionBoard implements Serializable {
 
     @Override
     public String toString() {
-        return tileInSlot.toString();
+        return "TilePositionBoard{" +
+                "x=" + x +
+                ", y=" + y +
+                ", tileInSlot=" + tileInSlot.toString() +
+                ", occupied=" + occupied +
+                '}';
     }
 }

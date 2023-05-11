@@ -35,6 +35,7 @@ public class Player implements Serializable {
         this.username = username;
         this.yourTurn = false;
         this.shelves = new Shelves();
+        //da modificare!!
         this.pC = null;
         this.score = 0;
     }
@@ -269,5 +270,6 @@ public class Player implements Serializable {
         this.score +=  calculatePersonalPoints() + calculateAdjacentPoints();
     }
 
-
+    //manca un puttyle in shelves che accetta solo la colonna in cui io devo aggiungere le tiles!
+    //qualcosa che avevamo detto essere gravitY?
 }

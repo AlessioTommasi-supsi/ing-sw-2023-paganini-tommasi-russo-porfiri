@@ -45,8 +45,8 @@ public class Controller {
                     break;
                 case TERMINA_TURNS:
                     model.getMyShelfie().getGame((Integer) arg.getArgument()).nextCurrentPlayer();
-                    //System.out.println("hai scelto termina turno arg: "+arg.getArgument());
-                    //System.out.println("il prossimo giocatore e': "+model.getMyShelfie().getGame((Integer) arg.getArgument()).getCurrentPlayer().getId());
+                    //se necerrassio ripristino la board!
+                    model.getMyShelfie().getGame((Integer) arg.getArgument()).getBoard().restoreBoard();
                     break;
             }
         }catch (Exception e){
