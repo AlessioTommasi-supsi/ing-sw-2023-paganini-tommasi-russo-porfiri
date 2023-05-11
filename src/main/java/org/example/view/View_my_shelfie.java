@@ -1,10 +1,7 @@
 package org.example.view;
 
 import org.example.Model.*;
-import org.example.distributed.*;
 import org.example.util.*;
-import org.example.view.*;
-import org.example.controller.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,6 +23,23 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
 
     private int current_game_id = -1; //verra assegnato dopo aver fatto join_game!!
 
+    public void update(TurnView model/*risposta dal server*/, Choice arg/*evento che il client remoto ha scelto*/) {
+
+        if (current_game_id == -1){ //inizializzazione di tutte le variabili di gioco
+            joining_part(model,arg);
+        }else {
+            //aggiorno client -> da fare ogni volta che avviene qualsiasi cosa!! -> da non mettere fuori perche getMyShelfie() puo essere null!
+            this.current_game =model.getMyShelfie().getGame(this.current_game_id);
+            this.player= this.current_game.getPlayer(this.player.getId());//cosi ho a portata di mano la shelvs aggiornata!
+
+            //ho gia fatto join!
+            choiche_part( model, arg);
+        }
+
+        /* //.DEBUG
+        System.err.println(this.toString());
+        */
+    }
 
     //PRIMA ESECUZIONE
     @Override
@@ -63,7 +77,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                     setChanged();/*NOTIFICO AL SERER che del client ha fatto scelta!!*/
                     notifyObservers(c);
                 }else {
-                    Choice_my_shelfie pc = askPlayerChoicheMyShelfie();
+                    Choice_my_shelfie pc = askPlayerChoiceMyShelfie();
                     Object argument = askPlayerArgumentMyshelfie(pc);
 
                     Choice c =new Choice(pc,player, argument);
@@ -82,7 +96,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
     }
 
 
-    public Choice_my_shelfie askPlayerChoicheMyShelfie() {
+    public Choice_my_shelfie askPlayerChoiceMyShelfie() {
         Scanner s = new Scanner(System.in);
         System.out.println("is your turn! Make your choice: ");
         System.out.println(
@@ -99,23 +113,25 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                         System.out.println("your current shelves is: ");
                         System.out.println("");
                         try {
-                            this.player.getShelves().displayShelves();
+                            printTilePositionShelves(this.player.getShelves().showShelves());
                         }catch (Exception e){
                             System.err.println("Error occurred displayng your shelvs! ");
                             e.printStackTrace();
                         }
-                        return askPlayerChoicheMyShelfie();
+                        return askPlayerChoiceMyShelfie();
                     case SHOW_BOARD:
                         System.out.println(" current BOARD: ");
                         System.out.println("");
                         try {
+                            //V1
                             //this.current_game.getBoard().showBoard().stream().forEach(placement->System.out.println(placement.toString()));
+                            //V2
                             printTilePositionBoard(this.current_game.getBoard().showBoard());
                         }catch (Exception e){
                             System.err.println("Error occurred displayng your BOARD! ");
                             e.printStackTrace();
                         }
-                        return askPlayerChoicheMyShelfie();
+                        return askPlayerChoiceMyShelfie();
                 }
                 return Choice_my_shelfie.valueOf(input);
             } catch (IllegalArgumentException e) {
@@ -135,28 +151,14 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                 return  Integer.parseInt(s.next());
             case TERMINA_TURNS:
                 return this.current_game_id;//oggetto da passare come argomento e' l'id della partita corrente.
+            case PESCA_FROM_PLANCIA:
+                System.out.println("inserisci il numero di tessere da pescare: ");
+                return Integer.parseInt(s.next());
 
         }
         return null;
     }
 
-    public void update(TurnView model/*risposta dal server*/, Choice arg/*evento che il client remoto ha scelto*/) {
-
-        if (current_game_id == -1){ //inizializzazione di tutte le variabili di gioco
-            joining_part(model,arg);
-        }else {
-            //aggiorno client -> da fare ogni volta che avviene qualsiasi cosa!! -> da non mettere fuori perche getMyShelfie() puo essere null!
-            this.current_game =model.getMyShelfie().getGame(this.current_game_id);
-            this.player= this.current_game.getPlayer(this.player.getId());//cosi ho a portata di mano la shelvs aggiornata!
-
-            //ho gia fatto join!
-            choiche_part( model, arg);
-        }
-
-        /* //.DEBUG
-        System.err.println(this.toString());
-        */
-    }
 
 
     public void joining_part(TurnView model,Choice arg) {
@@ -257,9 +259,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
             switch (model.getPlayerChoice().getStato()) {
                 case CPU_CHOICE -> {
                     switch (model.getPlayerChoice().getChoice()) {
-                        case IMMMETTI_IN_LIBRERIA:
 
-                        break;
 
                         case TERMINA_TURNS:
                             System.out.println(model.getMyShelfie().getGame(this.current_game_id).precCurrentPlayer().getUsername()+" ha terminato il turno! ");
@@ -289,6 +289,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
             }
         }
     }
+
 
     private State getState() {
         synchronized (lock) {
@@ -336,7 +337,6 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
             for (int x = 0; x <= maxX; x++) {
                 TilePositionBoard tile = matrix[x][y];
                 if (tile != null) {
-                    // Stampa il tile non vuoto
                     System.out.print(tile + " ");
                 } else {
                     // Stampa uno spazio vuoto
@@ -347,7 +347,22 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
         }
     }
 
+    public void printTilePositionShelves(TilePositionShelves[][] shelves) {
 
+        // Stampa la matrice 2D
+        for (int y = 0; y < shelves.length; y++) {
+            for (int x = 0; x < shelves[y].length; x++) {
+                TilePositionShelves tile = shelves[y][x];
+                if (tile != null) {
+                    System.out.print(tile + " ");
+                } else {
+                    // Stampa uno spazio vuoto
+                    System.out.print("- ");
+                }
+            }
+            System.out.println();
+        }
+    }
 
 }
 

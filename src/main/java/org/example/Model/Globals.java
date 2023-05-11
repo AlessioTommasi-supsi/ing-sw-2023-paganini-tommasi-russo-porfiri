@@ -1,7 +1,7 @@
 package org.example.Model;
 
 public class Globals {
-    private statc Globals globals;
+    private static Globals globals;
     private static int playerId = 1;
 
     public static Globals getInstance() {

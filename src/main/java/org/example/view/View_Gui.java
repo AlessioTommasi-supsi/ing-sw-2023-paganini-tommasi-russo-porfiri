@@ -18,7 +18,7 @@ public class View_Gui {
     public View_Gui() {
         JFrame frame = new JFrame("Shelfie");
         frame.setContentPane(bare_metal_panel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
         ImageLable.setIcon(new ImageIcon("Title.png"));
         joinGameButton.addActionListener(new ActionListener() {

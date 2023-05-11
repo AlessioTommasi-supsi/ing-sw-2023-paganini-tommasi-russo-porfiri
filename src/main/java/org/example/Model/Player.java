@@ -11,7 +11,7 @@ public class Player implements Serializable {
     private boolean yourTurn;
     private Shelves shelves;
     private PersonalCard pC;
-    private int score;
+    private int score=0;//aggiornato ad ogni turno per quanto riguarda obbiettivi comuni
     private boolean isCommonCard1Completed = false;
     private boolean isCommonCard2Completed = false;
 
@@ -90,6 +90,7 @@ public class Player implements Serializable {
         isCommonCard2Completed = commonCard2Completed;
     }
 
+
     public void putTile(Set<TilePositionShelves> pt) {
         for (TilePositionShelves p : pt) {
             shelves.addTile(p);
@@ -139,7 +140,9 @@ public class Player implements Serializable {
                 ", score=" + score +
                 '}';
     }
-    /* da qui in poi non funzionante
+    // da qui in poi non funzionante
+
+    /* non serve perche score aggiornato a ogni turno da Game!
     public int calculateCommonPoints(CommonCard cC) {
         //TODO implementare variabili e metodi per common card
         int points = cC.getPoints();
@@ -149,7 +152,7 @@ public class Player implements Serializable {
         }
         return 0;
     }
-
+    */
     public int calculatePersonalPoints() {
         //TODO funzionamento del parser?
         return -1;
@@ -161,7 +164,7 @@ public class Player implements Serializable {
         int totalPoints = 0;
         boolean[][] visited = new boolean[6][5];
 
-        for (int row = 0; rows < 6; rows++) {
+        for (int row = 0; row < 6; row++) {
             for (int col = 0; col < 5; col++) {
                 visited[row][col] = false;
             }
@@ -173,7 +176,7 @@ public class Player implements Serializable {
                 if(visited[row][col] == true) {
                     continue;
                 }
-                tilesCounter = calculateGroupCounter(row, col, visited, 0, true, 0, shelves.tilePosition[row][col].tileInSlot.type);
+                tilesCounter = calculateGroupCounter(row, col, visited, 0, true, 0, shelves.getTilePosition(row, col).getTile().getType());
                 if (tilesCounter == 3) {
                     return 2;
                 } else if (tilesCounter == 4) {
@@ -187,38 +190,47 @@ public class Player implements Serializable {
                 }
             }
         }
+
+        return -1;
     }
 
     private int calculateGroupCounter(int row, int col, boolean[][] visited, int counter, boolean starter, int totCounter, TileType prevType) {
-        if (row < 0 || row >= 5 || col < 0 || col >= 6 || visited[row][col] || shelves.tilePositions[row][col].tileInSlot.type.equals(prevType)) {
+        if (row < 0 || row >= 5 || col < 0 || col >= 6 || visited[row][col] || !shelves.getTilePosition(row, col).getTile().getType().equals(prevType)) {
             return counter;
         }
 
         visited[row][col] = true;
         counter ++;
-        TileObj currTile = shelves[row][col];
 
-        if (row - 1 >= 0 && shelves.tilePositions[row - 1][col] != null && shelves.tilePositions[row - 1][col].type.equals(currentTile.type)) {
-            totCounter += calculateGroupScore(row - 1, col, visited, counter, false, totCounter, prevType);
+        TileObj currentTile;
+        currentTile = this.shelves.getTilePosition(row, col).getTile();
+
+        if (row - 1 >= 0 && this.shelves.getTilePosition(row - 1, col).getTile()!= null &&
+                this.shelves.getTilePosition(row - 1, col).getTile().getType().equals(currentTile.getType()))
+        {
+            totCounter += calculateGroupCounter(row - 1, col, visited, counter, false, totCounter, prevType);
         }
-        if (row + 1 < shelf.length && shelves.tilePositions[row + 1][col] != null && shelves.tilePositions[row + 1][col].type.equals(currentTile.type)) {
-            totCounter += calculateGroupScore(row + 1, col, visited, counter, false, totCounter, prevType);
+        if (row + 1 < shelves.getMaxRows() && shelves.getTilePosition(row + 1, col).getTile() != null && shelves.getTilePosition(row + 1, col).getTile().getType().equals(currentTile.getType())) {
+            totCounter += calculateGroupCounter(row + 1, col, visited, counter, false, totCounter, prevType);
         }
-        if (col - 1 >= 0 && shelves.tilePositions[row][col - 1] != null && shelves.tilePositions[row][col - 1].type.equals(currentTile.type)) {
-            totCounter += calculateGroupScore(row, col - 1, visited, counter, false, totCounter, prevType);
+        if (col - 1 >= 0 && shelves.getTilePosition(row, col-1).getTile() != null && shelves.getTilePosition(row, col-1).getTile().getType().equals(currentTile.getType())) {
+            totCounter += calculateGroupCounter(row, col - 1, visited, counter, false, totCounter, prevType);
         }
-        if (col + 1 < shelf[row].length && shelves.tilePositions[row][col + 1] != null && shelves.tilePositions[row][col + 1].type.equals(currentTile.type)) {
-            totCounter += calculateGroupScore(row, col + 1, visited, counter, false, totCounter, prevType);
+        if (col + 1 < shelves.getMaxColums() && shelves.getTilePosition(row, col+1).getTile() != null && shelves.getTilePosition(row, col+1).getTile().getType().equals(currentTile.getType())) {
+            totCounter += calculateGroupCounter(row, col + 1, visited, counter, false, totCounter, prevType);
         }
 
         if (starter == true) {
             return totCounter;
         }
+        return  -1;
     }
 
+
+    //da chiamato in Game::end()!
     public void calcOverallScore() {
-        this.score = calculateCommonPoints() + calculatePersonalPoints() + calculateAdjacentPoints();
+        this.score +=  calculatePersonalPoints() + calculateAdjacentPoints();
     }
-    */
+
 
 }

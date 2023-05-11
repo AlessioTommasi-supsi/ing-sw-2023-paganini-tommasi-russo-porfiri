@@ -10,41 +10,25 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.json.JSONObject;
 
-
-/**
- * compra gioco fisico per mapparlo
- * (chiedi martedi a prof!!!!) se supponiamo posiz random o dobbiamo usare quelle del gioco fisico!!
- */
 public class PersonalCard implements Serializable {
     private TilePositionShelves positionShelves[] ;
     private int points;
-    /**
-     * Default constructor
-     */
+
     public PersonalCard(TilePositionShelves positionShelves[]) {
         this.points = 0;
         this.positionShelves = positionShelves;
     }
 
-    /**
-     * 
-     */
+
     private int punti;
 
-    /**
-     * 
-     */
 
-    /**
-     * @return
-     */
+
     public void updatePunti() {
         // TODO implement here
     }
 
-    /**
-     * @return
-     */
+
     private int getPunti() {
         // TODO implement here
         return 0;
@@ -57,9 +41,7 @@ public class PersonalCard implements Serializable {
         // TODO implement here
     }
 
-    /**
-     * @return
-     */
+
 
 
     public void GsonParse(ArrayList<PersonalCardParser> personalCardParsers) {

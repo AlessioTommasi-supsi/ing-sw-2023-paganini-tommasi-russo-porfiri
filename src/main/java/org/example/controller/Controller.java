@@ -39,18 +39,7 @@ public class Controller {
                             .forEach(game -> System.out.println("nuovo gioco: "+game.toString()));
                      */
                 break;
-                case IMMMETTI_IN_LIBRERIA:
-                    //prima devo aver fatto pesca from plancia!!
-                    /**
-                     * arg.getArgument{
-                     *     ArrayList <TilePositionShelves>
-                     * }
-                     **/
-                    //System.out.println(arg.getArgument().toString());
-                    System.out.println("hai scelto immetti in libreria");
 
-                    //model.setOutcome(Outcome.WIN);
-                    break;
                 case PESCA_FROM_PLANCIA:
 
                     break;

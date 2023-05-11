@@ -14,7 +14,7 @@ import java.rmi.server.UnicastRemoteObject;
 public class ClientImpl extends UnicastRemoteObject implements Client, Runnable {
 
     View_my_shelfie view = new View_my_shelfie();
-
+    View_Gui view_gui = new View_Gui();
     public ClientImpl(Server server) throws RemoteException {
         super();
         initialize(server);
@@ -32,7 +32,6 @@ public class ClientImpl extends UnicastRemoteObject implements Client, Runnable 
 
     private void initialize(Server server) throws RemoteException {
         server.register(this);
-        //ERRORE E'QUI!!! COME ARG VIENE VISTO COME UNA CHOICE_MY_SHELLFIE E NON COME CHOICHE!!
         view.addObserver((o, arg) -> {
             try {
                 server.update(this, arg);

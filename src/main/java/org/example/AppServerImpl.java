@@ -100,6 +100,8 @@ public class AppServerImpl extends UnicastRemoteObject implements AppServer
                             serverImpl =new ServerImpl();
                         else
                             serverImpl =new ServerImpl(serverImpl.model);
+
+
                         serverImpl.register(clientSkeleton);
                         while (true) {
                             clientSkeleton.receive(serverImpl);

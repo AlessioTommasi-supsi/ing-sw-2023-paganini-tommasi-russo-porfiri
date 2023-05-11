@@ -62,7 +62,7 @@ public class TilePositionShelves implements Serializable {
         return "TilePositionShelves{" +
                 "x=" + x +
                 ", y=" + y +
-                ", tileInSlot=" + tileInSlot.toString() +
+                ", tileInSlot=" + tileInSlot +
                 ", occupied=" + occupied +
                 '}';
     }

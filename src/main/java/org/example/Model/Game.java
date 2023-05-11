@@ -1,9 +1,7 @@
 package org.example.Model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
+import java.util.*;
 
 /**
  * I giocatori entrano sequenzialmente all'interno della partita. La posizione del giocatore in partita è data in base all'ordine di entrata, quindi la posizione è l'indice dell'array
@@ -34,7 +32,7 @@ public abstract class Game implements Serializable {
         this.dealer =mazziere;
         players= new ArrayList<Player>();
         rank= new ArrayList<Ranking>();
-        this.currentGameId = Globals.increment_Game_id();
+        this.currentGameId = Globals.incrementGameId();
         players.add(mazziere);
         this.board = new Board();
         buildBoard();
@@ -153,6 +151,12 @@ public abstract class Game implements Serializable {
 
         //funzionalita ranking!
         point = new int[this.playerNumber];
+
+        for (int i = 0; i < players.size(); i++) {
+            players.get(i).calcOverallScore();
+            point[i] = players.get(i).getScore();
+        }
+
         this.ranking = new int[this.playerNumber];
 
         for (int i = 0; i < players.size(); i++) {
@@ -240,6 +244,18 @@ public abstract class Game implements Serializable {
 
     
 
+    //metodo che aggiorna i punti del player corrente
+    //se il player ha completato la commonCard1 aggiungi i punti altrimenti no
+    //viene eseguito ad ogni volta che tocca in giocatore!
+    /*abbiamo deciso stare qui perche:
+    * perche i punteggi dati dalle common card sono in relazione stretta con il gioco, siccome ogni currentPlayrt ad ogni turno
+    * aggiurna gli obbiettivi comuni completati.
+    *
+    * ATTENZIONE: .Alessio
+    *   -ricordati da richiamarlo ad ogni turno prima di terminaTURN
+    *   -totale punteggio e'in Player.score -> ranking aggiornato automaticamente ingame con la funzione Game::end()
+    *
+    * */
     public void updatePointsCommon() {
         int pointsToSub = 0;  //punti da sottrarre a ogni completamento
         if ((this.playerNumber == 4) || (this.playerNumber == 3)) {
@@ -270,12 +286,12 @@ public abstract class Game implements Serializable {
     }
 
     public Player precCurrentPlayer() {
-        return this.players.get((this.players.indexOf(this.currentPlayer) - 1) % this.players.size());
+        return this.players.indexOf(this.currentPlayer) - 1 % this.players.size() > 0 ? this.players.get((this.players.indexOf(this.currentPlayer) - 1) % this.players.size()) : this.players.get(this.players.size() - 1);
     }
 
     /*NON FUNZIONANTE
     public ArrayList setRanking() {
-        while(Player p : players){
+        for(Player p : players){
             p.calcOverallScore();
         }
 
@@ -288,6 +304,5 @@ public abstract class Game implements Serializable {
 
         this.rank.addAll(players);
     }
-
      */
 }
