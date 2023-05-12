@@ -5,6 +5,7 @@ import org.example.util.PositionEmptyException;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class TilePositionBoard implements Serializable {
     private int x;
@@ -74,8 +75,21 @@ public class TilePositionBoard implements Serializable {
         return "TilePositionBoard{" +
                 "x=" + x +
                 ", y=" + y +
-                ", tileInSlot=" + tileInSlot.toString() +
+                ", tileInSlot=" + tileInSlot +
                 ", occupied=" + occupied +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TilePositionBoard that = (TilePositionBoard) o;
+        return x == that.x && y == that.y;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 }

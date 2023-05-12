@@ -50,6 +50,7 @@ public class Turn extends Observable<Turn.Event> implements Serializable {
 
     public void clear() {
         //outcome = null;
+        this.errore = "";
         playerChoice = null;
     }
 

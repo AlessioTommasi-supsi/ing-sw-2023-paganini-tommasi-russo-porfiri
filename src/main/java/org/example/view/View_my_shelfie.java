@@ -170,7 +170,11 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                         int x = Integer.parseInt(s.next());
                         System.out.println("inserisci la posizione y della tessera da pescare: ");
                         tilesToRemove.add(new TilePositionBoard(x,Integer.parseInt(s.next())));
+
                     }
+
+
+                    System.err.println("TESSERA CHE HAI SCELTO DI RIMUOVERE: "+tilesToRemove);
 
                     System.out.println("inserisci la colonna della tua libreria dove mettere la tessera: ");
                     int colum_of_shelves = Integer.parseInt(s.next());

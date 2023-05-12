@@ -133,18 +133,42 @@ public class Board implements Serializable {
     public ArrayList<TileObj> removeTiles(ArrayList<TilePositionBoard> tilesToRemove) throws TilesAreNotRemovableException, PositionEmptyException {
         ArrayList<TileObj> TilesRemoved = new ArrayList<TileObj>();
 
+        //inizializzazione corretta degli elementi!
+        //ERRORE RIMUOVO DA DELLE POSIZIONI CHE CONTERRANO SEMPRE IS OCCUPIED = FALSE
+        for (int i =0; i<tilesToRemove.size();i++) {
+            for (int j = 0; j < this.placements.size(); j++) {
+                if (this.placements.get(j).equals(tilesToRemove.get(i))) {
+                    tilesToRemove.remove(i);
+                    tilesToRemove.add(this.placements.get(j));
+                }
+            }
+        }
+        //.DEBUG
+        /*
+        for(int i = 0; i< tilesToRemove.size(); i++){
+            System.out.println(tilesToRemove.get(i).toString());
+        }
+        */
+
         if((tilesToRemove.size() < 1) || (tilesToRemove.size() > 3)){
             throw new TilesAreNotRemovableException();
         }
         else {
             for (int i = 0; i < tilesToRemove.size(); i++) {
+                /* E! QUESTO CHE NON VA BENE!
                 if (!this.tileIsRemovable(tilesToRemove.get(i))) {
                     throw new TilesAreNotRemovableException();
                 }
+                */
+
             }
             for (int i = 0; i < tilesToRemove.size(); i++) {
+
                 TilesRemoved.add(tilesToRemove.get(i).removeTile());
             }
+
+            this.printTilePositionBoard(this.placements);
+
             return TilesRemoved;
         }
 
@@ -189,6 +213,39 @@ public class Board implements Serializable {
     public void restoreBoard(){
         if(boardNeedsRestore()){
             addTiles();
+        }
+    }
+
+    //.debug
+    public void printTilePositionBoard(ArrayList<TilePositionBoard> board) {
+        // Trova le dimensioni massime della matrice
+        int maxX = 0;
+        int maxY = 0;
+        for (TilePositionBoard tile : board) {
+            if (tile.getX() > maxX)
+                maxX = tile.getX();
+            if (tile.getY() > maxY)
+                maxY = tile.getY();
+        }
+
+        // Crea la matrice 2D
+        TilePositionBoard[][] matrix = new TilePositionBoard[maxX + 1][maxY + 1];
+        for (TilePositionBoard tile : board) {
+            matrix[tile.getX()][tile.getY()] = tile;
+        }
+
+        // Stampa la matrice 2D
+        for (int y = 0; y <= maxY; y++) {
+            for (int x = 0; x <= maxX; x++) {
+                TilePositionBoard tile = matrix[x][y];
+                if (tile != null) {
+                    System.out.print(tile + " ");
+                } else {
+                    // Stampa uno spazio vuoto
+                    System.out.print("- ");
+                }
+            }
+            System.out.println();
         }
     }
 
