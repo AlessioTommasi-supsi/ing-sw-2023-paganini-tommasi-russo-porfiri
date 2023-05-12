@@ -153,6 +153,7 @@ public class Board implements Serializable {
         if((tilesToRemove.size() < 1) || (tilesToRemove.size() > 3)){
             throw new TilesAreNotRemovableException();
         }
+
         else {
             for (int i = 0; i < tilesToRemove.size(); i++) {
                 /* E! QUESTO CHE NON VA BENE!
@@ -160,13 +161,14 @@ public class Board implements Serializable {
                     throw new TilesAreNotRemovableException();
                 }
                 */
+                System.out.println(" til is removable? "+tileIsRemovable(tilesToRemove.get(i)));
 
             }
             for (int i = 0; i < tilesToRemove.size(); i++) {
 
                 TilesRemoved.add(tilesToRemove.get(i).removeTile());
             }
-
+            //.DEBUG
             //this.printTilePositionBoard(this.placements);
 
             return TilesRemoved;
