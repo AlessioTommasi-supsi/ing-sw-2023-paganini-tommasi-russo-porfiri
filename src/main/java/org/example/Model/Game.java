@@ -36,15 +36,18 @@ public abstract class Game implements Serializable {
 
 
     public Game(int playerNumber, Player mazziere) {
+        GsonParse(this.personalCardDeck);
         this.playerNumber = playerNumber;
         this.dealer =mazziere;
         players= new ArrayList<Player>();
         rank= new ArrayList<Ranking>();
         this.currentGameId = Globals.incrementGameId();
+        mazziere.setPC(drawPersonal());
+        //.DEBUG
+        System.out.println(mazziere.toString());
         players.add(mazziere);
         this.board = new Board();
         buildBoard();
-        GsonParse(this.personalCardDeck);
 
         //currentplayer viene detto solo quando la partita passa da in attesa ad in corso!
 
@@ -174,6 +177,8 @@ public abstract class Game implements Serializable {
             throw new Exception("non si possono aggiungere giocatori se la partita non e in attesa!");
         }
         p.setPC(drawPersonal());
+        //.DEBUG
+        System.out.println(p.toString());
         players.add(p);
 
         if (this.playerNumber == this.players.size()) {
@@ -221,7 +226,7 @@ public abstract class Game implements Serializable {
                 rank.add(new Ranking(players.get(i), point[i]));
             }
 
-            int index = -1;
+            int index = 0;
             int max =point[0];
 
             for (int j = 0; j < this.playerNumber; j++) {
