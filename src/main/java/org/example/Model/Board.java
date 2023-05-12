@@ -167,7 +167,7 @@ public class Board implements Serializable {
                 TilesRemoved.add(tilesToRemove.get(i).removeTile());
             }
 
-            this.printTilePositionBoard(this.placements);
+            //this.printTilePositionBoard(this.placements);
 
             return TilesRemoved;
         }

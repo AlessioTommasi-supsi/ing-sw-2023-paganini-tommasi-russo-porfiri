@@ -75,6 +75,10 @@ public class Controller {
                     model.getMyShelfie().getGame((Integer) arg.getArgument()).end();
 
                     break;
+                case EXIT:
+                    model.getMyShelfie().getGame((Integer) arg.getArgument()).full_library();
+
+                    break;
             }
         }catch (Exception e){
             model.errore = e.toString();

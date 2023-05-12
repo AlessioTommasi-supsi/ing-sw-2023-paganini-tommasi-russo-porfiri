@@ -154,11 +154,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                 return  Integer.parseInt(s.next());
             case TERMINA_TURNS:
                 return this.current_game_id;//oggetto da passare come argomento e' l'id della partita corrente.
-
-
-
             case PESCA_FROM_PLANCIA:
-
                 try{
                     //faccio qui tutti i controlli cosi sono sicuro di passare al server solo i dati giusti tanto la board viene aggiornata ad ogni turno!
 
@@ -170,28 +166,20 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                         int x = Integer.parseInt(s.next());
                         System.out.println("inserisci la posizione y della tessera da pescare: ");
                         tilesToRemove.add(new TilePositionBoard(x,Integer.parseInt(s.next())));
-
                     }
-
-
-                    System.err.println("TESSERA CHE HAI SCELTO DI RIMUOVERE: "+tilesToRemove);
-
+                    //.DEBUG
+                    //System.err.println("TESSERA CHE HAI SCELTO DI RIMUOVERE: "+tilesToRemove);
                     System.out.println("inserisci la colonna della tua libreria dove mettere la tessera: ");
                     int colum_of_shelves = Integer.parseInt(s.next());
 
                     //check_input(tilesToRemove,colum_of_shelves);
-
                     return new Drow_from_board_Message(tilesToRemove,colum_of_shelves,this.current_game_id);
-
-                    //ERRORI DI RIMOZIONE DA SHELVES
-                    //devo re inserire le tessere nella board!
                 }catch (Exception e){
                     System.err.println("generic error occurred! ");
                     e.printStackTrace();
                 }
-
-
-
+            case EXIT:
+                return this.current_game_id;//oggetto da passare come argomento e' l'id della partita corrente.
 
         }
         return null;
@@ -292,7 +280,9 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                         case PESCA_FROM_PLANCIA:
                             System.out.println("il player: "+model.getMyShelfie().getGame(this.current_game_id).getCurrentPlayer().getUsername()+" HA PESCATO DALLA PLANCIA!");
                         break;
-
+                        case EXIT:
+                            System.out.println("il player: "+model.getMyShelfie().getGame(this.current_game_id).getCurrentPlayer().getUsername()+" HA FORZATO LA CHIUSURA DEL GIOCO ALLA FINE DEL GIRO!");
+                        break;
                         default:
                             System.err.println("not implemented yet");
                     }
