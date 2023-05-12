@@ -144,11 +144,11 @@ public class Board implements Serializable {
             }
         }
         //.DEBUG
-        /*
+
         for(int i = 0; i< tilesToRemove.size(); i++){
             System.out.println(tilesToRemove.get(i).toString());
         }
-        */
+
 
         if((tilesToRemove.size() < 1) || (tilesToRemove.size() > 3)){
             throw new TilesAreNotRemovableException();
@@ -156,7 +156,8 @@ public class Board implements Serializable {
 
         else {
             for (int i = 0; i < tilesToRemove.size(); i++) {
-                /* E! QUESTO CHE NON VA BENE!
+                /*
+                E! QUESTO CHE NON VA BENE!
                 if (!this.tileIsRemovable(tilesToRemove.get(i))) {
                     throw new TilesAreNotRemovableException();
                 }

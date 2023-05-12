@@ -12,14 +12,13 @@ public class MyShelfie implements Serializable {
     public void joinGame(int intPlayerNumber, Player p ) throws Exception{
         //controllo che il player non sia gia attivo in qualche altra partita
         for (Game game: games) {
-            switch (game.getStato()){
-                case IN_CORSO:
-                case IN_ATTESA:
-                    for (Player player: game.getPlayers()) {
+            for (Player player: game.getPlayers()) {
+                switch (game.getStato()){
+                    case IN_CORSO:
                         if (player.getUsername().equals(p.getUsername())) {
                             throw new IllegalArgumentException("il player e gia attivo o in coda in qualche altra partita");
                         }
-                    }
+                }
             }
         }
         //esistono partite con gia quel numero di giocatori in attesa:

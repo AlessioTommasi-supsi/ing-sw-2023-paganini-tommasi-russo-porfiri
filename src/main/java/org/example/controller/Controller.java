@@ -35,7 +35,9 @@ public class Controller {
 
                     model.getMyShelfie().joinGame(numero_giocatori,arg.getPlayer());
 
-                    arg.getPlayer().setId(Globals.incrementPlayerId());
+                    if(arg.getPlayer().getId() == -1){
+                        arg.getPlayer().setId(Globals.incrementPlayerId());
+                    }
                     /* //.DEBUG
                     System.err.println("num Giochi: "+model.getMyShelfie().getGames().size());
                     model.getMyShelfie().getGames().stream()
