@@ -6,6 +6,8 @@ import org.example.util.*;
 import org.example.view.*;
 import org.example.controller.*;
 
+import java.util.ArrayList;
+
 public class Controller {
     private final Turn model;
     private final Client client;
@@ -41,12 +43,37 @@ public class Controller {
                 break;
 
                 case PESCA_FROM_PLANCIA:
-
+                    Drow_from_board_Message drow_message = (Drow_from_board_Message) arg.getArgument();
+                    //RIMOZIONE DA BOARD
+                    ArrayList<TileObj> tilesRemoved = model.getMyShelfie().getGame(drow_message.getCurrent_game_id()).getBoard().removeTiles(drow_message.getTilesToRemove());
+                    //IMMETTI IN LIBRERIA
+                    //sicuramente dovro modificare la libreria del player corrente!
+                    try {
+                        model.getMyShelfie().getGame(drow_message.getCurrent_game_id()).getCurrentPlayer().putTilesInShelf(tilesRemoved, drow_message.getColumm_of_sheves());
+                    }catch (IllegalSizeOfTilesException e1){
+                        //devo rimettere le tessere nella plancia!
+                        model.getMyShelfie().getGame(drow_message.getCurrent_game_id()).getBoard().addTiles(drow_message.getTilesToRemove());
+                        //DEFULT
+                        model.errore = e1.toString();
+                        e1.printStackTrace();
+                    }catch (IllegalColumnException e2){
+                        //devo rimettere le tessere nella plancia!
+                        model.getMyShelfie().getGame(drow_message.getCurrent_game_id()).getBoard().addTiles(drow_message.getTilesToRemove());
+                        //DEFULT
+                        model.errore = e2.toString();
+                        e2.printStackTrace();
+                    }catch (FullLibraryException e3){
+                        //al termine deil giro dei giocatori la partita deve finire!
+                        model.getMyShelfie().getGame(drow_message.getCurrent_game_id()).full_library();
+                    }
                     break;
                 case TERMINA_TURNS:
                     model.getMyShelfie().getGame((Integer) arg.getArgument()).nextCurrentPlayer();
                     //se necerrassio ripristino la board!
                     model.getMyShelfie().getGame((Integer) arg.getArgument()).getBoard().restoreBoard();
+                    //funzionalita di fine partita
+                    model.getMyShelfie().getGame((Integer) arg.getArgument()).end();
+
                     break;
             }
         }catch (Exception e){

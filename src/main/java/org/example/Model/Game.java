@@ -31,6 +31,9 @@ public abstract class Game implements Serializable {
     private CommonCard common1;
     private CommonCard common2;
 
+    //quando e' a true devo completare il turno e poi finire la partita!
+    private boolean full_library = false;
+
 
     public Game(int playerNumber, Player mazziere) {
         this.playerNumber = playerNumber;
@@ -186,45 +189,53 @@ public abstract class Game implements Serializable {
         this.stato = StatoPartita.IN_CORSO;
     }
 
+    public void full_library(){
+        if (this.full_library==false){ //aggiungo punti solo al primo player che mi completa la partita!
+            this.full_library = true;
+            this.currentPlayer.add_end_of_game_point();
+        }
+    }
+
 
     public void end() throws Exception {
-        this.stato = StatoPartita.FINITA;
+        if (this.full_library == true && (this.players.indexOf(this.currentPlayer) == 0/*ho terminato giro*/)) {
+            this.stato = StatoPartita.FINITA;
 
-        //calcolo i punti di ogni giocatore e ne faccio il ranking
-        //indice di ranking e Indice dei giocatori quando si sono uniti alla partita.
+            //calcolo i punti di ogni giocatore e ne faccio il ranking
+            //indice di ranking e Indice dei giocatori quando si sono uniti alla partita.
 
-        int point[];
+            int point[];
 
-        //funzionalita ranking!
-        point = new int[this.playerNumber];
+            //funzionalita ranking!
+            point = new int[this.playerNumber];
 
-        for (int i = 0; i < players.size(); i++) {
-            players.get(i).calcOverallScore();
-            point[i] = players.get(i).getScore();
-        }
-
-        this.ranking = new int[this.playerNumber];
-
-        for (int i = 0; i < players.size(); i++) {
-            //point[i] = players.get(i).getShelves().getScore();
-            rank.add(new Ranking(players.get(i), point[i]));
-        }
-
-        int index = -1;
-        int max =point[0];
-
-        for (int j = 0; j < this.playerNumber; j++) {
-            for (int i = 1; i < players.size() ; i++) {
-                if (point[i] > max) {
-                    max = point[i];
-                    index = i;
-                }
+            for (int i = 0; i < players.size(); i++) {
+                players.get(i).calcOverallScore();
+                point[i] = players.get(i).getScore();
             }
-            point[index] = -1;
-            this.ranking[j] = index;
-        }
-        //fine funzionalita ranking
 
+            this.ranking = new int[this.playerNumber];
+
+            for (int i = 0; i < players.size(); i++) {
+                //point[i] = players.get(i).getShelves().getScore();
+                rank.add(new Ranking(players.get(i), point[i]));
+            }
+
+            int index = -1;
+            int max =point[0];
+
+            for (int j = 0; j < this.playerNumber; j++) {
+                for (int i = 1; i < players.size() ; i++) {
+                    if (point[i] > max) {
+                        max = point[i];
+                        index = i;
+                    }
+                }
+                point[index] = -1;
+                this.ranking[j] = index;
+            }
+            //fine funzionalita ranking
+        }
     }
 
     public void drawCommon() {

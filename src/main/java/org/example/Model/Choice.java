@@ -6,7 +6,6 @@ public class Choice implements Serializable {
     private Choice_my_shelfie choice;
     private Turn.Event stato;
     private Object argument;
-
     private Player player;
 
     public Choice(Choice_my_shelfie choice, Player player, Object argument) {

@@ -14,7 +14,7 @@ import java.rmi.server.UnicastRemoteObject;
 public class ClientImpl extends UnicastRemoteObject implements Client, Runnable {
 
     View_my_shelfie view = new View_my_shelfie();
-    View_Gui view_gui = new View_Gui();
+    //View_Gui view_gui = new View_Gui();
     public ClientImpl(Server server) throws RemoteException {
         super();
         initialize(server);

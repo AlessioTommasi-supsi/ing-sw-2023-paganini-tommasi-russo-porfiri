@@ -1,5 +1,7 @@
 package org.example.Model;
 
+import org.example.util.PositionEmptyException;
+
 import java.io.Serializable;
 import java.util.*;
 
@@ -147,6 +149,10 @@ public class Player implements Serializable {
         return counter;
     }
 
+    public void add_end_of_game_point(){
+        this.score+=1;
+    }
+
 
 
 
@@ -270,6 +276,40 @@ public class Player implements Serializable {
         this.score +=  calculatePersonalPoints() + calculateAdjacentPoints();
     }
 
-    //manca un puttyle in shelves che accetta solo la colonna in cui io devo aggiungere le tiles!
+    //manca un put_tyle in shelves che accetta solo la colonna in cui io devo aggiungere le tiles!
     //qualcosa che avevamo detto essere gravitY?
+    public void putTilesInShelf(ArrayList<TileObj> tilesToPut, int col) throws Exception {
+        /*TODO!
+        * ricorda genera eccezione
+        * se non riesce a mettere le tiles
+            -> libreria piena, in qualsiasi colonna non ci possono stare quel numero di tiles   IllegalSizeOfTilesException
+            -> colonna non giusta   IllegalColumnException
+        * se riesce a mettere le tiles
+        *   con le tiles immesse la libreria  diventa piena     FullLibraryException
+        * */
+
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -25,6 +25,9 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
 
     public void update(TurnView model/*risposta dal server*/, Choice arg/*evento che il client remoto ha scelto*/) {
 
+        //se presente stampo qualgcosa se no stringa vuota!
+        System.err.println(model.getErrore());
+
         if (current_game_id == -1){ //inizializzazione di tutte le variabili di gioco
             joining_part(model,arg);
         }else {
@@ -155,56 +158,63 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
 
 
             case PESCA_FROM_PLANCIA:
-                while(true) {
-                    try{
-                        //faccio qui tutti i controlli cosi sono sicuro di passare al server solo i dati giusti tanto la board viene aggiornata ad ogni turno!
-                        try {
-                            System.out.println("inserisci il numero di tessere da pescare: ");
-                            int counter = Integer.parseInt(s.next());
-                            ArrayList<TilePositionBoard> tilesToRemove = new ArrayList<TilePositionBoard>();
-                            for (int i = 0; i < counter; i++) {
-                                System.out.println("inserisci la posizione x della tessera da pescare: ");
-                                int x = Integer.parseInt(s.next());
-                                System.out.println("inserisci la posizione y della tessera da pescare: ");
-                                tilesToRemove.add(new TilePositionBoard(x,Integer.parseInt(s.next())));
-                            }
 
-                            //RIMOZIONE DA BOARD:
-                            this.current_game.getBoard().removeTiles(tilesToRemove);
+                try{
+                    //faccio qui tutti i controlli cosi sono sicuro di passare al server solo i dati giusti tanto la board viene aggiornata ad ogni turno!
 
-                            System.out.println("inserisci la colonna della tua libreria dove mettere la tessera: ");
-                            int colum_of_shelves = Integer.parseInt(s.next());
-
-                            //INSERIMENTO IN SHELVS:
-                            //mancano metodi in player o Shelves per poterlo fare correttamente!
-                            return new Drow_from_board_Message(tilesToRemove,colum_of_shelves);
-                        }
-                        //ERRORI DI RIMOZIONE DA BOARD!
-                        catch (TilesAreNotRemovableException e){
-                            //non cé bisogno di rimettere le tessere nella board!
-                            e.printStackTrace();
-                            System.err.println("errore nell'inserimento dei dati!\n"+e.getMessage()+ "`\n riprova! \n");
-
-                        }catch (PositionEmptyException e) {
-                            //non cé bisogno di rimettere le tessere nella board!
-                            e.printStackTrace();
-                            System.err.println("errore nell'inserimento dei dati!\n"+e.getMessage()+ "`\n riprova! \n");
-                        }
-                        //ERRORI DI RIMOZIONE DA SHELVES
-                        //devo re inserire le tessere nella board!
-                    }catch (Exception e){
-                        System.err.println("generic error occurred! ");
-                        e.printStackTrace();
+                    System.out.println("inserisci il numero di tessere da pescare: ");
+                    int counter = Integer.parseInt(s.next());
+                    ArrayList<TilePositionBoard> tilesToRemove = new ArrayList<TilePositionBoard>();
+                    for (int i = 0; i < counter; i++) {
+                        System.out.println("inserisci la posizione x della tessera da pescare: ");
+                        int x = Integer.parseInt(s.next());
+                        System.out.println("inserisci la posizione y della tessera da pescare: ");
+                        tilesToRemove.add(new TilePositionBoard(x,Integer.parseInt(s.next())));
                     }
 
+                    System.out.println("inserisci la colonna della tua libreria dove mettere la tessera: ");
+                    int colum_of_shelves = Integer.parseInt(s.next());
+
+                    //check_input(tilesToRemove,colum_of_shelves);
+
+                    return new Drow_from_board_Message(tilesToRemove,colum_of_shelves,this.current_game_id);
+
+                    //ERRORI DI RIMOZIONE DA SHELVES
+                    //devo re inserire le tessere nella board!
+                }catch (Exception e){
+                    System.err.println("generic error occurred! ");
+                    e.printStackTrace();
                 }
+
+
 
 
         }
         return null;
     }
 
+    private void check_input(ArrayList<TilePositionBoard> tilesToRemove, int columOfShelves) throws Exception{
+        try {
+            //PROVA A VEDERE SE FUNZIONA MA SECONDO ME NO! POICHE GAME RITORNATO DA SERVER E' FINAL!! (non piu) pero brutto!
+            //RIMOZIONE DA BOARD:
+            ArrayList<TileObj> tilesRemoved=this.current_game.getBoard().removeTiles(tilesToRemove);
 
+            //INSERIMENTO IN SHELVS:
+            this.player.putTilesInShelf(tilesRemoved,columOfShelves);
+
+            }
+            //ERRORI DI RIMOZIONE DA BOARD!
+            catch (TilesAreNotRemovableException e){
+                //non cé bisogno di rimettere le tessere nella board!
+                e.printStackTrace();
+                System.err.println("errore nell'inserimento dei dati!\n"+e.getMessage()+ "`\n riprova! \n");
+
+            }catch (PositionEmptyException e) {
+                //non cé bisogno di rimettere le tessere nella board!
+                e.printStackTrace();
+                System.err.println("errore nell'inserimento dei dati!\n"+e.getMessage()+ "`\n riprova! \n");
+            }
+    }
 
     public void joining_part(TurnView model,Choice arg) {
         //USERNAME DEVE ESSERE UNIVOCO
@@ -261,45 +271,6 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
     }
 
     public void choiche_part(TurnView model, Choice arg) {
-        /*old: controllo che sia il mio turno per visualizzare qualcosa!
-
-        if (model.getMyShelfie().getGame(this.current_game_id).getCurrentPlayer() != null) {
-            if (model.getMyShelfie().getGame(this.current_game_id).getCurrentPlayer().getId() == this.player.getId()) {
-                try {
-                    switch (model.getPlayerChoice().getStato()) {
-                        case CPU_CHOICE -> {
-                            switch (model.getPlayerChoice().getChoice()) {
-                                case IMMMETTI_IN_LIBRERIA:
-
-                                break;
-
-                                case TERMINA_TURNS:
-                                    System.out.println("hai terminato il tuo turno!");
-                                    System.out.println("ora tocca a: " + model.getMyShelfie().getGame(this.current_game_id).getCurrentPlayer().getUsername());
-                                break;
-
-                                case JOIN_GAME://non devo far nulla!
-                                break;
-
-                                default:
-                                    System.err.println("not implemented yet");
-                            }
-                        }
-                        default -> System.err.println("errore stato! Ignoring event from " + model.toString() + ": " + arg.toString());
-                    }
-                } catch (Exception e) {
-                    System.out.println("gioco che ha generato errore: " + model.getMyShelfie().getGame(this.current_game_id).toString());
-                    e.printStackTrace();
-                }
-                System.out.println("il server ha risposto!");
-                this.setState(State.WAITING_FOR_PLAYER);
-            }
-        }
-        */
-
-        //DA VISUALIZZARE PER TUTTI I CLIENT!
-
-
         try {
             switch (model.getPlayerChoice().getStato()) {
                 case CPU_CHOICE -> {
@@ -313,6 +284,9 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
 
                         case JOIN_GAME:
                             System.out.println("il player: "+model.getMyShelfie().getGame(this.current_game_id).getPlayers().get(model.getMyShelfie().getGame(this.current_game_id).getPlayers().size()-1).getUsername()+" si e' unito alla partita!");
+                        break;
+                        case PESCA_FROM_PLANCIA:
+                            System.out.println("il player: "+model.getMyShelfie().getGame(this.current_game_id).getCurrentPlayer().getUsername()+" HA PESCATO DALLA PLANCIA!");
                         break;
 
                         default:

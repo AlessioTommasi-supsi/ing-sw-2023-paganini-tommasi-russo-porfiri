@@ -1,5 +1,9 @@
 package org.example.Model;
 
+import org.example.util.PositionAlreadyOccupiedException;
+import org.example.util.PositionEmptyException;
+import org.example.util.TilesAreNotRemovableException;
+
 import java.io.Serializable;
 import java.util.*;
 
@@ -98,6 +102,15 @@ public class Board implements Serializable {
         }
     }  //metodo che userò anche per riempire la board quando vuota
 
+    public void addTiles(ArrayList<TilePositionBoard> tilesRemoved){
+        for(TilePositionBoard p : tilesRemoved){
+            try {
+                this.placements.add(p);
+            } catch (Exception e) {
+                continue;
+            }
+        }
+    }
 
     public boolean tileIsRemovable(TilePositionBoard position){
         int x = position.getX();

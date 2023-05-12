@@ -12,7 +12,7 @@ public class TurnView implements Serializable {
     static final long serialVersionUID = 1L;
 
     private final Choice playerChoice;
-    private final MyShelfie myShelfie;
+    private final MyShelfie myShelfie; //MI SERVE NON FINAL PER FARE OPERAZIONI E VEDERE ECCEZIONI GENERATE SENZA PASSARE DAL CONTROLLER!
 
     private final String errore;
 
@@ -24,6 +24,10 @@ public class TurnView implements Serializable {
         this.myShelfie = model.getMyShelfie();
         this.errore = model.errore;
 
+    }
+
+    public String getErrore() {
+        return errore;
     }
 
     public Choice getPlayerChoice() {

@@ -1,5 +1,7 @@
 package org.example.Model;
 
+import org.example.util.PositionAlreadyOccupiedException;
+import org.example.util.PositionEmptyException;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
