@@ -33,8 +33,9 @@ public class Controller {
                     }
                     int numero_giocatori = (Integer) arg.getArgument();
 
-                    arg.getPlayer().setId(Globals.incrementPlayerId());
                     model.getMyShelfie().joinGame(numero_giocatori,arg.getPlayer());
+
+                    arg.getPlayer().setId(Globals.incrementPlayerId());
                     /* //.DEBUG
                     System.err.println("num Giochi: "+model.getMyShelfie().getGames().size());
                     model.getMyShelfie().getGames().stream()
@@ -71,8 +72,12 @@ public class Controller {
                     model.getMyShelfie().getGame((Integer) arg.getArgument()).nextCurrentPlayer();
                     //se necerrassio ripristino la board!
                     model.getMyShelfie().getGame((Integer) arg.getArgument()).getBoard().restoreBoard();
+                    //aggiornoamento punti comuni
+                    //MATTIA CONTROLLA PERCHE NON VA!
+                    //model.getMyShelfie().getGame((Integer) arg.getArgument()).updatePointsCommon();
                     //funzionalita di fine partita
                     model.getMyShelfie().getGame((Integer) arg.getArgument()).end();
+
 
                     break;
                 case EXIT:

@@ -49,6 +49,8 @@ public abstract class Game implements Serializable {
         this.board = new Board();
         buildBoard();
 
+        drawCommon();
+
         //currentplayer viene detto solo quando la partita passa da in attesa ad in corso!
 
     }

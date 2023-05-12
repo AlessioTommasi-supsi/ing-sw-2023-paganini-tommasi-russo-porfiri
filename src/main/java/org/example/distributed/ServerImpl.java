@@ -43,6 +43,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
                 client.update(new TurnView(model), arg);
             } catch (RemoteException e) {
                 System.err.println("Unable to update the client: " + e.getMessage() + ". Skipping the update...");
+
             }
         });
         //if (this.controller == null) {

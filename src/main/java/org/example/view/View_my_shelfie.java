@@ -8,6 +8,8 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+import static java.lang.System.exit;
+
 public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Runnable {
 
     private enum State {
@@ -28,6 +30,26 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
         //se presente stampo qualgcosa se no stringa vuota!
         System.err.println(model.getErrore());
 
+        try {
+            if (model.getMyShelfie().getGame(this.current_game_id).getStato().equals(StatoPartita.FINITA)){
+                //caso in cui ho terminato una partita
+                //stampa del ranking
+                current_game = null;
+                current_game_id = -1;
+                this.setState(State.WAITING_FOR_PLAYER);
+            }else {
+                in_game(model, arg);
+            }
+        } catch (Exception e){
+            in_game(model, arg);
+        }
+
+        /* //.DEBUG
+        System.err.println(this.toString());
+        */
+    }
+
+    public void in_game(TurnView model/*risposta dal server*/, Choice arg/*evento che il client remoto ha scelto*/){
         if (current_game_id == -1){ //inizializzazione di tutte le variabili di gioco
             joining_part(model,arg);
         }else {
@@ -38,10 +60,6 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
             //ho gia fatto join!
             choiche_part( model, arg);
         }
-
-        /* //.DEBUG
-        System.err.println(this.toString());
-        */
     }
 
     //PRIMA ESECUZIONE
@@ -135,6 +153,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                             e.printStackTrace();
                         }
                         return askPlayerChoiceMyShelfie();
+
                 }
                 return Choice_my_shelfie.valueOf(input);
             } catch (IllegalArgumentException e) {
