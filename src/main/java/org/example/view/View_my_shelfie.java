@@ -34,8 +34,18 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
             if (model.getMyShelfie().getGame(this.current_game_id).getStato().equals(StatoPartita.FINITA)){
                 //caso in cui ho terminato una partita
                 //stampa del ranking
+                this.current_game=model.getMyShelfie().getGame(this.current_game_id);
+                System.out.println("RANKING: ");
+                try {
+                    this.current_game.getRanking().stream()
+                            .forEach((rank)->{System.out.println(rank.toString());});
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                //CLEAR STATE
                 current_game = null;
                 current_game_id = -1;
+                this.player.setShelves(new Shelves());
                 this.setState(State.WAITING_FOR_PLAYER);
             }else {
                 in_game(model, arg);

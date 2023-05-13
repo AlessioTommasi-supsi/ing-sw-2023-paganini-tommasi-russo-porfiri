@@ -245,7 +245,7 @@ public class Player implements Serializable {
             }
         }
 
-        return -1;
+        return 0;
     }
 
     private int calculateGroupCounter(int row, int col, boolean[][] visited, int counter, boolean starter, int totCounter, TileType prevType) {
@@ -277,7 +277,7 @@ public class Player implements Serializable {
         if (starter == true) {
             return totCounter;
         }
-        return  -1;
+        return  0;
     }
 
 
