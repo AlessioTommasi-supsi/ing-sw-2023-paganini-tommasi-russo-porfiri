@@ -1,6 +1,5 @@
 package org.example.Model;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
 import java.util.*;
@@ -27,7 +26,7 @@ public class TileObjBag implements Serializable {
         }
     }
 
-    public TileObjBag(@NotNull TileObjBag bag){
+    public TileObjBag(TileObjBag bag){
         for (TileObj t : bag.getTiles()) {
             this.tiles.add(new TileObj(t));
         }

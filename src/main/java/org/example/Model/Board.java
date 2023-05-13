@@ -4,7 +4,6 @@ import org.example.util.PositionAlreadyOccupiedException;
 import org.example.util.PositionEmptyException;
 import org.example.util.TilesAreNotRemovableException;
 import org.example.util.WrongNumberOfTilesException;
-
 import java.io.Serializable;
 import java.util.*;
 
@@ -39,7 +38,15 @@ public class Board implements Serializable {
 
 
     public ArrayList<TilePositionBoard> getPlacements() {
-        return new ArrayList<TilePositionBoard>(placements);
+        ArrayList<TilePositionBoard> ap=new ArrayList<TilePositionBoard>();
+        for (TilePositionBoard p:this.placements) {
+            try{
+                ap.add(new TilePositionBoard(p));
+            }catch (Exception e){
+                continue;
+            }
+        }
+        return ap;
     }
 
     public TileObjBag getBag() {
@@ -47,8 +54,8 @@ public class Board implements Serializable {
     }
 
     public ArrayList<TilePositionBoard> showBoard() {
-        return this.getPlacements();
-    }  //fa stessa cosa di getPlacement (ci serve?)
+        return this.placements;
+    }
 
 
     public void setPlacements(ArrayList<TilePositionBoard> extPlacements) {
@@ -139,32 +146,37 @@ public class Board implements Serializable {
         //L'eventuale verifica di appartenenza andrà fatta "più in alto", esternamente al Model.
         //Le TilePositionBoard contenute nell'ArrayLiat passato come parametro, causa TurnView, non sono gli oggetti della Board, ma oggetti copia contenenti copie esatte dei valori degli attributi.
         //Tramite questo for a ciascuna posizione contenuta nell'ArrayList sostituisco il riferimento al corrispondente vero oggetto TilePositionBoard della Board.
-        for (TilePositionBoard extPosition : tilesToRemove) {
-            for (TilePositionBoard boardPosition : this.placements) {
-                if (extPosition.equals(boardPosition)) {
-                    tilesToRemove.remove(extPosition);
-                    tilesToRemove.add(boardPosition);
+
+        for (int i = 0; i < tilesToRemove.size() ; i++) {
+            for (int j = 0; j < this.placements.size(); j++) {
+                if (tilesToRemove.get(i).equals(placements.get(j))) {
+                    tilesToRemove.remove(tilesToRemove.get(i));
+                    tilesToRemove.add(placements.get(j));
                 }
             }
         }
+
 
         for(TilePositionBoard boardPosition : tilesToRemove){
             tilesCounter++;
         }
         //Se il numero di tessere contenute nell'ArrayList passato come parametro è 0 oppure >3 allora restituisce errore.
         //Da regole di gioco: è solo possibile prelevare da 1 a 3 tessere.
-        if (tilesCounter < 1 || tilesCounter > 3) {
-            throw new WrongNumberOfTilesException(tilesCounter);
-        }
+
         //se il numero di tessere è corretto, allora verifico che ciascuna tessera sia rimovibile.
         for(TilePositionBoard boardPosition : tilesToRemove){
             if(!tileIsRemovable(boardPosition)){
                 throw new TilesAreNotRemovableException();
             }
         }
+
         //verifica se le posizioni passate sono tutte sulla stessa riga (uguale x) o tutte sulla stessa colonna (uguale y).
         if(!(tilesAreInSameLine(tilesToRemove) || tilesAreInSameColumn(tilesToRemove))){
             throw new TilesAreNotRemovableException();
+        }
+
+        if (tilesCounter < 1 || tilesCounter > 3) {
+            throw new WrongNumberOfTilesException(tilesCounter);
         }
 
         //rimuove ciascun TileObj dalla corrispondente TilePositionBoard in board e infine il metodo restituisce questi TileObj rimossi.

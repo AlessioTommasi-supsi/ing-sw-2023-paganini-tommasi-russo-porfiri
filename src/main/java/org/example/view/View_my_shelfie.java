@@ -204,18 +204,10 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                                 break;
                             }
                         }
-                        if(tilesToRemove.get(i) == null){
-                            i--;
-                            System.err.println("Attention! The requested position is not present in the board! Re-enter a valid one from those shown");
-                            System.out.println("Current BOARD: ");
-                            System.out.println("");
-                            try {
-                                printTilePositionBoard(this.current_game.getBoard().showBoard());
-                            }catch (Exception f){
-                                System.err.println("Error occurred displaying your BOARD! ");
-                                f.printStackTrace();
-                            }
-                        }
+
+                        //tilesToRemove.get(0).setTile(new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE));
+
+
                     }
 
                     //.DEBUG
@@ -226,7 +218,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                     //check_input(tilesToRemove,colum_of_shelves);
                     return new Drow_from_board_Message(tilesToRemove,colum_of_shelves,this.current_game_id);
                 }catch (Exception e){
-                    System.err.println("generic error del cazzo occurred! ");
+                    System.err.println("generic error occurred! ");
                     e.printStackTrace();
                 }
             case EXIT:

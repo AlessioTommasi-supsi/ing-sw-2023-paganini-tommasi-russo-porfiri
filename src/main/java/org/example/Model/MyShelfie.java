@@ -9,6 +9,10 @@ public class MyShelfie implements Serializable {
         games = new ArrayList<Game>();
     }
 
+    public MyShelfie(MyShelfie extMyShelfie){
+        this.games = new ArrayList<>(extMyShelfie.getGames());
+    }
+
     public void joinGame(int intPlayerNumber, Player p ) throws Exception{
         //controllo che il player non sia gia attivo in qualche altra partita
         for (Game game: games) {

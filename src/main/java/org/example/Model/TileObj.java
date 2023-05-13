@@ -1,6 +1,5 @@
 package org.example.Model;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
 import java.util.*;
@@ -16,7 +15,7 @@ public class TileObj implements Serializable {
         this.variant = chosenVariant;
     }
 
-    public TileObj(@NotNull TileObj tile) {
+    public TileObj(TileObj tile) {
         this.type = tile.getType();
         this.variant = tile.getVariant();
     }

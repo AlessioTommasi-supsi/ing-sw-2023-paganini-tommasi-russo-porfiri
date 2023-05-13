@@ -1,7 +1,6 @@
 package org.example.Model;
 
 import org.example.util.PositionAlreadyOccupiedException;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
 
@@ -25,7 +24,7 @@ public class TilePositionShelves implements Serializable {
         this.occupied= true;
     }
 
-    public TilePositionShelves(@NotNull TilePositionShelves tp){
+    public TilePositionShelves(TilePositionShelves tp){
         this.x= tp.getX();
         this.y= tp.getY();
         this.tileInSlot= new TileObj(tp.getTile());

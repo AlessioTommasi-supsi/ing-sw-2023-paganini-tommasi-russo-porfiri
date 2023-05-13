@@ -2,8 +2,6 @@ package org.example.Model;
 
 import org.example.util.PositionAlreadyOccupiedException;
 import org.example.util.PositionEmptyException;
-import org.jetbrains.annotations.NotNull;
-
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -27,10 +25,14 @@ public class TilePositionBoard implements Serializable {
         this.occupied= true;
     }
 
-    public TilePositionBoard(@NotNull TilePositionBoard tp){
+    public TilePositionBoard(TilePositionBoard tp){
         this.x= tp.getX();
         this.y= tp.getY();
-        this.tileInSlot= new TileObj(tp.getTile());
+        try {
+            this.tileInSlot = new TileObj(tp.getTile());
+        }catch (Exception e){
+            this.tileInSlot = null;
+        }
         this.occupied= tp.isOccupied();
 
     }
