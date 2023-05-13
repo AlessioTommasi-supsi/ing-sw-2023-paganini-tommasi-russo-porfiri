@@ -179,7 +179,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
 
         switch (pc){
             case JOIN_GAME:
-                System.out.println("insreisci numero di giocatori della partita: ");
+                System.out.println("Inserisci il numero di giocatori della partita: ");
                 return  Integer.parseInt(s.next());
             case TERMINA_TURNS:
                 return this.current_game_id;//oggetto da passare come argomento e' l'id della partita corrente.
@@ -187,15 +187,37 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                 try{
                     //faccio qui tutti i controlli cosi sono sicuro di passare al server solo i dati giusti tanto la board viene aggiornata ad ogni turno!
 
-                    System.out.println("inserisci il numero di tessere da pescare: ");
+                    System.out.println("Inserisci il numero di tessere da pescare: ");
                     int counter = Integer.parseInt(s.next());
                     ArrayList<TilePositionBoard> tilesToRemove = new ArrayList<TilePositionBoard>();
+                    ArrayList<TilePositionBoard> boardPlacementsCopy = current_game.getBoard().getPlacements();
+
                     for (int i = 0; i < counter; i++) {
-                        System.out.println("inserisci la posizione x della tessera da pescare: ");
+                        System.out.println("Inserisci la coordinata x della tessera da pescare: ");
                         int x = Integer.parseInt(s.next());
-                        System.out.println("inserisci la posizione y della tessera da pescare: ");
-                        tilesToRemove.add(new TilePositionBoard(x,Integer.parseInt(s.next())));
+                        System.out.println("Inserisci la coordinata y della tessera da pescare: ");
+                        int y = Integer.parseInt(s.next());
+
+                        for(TilePositionBoard item : boardPlacementsCopy){
+                            if(item.getX() == x && item.getY() == y){
+                                tilesToRemove.add(i, item);
+                                break;
+                            }
+                        }
+                        if(tilesToRemove.get(i) == null){
+                            i--;
+                            System.err.println("Attention! The requested position is not present in the board! Re-enter a valid one from those shown");
+                            System.out.println("Current BOARD: ");
+                            System.out.println("");
+                            try {
+                                printTilePositionBoard(this.current_game.getBoard().showBoard());
+                            }catch (Exception f){
+                                System.err.println("Error occurred displaying your BOARD! ");
+                                f.printStackTrace();
+                            }
+                        }
                     }
+
                     //.DEBUG
                     //System.err.println("TESSERA CHE HAI SCELTO DI RIMUOVERE: "+tilesToRemove);
                     System.out.println("inserisci la colonna della tua libreria dove mettere la tessera: ");
@@ -204,7 +226,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                     //check_input(tilesToRemove,colum_of_shelves);
                     return new Drow_from_board_Message(tilesToRemove,colum_of_shelves,this.current_game_id);
                 }catch (Exception e){
-                    System.err.println("generic error occurred! ");
+                    System.err.println("generic error del cazzo occurred! ");
                     e.printStackTrace();
                 }
             case EXIT:

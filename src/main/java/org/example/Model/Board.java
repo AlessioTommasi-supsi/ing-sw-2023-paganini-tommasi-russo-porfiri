@@ -3,6 +3,7 @@ package org.example.Model;
 import org.example.util.PositionAlreadyOccupiedException;
 import org.example.util.PositionEmptyException;
 import org.example.util.TilesAreNotRemovableException;
+import org.example.util.WrongNumberOfTilesException;
 
 import java.io.Serializable;
 import java.util.*;
@@ -113,68 +114,92 @@ public class Board implements Serializable {
     }
 
     public boolean tileIsRemovable(TilePositionBoard position){
-        int x = position.getX();
-        int y = position.getY();
 
-        //la posizione è svuotabile se contiene un tile e ha almeno un lato adiacente libero
+        //la posizione è svuotabile del proprio TileObj se contiene un tile e ha almeno un lato adiacente libero
         if(position.isOccupied()){
+            int x = position.getX();
+            int y = position.getY();
             for(TilePositionBoard item : placements){
-                if ((item.getX()==x && (item.getY()==y-1 || item.getY()==y+1)) || ((item.getX()==x-1 || item.getX()==x+1) && item.getY()==y)) {
+                if ((item.getX() == x && (item.getY() == y - 1 || item.getY() == y + 1)) || ((item.getX() == x - 1 || item.getX() == x + 1) && item.getY() == y)) {
                     if(!item.isOccupied()){
                         return true; //lo slot position ha almeno un lato adiacente vuoto.
                     }
                 }
             }
         }
-        return false;
+        return false;  //se arrivo fin qui non ho trovato nessun lato adiacente libero
     }
 
 
-    public ArrayList<TileObj> removeTiles(ArrayList<TilePositionBoard> tilesToRemove) throws TilesAreNotRemovableException, PositionEmptyException {
+    public ArrayList<TileObj> removeTiles(ArrayList<TilePositionBoard> tilesToRemove) throws TilesAreNotRemovableException, PositionEmptyException, WrongNumberOfTilesException {
         ArrayList<TileObj> TilesRemoved = new ArrayList<TileObj>();
+        int tilesCounter = 0;
 
-        //inizializzazione corretta degli elementi!
-        //ERRORE RIMUOVO DA DELLE POSIZIONI CHE CONTERRANO SEMPRE IS OCCUPIED = FALSE
-        for (int i =0; i<tilesToRemove.size();i++) {
-            for (int j = 0; j < this.placements.size(); j++) {
-                if (this.placements.get(j).equals(tilesToRemove.get(i))) {
-                    tilesToRemove.remove(i);
-                    tilesToRemove.add(this.placements.get(j));
+        //Il metodo parte dal presupposto che le posizioni passate dalla View abbiano coordinate x,y che appartengono alla Board corrente.
+        //L'eventuale verifica di appartenenza andrà fatta "più in alto", esternamente al Model.
+        //Le TilePositionBoard contenute nell'ArrayLiat passato come parametro, causa TurnView, non sono gli oggetti della Board, ma oggetti copia contenenti copie esatte dei valori degli attributi.
+        //Tramite questo for a ciascuna posizione contenuta nell'ArrayList sostituisco il riferimento al corrispondente vero oggetto TilePositionBoard della Board.
+        for (TilePositionBoard extPosition : tilesToRemove) {
+            for (TilePositionBoard boardPosition : this.placements) {
+                if (extPosition.equals(boardPosition)) {
+                    tilesToRemove.remove(extPosition);
+                    tilesToRemove.add(boardPosition);
                 }
             }
         }
-        //.DEBUG
 
-        for(int i = 0; i< tilesToRemove.size(); i++){
-            System.out.println(tilesToRemove.get(i).toString());
+        for(TilePositionBoard boardPosition : tilesToRemove){
+            tilesCounter++;
         }
-
-
-        if((tilesToRemove.size() < 1) || (tilesToRemove.size() > 3)){
+        //Se il numero di tessere contenute nell'ArrayList passato come parametro è 0 oppure >3 allora restituisce errore.
+        //Da regole di gioco: è solo possibile prelevare da 1 a 3 tessere.
+        if (tilesCounter < 1 || tilesCounter > 3) {
+            throw new WrongNumberOfTilesException(tilesCounter);
+        }
+        //se il numero di tessere è corretto, allora verifico che ciascuna tessera sia rimovibile.
+        for(TilePositionBoard boardPosition : tilesToRemove){
+            if(!tileIsRemovable(boardPosition)){
+                throw new TilesAreNotRemovableException();
+            }
+        }
+        //verifica se le posizioni passate sono tutte sulla stessa riga (uguale x) o tutte sulla stessa colonna (uguale y).
+        if(!(tilesAreInSameLine(tilesToRemove) || tilesAreInSameColumn(tilesToRemove))){
             throw new TilesAreNotRemovableException();
         }
 
-        else {
-            for (int i = 0; i < tilesToRemove.size(); i++) {
-                /*
-                E! QUESTO CHE NON VA BENE!
-                if (!this.tileIsRemovable(tilesToRemove.get(i))) {
-                    throw new TilesAreNotRemovableException();
-                }
-                */
-                System.out.println(" til is removable? "+tileIsRemovable(tilesToRemove.get(i)));
-
-            }
-            for (int i = 0; i < tilesToRemove.size(); i++) {
-
-                TilesRemoved.add(tilesToRemove.get(i).removeTile());
-            }
-            //.DEBUG
-            //this.printTilePositionBoard(this.placements);
-
-            return TilesRemoved;
+        //rimuove ciascun TileObj dalla corrispondente TilePositionBoard in board e infine il metodo restituisce questi TileObj rimossi.
+        for(TilePositionBoard boardPosition : tilesToRemove){
+            TilesRemoved.add(boardPosition.removeTile());
         }
 
+        return TilesRemoved;
+    }
+
+
+    private boolean tilesAreInSameLine(ArrayList<TilePositionBoard> extTilesPos){
+        for(int i=0; i < extTilesPos.size()-1; i++){
+            TilePositionBoard currentTile = extTilesPos.get(i);
+            TilePositionBoard nextTile = extTilesPos.get(i+1);
+
+            if(!(nextTile.getX() == currentTile.getX() &&
+                    ((nextTile.getY() == currentTile.getY()-1) || (nextTile.getY() == currentTile.getY()+1)))){
+                return false;
+            }
+        }
+        return  true;
+    }
+
+    private boolean tilesAreInSameColumn(ArrayList<TilePositionBoard> extTilesPos){
+        for(int i=0; i < extTilesPos.size()-1; i++){
+            TilePositionBoard currentTile = extTilesPos.get(i);
+            TilePositionBoard nextTile = extTilesPos.get(i+1);
+
+            if(!(nextTile.getY() == currentTile.getY() &&
+                    ((nextTile.getX() == currentTile.getX()-1) || (nextTile.getX() == currentTile.getX()+1)))){
+                return false;
+            }
+        }
+        return  true;
     }
 
 
