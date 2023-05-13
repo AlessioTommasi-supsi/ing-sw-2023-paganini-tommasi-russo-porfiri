@@ -1,9 +1,7 @@
 package org.example.Model;
 
-import org.example.util.PositionAlreadyOccupiedException;
-import org.example.util.PositionEmptyException;
-import org.example.util.TilesAreNotRemovableException;
-import org.example.util.WrongNumberOfTilesException;
+import org.example.util.*;
+
 import java.io.Serializable;
 import java.util.*;
 
@@ -121,6 +119,7 @@ public class Board implements Serializable {
     }
 
     public boolean tileIsRemovable(TilePositionBoard position){
+        int counter = 0;
 
         //la posizione è svuotabile del proprio TileObj se contiene un tile e ha almeno un lato adiacente libero
         if(position.isOccupied()){
@@ -128,17 +127,23 @@ public class Board implements Serializable {
             int y = position.getY();
             for(TilePositionBoard item : placements){
                 if ((item.getX() == x && (item.getY() == y - 1 || item.getY() == y + 1)) || ((item.getX() == x - 1 || item.getX() == x + 1) && item.getY() == y)) {
+                    counter++;
                     if(!item.isOccupied()){
                         return true; //lo slot position ha almeno un lato adiacente vuoto.
                     }
                 }
             }
+            if(counter<4){
+                return true;
+            } //Per le tessere ai bordi che in Board non hanno tutte e 4 le posizioni adiacenti.
+              //Se sono arrivato fin qui e le posizioni adiacenti sono tutte occupate, ma quelle presenti in Board sono in numero <4
+              //allora mi trovo su una tessera del bordo, certamente rimovibile.
         }
-        return false;  //se arrivo fin qui non ho trovato nessun lato adiacente libero
+        return false;  //se arrivo fin qui non ho trovato nessun lato adiacente libero.
     }
 
 
-    public ArrayList<TileObj> removeTiles(ArrayList<TilePositionBoard> tilesToRemove) throws TilesAreNotRemovableException, PositionEmptyException, WrongNumberOfTilesException {
+    public ArrayList<TileObj> removeTiles(ArrayList<TilePositionBoard> tilesToRemove) throws TilesAreNotRemovableException, PositionEmptyException, WrongNumberOfTilesException, BoardDoesNotContainThisPositionException {
         ArrayList<TileObj> TilesRemoved = new ArrayList<TileObj>();
         int tilesCounter = 0;
 
@@ -156,27 +161,35 @@ public class Board implements Serializable {
             }
         }
 
-
         for(TilePositionBoard boardPosition : tilesToRemove){
             tilesCounter++;
         }
-        //Se il numero di tessere contenute nell'ArrayList passato come parametro è 0 oppure >3 allora restituisce errore.
-        //Da regole di gioco: è solo possibile prelevare da 1 a 3 tessere.
 
-        //se il numero di tessere è corretto, allora verifico che ciascuna tessera sia rimovibile.
-        for(TilePositionBoard boardPosition : tilesToRemove){
-            if(!tileIsRemovable(boardPosition)){
+        //se ciascuna posizione passata appartiene alla Board, è rimovibile, se le tessere passate sono differenti tra loro,
+        // allora verifico che ciascuna tessera sia rimovibile.
+        for(TilePositionBoard posToRemove : tilesToRemove){
+            if(!isABoardPosition(posToRemove)){
+                throw new BoardDoesNotContainThisPositionException(posToRemove.getX(), posToRemove.getY());
+            }
+            if(!tileIsRemovable(posToRemove)){
                 throw new TilesAreNotRemovableException();
             }
+
         }
 
+        //Se il numero di tessere contenute nell'ArrayList passato come parametro è 0 oppure >3 allora restituisce errore.
+        //Da regole di gioco: è solo possibile prelevare da 1 a 3 tessere.
+        if (tilesCounter < 1 || tilesCounter > 3) {
+            throw new WrongNumberOfTilesException(tilesCounter);
+        }
+
+        if (!arePositionsDifferentFromEachOther(tilesToRemove)) {
+            throw new TilesAreNotRemovableException();
+        }
+        
         //verifica se le posizioni passate sono tutte sulla stessa riga (uguale x) o tutte sulla stessa colonna (uguale y).
         if(!(tilesAreInSameLine(tilesToRemove) || tilesAreInSameColumn(tilesToRemove))){
             throw new TilesAreNotRemovableException();
-        }
-
-        if (tilesCounter < 1 || tilesCounter > 3) {
-            throw new WrongNumberOfTilesException(tilesCounter);
         }
 
         //rimuove ciascun TileObj dalla corrispondente TilePositionBoard in board e infine il metodo restituisce questi TileObj rimossi.
@@ -212,6 +225,29 @@ public class Board implements Serializable {
             }
         }
         return  true;
+    }
+
+    private boolean isABoardPosition(TilePositionBoard pos){
+        int x = pos.getX();
+        int y = pos.getY();
+
+        for(TilePositionBoard t : this.placements){
+            if(t.getX() == x && t.getY() == y){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean arePositionsDifferentFromEachOther(ArrayList<TilePositionBoard> tpb){
+        for(int i=0; i<tpb.size()-1; i++){
+            for(int j=0; j<tpb.size(); j++){
+                if(tpb.get(i).equals(tpb.get(j))){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
 
