@@ -241,7 +241,7 @@ public class Board implements Serializable {
 
     private boolean arePositionsDifferentFromEachOther(ArrayList<TilePositionBoard> tpb){
         for(int i=0; i<tpb.size()-1; i++){
-            for(int j=0; j<tpb.size(); j++){
+            for(int j=1; j<tpb.size(); j++){
                 if(tpb.get(i).equals(tpb.get(j))){
                     return false;
                 }
