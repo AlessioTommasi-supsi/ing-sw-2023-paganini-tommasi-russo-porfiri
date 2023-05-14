@@ -1,5 +1,8 @@
 package org.example.Model;
 
+import org.example.util.FullLibraryException;
+import org.example.util.IllegalColumnException;
+import org.example.util.IllegalSizeOfTilesException;
 import org.example.util.PositionEmptyException;
 
 import java.io.Serializable;
@@ -298,6 +301,23 @@ public class Player implements Serializable {
         *   con le tiles immesse la libreria  diventa piena     FullLibraryException
         * */
 
+        int countTilesInColumn = 0;
+        for(int i = 0; i < 6;i++) {
+            if (shelves.getTilePosition(col, i).getTile() != null) {
+                countTilesInColumn++;
+            } else {
+                break;
+            }
+        }
+        if((col > 4)  || (col < 0))throw new IllegalColumnException();
+        else if(tilesToPut.size() > shelves.getMaxRows() - countTilesInColumn) throw new IllegalSizeOfTilesException();
+        for(int i = countTilesInColumn + 1;i < 6; i++) {
+            for(int j = 0; j < tilesToPut.size();j++) {
+                shelves.getTilePosition(col,countTilesInColumn+1).setTile(tilesToPut.get(i));
+                countTilesInColumn++;
+            }
+        }
+        if (shelves.getFilledCounter() == 30) throw new FullLibraryException();
     }
 }
 
