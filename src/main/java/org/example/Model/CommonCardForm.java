@@ -72,10 +72,10 @@ public class CommonCardForm extends CommonCard implements Serializable {
                 }
                 for (int j = 0; j < 6; j++) {
                     for (int i = 0; i < 5; i++) {
-                        if ((player.getShelves().getTilePosition(i, j) != null) && (!alreadyPartOfShape[i][j])) {
+                        if ((player.getShelves().getTilePosition(i, j).getTile() != null) && (!alreadyPartOfShape[i][j])) {
                             TileType tileType = player.getShelves().getTilePosition(i, j).getTile().getType();
                             if(j+1 < 6) {
-                                if ((player.getShelves().getTilePosition(i, j + 1) != null) && (!alreadyPartOfShape[i][j + 1]) && (player.getShelves().getTilePosition(i, j + 1).getTile().getType() == tileType)) {
+                                if ((player.getShelves().getTilePosition(i, j + 1).getTile() != null) && (!alreadyPartOfShape[i][j + 1]) && (player.getShelves().getTilePosition(i, j + 1).getTile().getType() == tileType)) {
                                     counterShape++;
                                     if(counterShape == 6) {
                                         objectiveAchieved = true;
@@ -108,14 +108,14 @@ public class CommonCardForm extends CommonCard implements Serializable {
                 }
                 for (int j = 0; j<6;j++) {
                     for (int i = 0;i<5;i++) {
-                        if ((player.getShelves().getTilePosition(i, j) != null) && (!alreadyPartOfShape[i][j])) {
+                        if ((player.getShelves().getTilePosition(i, j).getTile() != null) && (!alreadyPartOfShape[i][j])) {
                             TileType tileType = player.getShelves().getTilePosition(i, j).getTile().getType();
                             if (j + 1 < 6) {
-                                if ((player.getShelves().getTilePosition(i, j + 1) != null) && (!alreadyPartOfShape[i][j + 1]) && (player.getShelves().getTilePosition(i, j + 1).getTile().getType() == tileType)) {
+                                if ((player.getShelves().getTilePosition(i, j + 1).getTile() != null) && (!alreadyPartOfShape[i][j + 1]) && (player.getShelves().getTilePosition(i, j + 1).getTile().getType() == tileType)) {
                                     if (j+2 < 6) {
-                                        if ((player.getShelves().getTilePosition(i, j + 2) != null) && (!alreadyPartOfShape[i][j + 2]) && (player.getShelves().getTilePosition(i, j + 2).getTile().getType() == tileType)) {
+                                        if ((player.getShelves().getTilePosition(i, j + 2).getTile() != null) && (!alreadyPartOfShape[i][j + 2]) && (player.getShelves().getTilePosition(i, j + 2).getTile().getType() == tileType)) {
                                             if (j + 3 < 6) {
-                                                if ((player.getShelves().getTilePosition(i, j + 3) != null) && (!alreadyPartOfShape[i][j + 3]) && (player.getShelves().getTilePosition(i, j + 3).getTile().getType() == tileType)) {
+                                                if ((player.getShelves().getTilePosition(i, j + 3).getTile() != null) && (!alreadyPartOfShape[i][j + 3]) && (player.getShelves().getTilePosition(i, j + 3).getTile().getType() == tileType)) {
                                                     counterShape++;
                                                     if(counterShape == 4) {
                                                         objectiveAchieved = true;
@@ -154,13 +154,13 @@ public class CommonCardForm extends CommonCard implements Serializable {
                 }
                 for(int j = 0; j<6;j++) {
                     for (int i = 0;i<5;i++) {
-                        if ((player.getShelves().getTilePosition(i, j) != null) && (!alreadyPartOfShape[i][j])) {
+                        if ((player.getShelves().getTilePosition(i, j).getTile() != null) && (!alreadyPartOfShape[i][j])) {
                             TileType tileType = player.getShelves().getTilePosition(i, j).getTile().getType();
                             if (j + 1 < 6) {
-                                if ((player.getShelves().getTilePosition(i, j + 1) != null) && (!alreadyPartOfShape[i][j + 1]) && (player.getShelves().getTilePosition(i, j + 1).getTile().getType() == tileType)) {
+                                if ((player.getShelves().getTilePosition(i, j + 1).getTile() != null) && (!alreadyPartOfShape[i][j + 1]) && (player.getShelves().getTilePosition(i, j + 1).getTile().getType() == tileType)) {
                                     if (i+1< 5) {
-                                        if ((player.getShelves().getTilePosition(i+1, j) != null) && (!alreadyPartOfShape[i+1][j]) && (player.getShelves().getTilePosition(i+1, j).getTile().getType() == tileType)) {
-                                            if ((player.getShelves().getTilePosition(i+1, j+1) != null) && (!alreadyPartOfShape[i+1][j + 1]) && (player.getShelves().getTilePosition(i+1, j + 1).getTile().getType() == tileType)) {
+                                        if ((player.getShelves().getTilePosition(i+1, j).getTile() != null) && (!alreadyPartOfShape[i+1][j]) && (player.getShelves().getTilePosition(i+1, j).getTile().getType() == tileType)) {
+                                            if ((player.getShelves().getTilePosition(i+1, j+1).getTile() != null) && (!alreadyPartOfShape[i+1][j + 1]) && (player.getShelves().getTilePosition(i+1, j + 1).getTile().getType() == tileType)) {
                                                 counterShape++;
                                                 if (counterShape == 2) {
                                                     objectiveAchieved = true;
@@ -191,24 +191,24 @@ public class CommonCardForm extends CommonCard implements Serializable {
             case 9 -> {
                 for(int j = 0; j<6;j++) {
                     for (int i = 0; i < 5;i++) {
-                        if (player.getShelves().getTilePosition(i,j) != null) {
+                        if (player.getShelves().getTilePosition(i,j).getTile() != null) {
                             TileType tileType = player.getShelves().getTilePosition(i,j).getTile().getType();
                             if(j<4) {
                                 if(i<3) {
-                                    if ((player.getShelves().getTilePosition(i + 1, j + 1) != null) && (player.getShelves().getTilePosition(i + 1, j + 1).getTile().getType() == tileType)) {
-                                        if ((player.getShelves().getTilePosition(i + 2, j) != null) && (player.getShelves().getTilePosition(i + 2, j).getTile().getType() == tileType)) {
-                                            if ((player.getShelves().getTilePosition(i, j + 2) != null) && (player.getShelves().getTilePosition(i, j + 2).getTile().getType() == tileType)) {
-                                                if ((player.getShelves().getTilePosition(i + 2, j + 2) != null) && (player.getShelves().getTilePosition(i + 2, j + 2).getTile().getType() == tileType)) {
+                                    if ((player.getShelves().getTilePosition(i + 1, j + 1).getTile() != null) && (player.getShelves().getTilePosition(i + 1, j + 1).getTile().getType() == tileType)) {
+                                        if ((player.getShelves().getTilePosition(i + 2, j).getTile() != null) && (player.getShelves().getTilePosition(i + 2, j).getTile().getType() == tileType)) {
+                                            if ((player.getShelves().getTilePosition(i, j + 2).getTile() != null) && (player.getShelves().getTilePosition(i, j + 2).getTile().getType() == tileType)) {
+                                                if ((player.getShelves().getTilePosition(i + 2, j + 2).getTile() != null) && (player.getShelves().getTilePosition(i + 2, j + 2).getTile().getType() == tileType)) {
                                                     objectiveAchieved = true;
                                                 }
                                             }
                                         }
                                     }
                                 } else {
-                                    if ((player.getShelves().getTilePosition(i - 1, j + 1) != null) && (player.getShelves().getTilePosition(i - 1, j + 1).getTile().getType() == tileType)) {
-                                        if ((player.getShelves().getTilePosition(i - 2, j) != null) && (player.getShelves().getTilePosition(i - 2, j).getTile().getType() == tileType)) {
-                                            if ((player.getShelves().getTilePosition(i, j + 2) != null) && (player.getShelves().getTilePosition(i, j + 2).getTile().getType() == tileType)) {
-                                                if ((player.getShelves().getTilePosition(i - 2, j + 2) != null) && (player.getShelves().getTilePosition(i - 2, j + 2).getTile().getType() == tileType)) {
+                                    if ((player.getShelves().getTilePosition(i - 1, j + 1).getTile() != null) && (player.getShelves().getTilePosition(i - 1, j + 1).getTile().getType() == tileType)) {
+                                        if ((player.getShelves().getTilePosition(i - 2, j).getTile() != null) && (player.getShelves().getTilePosition(i - 2, j).getTile().getType() == tileType)) {
+                                            if ((player.getShelves().getTilePosition(i, j + 2).getTile() != null) && (player.getShelves().getTilePosition(i, j + 2).getTile().getType() == tileType)) {
+                                                if ((player.getShelves().getTilePosition(i - 2, j + 2).getTile() != null) && (player.getShelves().getTilePosition(i - 2, j + 2).getTile().getType() == tileType)) {
                                                     objectiveAchieved = true;
                                                 }
                                             }
@@ -217,20 +217,20 @@ public class CommonCardForm extends CommonCard implements Serializable {
                                 }
                             } else {
                                 if(i<3) {
-                                    if ((player.getShelves().getTilePosition(i + 1, j - 1) != null) && (player.getShelves().getTilePosition(i + 1, j - 1).getTile().getType() == tileType)) {
-                                        if ((player.getShelves().getTilePosition(i + 2, j) != null) && (player.getShelves().getTilePosition(i + 2, j).getTile().getType() == tileType)) {
-                                            if ((player.getShelves().getTilePosition(i, j - 2) != null) && (player.getShelves().getTilePosition(i, j - 2).getTile().getType() == tileType)) {
-                                                if ((player.getShelves().getTilePosition(i + 2, j - 2) != null) && (player.getShelves().getTilePosition(i + 2, j - 2).getTile().getType() == tileType)) {
+                                    if ((player.getShelves().getTilePosition(i + 1, j - 1).getTile() != null) && (player.getShelves().getTilePosition(i + 1, j - 1).getTile().getType() == tileType)) {
+                                        if ((player.getShelves().getTilePosition(i + 2, j).getTile() != null) && (player.getShelves().getTilePosition(i + 2, j).getTile().getType() == tileType)) {
+                                            if ((player.getShelves().getTilePosition(i, j - 2).getTile() != null) && (player.getShelves().getTilePosition(i, j - 2).getTile().getType() == tileType)) {
+                                                if ((player.getShelves().getTilePosition(i + 2, j - 2).getTile() != null) && (player.getShelves().getTilePosition(i + 2, j - 2).getTile().getType() == tileType)) {
                                                     objectiveAchieved = true;
                                                 }
                                             }
                                         }
                                     }
                                 } else {
-                                    if ((player.getShelves().getTilePosition(i - 1, j - 1) != null) && (player.getShelves().getTilePosition(i - 1, j - 1).getTile().getType() == tileType)) {
-                                        if ((player.getShelves().getTilePosition(i - 2, j) != null) && (player.getShelves().getTilePosition(i - 2, j).getTile().getType() == tileType)) {
-                                            if ((player.getShelves().getTilePosition(i, j - 2) != null) && (player.getShelves().getTilePosition(i, j - 2).getTile().getType() == tileType)) {
-                                                if ((player.getShelves().getTilePosition(i - 2, j - 2) != null) && (player.getShelves().getTilePosition(i - 2, j - 2).getTile().getType() == tileType)) {
+                                    if ((player.getShelves().getTilePosition(i - 1, j - 1).getTile() != null) && (player.getShelves().getTilePosition(i - 1, j - 1).getTile().getType() == tileType)) {
+                                        if ((player.getShelves().getTilePosition(i - 2, j).getTile() != null) && (player.getShelves().getTilePosition(i - 2, j).getTile().getType() == tileType)) {
+                                            if ((player.getShelves().getTilePosition(i, j - 2).getTile() != null) && (player.getShelves().getTilePosition(i, j - 2).getTile().getType() == tileType)) {
+                                                if ((player.getShelves().getTilePosition(i - 2, j - 2).getTile() != null) && (player.getShelves().getTilePosition(i - 2, j - 2).getTile().getType() == tileType)) {
                                                     objectiveAchieved = true;
                                                 }
                                             }
