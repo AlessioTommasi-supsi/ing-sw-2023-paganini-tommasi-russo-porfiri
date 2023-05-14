@@ -294,6 +294,9 @@ public class Board implements Serializable {
 
     //.debug
     public void printTilePositionBoard(ArrayList<TilePositionBoard> board) {
+        if (board == null) {
+            board = this.placements;
+        }
         // Trova le dimensioni massime della matrice
         int maxX = 0;
         int maxY = 0;

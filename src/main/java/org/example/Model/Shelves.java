@@ -51,6 +51,8 @@ public class Shelves implements Serializable {
         return tilePositions[y][x];
     }
 
+
+
     public TilePositionShelves[][] showShelves() {
         return this.tilePositions;
     }

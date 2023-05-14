@@ -52,7 +52,7 @@ public class Controller {
                     //IMMETTI IN LIBRERIA
                     //sicuramente dovro modificare la libreria del player corrente!
                     try {
-                        model.getMyShelfie().getGame(drow_message.getCurrent_game_id()).getCurrentPlayer().putTilesInShelf(tilesRemoved, drow_message.getColumm_of_sheves());
+                        model.getMyShelfie().getGame(drow_message.getCurrent_game_id()).getCurrentPlayer().putTilesInShelf(tilesRemoved, drow_message.getColumm_of_sheves(), drow_message.getOrdine());
                     }catch (IllegalSizeOfTilesException e1){
                         //devo rimettere le tessere nella plancia!
                         model.getMyShelfie().getGame(drow_message.getCurrent_game_id()).getBoard().addTiles(drow_message.getTilesToRemove());
@@ -69,6 +69,9 @@ public class Controller {
                         //al termine deil giro dei giocatori la partita deve finire!
                         model.getMyShelfie().getGame(drow_message.getCurrent_game_id()).full_library();
                     }
+                    //.DEBUG
+                    System.err.println("BOARD: ");
+                    model.getMyShelfie().getGame(drow_message.getCurrent_game_id()).getBoard().printTilePositionBoard(null);
                     break;
                 case TERMINA_TURNS:
                     model.getMyShelfie().getGame((Integer) arg.getArgument()).nextCurrentPlayer();

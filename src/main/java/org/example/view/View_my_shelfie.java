@@ -210,13 +210,35 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
 
                     }
 
+                    int ordine[] = new int[tilesToRemove.size()];
+                    ArrayList<TilePositionBoard> orderedTilesToRemove = new ArrayList<TilePositionBoard>();
+
+                    while(true) {
+                        try {
+                            for (int i = 0; i < tilesToRemove.size(); i++) {
+                                System.out.println("Inserisci l'ordine della tessera in posizione: x " + tilesToRemove.get(i).getX() + " y "+tilesToRemove.get(i).getY()+" da immettere nella libreria: ");
+                                ordine[i] = Integer.parseInt(s.next());
+                            }
+                            //devo provare a fare rimozione!! solo per essere sicuro che i dati sono corretti; ordinamento effettivo verra fatto dal controller
+                            for (int i = 0; i < tilesToRemove.size(); i++) {
+                                orderedTilesToRemove.add(tilesToRemove.get(ordine[i] - 1));
+                            }
+                            break;//ordinamento andato a buon fine
+                        } catch (Exception e2) {
+                            System.err.println("Error occurred while ordering tiles! ");
+                            e2.printStackTrace();
+                        }
+                    }
                     //.DEBUG
                     //System.err.println("TESSERA CHE HAI SCELTO DI RIMUOVERE: "+tilesToRemove);
+                    //for(int i = 0; i < orderedTilesToRemove.size();i++) {
+                    //    System.out.println("tile: " + orderedTilesToRemove.get(i));
+                    //}
                     System.out.println("inserisci la colonna della tua libreria dove mettere la tessera: ");
                     int colum_of_shelves = Integer.parseInt(s.next());
 
                     //check_input(tilesToRemove,colum_of_shelves);
-                    return new Drow_from_board_Message(tilesToRemove,colum_of_shelves,this.current_game_id);
+                    return new Drow_from_board_Message(tilesToRemove,colum_of_shelves,this.current_game_id,ordine);
                 }catch (Exception e){
                     System.err.println("generic error occurred! ");
                     e.printStackTrace();
@@ -235,7 +257,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
             ArrayList<TileObj> tilesRemoved=this.current_game.getBoard().removeTiles(tilesToRemove);
 
             //INSERIMENTO IN SHELVS:
-            this.player.putTilesInShelf(tilesRemoved,columOfShelves);
+            //this.player.putTilesInShelf(tilesRemoved,columOfShelves);
 
             }
             //ERRORI DI RIMOZIONE DA BOARD!

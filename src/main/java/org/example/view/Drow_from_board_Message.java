@@ -12,10 +12,18 @@ public class Drow_from_board_Message implements Serializable {
 
     public int current_game_id;
 
-    public Drow_from_board_Message( ArrayList<TilePositionBoard> tilesToRemove,int columm_of_sheves, int current_game_id) {
+    public int ordine[];
+
+
+    public Drow_from_board_Message(ArrayList<TilePositionBoard> tilesToRemove, int columm_of_sheves, int current_game_id, int[] ordine) {
         this.columm_of_sheves = columm_of_sheves;
         this.tilesToRemove = tilesToRemove;
         this.current_game_id = current_game_id;
+        this.ordine = ordine;
+    }
+
+    public int[] getOrdine() {
+        return ordine;
     }
 
     public int getCurrent_game_id() {

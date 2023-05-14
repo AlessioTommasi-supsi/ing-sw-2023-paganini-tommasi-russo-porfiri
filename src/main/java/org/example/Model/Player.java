@@ -291,7 +291,7 @@ public class Player implements Serializable {
 
     //manca un put_tyle in shelves che accetta solo la colonna in cui io devo aggiungere le tiles!
     //qualcosa che avevamo detto essere gravitY?
-    public void putTilesInShelf(ArrayList<TileObj> tilesToPut, int col) throws Exception {
+    public void putTilesInShelf(ArrayList<TileObj> tilesToPut, int col, int ordine[]) throws Exception {
         /*TODO!
         * ricorda genera eccezione
         * se non riesce a mettere le tiles
@@ -301,6 +301,14 @@ public class Player implements Serializable {
         *   con le tiles immesse la libreria  diventa piena     FullLibraryException
         * */
 
+        ArrayList<TileObj> orderedTilesToRemove = new ArrayList<TileObj>();
+        //ordinamento per immissione in libreria
+        for (int i = 0; i < tilesToPut.size(); i++) {
+            orderedTilesToRemove.add(tilesToPut.get(ordine[i] - 1));
+        }
+
+        tilesToPut = orderedTilesToRemove;
+
         int countTilesInColumn = 0;
         for(int i = 0; i < 6;i++) {
             if (shelves.getTilePosition(col, i).getTile() != null) {
@@ -309,13 +317,20 @@ public class Player implements Serializable {
                 break;
             }
         }
-        if((col > 4)  || (col < 0))throw new IllegalColumnException();
-        else if(tilesToPut.size() > shelves.getMaxRows() - countTilesInColumn) throw new IllegalSizeOfTilesException();
-        for(int i = countTilesInColumn + 1;i < 6; i++) {
-            for(int j = 0; j < tilesToPut.size();j++) {
-                shelves.getTilePosition(col,countTilesInColumn+1).setTile(tilesToPut.get(i));
-                countTilesInColumn++;
-            }
+        //.DEBUG
+        //System.out.println("countTilesInColumn: " + countTilesInColumn + " col: " + col);
+        //for(int i = 0; i < tilesToPut.size();i++) {
+        //    System.out.println("tile: " + tilesToPut.get(i));
+        //}
+
+        if((col > 4)  || (col < 0))
+            throw new IllegalColumnException();
+        if(tilesToPut.size() > shelves.getMaxRows() - countTilesInColumn)
+            throw new IllegalSizeOfTilesException();
+
+        for(int j = 0; j < tilesToPut.size();j++) {
+            shelves.getTilePosition(col,countTilesInColumn).setTile(tilesToPut.get(j));
+            countTilesInColumn++;
         }
         if (shelves.getFilledCounter() == 30) throw new FullLibraryException();
     }
