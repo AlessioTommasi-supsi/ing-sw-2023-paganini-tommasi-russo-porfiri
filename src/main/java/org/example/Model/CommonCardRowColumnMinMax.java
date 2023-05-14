@@ -19,21 +19,21 @@ public class CommonCardRowColumnMinMax extends CommonCard implements Serializabl
             case 8 -> {
                 for (int i = 0; i<6;i++) {
                     List<TileType> tileTypes = new ArrayList<TileType>();
-                    if (player.getShelves().getTilePosition(i, 0) != null) {
+                    if (player.getShelves().getTilePosition(i, 0).getTile() != null) {
                         tileTypes.add(player.getShelves().getTilePosition(i, 0).getTile().getType());
-                        if((player.getShelves().getTilePosition(i, 1) != null) && (tileTypes.size() < 4)) {
+                        if((player.getShelves().getTilePosition(i, 1).getTile() != null) && (tileTypes.size() < 4)) {
                             if (!tileTypes.contains(player.getShelves().getTilePosition(i,1).getTile().getType())) {
                                 tileTypes.add(player.getShelves().getTilePosition(i,1).getTile().getType());
                             }
-                            if((player.getShelves().getTilePosition(i, 2) != null) && (tileTypes.size() < 4)) {
+                            if((player.getShelves().getTilePosition(i, 2).getTile() != null) && (tileTypes.size() < 4)) {
                                 if (!tileTypes.contains(player.getShelves().getTilePosition(i, 2).getTile().getType())) {
                                     tileTypes.add(player.getShelves().getTilePosition(i, 2).getTile().getType());
                                 }
-                                if((player.getShelves().getTilePosition(i, 3) != null) && (tileTypes.size() < 4)) {
+                                if((player.getShelves().getTilePosition(i, 3).getTile() != null) && (tileTypes.size() < 4)) {
                                     if (!tileTypes.contains(player.getShelves().getTilePosition(i, 3).getTile().getType())) {
                                         tileTypes.add(player.getShelves().getTilePosition(i, 3).getTile().getType());
                                     }
-                                    if((player.getShelves().getTilePosition(i, 4) != null) && (tileTypes.size() < 4)) {
+                                    if((player.getShelves().getTilePosition(i, 4).getTile() != null) && (tileTypes.size() < 4)) {
                                         if (!tileTypes.contains(player.getShelves().getTilePosition(i, 4).getTile().getType())) {
                                             tileTypes.add(player.getShelves().getTilePosition(i, 4).getTile().getType());
                                         }
@@ -60,25 +60,25 @@ public class CommonCardRowColumnMinMax extends CommonCard implements Serializabl
             case 3 -> {
                 for (int j = 0; j < 6; j++) {
                     List<TileType> tileTypes = new ArrayList<TileType>();
-                    if (player.getShelves().getTilePosition(0, j) != null) {
+                    if (player.getShelves().getTilePosition(0, j).getTile() != null) {
                         tileTypes.add(player.getShelves().getTilePosition(0, j).getTile().getType());
-                        if((player.getShelves().getTilePosition(1, j) != null) && (tileTypes.size() < 4)) {
+                        if((player.getShelves().getTilePosition(1, j).getTile() != null) && (tileTypes.size() < 4)) {
                             if (!tileTypes.contains(player.getShelves().getTilePosition(1, j).getTile().getType())) {
                                 tileTypes.add(player.getShelves().getTilePosition(1, j).getTile().getType());
                             }
-                            if((player.getShelves().getTilePosition(2, j) != null) && (tileTypes.size() < 4)) {
+                            if((player.getShelves().getTilePosition(2, j).getTile() != null) && (tileTypes.size() < 4)) {
                                 if (!tileTypes.contains(player.getShelves().getTilePosition(2, j).getTile().getType())) {
                                     tileTypes.add(player.getShelves().getTilePosition(2, j).getTile().getType());
                                 }
-                                if((player.getShelves().getTilePosition(3, j) != null) && (tileTypes.size() < 4)) {
+                                if((player.getShelves().getTilePosition(3, j).getTile() != null) && (tileTypes.size() < 4)) {
                                     if (!tileTypes.contains(player.getShelves().getTilePosition(3, j).getTile().getType())) {
                                         tileTypes.add(player.getShelves().getTilePosition(3, j).getTile().getType());
                                     }
-                                    if((player.getShelves().getTilePosition(4, j) != null) && (tileTypes.size() < 4)) {
+                                    if((player.getShelves().getTilePosition(4, j).getTile() != null) && (tileTypes.size() < 4)) {
                                         if (!tileTypes.contains(player.getShelves().getTilePosition(4, j).getTile().getType())) {
                                             tileTypes.add(player.getShelves().getTilePosition(4, j).getTile().getType());
                                         }
-                                        if((player.getShelves().getTilePosition(5, j) != null) && (tileTypes.size() < 4)) {
+                                        if((player.getShelves().getTilePosition(5, j).getTile() != null) && (tileTypes.size() < 4)) {
                                             if (!tileTypes.contains(player.getShelves().getTilePosition(5, j).getTile().getType())) {
                                                 tileTypes.add(player.getShelves().getTilePosition(5, j).getTile().getType());
                                             }
