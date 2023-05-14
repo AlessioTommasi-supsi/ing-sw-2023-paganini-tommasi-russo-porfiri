@@ -253,13 +253,13 @@ public abstract class Game implements Serializable {
                 || (index1 == 6)
                 || (index1 == 1)
                 || (index1 == 9)) {
-            common1 = new CommonCardForm(index1);
+            this.common1 = new CommonCardForm(index1);
         } else if ((index1 == 5) || (index1 == 7)) {
-            common1 = new CommonCardRowColumn(index1);
+            this.common1 = new CommonCardRowColumn(index1);
         } else if ((index1 == 3) || (index1 == 8)) {
-            common1 = new CommonCardRowColumnMinMax(index1);
+            this.common1 = new CommonCardRowColumnMinMax(index1);
         } else {
-            common1 = new CommonCardPosition(index1);
+            this.common1 = new CommonCardPosition(index1);
         }
         int index2 = rand.nextInt(12);
         while(index2==index1) {
@@ -269,13 +269,13 @@ public abstract class Game implements Serializable {
                 || (index2 == 6)
                 || (index2 == 1)
                 || (index2 == 9)) {
-            common2 = new CommonCardForm(index2);
+            this.common2 = new CommonCardForm(index2);
         } else if ((index2 == 5) || (index2 == 7)) {
-            common2 = new CommonCardRowColumn(index2);
+            this.common2 = new CommonCardRowColumn(index2);
         } else if ((index2 == 3) || (index2 == 8)) {
-            common2 = new CommonCardRowColumnMinMax(index2);
+            this.common2 = new CommonCardRowColumnMinMax(index2);
         } else {
-            common2 = new CommonCardPosition(index2);
+            this.common2 = new CommonCardPosition(index2);
         }
     }
 
