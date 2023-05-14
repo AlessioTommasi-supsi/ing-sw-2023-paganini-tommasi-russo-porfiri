@@ -334,7 +334,7 @@ public abstract class Game implements Serializable {
         //se il player non ha ancora completato la commonCard
         if (!currentPlayer.isCommonCard1Completed()) {
             //se il player completa l'obiettivo aggiungi i punti altrimenti no
-            if (common1.executeAlgorithm(currentPlayer)) {
+            if (this.common1.executeAlgorithm(currentPlayer)) {
                 currentPlayer.setScore(currentPlayer.getScore() + this.pointInitialization1);   //aggiorna i punti
                 this.pointInitialization1 = this.pointInitialization1 - pointsToSub; // sottrai i punti
                 currentPlayer.setCommonCard1Completed(true);

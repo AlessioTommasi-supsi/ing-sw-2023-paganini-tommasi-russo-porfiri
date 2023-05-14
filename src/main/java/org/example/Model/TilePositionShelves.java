@@ -29,7 +29,6 @@ public class TilePositionShelves implements Serializable {
         this.y= tp.getY();
         this.tileInSlot= new TileObj(tp.getTile());
         this.occupied= tp.isOccupied();
-
     }
 
     public int getX(){
@@ -45,8 +44,11 @@ public class TilePositionShelves implements Serializable {
     }
 
     public TileObj getTile() {
-        TileObj tempTile = new TileObj(this.tileInSlot);
-        return tempTile;
+        if(this.tileInSlot!=null){
+            TileObj tempTile = new TileObj(this.tileInSlot);
+            return tempTile;
+        }
+        else return null;
     }
 
     public void setTile(TileObj tile) throws PositionAlreadyOccupiedException {

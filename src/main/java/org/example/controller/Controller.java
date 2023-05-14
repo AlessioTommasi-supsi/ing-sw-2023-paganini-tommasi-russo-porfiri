@@ -76,7 +76,7 @@ public class Controller {
                     model.getMyShelfie().getGame((Integer) arg.getArgument()).getBoard().restoreBoard();
                     //aggiornoamento punti comuni
                     //MATTIA CONTROLLA PERCHE NON VA!
-                    //model.getMyShelfie().getGame((Integer) arg.getArgument()).updatePointsCommon();
+                    model.getMyShelfie().getGame((Integer) arg.getArgument()).updatePointsCommon();
                     //funzionalita di fine partita
                     model.getMyShelfie().getGame((Integer) arg.getArgument()).end();
 

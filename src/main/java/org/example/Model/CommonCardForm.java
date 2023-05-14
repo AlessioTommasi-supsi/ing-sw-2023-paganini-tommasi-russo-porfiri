@@ -14,7 +14,7 @@ public class CommonCardForm extends CommonCard implements Serializable {
         int counterShape = 0;
         switch (getIndex()) {
             case 1 -> {
-                if (player.getShelves().getTilePosition(0, 0) != null) {
+                if (player.getShelves().getTilePosition(0, 0).getTile() != null) {
                     TileType typeTile = player.getShelves().getTilePosition(0, 0).getTile().getType();
                     if ((player.getShelves().getTilePosition(1, 1) != null) && (player.getShelves().getTilePosition(1, 1).getTile().getType() == typeTile)) {
                         if ((player.getShelves().getTilePosition(2, 2) != null) && (player.getShelves().getTilePosition(2, 2).getTile().getType() == typeTile)) {
@@ -26,7 +26,7 @@ public class CommonCardForm extends CommonCard implements Serializable {
                         }
                     }
                 }
-                if (player.getShelves().getTilePosition(0, 1) != null) {
+                if (player.getShelves().getTilePosition(0, 1).getTile() != null) {
                     TileType typeTile = player.getShelves().getTilePosition(1, 2).getTile().getType();
                     if ((player.getShelves().getTilePosition(1, 2) != null) && (player.getShelves().getTilePosition(1, 2).getTile().getType() == typeTile)) {
                         if ((player.getShelves().getTilePosition(2, 3) != null) && (player.getShelves().getTilePosition(2, 3).getTile().getType() == typeTile)) {
@@ -38,7 +38,7 @@ public class CommonCardForm extends CommonCard implements Serializable {
                         }
                     }
                 }
-                if (player.getShelves().getTilePosition(4, 0) != null) {
+                if (player.getShelves().getTilePosition(4, 0).getTile() != null) {
                     TileType typeTile = player.getShelves().getTilePosition(4, 0).getTile().getType();
                     if ((player.getShelves().getTilePosition(3, 1) != null) && (player.getShelves().getTilePosition(3, 1).getTile().getType() == typeTile)) {
                         if ((player.getShelves().getTilePosition(2, 2) != null) && (player.getShelves().getTilePosition(2, 2).getTile().getType() == typeTile)) {
@@ -50,7 +50,7 @@ public class CommonCardForm extends CommonCard implements Serializable {
                         }
                     }
                 }
-                if (player.getShelves().getTilePosition(4, 1) != null) {
+                if (player.getShelves().getTilePosition(4, 1).getTile() != null) {
                     TileType typeTile = player.getShelves().getTilePosition(4, 1).getTile().getType();
                     if ((player.getShelves().getTilePosition(3, 2) != null) && (player.getShelves().getTilePosition(3, 2).getTile().getType() == typeTile)) {
                         if ((player.getShelves().getTilePosition(2, 3) != null) && (player.getShelves().getTilePosition(2, 3).getTile().getType() == typeTile)) {

@@ -292,7 +292,7 @@ public class Player implements Serializable {
         /*TODO!
         * ricorda genera eccezione
         * se non riesce a mettere le tiles
-            -> libreria piena, in qualsiasi colonna non ci possono stare quel numero di tiles   IllegalSizeOfTilesException
+            -> libreria piena, in questa colonna non ci possono stare quel numero di tiles   IllegalSizeOfTilesException
             -> colonna non giusta   IllegalColumnException
         * se riesce a mettere le tiles
         *   con le tiles immesse la libreria  diventa piena     FullLibraryException
