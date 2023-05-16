@@ -66,7 +66,7 @@ public class Controller {
                         model.errore = e2.toString();
                         e2.printStackTrace();
                     }catch (FullLibraryException e3){
-                        //al termine deil giro dei giocatori la partita deve finire!
+                        //al termine del giro dei giocatori la partita deve finire!
                         model.getMyShelfie().getGame(drow_message.getCurrent_game_id()).full_library();
                     }
                     //.DEBUG
@@ -75,12 +75,12 @@ public class Controller {
                     break;
                 case TERMINA_TURNS:
                     model.getMyShelfie().getGame((Integer) arg.getArgument()).nextCurrentPlayer();
-                    //se necerrassio ripristino la board!
+                    //se necessario ripristino la board!
                     model.getMyShelfie().getGame((Integer) arg.getArgument()).getBoard().restoreBoard();
-                    //aggiornoamento punti comuni
+                    //aggiornamento punti comuni
                     //MATTIA CONTROLLA PERCHE NON VA!
                     model.getMyShelfie().getGame((Integer) arg.getArgument()).updatePointsCommon();
-                    //funzionalita di fine partita
+                    //funzionalità di fine partita
                     model.getMyShelfie().getGame((Integer) arg.getArgument()).end();
 
 

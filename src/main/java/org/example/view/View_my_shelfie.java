@@ -54,9 +54,9 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
             in_game(model, arg);
         }
 
-        /* //.DEBUG
+         //.DEBUG
         System.err.println(this.toString());
-        */
+
     }
 
     public void in_game(TurnView model/*risposta dal server*/, Choice arg/*evento che il client remoto ha scelto*/){

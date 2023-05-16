@@ -1,7 +1,6 @@
 package org.example.Model;
 
 import org.example.util.*;
-
 import java.io.Serializable;
 import java.util.*;
 
@@ -11,7 +10,7 @@ public class Board implements Serializable {
     private TileObjBag bag;
 
     
-    //sarà il gioco a creare i placements giusti in base a quante persone ho!
+    //Sarà il gioco a creare i placements giusti in base a quante persone ho!
     public Board(ArrayList<TilePositionBoard> extPlacements, TileObjBag extBag) {
         this.placements = new ArrayList<TilePositionBoard>();
         for (TilePositionBoard p :extPlacements) {
@@ -36,8 +35,8 @@ public class Board implements Serializable {
 
 
     public ArrayList<TilePositionBoard> getPlacements() {
-        ArrayList<TilePositionBoard> ap=new ArrayList<TilePositionBoard>();
-        for (TilePositionBoard p:this.placements) {
+        ArrayList<TilePositionBoard> ap = new ArrayList<TilePositionBoard>();
+        for (TilePositionBoard p: this.placements) {
             try{
                 ap.add(new TilePositionBoard(p));
             }catch (Exception e){
@@ -106,7 +105,7 @@ public class Board implements Serializable {
             }
             else break;
         }
-    }  //metodo che userò anche per riempire la board quando vuota
+    }  //Metodo che userò anche per riempire la board quando vuota
 
     public void addTiles(ArrayList<TilePositionBoard> tilesRemoved){
         for(TilePositionBoard p : tilesRemoved){
@@ -121,7 +120,7 @@ public class Board implements Serializable {
     public boolean tileIsRemovable(TilePositionBoard position){
         int counter = 0;
 
-        //la posizione è svuotabile del proprio TileObj se contiene un tile e ha almeno un lato adiacente libero
+        //La posizione è svuotabile del proprio TileObj se contiene un tile e ha almeno un lato adiacente libero.
         if(position.isOccupied()){
             int x = position.getX();
             int y = position.getY();
@@ -129,7 +128,7 @@ public class Board implements Serializable {
                 if ((item.getX() == x && (item.getY() == y - 1 || item.getY() == y + 1)) || ((item.getX() == x - 1 || item.getX() == x + 1) && item.getY() == y)) {
                     counter++;
                     if(!item.isOccupied()){
-                        return true; //lo slot position ha almeno un lato adiacente vuoto.
+                        return true; //Lo slot position ha almeno un lato adiacente vuoto.
                     }
                 }
             }
@@ -139,7 +138,7 @@ public class Board implements Serializable {
               //Se sono arrivato fin qui e le posizioni adiacenti sono tutte occupate, ma quelle presenti in Board sono in numero <4
               //allora mi trovo su una tessera del bordo, certamente rimovibile.
         }
-        return false;  //se arrivo fin qui non ho trovato nessun lato adiacente libero.
+        return false;  //Se arrivo fin qui non ho trovato nessun lato adiacente libero e la mia tessera non è sul bordo. Quindi la posizione non è svuotabile.
     }
 
 
@@ -147,11 +146,8 @@ public class Board implements Serializable {
         ArrayList<TileObj> TilesRemoved = new ArrayList<TileObj>();
         int tilesCounter = 0;
 
-        //Il metodo parte dal presupposto che le posizioni passate dalla View abbiano coordinate x,y che appartengono alla Board corrente.
-        //L'eventuale verifica di appartenenza andrà fatta "più in alto", esternamente al Model.
-        //Le TilePositionBoard contenute nell'ArrayLiat passato come parametro, causa TurnView, non sono gli oggetti della Board, ma oggetti copia contenenti copie esatte dei valori degli attributi.
+        //Le TilePositionBoard contenute nell'ArrayList passato come parametro, causa TurnView, non sono gli oggetti della Board, ma oggetti copia contenenti copie esatte dei valori degli attributi.
         //Tramite questo for a ciascuna posizione contenuta nell'ArrayList sostituisco il riferimento al corrispondente vero oggetto TilePositionBoard della Board.
-
         for (int i = 0; i < tilesToRemove.size() ; i++) {
             for (int j = 0; j < this.placements.size(); j++) {
                 if (tilesToRemove.get(i).equals(placements.get(j))) {
@@ -165,8 +161,6 @@ public class Board implements Serializable {
             tilesCounter++;
         }
 
-        //se ciascuna posizione passata appartiene alla Board, è rimovibile, se le tessere passate sono differenti tra loro,
-        // allora verifico che ciascuna tessera sia rimovibile.
         for(TilePositionBoard posToRemove : tilesToRemove){
             if(!isABoardPosition(posToRemove)){
                 throw new BoardDoesNotContainThisPositionException(posToRemove.getX(), posToRemove.getY());
@@ -174,7 +168,6 @@ public class Board implements Serializable {
             if(!tileIsRemovable(posToRemove)){
                 throw new TilesAreNotRemovableException();
             }
-
         }
 
         //Se il numero di tessere contenute nell'ArrayList passato come parametro è 0 oppure >3 allora restituisce errore.
@@ -192,7 +185,7 @@ public class Board implements Serializable {
             throw new TilesAreNotRemovableException();
         }
 
-        //rimuove ciascun TileObj dalla corrispondente TilePositionBoard in board e infine il metodo restituisce questi TileObj rimossi.
+        //Rimuove ciascun TileObj dalla corrispondente TilePositionBoard in board. Infine il metodo restituisce questi TileObj rimossi.
         for(TilePositionBoard boardPosition : tilesToRemove){
             TilesRemoved.add(boardPosition.removeTile());
         }
@@ -285,12 +278,12 @@ public class Board implements Serializable {
         return true;
     }
 
-
     public void restoreBoard(){
         if(boardNeedsRestore()){
             addTiles();
         }
     }
+
 
     //.debug
     public void printTilePositionBoard(ArrayList<TilePositionBoard> board) {
