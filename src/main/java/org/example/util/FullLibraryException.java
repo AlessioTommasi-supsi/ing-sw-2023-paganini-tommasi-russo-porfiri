@@ -4,6 +4,6 @@ import java.io.Serializable;
 
 public class FullLibraryException extends Exception implements Serializable {
     public FullLibraryException() {
-        super("con le tiles immesse la libreria  diventa piena!");
+        super("With the tiles inserted, the library fills up!");
     }
 }

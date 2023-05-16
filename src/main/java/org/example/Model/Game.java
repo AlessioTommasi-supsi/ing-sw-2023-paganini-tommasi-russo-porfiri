@@ -102,7 +102,7 @@ public abstract class Game implements Serializable {
 
     public ArrayList<Ranking> getRanking() throws Exception{
         if(this.stato != StatoPartita.FINITA){
-            throw new Exception("non puoi prendere i punteggi perche la partita non e'ancora finita!");
+            throw new Exception("non puoi prendere i punteggi perché la partita non e'ancora finita!");
         }
         return rank;
     }
@@ -176,7 +176,7 @@ public abstract class Game implements Serializable {
 
     public void addPlayer(Player p)throws Exception {
         if (this.stato != StatoPartita.IN_ATTESA){
-            throw new Exception("non si possono aggiungere giocatori se la partita non e in attesa!");
+            throw new Exception("non si possono aggiungere giocatori se la partita non è in attesa!");
         }
         p.setPC(drawPersonal());
         //.DEBUG
@@ -186,7 +186,7 @@ public abstract class Game implements Serializable {
         if (this.playerNumber == this.players.size()) {
             //System.err.println(this.toString() +"this.players.size()= "+this.players.size());
             this.stato = StatoPartita.IN_CORSO;
-            this.currentPlayer = this.players.get(0);//il primo giocatore e' quello che inizia!
+            this.currentPlayer = this.players.get(0);//il primo giocatore è quello che inizia!
         }
 
     }
@@ -241,7 +241,7 @@ public abstract class Game implements Serializable {
                 point[index] = -1;
                 this.ranking[j] = index;
             }
-            //fine funzionalita ranking
+            //fine funzionalità ranking
         }
     }
 
@@ -312,16 +312,16 @@ public abstract class Game implements Serializable {
 
     
 
-    //metodo che aggiorna i punti del player corrente
+    //Metodo che aggiorna i punti del player corrente
     //se il player ha completato la commonCard1 aggiungi i punti altrimenti no
-    //viene eseguito ad ogni volta che tocca in giocatore!
-    /*abbiamo deciso stare qui perche:
-    * perche i punteggi dati dalle common card sono in relazione stretta con il gioco, siccome ogni currentPlayrt ad ogni turno
-    * aggiurna gli obbiettivi comuni completati.
+    //viene eseguito a ogni volta che tocca in giocatore!
+    /*Abbiamo deciso stare qui perché:
+    * perché i punteggi dati dalle common card sono in relazione stretta con il gioco, siccome ogni currentPlayet a ogni turno
+    * aggiorna gli obbiettivi comuni completati.
     *
     * ATTENZIONE: .Alessio
-    *   -ricordati da richiamarlo ad ogni turno prima di terminaTURN
-    *   -totale punteggio e'in Player.score -> ranking aggiornato automaticamente ingame con la funzione Game::end()
+    *   -ricordati da richiamarlo a ogni turno prima di terminaTURN
+    *   -totale punteggio è in Player.score -> ranking aggiornato automaticamente ingame con la funzione Game::end()
     *
     * */
     public void updatePointsCommon() {

@@ -3,7 +3,7 @@ package org.example.util;
 import java.io.Serializable;
 
 public class IllegalSizeOfTilesException extends Exception implements Serializable {
-    public IllegalSizeOfTilesException(){
-        super("libreria piena, in qualsiasi colonna non ci possono stare quel numero di tiles");
+    public IllegalSizeOfTilesException(int n){
+        super("library full, that number of tiles (" + n + ") cannot fit in any column");
     }
 }

@@ -49,7 +49,7 @@ public class Choice implements Serializable {
     @Override
     public String toString() {
         return "Choice{" +
-                "choiche=" + choice.toString() +
+                "choice=" + choice.toString() +
                 ", stato=" + stato +
                 ", argument=" + argument.toString() +
                 ", player=" + player.toString() +

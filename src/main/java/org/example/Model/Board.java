@@ -142,7 +142,7 @@ public class Board implements Serializable {
     }
 
 
-    public ArrayList<TileObj> removeTiles(ArrayList<TilePositionBoard> tilesToRemove) throws TilesAreNotRemovableException, PositionEmptyException, WrongNumberOfTilesException, BoardDoesNotContainThisPositionException {
+    public ArrayList<TileObj> removeTiles(ArrayList<TilePositionBoard> tilesToRemove) throws TilesAreNotRemovableException, PositionEmptyException, WrongNumberOfTilesException, BoardDoesNotContainThisPositionException, DuplicatesInRequestedTilesException {
         ArrayList<TileObj> TilesRemoved = new ArrayList<TileObj>();
         int tilesCounter = 0;
 
@@ -177,7 +177,7 @@ public class Board implements Serializable {
         }
 
         if (!arePositionsDifferentFromEachOther(tilesToRemove)) {
-            throw new TilesAreNotRemovableException();
+            throw new DuplicatesInRequestedTilesException();
         }
         
         //verifica se le posizioni passate sono tutte sulla stessa riga (uguale x) o tutte sulla stessa colonna (uguale y).

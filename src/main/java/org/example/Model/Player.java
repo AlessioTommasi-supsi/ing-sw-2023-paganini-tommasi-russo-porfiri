@@ -326,7 +326,7 @@ public class Player implements Serializable {
         if((col > 4)  || (col < 0))
             throw new IllegalColumnException();
         if(tilesToPut.size() > shelves.getMaxRows() - countTilesInColumn)
-            throw new IllegalSizeOfTilesException();
+            throw new IllegalSizeOfTilesException(tilesToPut.size());
 
         for(int j = 0; j < tilesToPut.size();j++) {
             shelves.getTilePosition(col,countTilesInColumn).setTile(tilesToPut.get(j));
