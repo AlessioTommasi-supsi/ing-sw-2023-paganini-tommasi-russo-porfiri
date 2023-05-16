@@ -5,7 +5,7 @@ import org.example.Model.TilePositionBoard;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Drow_from_board_Message implements Serializable {
+public class Draw_from_board_Message implements Serializable {
     public int columm_of_sheves;
 
     public ArrayList<TilePositionBoard> tilesToRemove;
@@ -15,7 +15,7 @@ public class Drow_from_board_Message implements Serializable {
     public int ordine[];
 
 
-    public Drow_from_board_Message(ArrayList<TilePositionBoard> tilesToRemove, int columm_of_sheves, int current_game_id, int[] ordine) {
+    public Draw_from_board_Message(ArrayList<TilePositionBoard> tilesToRemove, int columm_of_sheves, int current_game_id, int[] ordine) {
         this.columm_of_sheves = columm_of_sheves;
         this.tilesToRemove = tilesToRemove;
         this.current_game_id = current_game_id;

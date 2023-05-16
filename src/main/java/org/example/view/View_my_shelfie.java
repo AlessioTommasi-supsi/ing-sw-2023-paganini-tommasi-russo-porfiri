@@ -8,8 +8,6 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-import static java.lang.System.exit;
-
 public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Runnable {
 
     private enum State {
@@ -23,11 +21,11 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
     private Player player;
     private Game current_game= null;
 
-    private int current_game_id = -1; //verra assegnato dopo aver fatto join_game!!
+    private int current_game_id = -1; //verrà assegnato dopo aver fatto join_game!!
 
     public void update(TurnView model/*risposta dal server*/, Choice arg/*evento che il client remoto ha scelto*/) {
 
-        //se presente stampo qualgcosa se no stringa vuota!
+        //se presente stampo qualcosa se no stringa vuota!
         System.err.println(model.getErrore());
 
         try {
@@ -63,9 +61,9 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
         if (current_game_id == -1){ //inizializzazione di tutte le variabili di gioco
             joining_part(model,arg);
         }else {
-            //aggiorno client -> da fare ogni volta che avviene qualsiasi cosa!! -> da non mettere fuori perche getMyShelfie() puo essere null!
+            //aggiorno client -> da fare ogni volta che avviene qualsiasi cosa!! -> da non mettere fuori perchè getMyShelfie() puo essere null!
             this.current_game =model.getMyShelfie().getGame(this.current_game_id);
-            this.player= this.current_game.getPlayer(this.player.getId());//cosi ho a portata di mano la shelvs aggiornata!
+            this.player= this.current_game.getPlayer(this.player.getId());//così ho a portata di mano la shelves aggiornata!
 
             //ho gia fatto join!
             choiche_part( model, arg);
@@ -105,7 +103,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                     System.out.println("in attesa del server... ");
 
                     setState(State.WAITING_FOR_OUTCOME);
-                    setChanged();/*NOTIFICO AL SERER che del client ha fatto scelta!!*/
+                    setChanged();/*NOTIFICO AL SERVER che del client ha fatto scelta!!*/
                     notifyObservers(c);
                 }else {
                     Choice_my_shelfie pc = askPlayerChoiceMyShelfie();
@@ -116,7 +114,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                     System.out.println("in attesa del server... ");
 
                     setState(State.WAITING_FOR_OUTCOME);
-                    setChanged();/*NOTIFICO AL SERER che del client ha fatto scelta!!*/
+                    setChanged();/*NOTIFICO AL SERVER che del client ha fatto scelta!!*/
                     notifyObservers(c);
                 }
 
@@ -146,7 +144,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                         try {
                             printTilePositionShelves(this.player.getShelves().showShelves());
                         }catch (Exception e){
-                            System.err.println("Error occurred displayng your shelvs! ");
+                            System.err.println("Error occurred displaying your shelves! ");
                             e.printStackTrace();
                         }
                         return askPlayerChoiceMyShelfie();
@@ -159,7 +157,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                             //V2
                             printTilePositionBoard(this.current_game.getBoard().showBoard());
                         }catch (Exception e){
-                            System.err.println("Error occurred displayng your BOARD! ");
+                            System.err.println("Error occurred displaying your BOARD! ");
                             e.printStackTrace();
                         }
                         return askPlayerChoiceMyShelfie();
@@ -167,7 +165,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                 }
                 return Choice_my_shelfie.valueOf(input);
             } catch (IllegalArgumentException e) {
-                System.err.println("I don't know this choiche: " + input);
+                System.err.println("I don't know this choice: " + input);
                 System.err.println("Try again...");
             }
         }
@@ -182,10 +180,10 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                 System.out.println("Inserisci il numero di giocatori della partita: ");
                 return  Integer.parseInt(s.next());
             case TERMINA_TURNS:
-                return this.current_game_id;//oggetto da passare come argomento e' l'id della partita corrente.
+                return this.current_game_id;//oggetto da passare come argomento è l'id della partita corrente.
             case PESCA_FROM_PLANCIA:
                 try{
-                    //faccio qui tutti i controlli cosi sono sicuro di passare al server solo i dati giusti tanto la board viene aggiornata ad ogni turno!
+                    //faccio qui tutti i controlli così sono sicuro di passare al server solo i dati giusti tanto la board viene aggiornata a ogni turno!
 
                     System.out.println("Inserisci il numero di tessere da pescare: ");
                     int counter = Integer.parseInt(s.next());
@@ -219,7 +217,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                                 System.out.println("Inserisci l'ordine della tessera in posizione: x " + tilesToRemove.get(i).getX() + " y "+tilesToRemove.get(i).getY()+" da immettere nella libreria: ");
                                 ordine[i] = Integer.parseInt(s.next());
                             }
-                            //devo provare a fare rimozione!! solo per essere sicuro che i dati sono corretti; ordinamento effettivo verra fatto dal controller
+                            //devo provare a fare rimozione!! solo per essere sicuro che i dati sono corretti; ordinamento effettivo verrà fatto dal controller
                             for (int i = 0; i < tilesToRemove.size(); i++) {
                                 orderedTilesToRemove.add(tilesToRemove.get(ordine[i] - 1));
                             }
@@ -238,13 +236,13 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                     int colum_of_shelves = Integer.parseInt(s.next());
 
                     //check_input(tilesToRemove,colum_of_shelves);
-                    return new Drow_from_board_Message(tilesToRemove,colum_of_shelves,this.current_game_id,ordine);
+                    return new Draw_from_board_Message(tilesToRemove,colum_of_shelves,this.current_game_id,ordine);
                 }catch (Exception e){
                     System.err.println("generic error occurred! ");
                     e.printStackTrace();
                 }
             case EXIT:
-                return this.current_game_id;//oggetto da passare come argomento e' l'id della partita corrente.
+                return this.current_game_id;//oggetto da passare come argomento è l'id della partita corrente.
 
         }
         return null;
@@ -262,12 +260,12 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
             }
             //ERRORI DI RIMOZIONE DA BOARD!
             catch (TilesAreNotRemovableException e){
-                //non cé bisogno di rimettere le tessere nella board!
+                //non c'è bisogno di rimettere le tessere nella board!
                 e.printStackTrace();
                 System.err.println("errore nell'inserimento dei dati!\n"+e.getMessage()+ "`\n riprova! \n");
 
             }catch (PositionEmptyException e) {
-                //non cé bisogno di rimettere le tessere nella board!
+                //non c'è bisogno di rimettere le tessere nella board!
                 e.printStackTrace();
                 System.err.println("errore nell'inserimento dei dati!\n"+e.getMessage()+ "`\n riprova! \n");
             }
@@ -301,7 +299,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                                                 this.current_game_id = model.getMyShelfie().getGames().get(i).getCurrentGameId();
                                                 //this.current_game = model.getMyShelfie().getGames().get(i);
                                                 break;
-                                            case IN_ATTESA://siccome non esiste una partita di un solo giocatore entrero sempre qui!
+                                            case IN_ATTESA://siccome non esiste una partita di un solo giocatore entrerò sempre qui!
                                                 System.out.println("ti sei unito ad una partita e la partita e' in attesa di altri giocatori!");
                                                 System.err.println("partita a cui ti sei unito in corso: "+model.getMyShelfie().getGames().get(i).toString());
                                                 System.out.println();
@@ -359,7 +357,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
             e.printStackTrace();
         }
 
-        //se e' il mio turno faccio qualcosa!!
+        //se è il mio turno faccio qualcosa!!
         if (model.getMyShelfie().getGame(this.current_game_id).getCurrentPlayer() != null) {
             if (model.getMyShelfie().getGame(this.current_game_id).getCurrentPlayer().getId() == this.player.getId()) {
                 System.out.println("il server ha risposto!");

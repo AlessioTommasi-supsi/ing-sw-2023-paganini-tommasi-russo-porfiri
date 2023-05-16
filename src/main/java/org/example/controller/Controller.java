@@ -4,7 +4,6 @@ import org.example.Model.*;
 import org.example.distributed.*;
 import org.example.util.*;
 import org.example.view.*;
-import org.example.controller.*;
 
 import java.util.ArrayList;
 
@@ -38,15 +37,15 @@ public class Controller {
                     if(arg.getPlayer().getId() == -1){
                         arg.getPlayer().setId(Globals.incrementPlayerId());
                     }
-                    /* //.DEBUG
+                     //.DEBUG
                     System.err.println("num Giochi: "+model.getMyShelfie().getGames().size());
                     model.getMyShelfie().getGames().stream()
                             .forEach(game -> System.out.println("nuovo gioco: "+game.toString()));
-                     */
+
                 break;
 
                 case PESCA_FROM_PLANCIA:
-                    Drow_from_board_Message drow_message = (Drow_from_board_Message) arg.getArgument();
+                    Draw_from_board_Message drow_message = (Draw_from_board_Message) arg.getArgument();
                     //RIMOZIONE DA BOARD
                     ArrayList<TileObj> tilesRemoved = model.getMyShelfie().getGame(drow_message.getCurrent_game_id()).getBoard().removeTiles(drow_message.getTilesToRemove());
                     //IMMETTI IN LIBRERIA

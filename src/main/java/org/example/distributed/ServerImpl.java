@@ -33,7 +33,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 
     @Override
     public void register(Client client) {
-        //piu controller ma i controller hanno lo stesso model!
+        //più controller ma i controller hanno lo stesso model!
         if (this.model == null) {
             System.err.println("new model");
             this.model = new Turn();

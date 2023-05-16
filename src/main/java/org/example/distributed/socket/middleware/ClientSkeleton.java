@@ -18,7 +18,7 @@ public class ClientSkeleton implements Client {
     private final ObjectOutputStream oos;
     private final ObjectInputStream ois;
 
-    /*gli stream vanno aperti 1 volta sola per client e una vlota sola per server!! (per ciascun socket)
+    /*gli stream vanno aperti 1 volta sola per client e una volta sola per server!! (per ciascun socket)
     i socket stanno nelle view!!
     */ 
     public ClientSkeleton(Socket socket) throws RemoteException {

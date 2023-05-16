@@ -57,7 +57,7 @@ public class ServerStub implements Server {
     /*metodo che ci serve per definire cosa fare quando arriva una nuova TurnView!*/
     public void receive(Client client) throws RemoteException {
         TurnView o;
-        try {//leggo da input strream la turnView
+        try {//leggo da input stream la turnView
             o = (TurnView) ois.readObject();//se stream vuoto rimane in attesa!!
         } catch (IOException e) {
             throw new RemoteException("Cannot receive model view from client", e);
