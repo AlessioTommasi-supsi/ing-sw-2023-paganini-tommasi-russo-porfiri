@@ -1,10 +1,16 @@
 package org.example.Model;
 
-public class CommonCardX {
+import java.io.Serializable;
 
-    public boolean checkX (Player player) {
-        for (int i = 0; i<6;i++) {
-            for (int j=0;j<5;j++) {
+public class CommonCardX extends CommonCard implements Serializable {
+
+    public CommonCardX(int index) {
+        super(index);
+    }
+
+    public boolean executeAlgorithm(Player player) {
+        for (int i = 0; i<4;i++) {
+            for (int j=0;j<3;j++) {
                 if(player.getShelves().getTilePosition(i, j)!= null) {
                     TileType type = player.getShelves().getTilePosition(i, j).getTile().getType();
                     if(checkXForm(player.getShelves(), type, i, j, 0)) {

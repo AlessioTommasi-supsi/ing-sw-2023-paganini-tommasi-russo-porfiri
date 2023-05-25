@@ -1,17 +1,22 @@
 package org.example.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class CommonCard8Tiles {
+public class CommonCard8Tiles extends CommonCard implements Serializable {
 
-    public boolean check8Tiles(Player player) {
+    public CommonCard8Tiles(int index) {
+        super(index);
+    }
 
-        ArrayList<TilePositionShelves> listOfCats = new ArrayList<TilePositionShelves>();
-        ArrayList<TilePositionShelves> listOfBooks = new ArrayList<TilePositionShelves>();
-        ArrayList<TilePositionShelves> listOfFrames = new ArrayList<TilePositionShelves>();
-        ArrayList<TilePositionShelves> listOfGames = new ArrayList<TilePositionShelves>();
-        ArrayList<TilePositionShelves> listOfPlants = new ArrayList<TilePositionShelves>();
-        ArrayList<TilePositionShelves> listOfTrophies = new ArrayList<TilePositionShelves>();
+    public boolean executeAlgorithm(Player player) {
+
+        ArrayList<TilePositionShelves> listOfCats = new ArrayList<>();
+        ArrayList<TilePositionShelves> listOfBooks = new ArrayList<>();
+        ArrayList<TilePositionShelves> listOfFrames = new ArrayList<>();
+        ArrayList<TilePositionShelves> listOfGames = new ArrayList<>();
+        ArrayList<TilePositionShelves> listOfPlants = new ArrayList<>();
+        ArrayList<TilePositionShelves> listOfTrophies = new ArrayList<>();
 
         for(int i = 0; i < 6; i++) {
             for (int j=0;j<5;j++) {

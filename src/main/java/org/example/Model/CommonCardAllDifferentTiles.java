@@ -1,13 +1,23 @@
 package org.example.Model;
 
-import java.lang.reflect.Array;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class CommonCardAllDifferentTiles {
+public class CommonCardAllDifferentTiles extends CommonCard implements Serializable {
 
-    public boolean checkLine (Player player, String form) {
+    String form;
+    public CommonCardAllDifferentTiles(int index) {
+        super(index);
+        if(index==3) {
+            this.form = "Horizontal";
+        } else {
+            this.form = "Vertical";
+        }
+    }
+
+    public boolean executeAlgorithm(Player player) {
         int counter = 0;
-        ArrayList<TileType> types = new ArrayList<TileType>();
+        ArrayList<TileType> types = new ArrayList<>();
         switch(form) {
             case ("Horizontal") : {
                 for(int i=0;i<6;i++) {
@@ -48,9 +58,8 @@ public class CommonCardAllDifferentTiles {
             } else {
                 return false;
             }
-        } else {
-            return false;
         }
+        return false;
     }
 
     private boolean checkVertical(ArrayList<TileType> types, Shelves shelf, int x, int y) {
@@ -64,8 +73,7 @@ public class CommonCardAllDifferentTiles {
             } else {
                 return false;
             }
-        } else {
-            return false;
         }
+        return false;
     }
 }

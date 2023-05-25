@@ -1,7 +1,14 @@
 package org.example.Model;
 
-public class CommonCardStair {
-    public boolean checkStair(Player player) {
+import java.io.Serializable;
+
+public class CommonCardStair extends CommonCard implements Serializable {
+
+    public CommonCardStair(int index) {
+        super(index);
+    }
+
+    public boolean executeAlgorithm(Player player) {
         int x=0;
         int y=0;
         int maxRowActual=5;
@@ -26,8 +33,9 @@ public class CommonCardStair {
                 y++;
                 x=0;
                 maxRowActual--;
+                return checkStairForm(shelf, x, y, maxRowActual);
             }
-            return checkStairForm(shelf, x++, y, maxRowActual);
+            return checkStairForm(shelf, x+1, y, maxRowActual);
         }
         return false;
     }
@@ -40,8 +48,9 @@ public class CommonCardStair {
                 y--;
                 x=0;
                 maxRowActual--;
+                return checkStairForm(shelf, x, y, maxRowActual);
             }
-            return checkStairForm(shelf, x++, y, maxRowActual);
+            return checkStairForm(shelf, x+1, y, maxRowActual);
         }
         return false;
     }

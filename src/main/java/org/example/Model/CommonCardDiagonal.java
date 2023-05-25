@@ -1,10 +1,14 @@
 package org.example.Model;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 
-public class CommonCardDiagonal {
+public class CommonCardDiagonal extends CommonCard implements Serializable {
 
-    public boolean checkDiagonal(Player player) {
+    public CommonCardDiagonal(int index) {
+        super(index);
+    }
+
+    public boolean executeAlgorithm(Player player) {
         int x, y;
         x = 0;
         y = 0;
@@ -43,7 +47,7 @@ public class CommonCardDiagonal {
     }
 
     private boolean checkTypeOfTileRight (int x, int y, Shelves shelf, TileType type) {
-        if (x== shelf.getMaxColums()){
+        if (y== shelf.getMaxColums()){
             return true;
         }
 
@@ -56,7 +60,7 @@ public class CommonCardDiagonal {
     }
 
     private boolean checkTypeOfTileLeft (int x, int y, Shelves shelf, TileType type) {
-        if (x== shelf.getMaxColums()){
+        if (y == shelf.getMaxColums()){
             return true;
         }
 

@@ -1,12 +1,23 @@
 package org.example.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class CommonCard3Types {
+public class CommonCard3Types extends CommonCard implements Serializable {
 
-    public boolean check3Types(Player player, String form) {
+    String form;
+    public CommonCard3Types(int index) {
+        super(index);
+        if (index == 3) {
+            this.form = "Horizontal 3 types";
+        } else {
+            this.form = "Vertical 3 types";
+        }
+    }
+
+    public boolean executeAlgorithm(Player player) {
         int counter = 0;
-        ArrayList<TileType> types = new ArrayList<TileType>();
+        ArrayList<TileType> types = new ArrayList<>();
         switch(form) {
             case("Horizontal 3 types") : {
                 for(int i=0;i<6;i++) {
@@ -41,15 +52,10 @@ public class CommonCard3Types {
                 if (!types.contains(shelf.getTilePosition(x, y).getTile().getType())) {
                     types.add(shelf.getTilePosition(x, y).getTile().getType());
                     return checkVertical3Types(types, shelf, x + 1, y);
-                } else {
-                    return false;
                 }
-            } else {
-                return false;
             }
-        } else {
-            return false;
         }
+        return false;
     }
 
     private boolean checkHorizontal3Types(ArrayList<TileType> types, Shelves shelf, int x, int y) {
@@ -61,15 +67,10 @@ public class CommonCard3Types {
                 if (!types.contains(shelf.getTilePosition(x, y).getTile().getType())) {
                     types.add(shelf.getTilePosition(x, y).getTile().getType());
                     return checkHorizontal3Types(types, shelf, x, y + 1);
-                } else {
-                    return false;
                 }
-            } else {
-                return false;
             }
-        } else {
-            return false;
         }
+        return false;
     }
 
 }
