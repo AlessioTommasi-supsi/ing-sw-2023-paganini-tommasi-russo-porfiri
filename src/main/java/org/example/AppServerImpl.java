@@ -1,10 +1,7 @@
 package org.example;
-import org.example.Model.*;
 import org.example.distributed.*;
 import org.example.distributed.socket.middleware.*;
-import org.example.util.*;
 import org.example.view.*;
-import org.example.controller.*;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -37,7 +34,7 @@ public class AppServerImpl extends UnicastRemoteObject implements AppServer
 
     public static void main(String[] args) {
         //GUI PART
-        View_Gui view_gui = new View_Gui();
+        viewGui viewGui = new viewGui();
         //END GUI
         Thread rmiThread = new Thread() {
             @Override

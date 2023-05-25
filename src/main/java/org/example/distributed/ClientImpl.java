@@ -1,10 +1,7 @@
 package org.example.distributed;
 
 import org.example.Model.*;
-import org.example.distributed.*;
-import org.example.util.*;
 import org.example.view.*;
-import org.example.controller.*;
 
 import java.rmi.RemoteException;
 import java.rmi.server.RMIClientSocketFactory;
@@ -13,7 +10,7 @@ import java.rmi.server.UnicastRemoteObject;
 // GIITTTT PLSWORCK 2
 public class ClientImpl extends UnicastRemoteObject implements Client, Runnable {
 
-    View_my_shelfie view = new View_my_shelfie();
+    ViewMyShelfie view = new ViewMyShelfie();
     //View_Gui view_gui = new View_Gui();
     public ClientImpl(Server server) throws RemoteException {
         super();
