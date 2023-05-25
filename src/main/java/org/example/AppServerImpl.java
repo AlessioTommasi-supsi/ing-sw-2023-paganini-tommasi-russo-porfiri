@@ -34,7 +34,7 @@ public class AppServerImpl extends UnicastRemoteObject implements AppServer
 
     public static void main(String[] args) {
         //GUI PART
-        viewGui view_gui = new viewGui();
+        viewGui viewGui = new viewGui();
         //END GUI
         Thread rmiThread = new Thread() {
             @Override
