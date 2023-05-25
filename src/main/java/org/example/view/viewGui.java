@@ -28,7 +28,7 @@ public class viewGui extends JFrame {
         gbc.insets = new Insets(5, 0, 5, 10);
 
         imageContainer = new JLabel();
-        ImageIcon imageIcon = new ImageIcon("path/to/your/image.png");
+        ImageIcon imageIcon = new ImageIcon("/Publisher%20material/Title%202000x2000px.png");
         Image image = imageIcon.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
         imageContainer.setIcon(new ImageIcon(image));
         bareMetalPanel.add(imageContainer, gbc);
