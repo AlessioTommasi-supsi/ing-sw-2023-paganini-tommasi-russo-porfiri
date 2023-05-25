@@ -44,7 +44,7 @@ public class Controller {
 
                 break;
 
-                case PESCA_FROM_PLANCIA:
+                case DRAW_FROM_BOARD:
                     Draw_from_board_Message drow_message = (Draw_from_board_Message) arg.getArgument();
                     //RIMOZIONE DA BOARD
                     ArrayList<TileObj> tilesRemoved = model.getMyShelfie().getGame(drow_message.getCurrent_game_id()).getBoard().removeTiles(drow_message.getTilesToRemove());
@@ -72,7 +72,7 @@ public class Controller {
                     System.err.println("BOARD: ");
                     model.getMyShelfie().getGame(drow_message.getCurrent_game_id()).getBoard().printTilePositionBoard(null);
                     break;
-                case TERMINA_TURNS:
+                case TERMINATE_TURNS:
                     model.getMyShelfie().getGame((Integer) arg.getArgument()).nextCurrentPlayer();
                     //se necessario ripristino la board!
                     model.getMyShelfie().getGame((Integer) arg.getArgument()).getBoard().restoreBoard();

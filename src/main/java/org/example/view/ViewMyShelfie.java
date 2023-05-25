@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Runnable {
+public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnable {
 
     private enum State {
         WAITING_FOR_PLAYER,
@@ -19,9 +19,9 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
     private final Object lock = new Object();
 
     private Player player;
-    private Game current_game= null;
+    private Game currentGame = null;
 
-    private int current_game_id = -1; //verrà assegnato dopo aver fatto join_game!!
+    private int currentGameId = -1; //verrà assegnato dopo aver fatto join_game!!
 
     public void update(TurnView model/*risposta dal server*/, Choice arg/*evento che il client remoto ha scelto*/) {
 
@@ -29,27 +29,27 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
         System.err.println(model.getErrore());
 
         try {
-            if (model.getMyShelfie().getGame(this.current_game_id).getStato().equals(StatoPartita.FINITA)){
+            if (model.getMyShelfie().getGame(this.currentGameId).getStato().equals(StatoPartita.FINITA)){
                 //caso in cui ho terminato una partita
                 //stampa del ranking
-                this.current_game=model.getMyShelfie().getGame(this.current_game_id);
+                this.currentGame =model.getMyShelfie().getGame(this.currentGameId);
                 System.out.println("RANKING: ");
                 try {
-                    this.current_game.getRanking().stream()
+                    this.currentGame.getRanking().stream()
                             .forEach((rank)->{System.out.println(rank.toString());});
                 }catch (Exception e){
                     e.printStackTrace();
                 }
                 //CLEAR STATE
-                current_game = null;
-                current_game_id = -1;
+                currentGame = null;
+                currentGameId = -1;
                 this.player.setShelves(new Shelves());
                 this.setState(State.WAITING_FOR_PLAYER);
             }else {
-                in_game(model, arg);
+                inGame(model, arg);
             }
         } catch (Exception e){
-            in_game(model, arg);
+            inGame(model, arg);
         }
 
          //.DEBUG
@@ -57,16 +57,16 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
 
     }
 
-    public void in_game(TurnView model/*risposta dal server*/, Choice arg/*evento che il client remoto ha scelto*/){
-        if (current_game_id == -1){ //inizializzazione di tutte le variabili di gioco
-            joining_part(model,arg);
+    public void inGame(TurnView model/*risposta dal server*/, Choice arg/*evento che il client remoto ha scelto*/){
+        if (currentGameId == -1){ //inizializzazione di tutte le variabili di gioco
+            joiningPart(model,arg);
         }else {
             //aggiorno client -> da fare ogni volta che avviene qualsiasi cosa!! -> da non mettere fuori perchè getMyShelfie() puo essere null!
-            this.current_game =model.getMyShelfie().getGame(this.current_game_id);
-            this.player= this.current_game.getPlayer(this.player.getId());//così ho a portata di mano la shelves aggiornata!
+            this.currentGame = model.getMyShelfie().getGame(this.currentGameId);
+            this.player= this.currentGame.getPlayer(this.player.getId());//così ho a portata di mano la shelves aggiornata!
 
             //ho gia fatto join!
-            choiche_part( model, arg);
+            choicePart( model, arg);
         }
     }
 
@@ -92,10 +92,10 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                         }
                     }
                 }
-                if (this.current_game == null) {
+                if (this.currentGame == null) {
                     System.out.println("--- WELCOME TO MY SHELFIE! ---");
                     /* Player chooses  POSSIBLE ONLY JOINGAME! */
-                    Choice_my_shelfie pc = Choice_my_shelfie.JOIN_GAME;
+                    ChoiceMyShelfie pc = ChoiceMyShelfie.JOIN_GAME;
                     Object argument = askPlayerArgumentMyshelfie(pc);
 
                     Choice c =new Choice(pc,player, argument);
@@ -106,7 +106,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                     setChanged();/*NOTIFICO AL SERVER che del client ha fatto scelta!!*/
                     notifyObservers(c);
                 }else {
-                    Choice_my_shelfie pc = askPlayerChoiceMyShelfie();
+                    ChoiceMyShelfie pc = askPlayerChoiceMyShelfie();
                     Object argument = askPlayerArgumentMyshelfie(pc);
 
                     Choice c =new Choice(pc,player, argument);
@@ -125,20 +125,20 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
     }
 
 
-    public Choice_my_shelfie askPlayerChoiceMyShelfie() {
+    public ChoiceMyShelfie askPlayerChoiceMyShelfie() {
         Scanner s = new Scanner(System.in);
         System.out.println("is your turn! Make your choice: ");
         System.out.println(
                 "Signs: " +
-                        Arrays.stream(Choice_my_shelfie.values())
-                                .map(Choice_my_shelfie::name)
+                        Arrays.stream(ChoiceMyShelfie.values())
+                                .map(ChoiceMyShelfie::name)
                                 .collect(
                                         Collectors.joining(",", "[", "]")));
         while (true) {
             String input = s.next();
             try {
-                switch (Choice_my_shelfie.valueOf(input)){
-                    case SHOW_MY_SHELVS:
+                switch (ChoiceMyShelfie.valueOf(input)){
+                    case SHOW_MY_SHELVES:
                         System.out.println("your current shelves is: ");
                         System.out.println("");
                         try {
@@ -155,7 +155,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                             //V1
                             //this.current_game.getBoard().showBoard().stream().forEach(placement->System.out.println(placement.toString()));
                             //V2
-                            printTilePositionBoard(this.current_game.getBoard().showBoard());
+                            printTilePositionBoard(this.currentGame.getBoard().showBoard());
                         }catch (Exception e){
                             System.err.println("Error occurred displaying your BOARD! ");
                             e.printStackTrace();
@@ -163,7 +163,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                         return askPlayerChoiceMyShelfie();
 
                 }
-                return Choice_my_shelfie.valueOf(input);
+                return ChoiceMyShelfie.valueOf(input);
             } catch (IllegalArgumentException e) {
                 System.err.println("I don't know this choice: " + input);
                 System.err.println("Try again...");
@@ -171,7 +171,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
         }
     }
 
-    private Object askPlayerArgumentMyshelfie(Choice_my_shelfie pc) {
+    private Object askPlayerArgumentMyshelfie(ChoiceMyShelfie pc) {
         System.out.println();
         Scanner s = new Scanner(System.in);
 
@@ -179,16 +179,16 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
             case JOIN_GAME:
                 System.out.println("Inserisci il numero di giocatori della partita: ");
                 return  Integer.parseInt(s.next());
-            case TERMINA_TURNS:
-                return this.current_game_id;//oggetto da passare come argomento è l'id della partita corrente.
-            case PESCA_FROM_PLANCIA:
+            case TERMINATE_TURNS:
+                return this.currentGameId;//oggetto da passare come argomento è l'id della partita corrente.
+            case DRAW_FROM_BOARD:
                 try{
                     //faccio qui tutti i controlli così sono sicuro di passare al server solo i dati giusti tanto la board viene aggiornata a ogni turno!
 
                     System.out.println("Inserisci il numero di tessere da pescare: ");
                     int counter = Integer.parseInt(s.next());
                     ArrayList<TilePositionBoard> tilesToRemove = new ArrayList<TilePositionBoard>();
-                    ArrayList<TilePositionBoard> boardPlacementsCopy = current_game.getBoard().getPlacements();
+                    ArrayList<TilePositionBoard> boardPlacementsCopy = currentGame.getBoard().getPlacements();
 
                     for (int i = 0; i < counter; i++) {
                         System.out.println("Inserisci la coordinata x della tessera da pescare: ");
@@ -236,13 +236,13 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                     int colum_of_shelves = Integer.parseInt(s.next());
 
                     //check_input(tilesToRemove,colum_of_shelves);
-                    return new Draw_from_board_Message(tilesToRemove,colum_of_shelves,this.current_game_id,ordine);
+                    return new Draw_from_board_Message(tilesToRemove,colum_of_shelves,this.currentGameId,ordine);
                 }catch (Exception e){
                     System.err.println("generic error occurred! ");
                     e.printStackTrace();
                 }
             case EXIT:
-                return this.current_game_id;//oggetto da passare come argomento è l'id della partita corrente.
+                return this.currentGameId;//oggetto da passare come argomento è l'id della partita corrente.
 
         }
         return null;
@@ -252,7 +252,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
         try {
             //PROVA A VEDERE SE FUNZIONA MA SECONDO ME NO! POICHE GAME RITORNATO DA SERVER E' FINAL!! (non piu) pero brutto!
             //RIMOZIONE DA BOARD:
-            ArrayList<TileObj> tilesRemoved=this.current_game.getBoard().removeTiles(tilesToRemove);
+            ArrayList<TileObj> tilesRemoved=this.currentGame.getBoard().removeTiles(tilesToRemove);
 
             //INSERIMENTO IN SHELVS:
             //this.player.putTilesInShelf(tilesRemoved,columOfShelves);
@@ -271,7 +271,7 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
             }
     }
 
-    public void joining_part(TurnView model,Choice arg) {
+    public void joiningPart(TurnView model, Choice arg) {
         //USERNAME DEVE ESSERE UNIVOCO
         if (this.player != null) {
             if(arg.getPlayer().getUsername().equals( this.player.getUsername())){
@@ -282,28 +282,28 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                                 this.player.setId(arg.getPlayer().getId());
                                 //aggiorno la variabile this.current_game_id e current_game
                                 for (int i = 0; i < model.getMyShelfie().getGames().size(); i++) {
-                                    boolean is_player_in_this_game = false;
+                                    boolean isPlayerInThisGame = false;
                                     for (int j = 0; j < model.getMyShelfie().getGames().get(i).getPlayers().size(); j++) {
                                         if (model.getMyShelfie().getGames().get(i).getPlayers().get(j).getId() == this.player.getId()) {
-                                            is_player_in_this_game = true;
+                                            isPlayerInThisGame = true;
                                             break;
                                         }
                                     }
-                                    if (is_player_in_this_game == true){
+                                    if (isPlayerInThisGame == true){
                                         switch (model.getMyShelfie().getGames().get(i).getStato()) {//le partite saranno o in attesa o in corso!
                                             case IN_CORSO://non dovrebbe mai arrivarci!
                                                 System.out.println();
                                                 System.out.println("ti sei unito ad una partita e la partita e' in corso!");
-                                                System.err.println("partita a cui ti sei unito in corso: "+model.getMyShelfie().getGames().get(i).toString());
+                                                System.err.println("partita a cui ti sei unito in corso: " + model.getMyShelfie().getGames().get(i).toString());
                                                 System.out.println();
-                                                this.current_game_id = model.getMyShelfie().getGames().get(i).getCurrentGameId();
+                                                this.currentGameId = model.getMyShelfie().getGames().get(i).getCurrentGameId();
                                                 //this.current_game = model.getMyShelfie().getGames().get(i);
                                                 break;
                                             case IN_ATTESA://siccome non esiste una partita di un solo giocatore entrerò sempre qui!
                                                 System.out.println("ti sei unito ad una partita e la partita e' in attesa di altri giocatori!");
-                                                System.err.println("partita a cui ti sei unito in corso: "+model.getMyShelfie().getGames().get(i).toString());
+                                                System.err.println("partita a cui ti sei unito in corso: " + model.getMyShelfie().getGames().get(i).toString());
                                                 System.out.println();
-                                                this.current_game_id = model.getMyShelfie().getGames().get(i).getCurrentGameId();
+                                                this.currentGameId = model.getMyShelfie().getGames().get(i).getCurrentGameId();
                                                 //this.current_game = model.getMyShelfie().getGames().get(i);
                                                 break;
                                         }
@@ -312,55 +312,55 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                                 //stampo i dati della partita a cui mi sono unito.
                                 break;
                             default:
-                                System.err.println("devi prima unirti al gioco!");
+                                System.err.println("Devi prima unirti al gioco!");
                         }
                     }
-                    default -> System.err.println("errore stato! Ignoring event from " + model.toString() + ": " + arg.toString());
+                    default -> System.err.println("Errore stato! Ignoring event from " + model.toString() + ": " + arg.toString());
                 }
 
-                System.out.println("il server ha risposto!");
+                System.out.println("Il server ha risposto!");
                 //this.setState(State.WAITING_FOR_PLAYER);
             }
         }
 
     }
 
-    public void choiche_part(TurnView model, Choice arg) {
+    public void choicePart(TurnView model, Choice arg) {
         try {
             switch (model.getPlayerChoice().getStato()) {
                 case CPU_CHOICE -> {
                     switch (model.getPlayerChoice().getChoice()) {
 
 
-                        case TERMINA_TURNS:
-                            System.out.println(model.getMyShelfie().getGame(this.current_game_id).precCurrentPlayer().getUsername()+" ha terminato il turno! ");
-                            System.out.println("ora tocca a: " + model.getMyShelfie().getGame(this.current_game_id).getCurrentPlayer().getUsername());
+                        case TERMINATE_TURNS:
+                            System.out.println(model.getMyShelfie().getGame(this.currentGameId).precCurrentPlayer().getUsername()+" ha terminato il turno! ");
+                            System.out.println("Ora tocca a: " + model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getUsername());
                         break;
 
                         case JOIN_GAME:
-                            System.out.println("il player: "+model.getMyShelfie().getGame(this.current_game_id).getPlayers().get(model.getMyShelfie().getGame(this.current_game_id).getPlayers().size()-1).getUsername()+" si e' unito alla partita!");
+                            System.out.println("Il player: "+model.getMyShelfie().getGame(this.currentGameId).getPlayers().get(model.getMyShelfie().getGame(this.currentGameId).getPlayers().size()-1).getUsername()+" si e' unito alla partita!");
                         break;
-                        case PESCA_FROM_PLANCIA:
-                            System.out.println("il player: "+model.getMyShelfie().getGame(this.current_game_id).getCurrentPlayer().getUsername()+" HA PESCATO DALLA PLANCIA!");
+                        case DRAW_FROM_BOARD:
+                            System.out.println("Il player: "+model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getUsername()+" HA PESCATO DALLA PLANCIA!");
                         break;
                         case EXIT:
-                            System.out.println("il player: "+model.getMyShelfie().getGame(this.current_game_id).getCurrentPlayer().getUsername()+" HA FORZATO LA CHIUSURA DEL GIOCO ALLA FINE DEL GIRO!");
+                            System.out.println("Il player: "+model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getUsername()+" HA FORZATO LA CHIUSURA DEL GIOCO ALLA FINE DEL GIRO!");
                         break;
                         default:
-                            System.err.println("not implemented yet");
+                            System.err.println("Not implemented yet");
                     }
                 }
-                default -> System.err.println("errore stato! Ignoring event from " + model.toString() + ": " + arg.toString());
+                default -> System.err.println("Errore stato! Ignoring event from " + model.toString() + ": " + arg.toString());
             }
         } catch (Exception e) {
-            System.out.println("gioco che ha generato errore: " + model.getMyShelfie().getGame(this.current_game_id).toString());
+            System.out.println("Gioco che ha generato errore: " + model.getMyShelfie().getGame(this.currentGameId).toString());
             e.printStackTrace();
         }
 
         //se è il mio turno faccio qualcosa!!
-        if (model.getMyShelfie().getGame(this.current_game_id).getCurrentPlayer() != null) {
-            if (model.getMyShelfie().getGame(this.current_game_id).getCurrentPlayer().getId() == this.player.getId()) {
-                System.out.println("il server ha risposto!");
+        if (model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer() != null) {
+            if (model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getId() == this.player.getId()) {
+                System.out.println("Il server ha risposto!");
                 this.setState(State.WAITING_FOR_PLAYER);
             }
         }
@@ -386,8 +386,8 @@ public class View_my_shelfie extends Observable<Choice_my_shelfie> implements Ru
                 "\nstate=" + state +
                 ",\n lock=" + lock +
                 ",\n player=" + player +
-                ",\n current_game=" + current_game +
-                ",\n current_game_id=" + current_game_id +
+                ",\n current_game=" + currentGame +
+                ",\n current_game_id=" + currentGameId +
                 "\n}";
     }
 

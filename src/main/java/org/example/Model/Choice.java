@@ -3,12 +3,12 @@ package org.example.Model;
 import java.io.Serializable;
 
 public class Choice implements Serializable {
-    private Choice_my_shelfie choice;
+    private ChoiceMyShelfie choice;
     private Turn.Event stato;
     private Object argument;
     private Player player;
 
-    public Choice(Choice_my_shelfie choice, Player player, Object argument) {
+    public Choice(ChoiceMyShelfie choice, Player player, Object argument) {
         this.choice = choice;
         this.argument = argument;
         this.player = player;
@@ -22,11 +22,11 @@ public class Choice implements Serializable {
         this.stato = stato;
     }
 
-    public Choice_my_shelfie getChoice() {
+    public ChoiceMyShelfie getChoice() {
         return choice;
     }
 
-    public void setChoice(Choice_my_shelfie choice) {
+    public void setChoice(ChoiceMyShelfie choice) {
         this.choice = choice;
     }
 
