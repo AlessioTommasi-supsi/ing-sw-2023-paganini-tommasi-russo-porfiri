@@ -246,37 +246,27 @@ public abstract class Game implements Serializable {
     }
 
     public void drawCommon() {
+        ArrayList<CommonCard> commonCards = new ArrayList<CommonCard>();
+        commonCards.add(new CommonCardShape(0));
+        commonCards.add(new CommonCardDiagonal(1));
+        commonCards.add(new CommonCardAngles(2));
+        commonCards.add(new CommonCard3Types(3));
+        commonCards.add(new CommonCardShape(4));
+        commonCards.add(new CommonCardAllDifferentTypes(5));
+        commonCards.add(new CommonCardShape(6));
+        commonCards.add(new CommonCardAllDifferentTypes(7));
+        commonCards.add(new CommonCard3Types(8));
+        commonCards.add(new CommonCardX(9));
+        commonCards.add(new CommonCard8Tiles(10));
+        commonCards.add(new CommonCardStair(11));
         Random rand = new Random();
         int index1 = rand.nextInt(12);
-        if((index1 == 0)
-                || (index1 == 4)
-                || (index1 == 6)
-                || (index1 == 1)
-                || (index1 == 9)) {
-            this.common1 = new CommonCardForm(index1);
-        } else if ((index1 == 5) || (index1 == 7)) {
-            this.common1 = new CommonCardRowColumn(index1);
-        } else if ((index1 == 3) || (index1 == 8)) {
-            this.common1 = new CommonCardRowColumnMinMax(index1);
-        } else {
-            this.common1 = new CommonCardPosition(index1);
-        }
+        this.common1 = commonCards.get(index1);
         int index2 = rand.nextInt(12);
         while(index2==index1) {
             index2 = rand.nextInt(12);
         }
-        if((index2 == 0)  || (index2 == 4)
-                || (index2 == 6)
-                || (index2 == 1)
-                || (index2 == 9)) {
-            this.common2 = new CommonCardForm(index2);
-        } else if ((index2 == 5) || (index2 == 7)) {
-            this.common2 = new CommonCardRowColumn(index2);
-        } else if ((index2 == 3) || (index2 == 8)) {
-            this.common2 = new CommonCardRowColumnMinMax(index2);
-        } else {
-            this.common2 = new CommonCardPosition(index2);
-        }
+        common2 = commonCards.get(index2);
     }
 
 
