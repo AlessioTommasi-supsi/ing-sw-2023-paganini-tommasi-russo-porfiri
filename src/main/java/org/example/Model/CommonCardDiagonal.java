@@ -48,10 +48,8 @@ public class CommonCardDiagonal extends CommonCard implements Serializable {
         if (y== shelf.getMaxColums()){
             return true;
         }
-        if(shelf.getTilePosition(x,y) != null) {
-            if (shelf.getTilePosition(x, y).getTile().getType() == type) {
-                return checkTypeOfTileRight(x + 1, y + 1, shelf, type);
-            }
+        if((shelf.getTilePosition(x,y) != null) && (shelf.getTilePosition(x, y).getTile().getType() == type)) {
+            return checkTypeOfTileRight(x + 1, y + 1, shelf, type);
         }
         return false;
 
@@ -61,10 +59,8 @@ public class CommonCardDiagonal extends CommonCard implements Serializable {
         if (y == -1){
             return true;
         }
-        if(shelf.getTilePosition(x, y) != null) {
-            if (shelf.getTilePosition(x, y).getTile().getType() == type) {
+        if((shelf.getTilePosition(x, y) != null) && (shelf.getTilePosition(x, y).getTile().getType() == type)) {
                 return checkTypeOfTileLeft(x + 1, y - 1, shelf, type);
-            }
         }
         return false;
 

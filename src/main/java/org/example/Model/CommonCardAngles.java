@@ -35,9 +35,8 @@ public class CommonCardAngles extends CommonCard implements Serializable {
                     return checkAnglesTiles(shelf, type, shelf.getMaxRows() - 1, y);
                 }
             }
-        } else {
-            return false;
         }
+        return false;
     }
 
 }
