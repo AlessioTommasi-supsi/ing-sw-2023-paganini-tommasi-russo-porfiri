@@ -57,7 +57,7 @@ public class ViewGui extends JFrame {
         titleLabel.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
-                resizeTitleImage();
+                resizeTitle();
             }
         });
 
@@ -142,6 +142,33 @@ public class ViewGui extends JFrame {
             }
         }
     }
+
+    private void resizeTitle() {
+        int containerWidth = titleLabel.getWidth();
+        int containerHeight = titleLabel.getHeight();
+
+        if (containerWidth > 0 && containerHeight > 0) {
+            try {
+                BufferedImage originalImage = ImageIO.read(getClass().getResource("/Publisher material/Title 2000x618px.png"));
+                int originalWidth = originalImage.getWidth();
+                int originalHeight = originalImage.getHeight();
+
+                double widthRatio = (double) containerWidth / originalWidth;
+                double heightRatio = (double) containerHeight / originalHeight;
+
+                double scaleFactor = Math.max(widthRatio, heightRatio);
+
+                int scaledWidth = (int) (originalWidth * scaleFactor);
+                int scaledHeight = (int) (originalHeight * scaleFactor);
+
+                Image resizedTitle = originalImage.getScaledInstance(scaledWidth, scaledHeight, Image.SCALE_SMOOTH);
+                titleLabel.setIcon(new ImageIcon(resizedTitle));
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+    
 
     private void resizeTitleImage() {
         int width = titleLabel.getWidth();
