@@ -23,35 +23,26 @@ public class CommonCardX extends CommonCard implements Serializable {
     }
 
     private boolean checkXForm(Shelves shelf, TileType type, int x, int y, int countInteractions) {
-        if(countInteractions < 5) {
-            if(countInteractions < 4) {
-                if(countInteractions < 3) {
-                    if(shelf.getTilePosition(x, y) != null) {
-                        if(shelf.getTilePosition(x, y).getTile().getType() == type) {
-                            countInteractions++;
-                            return checkXForm(shelf, type,  x+1, y+1, countInteractions);
-                        }
-                    }
-                } else {
-                    if(shelf.getTilePosition(x, y) != null) {
-                        if(shelf.getTilePosition(x, y).getTile().getType() == type) {
-                            countInteractions++;
-                            return checkXForm(shelf, type,  x-2, y, countInteractions);
-                        }
-                    }
+        if (countInteractions == 5) {
+            return true;
+        }
+        if (shelf.getTilePosition(x, y) != null) {
+            if (countInteractions < 3) {
+                if (shelf.getTilePosition(x, y).getTile().getType() == type) {
+                    countInteractions++;
+                    return checkXForm(shelf, type, x + 1, y + 1, countInteractions);
                 }
-            } else {
-                if(shelf.getTilePosition(x, y) != null) {
-                    if(shelf.getTilePosition(x, y).getTile().getType() == type) {
-                        countInteractions++;
-                        return checkXForm(shelf, type, x+2, y-2, countInteractions);
-                    }
-                }
-
             }
-            if(shelf.getTilePosition(x, y) != null) {
-                if(shelf.getTilePosition(x, y).getTile().getType() == type) {
-                    return true;
+            if (countInteractions == 3) {
+                if (shelf.getTilePosition(x, y).getTile().getType() == type) {
+                    countInteractions++;
+                    return checkXForm(shelf, type, x - 2, y, countInteractions);
+                }
+            }
+            if (countInteractions == 4) {
+                if (shelf.getTilePosition(x, y).getTile().getType() == type) {
+                    countInteractions++;
+                    return checkXForm(shelf, type, x + 2, y - 2, countInteractions);
                 }
             }
         }

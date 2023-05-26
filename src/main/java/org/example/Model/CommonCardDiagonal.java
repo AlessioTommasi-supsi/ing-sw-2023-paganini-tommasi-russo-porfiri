@@ -19,24 +19,22 @@ public class CommonCardDiagonal extends CommonCard implements Serializable {
                 return true;
             }
         }
-        x = 0;
-        y = 1;
+        x = 1;
         if (player.getShelves().getTilePosition(x, y) != null) {
             type = player.getShelves().getTilePosition(x, y).getTile().getType();
             if(checkTypeOfTileRight(x, y, player.getShelves(), type)){
                 return true;
             }
         }
-        x = 4;
-        y = 0;
+        x = 0;
+        y = 4;
         if (player.getShelves().getTilePosition(x, y) != null) {
             type = player.getShelves().getTilePosition(x, y).getTile().getType();
             if(checkTypeOfTileLeft(x, y, player.getShelves(), type)){
                 return true;
             }
         }
-        x = 4;
-        y = 1;
+        x = 1;
         if (player.getShelves().getTilePosition(x, y) != null) {
             type = player.getShelves().getTilePosition(x, y).getTile().getType();
             if(checkTypeOfTileLeft(x, y, player.getShelves(), type)){
@@ -50,25 +48,25 @@ public class CommonCardDiagonal extends CommonCard implements Serializable {
         if (y== shelf.getMaxColums()){
             return true;
         }
-
-        if (shelf.getTilePosition(x, y).getTile().getType() == type) {
-            return checkTypeOfTileRight( x+1, y+1,  shelf,  type);
-        }else {
-            return false;
+        if(shelf.getTilePosition(x,y) != null) {
+            if (shelf.getTilePosition(x, y).getTile().getType() == type) {
+                return checkTypeOfTileRight(x + 1, y + 1, shelf, type);
+            }
         }
+        return false;
 
     }
 
     private boolean checkTypeOfTileLeft (int x, int y, Shelves shelf, TileType type) {
-        if (y == shelf.getMaxColums()){
+        if (y == -1){
             return true;
         }
-
-        if (shelf.getTilePosition(x, y).getTile().getType() == type) {
-            return checkTypeOfTileLeft( x-1, y+1,  shelf,  type);
-        }else {
-            return false;
+        if(shelf.getTilePosition(x, y) != null) {
+            if (shelf.getTilePosition(x, y).getTile().getType() == type) {
+                return checkTypeOfTileLeft(x + 1, y - 1, shelf, type);
+            }
         }
+        return false;
 
     }
 }

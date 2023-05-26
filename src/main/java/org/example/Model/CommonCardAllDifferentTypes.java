@@ -3,10 +3,10 @@ package org.example.Model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class CommonCardAllDifferentTiles extends CommonCard implements Serializable {
+public class CommonCardAllDifferentTypes extends CommonCard implements Serializable {
 
     String form;
-    public CommonCardAllDifferentTiles(int index) {
+    public CommonCardAllDifferentTypes(int index) {
         super(index);
         if(index==3) {
             this.form = "Horizontal";
@@ -21,24 +21,20 @@ public class CommonCardAllDifferentTiles extends CommonCard implements Serializa
         switch(form) {
             case ("Horizontal") : {
                 for(int i=0;i<6;i++) {
-                    if(player.getShelves().getTilePosition(i, 0) != null) {
-                        if (checkHorizontal(types, player.getShelves(), i, 0)) {
-                            counter++;
-                            if (counter == 2) {
-                                return true;
-                            }
+                    if (checkHorizontal(types, player.getShelves(), i, 0)) {
+                        counter++;
+                        if (counter == 2) {
+                            return true;
                         }
                     }
                 }
             }
             case ("Vertical") : {
                 for (int i=0; i < 5;i++) {
-                    if(player.getShelves().getTilePosition(0, i) != null) {
-                        if (checkVertical(types, player.getShelves(), 0, i)) {
-                            counter++;
-                            if (counter == 2) {
-                                return true;
-                            }
+                    if (checkVertical(types, player.getShelves(), 0, i)) {
+                        counter++;
+                        if (counter == 2) {
+                            return true;
                         }
                     }
                 }
@@ -55,8 +51,6 @@ public class CommonCardAllDifferentTiles extends CommonCard implements Serializa
             if (!types.contains(shelf.getTilePosition(x, y).getTile().getType())) {
                 types.add(shelf.getTilePosition(x, y).getTile().getType());
                 return checkHorizontal(types, shelf, x, y + 1);
-            } else {
-                return false;
             }
         }
         return false;
@@ -70,8 +64,6 @@ public class CommonCardAllDifferentTiles extends CommonCard implements Serializa
             if (!types.contains(shelf.getTilePosition(x, y).getTile().getType())) {
                 types.add(shelf.getTilePosition(x, y).getTile().getType());
                 return checkVertical(types, shelf, x + 1, y);
-            } else {
-                return false;
             }
         }
         return false;
