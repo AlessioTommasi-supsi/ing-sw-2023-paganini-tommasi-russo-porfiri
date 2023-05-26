@@ -236,7 +236,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                     int colum_of_shelves = Integer.parseInt(s.next());
 
                     //check_input(tilesToRemove,colum_of_shelves);
-                    return new Draw_from_board_Message(tilesToRemove,colum_of_shelves,this.currentGameId,ordine);
+                    return new drawFromBoardMessage(tilesToRemove,colum_of_shelves,this.currentGameId,ordine);
                 }catch (Exception e){
                     System.err.println("generic error occurred! ");
                     e.printStackTrace();

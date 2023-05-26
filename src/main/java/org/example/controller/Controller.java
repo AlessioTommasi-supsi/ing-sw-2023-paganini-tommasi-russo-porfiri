@@ -45,13 +45,13 @@ public class Controller {
                 break;
 
                 case DRAW_FROM_BOARD:
-                    Draw_from_board_Message drow_message = (Draw_from_board_Message) arg.getArgument();
+                    drawFromBoardMessage drow_message = (drawFromBoardMessage) arg.getArgument();
                     //RIMOZIONE DA BOARD
                     ArrayList<TileObj> tilesRemoved = model.getMyShelfie().getGame(drow_message.getCurrent_game_id()).getBoard().removeTiles(drow_message.getTilesToRemove());
                     //IMMETTI IN LIBRERIA
                     //sicuramente dovro modificare la libreria del player corrente!
                     try {
-                        model.getMyShelfie().getGame(drow_message.getCurrent_game_id()).getCurrentPlayer().putTilesInShelf(tilesRemoved, drow_message.getColumm_of_sheves(), drow_message.getOrdine());
+                        model.getMyShelfie().getGame(drow_message.getCurrent_game_id()).getCurrentPlayer().putTilesInShelf(tilesRemoved, drow_message.getColumnOfShelves(), drow_message.getOrdine());
                     }catch (IllegalSizeOfTilesException e1){
                         //devo rimettere le tessere nella plancia!
                         model.getMyShelfie().getGame(drow_message.getCurrent_game_id()).getBoard().addTiles(drow_message.getTilesToRemove());
