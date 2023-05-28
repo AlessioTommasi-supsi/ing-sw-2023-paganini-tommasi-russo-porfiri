@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class CommonCardDiagonal extends CommonCard implements Serializable {
 
     public CommonCardDiagonal(int index) {
-        super(index);
+        super(index,"you have to complete one of the possible diagonals with the same type of tiles");
     }
 
     public boolean executeAlgorithm(Player player) {

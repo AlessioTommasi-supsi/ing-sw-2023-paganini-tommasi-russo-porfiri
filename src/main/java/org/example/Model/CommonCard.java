@@ -6,7 +6,9 @@ import java.util.*;
 
 public abstract class CommonCard  implements Serializable {
 
-    private int index;
+    private int index ;
+
+    private String Description = "non assegnato";
 
     public int getIndex() {
         return index;
@@ -17,6 +19,19 @@ public abstract class CommonCard  implements Serializable {
         this.index = extIndex;
     }
 
+
+    public CommonCard(int extIndex, String description){
+        this.index = extIndex;
+        this.Description = description;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
 
     public abstract boolean executeAlgorithm(Player player);
 }

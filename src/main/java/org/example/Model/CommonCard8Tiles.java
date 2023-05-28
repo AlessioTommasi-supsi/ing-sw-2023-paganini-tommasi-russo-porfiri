@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class CommonCard8Tiles extends CommonCard implements Serializable {
 
     public CommonCard8Tiles(int index) {
-        super(index);
+        super(index, "check if 8 tiles of the same type are present in your shelf");
     }
 
     public boolean executeAlgorithm(Player player) {

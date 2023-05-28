@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class CommonCardAngles extends CommonCard implements Serializable {
 
     public CommonCardAngles(int index) {
-        super(index);
+        super(index,"check if angles in your shelf are present and with the same type of tiles");
     }
 
     public boolean executeAlgorithm(Player player) {
