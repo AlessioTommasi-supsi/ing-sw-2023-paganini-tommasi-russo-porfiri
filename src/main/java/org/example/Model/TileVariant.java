@@ -5,6 +5,8 @@ public enum TileVariant {
     VARIANT_TWO,
     VARIANT_THREE;
 
+    
+    @Override
     public String toString() {
         switch (this) {
             case VARIANT_ONE:
