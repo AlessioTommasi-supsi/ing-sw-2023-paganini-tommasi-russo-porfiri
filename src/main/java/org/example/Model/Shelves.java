@@ -48,9 +48,12 @@ public class Shelves implements Serializable {
     }
 
     public TilePositionShelves getTilePosition(int x, int y){
-        return tilePositions[y][x];
+        return tilePositions[x][y];
     }
 
+    public TilePositionShelves getTilePosition2(int x, int y){
+        return tilePositions[y][x];
+    }
 
 
     public TilePositionShelves[][] showShelves() {

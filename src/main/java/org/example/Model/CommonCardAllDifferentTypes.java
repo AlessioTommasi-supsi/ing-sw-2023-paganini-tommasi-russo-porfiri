@@ -49,7 +49,7 @@ public class CommonCardAllDifferentTypes extends CommonCard implements Serializa
         if(y == shelf.getMaxColums()) {
             return true;
         }
-        if(shelf.getTilePosition(x, y) != null) {
+        if(shelf.getTilePosition(x, y).isOccupied()) {
             if (!types.contains(shelf.getTilePosition(x, y).getTile().getType())) {
                 types.add(shelf.getTilePosition(x, y).getTile().getType());
                 return checkHorizontal(types, shelf, x, y + 1);
@@ -62,7 +62,7 @@ public class CommonCardAllDifferentTypes extends CommonCard implements Serializa
         if (x==shelf.getMaxRows()) {
             return true;
         }
-        if (shelf.getTilePosition(x, y) != null) {
+        if (shelf.getTilePosition(x, y).isOccupied()) {
             if (!types.contains(shelf.getTilePosition(x, y).getTile().getType())) {
                 types.add(shelf.getTilePosition(x, y).getTile().getType());
                 return checkVertical(types, shelf, x + 1, y);

@@ -44,7 +44,7 @@ public abstract class Game implements Serializable {
         this.currentGameId = Globals.incrementGameId();
         mazziere.setPC(drawPersonal());
         //.DEBUG
-        System.out.println(mazziere.toString());
+        //System.out.println(mazziere.toString());
         players.add(mazziere);
         this.board = new Board();
         buildBoard();
@@ -153,7 +153,6 @@ public abstract class Game implements Serializable {
                 // convert a JSON string to a User object
                 PersonalCard[] user = gson.fromJson(reader,PersonalCard[].class);
 
-                System.out.println(user[0].toString());
                 personalCardParsers.add(user[0]);
 
                 personalCardParsers.add(user[1]);
@@ -197,7 +196,7 @@ public abstract class Game implements Serializable {
         }
         p.setPC(drawPersonal());
         //.DEBUG
-        System.out.println(p.toString());
+        //System.out.println(p.toString());
         players.add(p);
 
         if (this.playerNumber == this.players.size()) {

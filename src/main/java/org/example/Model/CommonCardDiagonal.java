@@ -13,14 +13,14 @@ public class CommonCardDiagonal extends CommonCard implements Serializable {
         x = 0;
         y = 0;
         TileType type;
-        if (player.getShelves().getTilePosition(x, y) != null) {
+        if (player.getShelves().getTilePosition(x, y).isOccupied()) {
             type = player.getShelves().getTilePosition(x, y).getTile().getType();
             if(checkTypeOfTileRight(x, y, player.getShelves(), type)){
                 return true;
             }
         }
         x = 1;
-        if (player.getShelves().getTilePosition(x, y) != null) {
+        if (player.getShelves().getTilePosition(x, y).isOccupied()) {
             type = player.getShelves().getTilePosition(x, y).getTile().getType();
             if(checkTypeOfTileRight(x, y, player.getShelves(), type)){
                 return true;
@@ -28,14 +28,14 @@ public class CommonCardDiagonal extends CommonCard implements Serializable {
         }
         x = 0;
         y = 4;
-        if (player.getShelves().getTilePosition(x, y) != null) {
+        if (player.getShelves().getTilePosition(x, y).isOccupied()) {
             type = player.getShelves().getTilePosition(x, y).getTile().getType();
             if(checkTypeOfTileLeft(x, y, player.getShelves(), type)){
                 return true;
             }
         }
         x = 1;
-        if (player.getShelves().getTilePosition(x, y) != null) {
+        if (player.getShelves().getTilePosition(x, y).isOccupied()) {
             type = player.getShelves().getTilePosition(x, y).getTile().getType();
             if(checkTypeOfTileLeft(x, y, player.getShelves(), type)){
                 return true;
@@ -48,7 +48,7 @@ public class CommonCardDiagonal extends CommonCard implements Serializable {
         if (y== shelf.getMaxColums()){
             return true;
         }
-        if((shelf.getTilePosition(x,y) != null) && (shelf.getTilePosition(x, y).getTile().getType() == type)) {
+        if((shelf.getTilePosition(x, y).isOccupied()) && (shelf.getTilePosition(x, y).getTile().getType() == type)) {
             return checkTypeOfTileRight(x + 1, y + 1, shelf, type);
         }
         return false;
@@ -59,7 +59,7 @@ public class CommonCardDiagonal extends CommonCard implements Serializable {
         if (y == -1){
             return true;
         }
-        if((shelf.getTilePosition(x, y) != null) && (shelf.getTilePosition(x, y).getTile().getType() == type)) {
+        if((shelf.getTilePosition(x, y).isOccupied()) && (shelf.getTilePosition(x, y).getTile().getType() == type)) {
                 return checkTypeOfTileLeft(x + 1, y - 1, shelf, type);
         }
         return false;

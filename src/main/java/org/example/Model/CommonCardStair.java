@@ -30,7 +30,7 @@ public class CommonCardStair extends CommonCard implements Serializable {
         if(y==shelf.getMaxColums()) {
             return true;
         }
-        if(shelf.getTilePosition(x, y) != null) {
+        if(shelf.getTilePosition(x, y).isOccupied()) {
             if(x==maxRowActual) {
                 y++;
                 x=0;
@@ -45,7 +45,7 @@ public class CommonCardStair extends CommonCard implements Serializable {
         if(y==-1) {
             return true;
         }
-        if(shelf.getTilePosition(x, y) != null) {
+        if(shelf.getTilePosition(x, y).isOccupied()) {
             if(x==maxRowActual) {
                 y--;
                 x=0;

@@ -30,10 +30,9 @@ public class TileObj implements Serializable {
 
     @Override
     public String toString() {
-        return "TileObj{" +
-                "type=" + type.toString() +
-                ", variant=" + variant.toString() +
-                '}';
+        return "" +
+                " " + type.toString() +
+                " " + variant.toString();
     }
 }
 

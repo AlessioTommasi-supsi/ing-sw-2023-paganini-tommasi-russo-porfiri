@@ -49,7 +49,7 @@ public class CommonCard3Types extends CommonCard implements Serializable {
         if (x==shelf.getMaxRows()) {
             return true;
         }
-        if (shelf.getTilePosition(x, y) != null) {
+        if (shelf.getTilePosition(x, y).isOccupied()) {
             if(types.size() < 4) {
                 if (!types.contains(shelf.getTilePosition(x, y).getTile().getType())) {
                     types.add(shelf.getTilePosition(x, y).getTile().getType());
@@ -64,7 +64,7 @@ public class CommonCard3Types extends CommonCard implements Serializable {
         if(y == shelf.getMaxColums()) {
             return true;
         }
-        if(shelf.getTilePosition(x, y) != null) {
+        if(shelf.getTilePosition(x, y).isOccupied()) {
             if(types.size() < 4) {
                 if (!types.contains(shelf.getTilePosition(x, y).getTile().getType())) {
                     types.add(shelf.getTilePosition(x, y).getTile().getType());

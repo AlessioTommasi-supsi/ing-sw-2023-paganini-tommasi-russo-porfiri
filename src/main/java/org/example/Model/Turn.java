@@ -16,6 +16,7 @@ public class Turn extends Observable<Turn.Event> implements Serializable {
     private MyShelfie myShelfie = null;
 
 
+
     public enum Event {
         PLAYER_CHOICE, CPU_CHOICE, OUTCOME
     }

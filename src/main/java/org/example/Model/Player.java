@@ -311,7 +311,7 @@ public class Player implements Serializable {
 
         int countTilesInColumn = 0;
         for(int i = 0; i < 6;i++) {
-            if (shelves.getTilePosition(col, i).getTile() != null) {
+            if (shelves.getTilePosition2(col, i).getTile() != null) {
                 countTilesInColumn++;
             } else {
                 break;
@@ -329,7 +329,7 @@ public class Player implements Serializable {
             throw new IllegalSizeOfTilesException(tilesToPut.size());
 
         for(int j = 0; j < tilesToPut.size();j++) {
-            shelves.getTilePosition(col,countTilesInColumn).setTile(tilesToPut.get(j));
+            shelves.getTilePosition2(col,countTilesInColumn).setTile(tilesToPut.get(j));
             countTilesInColumn++;
         }
         if (shelves.getFilledCounter() == 30) throw new FullLibraryException();

@@ -11,7 +11,7 @@ public class CommonCardX extends CommonCard implements Serializable {
     public boolean executeAlgorithm(Player player) {
         for (int i = 0; i<4;i++) {
             for (int j=0;j<3;j++) {
-                if(player.getShelves().getTilePosition(i, j)!= null) {
+                if(player.getShelves().getTilePosition(i, j).isOccupied()) {
                     TileType type = player.getShelves().getTilePosition(i, j).getTile().getType();
                     if(checkXForm(player.getShelves(), type, i, j, 0)) {
                         return true;
@@ -26,7 +26,7 @@ public class CommonCardX extends CommonCard implements Serializable {
         if (countInteractions == 5) {
             return true;
         }
-        if (shelf.getTilePosition(x, y) != null) {
+        if (shelf.getTilePosition(x, y).isOccupied()) {
             if (countInteractions < 3) {
                 if (shelf.getTilePosition(x, y).getTile().getType() == type) {
                     countInteractions++;

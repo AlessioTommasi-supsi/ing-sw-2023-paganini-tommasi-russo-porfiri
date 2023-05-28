@@ -20,7 +20,7 @@ public class CommonCard8Tiles extends CommonCard implements Serializable {
 
         for(int i = 0; i < 6; i++) {
             for (int j=0;j<5;j++) {
-                if (player.getShelves().getTilePosition(i, j) != null) {
+                if (player.getShelves().getTilePosition(i, j).isOccupied()) {
                     switch (player.getShelves().getTilePosition(i, j).getTile().getType().toString()) {
                         case "CAT":
                             listOfCats.add(player.getShelves().getTilePosition(i, j));

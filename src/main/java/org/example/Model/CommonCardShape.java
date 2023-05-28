@@ -32,7 +32,7 @@ public class CommonCardShape extends CommonCard implements Serializable {
                 }
                 for(int i=0;i<5;i++) {
                     for (int j=0;j<4;j++) {
-                        if((player.getShelves().getTilePosition(i, j) != null) && (!arrayBool[i][j])) {
+                        if((player.getShelves().getTilePosition(i,j).isOccupied()) && (!arrayBool[i][j])) {
                             TileType type = player.getShelves().getTilePosition(i, j).getTile().getType();
                             if(checkSquare(player.getShelves(), i, j, type)) {
                                 counter++;
@@ -63,7 +63,7 @@ public class CommonCardShape extends CommonCard implements Serializable {
                 }
                 for(int i = 0;i<5;i++) {
                     for(int j=0;j<5;j++) {
-                        if((player.getShelves().getTilePosition(i, j) != null) && (!arrayBool[i][j])) {
+                        if((player.getShelves().getTilePosition(i,j).isOccupied()) && (!arrayBool[i][j])) {
                             TileType type = player.getShelves().getTilePosition(i, j).getTile().getType();
                             if (checkSmallRectangle(player.getShelves(), i, j, 0, type)) {
                                 counter++;
@@ -88,7 +88,7 @@ public class CommonCardShape extends CommonCard implements Serializable {
                 }
                 for(int i=0;i<3;i++) {
                     for(int j=0;j<5;j++) {
-                        if((player.getShelves().getTilePosition(i, j) != null) && (!arrayBool[i][j])) {
+                        if((player.getShelves().getTilePosition(i,j).isOccupied()) && (!arrayBool[i][j])) {
                             TileType type = player.getShelves().getTilePosition(i, j).getTile().getType();
                             if (checkLargeRectangle(player.getShelves(), i, j, type)) {
                                 counter++;
@@ -119,7 +119,7 @@ public class CommonCardShape extends CommonCard implements Serializable {
     }
 
     private boolean checkSmallRectangle(Shelves shelf, int x, int y, int countInteractions, TileType type) {
-        if((shelf.getTilePosition(x, y) != null) && (shelf.getTilePosition(x, y).getTile().getType() == type)) {
+        if((shelf.getTilePosition(x, y).isOccupied()) && (shelf.getTilePosition(x, y).getTile().getType() == type)) {
             if (countInteractions < 2) {
                 countInteractions++;
                 return checkSmallRectangle(shelf, x+1, y, countInteractions, type);
