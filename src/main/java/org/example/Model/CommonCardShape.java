@@ -11,10 +11,13 @@ public class CommonCardShape extends CommonCard implements Serializable {
         super(index);
         if(index==0) {
             form = "SmallRectangle";
+            super.setDescription("you have to create 6 vertical rectangle formed of 2 tiles with the same type of tiles in your shelf ");
         } else if (index == 4) {
             form = "LargeRectangle";
+            super.setDescription("you have to create 4 vertical rectangle formed of 4 tiles with the same type of tiles in your shelf");
         } else {
             form = "Square";
+            super.setDescription("you have to create 2 squares formed of 4 tiles with the same type of tiles in your shelf");
         }
     }
 

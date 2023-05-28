@@ -10,8 +10,10 @@ public class CommonCard3Types extends CommonCard implements Serializable {
         super(index);
         if (index == 3) {
             this.form = "Horizontal 3 types";
+            super.setDescription("create 4 rows with a maximum of 3 different tile types in your shelf");
         } else {
             this.form = "Vertical 3 types";
+            super.setDescription("create 3 columns with a maximum of 3 different tile types in your shelf");
         }
     }
 

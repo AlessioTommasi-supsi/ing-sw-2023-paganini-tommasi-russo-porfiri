@@ -8,6 +8,10 @@ public enum ChoiceMyShelfie {
     //che ogni volta che immetto qualcosa con IMMMETTI_IN_LIBRERIA verrà aggiornata!
 
     SHOW_BOARD,
+    SHOW_COMMON_CARDS,
+    SHOW_PERSONAL_CARDS,
+
+
     //.DEBUG
     EXIT
 }

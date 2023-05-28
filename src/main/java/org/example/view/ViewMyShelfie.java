@@ -21,6 +21,8 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
     private Player player;
     private Game currentGame = null;
 
+    private boolean hoPescato = false;
+
     private int currentGameId = -1; //verrà assegnato dopo aver fatto join_game!!
 
     public void update(TurnView model/*risposta dal server*/, Choice arg/*evento che il client remoto ha scelto*/) {
@@ -53,7 +55,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
         }
 
          //.DEBUG
-        System.err.println(this.toString());
+        //System.err.println(this.toString());
 
     }
 
@@ -148,6 +150,32 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                             e.printStackTrace();
                         }
                         return askPlayerChoiceMyShelfie();
+                    case SHOW_COMMON_CARDS:
+                        System.out.println("COMMON CARDS ARE:  ");
+                        System.out.println("");
+                        try {
+                            System.out.println("Common Card 1: " + this.currentGame.getCommon1().getDescription());
+                            System.out.println("  point: " + this.currentGame.getPointInitialization1());
+                            System.out.println("Common Card 2: " + this.currentGame.getCommon2().getDescription());
+                            System.out.println("  point: " + this.currentGame.getPointInitialization2());
+                        }catch (Exception e){
+                            System.err.println("Error occurred displaying COMMON CARD! ");
+                            e.printStackTrace();
+                        }
+                        return askPlayerChoiceMyShelfie();
+
+                    case SHOW_PERSONAL_CARDS:
+                        System.out.println("YOUR PERSONAL CARD IS:  ");
+                        System.out.println("");
+                        try {
+                            System.out.println("Personal Card: " + this.player.getPC().toString());
+                        }catch (Exception e){
+                            System.err.println("Error occurred displaying PERSONAL CARD! ");
+                            e.printStackTrace();
+                        }
+                        return askPlayerChoiceMyShelfie();
+
+
                     case SHOW_BOARD:
                         System.out.println(" current BOARD: ");
                         System.out.println("");
@@ -161,6 +189,13 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                             e.printStackTrace();
                         }
                         return askPlayerChoiceMyShelfie();
+                    case DRAW_FROM_BOARD:
+                        if (this.hoPescato == true) {
+                            System.out.println("You have already drawn a tile from the board! ");
+                            return askPlayerChoiceMyShelfie();
+                        }else {
+                            this.hoPescato = true;
+                        }
 
                 }
                 return ChoiceMyShelfie.valueOf(input);
@@ -294,14 +329,14 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                                             case IN_CORSO://non dovrebbe mai arrivarci!
                                                 System.out.println();
                                                 System.out.println("ti sei unito ad una partita e la partita e' in corso!");
-                                                System.err.println("partita a cui ti sei unito in corso: " + model.getMyShelfie().getGames().get(i).toString());
+                                                //System.err.println("partita a cui ti sei unito in corso: " + model.getMyShelfie().getGames().get(i).toString());
                                                 System.out.println();
                                                 this.currentGameId = model.getMyShelfie().getGames().get(i).getCurrentGameId();
                                                 //this.current_game = model.getMyShelfie().getGames().get(i);
                                                 break;
                                             case IN_ATTESA://siccome non esiste una partita di un solo giocatore entrerò sempre qui!
                                                 System.out.println("ti sei unito ad una partita e la partita e' in attesa di altri giocatori!");
-                                                System.err.println("partita a cui ti sei unito in corso: " + model.getMyShelfie().getGames().get(i).toString());
+                                                //System.err.println("partita a cui ti sei unito in corso: " + model.getMyShelfie().getGames().get(i).toString());
                                                 System.out.println();
                                                 this.currentGameId = model.getMyShelfie().getGames().get(i).getCurrentGameId();
                                                 //this.current_game = model.getMyShelfie().getGames().get(i);

@@ -39,9 +39,10 @@ public class Controller {
                     }
                      //.DEBUG
                     System.err.println("num Giochi: "+model.getMyShelfie().getGames().size());
+                    /*
                     model.getMyShelfie().getGames().stream()
                             .forEach(game -> System.out.println("nuovo gioco: "+game.toString()));
-
+                    `*/
                 break;
 
                 case DRAW_FROM_BOARD:
@@ -68,6 +69,7 @@ public class Controller {
                         //al termine del giro dei giocatori la partita deve finire!
                         model.getMyShelfie().getGame(drow_message.getCurrent_game_id()).full_library();
                     }
+
                     //.DEBUG
                     System.err.println("BOARD: ");
                     model.getMyShelfie().getGame(drow_message.getCurrent_game_id()).getBoard().printTilePositionBoard(null);
@@ -78,7 +80,11 @@ public class Controller {
                     model.getMyShelfie().getGame((Integer) arg.getArgument()).getBoard().restoreBoard();
                     //aggiornamento punti comuni
                     //MATTIA CONTROLLA PERCHE NON VA!
-                    model.getMyShelfie().getGame((Integer) arg.getArgument()).updatePointsCommon();
+                    try {
+                        model.getMyShelfie().getGame((Integer) arg.getArgument()).updatePointsCommon();
+                    }catch (NullPointerException e){
+                        //va ignorata poiche si genera quando un giocatore non ha tessere in libreria nella posizione succeva a quella controllata!
+                    }
                     //funzionalità di fine partita
                     model.getMyShelfie().getGame((Integer) arg.getArgument()).end();
 

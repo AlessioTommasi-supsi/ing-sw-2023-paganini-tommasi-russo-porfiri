@@ -10,8 +10,10 @@ public class CommonCardAllDifferentTypes extends CommonCard implements Serializa
         super(index);
         if(index==3) {
             this.form = "Horizontal";
+            super.setDescription("create 2 rows with all different tile types in your shelf");
         } else {
             this.form = "Vertical";
+            super.setDescription("create 2 columns with all different tile types in your shelf");
         }
     }
 

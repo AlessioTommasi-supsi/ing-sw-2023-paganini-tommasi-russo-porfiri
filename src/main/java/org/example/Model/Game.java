@@ -123,6 +123,14 @@ public abstract class Game implements Serializable {
         return board;
     }
 
+    public int getPointInitialization1() {
+        return pointInitialization1;
+    }
+
+    public int getPointInitialization2() {
+        return pointInitialization2;
+    }
+
     public Player getPlayer(int id_player) {
         for (int i = 0; i < players.size(); i++) {
             if (id_player == players.get(i).getId()){
@@ -135,29 +143,38 @@ public abstract class Game implements Serializable {
     private void GsonParse(ArrayList<PersonalCard> personalCardParsers) {
         try {
             // create Gson instance
-            Gson gson = new Gson();
 
-            // create a reader
-            Reader reader = Files.newBufferedReader(Paths.get("PersonalCard.json"));
+            try {
+                Gson gson = new Gson();
 
-            // convert a JSON string to a User object
-            PersonalCard[] user = gson.fromJson(reader,PersonalCard[].class);
+                // create a reader
+                Reader reader = Files.newBufferedReader(Paths.get("PersonalCard.json"));
 
-            personalCardParsers.add(user[0]);
-            personalCardParsers.add(user[1]);
-            personalCardParsers.add(user[2]);
-            personalCardParsers.add(user[3]);
-            personalCardParsers.add(user[4]);
-            personalCardParsers.add(user[5]);
-            personalCardParsers.add(user[6]);
-            personalCardParsers.add(user[7]);
-            personalCardParsers.add(user[8]);
-            personalCardParsers.add(user[9]);
-            personalCardParsers.add(user[10]);
-            personalCardParsers.add(user[11]);
+                // convert a JSON string to a User object
+                PersonalCard[] user = gson.fromJson(reader,PersonalCard[].class);
 
-            // close reader
-            reader.close();
+                System.out.println(user[0].toString());
+                personalCardParsers.add(user[0]);
+
+                personalCardParsers.add(user[1]);
+                personalCardParsers.add(user[2]);
+                personalCardParsers.add(user[3]);
+                personalCardParsers.add(user[4]);
+                personalCardParsers.add(user[5]);
+                personalCardParsers.add(user[6]);
+                personalCardParsers.add(user[7]);
+                personalCardParsers.add(user[8]);
+                personalCardParsers.add(user[9]);
+                personalCardParsers.add(user[10]);
+                personalCardParsers.add(user[11]);
+
+                // close reader
+                reader.close();
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
 
         } catch (Exception ex) {
             ex.printStackTrace();

@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class CommonCardX extends CommonCard implements Serializable {
 
     public CommonCardX(int index) {
-        super(index);
+        super(index,"create an X with the same tile type in your shelf");
     }
 
     public boolean executeAlgorithm(Player player) {
