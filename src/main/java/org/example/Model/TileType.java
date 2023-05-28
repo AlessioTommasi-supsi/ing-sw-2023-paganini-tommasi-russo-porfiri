@@ -8,4 +8,9 @@ public enum TileType {
     PLANT,
     TROPHY;
 
+    @Override
+    public String toString() {
+        return name().substring(0, 1);
+    }
+    
 }
