@@ -1,9 +1,9 @@
 package org.example;
 
-import org.example.Model.TileObj;
-import org.example.Model.TilePositionBoard;
-import org.example.Model.TileType;
-import org.example.Model.TileVariant;
+import org.example.model.TileObj;
+import org.example.model.TilePositionBoard;
+import org.example.model.TileType;
+import org.example.model.TileVariant;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,7 @@ public class TilePositionBoardTest {
     @BeforeEach
     public void setUp() {
         tilePositionBoard = new TilePositionBoard(1, 2);
-        tile = new TileObj(org.example.Model.TileType.CAT, TileVariant.VARIANT_ONE);
+        tile = new TileObj(org.example.model.TileType.CAT, TileVariant.VARIANT_ONE);
     }
 
     @Test

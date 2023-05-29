@@ -1,10 +1,7 @@
 package org.example.distributed.socket.middleware;
 
-import org.example.Model.*;
+import org.example.model.*;
 import org.example.distributed.*;
-import org.example.util.*;
-import org.example.view.*;
-import org.example.controller.*;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

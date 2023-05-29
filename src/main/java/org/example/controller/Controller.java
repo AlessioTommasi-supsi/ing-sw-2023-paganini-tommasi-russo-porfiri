@@ -1,6 +1,6 @@
 package org.example.controller;
 
-import org.example.Model.*;
+import org.example.model.*;
 import org.example.distributed.*;
 import org.example.util.*;
 import org.example.view.*;
