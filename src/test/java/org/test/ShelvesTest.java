@@ -1,4 +1,4 @@
-package org.example;
+package org.test;
 
 import org.example.Model.Shelves;
 import org.example.Model.TileObj;
