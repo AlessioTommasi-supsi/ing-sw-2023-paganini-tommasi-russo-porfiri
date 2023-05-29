@@ -86,5 +86,5 @@ public class TilePositionBoardTest {
         Assert.assertNotEquals(tilePositionBoard.hashCode(), tilePositionBoard2.hashCode());
     }
 
-    
+
 }
