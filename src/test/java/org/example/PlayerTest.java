@@ -1,7 +1,7 @@
 package org.example;
 
 
-import org.example.Model.*;
+import org.example.model.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,18 +17,20 @@ public class PlayerTest {
     private Player player;
     private PersonalCard personalCard;
     private Shelves shelves;
-    private Set<org.example.Model.TilePositionShelves> tilePositions;
+    private Set<org.example.model.TilePositionShelves> tilePositions;
 
     @Before
     public void setUp() {
-        player = new Player(1, "Egidio");
+        player = new Player("Egidio");
         // personalCard = new PersonalCard(1, );
 
         shelves = new Shelves();
-        tilePositions = new HashSet<org.example.Model.TilePositionShelves>();
-        tilePositions.add(new TilePositionShelves(1, 1, new TileObj(TileType.BOOK)));
-        tilePositions.add(new TilePositionShelves(2, 1, new TileObj(TileType.TROPHY)));
+        tilePositions = new HashSet<org.example.model.TilePositionShelves>();
+        tilePositions.add(new TilePositionShelves(1, 1, new TileObj(TileType.BOOK, TileVariant.VARIANT_TWO)));
+        tilePositions.add(new TilePositionShelves(2, 1, new TileObj(TileType.TROPHY, TileVariant.VARIANT_ONE)));
         // player.setPC(personalCard);
+
+
     }
 
     @After

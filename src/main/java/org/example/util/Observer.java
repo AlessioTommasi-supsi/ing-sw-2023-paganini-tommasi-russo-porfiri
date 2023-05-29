@@ -1,10 +1,7 @@
 package org.example.util;
 
-import org.example.Model.*;
-import org.example.distributed.*;
-import org.example.util.*;
-import org.example.view.*;
-import org.example.controller.*;
+import org.example.model.*;
+
 /**
  * A class can implement the {@code Observer} interface when it
  * wants to be informed of changes in observable objects.

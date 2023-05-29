@@ -1,6 +1,6 @@
 package org.example.view;
 
-import org.example.Model.*;
+import org.example.model.*;
 import org.example.util.*;
 
 import java.util.ArrayList;
