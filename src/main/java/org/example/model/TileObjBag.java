@@ -27,6 +27,7 @@ public class TileObjBag implements Serializable {
     }
 
     public TileObjBag(TileObjBag bag){
+        this.tiles = new ArrayList<TileObj>();
         for (TileObj t : bag.getTiles()) {
             this.tiles.add(new TileObj(t));
         }

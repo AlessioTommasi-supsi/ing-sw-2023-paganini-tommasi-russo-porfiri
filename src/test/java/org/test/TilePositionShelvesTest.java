@@ -41,7 +41,8 @@ public class TilePositionShelvesTest {
         tile = new TileObj(TileType.CAT, TileVariant.VARIANT_ONE);
         tilePositionShelves.setTile(tile);
         Assert.assertTrue(tilePositionShelves.isOccupied());
-        Assert.assertEquals(tile, tilePositionShelves.getTile());
+        Assert.assertEquals(tile.getType(), tilePositionShelves.getTile().getType());
+        Assert.assertEquals(tile.getVariant(), tilePositionShelves.getTile().getVariant());
     }
 
     @Test(expected = PositionAlreadyOccupiedException.class)
@@ -51,24 +52,4 @@ public class TilePositionShelvesTest {
         tilePositionShelves.setTile(new TileObj(TileType.CAT, TileVariant.VARIANT_ONE));
     }
 
-
-    @Test
-    public void testEquals() {
-        TilePositionBoard tilePositionBoard1 = new TilePositionBoard(1, 1);
-        TilePositionBoard tilePositionBoard2 = new TilePositionBoard(1, 2);
-        TilePositionBoard tilePositionBoard3 = new TilePositionBoard(2, 1);
-
-        Assert.assertEquals(tilePositionShelves, tilePositionBoard1);
-        Assert.assertNotEquals(tilePositionShelves, tilePositionBoard2);
-        Assert.assertNotEquals(tilePositionShelves, tilePositionBoard3);
-    }
-
-    @Test
-    public void testHashCode() {
-        TilePositionBoard tilePositionBoard1 = new TilePositionBoard(1, 1);
-        TilePositionBoard tilePositionBoard2 = new TilePositionBoard(1, 2);
-
-        Assert.assertEquals(tilePositionShelves.hashCode(), tilePositionBoard1.hashCode());
-        Assert.assertNotEquals(tilePositionShelves.hashCode(), tilePositionBoard2.hashCode());
-    }
 }

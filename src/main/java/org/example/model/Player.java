@@ -118,7 +118,7 @@ public class Player implements Serializable {
         this.shelves = shelves;
     }
 
-    private int checkPersonalCard(PersonalCard personalCardParser) throws PositionEmptyException {
+    public int checkPersonalCard(PersonalCard personalCardParser) throws PositionEmptyException {
         int counter = 0;
         try {
             if ((getShelves().getTilePosition(personalCardParser.CatXPosition, personalCardParser.CatYPosition) != null) &&

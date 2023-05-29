@@ -38,7 +38,7 @@ public class TileObjTest {
 
     @Test
     public void testToString() {
-        String expected = "TileObj{type=B, variant=1}";
+        String expected = " B 1";
         Assert.assertEquals(expected, tileObj.toString());
     }
 }

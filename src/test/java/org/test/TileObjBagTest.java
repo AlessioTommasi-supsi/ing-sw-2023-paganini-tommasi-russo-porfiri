@@ -28,7 +28,10 @@ public class TileObjBagTest {
         ArrayList<TileObj> originalTiles = tileObjBag.getTiles();
         ArrayList<TileObj> copyTiles = copyBag.getTiles();
         Assert.assertEquals(originalTiles.size(), copyTiles.size());
-        Assert.assertEquals(originalTiles, copyTiles);
+        for(int i=0; i< originalTiles.size(); i++){
+            Assert.assertEquals(originalTiles.get(i).getType(), copyTiles.get(i).getType());
+            Assert.assertEquals(originalTiles.get(i).getVariant(), copyTiles.get(i).getVariant());
+        }
     }
 
     @Test

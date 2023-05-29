@@ -50,8 +50,11 @@ public class TilePositionBoard implements Serializable {
     }
 
     public TileObj getTile() {
-        TileObj tempTile = new TileObj(this.tileInSlot);
-        return tempTile;
+        if(tileInSlot != null){
+            TileObj tempTile = new TileObj(this.tileInSlot);
+            return tempTile;
+        }
+        else return null;
     }
 
     public void setTile(TileObj tile) throws PositionAlreadyOccupiedException {

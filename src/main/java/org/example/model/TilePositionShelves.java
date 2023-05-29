@@ -3,6 +3,7 @@ package org.example.model;
 import org.example.util.PositionAlreadyOccupiedException;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class TilePositionShelves implements Serializable {
     private int x;
@@ -65,4 +66,5 @@ public class TilePositionShelves implements Serializable {
                 "" + tileInSlot
                 ;
     }
+
 }

@@ -41,7 +41,8 @@ public class TilePositionBoardTest {
         tile = new TileObj(TileType.CAT, TileVariant.VARIANT_ONE);
         tilePositionBoard.setTile(tile);
         Assert.assertTrue(tilePositionBoard.isOccupied());
-        Assert.assertEquals(tile, tilePositionBoard.getTile());
+        Assert.assertEquals(tile.getType(), tilePositionBoard.getTile().getType());
+        Assert.assertEquals(tile.getVariant(), tilePositionBoard.getTile().getVariant());
     }
 
     @Test(expected = PositionAlreadyOccupiedException.class)
@@ -57,7 +58,8 @@ public class TilePositionBoardTest {
         tilePositionBoard.setTile(tile);
         TileObj removedTile = tilePositionBoard.removeTile();
         Assert.assertFalse(tilePositionBoard.isOccupied());
-        Assert.assertEquals(tile, removedTile);
+        Assert.assertEquals(tile.getType(), removedTile.getType());
+        Assert.assertEquals(tile.getVariant(), removedTile.getVariant());
         Assert.assertNull(tilePositionBoard.getTile());
     }
 
