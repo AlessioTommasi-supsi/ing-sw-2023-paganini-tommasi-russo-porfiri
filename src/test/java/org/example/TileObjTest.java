@@ -1,14 +1,13 @@
 package org.example;
 
-import org.example.Model.TileObj;
-import org.example.Model.TileType;
-import org.example.Model.TileVariant;
+import org.example.model.TileObj;
+import org.example.model.TileType;
+import org.example.model.TileVariant;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.Assert.*;
 
-  public class TileObjTest {
+public class TileObjTest {
 
         private TileType type;
         private TileVariant variant;

@@ -1,9 +1,5 @@
 package org.example.distributed;
-import org.example.Model.*;
-import org.example.distributed.*;
-import org.example.util.*;
-import org.example.view.*;
-import org.example.controller.*;
+import org.example.model.*;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

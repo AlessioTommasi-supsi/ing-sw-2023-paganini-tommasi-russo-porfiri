@@ -1,6 +1,6 @@
 package org.example.view;
 
-import org.example.Model.*;
+import org.example.model.*;
 import org.example.util.*;
 
 import java.lang.reflect.Type;
@@ -96,8 +96,18 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
     public void run() {
         try {
             //creazione del giocatore
-            System.out.println("BENVENUTO NUOVO GIOCATORE! per iniziare a giocare devi immettere i tuoi dati");
-            System.out.println("username: ");
+            System.out.println("\n\n" +
+                    "  __  __              _____   _              _    __   _        \n" +
+                    " |  \\/  |            / ____| | |            | |  / _| (_)       \n" +
+                    " | \\  / |  _   _    | (___   | |__     ___  | | | |_   _    ___ \n" +
+                    " | |\\/| | | | | |    \\___ \\  | '_ \\   / _ \\ | | |  _| | |  / _ \\\n" +
+                    " | |  | | | |_| |    ____) | | | | | |  __/ | | | |   | | |  __/\n" +
+                    " |_|  |_|  \\__, |   |_____/  |_| |_|  \\___| |_| |_|   |_|  \\___|\n" +
+                    "            __/ |                                               \n" +
+                    "           |___/                                                \n");
+
+            System.out.println("\nWELCOME NEW PLAYER! To start playing you must first enter your data");
+            System.out.println("Username: ");
             Scanner s = new Scanner(System.in);
             this.player = new Player(s.next());
 
@@ -114,14 +124,21 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                     }
                 }
                 if (this.currentGame == null) {
-                    System.out.println("--- WELCOME TO MY SHELFIE! ---");
+                    System.out.println("\n" +
+                            " __          ________ _      _____ ____  __  __ ______   _______ ____    __  ____     __   _____ _    _ ______ _      ______ _____ ______   _ \n" +
+                            " \\ \\        / /  ____| |    / ____/ __ \\|  \\/  |  ____| |__   __/ __ \\  |  \\/  \\ \\   / /  / ____| |  | |  ____| |    |  ____|_   _|  ____| | |\n" +
+                            "  \\ \\  /\\  / /| |__  | |   | |   | |  | | \\  / | |__       | | | |  | | | \\  / |\\ \\_/ /  | (___ | |__| | |__  | |    | |__    | | | |__    | |\n" +
+                            "   \\ \\/  \\/ / |  __| | |   | |   | |  | | |\\/| |  __|      | | | |  | | | |\\/| | \\   /    \\___ \\|  __  |  __| | |    |  __|   | | |  __|   | |\n" +
+                            "    \\  /\\  /  | |____| |___| |___| |__| | |  | | |____     | | | |__| | | |  | |  | |     ____) | |  | | |____| |____| |     _| |_| |____  |_|\n" +
+                            "     \\/  \\/   |______|______\\_____\\____/|_|  |_|______|    |_|  \\____/  |_|  |_|  |_|    |_____/|_|  |_|______|______|_|    |_____|______| (_)\n");
+
                     /* Player chooses  POSSIBLE ONLY JOINGAME! */
                     ChoiceMyShelfie pc = ChoiceMyShelfie.JOIN_GAME;
                     Object argument = askPlayerArgumentMyshelfie(pc);
 
                     Choice c =new Choice(pc,player, argument);
 
-                    System.out.println("in attesa del server... ");
+                    System.out.println("Waiting for the server... ");
 
                     setState(State.WAITING_FOR_OUTCOME);
                     setChanged();/*NOTIFICO AL SERVER che del client ha fatto scelta!!*/
@@ -132,7 +149,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
 
                     Choice c =new Choice(pc,player, argument);
 
-                    System.out.println("in attesa del server... ");
+                    System.out.println("Waiting for the server... ");
 
                     setState(State.WAITING_FOR_OUTCOME);
                     setChanged();/*NOTIFICO AL SERVER che del client ha fatto scelta!!*/
@@ -148,7 +165,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
 
     public ChoiceMyShelfie askPlayerChoiceMyShelfie() {
         Scanner s = new Scanner(System.in);
-        System.out.println("is your turn! Make your choice: ");
+        System.out.println("Now is your turn! Make your choice: ");
         System.out.println(
                 "Signs: " +
                         Arrays.stream(ChoiceMyShelfie.values())
@@ -160,7 +177,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
             try {
                 switch (ChoiceMyShelfie.valueOf(input)){
                     case SHOW_MY_SHELVES:
-                        System.out.println("your current shelves is: ");
+                        System.out.println("Your current shelves is: ");
                         System.out.println("");
                         try {
                             printTilePositionShelves(this.player.getShelves().showShelves());
@@ -239,7 +256,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
 
         switch (pc){
             case JOIN_GAME:
-                System.out.println("Inserisci il numero di giocatori della partita: ");
+                System.out.println("Enter the number of players in the game: ");
                 return  Integer.parseInt(s.next());
             case TERMINATE_TURNS:
                 return this.currentGameId;//oggetto da passare come argomento è l'id della partita corrente.
@@ -247,15 +264,15 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                 try{
                     //faccio qui tutti i controlli così sono sicuro di passare al server solo i dati giusti tanto la board viene aggiornata a ogni turno!
 
-                    System.out.println("Inserisci il numero di tessere da pescare: ");
+                    System.out.println("Enter the number of tiles to draw: ");
                     int counter = Integer.parseInt(s.next());
                     ArrayList<TilePositionBoard> tilesToRemove = new ArrayList<TilePositionBoard>();
                     ArrayList<TilePositionBoard> boardPlacementsCopy = currentGame.getBoard().getPlacements();
 
                     for (int i = 0; i < counter; i++) {
-                        System.out.println("Inserisci la coordinata x della tessera da pescare: ");
+                        System.out.println("Enter the x coordinate, corresponding to the row of the tile to draw: ");
                         int x = Integer.parseInt(s.next());
-                        System.out.println("Inserisci la coordinata y della tessera da pescare: ");
+                        System.out.println("Enter the y coordinate, corresponding to the column of the tile to draw: ");
                         int y = Integer.parseInt(s.next());
 
                         for(TilePositionBoard item : boardPlacementsCopy){
@@ -300,7 +317,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                     //check_input(tilesToRemove,colum_of_shelves);
                     return new drawFromBoardMessage(tilesToRemove,colum_of_shelves,this.currentGameId,ordine);
                 }catch (Exception e){
-                    System.err.println("generic error occurred! ");
+                    System.err.println("Generic error occurred! ");
                     e.printStackTrace();
                 }
             case EXIT:
@@ -324,12 +341,12 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
             catch (TilesAreNotRemovableException e){
                 //non c'è bisogno di rimettere le tessere nella board!
                 e.printStackTrace();
-                System.err.println("errore nell'inserimento dei dati!\n"+e.getMessage()+ "`\n riprova! \n");
+                System.err.println("Errore nell'inserimento dei dati!\n"+e.getMessage()+ "`\n Riprova! \n");
 
             }catch (PositionEmptyException e) {
                 //non c'è bisogno di rimettere le tessere nella board!
                 e.printStackTrace();
-                System.err.println("errore nell'inserimento dei dati!\n"+e.getMessage()+ "`\n riprova! \n");
+                System.err.println("Errore nell'inserimento dei dati!\n"+e.getMessage()+ "`\n Riprova! \n");
             }
     }
 
