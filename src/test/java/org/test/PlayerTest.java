@@ -133,7 +133,14 @@ public class PlayerTest {
         shelves.addTile(new TilePositionShelves(2, 1, tile3));
         shelves.addTile(new TilePositionShelves(2, 2, tile4));
 
-        int points = player.calculateTotalPoints(shelves);
+        int points = 0;
+        try {
+            player.calcOverallScore();
+            points = player.getScore();
+        } catch (Exception e) {
+            fail();
+        }
+
         // TODO true points
         assertEquals(6, points);
     }
