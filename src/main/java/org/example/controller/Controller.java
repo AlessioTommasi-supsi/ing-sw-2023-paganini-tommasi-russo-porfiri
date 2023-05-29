@@ -1,6 +1,6 @@
 package org.example.controller;
 
-import org.example.Model.*;
+import org.example.model.*;
 import org.example.distributed.*;
 import org.example.util.*;
 import org.example.view.*;
@@ -57,13 +57,13 @@ public class Controller {
                         //devo rimettere le tessere nella plancia!
                         model.getMyShelfie().getGame(drow_message.getCurrent_game_id()).getBoard().addTiles(drow_message.getTilesToRemove());
                         //DEFULT
-                        model.errore = e1.toString();
+                        model.errore = e1.getClass().getSimpleName();
                         e1.printStackTrace();
                     }catch (IllegalColumnException e2){
                         //devo rimettere le tessere nella plancia!
                         model.getMyShelfie().getGame(drow_message.getCurrent_game_id()).getBoard().addTiles(drow_message.getTilesToRemove());
                         //DEFULT
-                        model.errore = e2.toString();
+                        model.errore = e2.getClass().getSimpleName();
                         e2.printStackTrace();
                     }catch (FullLibraryException e3){
                         //al termine del giro dei giocatori la partita deve finire!
@@ -71,8 +71,8 @@ public class Controller {
                     }
 
                     //.DEBUG
-                    System.err.println("BOARD: ");
-                    model.getMyShelfie().getGame(drow_message.getCurrent_game_id()).getBoard().printTilePositionBoard(null);
+                    //System.err.println("BOARD: ");
+                    //model.getMyShelfie().getGame(drow_message.getCurrent_game_id()).getBoard().printTilePositionBoard(null);
                     break;
                 case TERMINATE_TURNS:
                     model.getMyShelfie().getGame((Integer) arg.getArgument()).nextCurrentPlayer();
@@ -82,8 +82,10 @@ public class Controller {
                     //MATTIA CONTROLLA PERCHE NON VA!
                     try {
                         model.getMyShelfie().getGame((Integer) arg.getArgument()).updatePointsCommon();
-                    }catch (NullPointerException e){
+                    }catch (Exception e){
                         //va ignorata poiche si genera quando un giocatore non ha tessere in libreria nella posizione succeva a quella controllata!
+                        System.err.println("Errore generato da updatePointsCommon");
+                        e.printStackTrace();
                     }
                     //funzionalità di fine partita
                     model.getMyShelfie().getGame((Integer) arg.getArgument()).end();
@@ -96,7 +98,7 @@ public class Controller {
                     break;
             }
         }catch (Exception e){
-            model.errore = e.toString();
+            model.errore = e.getClass().getSimpleName();
             e.printStackTrace();
         }
 

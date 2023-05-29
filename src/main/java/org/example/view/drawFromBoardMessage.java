@@ -1,6 +1,6 @@
 package org.example.view;
 
-import org.example.Model.TilePositionBoard;
+import org.example.model.TilePositionBoard;
 
 import java.io.Serializable;
 import java.util.ArrayList;

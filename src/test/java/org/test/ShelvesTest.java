@@ -1,9 +1,6 @@
 package org.test;
 
-import org.example.Model.Shelves;
-import org.example.Model.TileObj;
-import org.example.Model.TilePositionShelves;
-import org.example.Model.TileType;
+import org.example.model.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,7 +23,7 @@ public class ShelvesTest {
 
     @Test
     public void testAddTile() {
-        TileObj tObj = new TileObj(TileType.BOOK);
+        TileObj tObj = new TileObj(TileType.BOOK, TileVariant.VARIANT_THREE);
         TilePositionShelves position = new TilePositionShelves(0, 0, tObj);
         shelves.addTile(position);
         assertEquals(position, shelves.getTilePosition(0,0));
@@ -38,7 +35,7 @@ public class ShelvesTest {
         assertFalse(shelves.isFull());
         for (int i = 0; i < 6; i++) {
             for(int j = 0; j < 5; j++) {
-                shelves.addTile(new TilePositionShelves(i, j, new TileObj(TileType.BOOK)));
+                shelves.addTile(new TilePositionShelves(i, j, new TileObj(TileType.BOOK, TileVariant.VARIANT_TWO)));
             }
         }
         assertTrue(shelves.isFull());
@@ -47,7 +44,7 @@ public class ShelvesTest {
     @Test
     public void testGetFilledCounter() {
         assertEquals(0, shelves.getFilledCounter());
-        shelves.addTile(new TilePositionShelves(0, 0, new TileObj(TileType.BOOK)));
+        shelves.addTile(new TilePositionShelves(0, 0, new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE)));
         assertEquals(1, shelves.getFilledCounter());
     }
 

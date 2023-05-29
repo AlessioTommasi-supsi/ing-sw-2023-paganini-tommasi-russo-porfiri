@@ -1,8 +1,9 @@
 package org.example.view;
 
-import org.example.Model.*;
+import org.example.model.*;
 import org.example.util.*;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -29,6 +30,24 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
 
         //se presente stampo qualcosa se no stringa vuota!
         System.err.println(model.getErrore());
+
+
+        if (model.getErrore() != "") {
+            switch (model.getErrore()){
+                case "IllegalColumnException":
+                case "IllegalSizeOfTilesException":
+                case "DuplicatesInRequestedTilesException":
+                case "TilesAreNotRemovableException":
+                case "PositionEmptyException":
+                case "WrongNumberOfTilesException":
+                case "BoardDoesNotContainThisPositionException":
+                    this.hoPescato = false;
+                break;
+
+            }
+        }
+
+
 
         try {
             if (model.getMyShelfie().getGame(this.currentGameId).getStato().equals(StatoPartita.FINITA)){
@@ -213,7 +232,15 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                         }else {
                             this.hoPescato = true;
                         }
+                    break;
 
+                    case TERMINATE_TURNS:
+                        if (this.hoPescato == false) {
+                            System.out.println("You have to draw a tile from the board! ");
+                            return askPlayerChoiceMyShelfie();
+                        }else {
+                            this.hoPescato = false;
+                        }
                 }
                 return ChoiceMyShelfie.valueOf(input);
             } catch (IllegalArgumentException e) {
@@ -468,7 +495,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                     System.out.print(tile + " ");
                 } else {
                     // Stampa uno spazio vuoto
-                    System.out.print("- ");
+                    System.out.print("------------------- ");
                 }
             }
             System.out.println();
@@ -478,9 +505,9 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
     public void printTilePositionShelves(TilePositionShelves[][] shelves) {
 
         // Stampa la matrice 2D
-        for (int y = 0; y < shelves.length; y++) {
-            for (int x = 0; x < shelves[y].length; x++) {
-                TilePositionShelves tile = shelves[y][x];
+        for (int x = shelves.length-1; x > -1; x--) {
+            for (int y = 0; y < shelves[y].length; y++) {
+                TilePositionShelves tile = shelves[x][y];
                 if (tile != null) {
                     System.out.print(tile + " ");
                 } else {
