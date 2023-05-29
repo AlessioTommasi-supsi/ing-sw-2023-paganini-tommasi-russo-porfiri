@@ -98,6 +98,7 @@ public class PlayerTest {
 
     @Test
     public void testCalculatePersonalPoints() throws Exception {
+        // TODO personal card setup
         personalCard = new PersonalCard();
         player.setPC(personalCard);
         int points = player.calculatePersonalPoints();
