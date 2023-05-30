@@ -9,23 +9,23 @@ import java.util.ArrayList;
 
 public class TileObjBagTest {
 
-    private TileObjBag tileObjBag;
+    private TileObjBag myTileObjBag;
 
     @Before
     public void setUp() {
-        tileObjBag = new TileObjBag();
+        myTileObjBag = new TileObjBag();
     }
 
     @Test
     public void testDefaultConstructor() {
-        ArrayList<TileObj> tiles = tileObjBag.getTiles();
+        ArrayList<TileObj> tiles = myTileObjBag.getTiles();
         Assert.assertEquals(132, tiles.size());
     }
 
     @Test
     public void testCopyConstructor() {
-        TileObjBag copyBag = new TileObjBag(tileObjBag);
-        ArrayList<TileObj> originalTiles = tileObjBag.getTiles();
+        TileObjBag copyBag = new TileObjBag(myTileObjBag);
+        ArrayList<TileObj> originalTiles = myTileObjBag.getTiles();
         ArrayList<TileObj> copyTiles = copyBag.getTiles();
         Assert.assertEquals(originalTiles.size(), copyTiles.size());
         for(int i=0; i< originalTiles.size(); i++){
@@ -36,22 +36,22 @@ public class TileObjBagTest {
 
     @Test
     public void testBagSize() {
-        Assert.assertEquals(132, tileObjBag.BagSize());
+        Assert.assertEquals(132, myTileObjBag.BagSize());
     }
 
     @Test
     public void testShuffleT() {
-        ArrayList<TileObj> originalTiles = tileObjBag.getTiles();
-        tileObjBag.shuffleT();
-        ArrayList<TileObj> shuffledTiles = tileObjBag.getTiles();
+        ArrayList<TileObj> originalTiles = myTileObjBag.getTiles();
+        myTileObjBag.shuffleT();
+        ArrayList<TileObj> shuffledTiles = myTileObjBag.getTiles();
         Assert.assertNotEquals(originalTiles, shuffledTiles);
     }
 
     @Test
     public void testExtractFromBag() {
-        int initialSize = tileObjBag.BagSize();
-        TileObj extractedTile = tileObjBag.extractFromBag();
+        int initialSize = myTileObjBag.BagSize();
+        TileObj extractedTile = myTileObjBag.extractFromBag();
         Assert.assertNotNull(extractedTile);
-        Assert.assertEquals(initialSize - 1, tileObjBag.BagSize());
+        Assert.assertEquals(initialSize - 1, myTileObjBag.BagSize());
     }
 }

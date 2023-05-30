@@ -7,23 +7,23 @@ import org.junit.Test;
 
 public class TileObjTest {
 
-    private TileObj tileObj;
+    private TileObj myTileObj;
 
     @Before
     public void setUp() {
         TileType type = TileType.BOOK;
         TileVariant variant = TileVariant.VARIANT_ONE;
-        tileObj = new TileObj(type, variant);
+        myTileObj = new TileObj(type, variant);
     }
 
     @Test
     public void testGetType() {
-        Assert.assertEquals(TileType.BOOK, tileObj.getType());
+        Assert.assertEquals(TileType.BOOK, myTileObj.getType());
     }
 
     @Test
     public void testGetVariant() {
-        Assert.assertEquals(TileVariant.VARIANT_ONE, tileObj.getVariant());
+        Assert.assertEquals(TileVariant.VARIANT_ONE, myTileObj.getVariant());
     }
 
     public void testCopyConstructor() {
@@ -39,6 +39,6 @@ public class TileObjTest {
     @Test
     public void testToString() {
         String expected = " B 1";
-        Assert.assertEquals(expected, tileObj.toString());
+        Assert.assertEquals(expected, myTileObj.toString());
     }
 }

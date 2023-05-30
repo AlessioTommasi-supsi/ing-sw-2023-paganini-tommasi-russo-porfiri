@@ -28,7 +28,11 @@ public class TilePositionShelves implements Serializable {
     public TilePositionShelves(TilePositionShelves tp){
         this.x= tp.getX();
         this.y= tp.getY();
-        this.tileInSlot= new TileObj(tp.getTile());
+        try {
+            this.tileInSlot = new TileObj(tp.getTile());
+        }catch (Exception e){
+            this.tileInSlot = null;
+        }
         this.occupied= tp.isOccupied();
     }
 
