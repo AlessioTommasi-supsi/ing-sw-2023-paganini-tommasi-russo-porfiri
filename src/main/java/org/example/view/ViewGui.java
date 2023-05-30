@@ -16,6 +16,7 @@ public class ViewGui extends JFrame {
     private JLabel imageContainer; // Contenitore per l'immagine
     private JLabel titleLabel; // Etichetta del titolo
 
+    ViewMyShelfie viewMyShelfie; // Riferimento alla classe textuale
     public ViewGui() {
         setTitle("MyShelfie"); // Imposta il titolo della finestra
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Imposta il comportamento di chiusura
@@ -124,6 +125,31 @@ public class ViewGui extends JFrame {
         setVisible(true);
     }
 
+    public ViewGui(ViewMyShelfie viewMyShelfie) {
+        this();//richiamo costruttore
+        this.viewMyShelfie = viewMyShelfie;
+        joinGameButton.addActionListener(e -> {
+            String username = usernameField.getText();
+            String playerNumber = playerNumberField.getText();
+
+            if (username.isEmpty() || playerNumber.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please fill all the fields", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                try {
+                    int playerNumberInt = Integer.parseInt(playerNumber);
+                    if (playerNumberInt < 2 || playerNumberInt > 4) {
+                        JOptionPane.showMessageDialog(this, "The number of players must be between 2 and 4", "Error", JOptionPane.ERROR_MESSAGE);
+                    } else {
+                        //viewMyShelfie.joinGame(username, playerNumberInt);
+                        JOptionPane.showMessageDialog(null, "Questa funzionalita non e'ancora stata implementata!.");
+
+                    }
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(this, "The number of players must be an integer", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+    }
     private void resizeImage() {
         int width = imageContainer.getWidth();
         int height = imageContainer.getHeight();

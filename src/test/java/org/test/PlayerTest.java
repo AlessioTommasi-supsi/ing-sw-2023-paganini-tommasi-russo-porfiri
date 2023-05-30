@@ -1,9 +1,7 @@
 package org.test;
 
 import org.example.model.*;
-import org.example.util.IllegalColumnException;
-import org.example.util.IllegalSizeOfTilesException;
-import org.example.util.PositionEmptyException;
+import org.example.util.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
