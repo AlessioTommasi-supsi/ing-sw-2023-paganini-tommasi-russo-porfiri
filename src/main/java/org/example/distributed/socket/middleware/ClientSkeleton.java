@@ -35,14 +35,22 @@ public class ClientSkeleton implements Client {
     public void update(TurnView o, Choice arg) throws RemoteException {
         try {
             oos.writeObject(o);
+
+            this.oos.flush();
+            this.oos.reset();
+
         } catch (IOException e) {
             throw new RemoteException("Cannot send model view", e);
         }
         try {
             oos.writeObject(arg);
+
+            this.oos.flush();
+            this.oos.reset();
         } catch (IOException e) {
             throw new RemoteException("Cannot send event", e);
         }
+
     }
 
     public void receive(Server server) throws RemoteException {

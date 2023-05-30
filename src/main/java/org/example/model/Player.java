@@ -118,31 +118,31 @@ public class Player implements Serializable {
         this.shelves = shelves;
     }
 
-    public int checkPersonalCard(PersonalCard personalCardParser) throws PositionEmptyException {
+    public int checkPersonalCard(PersonalCard myPersonalCard) throws PositionEmptyException {
         int counter = 0;
         try {
-            if ((getShelves().getTilePosition(personalCardParser.CatXPosition, personalCardParser.CatYPosition) != null) &&
-                    (getShelves().getTilePosition(personalCardParser.CatXPosition, personalCardParser.CatYPosition).getTile().getType().equals("CAT"))) {
+            if ((getShelves().getTilePosition(myPersonalCard.CatXPosition, myPersonalCard.CatYPosition) != null) &&
+                    (getShelves().getTilePosition(myPersonalCard.CatXPosition, myPersonalCard.CatYPosition).getTile().getType().equals("CAT"))) {
                 counter++;
             }
-            if ((getShelves().getTilePosition(personalCardParser.BookXPosition, personalCardParser.BookYPosition) != null) &&
-                    (getShelves().getTilePosition(personalCardParser.BookXPosition, personalCardParser.BookYPosition).getTile().getType().equals("BOOK"))) {
+            if ((getShelves().getTilePosition(myPersonalCard.BookXPosition, myPersonalCard.BookYPosition) != null) &&
+                    (getShelves().getTilePosition(myPersonalCard.BookXPosition, myPersonalCard.BookYPosition).getTile().getType().equals("BOOK"))) {
                 counter++;
             }
-            if ((getShelves().getTilePosition(personalCardParser.FrameXPosition, personalCardParser.FrameYPosition) != null) &&
-                    (getShelves().getTilePosition(personalCardParser.FrameXPosition, personalCardParser.FrameYPosition).getTile().getType().equals("FRAME"))) {
+            if ((getShelves().getTilePosition(myPersonalCard.FrameXPosition, myPersonalCard.FrameYPosition) != null) &&
+                    (getShelves().getTilePosition(myPersonalCard.FrameXPosition, myPersonalCard.FrameYPosition).getTile().getType().equals("FRAME"))) {
                 counter++;
             }
-            if ((getShelves().getTilePosition(personalCardParser.TrophyXPosition, personalCardParser.TrophyYPosition) != null) &&
-                    (getShelves().getTilePosition(personalCardParser.TrophyXPosition, personalCardParser.TrophyYPosition).getTile().getType().equals("TROPHY"))) {
+            if ((getShelves().getTilePosition(myPersonalCard.TrophyXPosition, myPersonalCard.TrophyYPosition) != null) &&
+                    (getShelves().getTilePosition(myPersonalCard.TrophyXPosition, myPersonalCard.TrophyYPosition).getTile().getType().equals("TROPHY"))) {
                 counter++;
             }
-            if ((getShelves().getTilePosition(personalCardParser.GamesXPosition, personalCardParser.GamesYPosition) != null) &&
-                    (getShelves().getTilePosition(personalCardParser.GamesXPosition, personalCardParser.GamesYPosition).getTile().getType().equals("GAMES") )) {
+            if ((getShelves().getTilePosition(myPersonalCard.GamesXPosition, myPersonalCard.GamesYPosition) != null) &&
+                    (getShelves().getTilePosition(myPersonalCard.GamesXPosition, myPersonalCard.GamesYPosition).getTile().getType().equals("GAMES") )) {
                 counter++;
             }
-            if ((getShelves().getTilePosition(personalCardParser.PlantXPosition, personalCardParser.PlantYPosition) != null) &&
-                    (getShelves().getTilePosition(personalCardParser.PlantXPosition, personalCardParser.PlantYPosition).getTile().getType().equals("PLANT"))) {
+            if ((getShelves().getTilePosition(myPersonalCard.PlantXPosition, myPersonalCard.PlantYPosition) != null) &&
+                    (getShelves().getTilePosition(myPersonalCard.PlantXPosition, myPersonalCard.PlantYPosition).getTile().getType().equals("PLANT"))) {
                 counter++;
             }
         }catch (Exception e){
@@ -208,6 +208,7 @@ public class Player implements Serializable {
         int totalPoints = 0;
         boolean[][] visited = new boolean[6][5];
 
+        // TODO verificare che sono false senza \/
         for (int row = 0; row < 6; row++) {
             for (int col = 0; col < 5; col++) {
                 visited[row][col] = false;
