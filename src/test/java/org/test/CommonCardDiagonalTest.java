@@ -4,7 +4,7 @@ import org.example.model.*;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CommonCardDiagonalTest {
+public class CommonCardDiagonalTest { /*da completare con altre diagonali*/
 
     @Test
     public void testExecuteAlgorithm() {

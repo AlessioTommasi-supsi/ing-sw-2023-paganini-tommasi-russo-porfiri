@@ -27,7 +27,7 @@ public class CommonCardStairTest {
         player.getShelves().addTile(new TilePositionShelves(3,4, new TileObj(TileType.TROPHY, TileVariant.VARIANT_THREE)));
         player.getShelves().addTile(new TilePositionShelves(4,4, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
 
-        CommonCard commonCard = new CommonCardDiagonal(11);
+        CommonCard commonCard = new CommonCardStair(11);
 
         boolean result = commonCard.executeAlgorithm(player);
         assertTrue(result, "check if the tiles on your shelf are in stair form");
@@ -53,9 +53,12 @@ public class CommonCardStairTest {
         player.getShelves().addTile(new TilePositionShelves(1,3, new TileObj(TileType.TROPHY, TileVariant.VARIANT_THREE)));
         player.getShelves().addTile(new TilePositionShelves(0,4, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
 
-        CommonCard commonCard = new CommonCardDiagonal(11);
+
+        CommonCard commonCard = new CommonCardStair(11);
 
         boolean result = commonCard.executeAlgorithm(player);
         assertTrue(result, "check if the tiles on your shelf are in stair form");
     }
+
+
 }

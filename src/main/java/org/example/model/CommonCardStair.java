@@ -13,13 +13,13 @@ public class CommonCardStair extends CommonCard implements Serializable {
     public boolean executeAlgorithm(Player player) {
         int x=0;
         int y=0;
-        int maxRowActual=5;
+        int maxRowActual=4;
         if(checkStairForm(player.getShelves(), x, y, maxRowActual)) {
             return true;
         }
         x=0;
         y=4;
-        maxRowActual =5;
+        maxRowActual =4;
         if(checkStairFormInverse(player.getShelves(), x, y, maxRowActual)) {
             return true;
         }
@@ -31,13 +31,13 @@ public class CommonCardStair extends CommonCard implements Serializable {
             return true;
         }
         if(shelf.getTilePosition(x, y).isOccupied()) {
-            if(x==maxRowActual) {
+            if (x == maxRowActual) {
                 y++;
-                x=0;
+                x = 0;
                 maxRowActual--;
                 return checkStairForm(shelf, x, y, maxRowActual);
             }
-            return checkStairForm(shelf, x+1, y, maxRowActual);
+            return checkStairForm(shelf, x + 1, y, maxRowActual);
         }
         return false;
     }
@@ -46,14 +46,14 @@ public class CommonCardStair extends CommonCard implements Serializable {
             return true;
         }
         if(shelf.getTilePosition(x, y).isOccupied()) {
-            if(x==maxRowActual) {
-                y--;
-                x=0;
-                maxRowActual--;
-                return checkStairForm(shelf, x, y, maxRowActual);
+                if (x == maxRowActual) {
+                    y--;
+                    x = 0;
+                    maxRowActual--;
+                    return checkStairForm(shelf, x, y, maxRowActual);
+                }
+                return checkStairForm(shelf, x + 1, y, maxRowActual);
             }
-            return checkStairForm(shelf, x+1, y, maxRowActual);
-        }
         return false;
     }
 }
