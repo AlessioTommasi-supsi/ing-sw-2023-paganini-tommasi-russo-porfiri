@@ -17,14 +17,14 @@ public class CommonCard8TilesTest {
         player.getShelves().addTile(new TilePositionShelves(0,2, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
         player.getShelves().addTile(new TilePositionShelves(0,3, new TileObj(TileType.CAT, TileVariant.VARIANT_THREE)));
         player.getShelves().addTile(new TilePositionShelves(0,4, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(0,5, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO)));
         player.getShelves().addTile(new TilePositionShelves(1,0, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO)));
+        player.getShelves().addTile(new TilePositionShelves(2,0, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO)));
         player.getShelves().addTile(new TilePositionShelves(1,1, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
         // Add some other tiles to test the algorithm
         player.getShelves().addTile(new TilePositionShelves(1,2, new TileObj(TileType.BOOK, TileVariant.VARIANT_THREE)));
         player.getShelves().addTile(new TilePositionShelves(1,3, new TileObj(TileType.FRAME, TileVariant.VARIANT_THREE)));
         player.getShelves().addTile(new TilePositionShelves(1,4, new TileObj(TileType.GAMES, TileVariant.VARIANT_THREE)));
-        player.getShelves().addTile(new TilePositionShelves(1,5, new TileObj(TileType.TROPHY, TileVariant.VARIANT_THREE)));
+        player.getShelves().addTile(new TilePositionShelves(2,1, new TileObj(TileType.TROPHY, TileVariant.VARIANT_THREE)));
 
         // Set the shelves object for the player
 

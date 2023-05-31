@@ -22,32 +22,32 @@ public class CommonCard8Tiles extends CommonCard implements Serializable {
             for (int j=0;j<5;j++) {
                 if (player.getShelves().getTilePosition(i, j).isOccupied()) {
                     switch (player.getShelves().getTilePosition(i, j).getTile().getType().toString()) {
-                        case "CAT":
+                        case "C":
                             listOfCats.add(player.getShelves().getTilePosition(i, j));
                             if (listOfCats.size() == 8) {
                                 return true;
                             }
-                        case "BOOK":
+                        case "B":
                             listOfBooks.add(player.getShelves().getTilePosition(i, j));
                             if (listOfBooks.size() == 8) {
                                 return true;
                             }
-                        case "FRAME":
+                        case "F":
                             listOfFrames.add(player.getShelves().getTilePosition(i, j));
                             if (listOfFrames.size() == 8) {
                                 return true;
                             }
-                        case "PLANT":
+                        case "P":
                             listOfPlants.add(player.getShelves().getTilePosition(i, j));
                             if (listOfPlants.size() == 8) {
                                 return true;
                             }
-                        case "TROPHY":
+                        case "T":
                             listOfTrophies.add(player.getShelves().getTilePosition(i, j));
                             if (listOfTrophies.size() == 8) {
                                 return true;
                             }
-                        case "GAMES":
+                        case "G":
                             listOfGames.add(player.getShelves().getTilePosition(i, j));
                             if (listOfGames.size() == 8) {
                                 return true;

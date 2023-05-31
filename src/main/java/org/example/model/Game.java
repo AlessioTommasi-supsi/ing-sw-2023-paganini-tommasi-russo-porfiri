@@ -275,9 +275,9 @@ public abstract class Game implements Serializable {
         commonCards.add(new CommonCardAngles(2));
         commonCards.add(new CommonCard3Types(3));
         commonCards.add(new CommonCardShape(4));
-        commonCards.add(new CommonCardAllDifferentTypes(5));
+        commonCards.add(new CommonCard3Types(5));
         commonCards.add(new CommonCardShape(6));
-        commonCards.add(new CommonCardAllDifferentTypes(7));
+        commonCards.add(new CommonCard3Types(7));
         commonCards.add(new CommonCard3Types(8));
         commonCards.add(new CommonCardX(9));
         commonCards.add(new CommonCard8Tiles(10));
