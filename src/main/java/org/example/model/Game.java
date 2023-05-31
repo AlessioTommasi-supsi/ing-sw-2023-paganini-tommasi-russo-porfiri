@@ -240,13 +240,20 @@ public abstract class Game implements Serializable {
             this.ranking = new int[this.playerNumber];
 
             for (int i = 0; i < players.size(); i++) {
-                //point[i] = players.get(i).getShelves().getScore();
                 rank.add(new Ranking(players.get(i), point[i]));
             }
 
+            //ordino rank in base ai punti dal piu alto al piu basso
+            Collections.sort(rank, new Comparator<Ranking>() {
+                @Override
+                public int compare(Ranking o1, Ranking o2) {
+                    return o2.getPunteggio() - o1.getPunteggio();
+                }
+            });
+
             int index = 0;
             int max =point[0];
-
+            //assegno il ranking
             for (int j = 0; j < this.playerNumber; j++) {
                 for (int i = 1; i < players.size() ; i++) {
                     if (point[i] > max) {

@@ -12,6 +12,10 @@ public class Ranking implements Serializable {
         player =p;
     }
 
+    public int getPunteggio() {
+        return punteggio;
+    }
+
     @Override
     public String toString() {
         return "" +

@@ -18,6 +18,7 @@ public class MyShelfie implements Serializable {
         for (Game game: games) {
             for (Player player: game.getPlayers()) {
                 switch (game.getStato()){
+                    case IN_ATTESA://
                     case IN_CORSO:
                         if (player.getUsername().equals(p.getUsername())) {
                             throw new IllegalArgumentException("il player e gia attivo o in coda in qualche altra partita");
