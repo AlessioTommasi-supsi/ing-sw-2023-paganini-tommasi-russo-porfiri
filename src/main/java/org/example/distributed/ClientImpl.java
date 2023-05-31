@@ -13,6 +13,8 @@ public class ClientImpl extends UnicastRemoteObject implements Client, Runnable 
     ViewMyShelfie view = new ViewMyShelfie();
     //GUI PART
     ViewGui viewGui = new ViewGui(view);
+
+
     //END GUI
     public ClientImpl(Server server) throws RemoteException {
         super();
@@ -48,6 +50,7 @@ public class ClientImpl extends UnicastRemoteObject implements Client, Runnable 
 
     @Override
     public void run() {
+        view.setViewGui(viewGui);
         view.run();
     }
 }

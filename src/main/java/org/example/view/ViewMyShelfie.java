@@ -3,6 +3,7 @@ package org.example.view;
 import org.example.model.*;
 import org.example.util.*;
 
+import javax.swing.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,6 +24,11 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
     private Game currentGame = null;
 
     private boolean hoPescato = false;
+
+    private ViewGui viewGui;
+
+    private BoardGUI boardGUI;
+
 
     private int currentGameId = -1; //verrà assegnato dopo aver fatto join_game!!
 
@@ -70,6 +76,8 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                 inGame(model, arg);
             }
         } catch (Exception e){
+            //.DEBUG
+            //e.printStackTrace();
             inGame(model, arg);
         }
 
@@ -81,13 +89,22 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
     public void inGame(TurnView model/*risposta dal server*/, Choice arg/*evento che il client remoto ha scelto*/){
         if (currentGameId == -1){ //inizializzazione di tutte le variabili di gioco
             joiningPart(model,arg);
-        }else {
+        }else{
             //aggiorno client -> da fare ogni volta che avviene qualsiasi cosa!! -> da non mettere fuori perchè getMyShelfie() puo essere null!
             this.currentGame = model.getMyShelfie().getGame(this.currentGameId);
             this.player= this.currentGame.getPlayer(this.player.getId());//così ho a portata di mano la shelves aggiornata!
 
             //ho gia fatto join!
-            choicePart( model, arg);
+            //faccio operazioni sse sono avvenute sul mio game!
+            boolean isMyGame = false;
+            for (Player p : this.currentGame.getPlayers()){
+                if (p.getId() == arg.getPlayer().getId()){
+                    isMyGame = true;
+                }
+            }
+            if (isMyGame){ //se il player che ha fatto l'azione è presente nel mio game
+                choicePart( model, arg);
+            }
         }
     }
 
@@ -111,55 +128,67 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
             Scanner s = new Scanner(System.in);
             this.player = new Player(s.next());
 
+            tex_view();
             //fine creazione
-            //noinspection InfiniteLoopStatement
-            while (true) {
-                while (getState() == State.WAITING_FOR_OUTCOME) {
-                    synchronized (lock) {
-                        try {
-                            lock.wait();
-                        } catch (InterruptedException e) {
-                            System.err.println("Interrupted while waiting for server: " + e.getMessage());
-                        }
-                    }
-                }
-                if (this.currentGame == null) {
-                    System.out.println("\n" +
-                            "____          ________ _      _____ ____  __  __ ______   _______ ____    __  ____     __   _____ _    _ ______ _      ______ _____ ______   _ \n" +
-                            " \\ \\        / /  ____| |    / ____/ __ \\|  \\/  |  ____| |__   __/ __ \\   |  \\/  \\ \\   / /  / ____| |  | |  ____| |    |  ____|_   _|  ____| | |\n" +
-                            "  \\ \\  //\\  / /| |__  | |   | |   | |  | | \\  / | |__       | | | |  | | | \\  / |\\ \\_/ /  | (___ | |__| | |__  | |    | |__    | | | |__    | |\n" +
-                            "   \\ \\//  \\/ / |  __| | |   | |   | |  | | |\\/| |  __|      | | | |  | | | |\\/| | \\   /    \\___ \\|  __  |  __| | |    |  __|   | | |  __|   | |\n" +
-                            "    \\  //\\  /  | |____| |___| |___| |__| | |  | | |____     | | | |__| | | |  | |  | |     ____) | |  | | |____| |____| |     _| |_| |____  |_|\n" +
-                            "     \\//  \\/   |______|______\\_____\\____/|_|  |_|______|    |_|  \\____/  |_|  |_|  |_|    |_____/|_|  |_|______|______|_|    |_____|______| (_)\n");
 
-                    /* Player chooses  POSSIBLE ONLY JOINGAME! */
-                    ChoiceMyShelfie pc = ChoiceMyShelfie.JOIN_GAME;
-                    Object argument = askPlayerArgumentMyshelfie(pc);
-
-                    Choice c =new Choice(pc,player, argument);
-
-                    System.out.println("Waiting for the server... ");
-
-                    setState(State.WAITING_FOR_OUTCOME);
-                    setChanged();/*NOTIFICO AL SERVER che del client ha fatto scelta!!*/
-                    notifyObservers(c);
-                }else {
-                    ChoiceMyShelfie pc = askPlayerChoiceMyShelfie();
-                    Object argument = askPlayerArgumentMyshelfie(pc);
-
-                    Choice c =new Choice(pc,player, argument);
-
-                    System.out.println("Waiting for the server... ");
-
-                    setState(State.WAITING_FOR_OUTCOME);
-                    setChanged();/*NOTIFICO AL SERVER che del client ha fatto scelta!!*/
-                    notifyObservers(c);
-                }
-
-            }
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    public void tex_view(){
+        //noinspection InfiniteLoopStatement
+        while (true) {
+            while (getState() == State.WAITING_FOR_OUTCOME) {
+                synchronized (lock) {
+                    try {
+                        lock.wait();
+                    } catch (InterruptedException e) {
+                        System.err.println("Interrupted while waiting for server: " + e.getMessage());
+                    }
+                }
+            }
+            if (this.currentGame == null) {
+                System.out.println("\n" +
+                        "____          ________ _      _____ ____  __  __ ______   _______ ____    __  ____     __   _____ _    _ ______ _      ______ _____ ______   _ \n" +
+                        " \\ \\        / /  ____| |    / ____/ __ \\|  \\/  |  ____| |__   __/ __ \\   |  \\/  \\ \\   / /  / ____| |  | |  ____| |    |  ____|_   _|  ____| | |\n" +
+                        "  \\ \\  //\\  / /| |__  | |   | |   | |  | | \\  / | |__       | | | |  | | | \\  / |\\ \\_/ /  | (___ | |__| | |__  | |    | |__    | | | |__    | |\n" +
+                        "   \\ \\//  \\/ / |  __| | |   | |   | |  | | |\\/| |  __|      | | | |  | | | |\\/| | \\   /    \\___ \\|  __  |  __| | |    |  __|   | | |  __|   | |\n" +
+                        "    \\  //\\  /  | |____| |___| |___| |__| | |  | | |____     | | | |__| | | |  | |  | |     ____) | |  | | |____| |____| |     _| |_| |____  |_|\n" +
+                        "     \\//  \\/   |______|______\\_____\\____/|_|  |_|______|    |_|  \\____/  |_|  |_|  |_|    |_____/|_|  |_|______|______|_|    |_____|______| (_)\n");
+
+                /* Player chooses  POSSIBLE ONLY JOINGAME! */
+                ChoiceMyShelfie pc = ChoiceMyShelfie.JOIN_GAME;
+                Object argument = askPlayerArgumentMyshelfie(pc);
+
+                Choice c =new Choice(pc,player, argument);
+
+                System.out.println("Waiting for the server... ");
+
+                setState(State.WAITING_FOR_OUTCOME);
+                setChanged();/*NOTIFICO AL SERVER che del client ha fatto scelta!!*/
+                notifyObservers(c);
+            }else {
+                ChoiceMyShelfie pc = askPlayerChoiceMyShelfie();
+                Object argument = askPlayerArgumentMyshelfie(pc);
+
+                Choice c =new Choice(pc,player, argument);
+
+                System.out.println("Waiting for the server... ");
+
+                setState(State.WAITING_FOR_OUTCOME);
+                setChanged();/*NOTIFICO AL SERVER che del client ha fatto scelta!!*/
+                notifyObservers(c);
+            }
+
+        }
+    }
+
+    public void deliver_gui_request(Choice c){
+        System.out.println("Waiting for the server... ");
+        setState(State.WAITING_FOR_OUTCOME);
+        setChanged();/*NOTIFICO AL SERVER che del client ha fatto scelta!!*/
+        notifyObservers(c);
     }
 
 
@@ -418,6 +447,17 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
 
                         case JOIN_GAME:
                             System.out.println("Il player: "+model.getMyShelfie().getGame(this.currentGameId).getPlayers().get(model.getMyShelfie().getGame(this.currentGameId).getPlayers().size()-1).getUsername()+" si e' unito alla partita!");
+                            //modifica della gui!
+                            //this.viewGui.refresh_message("Il player: "+model.getMyShelfie().getGame(this.currentGameId).getPlayers().get(model.getMyShelfie().getGame(this.currentGameId).getPlayers().size()-1).getUsername()+" si e' unito alla partita!");
+                            new Thread(){
+                                @Override
+                                public void run(){
+                                    viewGui.getTitleLabel().setText("Il player: "+model.getMyShelfie().getGame(currentGameId).getPlayers().get(model.getMyShelfie().getGame(currentGameId).getPlayers().size()-1).getUsername()+" si e' unito alla partita!");
+                                    viewGui.getJoinGameButton().setVisible(false);
+                                }
+                            }.start();
+
+
                         break;
                         case DRAW_FROM_BOARD:
                             System.out.println("Il player: "+model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getUsername()+" HA PESCATO DALLA PLANCIA!");
@@ -441,6 +481,19 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
             if (model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getId() == this.player.getId()) {
                 System.out.println("Il server ha risposto!");
                 this.setState(State.WAITING_FOR_PLAYER);
+
+                //operazioni su gui!
+                new Thread(){
+                    @Override
+                    public void run(){
+                        viewGui.getJoinGameButton().setEnabled(false);
+                        viewGui.getImageContainer().setIcon(new ImageIcon("/boards/livingroom.png"));
+                        viewGui.getTitleLabel().setVisible(false);
+                        viewGui.getJoinGameButton().setVisible(false);
+                        viewGui.start_board();
+                    }
+                }.start();
+
             }
         }
     }
@@ -519,5 +572,28 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
         }
     }
 
+    public ViewGui getViewGui() {
+        return viewGui;
+    }
+
+    public void setViewGui(ViewGui viewGui) {
+        this.viewGui = viewGui;
+    }
+
+    public BoardGUI getBoardGUI() {
+        return boardGUI;
+    }
+
+    public void setBoardGUI(BoardGUI boardGUI) {
+        this.boardGUI = boardGUI;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
 }
 
