@@ -119,17 +119,14 @@ public class CommonCardShape extends CommonCard implements Serializable {
     }
 
     private boolean checkSmallRectangle(Shelves shelf, int x, int y, int countInteractions, TileType type) {
-        System.out.println(x);
-        System.out.println(y);
-        System.out.println(type);
-        System.out.println(shelf.getTilePosition(x, y).getTile().getType());
-        System.out.println("--");
-        if((shelf.getTilePosition(x, y).isOccupied()) && (shelf.getTilePosition(x, y).getTile().getType() == type)) {
-            if (countInteractions < 1) {
-                countInteractions++;
-                return checkSmallRectangle(shelf, x+1, y, countInteractions, type);
-            } else {
-                return true;
+        if(shelf.getTilePosition(x, y).isOccupied()) {
+            if (shelf.getTilePosition(x, y).getTile().getType() == type) {
+                if (countInteractions < 1) {
+                    countInteractions++;
+                    return checkSmallRectangle(shelf, x + 1, y, countInteractions, type);
+                } else {
+                    return true;
+                }
             }
         }
         return false;
