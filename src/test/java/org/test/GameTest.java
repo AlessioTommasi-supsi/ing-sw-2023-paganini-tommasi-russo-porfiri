@@ -1,8 +1,6 @@
 package org.test;
 import org.junit.Test;
-import org.example.model.*;
-import org.junit.Assert;
-import org.junit.Test;
+import org.project.model.*;
 import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.Assert.*;
@@ -38,16 +36,16 @@ public class GameTest {
         game.addPlayer(player);
 
 
-        game.full_library();
+        game.fullLibrary();
 
         game.end();
-        assertEquals(StatoPartita.FINITA, game.getStato());
+        assertEquals(GameStatus.OVER, game.getStato());
 
         //tesst ranking currentplayer dovrebbe avere 1 punto (quindi essere) mentre l altro 0
         //indice dell attributo ranking e Indice del player che in base ai punti totalizzati nella partita
         //rank e'lista dei player ordinata in base al loro punteggio (dal piu alto al piu basso)
-        assertEquals(1, game.getRanking().get(0).getPunteggio());
-        assertEquals(0, game.getRanking().get(1).getPunteggio());
+        assertEquals(1, game.getRanking().get(0).getPoints());
+        assertEquals(0, game.getRanking().get(1).getPoints());
 
     }
 
@@ -55,7 +53,7 @@ public class GameTest {
     @Test(expected = Exception.class)
     public void testAddPlayerAlredyStartedGame() throws Exception {
         Player player = new Player("gian giacomo giovanni");
-        game.start_partita(); // Avvio della partita
+        game.startPartita(); // Avvio della partita
         // Aggiunta di un giocatore quando la partita è in corso (stato diverso da IN_ATTESA)
         game.addPlayer(player);
 

@@ -1,10 +1,9 @@
 package org.test;
 
-import org.example.model.*;
+import org.project.model.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.example.util.*;
 
 import static org.junit.Assert.*;
 

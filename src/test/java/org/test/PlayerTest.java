@@ -1,12 +1,11 @@
 package org.test;
 
-import org.example.model.*;
-import org.example.util.*;
+import org.project.model.*;
+import org.project.util.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 

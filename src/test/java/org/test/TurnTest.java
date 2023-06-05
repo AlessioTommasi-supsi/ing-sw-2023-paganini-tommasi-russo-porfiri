@@ -3,9 +3,8 @@ package org.test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.example.model.*;
-import org.junit.Assert;
-import org.junit.Before;
+import org.project.model.*;
+
 public class TurnTest {
 
     private Turn turn;
@@ -37,7 +36,7 @@ public class TurnTest {
         Choice choice = new Choice(ChoiceMyShelfie.JOIN_GAME, new Player("John"), 2);
         turn.setMyShelfie(myShelfie);
         turn.setPlayerChoice(choice);
-        turn.errore = "Errore di esempio";
+        turn.error = "Errore di esempio";
 
         String expectedString = "Turn{'\n'" +
                 "'\n'playerChoice=" + choice.toString() +

@@ -1,8 +1,8 @@
-org.example
-org.example.controller
-org.example.distributed
-org.example.distributed.socket.middleware
-org.example.model
-org.example.util
-org.example.view
+org.project
+org.project.controller
+org.project.distributed
+org.project.distributed.socket.middleware
+org.project.model
+org.project.util
+org.project.view
 org.test

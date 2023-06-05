@@ -3,9 +3,8 @@ package org.test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.example.model.*;
-import org.junit.Assert;
-import org.junit.Before;
+import org.project.model.*;
+
 public class MyShelfieTest {
 
     private MyShelfie shelfie;
@@ -23,7 +22,7 @@ public class MyShelfieTest {
         Assertions.assertEquals(2, game.getPlayerNumber());
         Assertions.assertEquals(player.getUsername(), game.getPlayers().get(0).getUsername());
         Assertions.assertEquals(player.getUsername(), game.getDealer().getUsername());
-        Assertions.assertEquals(StatoPartita.IN_ATTESA, game.getStato());
+        Assertions.assertEquals(GameStatus.IN_WAIT, game.getStato());
     }
 
     @Test
@@ -55,7 +54,7 @@ public class MyShelfieTest {
         shelfie.joinGame(2, new Player("Eve"));
 
         Game game = shelfie.getGames().get(0);//Eve dovrebbe essersi unita qui perche e' il primo gioco aggiunto!
-        Assertions.assertEquals(StatoPartita.IN_CORSO, game.getStato());
+        Assertions.assertEquals(GameStatus.IN_PROGRESS, game.getStato());
     }
 
     @Test
@@ -74,7 +73,7 @@ public class MyShelfieTest {
 
         //verifico che tutti i giochi devono essere nello stato IN ATTESA
         for (Game game : shelfie.getGames()) {
-            Assertions.assertEquals(StatoPartita.IN_ATTESA, game.getStato());
+            Assertions.assertEquals(GameStatus.IN_WAIT, game.getStato());
         }
 
         //aggiungo giocatori ad ogni gioco fino ad arrivare alla quantita definita da playerNumber
@@ -85,7 +84,7 @@ public class MyShelfieTest {
         }
         //verifico che tutti i giochi devono essere nello stato IN CORSO
         for (Game game : shelfie.getGames()) {
-            Assertions.assertEquals(StatoPartita.IN_CORSO, game.getStato());
+            Assertions.assertEquals(GameStatus.IN_PROGRESS, game.getStato());
         }
     }
 

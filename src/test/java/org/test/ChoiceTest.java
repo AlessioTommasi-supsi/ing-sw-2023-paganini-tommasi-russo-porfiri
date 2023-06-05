@@ -1,9 +1,7 @@
 package org.test;
 
 import org.junit.jupiter.api.Assertions;
-import org.example.model.*;
-import org.junit.Assert;
-import org.junit.Before;
+import org.project.model.*;
 import org.junit.Test;
 public class ChoiceTest {
 
