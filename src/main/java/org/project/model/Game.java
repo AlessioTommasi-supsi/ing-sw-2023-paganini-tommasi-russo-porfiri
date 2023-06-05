@@ -19,7 +19,7 @@ public abstract class Game implements Serializable {
     private ArrayList<Player> players;//ordinato in base all ordine nel quale i giocatori si sono uniti alla partita e quindi anche in ordine di chi tocca a giocare!
     private int playerNumber;//numeri di giocatori che ci sono in questa partita!
     private Player dealer;
-    private GameStatus stato= GameStatus.IN_WAIT;
+    private GameStatus state = GameStatus.IN_WAIT;
     private ArrayList<PersonalCard> personalCardDeck = new ArrayList<>();
     private int pointInitialization1 = 8;
     private int pointInitialization2 = 8;
@@ -30,7 +30,7 @@ public abstract class Game implements Serializable {
     private CommonCard common2;
 
     //quando è a true devo completare il turno e poi finire la partita!
-    private boolean full_library = false;
+    private boolean fullLibrary = false;
 
 
     public Game(int playerNumber, Player mazziere) {
@@ -94,12 +94,12 @@ public abstract class Game implements Serializable {
         this.common2 = common2;
     }
 
-    public GameStatus getStato() {
-        return stato;
+    public GameStatus getState() {
+        return state;
     }
 
     public ArrayList<Ranking> getRanking() throws Exception{
-        if(this.stato != GameStatus.OVER){
+        if(this.state != GameStatus.OVER){
             throw new Exception("You can't take the scores because the game isn't over yet!");
         }
         return rank;
@@ -129,9 +129,9 @@ public abstract class Game implements Serializable {
         return pointInitialization2;
     }
 
-    public Player getPlayer(int id_player) {
+    public Player getPlayer(int idPlayer) {
         for (int i = 0; i < players.size(); i++) {
-            if (id_player == players.get(i).getId()){
+            if (idPlayer == players.get(i).getId()){
                 return players.get(i);
             }
         }
@@ -189,7 +189,7 @@ public abstract class Game implements Serializable {
 
 
     public void addPlayer(Player p)throws Exception {
-        if (this.stato != GameStatus.IN_WAIT){
+        if (this.state != GameStatus.IN_WAIT){
             throw new Exception("Players cannot be added unless the game is on hold!");
         }
         p.setPC(drawPersonal());
@@ -199,7 +199,7 @@ public abstract class Game implements Serializable {
 
         if (this.playerNumber == this.players.size()) {
             //System.err.println(this.toString() +"this.players.size()= "+this.players.size());
-            this.stato = GameStatus.IN_PROGRESS;
+            this.state = GameStatus.IN_PROGRESS;
             this.currentPlayer = this.players.get(0);//il primo giocatore è quello che inizia!
         }
 
@@ -207,20 +207,20 @@ public abstract class Game implements Serializable {
 
 
     public void startPartita(){
-        this.stato = GameStatus.IN_PROGRESS;
+        this.state = GameStatus.IN_PROGRESS;
     }
 
     public void fullLibrary(){
-        if (this.full_library==false){ //aggiungo punti solo al primo player che mi completa la partita!
-            this.full_library = true;
-            this.currentPlayer.add_end_of_game_point();
+        if (this.fullLibrary ==false){ //aggiungo punti solo al primo player che mi completa la partita!
+            this.fullLibrary = true;
+            this.currentPlayer.addEndOfGamePoint();
         }
     }
 
 
     public void end() throws Exception {
-        if (this.full_library == true && (this.players.indexOf(this.currentPlayer) == 0/*ho terminato giro*/)) {
-            this.stato = GameStatus.OVER;
+        if (this.fullLibrary == true && (this.players.indexOf(this.currentPlayer) == 0/*ho terminato giro*/)) {
+            this.state = GameStatus.OVER;
 
             //calcolo i punti di ogni giocatore e ne faccio il ranking
             //indice di ranking e Indice dei giocatori quando si sono uniti alla partita.
@@ -303,7 +303,7 @@ public abstract class Game implements Serializable {
                 ", players=" + players.toString() +
                 ", playerNumber=" + playerNumber +
                 ", dealer=" + dealer +
-                ", state=" + stato +
+                ", state=" + state +
                 ", ranking=" + Arrays.toString(ranking) +
                 ", rank=" + rank +
                 '}';

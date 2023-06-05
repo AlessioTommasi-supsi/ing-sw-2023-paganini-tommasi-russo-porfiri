@@ -17,7 +17,7 @@ public class MyShelfie implements Serializable {
         //controllo che il player non sia gia attivo in qualche altra partita
         for (Game game: games) {
             for (Player player: game.getPlayers()) {
-                switch (game.getStato()){
+                switch (game.getState()){
                     case IN_WAIT://
                     case IN_PROGRESS:
                         if (player.getUsername().equals(p.getUsername())) {
@@ -29,7 +29,7 @@ public class MyShelfie implements Serializable {
         //esistono partite con gia quel numero di giocatori in attesa:
         int i =0;
         for (Game game: games) {
-            switch (game.getStato()){
+            switch (game.getState()){
                 case IN_WAIT:
                     if (game.getPlayerNumber() == intPlayerNumber) {
                         game.addPlayer(p);
@@ -71,9 +71,9 @@ public class MyShelfie implements Serializable {
     public ArrayList<Game> getGames() {
         return games;
     }
-    public Game getGame(int id_game) {
+    public Game getGame(int idGame) {
         for (int i = 0; i < games.size(); i++) {
-            if (id_game == games.get(i).getCurrentGameId()){
+            if (idGame == games.get(i).getCurrentGameId()){
                 return games.get(i);
             }
         }

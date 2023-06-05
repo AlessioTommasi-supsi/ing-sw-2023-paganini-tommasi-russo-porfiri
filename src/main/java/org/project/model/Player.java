@@ -152,7 +152,7 @@ public class Player implements Serializable {
         return counter;
     }
 
-    public void add_end_of_game_point(){
+    public void addEndOfGamePoint(){
         this.score+=1;
     }
 

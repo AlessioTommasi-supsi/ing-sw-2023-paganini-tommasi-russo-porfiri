@@ -10,15 +10,15 @@ public class drawFromBoardMessage implements Serializable {
 
     public ArrayList<TilePositionBoard> tilesToRemove;
 
-    public int current_game_id;
+    public int currentGameId;
 
     public int ordine[];
 
 
-    public drawFromBoardMessage(ArrayList<TilePositionBoard> tilesToRemove, int columnOfShelves, int current_game_id, int[] ordine) {
+    public drawFromBoardMessage(ArrayList<TilePositionBoard> tilesToRemove, int columnOfShelves, int currentGameId, int[] ordine) {
         this.columnOfShelves = columnOfShelves;
         this.tilesToRemove = tilesToRemove;
-        this.current_game_id = current_game_id;
+        this.currentGameId = currentGameId;
         this.ordine = ordine;
     }
 
@@ -26,8 +26,8 @@ public class drawFromBoardMessage implements Serializable {
         return ordine;
     }
 
-    public int getCurrent_game_id() {
-        return current_game_id;
+    public int getCurrentGameId() {
+        return currentGameId;
     }
 
     public int getColumnOfShelves() {

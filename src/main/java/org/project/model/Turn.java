@@ -18,7 +18,7 @@ public class Turn extends Observable<Turn.Event> implements Serializable {
     }
 
     public void NotifyClient(){
-        this.playerChoice.setStato(Event.CPU_CHOICE);
+        this.playerChoice.setState(Event.CPU_CHOICE);
         setChangedAndNotifyObservers(
                 playerChoice
         );

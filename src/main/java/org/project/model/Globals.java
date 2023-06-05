@@ -14,7 +14,7 @@ public class Globals {
     private static int gameId = 1;
     public synchronized static int incrementPlayerId() {
         playerId++;
-        //System.out.println("incrementPlayerId: "+player_id);
+        //System.out.println("incrementPlayerId: "+playerId);
         return playerId -1;
     }
 

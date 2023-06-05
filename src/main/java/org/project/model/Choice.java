@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Choice implements Serializable {
     private ChoiceMyShelfie choice;
-    private Turn.Event stato;
+    private Turn.Event state;
     private Object argument;
     private Player player;
 
@@ -14,12 +14,12 @@ public class Choice implements Serializable {
         this.player = player;
     }
 
-    public Turn.Event getStato() {
-        return stato;
+    public Turn.Event getState() {
+        return state;
     }
 
-    public void setStato(Turn.Event stato) {
-        this.stato = stato;
+    public void setState(Turn.Event state) {
+        this.state = state;
     }
 
     public ChoiceMyShelfie getChoice() {
@@ -50,7 +50,7 @@ public class Choice implements Serializable {
     public String toString() {
         return "Choice{" +
                 "choice=" + choice.toString() +
-                ", state=" + stato +
+                ", state=" + state +
                 ", argument=" + argument.toString() +
                 ", player=" + player.toString() +
                 '}';

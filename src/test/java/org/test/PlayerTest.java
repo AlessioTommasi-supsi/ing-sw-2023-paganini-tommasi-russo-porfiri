@@ -82,7 +82,7 @@ public class PlayerTest {
 
     @Test
     public void testAddEndOfGamePoint() {
-        player.add_end_of_game_point();
+        player.addEndOfGamePoint();
         assertEquals(1, player.getScore());
     }
 

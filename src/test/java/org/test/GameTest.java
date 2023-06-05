@@ -39,7 +39,7 @@ public class GameTest {
         game.fullLibrary();
 
         game.end();
-        assertEquals(GameStatus.OVER, game.getStato());
+        assertEquals(GameStatus.OVER, game.getState());
 
         //tesst ranking currentplayer dovrebbe avere 1 punto (quindi essere) mentre l altro 0
         //indice dell attributo ranking e Indice del player che in base ai punti totalizzati nella partita

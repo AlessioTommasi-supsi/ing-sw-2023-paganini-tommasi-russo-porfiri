@@ -149,9 +149,9 @@ public class LoginGui extends JFrame {
                         viewMyShelfie.setPlayer(player);
                         Choice c = new Choice(ChoiceMyShelfie.JOIN_GAME, player,Integer.parseInt(playerNumberField.getText()));
 
-                        viewMyShelfie.deliver_gui_request(c);
+                        viewMyShelfie.deliverGuiRequest(c);
                         //aggiorno la view testuale!
-                        viewMyShelfie.tex_view();
+                        viewMyShelfie.texView();
 
                     }
                 } catch (NumberFormatException ex) {
@@ -208,10 +208,10 @@ public class LoginGui extends JFrame {
 
     }
 
-    public void start_board() {
+    public void startBoard() {
         JOptionPane.showMessageDialog(null, "ORA TOCCA A TE!");
     }
-    public void refresh_message(String message) {
+    public void refreshMessage(String message) {
         JOptionPane.showMessageDialog(null, "message");
     }
 

@@ -55,7 +55,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
 
 
         try {
-            if (model.getMyShelfie().getGame(this.currentGameId).getStato().equals(GameStatus.OVER)){
+            if (model.getMyShelfie().getGame(this.currentGameId).getState().equals(GameStatus.OVER)){
                 //caso in cui ho terminato una partita
                 //stampa del ranking
                 this.currentGame =model.getMyShelfie().getGame(this.currentGameId);
@@ -89,7 +89,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
         if (currentGameId == -1){ //inizializzazione di tutte le variabili di gioco
             joiningPart(model,arg);
         }else{
-            //aggiorno client -> da fare ogni volta che avviene qualsiasi cosa!! -> da non mettere fuori perchè getMyShelfie() puo essere null!
+            //aggiorno client -> da fare ogni volta che avviene qualsiasi cosa!! -> da non mettere fuori perché getMyShelfie() puo essere null!
             this.currentGame = model.getMyShelfie().getGame(this.currentGameId);
             this.player= this.currentGame.getPlayer(this.player.getId());//così ho a portata di mano la shelves aggiornata!
 
@@ -127,7 +127,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
             Scanner s = new Scanner(System.in);
             this.player = new Player(s.next());
 
-            tex_view();
+            texView();
             //fine creazione
 
         }catch (Exception e){
@@ -135,7 +135,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
         }
     }
 
-    public void tex_view(){
+    public void texView(){
         //noinspection InfiniteLoopStatement
         while (true) {
             while (getState() == State.WAITING_FOR_OUTCOME) {
@@ -183,7 +183,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
         }
     }
 
-    public void deliver_gui_request(Choice c){
+    public void deliverGuiRequest(Choice c){
         System.out.println("Waiting for the server... ");
         setState(State.WAITING_FOR_OUTCOME);
         setChanged();/*NOTIFICO AL SERVER che del client ha fatto scelta!!*/
@@ -206,8 +206,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
             try {
                 switch (ChoiceMyShelfie.valueOf(input)){
                     case SHOW_MY_SHELVES:
-                        System.out.println("Your current shelves is: ");
-                        System.out.println("");
+                        System.out.println("Your current shelves are: \n");
                         try {
                             printTilePositionShelves(this.player.getShelves().showShelves());
                         }catch (Exception e){
@@ -216,7 +215,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                         }
                         return askPlayerChoiceMyShelfie();
                     case SHOW_COMMON_CARDS:
-                        System.out.println("COMMON CARDS ARE:  \n");
+                        System.out.println("Common Cards are:  \n");
                         try {
                             System.out.println("Common Card 1: " + this.currentGame.getCommon1().getDescription());
                             System.out.println("  point: " + this.currentGame.getPointInitialization1());
@@ -229,8 +228,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                         return askPlayerChoiceMyShelfie();
 
                     case SHOW_PERSONAL_CARDS:
-                        System.out.println("YOUR PERSONAL CARD IS:  ");
-                        System.out.println("");
+                        System.out.println("Your Personal Card is: \n");
                         try {
                             System.out.println("Personal Card: " + this.player.getPC().toString());
                         }catch (Exception e){
@@ -241,8 +239,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
 
 
                     case SHOW_BOARD:
-                        System.out.println(" Current BOARD: ");
-                        System.out.println("");
+                        System.out.println(" Current BOARD: \n");
                         try {
                             //V1
                             //this.current_game.getBoard().showBoard().stream().forEach(placement->System.out.println(placement.toString()));
@@ -286,6 +283,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
             case JOIN_GAME:
                 System.out.println("Enter the number of players in the game: ");
                 return  Integer.parseInt(s.next());
+
             case TERMINATE_TURNS:
                 return this.currentGameId;//oggetto da passare come argomento è l'id della partita corrente.
             case DRAW_FROM_BOARD:
@@ -315,18 +313,18 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
 
                     }
 
-                    int ordine[] = new int[tilesToRemove.size()];
+                    int order[] = new int[tilesToRemove.size()];
                     ArrayList<TilePositionBoard> orderedTilesToRemove = new ArrayList<TilePositionBoard>();
 
                     while(true) {
                         try {
                             for (int i = 0; i < tilesToRemove.size(); i++) {
                                 System.out.println("Enter in what order you want to insert the tile into position: x " + tilesToRemove.get(i).getX() + " y "+tilesToRemove.get(i).getY()+" to place in the library: ");
-                                ordine[i] = Integer.parseInt(s.next());
+                                order[i] = Integer.parseInt(s.next());
                             }
                             //devo provare a fare rimozione!! solo per essere sicuro che i dati sono corretti; ordinamento effettivo verrà fatto dal controller
                             for (int i = 0; i < tilesToRemove.size(); i++) {
-                                orderedTilesToRemove.add(tilesToRemove.get(ordine[i] - 1));
+                                orderedTilesToRemove.add(tilesToRemove.get(order[i] - 1));
                             }
                             break;//ordinamento andato a buon fine
                         } catch (Exception e2) {
@@ -335,15 +333,15 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                         }
                     }
                     //.DEBUG
-                    //System.err.println("TESSERA CHE HAI SCELTO DI RIMUOVERE: "+tilesToRemove);
+                    //System.err.println("Tiles you have chosen to remove: "+tilesToRemove);
                     //for(int i = 0; i < orderedTilesToRemove.size();i++) {
                     //    System.out.println("tile: " + orderedTilesToRemove.get(i));
                     //}
-                    System.out.println("insert the column of your library where to put this tile: ");
-                    int colum_of_shelves = Integer.parseInt(s.next());
+                    System.out.println("Insert the column of your library where to put this tile: ");
+                    int columOfShelves = Integer.parseInt(s.next());
 
-                    //checkInput(tilesToRemove,colum_of_shelves);
-                    return new drawFromBoardMessage(tilesToRemove,colum_of_shelves,this.currentGameId,ordine);
+                    //checkInput(tilesToRemove,columOfShelves);
+                    return new drawFromBoardMessage(tilesToRemove,columOfShelves,this.currentGameId,order);
                 }catch (Exception e){
                     System.err.println("Generic error occurred! ");
                     e.printStackTrace();
@@ -382,7 +380,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
         //USERNAME DEVE ESSERE UNIVOCO
         if (this.player != null) {
             if(arg.getPlayer().getUsername().equals( this.player.getUsername())){
-                switch (model.getPlayerChoice().getStato()) {
+                switch (model.getPlayerChoice().getState()) {
                     case CPU_CHOICE -> {
                         switch (model.getPlayerChoice().getChoice()) {
                             case JOIN_GAME:
@@ -397,7 +395,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                                         }
                                     }
                                     if (isPlayerInThisGame == true){
-                                        switch (model.getMyShelfie().getGames().get(i).getStato()) {//le partite saranno o in attesa o in corso!
+                                        switch (model.getMyShelfie().getGames().get(i).getState()) {//le partite saranno o in attesa o in corso!
                                             case IN_PROGRESS://non dovrebbe mai arrivarci!
                                                 System.out.println("\nYou just joined the game and the match is under way!\n");
                                                 //System.err.println("partita a cui ti sei unito in corso: " + model.getMyShelfie().getGames().get(i).toString());
@@ -431,7 +429,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
 
     public void choicePart(TurnView model, Choice arg) {
         try {
-            switch (model.getPlayerChoice().getStato()) {
+            switch (model.getPlayerChoice().getState()) {
                 case CPU_CHOICE -> {
                     switch (model.getPlayerChoice().getChoice()) {
 
@@ -486,7 +484,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                         loginGui.getImageContainer().setIcon(new ImageIcon("/boards/livingroom.png"));
                         loginGui.getTitleLabel().setVisible(false);
                         loginGui.getJoinGameButton().setVisible(false);
-                        loginGui.start_board();
+                        loginGui.startBoard();
                     }
                 }.start();
 
@@ -514,8 +512,8 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                 "\nstate=" + state +
                 ",\n lock=" + lock +
                 ",\n player=" + player +
-                ",\n current_game=" + currentGame +
-                ",\n current_game_id=" + currentGameId +
+                ",\n currentGame=" + currentGame +
+                ",\n currentGameId=" + currentGameId +
                 "\n}";
     }
 
