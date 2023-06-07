@@ -1,4 +1,4 @@
-package org.project.util;
+package org.project.utils;
 
 import java.io.Serializable;
 

@@ -1,6 +1,6 @@
 package org.project.model;
 
-import org.project.util.*;
+import org.project.utils.*;
 import java.io.Serializable;
 import java.util.*;
 

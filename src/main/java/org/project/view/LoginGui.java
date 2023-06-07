@@ -52,7 +52,7 @@ public class LoginGui extends JFrame {
         gbc.insets = new Insets(5, 0, 5, 10);
 
         // Aggiungi un JLabel per l'immagine di titolo sopra al primo JTextField
-        ImageIcon titleImage = new ImageIcon(getClass().getResource("/Publisher material/Title 2000x618px.png"));
+        ImageIcon titleImage = new ImageIcon(getClass().getResource("/publisherMaterial/Title 2000x618px.png"));
         titleLabel = new JLabel(titleImage);
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER); // Centra il titolo orizzontalmente
         titleLabel.setVerticalAlignment(SwingConstants.CENTER); // Centra il titolo verticalmente
@@ -186,7 +186,7 @@ public class LoginGui extends JFrame {
 
         if (containerWidth > 0 && containerHeight > 0) {
             try {
-                BufferedImage originalImage = ImageIO.read(getClass().getResource("/Publisher material/Title 2000x618px.png"));
+                BufferedImage originalImage = ImageIO.read(getClass().getResource("/publisherMaterial/Title 2000x618px.png"));
                 int originalWidth = originalImage.getWidth();
                 int originalHeight = originalImage.getHeight();
 
@@ -220,7 +220,7 @@ public class LoginGui extends JFrame {
         int height = titleLabel.getHeight();
 
         if (width > 0 && height > 0) {
-            ImageIcon titleImage = new ImageIcon(getClass().getResource("/Publisher material/Title 2000x618px.png"));
+            ImageIcon titleImage = new ImageIcon(getClass().getResource("/publisherMaterial/Title 2000x618px.png"));
             Image img = titleImage.getImage();
 
             if (img != null) {

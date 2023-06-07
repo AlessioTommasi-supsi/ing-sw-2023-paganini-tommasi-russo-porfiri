@@ -1,7 +1,7 @@
 package org.test;
 
 import org.project.model.*;
-import org.project.util.*;
+import org.project.utils.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

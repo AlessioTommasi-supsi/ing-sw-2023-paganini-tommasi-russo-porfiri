@@ -1,7 +1,7 @@
 package org.project.model;
 
-import org.project.util.PositionAlreadyOccupiedException;
-import org.project.util.PositionEmptyException;
+import org.project.utils.PositionAlreadyOccupiedException;
+import org.project.utils.PositionEmptyException;
 import java.io.Serializable;
 import java.util.Objects;
 

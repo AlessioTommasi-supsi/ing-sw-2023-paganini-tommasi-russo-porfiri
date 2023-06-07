@@ -3,6 +3,6 @@ org.project.controller
 org.project.distributed
 org.project.distributed.socket.middleware
 org.project.model
-org.project.util
+org.project.utils
 org.project.view
 org.test

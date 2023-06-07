@@ -2,7 +2,7 @@ package org.project.controller;
 
 import org.project.model.*;
 import org.project.distributed.*;
-import org.project.util.*;
+import org.project.utils.*;
 import org.project.view.*;
 
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ public class Controller {
                 break;
 
                 case DRAW_FROM_BOARD:
-                    drawFromBoardMessage drawMessage = (drawFromBoardMessage) arg.getArgument();
+                    DrawFromBoardMessage drawMessage = (DrawFromBoardMessage) arg.getArgument();
                     //RIMOZIONE DA BOARD
                     ArrayList<TileObj> tilesRemoved = model.getMyShelfie().getGame(drawMessage.getCurrentGameId()).getBoard().removeTiles(drawMessage.getTilesToRemove());
                     //IMMETTI IN LIBRERIA

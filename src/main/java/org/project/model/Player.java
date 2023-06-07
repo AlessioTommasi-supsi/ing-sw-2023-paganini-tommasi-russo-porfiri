@@ -1,9 +1,9 @@
 package org.project.model;
 
-import org.project.util.FullLibraryException;
-import org.project.util.IllegalColumnException;
-import org.project.util.IllegalSizeOfTilesException;
-import org.project.util.PositionEmptyException;
+import org.project.utils.FullLibraryException;
+import org.project.utils.IllegalColumnException;
+import org.project.utils.IllegalSizeOfTilesException;
+import org.project.utils.PositionEmptyException;
 
 import java.io.Serializable;
 import java.util.*;

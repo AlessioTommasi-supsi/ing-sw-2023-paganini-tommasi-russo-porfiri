@@ -1,7 +1,7 @@
 package org.project.view;
 
 import org.project.model.*;
-import org.project.util.*;
+import org.project.utils.*;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -341,7 +341,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                     int columOfShelves = Integer.parseInt(s.next());
 
                     //checkInput(tilesToRemove,columOfShelves);
-                    return new drawFromBoardMessage(tilesToRemove,columOfShelves,this.currentGameId,order);
+                    return new DrawFromBoardMessage(tilesToRemove,columOfShelves,this.currentGameId,order);
                 }catch (Exception e){
                     System.err.println("Generic error occurred! ");
                     e.printStackTrace();
