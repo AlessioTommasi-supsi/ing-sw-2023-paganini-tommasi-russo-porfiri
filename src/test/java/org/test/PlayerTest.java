@@ -88,7 +88,7 @@ public class PlayerTest {
 
     @Test
     public void testToString() {
-        String expected = "Player{id=0, username='Egidio', yourTurn=false, shelves=" + shelves.toString() + ", pC=null, score=0}";
+        String expected = "Player{id=-1, username='Egidio', yourTurn=false, shelves=" + shelves.toString() + ", pC=null, score=0}";
         String actual = player.toString();
         assertEquals(expected, actual);
     }

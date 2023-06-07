@@ -20,6 +20,7 @@ public class Player implements Serializable {
     private boolean isCommonCard1Completed = false;
     private boolean isCommonCard2Completed = false;
     private int countCondition = 0;
+    private HashMap<Integer, Integer> givenAdjacencyPoints;
 
     public Player(Player p) {
         this.id = p.getId();
@@ -33,11 +34,9 @@ public class Player implements Serializable {
     public Player(String username) {
         //this.id = Globals.incrementPlayerId();//non puo funzionare dara sempre 1 perché ogni client esegue un nuovo programma!
         this.id = -1;// -1 e poi viene assegnato id giusto da controller non appena si fa join_game!
-
         this.username = username;
         this.yourTurn = false;
         this.shelves = new Shelves();
-        //da modificare!!
         this.pC = null;
         this.score = 0;
     }
@@ -80,6 +79,7 @@ public class Player implements Serializable {
         this.yourTurn = false;
         this.shelves = new Shelves();
         this.pC = pC;
+        defineAdjacencyPoints();
     }
 
     // Da inserire nel costruttore se ritenuto necessario
@@ -95,6 +95,16 @@ public class Player implements Serializable {
         isCommonCard2Completed = commonCard2Completed;
     }
 
+    public void defineAdjacencyPoints() {
+        givenAdjacencyPoints = new HashMap<>();
+        // Inizializzazione dell'HashMap con le associazioni tra counter e punti
+        givenAdjacencyPoints.put(1, 1);
+        givenAdjacencyPoints.put(2, 2);
+        givenAdjacencyPoints.put(3, 4);
+        givenAdjacencyPoints.put(4, 6);
+        givenAdjacencyPoints.put(5, 9);
+        givenAdjacencyPoints.put(6, 12);
+    }
 
     public void putTile(Set<TilePositionShelves> pt) {
         for (TilePositionShelves p : pt) {
