@@ -1,11 +1,16 @@
 package org.test;
 
+import com.google.gson.Gson;
 import org.project.model.*;
 import org.project.utils.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -140,6 +145,96 @@ public class PlayerTest {
 
         // TODO true points
         assertEquals(6, points);
+    }
+
+    @Test
+    public void testCheckPersonalCardFalse() {
+        ArrayList<PersonalCard> personalCardParsers = new ArrayList<>();
+        try {
+            Gson gson = new Gson();
+
+            // create a reader
+            Reader reader = Files.newBufferedReader(Paths.get("PersonalCard.json"));
+
+            // convert a JSON string to a User object
+            PersonalCard[] user = gson.fromJson(reader,PersonalCard[].class);
+
+            personalCardParsers.add(user[0]);
+            personalCardParsers.add(user[1]);
+            personalCardParsers.add(user[2]);
+            personalCardParsers.add(user[3]);
+            personalCardParsers.add(user[4]);
+            personalCardParsers.add(user[5]);
+            personalCardParsers.add(user[6]);
+            personalCardParsers.add(user[7]);
+            personalCardParsers.add(user[8]);
+            personalCardParsers.add(user[9]);
+            personalCardParsers.add(user[10]);
+            personalCardParsers.add(user[11]);
+
+            // close reader
+            reader.close();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        PersonalCard personalCardTest = personalCardParsers.get(0);
+        Player player = new Player("Player1");
+        int counterTilesPersonal = -1;
+        player.getShelves().addTile(new TilePositionShelves(0,2, new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE)));
+        try {
+            counterTilesPersonal = player.checkPersonalCard(personalCardTest);
+        } catch (PositionEmptyException ex) {
+            System.out.println("position null");
+        }
+        boolean returnCondition = false;
+        if (counterTilesPersonal == 1) {returnCondition = true;}
+        assertFalse(returnCondition);
+    }
+
+    @Test
+    public void testCheckPersonalCardTrue() {
+        ArrayList<PersonalCard> personalCardParsers = new ArrayList<>();
+        try {
+            Gson gson = new Gson();
+
+            // create a reader
+            Reader reader = Files.newBufferedReader(Paths.get("PersonalCard.json"));
+
+            // convert a JSON string to a User object
+            PersonalCard[] user = gson.fromJson(reader,PersonalCard[].class);
+
+            personalCardParsers.add(user[0]);
+            personalCardParsers.add(user[1]);
+            personalCardParsers.add(user[2]);
+            personalCardParsers.add(user[3]);
+            personalCardParsers.add(user[4]);
+            personalCardParsers.add(user[5]);
+            personalCardParsers.add(user[6]);
+            personalCardParsers.add(user[7]);
+            personalCardParsers.add(user[8]);
+            personalCardParsers.add(user[9]);
+            personalCardParsers.add(user[10]);
+            personalCardParsers.add(user[11]);
+
+            // close reader
+            reader.close();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        PersonalCard personalCardTest = personalCardParsers.get(0);
+        Player player = new Player("Player1");
+        int counterTilesPersonal = 0;
+        player.getShelves().addTile(new TilePositionShelves(0,2, new TileObj(TileType.TROPHY, TileVariant.VARIANT_ONE)));
+        try {
+            counterTilesPersonal = player.checkPersonalCard(personalCardTest);
+        } catch (PositionEmptyException ex) {
+            System.out.println("position null");
+        }
+        boolean returnCondition = false;
+        if (counterTilesPersonal == 1) {returnCondition = true;}
+        assertTrue(returnCondition);
     }
 
 }

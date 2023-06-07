@@ -131,28 +131,28 @@ public class Player implements Serializable {
     public int checkPersonalCard(PersonalCard myPersonalCard) throws PositionEmptyException {
         int counter = 0;
         try {
-            if ((getShelves().getTilePosition(myPersonalCard.CatXPosition, myPersonalCard.CatYPosition) != null) &&
-                    (getShelves().getTilePosition(myPersonalCard.CatXPosition, myPersonalCard.CatYPosition).getTile().getType().equals("CAT"))) {
+            if ((getShelves().getTilePosition(myPersonalCard.CatXPosition, myPersonalCard.CatYPosition).isOccupied()) &&
+                    (getShelves().getTilePosition(myPersonalCard.CatXPosition, myPersonalCard.CatYPosition).getTile().getType() == TileType.CAT)) {
                 counter++;
             }
-            if ((getShelves().getTilePosition(myPersonalCard.BookXPosition, myPersonalCard.BookYPosition) != null) &&
-                    (getShelves().getTilePosition(myPersonalCard.BookXPosition, myPersonalCard.BookYPosition).getTile().getType().equals("BOOK"))) {
+            if ((getShelves().getTilePosition(myPersonalCard.BookXPosition, myPersonalCard.BookYPosition).isOccupied()) &&
+                    (getShelves().getTilePosition(myPersonalCard.BookXPosition, myPersonalCard.BookYPosition).getTile().getType() == TileType.BOOK)) {
                 counter++;
             }
-            if ((getShelves().getTilePosition(myPersonalCard.FrameXPosition, myPersonalCard.FrameYPosition) != null) &&
-                    (getShelves().getTilePosition(myPersonalCard.FrameXPosition, myPersonalCard.FrameYPosition).getTile().getType().equals("FRAME"))) {
+            if ((getShelves().getTilePosition(myPersonalCard.FrameXPosition, myPersonalCard.FrameYPosition).isOccupied()) &&
+                    (getShelves().getTilePosition(myPersonalCard.FrameXPosition, myPersonalCard.FrameYPosition).getTile().getType() == TileType.FRAME)) {
                 counter++;
             }
-            if ((getShelves().getTilePosition(myPersonalCard.TrophyXPosition, myPersonalCard.TrophyYPosition) != null) &&
-                    (getShelves().getTilePosition(myPersonalCard.TrophyXPosition, myPersonalCard.TrophyYPosition).getTile().getType().equals("TROPHY"))) {
+            if ((getShelves().getTilePosition(myPersonalCard.TrophyXPosition, myPersonalCard.TrophyYPosition).isOccupied()) &&
+                    (getShelves().getTilePosition(myPersonalCard.TrophyXPosition, myPersonalCard.TrophyYPosition).getTile().getType() == TileType.TROPHY)) {
                 counter++;
             }
-            if ((getShelves().getTilePosition(myPersonalCard.GamesXPosition, myPersonalCard.GamesYPosition) != null) &&
-                    (getShelves().getTilePosition(myPersonalCard.GamesXPosition, myPersonalCard.GamesYPosition).getTile().getType().equals("GAMES") )) {
+            if ((getShelves().getTilePosition(myPersonalCard.GamesXPosition, myPersonalCard.GamesYPosition).isOccupied()) &&
+                    (getShelves().getTilePosition(myPersonalCard.GamesXPosition, myPersonalCard.GamesYPosition).getTile().getType() == TileType.GAMES )) {
                 counter++;
             }
-            if ((getShelves().getTilePosition(myPersonalCard.PlantXPosition, myPersonalCard.PlantYPosition) != null) &&
-                    (getShelves().getTilePosition(myPersonalCard.PlantXPosition, myPersonalCard.PlantYPosition).getTile().getType().equals("PLANT"))) {
+            if ((getShelves().getTilePosition(myPersonalCard.PlantXPosition, myPersonalCard.PlantYPosition).isOccupied()) &&
+                    (getShelves().getTilePosition(myPersonalCard.PlantXPosition, myPersonalCard.PlantYPosition).getTile().getType() == TileType.PLANT)) {
                 counter++;
             }
         }catch (Exception e){
