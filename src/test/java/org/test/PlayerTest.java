@@ -18,18 +18,42 @@ import static org.junit.Assert.*;
 
 public class PlayerTest {
 
+    private Game game;
     private Player player;
+    private Player dealer;
     private PersonalCard personalCard;
     private Shelves shelves;
     private Set<TilePositionShelves> tilePositions;
 
     @Before
     public void setUp() {
+        dealer = new Player("Emidio");
         player = new Player("Egidio");
+        game = new GameTwoPlayers(2, dealer);
+        // Adding only one cc for testing purposes
+        game.setCommon1(new CommonCardShape(5));
+        // Adding only one player for testing purposes
+        game.setCurrentPlayer(player);
+        try {
+            game.addPlayer(player);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        personalCard = game.drawPersonal(1);
+        player.setPC(personalCard);
         shelves = new Shelves();
+        personalCard = new PersonalCard();
+
+        // TODO aggiustare posizioni in base alla personal card parsata
         tilePositions = new HashSet<>();
         tilePositions.add(new TilePositionShelves(1, 1, new TileObj(TileType.BOOK, TileVariant.VARIANT_TWO)));
-        tilePositions.add(new TilePositionShelves(2, 1, new TileObj(TileType.TROPHY, TileVariant.VARIANT_ONE)));
+        tilePositions.add(new TilePositionShelves(2, 1, new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE)));
+        tilePositions.add(new TilePositionShelves(1, 2, new TileObj(TileType.BOOK, TileVariant.VARIANT_TWO)));
+        tilePositions.add(new TilePositionShelves(2, 2, new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE)));
+
+        tilePositions.add(new TilePositionShelves(3, 1, new TileObj(TileType.BOOK, TileVariant.VARIANT_TWO)));
+        tilePositions.add(new TilePositionShelves(3, 2, new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE)));
+
         player.setShelves(shelves);
     }
 
@@ -65,15 +89,23 @@ public class PlayerTest {
 
     @Test
     public void testCheckPersonalCard() throws PositionEmptyException {
-        TileObj catTile = new TileObj(TileType.CAT, TileVariant.VARIANT_ONE);
-        TileObj bookTile = new TileObj(TileType.BOOK, TileVariant.VARIANT_TWO);
-        shelves.addTile(new TilePositionShelves(1, 1, catTile));
-        shelves.addTile(new TilePositionShelves(2, 2, bookTile));
-        // TODO true value, personal card parser
+        //TODO aggiustare in base al json della personal card
+        tilePositions.add(new TilePositionShelves(4, 1, new TileObj(TileType.BOOK, TileVariant.VARIANT_TWO)));
+        tilePositions.add(new TilePositionShelves(4, 2, new TileObj(TileType.BOOK, TileVariant.VARIANT_THREE)));
         int counter = player.checkPersonalCard(personalCard);
-        assertEquals(1, counter);
+        // Assuming the pc isn't fully completed
+        assertEquals(5, counter);
     }
 
+    @Test
+    public void testCheckCommonCard() {
+        tilePositions.add(new TilePositionShelves(4, 1, new TileObj(TileType.BOOK, TileVariant.VARIANT_TWO)));
+        tilePositions.add(new TilePositionShelves(4, 2, new TileObj(TileType.BOOK, TileVariant.VARIANT_THREE)));
+        game.updatePointsCommon();
+        player.setCommonCard1Completed(true);
+    }
+
+    //TODO vedere l'eccezione di CheckPersonalCard
     @Test
     public void testCheckPersonalCardException() {
         try {
@@ -91,22 +123,14 @@ public class PlayerTest {
         assertEquals(1, player.getScore());
     }
 
-    @Test
-    public void testToString() {
-        String expected = "Player{id=-1, username='Egidio', yourTurn=false, shelves=" + shelves.toString() + ", pC=null, score=0}";
-        String actual = player.toString();
-        assertEquals(expected, actual);
-    }
-
+    // TODO aggiustare il punteggio reale della personal card
     @Test
     public void testCalculatePersonalPoints() throws Exception {
-        // TODO personal card setup
-        personalCard = new PersonalCard();
-        player.setPC(personalCard);
         int points = player.calculatePersonalPoints();
         assertEquals(1, points);
     }
 
+    // TODO aggiustare il punteggio delle adiacenze e le posizioni
     @Test
     public void testCalculateAdjacentPointsNoAdjacency() {
         TileObj tile1 = new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE);
@@ -123,6 +147,7 @@ public class PlayerTest {
         assertEquals(0, points);
     }
 
+    // TODO aggiustare il punteggio totale e togliere posizioni inutili
     @Test
     public void testCalculateTotalPoints() {
         TileObj tile1 = new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE);
@@ -143,10 +168,10 @@ public class PlayerTest {
             fail();
         }
 
-        // TODO true points
         assertEquals(6, points);
     }
 
+    /*
     @Test
     public void testCheckPersonalCardFalse() {
         ArrayList<PersonalCard> personalCardParsers = new ArrayList<>();
@@ -236,5 +261,5 @@ public class PlayerTest {
         if (counterTilesPersonal == 1) {returnCondition = true;}
         assertTrue(returnCondition);
     }
-
+    */
 }

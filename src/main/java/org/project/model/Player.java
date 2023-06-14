@@ -156,7 +156,7 @@ public class Player implements Serializable {
                 counter++;
             }
         }catch (Exception e){
-            //si puo verificare quando in quella posizione della libreria e'vuota, in quel caso non devo dolo eseguire il prossimo if!
+            //si puo verificare quando in quella posizione della libreria è vuota, in quel caso non devo solo eseguire il prossimo if!
         }
 
         return counter;
@@ -339,26 +339,3 @@ public class Player implements Serializable {
         if (shelves.getFilledCounter() == 30) throw new FullLibraryException();
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
