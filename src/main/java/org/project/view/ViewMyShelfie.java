@@ -24,9 +24,9 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
 
     private boolean iAlreadyDrawn = false;
 
-    private LoginGui loginGui;
+    private LoginGUI loginGui;
 
-    private BoardGUI boardGUI;
+    private GameGUI gameGUI;
 
 
     private int currentGameId = -1; //verrà assegnato dopo aver fatto join_game!!
@@ -566,20 +566,20 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
         }
     }
 
-    public LoginGui getViewGui() {
+    public LoginGUI getViewGui() {
         return loginGui;
     }
 
-    public void setViewGui(LoginGui loginGui) {
+    public void setViewGui(LoginGUI loginGui) {
         this.loginGui = loginGui;
     }
 
-    public BoardGUI getBoardGUI() {
-        return boardGUI;
+    public GameGUI getBoardGUI() {
+        return gameGUI;
     }
 
-    public void setBoardGUI(BoardGUI boardGUI) {
-        this.boardGUI = boardGUI;
+    public void setBoardGUI(GameGUI gameGUI) {
+        this.gameGUI = gameGUI;
     }
 
     public void setPlayer(Player player) {

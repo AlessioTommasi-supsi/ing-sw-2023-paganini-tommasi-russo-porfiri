@@ -1,5 +1,9 @@
 package org.project.view;
 
+import org.project.model.Choice;
+import org.project.model.ChoiceMyShelfie;
+import org.project.model.Player;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -8,7 +12,7 @@ import java.awt.event.ComponentEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class BoardGUI extends JFrame {
+public class LoginGUI extends JFrame {
     private JButton joinGameButton; // Pulsante "Join Game"
     private JPanel bareMetalPanel; // Pannello principale
     private JTextField usernameField; // Campo di testo per l'username
@@ -17,7 +21,7 @@ public class BoardGUI extends JFrame {
     private JLabel titleLabel; // Etichetta del titolo
 
     ViewMyShelfie viewMyShelfie; // Riferimento alla classe textuale
-    public BoardGUI() {
+    public LoginGUI() {
         setTitle("MyShelfie"); // Imposta il titolo della finestra
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Imposta il comportamento di chiusura
         setLayout(new BorderLayout()); // Imposta il layout principale della finestra
@@ -48,7 +52,7 @@ public class BoardGUI extends JFrame {
         gbc.insets = new Insets(5, 0, 5, 10);
 
         // Aggiungi un JLabel per l'immagine di titolo sopra al primo JTextField
-        ImageIcon titleImage = new ImageIcon(getClass().getResource("/boards/livingroom.png"));
+        ImageIcon titleImage = new ImageIcon(getClass().getResource("/publisherMaterial/Title 2000x618px.png"));
         titleLabel = new JLabel(titleImage);
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER); // Centra il titolo orizzontalmente
         titleLabel.setVerticalAlignment(SwingConstants.CENTER); // Centra il titolo verticalmente
@@ -125,7 +129,7 @@ public class BoardGUI extends JFrame {
         setVisible(true);
     }
 
-    public BoardGUI(ViewMyShelfie viewMyShelfie) {
+    public LoginGUI(ViewMyShelfie viewMyShelfie) {
         this();//richiamo costruttore
         this.viewMyShelfie = viewMyShelfie;
         joinGameButton.addActionListener(e -> {
@@ -134,14 +138,21 @@ public class BoardGUI extends JFrame {
 
             if (username.isEmpty() || playerNumber.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Please fill all the fields", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
+            }
+             else {
                 try {
                     int playerNumberInt = Integer.parseInt(playerNumber);
                     if (playerNumberInt < 2 || playerNumberInt > 4) {
                         JOptionPane.showMessageDialog(this, "The number of players must be between 2 and 4", "Error", JOptionPane.ERROR_MESSAGE);
                     } else {
                         //viewMyShelfie.joinGame(username, playerNumberInt);
-                        JOptionPane.showMessageDialog(null, "Questa funzionalita non e'ancora stata implementata!.");
+                        Player player = new Player(this.usernameField.getText());
+                        viewMyShelfie.setPlayer(player);
+                        Choice c = new Choice(ChoiceMyShelfie.JOIN_GAME, player,Integer.parseInt(playerNumberField.getText()));
+
+                        viewMyShelfie.deliverGuiRequest(c);
+                        //aggiorno la view testuale!
+                        viewMyShelfie.texView();
 
                     }
                 } catch (NumberFormatException ex) {
@@ -157,7 +168,7 @@ public class BoardGUI extends JFrame {
         if (width > 0 && height > 0) {
             BufferedImage img = null;
             try {
-                img = ImageIO.read(getClass().getResource("/boards/livingroom.png"));
+                img = ImageIO.read(getClass().getResource("/misc/sfondo parquet.jpg"));
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -169,13 +180,14 @@ public class BoardGUI extends JFrame {
         }
     }
 
+
     private void resizeTitle() {
         int containerWidth = titleLabel.getWidth();
         int containerHeight = titleLabel.getHeight();
 
         if (containerWidth > 0 && containerHeight > 0) {
             try {
-                BufferedImage originalImage = ImageIO.read(getClass().getResource("/boards/livingroom.png"));
+                BufferedImage originalImage = ImageIO.read(getClass().getResource("/publisherMaterial/Title 2000x618px.png"));
                 int originalWidth = originalImage.getWidth();
                 int originalHeight = originalImage.getHeight();
 
@@ -193,15 +205,23 @@ public class BoardGUI extends JFrame {
                 ex.printStackTrace();
             }
         }
+
+
     }
 
+    public void startBoard() {
+        JOptionPane.showMessageDialog(null, "ORA TOCCA A TE!");
+    }
+    public void refreshMessage(String message) {
+        JOptionPane.showMessageDialog(null, "message");
+    }
 
     private void resizeTitleImage() {
         int width = titleLabel.getWidth();
         int height = titleLabel.getHeight();
 
         if (width > 0 && height > 0) {
-            ImageIcon titleImage = new ImageIcon(getClass().getResource("/boards/livingroom.png"));
+            ImageIcon titleImage = new ImageIcon(getClass().getResource("/publisherMaterial/Title 2000x618px.png"));
             Image img = titleImage.getImage();
 
             if (img != null) {
@@ -222,9 +242,8 @@ public class BoardGUI extends JFrame {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(BoardGUI::new);
+        SwingUtilities.invokeLater(LoginGUI::new);
     }
-
 
     public JButton getJoinGameButton() {
         return joinGameButton;

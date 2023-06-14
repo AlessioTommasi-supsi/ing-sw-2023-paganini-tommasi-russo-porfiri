@@ -12,7 +12,7 @@ public class ClientImpl extends UnicastRemoteObject implements Client, Runnable 
 
     ViewMyShelfie view = new ViewMyShelfie();
     //GUI PART
-    LoginGui loginGui = new LoginGui(view);
+    LoginGUI loginGui = new LoginGUI(view);
 
 
     //END GUI

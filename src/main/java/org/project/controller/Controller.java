@@ -16,10 +16,6 @@ public class Controller {
         this.client = client;
     }
 
-
-
-
-
     public synchronized void update(Client o,Choice arg) {
         try {
 
