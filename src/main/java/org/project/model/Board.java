@@ -32,6 +32,13 @@ public class Board implements Serializable {
         protoBoard();
         addTiles();
     }
+    //Idea realizzativa: Una serie di elementi e caratteristiche del gioco dipendono dal numero di giocatori. Una di queste è la creazione delle giuste caselle della Board gi gioco.
+    //Per realizzare opportunamente questi elementi dipendenti dal numero di giocatori, deciso di realizzare un factory method per la classe Game, definendola come classe astratta
+    //e creando opportune sottoclassi concrete, una per tipo di partita con un certo numero di giocatori. Così facendo tutto ciò che del codice varia, di partita in partita
+    //in base al numero di giocatori selezionato, è stato raggruppato nelle sottoclassi concrete di Game.
+    //Il costruttore senza parametri di Board si limiterà a creare una base comune a ciascuna Board possibile. Questa base comune coincide con una Board da due giocatori.
+    //Dunque: all'inizio in base al numero di giocatori, viene istanziato uno specifico sottotipo di Game (ad esempio GameThreePlayers). Nel costruttore di questo verrà creata una nuova Board
+    //con this.board = new Board() e successivamente verrà invocato il metodo buildBoard() (definito in Game) che in base al numero di giocatori aggiungerà le caselle specifiche mancanti allo scheletro comune.
 
 
     public ArrayList<TilePositionBoard> getPlacements() {
@@ -60,10 +67,11 @@ public class Board implements Serializable {
     }
 
 
+    //Crea la struttura (lo scheletro) del core di una qualunque board. Ovvero crea la struttura di una board da due giocatori, comune a qualunque board da due o più giocatori.
     private void protoBoard(){
-        int i=1;
         int j;
 
+        int i=1;
         for(j=4; j<6; j++){
             this.placements.add(new TilePositionBoard(i,j));
         }
@@ -93,7 +101,9 @@ public class Board implements Serializable {
         }
     }
 
-
+    //Duplice utilizzo:
+    //1) Invocato nel costruttore, in seguito all'invocazione di protoBoard() per riempire tutte le TilePositionBoard precedentemente generate.
+    //2) Invocato da restoreBoard() quando la board necessita di essere ripristinata.
     public void addTiles(){
         for(TilePositionBoard p : this.placements){
             if(this.bag.BagSize()!= 0){
@@ -194,7 +204,7 @@ public class Board implements Serializable {
     }
 
 
-    private boolean tilesAreInSameLine(ArrayList<TilePositionBoard> extTilesPos){
+    public boolean tilesAreInSameLine(ArrayList<TilePositionBoard> extTilesPos){
         for(int i=0; i < extTilesPos.size()-1; i++){
             TilePositionBoard currentTile = extTilesPos.get(i);
             TilePositionBoard nextTile = extTilesPos.get(i+1);
@@ -207,7 +217,7 @@ public class Board implements Serializable {
         return  true;
     }
 
-    private boolean tilesAreInSameColumn(ArrayList<TilePositionBoard> extTilesPos){
+    public boolean tilesAreInSameColumn(ArrayList<TilePositionBoard> extTilesPos){
         for(int i=0; i < extTilesPos.size()-1; i++){
             TilePositionBoard currentTile = extTilesPos.get(i);
             TilePositionBoard nextTile = extTilesPos.get(i+1);
@@ -220,7 +230,7 @@ public class Board implements Serializable {
         return  true;
     }
 
-    private boolean isABoardPosition(TilePositionBoard pos){
+    public boolean isABoardPosition(TilePositionBoard pos){
         int x = pos.getX();
         int y = pos.getY();
 
@@ -232,7 +242,7 @@ public class Board implements Serializable {
         return false;
     }
 
-    private boolean arePositionsDifferentFromEachOther(ArrayList<TilePositionBoard> tpb){
+    public boolean arePositionsDifferentFromEachOther(ArrayList<TilePositionBoard> tpb){
         for(int i=0; i<tpb.size()-1; i++){
             for(int j=i+1; j<tpb.size(); j++){
                 if(tpb.get(i).equals(tpb.get(j))){
