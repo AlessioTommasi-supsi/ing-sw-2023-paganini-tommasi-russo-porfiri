@@ -118,11 +118,16 @@ public class Board implements Serializable {
     }  //Metodo che userò anche per riempire la board quando vuota
 
     public void addTiles(ArrayList<TilePositionBoard> tilesRemoved){
-        for(TilePositionBoard p : tilesRemoved){
-            try {
-                this.placements.add(p);
-            } catch (Exception e) {
-                continue;
+        for(TilePositionBoard etp : tilesRemoved){
+            for(TilePositionBoard btp : placements){
+                if(((etp.getX() == btp.getX()) && (etp.getY() == btp.getY()))){
+                    try{
+                        btp.setTile(etp.getTile());
+                    }
+                    catch (PositionAlreadyOccupiedException e){
+                        continue;
+                    }
+                }
             }
         }
     }
@@ -297,7 +302,7 @@ public class Board implements Serializable {
 
     //.debug
     //Nuke Board-ton. Use carefully!
-    public void thePowerOfTheAtom(){
+    public void initializeBoard(){
         for(TilePositionBoard tp : placements){
             try{
                 tp.removeTile();

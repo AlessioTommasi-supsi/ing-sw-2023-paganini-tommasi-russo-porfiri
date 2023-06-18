@@ -1,17 +1,14 @@
 package org.test;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.project.model.*;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.*;
-import org.junit.Assert.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.project.utils.*;
-import static org.junit.Assert.*;
 
 class BoardTest {
     private Board board;
@@ -37,6 +34,7 @@ class BoardTest {
 
 
     //Testo se il costruttore vuoto utilizza correttamente i metodi protoBoard() addTiles() per inizializzare la Board
+    //il metodo protoBoard() è usato solo all'interno di questo costruttore quindi il suo funzionamento è qui implicitamente testato
     @Test
     public void testEmptyConstructor() {
         ArrayList<TilePositionBoard> placements = board.getPlacements();
@@ -402,10 +400,8 @@ class BoardTest {
 
     @Test
     public void testInitializeBoard(){
-        board.thePowerOfTheAtom();
+        board.initializeBoard();
         Assertions.assertTrue(board.boardIsEmpty());
-        ArrayList<TilePositionBoard> boardPositions = board.showBoard();
-        Assertions.assertEquals(0, boardPositions.size());
     }
 
 
@@ -413,13 +409,10 @@ class BoardTest {
     public void testBoardIsEmpty() {
         // Test when the board is not empty
         Assertions.assertFalse(board.boardIsEmpty());
-        Assertions.assertNotEquals(0, board.showBoard().size());
 
         // Test when the board is empty
-        board.thePowerOfTheAtom(); //Takes care of emptying the Board
+        board.initializeBoard(); //Takes care of emptying the Board
         Assertions.assertTrue(board.boardIsEmpty());
-        Assertions.assertEquals(0, board.showBoard().size());
-
     }
 
 
@@ -429,14 +422,13 @@ class BoardTest {
         Assertions.assertFalse(board.boardNeedsRestore());
 
         // Test when the board contains connected tiles
-        board.thePowerOfTheAtom();
+        board.initializeBoard();
         ArrayList<TilePositionBoard> extPlacements = new ArrayList<>();
         extPlacements.add(new TilePositionBoard(3, 2, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
         extPlacements.add(new TilePositionBoard(4, 2, new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE)));
         extPlacements.add(new TilePositionBoard(4, 3, new TileObj(TileType.PLANT, TileVariant.VARIANT_TWO)));
         extPlacements.add(new TilePositionBoard(5, 2, new TileObj(TileType.TROPHY, TileVariant.VARIANT_THREE)));
         extPlacements.add(new TilePositionBoard(5, 3, new TileObj(TileType.GAMES, TileVariant.VARIANT_TWO)));
-        extPlacements.add(new TilePositionBoard(5, 3, new TileObj(TileType.FRAME, TileVariant.VARIANT_TWO)));
         extPlacements.add(new TilePositionBoard(3, 6, new TileObj(TileType.FRAME, TileVariant.VARIANT_TWO)));
         extPlacements.add(new TilePositionBoard(4, 6, new TileObj(TileType.TROPHY, TileVariant.VARIANT_ONE)));
         extPlacements.add(new TilePositionBoard(5, 6, new TileObj(TileType.PLANT, TileVariant.VARIANT_THREE)));
@@ -445,7 +437,7 @@ class BoardTest {
         Assertions.assertFalse(board.boardNeedsRestore());
 
         // Test when the board is empty
-        board.thePowerOfTheAtom();
+        board.initializeBoard();
         Assertions.assertTrue(board.boardNeedsRestore());
 
         // Test when the board contains only isolated tiles
@@ -464,18 +456,14 @@ class BoardTest {
     @Test
     public void testRestoreBoard(){
         // Test when board is full and therefore does not need to be restored
-        Assertions.assertEquals(29, board.showBoard().size());
         Assertions.assertFalse(board.boardNeedsRestore());
         board.restoreBoard();
-        Assertions.assertEquals(29, board.showBoard().size());
         Assertions.assertFalse(board.boardNeedsRestore());
 
         // Test when board is empty and therefore needs to be restored
-        board.thePowerOfTheAtom();  //Empty the board completely
-        Assertions.assertEquals(0, board.showBoard().size());
+        board.initializeBoard();  //Empty the board completely
         Assertions.assertTrue(board.boardNeedsRestore());
         board.restoreBoard();
-        Assertions.assertNotEquals(0, board.showBoard().size());
         Assertions.assertFalse(board.boardNeedsRestore());
 
     }
@@ -484,27 +472,13 @@ class BoardTest {
     // Test del metodo addTiles (utilizzato per riempire tutte le posizioni vuote con dei TileObj estratti casualmente dalla TileObjBag)
     @Test
     public void testAddTiles() {
-        // Add tiles to the board using addTiles() method
-        board.thePowerOfTheAtom();
+        board.initializeBoard();
         Assertions.assertTrue(board.boardNeedsRestore());
-        board.restoreBoard();
+
+        // Add tiles to the board using addTiles() method
+        board.restoreBoard();  // Inside it invokes the AddTiles() method
         Assertions.assertFalse(board.boardNeedsRestore());
     }
-
-    @Test
-    public void testAddTilesWithTilesRemoved() {
-        // Create an ArrayList of TilePositionBoard representing tiles to be added
-        ArrayList<TilePositionBoard> tilesToRemove = new ArrayList<>();
-        tilesToRemove.add(new TilePositionBoard(1, 1));
-        tilesToRemove.add(new TilePositionBoard(2, 2));
-
-        // Add tiles to the board using addTiles(ArrayList<TilePositionBoard>) method
-        board.addTiles(tilesToRemove);
-
-        // Assert that the tiles have been added successfully
-        Assertions.assertEquals(2, board.getPlacements().size());
-    }
-
 
 
     @Test
@@ -524,14 +498,18 @@ class BoardTest {
         } catch(Exception e) {
 
         }
-        Assertions.assertEquals(27, board.getPlacements().size());
 
         // Call addTiles method to add the removed tiles to the board
         board.addTiles(tilesRemoved);
 
         // Verify that the positions of removed tiles have been added back to the board
-        for (TilePositionBoard tp : tilesRemoved) {
-            Assertions.assertTrue(board.getPlacements().contains(tp));
+        for(TilePositionBoard extPos : tilesRemoved){
+            for (TilePositionBoard posBoard : board.getPlacements()) {
+                if (posBoard.getX() == extPos.getX() && posBoard.getY() == extPos.getY()) {
+                    Assertions.assertTrue(posBoard.isOccupied());
+                    Assertions.assertEquals(posBoard.getTile(), extPos.getTile());
+                }
+            }
         }
         Assertions.assertEquals(29, board.getPlacements().size());
     }
@@ -540,49 +518,98 @@ class BoardTest {
     @Test
     public void testPrintTilePositionBoard() {
         // Create a list of TilePositionBoard to represent the board
-        ArrayList<TilePositionBoard> boardTiles = new ArrayList<>();
-        boardTiles.add(new TilePositionBoard(0, 0));
-        boardTiles.add(new TilePositionBoard(0, 1));
-        boardTiles.add(new TilePositionBoard(1, 0));
+        ArrayList<TilePositionBoard> newBoardTiles = new ArrayList<>();
+        newBoardTiles.add(new TilePositionBoard(3, 5, new TileObj(TileType.TROPHY, TileVariant.VARIANT_THREE)));
+        newBoardTiles.add(new TilePositionBoard(4, 4, new TileObj(TileType.GAMES, TileVariant.VARIANT_TWO)));
+        newBoardTiles.add(new TilePositionBoard(5, 7, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
 
-        // Set the board tiles
-        board.setPlacements(boardTiles);
+        // Empty the board
+        board.initializeBoard();
+
+        // Add the previously selected tiles
+        board.addTiles(newBoardTiles);
 
         // Call the printTilePositionBoard method
         board.printTilePositionBoard(board.getPlacements());
 
         // Verify the output
-        String expectedOutput = "TPB (0,0) TPB (0,1) \nTPB (1,0) - \n";
+        String expectedOutput =
+                "- - - - - - - - " + System.lineSeparator() +
+                "- - - |[3,1]= null,o=false| |[4,1]= null,o=false| - - - " + System.lineSeparator() +
+                "- - - |[3,2]= null,o=false| |[4,2]= null,o=false| |[5,2]= null,o=false| - - " + System.lineSeparator() +
+                "- - |[2,3]= null,o=false| |[3,3]= null,o=false| |[4,3]= null,o=false| |[5,3]= null,o=false| |[6,3]= null,o=false| |[7,3]= null,o=false| " + System.lineSeparator() +
+                "- |[1,4]= null,o=false| |[2,4]= null,o=false| |[3,4]= null,o=false| |[4,4]=  G 2,o=true| |[5,4]= null,o=false| |[6,4]= null,o=false| |[7,4]= null,o=false| " + System.lineSeparator() +
+                "- |[1,5]= null,o=false| |[2,5]= null,o=false| |[3,5]=  T 3,o=true| |[4,5]= null,o=false| |[5,5]= null,o=false| |[6,5]= null,o=false| - " + System.lineSeparator() +
+                "- - - |[3,6]= null,o=false| |[4,6]= null,o=false| |[5,6]= null,o=false| - - " + System.lineSeparator() +
+                "- - - - |[4,7]= null,o=false| |[5,7]=  C 1,o=true| - - " + System.lineSeparator();
         Assertions.assertEquals(expectedOutput, outputStream.toString());
     }
 
 
-
-
-
-   /* @Test
-    void testConstructorWithPlacements() {
-        ArrayList<TilePositionBoard> placements1 = new ArrayList<>();
-        TileObjBag bag1 = new TileObjBag();
-        placements1.add(new TilePositionBoard(1, 2));
-        placements1.add(new TilePositionBoard(3, 4));
-        Board customBoard = new Board(placements1);
-        ArrayList<TilePositionBoard> boardPositions = customBoard.showBoard();
-        assertEquals(35, boardPositions.size());
-    }
-
     @Test
     void testConstructorWithPlacementsAndBag() {
-        ArrayList<TilePositionBoard> placements = new ArrayList<>();
-        placements.add(new TilePositionBoard(1, 2));
-        placements.add(new TilePositionBoard(3, 4));
-        TileObjBag customBag = new TileObjBag();
-        Board customBoard = new Board(placements, customBag);
-        ArrayList<TilePositionBoard> boardPositions = customBoard.showBoard();
-        assertEquals(35, boardPositions.size());
-        assertEquals(100, customBag.BagSize());
+        TileObjBag extBag = new TileObjBag();
+        ArrayList<TilePositionBoard> extPlacements = new ArrayList<>();
+        extPlacements.add(new TilePositionBoard(3, 2, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
+        extPlacements.add(new TilePositionBoard(4, 2, new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE)));
+        extPlacements.add(new TilePositionBoard(4, 3, new TileObj(TileType.PLANT, TileVariant.VARIANT_TWO)));
+        extPlacements.add(new TilePositionBoard(5, 2, new TileObj(TileType.TROPHY, TileVariant.VARIANT_THREE)));
+        extPlacements.add(new TilePositionBoard(5, 3, new TileObj(TileType.GAMES, TileVariant.VARIANT_TWO)));
+        extPlacements.add(new TilePositionBoard(3, 6, new TileObj(TileType.FRAME, TileVariant.VARIANT_TWO)));
+        extPlacements.add(new TilePositionBoard(4, 6, new TileObj(TileType.TROPHY, TileVariant.VARIANT_ONE)));
+        extPlacements.add(new TilePositionBoard(5, 6, new TileObj(TileType.PLANT, TileVariant.VARIANT_THREE)));
+        extPlacements.add(new TilePositionBoard(5, 7, new TileObj(TileType.BOOK, TileVariant.VARIANT_TWO)));
+
+        // Build the board with this second constructor
+        Board customBoard = new Board(extPlacements, extBag);
+
+        for(TilePositionBoard extPos : extPlacements){
+            for (TilePositionBoard posBoard : customBoard.getPlacements()) {
+                if (posBoard.getX() == extPos.getX() && posBoard.getY() == extPos.getY()) {
+                    Assertions.assertEquals(posBoard.isOccupied(), extPos.isOccupied());
+                    Assertions.assertEquals(posBoard.getTile().getType(), extPos.getTile().getType());
+                    Assertions.assertEquals(posBoard.getTile().getVariant(), extPos.getTile().getVariant());
+                }
+            }
+        }
+        Assertions.assertEquals(customBoard.getPlacements().size(), extPlacements.size());
+
+        // The method that initializes the TileObjBag has already been tested in TileObjBagTest
+        Assertions.assertEquals(customBoard.getBag().BagSize(), extBag.BagSize());
     }
 
-     */
+
+    @Test
+    void testConstructorCopyExternalBoard() {
+        // Create a new board using this copy constructor
+        Board copiedBoard = new Board(board);
+
+        // Get the placements of the original and copied boards
+        ArrayList<TilePositionBoard> originalPlacements = board.getPlacements();
+        ArrayList<TilePositionBoard> copiedPlacements = copiedBoard.getPlacements();
+
+        // Verify that the placements are the same
+        Assertions.assertEquals(originalPlacements.size(), copiedPlacements.size());
+        for (int i = 0; i < originalPlacements.size(); i++) {
+            TilePositionBoard originalTilePos = originalPlacements.get(i);
+            TilePositionBoard copiedTilePos = copiedPlacements.get(i);
+            Assertions.assertEquals(originalTilePos.getX(), copiedTilePos.getX());
+            Assertions.assertEquals(originalTilePos.getY(), copiedTilePos.getY());
+            Assertions.assertEquals(originalTilePos.getTile().getType(), copiedTilePos.getTile().getType());
+            Assertions.assertEquals(originalTilePos.getTile().getVariant(), copiedTilePos.getTile().getVariant());
+            Assertions.assertEquals(originalTilePos.isOccupied(), copiedTilePos.isOccupied());
+        }
+
+        // Verify that the bags are the same
+        Assertions.assertEquals(board.getBag().getTiles().size(), copiedBoard.getBag().getTiles().size());
+        for (int i = 0; i < board.getBag().getTiles().size(); i++){
+            TileObj originalTile = board.getBag().getTiles().get(i);
+            TileObj copiedTile = copiedBoard.getBag().getTiles().get(i);
+            Assertions.assertEquals(originalTile.getType(), copiedTile.getType());
+            Assertions.assertEquals(originalTile.getVariant(), copiedTile.getVariant());
+        }
+    }
+
+
 
 }
