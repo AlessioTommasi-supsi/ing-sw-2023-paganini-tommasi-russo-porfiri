@@ -160,7 +160,7 @@ public class Board implements Serializable {
         //Tramite questo for a ciascuna posizione contenuta nell'ArrayList sostituisco il riferimento al corrispondente vero oggetto TilePositionBoard della Board.
         for (int i = 0; i < tilesToRemove.size() ; i++) {
             for (int j = 0; j < this.placements.size(); j++) {
-                if (tilesToRemove.get(i).equals(placements.get(j))) {
+                if (tilesToRemove.get(i).equals(placements.get(j))) {  //rivedere questo if
                     tilesToRemove.remove(tilesToRemove.get(i));
                     tilesToRemove.add(placements.get(j));
                 }
@@ -190,7 +190,7 @@ public class Board implements Serializable {
             throw new DuplicatesInRequestedTilesException();
         }
         
-        //verifica se le posizioni passate sono tutte sulla stessa riga (uguale x) o tutte sulla stessa colonna (uguale y).
+        //Verifica se le posizioni passate sono tutte sulla stessa riga (uguale x) o tutte sulla stessa colonna (uguale y).
         if(!(tilesAreInSameLine(tilesToRemove) || tilesAreInSameColumn(tilesToRemove))){
             throw new TilesAreNotRemovableException();
         }
@@ -264,7 +264,7 @@ public class Board implements Serializable {
     }
 
 
-    //la Board va ripristinata in due casi: se contiene solo tessere isolate, oppure se non contiene alcuna tessera.
+    //La Board va ripristinata in due casi: se contiene solo tessere isolate, oppure se non contiene alcuna tessera.
     public boolean boardNeedsRestore(){
         int x,y;
 
@@ -291,6 +291,19 @@ public class Board implements Serializable {
     public void restoreBoard(){
         if(boardNeedsRestore()){
             addTiles();
+        }
+    }
+
+
+    //.debug
+    //Nuke Board-ton. Use carefully!
+    public void thePowerOfTheAtom(){
+        for(TilePositionBoard tp : placements){
+            try{
+                tp.removeTile();
+            } catch(PositionEmptyException e){
+                continue;
+            }
         }
     }
 
