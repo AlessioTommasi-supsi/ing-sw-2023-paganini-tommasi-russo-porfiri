@@ -7,19 +7,22 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import org.project.view.custom.*;
 
 public class GameGUI extends JFrame {
-    private JPanel board;
-    private JPanel myShelf;
-    private JPanel othersShelves;
-    private JPanel commonCards;
-    private JPanel personalCard;
-    private JPanel controlPanel;
+    private CustomPanel board;
+    private CustomPanel myShelf;
+    private CustomPanel othersShelves;
+    private CustomPanel commonCards;
+    private CustomPanel personalCard;
+    private CustomPanel controlPanel;
 
     private JLabel imageLabel1;
     private JLabel imageLabel2;
-
-
+    private JLabel imageLabel3;
+    private JLabel imageLabel4;
+    private JLabel imageLabel5;
+    private JLabel imageLabel6;
 
 
     public GameGUI() {
@@ -29,18 +32,43 @@ public class GameGUI extends JFrame {
         // Crea un oggetto GridBagConstraints per impostare le proprietà di posizionamento dei componenti
         GridBagConstraints constraints = new GridBagConstraints();
 
-        board = new JPanel();
-        myShelf = new JPanel();
-        othersShelves = new JPanel();
-        commonCards = new JPanel();
-        personalCard = new JPanel();
-        controlPanel = new JPanel();
 
-        board.setVisible(true);
-        imageLabel1 = new JLabel(new ImageIcon(getClass().getResource("/boards/livingroom.png")));
+        board = new CustomPanel(new ImageIcon(getClass().getResource("/boards/livingroom.png")));
+        imageLabel1 = new JLabel(riduciImmaginePanel(new ImageIcon(board.getBoardImage())));
         board.add(imageLabel1);
         board.setPreferredSize(new Dimension(400, 400));
         add(board);
+
+        myShelf = new CustomPanel(new ImageIcon(getClass().getResource("/boards/livingroom.png")));
+        imageLabel2 = new JLabel(riduciImmaginePanel(new ImageIcon(myShelf.getBoardImage())));
+        myShelf.add(imageLabel2);
+        myShelf.setPreferredSize(new Dimension(400, 400));
+        add(myShelf);
+
+        othersShelves = new CustomPanel(new ImageIcon(getClass().getResource("/boards/livingroom.png")));
+        imageLabel3 = new JLabel(riduciImmaginePanel(new ImageIcon(othersShelves.getBoardImage())));
+        othersShelves.add(imageLabel3);
+        othersShelves.setPreferredSize(new Dimension(400, 400));
+        add(othersShelves);
+
+        commonCards = new CustomPanel(new ImageIcon(getClass().getResource("/boards/livingroom.png")));
+        imageLabel4 = new JLabel(riduciImmaginePanel(new ImageIcon(commonCards.getBoardImage())));
+        commonCards.add(imageLabel4);
+        commonCards.setPreferredSize(new Dimension(400, 400));
+        add(commonCards);
+
+        personalCard = new CustomPanel(new ImageIcon(getClass().getResource("/boards/livingroom.png")));
+        imageLabel5 = new JLabel(riduciImmaginePanel(new ImageIcon(personalCard.getBoardImage())));
+        personalCard.add(imageLabel5);
+        personalCard.setPreferredSize(new Dimension(400, 400));
+        add(personalCard);
+
+        controlPanel = new CustomPanel(new ImageIcon(getClass().getResource("/boards/livingroom.png")));
+        imageLabel6 = new JLabel(riduciImmaginePanel(new ImageIcon(controlPanel.getBoardImage())));
+        controlPanel.add(imageLabel6);
+        controlPanel.setPreferredSize(new Dimension(400, 400));
+        add(controlPanel);
+
 
         /*
         myShelf.setVisible(true);
@@ -49,6 +77,7 @@ public class GameGUI extends JFrame {
         myShelf.setPreferredSize(new Dimension(400, 400));
         add(myShelf);
        */
+
 
 
         constraints.gridx = 0;
@@ -100,12 +129,15 @@ public class GameGUI extends JFrame {
         constraints.weighty = 0.0;
         add(personalCard, constraints);
 
+
+        /*
         imageLabel1.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
                 resizeBoardImage();
             }
-        });
+
+        }); */
 
 
 
@@ -150,12 +182,24 @@ public class GameGUI extends JFrame {
         controlPanel.add(button4);
         controlPanel.add(button5);
 
+        // Imposta la posizione e le dimensioni del pannello "controlPanel"
+        constraints.gridx = 0;
+        constraints.gridy = 2;
+        constraints.gridwidth = 2;
+        constraints.gridheight = 1;
+        constraints.fill = GridBagConstraints.BOTH;
+        constraints.weightx = 1.0;
+        constraints.weighty = 0.0;
+        add(controlPanel, constraints);
+
+        // Imposta la posizione e le dimensioni degli altri pannelli come desiderato
+
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
-
     }
 
+ /*
     private void resizeBoardImage() {
         int containerWidth = imageLabel1.getWidth();
         int containerHeight = imageLabel1.getHeight();
@@ -181,10 +225,47 @@ public class GameGUI extends JFrame {
             }
         }
 
+    } */
+
+
+
+    public ImageIcon riduciImmaginePanel(ImageIcon extImageIcon) {
+        Image originalImage = extImageIcon.getImage();
+        int width = originalImage.getWidth(null);
+        int height = originalImage.getHeight(null);
+
+        int newWidth = 200;
+        int newHeight = 200;
+
+        if (width > height) {
+            newHeight = (int) (((double) height / width) * newWidth);
+        } else {
+            newWidth = (int) (((double) width / height) * newHeight);
+        }
+
+        Image scaledImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
+        return new ImageIcon(scaledImage);
     }
 
+
+
+
+
+    //non richiamabile in una classe che estende jframe, ma solo in una che estende jcomponent
+
+
+
+ /*
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Riduci immagine");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(300, 300);
+        frame.add(new RiduciImmaginePanel());
+        frame.setVisible(true);
+    }*/
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(GameGUI::new);
     }
+
 }
