@@ -1,4 +1,4 @@
-package org.project.view;
+package org.project.view.TextualUI;
 
 import org.project.model.TilePositionBoard;
 

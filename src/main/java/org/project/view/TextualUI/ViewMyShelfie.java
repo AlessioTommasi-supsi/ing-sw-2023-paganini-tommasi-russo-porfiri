@@ -1,7 +1,9 @@
-package org.project.view;
+package org.project.view.TextualUI;
 
 import org.project.model.*;
 import org.project.utils.*;
+import org.project.view.SwingUI.GameGUI;
+import org.project.view.SwingUI.LoginGUI;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -481,7 +483,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                     @Override
                     public void run(){
                         loginGui.getJoinGameButton().setEnabled(false);
-                        loginGui.getImageContainer().setIcon(new ImageIcon("/boards/livingroom.png"));
+                        loginGui.getImageContainer().setIcon(new ImageIcon("/GraphicResources/boards/livingroom.png"));
                         loginGui.getTitleLabel().setVisible(false);
                         loginGui.getJoinGameButton().setVisible(false);
                         loginGui.startBoard();

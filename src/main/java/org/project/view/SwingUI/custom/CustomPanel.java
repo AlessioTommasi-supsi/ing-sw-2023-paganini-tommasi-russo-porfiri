@@ -1,4 +1,4 @@
-package org.project.view.custom;
+package org.project.view.SwingUI.custom;
 
 import javax.swing.*;
 import java.awt.*;

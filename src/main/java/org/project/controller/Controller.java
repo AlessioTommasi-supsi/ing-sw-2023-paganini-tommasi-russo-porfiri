@@ -3,7 +3,7 @@ package org.project.controller;
 import org.project.model.*;
 import org.project.distributed.*;
 import org.project.utils.*;
-import org.project.view.*;
+import org.project.view.TextualUI.DrawFromBoardMessage;
 
 import java.util.ArrayList;
 

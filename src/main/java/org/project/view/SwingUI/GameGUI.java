@@ -1,12 +1,9 @@
-package org.project.view;
+package org.project.view.SwingUI;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
+
+import org.project.view.SwingUI.custom.CustomPanel;
 import org.project.view.custom.*;
 
 public class GameGUI extends JFrame {
@@ -33,37 +30,37 @@ public class GameGUI extends JFrame {
         GridBagConstraints constraints = new GridBagConstraints();
 
 
-        board = new CustomPanel(new ImageIcon(getClass().getResource("/boards/livingroom.png")));
+        board = new CustomPanel(new ImageIcon(getClass().getResource("/GraphicResources/boards/livingroom.png")));
         imageLabel1 = new JLabel(riduciImmaginePanel(new ImageIcon(board.getBoardImage())));
         board.add(imageLabel1);
         board.setPreferredSize(new Dimension(400, 400));
         add(board);
 
-        myShelf = new CustomPanel(new ImageIcon(getClass().getResource("/boards/livingroom.png")));
+        myShelf = new CustomPanel(new ImageIcon(getClass().getResource("/GraphicResources/boards/livingroom.png")));
         imageLabel2 = new JLabel(riduciImmaginePanel(new ImageIcon(myShelf.getBoardImage())));
         myShelf.add(imageLabel2);
         myShelf.setPreferredSize(new Dimension(400, 400));
         add(myShelf);
 
-        othersShelves = new CustomPanel(new ImageIcon(getClass().getResource("/boards/livingroom.png")));
+        othersShelves = new CustomPanel(new ImageIcon(getClass().getResource("/GraphicResources/boards/livingroom.png")));
         imageLabel3 = new JLabel(riduciImmaginePanel(new ImageIcon(othersShelves.getBoardImage())));
         othersShelves.add(imageLabel3);
         othersShelves.setPreferredSize(new Dimension(400, 400));
         add(othersShelves);
 
-        commonCards = new CustomPanel(new ImageIcon(getClass().getResource("/boards/livingroom.png")));
+        commonCards = new CustomPanel(new ImageIcon(getClass().getResource("/GraphicResources/boards/livingroom.png")));
         imageLabel4 = new JLabel(riduciImmaginePanel(new ImageIcon(commonCards.getBoardImage())));
         commonCards.add(imageLabel4);
         commonCards.setPreferredSize(new Dimension(400, 400));
         add(commonCards);
 
-        personalCard = new CustomPanel(new ImageIcon(getClass().getResource("/boards/livingroom.png")));
+        personalCard = new CustomPanel(new ImageIcon(getClass().getResource("/GraphicResources/boards/livingroom.png")));
         imageLabel5 = new JLabel(riduciImmaginePanel(new ImageIcon(personalCard.getBoardImage())));
         personalCard.add(imageLabel5);
         personalCard.setPreferredSize(new Dimension(400, 400));
         add(personalCard);
 
-        controlPanel = new CustomPanel(new ImageIcon(getClass().getResource("/boards/livingroom.png")));
+        controlPanel = new CustomPanel(new ImageIcon(getClass().getResource("/GraphicResources/boards/livingroom.png")));
         imageLabel6 = new JLabel(riduciImmaginePanel(new ImageIcon(controlPanel.getBoardImage())));
         controlPanel.add(imageLabel6);
         controlPanel.setPreferredSize(new Dimension(400, 400));
@@ -147,7 +144,7 @@ public class GameGUI extends JFrame {
         // Aggiungi i componenti desiderati al pannello "controlPanel"
         JButton button1 = new JButton("Button 1");
         JButton button2 = new JButton("Button 2");
-        ImageIcon titleImage = new ImageIcon(getClass().getResource("/misc/base_pagina2.jpg"));
+        ImageIcon titleImage = new ImageIcon(getClass().getResource("/GraphicResources/misc/base_pagina2.jpg"));
         JTextField textField = new JTextField(10);
         controlPanel.add(button1);
         controlPanel.add(button2);

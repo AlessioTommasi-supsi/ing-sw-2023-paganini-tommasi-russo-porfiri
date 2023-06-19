@@ -1,7 +1,8 @@
 package org.project.distributed;
 
 import org.project.model.*;
-import org.project.view.*;
+import org.project.view.SwingUI.LoginGUI;
+import org.project.view.TextualUI.ViewMyShelfie;
 
 import java.rmi.RemoteException;
 import java.rmi.server.RMIClientSocketFactory;

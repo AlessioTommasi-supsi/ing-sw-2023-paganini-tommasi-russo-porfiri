@@ -1,8 +1,9 @@
-package org.project.view;
+package org.project.view.SwingUI;
 
 import org.project.model.Choice;
 import org.project.model.ChoiceMyShelfie;
 import org.project.model.Player;
+import org.project.view.TextualUI.ViewMyShelfie;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -52,7 +53,7 @@ public class LoginGUI extends JFrame {
         gbc.insets = new Insets(5, 0, 5, 10);
 
         // Aggiungi un JLabel per l'immagine di titolo sopra al primo JTextField
-        ImageIcon titleImage = new ImageIcon(getClass().getResource("/publisherMaterial/Title 2000x618px.png"));
+        ImageIcon titleImage = new ImageIcon(getClass().getResource("/GraphicResources/publisherMaterial/Title 2000x618px.png"));
         titleLabel = new JLabel(titleImage);
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER); // Centra il titolo orizzontalmente
         titleLabel.setVerticalAlignment(SwingConstants.CENTER); // Centra il titolo verticalmente
@@ -168,7 +169,7 @@ public class LoginGUI extends JFrame {
         if (width > 0 && height > 0) {
             BufferedImage img = null;
             try {
-                img = ImageIO.read(getClass().getResource("/misc/sfondo parquet.jpg"));
+                img = ImageIO.read(getClass().getResource("/GraphicResources/misc/sfondo parquet.jpg"));
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -187,7 +188,7 @@ public class LoginGUI extends JFrame {
 
         if (containerWidth > 0 && containerHeight > 0) {
             try {
-                BufferedImage originalImage = ImageIO.read(getClass().getResource("/publisherMaterial/Title 2000x618px.png"));
+                BufferedImage originalImage = ImageIO.read(getClass().getResource("/GraphicResources/publisherMaterial/Title 2000x618px.png"));
                 int originalWidth = originalImage.getWidth();
                 int originalHeight = originalImage.getHeight();
 
@@ -221,7 +222,7 @@ public class LoginGUI extends JFrame {
         int height = titleLabel.getHeight();
 
         if (width > 0 && height > 0) {
-            ImageIcon titleImage = new ImageIcon(getClass().getResource("/publisherMaterial/Title 2000x618px.png"));
+            ImageIcon titleImage = new ImageIcon(getClass().getResource("/GraphicResources/publisherMaterial/Title 2000x618px.png"));
             Image img = titleImage.getImage();
 
             if (img != null) {
