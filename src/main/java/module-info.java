@@ -11,6 +11,7 @@ module org.project {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires java.rmi;
 
     opens org.project. to javafx.fxml;
     exports org.project;
