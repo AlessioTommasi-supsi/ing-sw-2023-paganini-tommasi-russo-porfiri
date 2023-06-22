@@ -196,13 +196,6 @@ public abstract class Game implements Serializable {
         return personalCard;
     }
 
-    // For testing purposes
-    public PersonalCard drawPersonal(int i) {
-        PersonalCard personalCard = this.personalCardDeck.get(i);
-        this.personalCardDeck.remove(i);
-        return personalCard;
-    }
-
     public void addPlayer(Player p)throws Exception {
         if (this.state != GameStatus.IN_WAIT){
             throw new Exception("Players cannot be added unless the game is on hold!");

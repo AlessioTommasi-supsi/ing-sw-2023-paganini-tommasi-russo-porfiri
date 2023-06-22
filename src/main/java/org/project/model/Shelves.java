@@ -25,21 +25,18 @@ public class Shelves implements Serializable {
                     System.out.print("[ ]");
                 }
             }
-            System.out.println("");
+            System.out.print("\n");
         }
     }
 
     public boolean isFull() {
-       if(filledCounter == 30) {
-           return true;
-       }
-       return false;
+        return filledCounter == 30;
     }
 
     public void addTile(TilePositionShelves p) {
         int x = p.getX();
         int y = p.getY();
-        tilePositions[x][y] = p;
+        this.tilePositions[x][y] = new TilePositionShelves(p);
         this.filledCounter ++;
     }
 

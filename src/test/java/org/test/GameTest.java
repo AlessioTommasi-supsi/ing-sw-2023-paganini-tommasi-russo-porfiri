@@ -15,7 +15,6 @@ public class GameTest {
 
     }
 
-
     @Test
     public void testAddPlayer() throws Exception {
 
@@ -49,7 +48,6 @@ public class GameTest {
 
     }
 
-
     @Test(expected = Exception.class)
     public void testAddPlayerAlredyStartedGame() throws Exception {
         Player player = new Player("gian giacomo giovanni");
@@ -58,14 +56,4 @@ public class GameTest {
         game.addPlayer(player);
 
     }
-
-
-
-
-
-
-
-
-
-
 }

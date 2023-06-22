@@ -3,7 +3,6 @@ package org.project.model;
 import org.project.utils.FullLibraryException;
 import org.project.utils.IllegalColumnException;
 import org.project.utils.IllegalSizeOfTilesException;
-import org.project.utils.PositionEmptyException;
 
 import java.io.Serializable;
 import java.util.*;
@@ -19,8 +18,7 @@ public class Player implements Serializable {
     private int score = 0;  //aggiornato a ogni turno per quanto riguarda obiettivi comuni
     private boolean isCommonCard1Completed = false;
     private boolean isCommonCard2Completed = false;
-    private int countCondition = 0;
-    private HashMap<Integer, Integer> givenAdjacencyPoints;
+    private HashMap<Integer, Integer> givenAdjacencyPoints = new HashMap<>();
 
     public Player(Player p) {
         this.id = p.getId();
@@ -96,14 +94,11 @@ public class Player implements Serializable {
     }
 
     public void defineAdjacencyPoints() {
-        givenAdjacencyPoints = new HashMap<>();
         // Inizializzazione dell'HashMap con le associazioni tra counter e punti
-        givenAdjacencyPoints.put(1, 1);
-        givenAdjacencyPoints.put(2, 2);
-        givenAdjacencyPoints.put(3, 4);
-        givenAdjacencyPoints.put(4, 6);
-        givenAdjacencyPoints.put(5, 9);
-        givenAdjacencyPoints.put(6, 12);
+        givenAdjacencyPoints.put(3, 2);
+        givenAdjacencyPoints.put(4, 3);
+        givenAdjacencyPoints.put(5, 5);
+        givenAdjacencyPoints.put(6, 8);
     }
 
     public void putTile(Set<TilePositionShelves> pt) {
@@ -128,7 +123,7 @@ public class Player implements Serializable {
         this.shelves = shelves;
     }
 
-    public int checkPersonalCard(PersonalCard myPersonalCard) throws PositionEmptyException {
+    public int checkPersonalCard(PersonalCard myPersonalCard) {
         int counter = 0;
         try {
             if ((getShelves().getTilePosition(myPersonalCard.CatXPosition, myPersonalCard.CatYPosition).isOccupied()) &&
@@ -155,8 +150,8 @@ public class Player implements Serializable {
                     (getShelves().getTilePosition(myPersonalCard.PlantXPosition, myPersonalCard.PlantYPosition).getTile().getType() == TileType.PLANT)) {
                 counter++;
             }
-        }catch (Exception e){
-            //si puo verificare quando in quella posizione della libreria è vuota, in quel caso non devo solo eseguire il prossimo if!
+        }catch (NullPointerException e){
+            System.err.println("Shelves not initialized.");
         }
 
         return counter;
@@ -192,8 +187,8 @@ public class Player implements Serializable {
     }
     */
 
-    public int calculatePersonalPoints() throws Exception {
-        int counter = 0;
+    public int calculatePersonalPoints() {
+        int counter;
         int pointAdded = 0;
         counter = this.checkPersonalCard(getPC());
         if (counter == 1) {
@@ -214,7 +209,7 @@ public class Player implements Serializable {
     }
 
     public int calculateAdjacentPoints() {
-        int tilesCounter=0;
+        int tilesCounter = 0;
         int totalPoints = 0;
         boolean[][] visited = new boolean[6][5];
 
@@ -228,26 +223,22 @@ public class Player implements Serializable {
         // Scansione delle tessere nello Shelf
         for (int row = 0; row < 6; row++) {
             for (int col = 0; col < 5; col++) {
-                if(visited[row][col] == true) {
+                if(visited[row][col]) {
                     continue;
                 }
+
                 try {
                     tilesCounter = calculateGroupCounter(row, col, visited, 0, true, 0, shelves.getTilePosition(row, col).getTile().getType());
                 }catch (Exception e){//succede quando tessere in shelves vuote
                     continue;
                 }
 
-                if (tilesCounter == 3) {
-                    return 2;
-                } else if (tilesCounter == 4) {
-                    return 3;
-                } else if (tilesCounter == 5) {
-                    return 5;
-                } else if (tilesCounter >= 6) {
-                    return 8;
-                } else {
-                    return 0;
+                // Serve per la HashMap
+                if(tilesCounter > 6) {
+                    tilesCounter = 6;
                 }
+
+                return givenAdjacencyPoints.get(tilesCounter);
             }
         }
 
@@ -280,7 +271,7 @@ public class Player implements Serializable {
             totCounter += calculateGroupCounter(row, col + 1, visited, counter, false, totCounter, prevType);
         }
 
-        if (starter == true) {
+        if (starter) {
             return totCounter;
         }
         return  0;
@@ -304,7 +295,7 @@ public class Player implements Serializable {
         *   con le tiles immesse la libreria  diventa piena     FullLibraryException
         * */
 
-        ArrayList<TileObj> orderedTilesToRemove = new ArrayList<TileObj>();
+        ArrayList<TileObj> orderedTilesToRemove = new ArrayList<>();
         //ordinamento per immissione in libreria
         for (int i = 0; i < tilesToPut.size(); i++) {
             orderedTilesToRemove.add(tilesToPut.get(ordine[i] - 1));
@@ -332,8 +323,8 @@ public class Player implements Serializable {
         if(tilesToPut.size() > shelves.getMaxRows() - countTilesInColumn)
             throw new IllegalSizeOfTilesException(tilesToPut.size());
 
-        for(int j = 0; j < tilesToPut.size();j++) {
-            shelves.getTilePosition2(col,countTilesInColumn).setTile(tilesToPut.get(j));
+        for (TileObj tileObj : tilesToPut) {
+            shelves.getTilePosition2(col, countTilesInColumn).setTile(tileObj);
             countTilesInColumn++;
         }
         if (shelves.getFilledCounter() == 30) throw new FullLibraryException();
