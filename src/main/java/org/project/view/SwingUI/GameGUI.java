@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 import org.project.view.SwingUI.custom.CustomPanel;
-import org.project.view.custom.*;
+import org.project.view.SwingUI.custom.*;
 
 public class GameGUI extends JFrame {
     private CustomPanel board;
