@@ -13,6 +13,14 @@ import java.util.*;
  */
 public abstract class Game implements Serializable {
 
+    public ArrayList<PersonalCard> getPersonalCardDeck() {
+        return personalCardDeck;
+    }
+
+    public boolean isFullLibrary() {
+        return fullLibrary;
+    }
+
     private Player currentPlayer;
     private int currentGameId;
     private Board board;
@@ -21,8 +29,6 @@ public abstract class Game implements Serializable {
     private Player dealer;
     private GameStatus state = GameStatus.IN_WAIT;
     private ArrayList<PersonalCard> personalCardDeck = new ArrayList<>();
-    private int pointInitialization1 = 8;
-    private int pointInitialization2 = 8;
     private int ranking[]=null;
     private ArrayList<Ranking> rank;
     private int[] commonCardScores;
@@ -78,6 +84,7 @@ public abstract class Game implements Serializable {
         this.commonCardScores = commonCardScores;
     }
 
+
     public CommonCard getCommon1() {
         return common1;
     }
@@ -131,12 +138,12 @@ public abstract class Game implements Serializable {
         return board;
     }
 
-    public int getPointInitialization1() {
-        return pointInitialization1;
+    public int getPointCommonCard1() {
+        return this.common1.getScore();
     }
 
-    public int getPointInitialization2() {
-        return pointInitialization2;
+    public int getPointCommonCard2() {
+        return this.common2.getScore();
     }
 
     public Player getPlayer(int idPlayer) {
@@ -295,7 +302,7 @@ public abstract class Game implements Serializable {
         while(index2==index1) {
             index2 = rand.nextInt(12);
         }
-        common2 = commonCards.get(index2);
+        this.common2 = commonCards.get(index2);
     }
 
     @Override
@@ -338,25 +345,20 @@ public abstract class Game implements Serializable {
      *
      * */
     public void updatePointsCommon() {
-        int pointsToSub = 0;  //punti da sottrarre a ogni completamento
-        if ((this.playerNumber == 4) || (this.playerNumber == 3)) {
-            pointsToSub = 2;
-        } else if (this.playerNumber == 2) {
-            pointsToSub = 4;
-        }
+        int pointsToSub = 2;  //punti da sottrarre a ogni completamento
         //se il player non ha ancora completato la commonCard
         if (!currentPlayer.isCommonCard1Completed()) {
             //se il player completa l'obiettivo aggiungi i punti altrimenti no
             if (this.common1.executeAlgorithm(currentPlayer)) {
-                currentPlayer.setScore(currentPlayer.getScore() + this.pointInitialization1);   //aggiorna i punti
-                this.pointInitialization1 = this.pointInitialization1 - pointsToSub; // sottrai i punti
+                currentPlayer.setScore(currentPlayer.getScore() + this.common1.getScore());   //aggiorna i punti
+                this.common1.setScore(this.common1.getScore() - pointsToSub); // sottrai i punti
                 currentPlayer.setCommonCard1Completed(true);
             }
         }
         if (!currentPlayer.isCommonCard2Completed()) {
             if (common2.executeAlgorithm(currentPlayer)) {
-                currentPlayer.setScore(currentPlayer.getScore() + this.pointInitialization2);
-                this.pointInitialization2 = this.pointInitialization2 - pointsToSub;
+                currentPlayer.setScore(currentPlayer.getScore() + this.common2.getScore());
+                this.common2.setScore(this.common2.getScore() - pointsToSub);
                 currentPlayer.setCommonCard2Completed(true);
             }
         }

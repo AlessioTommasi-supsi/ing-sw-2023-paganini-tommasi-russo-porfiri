@@ -91,7 +91,7 @@ public class PlayerTest {
         Assertions.assertEquals(0, player.getScore());
     }
 
-    /*
+
     @Test
     public void testCheckPersonalCard() {
         int counter = player.checkPersonalCard(personalCard);
@@ -102,22 +102,20 @@ public class PlayerTest {
     @Test
     public void testCheckCommonCard() {
         game.updatePointsCommon();
-        player.setCommonCard1Completed(true);
+        Assertions.assertEquals(4, game.getPointCommonCard1());
     }
 
     @Test
     public void testAddEndOfGamePoint() {
         player.addEndOfGamePoint();
-        assertEquals(1, player.getScore());
+        assertEquals(9, player.getScore());
     }
 
     @Test
     public void testCalculatePersonalPoints() throws Exception {
         int points = player.calculatePersonalPoints();
         assertEquals(1, points);
-    } */
-
-
+    }
 
     // TODO aggiustare il punteggio totale
     @Test

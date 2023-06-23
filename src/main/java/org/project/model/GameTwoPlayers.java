@@ -12,7 +12,6 @@ public class GameTwoPlayers extends Game implements Serializable {
         return;
     }
 
-
     @Override
     public void defineCommonCardScores(){
         int[] tempScores = new int[3];
@@ -22,7 +21,28 @@ public class GameTwoPlayers extends Game implements Serializable {
         setCommonCardScores(tempScores);
     }
 
-
-
+    @Override
+    public void updatePointsCommon() {
+        int pointsToSub = 4;  //punti da sottrarre a ogni completamento
+        CommonCard cc1 = this.getCommon1();
+        CommonCard cc2 = this.getCommon2();
+        Player currentPlayer = this.getCurrentPlayer();
+        //se il player non ha ancora completato la commonCard
+        if (!(currentPlayer.isCommonCard1Completed())) {
+            //se il player completa l'obiettivo aggiungi i punti altrimenti no
+            if (cc1.executeAlgorithm(currentPlayer)) {
+                currentPlayer.setScore(currentPlayer.getScore() + cc1.getScore());   //aggiorna i punti
+                cc1.setScore(cc1.getScore() - pointsToSub); // sottrai i punti
+                currentPlayer.setCommonCard1Completed(true);
+            }
+        }
+        if (!currentPlayer.isCommonCard2Completed()) {
+            if (cc2.executeAlgorithm(currentPlayer)) {
+                currentPlayer.setScore(currentPlayer.getScore() + cc2.getScore());
+                cc2.setScore(cc2.getScore() - pointsToSub);
+                currentPlayer.setCommonCard2Completed(true);
+            }
+        }
+    }
 
 }
