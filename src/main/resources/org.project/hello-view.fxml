@@ -11,14 +11,14 @@
    <children>
       <ImageView fitHeight="403.0" fitWidth="600.0" pickOnBounds="true">
          <image>
-            <Image url="@../Documents/GitHub/ing-sw-2023-paganini-tommasi-russo-porfiri/src/main/resources/GraphicResources/misc/sfondo%20parquet.jpg" />
+            <Image url="@../GraphicResources/misc/sfondo parquet.jpg" />
          </image>
       </ImageView>
       <Pane prefHeight="316.0" prefWidth="391.0">
          <children>
             <ImageView fitHeight="315.0" fitWidth="391.0" pickOnBounds="true">
                <image>
-                  <Image url="@../Documents/GitHub/ing-sw-2023-paganini-tommasi-russo-porfiri/src/main/resources/GraphicResources/boards/livingroom.png" />
+                  <Image url="@../GraphicResources/boards/livingroom.png" />
                </image>
             </ImageView>
          </children>
@@ -33,12 +33,12 @@
                            <children>
                               <ImageView fitHeight="76.0" fitWidth="98.0" pickOnBounds="true">
                                  <image>
-                                    <Image url="@../Documents/GitHub/ing-sw-2023-paganini-tommasi-russo-porfiri/src/main/resources/GraphicResources/misc/sfondo%20parquet.jpg" />
+                                    <Image url="@../GraphicResources/misc/sfondo parquet.jpg" />
                                  </image>
                               </ImageView>
                               <ImageView fitHeight="76.0" fitWidth="98.0" pickOnBounds="true">
                                  <image>
-                                    <Image url="@../Documents/GitHub/ing-sw-2023-paganini-tommasi-russo-porfiri/src/main/resources/GraphicResources/commonGoalCards/1.jpg" />
+                                    <Image url="@../GraphicResources/commonGoalCards/1.jpg" />
                                  </image>
                               </ImageView>
                            </children>
@@ -47,12 +47,12 @@
                            <children>
                               <ImageView fitHeight="76.0" fitWidth="98.0" pickOnBounds="true">
                                  <image>
-                                    <Image url="@../Documents/GitHub/ing-sw-2023-paganini-tommasi-russo-porfiri/src/main/resources/GraphicResources/misc/sfondo%20parquet.jpg" />
+                                    <Image url="@../GraphicResources/misc/sfondo parquet.jpg" />
                                  </image>
                               </ImageView>
                               <ImageView fitHeight="76.0" fitWidth="98.0" pickOnBounds="true">
                                  <image>
-                                    <Image url="@../Documents/GitHub/ing-sw-2023-paganini-tommasi-russo-porfiri/src/main/resources/GraphicResources/commonGoalCards/2.jpg" />
+                                    <Image url="@../GraphicResources/commonGoalCards/2.jpg" />
                                  </image>
                               </ImageView>
                            </children>
@@ -65,12 +65,12 @@
                <children>
                   <ImageView fitHeight="160.0" fitWidth="102.0" layoutX="-1.0" layoutY="2.0" pickOnBounds="true">
                      <image>
-                        <Image url="@../Documents/GitHub/ing-sw-2023-paganini-tommasi-russo-porfiri/src/main/resources/GraphicResources/misc/sfondo%20parquet.jpg" />
+                        <Image url="@../GraphicResources/misc/sfondo parquet.jpg" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="160.0" fitWidth="102.0" pickOnBounds="true">
                      <image>
-                        <Image url="@../Documents/GitHub/ing-sw-2023-paganini-tommasi-russo-porfiri/src/main/resources/GraphicResources/personalGoalCards/Personal_Goals6.png" />
+                        <Image url="@../GraphicResources/personalGoalCards/Personal_Goals6.png" />
                      </image>
                   </ImageView>
                </children>
@@ -87,7 +87,7 @@
                            <children>
                               <ImageView fitHeight="106.0" fitWidth="102.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Documents/GitHub/ing-sw-2023-paganini-tommasi-russo-porfiri/src/main/resources/GraphicResources/boards/bookshelf_orth.png" />
+                                    <Image url="@../GraphicResources/boards/bookshelf_orth.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -96,7 +96,7 @@
                            <children>
                               <ImageView fitHeight="113.0" fitWidth="102.0" layoutX="-1.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Documents/GitHub/ing-sw-2023-paganini-tommasi-russo-porfiri/src/main/resources/GraphicResources/boards/bookshelf.png" />
+                                    <Image url="@../GraphicResources/boards/bookshelf.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -113,7 +113,7 @@
                            <children>
                               <ImageView fitHeight="113.0" fitWidth="102.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Documents/GitHub/ing-sw-2023-paganini-tommasi-russo-porfiri/src/main/resources/GraphicResources/boards/bookshelf.png" />
+                                    <Image url="@../GraphicResources/boards/bookshelf.png" />
                                  </image>
                               </ImageView>
                            </children></AnchorPane>
@@ -121,7 +121,7 @@
                            <children>
                               <ImageView fitHeight="113.0" fitWidth="102.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Documents/GitHub/ing-sw-2023-paganini-tommasi-russo-porfiri/src/main/resources/GraphicResources/boards/bookshelf.png" />
+                                    <Image url="@../GraphicResources/boards/bookshelf.png" />
                                  </image>
                               </ImageView>
                            </children></AnchorPane>
