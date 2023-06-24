@@ -8,7 +8,10 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
 <Pane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
@@ -27,6 +30,32 @@
                         <Image url="@../GraphicResources/boards/livingroom.png" />
                      </image>
                   </ImageView>
+                  <GridPane layoutX="15.0" layoutY="12.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="257.0" prefWidth="358.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints fillHeight="false" maxHeight="40.0666618347168" minHeight="-Infinity" prefHeight="27.600004577636717" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="75.06666450500488" minHeight="-Infinity" prefHeight="28.799998474121097" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="163.73334426879882" minHeight="-Infinity" prefHeight="27.59999694824218" vgrow="SOMETIMES" />
+                        <RowConstraints fillHeight="false" maxHeight="166.6666717529297" minHeight="-Infinity" prefHeight="28.799996948242196" vgrow="SOMETIMES" />
+                        <RowConstraints fillHeight="false" maxHeight="143.99999237060547" minHeight="-Infinity" prefHeight="28.0000030517578" vgrow="SOMETIMES" />
+                        <RowConstraints fillHeight="false" maxHeight="136.46665954589844" minHeight="-Infinity" prefHeight="27.99999694824217" vgrow="SOMETIMES" />
+                        <RowConstraints fillHeight="false" maxHeight="136.46665954589844" minHeight="0.0" prefHeight="28.399993896484375" vgrow="SOMETIMES" />
+                        <RowConstraints fillHeight="false" maxHeight="136.46665954589844" minHeight="10.0" prefHeight="27.600006103515625" vgrow="SOMETIMES" />
+                        <RowConstraints fillHeight="false" maxHeight="103.19999999999999" minHeight="-Infinity" prefHeight="30.00000610351563" vgrow="SOMETIMES" />
+                        <RowConstraints fillHeight="false" maxHeight="0.0" minHeight="-Infinity" prefHeight="0.0" vgrow="SOMETIMES" />
+                        <RowConstraints fillHeight="false" maxHeight="0.0" minHeight="-Infinity" prefHeight="0.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                  </GridPane>
                </children>
             </Pane>
             <SplitPane dividerPositions="0.5" layoutX="390.0" prefHeight="160.0" prefWidth="210.0">
@@ -91,6 +120,11 @@
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                  <children>
+                                    <ImageView fitHeight="116.0" fitWidth="102.0" pickOnBounds="true">
+                                       <image>
+                                          <Image url="@../GraphicResources/misc/sfondo parquet.jpg" />
+                                       </image>
+                                    </ImageView>
                                     <ImageView fitHeight="106.0" fitWidth="102.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../GraphicResources/boards/bookshelf_orth.png" />
@@ -98,8 +132,13 @@
                                     </ImageView>
                                  </children>
                               </AnchorPane>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="117.0" prefWidth="126.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="117.0" prefWidth="126.0" style="-fx-background-color: transparent;">
                                  <children>
+                                    <ImageView fitHeight="116.0" fitWidth="102.0" pickOnBounds="true">
+                                       <image>
+                                          <Image url="@../GraphicResources/misc/sfondo parquet.jpg" />
+                                       </image>
+                                    </ImageView>
                                     <ImageView fitHeight="113.0" fitWidth="102.0" layoutX="-1.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../GraphicResources/boards/bookshelf.png" />
@@ -117,6 +156,11 @@
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="116.0" prefWidth="73.0">
                                  <children>
+                                    <ImageView fitHeight="116.0" fitWidth="102.0" pickOnBounds="true">
+                                       <image>
+                                          <Image url="@../GraphicResources/misc/sfondo parquet.jpg" />
+                                       </image>
+                                    </ImageView>
                                     <ImageView fitHeight="113.0" fitWidth="102.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../GraphicResources/boards/bookshelf.png" />
@@ -126,6 +170,11 @@
                               </AnchorPane>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                  <children>
+                                    <ImageView fitHeight="116.0" fitWidth="102.0" pickOnBounds="true">
+                                       <image>
+                                          <Image url="@../GraphicResources/misc/sfondo parquet.jpg" />
+                                       </image>
+                                    </ImageView>
                                     <ImageView fitHeight="113.0" fitWidth="102.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../GraphicResources/boards/bookshelf.png" />
@@ -139,29 +188,34 @@
                   </AnchorPane>
               </items>
             </SplitPane>
-            <ScrollPane layoutY="281.0" prefHeight="123.0" prefWidth="391.0" vmax="100.0" vvalue="100.0">
+            <ScrollPane hbarPolicy="NEVER" layoutY="281.0" prefHeight="123.0" prefWidth="391.0" vmax="100.0" vvalue="98.0">
                <content>
                   <AnchorPane prefHeight="230.0" prefWidth="375.0">
                      <children>
-                        <Text layoutX="-2.0" layoutY="18.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the number of tiles to draw:" />
-                        <Spinner layoutX="7.0" layoutY="24.0" prefHeight="26.0" prefWidth="107.0" scaleX="0.8" scaleY="0.7" scaleZ="0.8" />
-                        <Text layoutX="-18.0" layoutY="64.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter coordinates x (row) , y (column) of the tiles to remove:" />
-                        <TextField layoutX="11.0" layoutY="73.0" prefHeight="25.0" prefWidth="25.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
-                        <TextField layoutX="38.0" layoutY="73.0" prefHeight="25.0" prefWidth="25.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
-                        <TextField layoutX="145.0" layoutY="73.0" prefHeight="25.0" prefWidth="25.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
-                        <TextField layoutX="219.0" layoutY="73.0" prefHeight="25.0" prefWidth="25.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
-                        <TextField layoutX="249.0" layoutY="73.0" prefHeight="25.0" prefWidth="25.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
-                        <Text layoutX="-33.0" layoutY="113.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the order in which you want to insert the tiles in your library (bottom to top):" wrappingWidth="466.7142028808594" />
-                        <TextField layoutX="11.0" layoutY="121.0" prefHeight="25.0" prefWidth="25.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
-                        <TextField layoutX="38.0" layoutY="121.0" prefHeight="25.0" prefWidth="25.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
-                        <TextField layoutX="64.0" layoutY="121.0" prefHeight="25.0" prefWidth="25.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
-                        <Text layoutX="-34.0" layoutY="159.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the column number in your library where you want to insert the tile:" wrappingWidth="476.7142639160156" />
-                        <TextField layoutX="11.0" layoutY="164.0" prefHeight="25.0" prefWidth="25.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
-                        <Button layoutX="307.0" layoutY="187.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="54.0" text="Send" />
-                        <TextField layoutX="112.0" layoutY="73.0" prefHeight="25.0" prefWidth="25.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
-                        <ImageView fitHeight="33.0" fitWidth="113.0" layoutX="262.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="230.0" fitWidth="375.0" pickOnBounds="true">
                            <image>
-                              <Image url="@../GraphicResources/publisherMaterial/Title%202000x618px.png" />
+                              <Image url="@../GraphicResources/misc/base_pagina2.jpg" />
+                           </image>
+                        </ImageView>
+                        <Text fill="WHITE" layoutX="-2.0" layoutY="18.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the number of tiles to draw:" />
+                        <Spinner editable="true" layoutX="7.0" layoutY="24.0" prefHeight="26.0" prefWidth="107.0" scaleX="0.8" scaleY="0.7" scaleZ="0.8" />
+                        <Text fill="WHITE" layoutX="-18.0" layoutY="64.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter coordinates x (row) , y (column) of the tiles to remove:" />
+                        <TextField layoutX="11.0" layoutY="73.0" prefHeight="25.0" prefWidth="25.0" promptText="x" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
+                        <TextField layoutX="38.0" layoutY="73.0" prefHeight="25.0" prefWidth="25.0" promptText="y" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
+                        <TextField layoutX="145.0" layoutY="73.0" prefHeight="25.0" prefWidth="25.0" promptText="y" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
+                        <TextField layoutX="219.0" layoutY="73.0" prefHeight="25.0" prefWidth="25.0" promptText="x" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
+                        <TextField layoutX="249.0" layoutY="73.0" prefHeight="25.0" prefWidth="25.0" promptText="y" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
+                        <Text fill="WHITE" layoutX="-33.0" layoutY="113.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the insertion order of the tiles in your library, from bottom to top:" wrappingWidth="466.7142028808594" />
+                        <TextField layoutX="11.0" layoutY="121.0" prefHeight="25.0" prefWidth="25.0" promptText="1" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
+                        <TextField layoutX="38.0" layoutY="121.0" prefHeight="25.0" prefWidth="25.0" promptText="3" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
+                        <TextField layoutX="64.0" layoutY="121.0" prefHeight="25.0" prefWidth="25.0" promptText="2" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
+                        <Text fill="WHITE" layoutX="-34.0" layoutY="159.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the column number in your library where you want to insert the tile/s:" wrappingWidth="476.7142639160156" />
+                        <TextField layoutX="11.0" layoutY="164.0" prefHeight="26.0" prefWidth="37.0" promptText="0..4" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
+                        <Button layoutX="307.0" layoutY="187.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="54.0" text="Send" />
+                        <TextField layoutX="112.0" layoutY="73.0" prefHeight="25.0" prefWidth="25.0" promptText="x" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
+                        <ImageView fitHeight="47.0" fitWidth="149.0" layoutX="222.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../GraphicResources/publisherMaterial/Title 2000x618px.png" />
                            </image></ImageView>
                      </children>
                   </AnchorPane>
