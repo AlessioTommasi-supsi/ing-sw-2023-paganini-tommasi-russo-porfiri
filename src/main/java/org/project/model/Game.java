@@ -344,25 +344,7 @@ public abstract class Game implements Serializable {
      *   -totale punteggio è in Player.score -> ranking aggiornato automaticamente ingame con la funzione Game::end()
      *
      * */
-    public void updatePointsCommon() {
-        int pointsToSub = 2;  //punti da sottrarre a ogni completamento
-        //se il player non ha ancora completato la commonCard
-        if (!currentPlayer.isCommonCard1Completed()) {
-            //se il player completa l'obiettivo aggiungi i punti altrimenti no
-            if (this.common1.executeAlgorithm(currentPlayer)) {
-                currentPlayer.setScore(currentPlayer.getScore() + this.common1.getScore());   //aggiorna i punti
-                this.common1.setScore(this.common1.getScore() - pointsToSub); // sottrai i punti
-                currentPlayer.setCommonCard1Completed(true);
-            }
-        }
-        if (!currentPlayer.isCommonCard2Completed()) {
-            if (common2.executeAlgorithm(currentPlayer)) {
-                currentPlayer.setScore(currentPlayer.getScore() + this.common2.getScore());
-                this.common2.setScore(this.common2.getScore() - pointsToSub);
-                currentPlayer.setCommonCard2Completed(true);
-            }
-        }
-    }
+    public abstract void updatePointsCommon();
 
     public void nextCurrentPlayer() {
         this.currentPlayer = this.players.get((this.players.indexOf(this.currentPlayer) + 1) % this.players.size());

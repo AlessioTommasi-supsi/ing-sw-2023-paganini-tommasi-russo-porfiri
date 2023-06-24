@@ -220,9 +220,9 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                         System.out.println("Common Cards are:  \n");
                         try {
                             System.out.println("Common Card 1: " + this.currentGame.getCommon1().getDescription());
-                            System.out.println("  point: " + this.currentGame.getPointInitialization1());
+                            System.out.println("  point: " + this.currentGame.getPointCommonCard1());
                             System.out.println("Common Card 2: " + this.currentGame.getCommon2().getDescription());
-                            System.out.println("  point: " + this.currentGame.getPointInitialization2());
+                            System.out.println("  point: " + this.currentGame.getPointCommonCard2());
                         }catch (Exception e){
                             System.err.println("Error occurred displaying COMMON CARD! ");
                             e.printStackTrace();

@@ -16,7 +16,7 @@ class BoardTest {
     private final PrintStream originalOut = System.out;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         board = new Board();
     }
 

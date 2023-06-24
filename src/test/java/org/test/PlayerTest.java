@@ -2,6 +2,8 @@ package org.test;
 
 import com.google.gson.Gson;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.project.model.*;
 import org.junit.After;
 import org.junit.Before;
@@ -55,16 +57,18 @@ public class PlayerTest {
         personalCard = new PersonalCard();
 
         player.setShelves(shelves);
+        player.getShelves().addTile(new TilePositionShelves(0, 0, new TileObj(TileType.BOOK, TileVariant.VARIANT_TWO)));
+        player.getShelves().addTile(new TilePositionShelves(1, 0, new TileObj(TileType.BOOK, TileVariant.VARIANT_TWO)));
+        player.getShelves().addTile(new TilePositionShelves(0, 1, new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE)));
         player.getShelves().addTile(new TilePositionShelves(1, 1, new TileObj(TileType.BOOK, TileVariant.VARIANT_TWO)));
-        player.getShelves().addTile(new TilePositionShelves(1, 2, new TileObj(TileType.BOOK, TileVariant.VARIANT_TWO)));
-        player.getShelves().addTile(new TilePositionShelves(2, 2, new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(2, 2, new TileObj(TileType.BOOK, TileVariant.VARIANT_TWO)));
 
-        player.getShelves().addTile(new TilePositionShelves(3, 1, new TileObj(TileType.BOOK, TileVariant.VARIANT_TWO)));
-        player.getShelves().addTile(new TilePositionShelves(3, 2, new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(4, 1, new TileObj(TileType.BOOK, TileVariant.VARIANT_TWO)));
+        player.getShelves().addTile(new TilePositionShelves(0, 2, new TileObj(TileType.BOOK, TileVariant.VARIANT_TWO)));
+        player.getShelves().addTile(new TilePositionShelves(1, 2, new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE)));
+        player.getShelves().addTile(new TilePositionShelves(0, 3, new TileObj(TileType.BOOK, TileVariant.VARIANT_TWO)));
+        player.getShelves().addTile(new TilePositionShelves(1, 3, new TileObj(TileType.BOOK, TileVariant.VARIANT_THREE)));
         player.setShelves(shelves);
     }
+
 
     @After
     public void tearDown() {
@@ -74,9 +78,9 @@ public class PlayerTest {
     @Test
     public void testPutTile() {
         tilePositions = new HashSet<>();
-        tilePositions.add(new TilePositionShelves(4, 2, new TileObj(TileType.BOOK, TileVariant.VARIANT_THREE)));
+        tilePositions.add(new TilePositionShelves(0, 4, new TileObj(TileType.BOOK, TileVariant.VARIANT_THREE)));
         player.putTile(tilePositions);
-        Assertions.assertEquals(8, player.getShelves().getFilledCounter());
+        Assertions.assertEquals(9, player.getShelves().getFilledCounter());
     }
 
     @Test

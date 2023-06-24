@@ -31,18 +31,23 @@ public class GameTwoPlayers extends Game implements Serializable {
         if (!(currentPlayer.isCommonCard1Completed())) {
             //se il player completa l'obiettivo aggiungi i punti altrimenti no
             if (cc1.executeAlgorithm(currentPlayer)) {
-                currentPlayer.setScore(currentPlayer.getScore() + cc1.getScore());   //aggiorna i punti
-                cc1.setScore(cc1.getScore() - pointsToSub); // sottrai i punti
-                currentPlayer.setCommonCard1Completed(true);
+                if (cc1.getScore() >= 4) {
+                    currentPlayer.setScore(currentPlayer.getScore() + cc1.getScore());   //aggiorna i punti
+                    cc1.setScore(cc1.getScore() - pointsToSub); // sottrai i punti
+                    currentPlayer.setCommonCard1Completed(true);
+                }
             }
         }
         if (!currentPlayer.isCommonCard2Completed()) {
             if (cc2.executeAlgorithm(currentPlayer)) {
-                currentPlayer.setScore(currentPlayer.getScore() + cc2.getScore());
-                cc2.setScore(cc2.getScore() - pointsToSub);
-                currentPlayer.setCommonCard2Completed(true);
+                if (cc2.getScore() >= 4) {
+                    currentPlayer.setScore(currentPlayer.getScore() + cc2.getScore());
+                    cc2.setScore(cc2.getScore() - pointsToSub);
+                    currentPlayer.setCommonCard2Completed(true);
+                }
             }
         }
     }
+
 
 }

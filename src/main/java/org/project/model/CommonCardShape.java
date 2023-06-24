@@ -32,6 +32,10 @@ public class CommonCardShape extends CommonCard implements Serializable {
                 }
                 for(int i=0;i<5;i++) {
                     for (int j=0;j<4;j++) {
+                        System.out.println(player.getShelves().getTilePosition(i, j).getX());
+                        System.out.println(player.getShelves().getTilePosition(i, j).getY());
+                        System.out.println(player.getShelves().getTilePosition(i, j).isOccupied());
+                        System.out.println("break");
                         if((player.getShelves().getTilePosition(i,j).isOccupied()) && (!arrayBool[i][j])) {
                             TileType type = player.getShelves().getTilePosition(i, j).getTile().getType();
                             if(checkSquare(player.getShelves(), i, j, type)) {
