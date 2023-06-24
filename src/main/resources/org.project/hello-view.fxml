@@ -209,7 +209,7 @@
                         <TextField layoutX="11.0" layoutY="121.0" prefHeight="25.0" prefWidth="25.0" promptText="1" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
                         <TextField layoutX="38.0" layoutY="121.0" prefHeight="25.0" prefWidth="25.0" promptText="3" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
                         <TextField layoutX="64.0" layoutY="121.0" prefHeight="25.0" prefWidth="25.0" promptText="2" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
-                        <Text fill="WHITE" layoutX="-34.0" layoutY="159.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the column number in your library where you want to insert the tile/s:" wrappingWidth="476.7142639160156" />
+                        <Text fill="WHITE" layoutX="-34.0" layoutY="159.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the column number in your library where you want to insert the tile(s):" wrappingWidth="476.7142639160156" />
                         <TextField layoutX="11.0" layoutY="164.0" prefHeight="26.0" prefWidth="37.0" promptText="0..4" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
                         <Button layoutX="307.0" layoutY="187.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="54.0" text="Send" />
                         <TextField layoutX="112.0" layoutY="73.0" prefHeight="25.0" prefWidth="25.0" promptText="x" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
@@ -222,7 +222,7 @@
                </content></ScrollPane>
          </children>
       </Pane>
-      <Pane prefHeight="403.0" prefWidth="600.0" visible="false">
+      <Pane id="loginPane" prefHeight="403.0" prefWidth="600.0">
          <children>
             <ImageView fitHeight="403.0" fitWidth="600.0" pickOnBounds="true">
                <image>
@@ -234,9 +234,9 @@
                   <Image url="@../GraphicResources/publisherMaterial/Title 2000x618px.png" />
                </image>
             </ImageView>
-            <TextField alignment="CENTER" layoutX="226.0" layoutY="188.0" promptText="Username" />
-            <TextField alignment="CENTER" layoutX="225.0" layoutY="240.0" promptText="Game Player Number" />
-            <Button alignment="CENTER" layoutX="265.0" layoutY="309.0" mnemonicParsing="false" text="Join Game" />
+            <TextField id="usernameField" alignment="CENTER" layoutX="226.0" layoutY="188.0" promptText="Username" />
+            <TextField id="gamePlayerNumber" alignment="CENTER" layoutX="225.0" layoutY="240.0" promptText="Game Player Number" />
+            <Button id="joinGameButton" alignment="CENTER" layoutX="265.0" layoutY="309.0" mnemonicParsing="false" text="Join Game" />
          </children>
       </Pane>
    </children>

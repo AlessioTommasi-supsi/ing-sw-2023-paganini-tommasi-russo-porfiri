@@ -1,59 +1,96 @@
 package org.project.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-//import javafx.scene.layout.SplitPane;
+import org.project.model.*;
+import org.project.distributed.*;
 
 public class ControllerFX {
-    @FXML
-    private Label welcomeText;
+    private Turn model;
+    private Client client;
     @FXML
     private Pane mainPane;
+    // Pagina iniziale
     @FXML
-    private ImageView backgroundImageView;
+    private Pane loginPane;
     @FXML
-    private ImageView boardImageView;
+    private TextField usernameField;
     @FXML
-    private GridPane gridPane;
-    //@FXML
-    //private SplitPane splitPane1;
+    private TextField gamePlayerNumber;
     @FXML
-    private AnchorPane anchorPane1;
+    private Button joinGameButton;
+    // Pagina di gioco
     @FXML
-    private ImageView commonGoalCard1ImageView;
+    private Pane gamePane;
     @FXML
-    private ImageView commonGoalCard2ImageView;
+    private Pane boardPane;
     @FXML
-    private SplitPane splitPane2;
+    private GridPane boardGrid;
     @FXML
-    private AnchorPane anchorPane2;
+    private SplitPane allCardsSplitPane;
     @FXML
-    private ImageView personalGoalCardImageView;
+    private AnchorPane commonCardsAnchorPane;
     @FXML
-    private SplitPane splitPane3;
+    private SplitPane commonCardsSplitPane;
     @FXML
-    private AnchorPane anchorPane3;
+    private AnchorPane commonCard1AnchorPane;
     @FXML
-    private SplitPane splitPane4;
+    private AnchorPane commonCard2AnchorPane;
     @FXML
-    private AnchorPane anchorPane4;
+    private AnchorPane personalCardAnchorPane;
+    @FXML
+    private SplitPane shelvesSplitPane;
+    @FXML
+    private AnchorPane shelves1AnchorPane;
+    @FXML
+    private SplitPane shelves1SplitPane;
+    @FXML
+    private AnchorPane shelves2AnchorPane;
+    @FXML
+    private SplitPane shelves2SplitPane;
+    @FXML
+    private AnchorPane myShelfAnchorPane;
+    @FXML
+    private AnchorPane shelf2AnchorPane;
+    @FXML
+    private AnchorPane shelf3AnchorPane;
+    @FXML
+    private AnchorPane shelf4AnchorPane;
+    @FXML
+    private ScrollPane playerChoiceScrollPAne;
 
-    public ControllerFX() {
+    public ControllerFX(Turn model, Client client) {
+        this.model = model;
+        this.client = client;
     }
 
-    public void initialize() {
-        backgroundImageView.setImage(new Image("@../GraphicResources/misc/sfondo parquet.jpg"));
+    public void Initialize(Client o) {
+
+        /*backgroundImageView.setImage(new Image("@../GraphicResources/misc/sfondo parquet.jpg"));
         boardImageView.setImage(new Image("@../GraphicResources/boards/livingroom.png"));
+
 
         commonGoalCard1ImageView.setImage(new Image("@../GraphicResources/commonGoalCards/1.jpg"));
         commonGoalCard2ImageView.setImage(new Image("@../GraphicResources/commonGoalCards/2.jpg"));
         personalGoalCardImageView.setImage(new Image("@../GraphicResources/personalGoalCards/Personal_Goals6.png"));
-        setupGridPane();
+        setupGridPane();*/
+    }
+
+    @FXML
+    private void handleButtonClick() {
+        int numberOfPlayers = Integer.parseInt(usernameField.getText());
+        String nickname = usernameField.getText();
+
+        // Verifica se sono stati inseriti il numero di giocatori e il nickname
+        if (numberOfPlayers > 0 && numberOfPlayers <= 4 && !nickname.isEmpty()) {
+            // Rimuovi il pane che sovrasta l'altro
+            mainPane.getChildren().remove(loginPane);
+        }
     }
 
     private void setupGridPane() {
@@ -64,6 +101,5 @@ public class ControllerFX {
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
-
 
 }

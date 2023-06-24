@@ -11,8 +11,6 @@ public class Turn extends Observable<Turn.Event> implements Serializable {
     public String error = "";
     private MyShelfie myShelfie = null;
 
-
-
     public enum Event {
         PLAYER_CHOICE, CPU_CHOICE, OUTCOME
     }
@@ -42,9 +40,6 @@ public class Turn extends Observable<Turn.Event> implements Serializable {
         this.playerChoice = playerChoice;
     }
 
-
-
-
     public void clear() {
         //outcome = null;
         this.error = "";
@@ -55,7 +50,6 @@ public class Turn extends Observable<Turn.Event> implements Serializable {
         setChanged();
         notifyObservers(arg);
     }
-    
 
     @Override
     public String toString() {
