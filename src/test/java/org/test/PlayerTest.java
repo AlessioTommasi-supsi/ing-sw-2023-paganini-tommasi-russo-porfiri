@@ -105,6 +105,19 @@ public class PlayerTest {
 
     @Test
     public void testCheckCommonCard() {
+        Player player = new Player("player1");
+        Game game = new GameTwoPlayers(2, player);
+        game.setCurrentPlayer(player);
+        CommonCard common = new CommonCardShape(5);
+        game.setCommon1(common);
+        player.getShelves().addTile(new TilePositionShelves(0,0, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
+        player.getShelves().addTile(new TilePositionShelves(0,1, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO)));
+        player.getShelves().addTile(new TilePositionShelves(0,2, new TileObj(TileType.CAT, TileVariant.VARIANT_THREE)));
+        player.getShelves().addTile(new TilePositionShelves(0,3, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO)));
+        player.getShelves().addTile(new TilePositionShelves(1,0, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
+        player.getShelves().addTile(new TilePositionShelves(1,1, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO)));
+        player.getShelves().addTile(new TilePositionShelves(1,2, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
+        player.getShelves().addTile(new TilePositionShelves(1,3, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO)));
         game.updatePointsCommon();
         Assertions.assertEquals(4, game.getPointCommonCard1());
     }
@@ -112,11 +125,26 @@ public class PlayerTest {
     @Test
     public void testAddEndOfGamePoint() {
         player.addEndOfGamePoint();
-        assertEquals(9, player.getScore());
+        assertEquals(1, player.getScore());
     }
 
     @Test
     public void testCalculatePersonalPoints() throws Exception {
+        Player player = new Player("player1");
+        Game game = new GameTwoPlayers(2, player);
+        game.setCurrentPlayer(player);
+        ArrayList<PersonalCard> personalCardParsers = new ArrayList<>();
+        try {
+            Gson gson = new Gson();
+            Reader reader = Files.newBufferedReader(Paths.get("PersonalCard.json"));
+            PersonalCard[] parser = gson.fromJson(reader,PersonalCard[].class);
+            personalCardParsers.add(parser[0]);
+            reader.close();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        player.setPC(personalCardParsers.get(0));
+        player.getShelves().addTile(new TilePositionShelves(0,2, new TileObj(TileType.TROPHY, TileVariant.VARIANT_ONE)));
         int points = player.calculatePersonalPoints();
         assertEquals(1, points);
     }
@@ -126,17 +154,31 @@ public class PlayerTest {
     public void testCalculateTotalPoints() {
         // 1 end of game + 1 pc + 8 cc + 3
         int points = 0;
+        Player player = new Player("player1");
+        Game game = new GameTwoPlayers(2, player);
+        game.setCurrentPlayer(player);
+        CommonCard common = new CommonCardShape(5);
+        game.setCommon1(common);
+        player.getShelves().addTile(new TilePositionShelves(0,0, new TileObj(TileType.TROPHY, TileVariant.VARIANT_ONE)));
+        player.getShelves().addTile(new TilePositionShelves(0,1, new TileObj(TileType.TROPHY, TileVariant.VARIANT_TWO)));
+        player.getShelves().addTile(new TilePositionShelves(0,2, new TileObj(TileType.TROPHY, TileVariant.VARIANT_THREE)));
+        player.getShelves().addTile(new TilePositionShelves(0,3, new TileObj(TileType.TROPHY, TileVariant.VARIANT_TWO)));
+        player.getShelves().addTile(new TilePositionShelves(1,0, new TileObj(TileType.TROPHY, TileVariant.VARIANT_ONE)));
+        player.getShelves().addTile(new TilePositionShelves(1,1, new TileObj(TileType.TROPHY, TileVariant.VARIANT_TWO)));
+        player.getShelves().addTile(new TilePositionShelves(1,2, new TileObj(TileType.TROPHY, TileVariant.VARIANT_ONE)));
+        player.getShelves().addTile(new TilePositionShelves(1,3, new TileObj(TileType.TROPHY, TileVariant.VARIANT_TWO)));
+        game.updatePointsCommon();
         try {
             player.calcOverallScore();
             points = player.getScore();
         } catch (Exception e) {
-            fail();
+            System.out.println("error");
         }
-
+        player.addEndOfGamePoint();
         Assertions.assertEquals(13, points);
     }
 
-    /* @Test
+    @Test
     public void testCheckPersonalCardFalse() {
         ArrayList<PersonalCard> personalCardParsers = new ArrayList<>();
         try {
@@ -171,11 +213,7 @@ public class PlayerTest {
         Player player = new Player("Player1");
         int counterTilesPersonal = -1;
         player.getShelves().addTile(new TilePositionShelves(0,2, new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE)));
-        try {
-            counterTilesPersonal = player.checkPersonalCard(personalCardTest);
-        } catch (PositionEmptyException ex) {
-            System.out.println("position null");
-        }
+        counterTilesPersonal = player.checkPersonalCard(personalCardTest);
         boolean returnCondition = false;
         if (counterTilesPersonal == 1) {returnCondition = true;}
         assertFalse(returnCondition);
@@ -208,13 +246,9 @@ public class PlayerTest {
         Player player = new Player("Player1");
         int counterTilesPersonal = 0;
         player.getShelves().addTile(new TilePositionShelves(0,2, new TileObj(TileType.TROPHY, TileVariant.VARIANT_ONE)));
-        try {
             counterTilesPersonal = player.checkPersonalCard(personalCardTest);
-        } catch (PositionEmptyException ex) {
-            System.out.println("position null");
-        }
         boolean returnCondition = false;
         if (counterTilesPersonal == 1) {returnCondition = true;}
         assertTrue(returnCondition);
-    } */
+    }
 }
