@@ -1,5 +1,6 @@
 package org.project.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -16,8 +17,6 @@ public class ControllerFX {
     @FXML
     private Pane mainPane;
     // Pagina iniziale
-    @FXML
-    private Pane loginPane;
     @FXML
     private TextField usernameField;
     @FXML
@@ -64,9 +63,17 @@ public class ControllerFX {
     @FXML
     private ScrollPane playerChoiceScrollPAne;
 
+    @FXML
+    Pane loginPane;
+
+
     public ControllerFX(Turn model, Client client) {
         this.model = model;
         this.client = client;
+    }
+
+    public void hideLoginPane(ActionEvent actionEvent) {
+        loginPane.setOpacity(0);
     }
 
     public void Initialize(Client o) {
@@ -101,5 +108,6 @@ public class ControllerFX {
     protected void onHelloButtonClick() {
         //welcomeText.setText("Welcome to JavaFX Application!");
     }
+
 
 }
