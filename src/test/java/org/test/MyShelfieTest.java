@@ -36,7 +36,7 @@ public class MyShelfieTest {
             shelfie.joinGame(3, player);
         });
 
-        String expectedMessage = "il player e gia attivo o in coda in qualche altra partita";
+        String expectedMessage = "The player is already active or queued in some other game!";
         String actualMessage = exception.getMessage();
         Assertions.assertTrue(actualMessage.contains(expectedMessage));
     }
@@ -96,7 +96,7 @@ public class MyShelfieTest {
             shelfie.joinGame(5, player);
         });
 
-        String expectedMessage = "numero di giocatori non consentito!";
+        String expectedMessage = "Number of players not allowed!";
         String actualMessage = exception.getMessage();
         Assertions.assertTrue(actualMessage.contains(expectedMessage));
     }

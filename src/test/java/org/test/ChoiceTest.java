@@ -14,7 +14,7 @@ public class ChoiceTest {
 
         String expectedString = "Choice{" +
                 "choice=" + choice.toString() +
-                ", stato=null" +
+                ", state=null" +
                 ", argument=" + argument.toString() +
                 ", player=" + player.toString() +
                 '}';

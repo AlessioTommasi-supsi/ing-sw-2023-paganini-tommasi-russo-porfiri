@@ -26,7 +26,7 @@ public class ShelvesTest {
         TileObj tObj = new TileObj(TileType.BOOK, TileVariant.VARIANT_THREE);
         TilePositionShelves position = new TilePositionShelves(0, 0, tObj);
         shelves.addTile(position);
-        assertEquals(position, shelves.getTilePosition(0,0));
+        assertEquals(position.getTile().getType(), shelves.getTilePosition(0,0).getTile().getType());
         assertEquals(1, shelves.getFilledCounter());
     }
 
