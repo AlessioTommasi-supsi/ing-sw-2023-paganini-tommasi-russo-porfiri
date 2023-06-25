@@ -14,23 +14,40 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<Pane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane id="mainPane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="403.0" prefWidth="600.0">
+      <Pane id="loginPane" prefHeight="403.0" prefWidth="600.0" visible="false">
          <children>
             <ImageView fitHeight="403.0" fitWidth="600.0" pickOnBounds="true">
                <image>
                   <Image url="@../GraphicResources/misc/sfondo parquet.jpg" />
                </image>
             </ImageView>
-            <Pane prefHeight="280.0" prefWidth="391.0">
+            <ImageView fitHeight="128.0" fitWidth="391.0" layoutX="105.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../GraphicResources/publisherMaterial/Title 2000x618px.png" />
+               </image>
+            </ImageView>
+            <TextField id="usernameField" alignment="CENTER" layoutX="226.0" layoutY="188.0" promptText="Username" />
+            <TextField id="gamePlayerNumber" alignment="CENTER" layoutX="225.0" layoutY="240.0" promptText="Game Player Number" />
+            <Button id="joinGameButton" alignment="CENTER" layoutX="265.0" layoutY="309.0" mnemonicParsing="false" text="Join Game" />
+         </children>
+      </Pane>
+      <Pane id="gamePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="403.0" prefWidth="600.0">
+         <children>
+            <ImageView fitHeight="403.0" fitWidth="600.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../GraphicResources/misc/sfondo parquet.jpg" />
+               </image>
+            </ImageView>
+            <Pane id="boardPane" prefHeight="280.0" prefWidth="391.0">
                <children>
                   <ImageView fitHeight="280.0" fitWidth="391.0" pickOnBounds="true">
                      <image>
                         <Image url="@../GraphicResources/boards/livingroom.png" />
                      </image>
                   </ImageView>
-                  <GridPane layoutX="15.0" layoutY="12.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="257.0" prefWidth="358.0">
+                  <GridPane id="boardGrid" layoutX="15.0" layoutY="12.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="257.0" prefWidth="358.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -58,13 +75,13 @@
                   </GridPane>
                </children>
             </Pane>
-            <SplitPane dividerPositions="0.5" layoutX="390.0" prefHeight="160.0" prefWidth="210.0">
+            <SplitPane id="allCardsSplitPane" dividerPositions="0.5" layoutX="390.0" prefHeight="160.0" prefWidth="210.0">
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                      <children>
-                        <SplitPane dividerPositions="0.5" layoutX="1.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="160.0" prefWidth="100.0">
+                        <SplitPane id="commonCardsSplitPane" dividerPositions="0.5" layoutX="1.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="160.0" prefWidth="100.0">
                           <items>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                            <AnchorPane id="commonCard1AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                  <children>
                                     <ImageView fitHeight="76.0" fitWidth="98.0" pickOnBounds="true">
                                        <image>
@@ -78,7 +95,7 @@
                                     </ImageView>
                                  </children>
                               </AnchorPane>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                            <AnchorPane id="commonCard1AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                  <children>
                                     <ImageView fitHeight="76.0" fitWidth="98.0" pickOnBounds="true">
                                        <image>
@@ -96,7 +113,7 @@
                         </SplitPane>
                      </children>
                   </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                <AnchorPane id="personalCardAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                      <children>
                         <ImageView fitHeight="160.0" fitWidth="102.0" layoutX="-1.0" layoutY="2.0" pickOnBounds="true">
                            <image>
@@ -112,13 +129,13 @@
                   </AnchorPane>
               </items>
             </SplitPane>
-            <SplitPane dividerPositions="0.5" layoutX="390.0" layoutY="160.0" orientation="VERTICAL" prefHeight="242.0" prefWidth="210.0">
+            <SplitPane id="shelvesSplitPane" dividerPositions="0.5" layoutX="390.0" layoutY="160.0" orientation="VERTICAL" prefHeight="242.0" prefWidth="210.0">
               <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                <AnchorPane id="shelves1AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                      <children>
-                        <SplitPane dividerPositions="0.5" prefHeight="118.0" prefWidth="209.0">
+                        <SplitPane id="shelves1SplitPane" dividerPositions="0.5" prefHeight="118.0" prefWidth="209.0">
                           <items>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                            <AnchorPane id="myShelfAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                  <children>
                                     <ImageView fitHeight="116.0" fitWidth="102.0" pickOnBounds="true">
                                        <image>
@@ -132,7 +149,7 @@
                                     </ImageView>
                                  </children>
                               </AnchorPane>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="117.0" prefWidth="126.0" style="-fx-background-color: transparent;">
+                            <AnchorPane id="shelf2AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="117.0" prefWidth="126.0" style="-fx-background-color: transparent;">
                                  <children>
                                     <ImageView fitHeight="116.0" fitWidth="102.0" pickOnBounds="true">
                                        <image>
@@ -150,11 +167,11 @@
                         </SplitPane>
                      </children>
                   </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                <AnchorPane id="shelves2AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                      <children>
-                        <SplitPane dividerPositions="0.5" prefHeight="117.0" prefWidth="210.0">
+                        <SplitPane id="shelves2SplitPane" dividerPositions="0.5" prefHeight="117.0" prefWidth="210.0">
                           <items>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="116.0" prefWidth="73.0">
+                            <AnchorPane id="shelf3AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="116.0" prefWidth="73.0">
                                  <children>
                                     <ImageView fitHeight="116.0" fitWidth="102.0" pickOnBounds="true">
                                        <image>
@@ -168,7 +185,7 @@
                                     </ImageView>
                                  </children>
                               </AnchorPane>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                            <AnchorPane id="shelf4AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                  <children>
                                     <ImageView fitHeight="116.0" fitWidth="102.0" pickOnBounds="true">
                                        <image>
@@ -220,23 +237,6 @@
                      </children>
                   </AnchorPane>
                </content></ScrollPane>
-         </children>
-      </Pane>
-      <Pane id="loginPane" prefHeight="403.0" prefWidth="600.0">
-         <children>
-            <ImageView fitHeight="403.0" fitWidth="600.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../GraphicResources/misc/sfondo parquet.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="128.0" fitWidth="391.0" layoutX="105.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../GraphicResources/publisherMaterial/Title 2000x618px.png" />
-               </image>
-            </ImageView>
-            <TextField id="usernameField" alignment="CENTER" layoutX="226.0" layoutY="188.0" promptText="Username" />
-            <TextField id="gamePlayerNumber" alignment="CENTER" layoutX="225.0" layoutY="240.0" promptText="Game Player Number" />
-            <Button id="joinGameButton" alignment="CENTER" layoutX="265.0" layoutY="309.0" mnemonicParsing="false" text="Join Game" />
          </children>
       </Pane>
    </children>
