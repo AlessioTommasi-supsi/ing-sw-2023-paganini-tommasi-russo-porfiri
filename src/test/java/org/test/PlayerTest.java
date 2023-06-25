@@ -179,6 +179,22 @@ public class PlayerTest {
     }
 
     @Test
+    public void testCalculateAdjacentPoints() {
+        Player player = new Player("player1");
+        player.getShelves().addTile(new TilePositionShelves(0,0, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
+        player.getShelves().addTile(new TilePositionShelves(0,1, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
+        player.getShelves().addTile(new TilePositionShelves(0,2, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
+        player.getShelves().addTile(new TilePositionShelves(0,3, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
+        player.getShelves().addTile(new TilePositionShelves(1,0, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
+        player.getShelves().addTile(new TilePositionShelves(1,1, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
+        player.getShelves().addTile(new TilePositionShelves(1,2, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
+        player.getShelves().addTile(new TilePositionShelves(1,3, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
+        assertEquals(6, player.calculateAdjacentPoints());
+
+
+    }
+
+    @Test
     public void testCheckPersonalCardFalse() {
         ArrayList<PersonalCard> personalCardParsers = new ArrayList<>();
         try {
