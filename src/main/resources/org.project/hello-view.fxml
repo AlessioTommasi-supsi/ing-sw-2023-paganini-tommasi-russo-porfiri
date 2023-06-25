@@ -14,22 +14,15 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<<<<<<< Updated upstream
 <Pane id="mainPane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane id="loginPane" prefHeight="403.0" prefWidth="600.0" visible="false">
-=======
-<Pane id="fatherPane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Pane id="gamePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="403.0" prefWidth="600.0">
->>>>>>> Stashed changes
          <children>
-            <ImageView id="gameBackgroundImageView" fitHeight="403.0" fitWidth="600.0" pickOnBounds="true">
+            <ImageView fitHeight="403.0" fitWidth="600.0" pickOnBounds="true">
                <image>
-                  <Image url="@../GraphicResources/plainBackgrounds/d2b48c.png" />
+                  <Image url="@../GraphicResources/misc/sfondo parquet.jpg" />
                </image>
             </ImageView>
-<<<<<<< Updated upstream
             <ImageView fitHeight="128.0" fitWidth="391.0" layoutX="105.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../GraphicResources/publisherMaterial/Title 2000x618px.png" />
@@ -47,8 +40,6 @@
                   <Image url="@../GraphicResources/misc/sfondo parquet.jpg" />
                </image>
             </ImageView>
-=======
->>>>>>> Stashed changes
             <Pane id="boardPane" prefHeight="280.0" prefWidth="391.0">
                <children>
                   <ImageView fitHeight="280.0" fitWidth="391.0" pickOnBounds="true">
@@ -94,7 +85,7 @@
                                  <children>
                                     <ImageView fitHeight="76.0" fitWidth="98.0" pickOnBounds="true">
                                        <image>
-                                          <Image url="@../GraphicResources/plainBackgrounds/d2b48c.png" />
+                                          <Image url="@../GraphicResources/misc/sfondo parquet.jpg" />
                                        </image>
                                     </ImageView>
                                     <ImageView fitHeight="76.0" fitWidth="98.0" pickOnBounds="true">
@@ -108,7 +99,7 @@
                                  <children>
                                     <ImageView fitHeight="76.0" fitWidth="98.0" pickOnBounds="true">
                                        <image>
-                                          <Image url="@../GraphicResources/plainBackgrounds/d2b48c.png" />
+                                          <Image url="@../GraphicResources/misc/sfondo parquet.jpg" />
                                        </image>
                                     </ImageView>
                                     <ImageView fitHeight="76.0" fitWidth="98.0" pickOnBounds="true">
@@ -126,7 +117,7 @@
                      <children>
                         <ImageView fitHeight="160.0" fitWidth="102.0" layoutX="-1.0" layoutY="2.0" pickOnBounds="true">
                            <image>
-                              <Image url="@../GraphicResources/plainBackgrounds/d2b48c.png" />
+                              <Image url="@../GraphicResources/misc/sfondo parquet.jpg" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="160.0" fitWidth="102.0" pickOnBounds="true">
@@ -148,7 +139,7 @@
                                  <children>
                                     <ImageView fitHeight="116.0" fitWidth="102.0" pickOnBounds="true">
                                        <image>
-                                          <Image url="@../GraphicResources/plainBackgrounds/d2b48c.png" />
+                                          <Image url="@../GraphicResources/misc/sfondo parquet.jpg" />
                                        </image>
                                     </ImageView>
                                     <ImageView fitHeight="106.0" fitWidth="102.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -156,30 +147,13 @@
                                           <Image url="@../GraphicResources/boards/bookshelf_orth.png" />
                                        </image>
                                     </ImageView>
-                                    <GridPane layoutX="11.0" layoutY="20.0" prefHeight="84.0" prefWidth="80.0">
-                                      <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                      </columnConstraints>
-                                      <rowConstraints>
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                      </rowConstraints>
-                                    </GridPane>
                                  </children>
                               </AnchorPane>
                             <AnchorPane id="shelf2AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="117.0" prefWidth="126.0" style="-fx-background-color: transparent;">
                                  <children>
                                     <ImageView fitHeight="116.0" fitWidth="102.0" pickOnBounds="true">
                                        <image>
-                                          <Image url="@../GraphicResources/plainBackgrounds/d2b48c.png" />
+                                          <Image url="@../GraphicResources/misc/sfondo parquet.jpg" />
                                        </image>
                                     </ImageView>
                                     <ImageView fitHeight="113.0" fitWidth="102.0" layoutX="-1.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -187,23 +161,6 @@
                                           <Image url="@../GraphicResources/boards/bookshelf.png" />
                                        </image>
                                     </ImageView>
-                                    <GridPane layoutX="11.0" layoutY="20.0" prefHeight="84.0" prefWidth="80.0">
-                                       <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                       </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                       </rowConstraints>
-                                    </GridPane>
                                  </children>
                               </AnchorPane>
                           </items>
@@ -218,7 +175,7 @@
                                  <children>
                                     <ImageView fitHeight="116.0" fitWidth="102.0" pickOnBounds="true">
                                        <image>
-                                          <Image url="@../GraphicResources/plainBackgrounds/d2b48c.png" />
+                                          <Image url="@../GraphicResources/misc/sfondo parquet.jpg" />
                                        </image>
                                     </ImageView>
                                     <ImageView fitHeight="113.0" fitWidth="102.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -226,30 +183,13 @@
                                           <Image url="@../GraphicResources/boards/bookshelf.png" />
                                        </image>
                                     </ImageView>
-                                    <GridPane layoutX="11.0" layoutY="20.0" prefHeight="84.0" prefWidth="80.0">
-                                       <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                       </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                       </rowConstraints>
-                                    </GridPane>
                                  </children>
                               </AnchorPane>
                             <AnchorPane id="shelf4AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                  <children>
                                     <ImageView fitHeight="116.0" fitWidth="102.0" pickOnBounds="true">
                                        <image>
-                                          <Image url="@../GraphicResources/plainBackgrounds/d2b48c.png" />
+                                          <Image url="@../GraphicResources/misc/sfondo parquet.jpg" />
                                        </image>
                                     </ImageView>
                                     <ImageView fitHeight="113.0" fitWidth="102.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -257,23 +197,6 @@
                                           <Image url="@../GraphicResources/boards/bookshelf.png" />
                                        </image>
                                     </ImageView>
-                                    <GridPane layoutX="11.0" layoutY="20.0" prefHeight="84.0" prefWidth="80.0">
-                                       <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                       </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                       </rowConstraints>
-                                    </GridPane>
                                  </children>
                               </AnchorPane>
                           </items>
@@ -282,17 +205,17 @@
                   </AnchorPane>
               </items>
             </SplitPane>
-            <ScrollPane hbarPolicy="NEVER" layoutY="281.0" prefHeight="122.0" prefWidth="391.0" vmax="100.0">
+            <ScrollPane hbarPolicy="NEVER" layoutY="281.0" prefHeight="123.0" prefWidth="391.0" vmax="100.0" vvalue="98.0">
                <content>
-                  <AnchorPane layoutX="11.0" layoutY="20.0" prefHeight="230.0" prefWidth="375.0">
+                  <AnchorPane prefHeight="230.0" prefWidth="375.0">
                      <children>
                         <ImageView fitHeight="230.0" fitWidth="375.0" pickOnBounds="true">
                            <image>
-                              <Image url="@../GraphicResources/plainBackgrounds/5d1916.png" />
+                              <Image url="@../GraphicResources/misc/base_pagina2.jpg" />
                            </image>
                         </ImageView>
                         <Text fill="WHITE" layoutX="-2.0" layoutY="18.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the number of tiles to draw:" />
-                        <Spinner layoutX="7.0" layoutY="24.0" prefHeight="26.0" prefWidth="107.0" scaleX="0.8" scaleY="0.7" scaleZ="0.8" />
+                        <Spinner editable="true" layoutX="7.0" layoutY="24.0" prefHeight="26.0" prefWidth="107.0" scaleX="0.8" scaleY="0.7" scaleZ="0.8" />
                         <Text fill="WHITE" layoutX="-18.0" layoutY="64.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter coordinates x (row) , y (column) of the tiles to remove:" />
                         <TextField layoutX="11.0" layoutY="73.0" prefHeight="25.0" prefWidth="25.0" promptText="x" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
                         <TextField layoutX="38.0" layoutY="73.0" prefHeight="25.0" prefWidth="25.0" promptText="y" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
@@ -316,25 +239,5 @@
                </content></ScrollPane>
          </children>
       </Pane>
-<<<<<<< Updated upstream
-=======
-      <Pane id="loginPane" prefHeight="403.0" prefWidth="600.0" visible="false">
-         <children>
-            <ImageView id="loginBackgroungImageView" fitHeight="403.0" fitWidth="600.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../GraphicResources/misc/sfondo parquet.jpg" />
-               </image>
-            </ImageView>
-            <ImageView id="loginLogoImageView" fitHeight="128.0" fitWidth="391.0" layoutX="105.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../GraphicResources/publisherMaterial/Title 2000x618px.png" />
-               </image>
-            </ImageView>
-            <TextField id="usernameField" alignment="CENTER" layoutX="226.0" layoutY="188.0" promptText="Username" />
-            <TextField id="gamePlayerNumber" alignment="CENTER" layoutX="225.0" layoutY="240.0" promptText="Game Player Number" />
-            <Button id="joinGameButton" alignment="CENTER" layoutX="265.0" layoutY="309.0" mnemonicParsing="false" text="Join Game" />
-         </children>
-      </Pane>
->>>>>>> Stashed changes
    </children>
 </Pane>
