@@ -21,7 +21,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>HelloFX</mainClass>
+                    <mainClass>org/project/view/JavaFxUI/GameGUIFx</mainClass>
                 </configuration>
             </plugin>
         </plugins>
@@ -51,84 +51,7 @@
           <version>RELEASE</version>
           <scope>test</scope>
       </dependency>
-      <dependency>
-          <groupId>org.junit.jupiter</groupId>
-          <artifactId>junit-jupiter</artifactId>
-          <version>RELEASE</version>
-          <scope>test</scope>
-      </dependency>
-      <dependency>
-          <groupId>org.junit.jupiter</groupId>
-          <artifactId>junit-jupiter</artifactId>
-          <version>RELEASE</version>
-          <scope>test</scope>
-      </dependency>
-      <dependency>
-          <groupId>org.junit.jupiter</groupId>
-          <artifactId>junit-jupiter</artifactId>
-          <version>RELEASE</version>
-          <scope>test</scope>
-      </dependency>
-      <dependency>
-          <groupId>org.junit.jupiter</groupId>
-          <artifactId>junit-jupiter</artifactId>
-          <version>RELEASE</version>
-          <scope>test</scope>
-      </dependency>
-      <dependency>
-          <groupId>org.junit.jupiter</groupId>
-          <artifactId>junit-jupiter</artifactId>
-          <version>RELEASE</version>
-          <scope>test</scope>
-      </dependency>
-      <dependency>
-          <groupId>org.junit.jupiter</groupId>
-          <artifactId>junit-jupiter</artifactId>
-          <version>RELEASE</version>
-          <scope>test</scope>
-      </dependency>
-      <dependency>
-          <groupId>org.junit.jupiter</groupId>
-          <artifactId>junit-jupiter</artifactId>
-          <version>RELEASE</version>
-          <scope>test</scope>
-      </dependency>
-      <dependency>
-          <groupId>org.junit.jupiter</groupId>
-          <artifactId>junit-jupiter</artifactId>
-          <version>RELEASE</version>
-          <scope>test</scope>
-      </dependency>
-      <dependency>
-          <groupId>org.junit.jupiter</groupId>
-          <artifactId>junit-jupiter</artifactId>
-          <version>RELEASE</version>
-          <scope>test</scope>
-      </dependency>
-      <dependency>
-          <groupId>org.junit.jupiter</groupId>
-          <artifactId>junit-jupiter</artifactId>
-          <version>RELEASE</version>
-          <scope>test</scope>
-      </dependency>
-      <dependency>
-          <groupId>org.junit.jupiter</groupId>
-          <artifactId>junit-jupiter</artifactId>
-          <version>RELEASE</version>
-          <scope>test</scope>
-      </dependency>
-      <dependency>
-          <groupId>org.junit.jupiter</groupId>
-          <artifactId>junit-jupiter</artifactId>
-          <version>RELEASE</version>
-          <scope>test</scope>
-      </dependency>
-      <dependency>
-          <groupId>org.junit.jupiter</groupId>
-          <artifactId>junit-jupiter</artifactId>
-          <version>RELEASE</version>
-          <scope>test</scope>
-      </dependency>
+
       <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
       <dependency>
           <groupId>com.google.code.gson</groupId>
@@ -227,105 +150,12 @@
           <version>1.5.0-dev1049</version>
       </dependency>
       <dependency>
-          <groupId>org.jetbrains.compose.components</groupId>
-          <artifactId>components-splitpane</artifactId>
-          <version>1.5.0-dev1049</version>
-      </dependency>
-      <dependency>
-          <groupId>org.jetbrains.compose.components</groupId>
-          <artifactId>components-splitpane-desktop</artifactId>
-          <version>1.5.0-dev1049</version>
-      </dependency>
-      <dependency>
-          <groupId>org.jetbrains.compose.components</groupId>
-          <artifactId>components-splitpane</artifactId>
-          <version>1.5.0-dev1049</version>
-      </dependency>
-      <dependency>
-          <groupId>org.jetbrains.compose.components</groupId>
-          <artifactId>components-splitpane</artifactId>
-          <version>1.5.0-dev1049</version>
-      </dependency>
-      <dependency>
-          <groupId>org.jetbrains.compose.components</groupId>
-          <artifactId>components-splitpane-desktop</artifactId>
-          <version>1.5.0-dev1049</version>
-      </dependency>
-      <dependency>
-          <groupId>org.jetbrains.compose.components</groupId>
-          <artifactId>components-splitpane-desktop</artifactId>
-          <version>1.5.0-dev1049</version>
-      </dependency>
-      <dependency>
-          <groupId>org.jetbrains.compose.components</groupId>
-          <artifactId>components-splitpane-desktop</artifactId>
-          <version>1.5.0-dev1049</version>
-      </dependency>
-      <dependency>
           <groupId>org.webjars.npm</groupId>
           <artifactId>vue-splitpane</artifactId>
           <version>1.0.6</version>
       </dependency>
-      <dependency>
-          <groupId>org.jetbrains.compose.components</groupId>
-          <artifactId>components-splitpane</artifactId>
-          <version>1.5.0-dev1049</version>
-      </dependency>
-      <dependency>
-          <groupId>org.jetbrains.compose.components</groupId>
-          <artifactId>components-splitpane</artifactId>
-          <version>1.5.0-dev1049</version>
-      </dependency>
-      <dependency>
-          <groupId>org.webjars.npm</groupId>
-          <artifactId>vue-splitpane</artifactId>
-          <version>1.0.6</version>
-      </dependency>
-      <dependency>
-          <groupId>org.webjars.npm</groupId>
-          <artifactId>vue-splitpane</artifactId>
-          <version>1.0.6</version>
-      </dependency>
-      <dependency>
-          <groupId>org.webjars.npm</groupId>
-          <artifactId>vue-splitpane</artifactId>
-          <version>1.0.6</version>
-      </dependency>
-      <dependency>
-          <groupId>org.jetbrains.compose.components</groupId>
-          <artifactId>components-splitpane-desktop</artifactId>
-          <version>1.5.0-dev1049</version>
-      </dependency>
-      <dependency>
-          <groupId>org.jetbrains.compose.components</groupId>
-          <artifactId>components-splitpane-desktop</artifactId>
-          <version>1.5.0-dev1049</version>
-      </dependency>
-      <dependency>
-          <groupId>org.webjars.npm</groupId>
-          <artifactId>vue-splitpane</artifactId>
-          <version>1.0.6</version>
-      </dependency>
-      <dependency>
-          <groupId>org.jetbrains.compose.components</groupId>
-          <artifactId>components-splitpane</artifactId>
-          <version>1.5.0-dev1049</version>
-      </dependency>
-      <dependency>
-          <groupId>org.jetbrains.compose.components</groupId>
-          <artifactId>components-splitpane</artifactId>
-          <version>1.5.0-dev1049</version>
-      </dependency>
-      <dependency>
-          <groupId>org.webjars.npm</groupId>
-          <artifactId>vue-splitpane</artifactId>
-          <version>1.0.6</version>
-      </dependency>
-      <dependency>
-          <groupId>org.webjars.npm</groupId>
-          <artifactId>vue-splitpane</artifactId>
-          <version>1.0.6</version>
-      </dependency>
+
+
 
   </dependencies>
 </project>
