@@ -16,7 +16,8 @@ module org.project.ingsw2023PaganiniTommasiRussoPorfiri {
     requires java.desktop;
 
     opens org.project.ingsw2023PaganiniTommasiRussoPorfiri to javafx.fxml;
-    //opens org.project.ingsw2023PaganiniTommasiRussoPorfiri to com.google.gson;
+    opens org.project.ingsw2023PaganiniTommasiRussoPorfiri.model to com.google.gson;
+
     exports org.project.ingsw2023PaganiniTommasiRussoPorfiri;
     exports org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.JavaFxUI;
     exports org.project.ingsw2023PaganiniTommasiRussoPorfiri.model;
