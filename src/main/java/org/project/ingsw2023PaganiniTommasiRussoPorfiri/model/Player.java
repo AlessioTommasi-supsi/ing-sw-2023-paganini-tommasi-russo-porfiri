@@ -248,7 +248,7 @@ public class Player implements Serializable {
     }
 
     private int calculateGroupCounter(int row, int col, boolean[][] visited, int counter, boolean starter, int totCounter, TileType prevType) {
-        if (row < 0 || row >= 5 || col < 0 || col >= 6 || visited[row][col] || !shelves.getTilePosition(row, col).getTile().getType().equals(prevType)) {
+        if (row < 0 || row >= 6 || col < 0 || col >= 5 || visited[row][col] || !shelves.getTilePosition(row, col).getTile().getType().equals(prevType)) {
             return counter;
         }
 
@@ -278,6 +278,7 @@ public class Player implements Serializable {
         }
         return  0;
     }
+
 
 
     //da chiamato in Game::end()!
