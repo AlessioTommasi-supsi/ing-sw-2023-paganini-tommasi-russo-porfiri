@@ -1,10 +1,15 @@
 package org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.TextualUI;
 
+import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.stage.Stage;
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.HelloApplication;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.*;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.utils.*;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.SwingUI.LoginGUI;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -27,7 +32,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
 
     public LoginGUI frameLogin = new LoginGUI(this);
 
-
+    public HelloApplication frame;
 
     private int currentGameId = -1; //verrà assegnato dopo aver fatto join_game!!
 
@@ -406,7 +411,22 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                                                 SwingUtilities.invokeLater(() -> {
                                                     this.frameLogin.usernameField.setText("You just joined the game and the match is under way!");
                                                     this.frameLogin.joinGameButton.setEnabled(false);
+                                                    //grazie a me la partita si e'startata!
+                                                    this.frameLogin.setVisible(false);
+
                                                 });
+
+                                                Platform.startup(() -> {
+                                                    Platform.runLater(() -> {
+                                                        this.frame = new HelloApplication();
+                                                        try {
+                                                            frame.start(new Stage());
+                                                        } catch (IOException e) {
+                                                            throw new RuntimeException(e);
+                                                        }
+                                                    });
+                                                });
+
                                             break;
                                             case IN_WAIT://siccome non esiste una partita di un solo giocatore entrerò sempre qui!
                                                 /*prova aggiornamento gui*/
@@ -455,9 +475,26 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                             System.out.println("Player: "+model.getMyShelfie().getGame(this.currentGameId).getPlayers().get(model.getMyShelfie().getGame(this.currentGameId).getPlayers().size()-1).getUsername()+" just joined the game!");
                             /*prova aggiornamento gui*/
                             SwingUtilities.invokeLater(() -> {
-                                JOptionPane.showMessageDialog(this.frameLogin, "Player: "+model.getMyShelfie().getGame(this.currentGameId).getPlayers().get(model.getMyShelfie().getGame(this.currentGameId).getPlayers().size()-1).getUsername()+" just joined the game!", "update", JOptionPane.ERROR_MESSAGE);
+                                //JOptionPane.showMessageDialog(this.frameLogin, "Player: "+model.getMyShelfie().getGame(this.currentGameId).getPlayers().get(model.getMyShelfie().getGame(this.currentGameId).getPlayers().size()-1).getUsername()+" just joined the game!", "update", JOptionPane.ERROR_MESSAGE);
                                 this.frameLogin.joinGameButton.setEnabled(false);
+
+                                //se la partaita non e'piu in attesa starto la gui!
+                                if(model.getMyShelfie().getGame(this.currentGameId).getState() == GameStatus.IN_PROGRESS){
+                                    this.frameLogin.setVisible(false);
+                                }
                             });
+
+                            Platform.startup(() -> {
+                                Platform.runLater(() -> {
+                                    this.frame = new HelloApplication();
+                                    try {
+                                        frame.start(new Stage());
+                                    } catch (IOException e) {
+                                        throw new RuntimeException(e);
+                                    }
+                                });
+                            });
+
 
 
                         break;
@@ -478,7 +515,8 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
             e.printStackTrace();
         }
 
-        //se è il mio turno faccio qualcosa!!//nota e' il mio turno sse la partita e. in corso
+        //se è il mio turno faccio qualcosa!!
+        // nota e' il mio turno sse la partita e. in corso
         if (model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer() != null) {
             if (model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getId() == this.player.getId()) {
                 System.out.println("Server answered!");
