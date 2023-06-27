@@ -12,66 +12,114 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane id="mainPane" fx:id="mainPane" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.project.ingsw2023PaganiniTommasiRussoPorfiri.HelloController">
+<Pane id="mainPane" fx:id="mainPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.project.ingsw2023PaganiniTommasiRussoPorfiri.HelloController">
     <children>
-        <Pane id="gamePane" fx:id="gamePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="403.0" prefWidth="600.0">
+        <Pane id="gamePane" fx:id="gamePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" visible="false">
             <children>
-                <ImageView id="gameBackgroungImageView" fx:id="gameBackgroungImageView" fitHeight="403.0" fitWidth="600.0" pickOnBounds="true">
+                <ImageView id="gameBackgroungImageView" fx:id="gameBackgroungImageView" fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true">
                     <image>
                         <Image url="@../../../GraphicResources/plainBackgrounds/d2b48c.png" />
                     </image>
                 </ImageView>
-                <Pane id="boardPane" fx:id="boardPane" prefHeight="280.0" prefWidth="391.0">
+                <Pane id="boardPane" fx:id="boardPane" prefHeight="526.0" prefWidth="807.0">
                     <children>
-                        <ImageView id="boardImageView" fx:id="boardImageView" fitHeight="280.0" fitWidth="391.0" pickOnBounds="true">
+                        <ImageView id="boardImageView" fx:id="boardImageView" fitHeight="526.0" fitWidth="807.0" pickOnBounds="true">
                             <image>
                                 <Image url="@../../../GraphicResources/boards/livingroom.png" />
                             </image>
                         </ImageView>
-                        <GridPane id="boardGridPane" fx:id="boardGridPane" layoutX="15.0" layoutY="12.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="257.0" prefWidth="358.0">
+                        <GridPane id="boardGridPane" fx:id="boardGridPane" layoutX="34.0" layoutY="25.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="735.0">
                             <columnConstraints>
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="91.39999389648438" minWidth="10.0" prefWidth="79.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="93.39998779296874" minWidth="10.0" prefWidth="83.19999389648437" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="86.19998168945312" minWidth="10.0" prefWidth="79.19998779296876" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="91.39999999999998" minWidth="10.0" prefWidth="84.00001220703126" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="199.00003662109373" minWidth="10.0" prefWidth="79.19999999999999" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="83.19999999999999" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="186.5999755859375" minWidth="10.0" prefWidth="80.80002441406253" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="160.199951171875" minWidth="10.0" prefWidth="81.5999755859375" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="90.39999999999998" minWidth="10.0" prefWidth="90.19998779296873" />
                             </columnConstraints>
                             <rowConstraints>
-                                <RowConstraints fillHeight="false" maxHeight="40.0666618347168" minHeight="-Infinity" prefHeight="27.600004577636717" vgrow="SOMETIMES" />
-                                <RowConstraints maxHeight="75.06666450500488" minHeight="-Infinity" prefHeight="28.799998474121097" vgrow="SOMETIMES" />
-                                <RowConstraints maxHeight="163.73334426879882" minHeight="-Infinity" prefHeight="27.59999694824218" vgrow="SOMETIMES" />
-                                <RowConstraints fillHeight="false" maxHeight="166.6666717529297" minHeight="-Infinity" prefHeight="28.799996948242196" vgrow="SOMETIMES" />
-                                <RowConstraints fillHeight="false" maxHeight="143.99999237060547" minHeight="-Infinity" prefHeight="28.0000030517578" vgrow="SOMETIMES" />
-                                <RowConstraints fillHeight="false" maxHeight="136.46665954589844" minHeight="-Infinity" prefHeight="27.99999694824217" vgrow="SOMETIMES" />
-                                <RowConstraints fillHeight="false" maxHeight="136.46665954589844" minHeight="0.0" prefHeight="28.399993896484375" vgrow="SOMETIMES" />
-                                <RowConstraints fillHeight="false" maxHeight="136.46665954589844" minHeight="10.0" prefHeight="27.600006103515625" vgrow="SOMETIMES" />
-                                <RowConstraints fillHeight="false" maxHeight="103.19999999999999" minHeight="-Infinity" prefHeight="30.00000610351563" vgrow="SOMETIMES" />
+                                <RowConstraints fillHeight="false" maxHeight="51.399993896484375" minHeight="-Infinity" prefHeight="51.399993896484375" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="75.06666450500488" minHeight="-Infinity" prefHeight="48.600006103515625" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="163.73334426879882" minHeight="-Infinity" prefHeight="53.80001220703126" vgrow="SOMETIMES" />
+                                <RowConstraints fillHeight="false" maxHeight="166.6666717529297" minHeight="-Infinity" prefHeight="54.199981689453125" vgrow="SOMETIMES" />
+                                <RowConstraints fillHeight="false" maxHeight="145.40001220703124" minHeight="-Infinity" prefHeight="50.79997558593746" vgrow="SOMETIMES" />
+                                <RowConstraints fillHeight="false" maxHeight="136.46665954589844" minHeight="-Infinity" prefHeight="53.20002441406251" vgrow="SOMETIMES" />
+                                <RowConstraints fillHeight="false" maxHeight="136.46665954589844" minHeight="0.0" prefHeight="57.59998779296876" vgrow="SOMETIMES" />
+                                <RowConstraints fillHeight="false" maxHeight="136.46665954589844" minHeight="0.0" prefHeight="53.59998779296876" vgrow="SOMETIMES" />
+                                <RowConstraints fillHeight="false" maxHeight="103.19999999999999" minHeight="-Infinity" prefHeight="56.00001220703126" vgrow="SOMETIMES" />
                                 <RowConstraints fillHeight="false" maxHeight="0.0" minHeight="-Infinity" prefHeight="0.0" vgrow="SOMETIMES" />
                                 <RowConstraints fillHeight="false" maxHeight="0.0" minHeight="-Infinity" prefHeight="0.0" vgrow="SOMETIMES" />
                             </rowConstraints>
+                            <children>
+                                <ImageView fitHeight="46.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" layoutX="339.0" layoutY="115.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" layoutX="256.0" layoutY="115.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" layoutX="420.0" layoutY="115.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" layoutX="93.0" layoutY="169.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" layoutX="175.0" layoutY="169.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" layoutX="256.0" layoutY="169.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" layoutX="339.0" layoutY="169.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" layoutX="420.0" layoutY="169.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" layoutX="502.0" layoutY="169.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" layoutX="584.0" layoutY="169.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" layoutX="670.0" layoutY="169.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" layoutX="12.0" layoutY="222.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" layoutX="93.0" layoutY="222.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" layoutX="175.0" layoutY="222.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" layoutX="12.0" layoutY="222.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" layoutX="339.0" layoutY="222.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" layoutX="420.0" layoutY="222.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" layoutX="502.0" layoutY="222.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" layoutX="584.0" layoutY="222.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" layoutX="670.0" layoutY="222.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="46.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
+                            </children>
                         </GridPane>
                     </children>
                 </Pane>
-                <SplitPane id="allCardsSplitPane" fx:id="allCardsSplitPane" dividerPositions="0.5" layoutX="390.0" prefHeight="160.0" prefWidth="210.0">
+                <SplitPane id="allCardsSplitPane" fx:id="allCardsSplitPane" dividerPositions="0.5" layoutX="807.0" prefHeight="330.0" prefWidth="474.0">
                     <items>
-                        <AnchorPane id="commonCardsAnchroPane" fx:id="commonCardsAnchroPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                        <AnchorPane id="commonCardsAnchroPane" fx:id="commonCardsAnchroPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="166.0">
                             <children>
-                                <SplitPane id="commonCardsSplitPane" fx:id="commonCardsSplitPane" dividerPositions="0.5" layoutX="1.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="160.0" prefWidth="100.0">
+                                <SplitPane id="commonCardsSplitPane" fx:id="commonCardsSplitPane" dividerPositions="0.5" layoutX="1.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="328.8" prefWidth="233.6">
                                     <items>
                                         <AnchorPane id="commonCard1AnchorPane" fx:id="commonCard1AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                             <children>
-                                                <ImageView id="commonCard1BackImageView" fx:id="commonCard1BackImageView" fitHeight="76.0" fitWidth="98.0" pickOnBounds="true">
+                                                <ImageView id="commonCard1BackImageView" fx:id="commonCard1BackImageView" fitHeight="160.0" fitWidth="232.0" pickOnBounds="true">
                                                     <image>
                                                         <Image url="@../../../GraphicResources/plainBackgrounds/d2b48c.png" />
                                                     </image>
                                                 </ImageView>
-                                                <ImageView id="c1ImageView" fx:id="c1ImageView" fitHeight="76.0" fitWidth="98.0" pickOnBounds="true">
+                                                <ImageView id="c1ImageView" fx:id="c1ImageView" fitHeight="160.0" fitWidth="232.0" pickOnBounds="true">
                                                     <image>
                                                         <Image url="@../../../GraphicResources/commonGoalCards/1.jpg" />
                                                     </image>
@@ -80,12 +128,12 @@
                                         </AnchorPane>
                                         <AnchorPane id="commonCard2AnchorPane" fx:id="commonCard2AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                             <children>
-                                                <ImageView id="commonCard2BackImageView" fx:id="commonCard2BackImageView" fitHeight="76.0" fitWidth="98.0" pickOnBounds="true">
+                                                <ImageView id="commonCard2BackImageView" fx:id="commonCard2BackImageView" fitHeight="160.0" fitWidth="232.0" pickOnBounds="true">
                                                     <image>
                                                         <Image url="@../../../GraphicResources/plainBackgrounds/d2b48c.png" />
                                                     </image>
                                                 </ImageView>
-                                                <ImageView id="commonCard2ImageView" fx:id="commonCard2ImageView" fitHeight="76.0" fitWidth="98.0" pickOnBounds="true">
+                                                <ImageView id="commonCard2ImageView" fx:id="commonCard2ImageView" fitHeight="160.0" fitWidth="232.0" pickOnBounds="true">
                                                     <image>
                                                         <Image url="@../../../GraphicResources/commonGoalCards/2.jpg" />
                                                     </image>
@@ -96,14 +144,14 @@
                                 </SplitPane>
                             </children>
                         </AnchorPane>
-                        <AnchorPane id="personalCardAnchorPane" fx:id="personalCardAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                        <AnchorPane id="personalCardAnchorPane" fx:id="personalCardAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="166.0">
                             <children>
                                 <ImageView id="personalCardBackImageView" fx:id="personalCardBackImageView" fitHeight="160.0" fitWidth="102.0" layoutX="-1.0" layoutY="2.0" pickOnBounds="true">
                                     <image>
                                         <Image url="@../../../GraphicResources/plainBackgrounds/d2b48c.png" />
                                     </image>
                                 </ImageView>
-                                <ImageView id="personalCardImageView" fx:id="personalCardImageView" fitHeight="160.0" fitWidth="102.0" pickOnBounds="true">
+                                <ImageView id="personalCardImageView" fx:id="personalCardImageView" fitHeight="328.8" fitWidth="233.6" pickOnBounds="true">
                                     <image>
                                         <Image url="@../../../GraphicResources/personalGoalCards/Personal_Goals6.png" />
                                     </image>
@@ -112,31 +160,31 @@
                         </AnchorPane>
                     </items>
                 </SplitPane>
-                <SplitPane id="shelvesSplitPane" fx:id="shelvesSplitPane" dividerPositions="0.5" layoutX="390.0" layoutY="160.0" orientation="VERTICAL" prefHeight="242.0" prefWidth="210.0">
+                <SplitPane id="shelvesSplitPane" fx:id="shelvesSplitPane" dividerPositions="0.5051493305870237" layoutX="806.0" layoutY="330.0" orientation="VERTICAL" prefHeight="390.0" prefWidth="474.0">
                     <items>
                         <AnchorPane id="shelvesTopAnchorPane" fx:id="shelvesTopAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                             <children>
-                                <SplitPane id="shelvesTopSplitPane" fx:id="shelvesTopSplitPane" dividerPositions="0.5" prefHeight="118.0" prefWidth="209.0">
+                                <SplitPane id="shelvesTopSplitPane" fx:id="shelvesTopSplitPane" dividerPositions="0.5" prefHeight="194.0" prefWidth="473.0">
                                     <items>
                                         <AnchorPane id="myShelfAnchorPane" fx:id="myShelfAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                             <children>
-                                                <ImageView id="myShelfBackImageView" fx:id="myShelfBackImageView" fitHeight="116.0" fitWidth="102.0" pickOnBounds="true">
+                                                <ImageView id="myShelfBackImageView" fx:id="myShelfBackImageView" fitHeight="192.8" fitWidth="233.6" pickOnBounds="true">
                                                     <image>
                                                         <Image url="@../../../GraphicResources/plainBackgrounds/d2b48c.png" />
                                                     </image>
                                                 </ImageView>
-                                                <ImageView id="myShelfImageView" fx:id="myShelfImageView" fitHeight="106.0" fitWidth="102.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView id="myShelfImageView" fx:id="myShelfImageView" fitHeight="176.0" fitWidth="233.6" layoutY="14.0" pickOnBounds="true">
                                                     <image>
                                                         <Image url="@../../../GraphicResources/boards/bookshelf_orth.png" />
                                                     </image>
                                                 </ImageView>
-                                                <GridPane id="myShelfGridPane" fx:id="myShelfGridPane" layoutX="10.5" layoutY="18.5" prefHeight="86.0" prefWidth="80.0">
+                                                <GridPane id="shelf2GridPane" fx:id="shelf2GridPane1" alignment="TOP_RIGHT" layoutX="28.0" layoutY="27.0" prefHeight="137.0" prefWidth="178.0">
                                                     <columnConstraints>
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="58.4000244140625" minWidth="10.0" prefWidth="33.199951171875" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="60.000048828125" minWidth="0.0" prefWidth="37.40002441406249" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="97.39990234375001" minWidth="10.0" prefWidth="36.5999755859375" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="39.4000244140625" minWidth="10.0" prefWidth="37.999902343749994" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="54.0" minWidth="10.0" prefWidth="34.80009765624999" />
                                                     </columnConstraints>
                                                     <rowConstraints>
                                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -146,28 +194,60 @@
                                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                     </rowConstraints>
+                                                    <children>
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="13.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="10.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="10.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="10.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="10.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="10.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="49.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="49.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="49.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="49.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="49.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="49.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="86.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="86.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="86.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="86.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="86.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="86.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="124.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="124.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="124.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="124.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="124.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="124.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                                    </children>
                                                 </GridPane>
                                             </children>
                                         </AnchorPane>
                                         <AnchorPane id="shelf2AnchorPane" fx:id="shelf2AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="117.0" prefWidth="126.0" style="-fx-background-color: transparent;">
                                             <children>
-                                                <ImageView id="shelf2BackImageView" fx:id="shelf2BackImageView" fitHeight="116.0" fitWidth="102.0" pickOnBounds="true">
+                                                <ImageView id="shelf2BackImageView" fx:id="shelf2BackImageView" fitHeight="192.8" fitWidth="233.6" pickOnBounds="true">
                                                     <image>
                                                         <Image url="@../../../GraphicResources/plainBackgrounds/d2b48c.png" />
                                                     </image>
                                                 </ImageView>
-                                                <ImageView id="shelf2ImageView" fx:id="shelf2ImageView" fitHeight="113.0" fitWidth="102.0" layoutX="-1.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView id="shelf2ImageView" fx:id="shelf2ImageView" fitHeight="176.0" fitWidth="233.6" layoutX="-1.0" layoutY="14.0" pickOnBounds="true">
                                                     <image>
                                                         <Image url="@../../../GraphicResources/boards/bookshelf.png" />
                                                     </image>
                                                 </ImageView>
-                                                <GridPane id="shelf2GridPane" fx:id="shelf2GridPane" layoutX="10.5" layoutY="18.5" prefHeight="86.0" prefWidth="80.0">
+                                                <GridPane id="shelf2GridPane" fx:id="shelf2GridPane" layoutX="27.0" layoutY="26.0" prefHeight="137.0" prefWidth="178.0">
                                                     <columnConstraints>
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="58.4000244140625" minWidth="10.0" prefWidth="33.199951171875" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="60.000048828125" minWidth="0.0" prefWidth="37.40002441406249" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="97.39990234375001" minWidth="10.0" prefWidth="36.5999755859375" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="39.4000244140625" minWidth="10.0" prefWidth="37.999902343749994" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="54.0" minWidth="10.0" prefWidth="34.80009765624999" />
                                                     </columnConstraints>
                                                     <rowConstraints>
                                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -177,6 +257,38 @@
                                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                     </rowConstraints>
+                                                    <children>
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="13.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="10.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="10.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="10.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="10.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="10.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="49.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="49.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="49.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="49.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="49.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="49.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="86.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="86.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="86.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="86.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="86.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="86.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="124.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="124.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="124.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="124.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="124.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="124.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                                    </children>
                                                 </GridPane>
                                             </children>
                                         </AnchorPane>
@@ -186,27 +298,27 @@
                         </AnchorPane>
                         <AnchorPane id="shelvesBottomAnchorPane" fx:id="shelvesBottomAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                             <children>
-                                <SplitPane id="shelvesBottomSplitPane" fx:id="shelvesBottomSplitPane" dividerPositions="0.5" prefHeight="117.0" prefWidth="210.0">
+                                <SplitPane id="shelvesBottomSplitPane" fx:id="shelvesBottomSplitPane" dividerPositions="0.5" prefHeight="190.0" prefWidth="473.0">
                                     <items>
                                         <AnchorPane id="shelf3AnchorPane" fx:id="shelf3AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="116.0" prefWidth="73.0">
                                             <children>
-                                                <ImageView id="shelf3BackImageView" fx:id="shelf3BackImageView" fitHeight="116.0" fitWidth="102.0" pickOnBounds="true">
+                                                <ImageView id="shelf3BackImageView" fx:id="shelf3BackImageView" fitHeight="192.8" fitWidth="233.6" pickOnBounds="true">
                                                     <image>
                                                         <Image url="@../../../GraphicResources/plainBackgrounds/d2b48c.png" />
                                                     </image>
                                                 </ImageView>
-                                                <ImageView id="shelf3ImageView" fx:id="shelf3ImageView" fitHeight="113.0" fitWidth="102.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView id="shelf3ImageView" fx:id="shelf3ImageView" fitHeight="176.0" fitWidth="233.6" layoutY="14.0" pickOnBounds="true">
                                                     <image>
                                                         <Image url="@../../../GraphicResources/boards/bookshelf.png" />
                                                     </image>
                                                 </ImageView>
-                                                <GridPane id="shelf3GridPane" fx:id="shelf3GridPane" layoutX="10.5" layoutY="18.5" prefHeight="86.0" prefWidth="80.0">
+                                                <GridPane id="shelf2GridPane" fx:id="shelf2GridPane2" layoutX="27.0" layoutY="26.0" prefHeight="137.0" prefWidth="178.0">
                                                     <columnConstraints>
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="58.4000244140625" minWidth="10.0" prefWidth="33.199951171875" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="60.000048828125" minWidth="0.0" prefWidth="37.40002441406249" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="97.39990234375001" minWidth="10.0" prefWidth="36.5999755859375" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="39.4000244140625" minWidth="10.0" prefWidth="37.999902343749994" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="54.0" minWidth="10.0" prefWidth="34.80009765624999" />
                                                     </columnConstraints>
                                                     <rowConstraints>
                                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -216,28 +328,60 @@
                                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                     </rowConstraints>
+                                                    <children>
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="13.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="10.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="10.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="10.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="10.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="10.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="49.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="49.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="49.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="49.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="49.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="49.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="86.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="86.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="86.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="86.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="86.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="86.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="124.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="124.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="124.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="124.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="124.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="124.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                                    </children>
                                                 </GridPane>
                                             </children>
                                         </AnchorPane>
                                         <AnchorPane id="shelf4AnchorPane" fx:id="shelf4AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                             <children>
-                                                <ImageView id="shelf4BackImageView" fx:id="shelf4BackImageView" fitHeight="116.0" fitWidth="102.0" pickOnBounds="true">
+                                                <ImageView id="shelf4BackImageView" fx:id="shelf4BackImageView" fitHeight="192.8" fitWidth="233.6" pickOnBounds="true">
                                                     <image>
                                                         <Image url="@../../../GraphicResources/plainBackgrounds/d2b48c.png" />
                                                     </image>
                                                 </ImageView>
-                                                <ImageView id="shelf4ImageView" fx:id="shelf4ImageView" fitHeight="113.0" fitWidth="102.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView id="shelf4ImageView" fx:id="shelf4ImageView" fitHeight="176.0" fitWidth="233.6" layoutY="14.0" pickOnBounds="true">
                                                     <image>
                                                         <Image url="@../../../GraphicResources/boards/bookshelf.png" />
                                                     </image>
                                                 </ImageView>
-                                                <GridPane id="shelf4GridPane" fx:id="shelf4GridPane" layoutX="10.5" layoutY="18.5" prefHeight="86.0" prefWidth="80.0">
+                                                <GridPane id="shelf2GridPane" fx:id="shelf2GridPane21" layoutX="27.0" layoutY="26.0" prefHeight="137.0" prefWidth="178.0">
                                                     <columnConstraints>
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="58.4000244140625" minWidth="10.0" prefWidth="33.199951171875" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="60.000048828125" minWidth="0.0" prefWidth="37.40002441406249" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="97.39990234375001" minWidth="10.0" prefWidth="36.5999755859375" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="39.4000244140625" minWidth="10.0" prefWidth="37.999902343749994" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="54.0" minWidth="10.0" prefWidth="34.80009765624999" />
                                                     </columnConstraints>
                                                     <rowConstraints>
                                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -247,6 +391,38 @@
                                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                     </rowConstraints>
+                                                    <children>
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="13.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="10.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="10.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="10.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="10.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="10.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="49.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="49.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="49.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="49.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="49.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="49.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="86.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="86.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="86.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="86.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="86.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="86.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="124.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="124.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="124.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="124.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="124.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="124.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                                        <ImageView fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                                    </children>
                                                 </GridPane>
                                             </children>
                                         </AnchorPane>
@@ -256,32 +432,47 @@
                         </AnchorPane>
                     </items>
                 </SplitPane>
-                <ScrollPane id="choiceScrollPane" fx:id="choiceScrollPane" hbarPolicy="NEVER" layoutY="281.0" prefHeight="121.0" prefWidth="391.0" vmax="100.0">
+                <ScrollPane id="choiceScrollPane" fx:id="choiceScrollPane" hbarPolicy="NEVER" layoutX="-1.0" layoutY="527.0" prefHeight="194.0" prefWidth="807.0" vmax="100.0" vvalue="46.0">
                     <content>
-                        <AnchorPane id="choiceAnchorPane" fx:id="choiceAnchorPane" prefHeight="230.0" prefWidth="375.0">
+                        <AnchorPane id="choiceAnchorPane" fx:id="choiceAnchorPane" prefHeight="311.0" prefWidth="807.0">
                             <children>
-                                <ImageView id="choiceBackImageView" fx:id="choiceBackImageView" fitHeight="230.0" fitWidth="375.0" pickOnBounds="true">
+                                <ImageView id="choiceBackImageView" fx:id="choiceBackImageView" fitHeight="330.0" fitWidth="807.0" pickOnBounds="true">
                                     <image>
                                         <Image url="@../../../GraphicResources/plainBackgrounds/5d1916.png" />
                                     </image>
                                 </ImageView>
-                                <Text id="choiceTextField1" fx:id="choiceTextField1" fill="WHITE" layoutX="-2.0" layoutY="18.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the number of tiles to draw:" />
-                                <Spinner id="choiceNumTileSpinner" fx:id="choiceNumTileSpinner" editable="true" layoutX="7.0" layoutY="24.0" prefHeight="26.0" prefWidth="107.0" scaleX="0.8" scaleY="0.7" scaleZ="0.8" />
-                                <Text id="choiceTextField2" fx:id="choiceTextField2" fill="WHITE" layoutX="-18.0" layoutY="64.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter coordinates x (row) , y (column) of the tiles to remove:" />
-                                <TextField id="choiceX1TextFied" fx:id="choiceX1TextFied" layoutX="11.0" layoutY="73.0" prefHeight="25.0" prefWidth="25.0" promptText="x" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
-                                <TextField id="choiceY1TextField" fx:id="choiceY1TextField" layoutX="38.0" layoutY="73.0" prefHeight="25.0" prefWidth="25.0" promptText="y" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
-                                <TextField id="choiceY2TextField" fx:id="choiceY2TextField" layoutX="145.0" layoutY="73.0" prefHeight="25.0" prefWidth="25.0" promptText="y" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
-                                <TextField id="choiceX3TextField" fx:id="choiceX3TextField" layoutX="219.0" layoutY="73.0" prefHeight="25.0" prefWidth="25.0" promptText="x" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
-                                <TextField id="choiceY3TextField" fx:id="choiceY3TextField" layoutX="249.0" layoutY="73.0" prefHeight="25.0" prefWidth="25.0" promptText="y" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
-                                <Text id="choiceTextField3" fx:id="choiceTextField3" fill="WHITE" layoutX="-33.0" layoutY="113.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the insertion order of the tiles in your library, from bottom to top:" wrappingWidth="466.7142028808594" />
-                                <TextField id="choiceOrder1TextField" fx:id="choiceOrder1TextField" layoutX="11.0" layoutY="121.0" prefHeight="25.0" prefWidth="25.0" promptText="1" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
-                                <TextField id="choiceOrder2TextField" fx:id="choiceOrder2TextField" layoutX="38.0" layoutY="121.0" prefHeight="25.0" prefWidth="25.0" promptText="3" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
-                                <TextField id="choiceOrder3TextField" fx:id="choiceOrder3TextField" layoutX="64.0" layoutY="121.0" prefHeight="25.0" prefWidth="25.0" promptText="2" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
-                                <Text id="choiceTextField4" fx:id="choiceTextField4" fill="WHITE" layoutX="-34.0" layoutY="159.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the column number in your library where you want to insert the tile(s):" wrappingWidth="476.7142639160156" />
-                                <TextField id="choiceShelfColumnNumTextField" fx:id="choiceShelfColumnNumTextField" layoutX="11.0" layoutY="164.0" prefHeight="26.0" prefWidth="37.0" promptText="0..4" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
-                                <Button id="choiceSendButton" fx:id="choiceSendButton" layoutX="307.0" layoutY="187.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="54.0" text="Send" />
-                                <TextField id="choiceX2TextFied" fx:id="choiceX2TextFied" layoutX="112.0" layoutY="73.0" prefHeight="25.0" prefWidth="25.0" promptText="x" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
-                                <ImageView id="choiceLogoImageView" fx:id="choiceLogoImageView" fitHeight="47.0" fitWidth="149.0" layoutX="222.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                                <Text id="choiceTextField1" fx:id="choiceTextField1" fill="WHITE" layoutX="-14.0" layoutY="18.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the number of tiles to draw:">
+                                    <font>
+                                        <Font size="20.0" />
+                                    </font></Text>
+                                <Spinner id="choiceNumTileSpinner" fx:id="choiceNumTileSpinner" editable="true" layoutX="15.0" layoutY="28.0" prefHeight="25.0" prefWidth="102.0" />
+                                <Text id="choiceTextField2" fx:id="choiceTextField2" fill="WHITE" layoutX="-38.0" layoutY="89.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter coordinates x (row) , y (column) of the tiles to remove:">
+                                    <font>
+                                        <Font size="20.0" />
+                                    </font></Text>
+                                <TextField id="choiceX1TextFied" fx:id="choiceX1TextFied" layoutX="16.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="x" />
+                                <TextField id="choiceY1TextField" fx:id="choiceY1TextField" layoutX="47.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="y" />
+                                <TextField id="choiceY2TextField" fx:id="choiceY2TextField" layoutX="148.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="y" />
+                                <TextField id="choiceX3TextField" fx:id="choiceX3TextField" layoutX="224.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="x" />
+                                <TextField id="choiceY3TextField" fx:id="choiceY3TextField" layoutX="255.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="y" />
+                                <Text id="choiceTextField3" fx:id="choiceTextField3" fill="WHITE" layoutX="-52.0" layoutY="162.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the insertion order of the tiles in your library, from bottom to top:" wrappingWidth="676.047607421875">
+                                    <font>
+                                        <Font size="20.0" />
+                                    </font></Text>
+                                <TextField id="choiceOrder1TextField" fx:id="choiceOrder1TextField" layoutX="16.0" layoutY="171.0" prefHeight="28.0" prefWidth="28.0" promptText="1" />
+                                <TextField id="choiceOrder2TextField" fx:id="choiceOrder2TextField" layoutX="52.0" layoutY="171.0" prefHeight="28.0" prefWidth="28.0" promptText="3" />
+                                <TextField id="choiceOrder3TextField" fx:id="choiceOrder3TextField" layoutX="89.0" layoutY="171.0" prefHeight="28.0" prefWidth="28.0" promptText="2" />
+                                <Text id="choiceTextField4" fx:id="choiceTextField4" fill="WHITE" layoutX="-55.0" layoutY="237.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the column number in your library where you want to insert the tile(s):" wrappingWidth="696.7142944335938">
+                                    <font>
+                                        <Font size="20.0" />
+                                    </font></Text>
+                                <TextField id="choiceShelfColumnNumTextField" fx:id="choiceShelfColumnNumTextField" layoutX="16.0" layoutY="254.0" prefHeight="32.0" prefWidth="40.0" promptText="0..4" />
+                                <Button id="choiceSendButton" fx:id="choiceSendButton" layoutX="630.0" layoutY="240.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="118.0" text="Send">
+                                    <font>
+                                        <Font name="System Bold" size="29.0" />
+                                    </font></Button>
+                                <TextField id="choiceX2TextFied" fx:id="choiceX2TextFied" layoutX="117.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="x" />
+                                <ImageView id="choiceLogoImageView" fx:id="choiceLogoImageView" fitHeight="84.0" fitWidth="255.0" layoutX="535.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@../../../GraphicResources/publisherMaterial/Title 2000x618px.png" />
                                     </image></ImageView>
@@ -290,21 +481,35 @@
                     </content></ScrollPane>
             </children>
         </Pane>
-        <Pane id="loginPane" fx:id="loginPane" prefHeight="403.0" prefWidth="600.0">
+        <Pane id="loginPane" fx:id="loginPane" prefHeight="720.0" prefWidth="1280.0">
             <children>
-                <ImageView id="loginBackImageView" fx:id="loginBackImageView" fitHeight="403.0" fitWidth="600.0" pickOnBounds="true">
+                <ImageView id="loginBackImageView" fx:id="loginBackImageView" fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true">
                     <image>
                         <Image url="@../../../GraphicResources/misc/sfondo parquet.jpg" />
                     </image>
                 </ImageView>
-                <ImageView id="loginLogoImageView" fx:id="loginLogoImageView" fitHeight="128.0" fitWidth="391.0" layoutX="105.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView id="loginLogoImageView" fx:id="loginLogoImageView" fitHeight="299.0" fitWidth="893.0" layoutX="200.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../../GraphicResources/publisherMaterial/Title 2000x618px.png" />
                     </image>
                 </ImageView>
-                <TextField id="usernameTextField" fx:id="usernameTextField" alignment="CENTER" layoutX="226.0" layoutY="188.0" promptText="Username" />
-                <TextField id="playerNumberTextField" fx:id="playerNumberTextField" alignment="CENTER" layoutX="225.0" layoutY="240.0" promptText="Game Player Number" />
-                <Button id="joinGameButton" fx:id="joinGameButton" alignment="CENTER" layoutX="265.0" layoutY="309.0" mnemonicParsing="false" onAction="#hideLoginPane" text="Join Game" />
+                <TextField id="usernameTextField" fx:id="usernameTextField" alignment="CENTER" layoutX="435.0" layoutY="339.0" prefHeight="60.0" prefWidth="389.0" promptText="Username">
+                    <font>
+                        <Font size="29.0" />
+                    </font></TextField>
+                <TextField id="playerNumberTextField" fx:id="playerNumberTextField" alignment="CENTER" layoutX="435.0" layoutY="443.0" prefHeight="62.2" prefWidth="389.0" promptText="Game Player Number">
+                    <font>
+                        <Font size="29.0" />
+                    </font></TextField>
+                <Button id="joinGameButton" fx:id="joinGameButton" alignment="CENTER" layoutX="510.0" layoutY="562.0" mnemonicParsing="false" onAction="#hideLoginPane" prefHeight="52.0" prefWidth="237.0" text="Join Game">
+                    <font>
+                        <Font name="System Bold" size="28.0" />
+                    </font></Button>
+                <ImageView fitHeight="120.0" fitWidth="124.0" layoutX="1159.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../GraphicResources/publisherMaterial/Publisher.png" />
+                    </image>
+                </ImageView>
             </children>
         </Pane>
     </children>
