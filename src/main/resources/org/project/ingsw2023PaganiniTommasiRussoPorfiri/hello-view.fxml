@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+
+<Pane id="mainPane" fx:id="mainPane" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.project.ingsw2023PaganiniTommasiRussoPorfiri.HelloController">
+    <children>
+        <Pane id="gamePane" fx:id="gamePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="403.0" prefWidth="600.0">
+            <children>
+                <ImageView id="gameBackgroungImageView" fx:id="gameBackgroungImageView" fitHeight="403.0" fitWidth="600.0" pickOnBounds="true">
+                    <image>
+                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                    </image>
+                </ImageView>
+                <Pane id="boardPane" fx:id="boardPane" prefHeight="280.0" prefWidth="391.0">
+                    <children>
+                        <ImageView id="boardImageView" fx:id="boardImageView" fitHeight="280.0" fitWidth="391.0" pickOnBounds="true">
+                            <image>
+                                <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                            </image>
+                        </ImageView>
+                        <GridPane id="boardGridPane" fx:id="boardGridPane" layoutX="15.0" layoutY="12.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="257.0" prefWidth="358.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints fillHeight="false" maxHeight="40.0666618347168" minHeight="-Infinity" prefHeight="27.600004577636717" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="75.06666450500488" minHeight="-Infinity" prefHeight="28.799998474121097" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="163.73334426879882" minHeight="-Infinity" prefHeight="27.59999694824218" vgrow="SOMETIMES" />
+                                <RowConstraints fillHeight="false" maxHeight="166.6666717529297" minHeight="-Infinity" prefHeight="28.799996948242196" vgrow="SOMETIMES" />
+                                <RowConstraints fillHeight="false" maxHeight="143.99999237060547" minHeight="-Infinity" prefHeight="28.0000030517578" vgrow="SOMETIMES" />
+                                <RowConstraints fillHeight="false" maxHeight="136.46665954589844" minHeight="-Infinity" prefHeight="27.99999694824217" vgrow="SOMETIMES" />
+                                <RowConstraints fillHeight="false" maxHeight="136.46665954589844" minHeight="0.0" prefHeight="28.399993896484375" vgrow="SOMETIMES" />
+                                <RowConstraints fillHeight="false" maxHeight="136.46665954589844" minHeight="10.0" prefHeight="27.600006103515625" vgrow="SOMETIMES" />
+                                <RowConstraints fillHeight="false" maxHeight="103.19999999999999" minHeight="-Infinity" prefHeight="30.00000610351563" vgrow="SOMETIMES" />
+                                <RowConstraints fillHeight="false" maxHeight="0.0" minHeight="-Infinity" prefHeight="0.0" vgrow="SOMETIMES" />
+                                <RowConstraints fillHeight="false" maxHeight="0.0" minHeight="-Infinity" prefHeight="0.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                        </GridPane>
+                    </children>
+                </Pane>
+                <SplitPane id="allCardsSplitPane" fx:id="allCardsSplitPane" dividerPositions="0.5" layoutX="390.0" prefHeight="160.0" prefWidth="210.0">
+                    <items>
+                        <AnchorPane id="commonCardsAnchroPane" fx:id="commonCardsAnchroPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                            <children>
+                                <SplitPane id="commonCardsSplitPane" fx:id="commonCardsSplitPane" dividerPositions="0.5" layoutX="1.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="160.0" prefWidth="100.0">
+                                    <items>
+                                        <AnchorPane id="commonCard1AnchorPane" fx:id="commonCard1AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                            <children>
+                                                <ImageView id="commonCard1BackImageView" fx:id="commonCard1BackImageView" fitHeight="76.0" fitWidth="98.0" pickOnBounds="true">
+                                                    <image>
+                                                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView id="c1ImageView" fx:id="c1ImageView" fitHeight="76.0" fitWidth="98.0" pickOnBounds="true">
+                                                    <image>
+                                                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                                    </image>
+                                                </ImageView>
+                                            </children>
+                                        </AnchorPane>
+                                        <AnchorPane id="commonCard2AnchorPane" fx:id="commonCard2AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                            <children>
+                                                <ImageView id="commonCard2BackImageView" fx:id="commonCard2BackImageView" fitHeight="76.0" fitWidth="98.0" pickOnBounds="true">
+                                                    <image>
+                                                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView id="commonCard2ImageView" fx:id="commonCard2ImageView" fitHeight="76.0" fitWidth="98.0" pickOnBounds="true">
+                                                    <image>
+                                                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                                    </image>
+                                                </ImageView>
+                                            </children>
+                                        </AnchorPane>
+                                    </items>
+                                </SplitPane>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane id="personalCardAnchorPane" fx:id="personalCardAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                            <children>
+                                <ImageView id="personalCardBackImageView" fx:id="personalCardBackImageView" fitHeight="160.0" fitWidth="102.0" layoutX="-1.0" layoutY="2.0" pickOnBounds="true">
+                                    <image>
+                                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                    </image>
+                                </ImageView>
+                                <ImageView id="personalCardImageView" fx:id="personalCardImageView" fitHeight="160.0" fitWidth="102.0" pickOnBounds="true">
+                                    <image>
+                                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </AnchorPane>
+                    </items>
+                </SplitPane>
+                <SplitPane id="shelvesSplitPane" fx:id="shelvesSplitPane" dividerPositions="0.5" layoutX="390.0" layoutY="160.0" orientation="VERTICAL" prefHeight="242.0" prefWidth="210.0">
+                    <items>
+                        <AnchorPane id="shelvesTopAnchorPane" fx:id="shelvesTopAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                            <children>
+                                <SplitPane id="shelvesTopSplitPane" fx:id="shelvesTopSplitPane" dividerPositions="0.5" prefHeight="118.0" prefWidth="209.0">
+                                    <items>
+                                        <AnchorPane id="myShelfAnchorPane" fx:id="myShelfAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                            <children>
+                                                <ImageView id="myShelfBackImageView" fx:id="myShelfBackImageView" fitHeight="116.0" fitWidth="102.0" pickOnBounds="true">
+                                                    <image>
+                                                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView id="myShelfImageView" fx:id="myShelfImageView" fitHeight="106.0" fitWidth="102.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <GridPane id="myShelfGridPane" fx:id="myShelfGridPane" layoutX="10.5" layoutY="18.5" prefHeight="86.0" prefWidth="80.0">
+                                                    <columnConstraints>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    </columnConstraints>
+                                                    <rowConstraints>
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    </rowConstraints>
+                                                </GridPane>
+                                            </children>
+                                        </AnchorPane>
+                                        <AnchorPane id="shelf2AnchorPane" fx:id="shelf2AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="117.0" prefWidth="126.0" style="-fx-background-color: transparent;">
+                                            <children>
+                                                <ImageView id="shelf2BackImageView" fx:id="shelf2BackImageView" fitHeight="116.0" fitWidth="102.0" pickOnBounds="true">
+                                                    <image>
+                                                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView id="shelf2ImageView" fx:id="shelf2ImageView" fitHeight="113.0" fitWidth="102.0" layoutX="-1.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <GridPane id="shelf2GridPane" fx:id="shelf2GridPane" layoutX="10.5" layoutY="18.5" prefHeight="86.0" prefWidth="80.0">
+                                                    <columnConstraints>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    </columnConstraints>
+                                                    <rowConstraints>
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    </rowConstraints>
+                                                </GridPane>
+                                            </children>
+                                        </AnchorPane>
+                                    </items>
+                                </SplitPane>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane id="shelvesBottomAnchorPane" fx:id="shelvesBottomAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                            <children>
+                                <SplitPane id="shelvesBottomSplitPane" fx:id="shelvesBottomSplitPane" dividerPositions="0.5" prefHeight="117.0" prefWidth="210.0">
+                                    <items>
+                                        <AnchorPane id="shelf3AnchorPane" fx:id="shelf3AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="116.0" prefWidth="73.0">
+                                            <children>
+                                                <ImageView id="shelf3BackImageView" fx:id="shelf3BackImageView" fitHeight="116.0" fitWidth="102.0" pickOnBounds="true">
+                                                    <image>
+                                                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView id="shelf3ImageView" fx:id="shelf3ImageView" fitHeight="113.0" fitWidth="102.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <GridPane id="shelf3GridPane" fx:id="shelf3GridPane" layoutX="10.5" layoutY="18.5" prefHeight="86.0" prefWidth="80.0">
+                                                    <columnConstraints>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    </columnConstraints>
+                                                    <rowConstraints>
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    </rowConstraints>
+                                                </GridPane>
+                                            </children>
+                                        </AnchorPane>
+                                        <AnchorPane id="shelf4AnchorPane" fx:id="shelf4AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                            <children>
+                                                <ImageView id="shelf4BackImageView" fx:id="shelf4BackImageView" fitHeight="116.0" fitWidth="102.0" pickOnBounds="true">
+                                                    <image>
+                                                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView id="shelf4ImageView" fx:id="shelf4ImageView" fitHeight="113.0" fitWidth="102.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <GridPane id="shelf4GridPane" fx:id="shelf4GridPane" layoutX="10.5" layoutY="18.5" prefHeight="86.0" prefWidth="80.0">
+                                                    <columnConstraints>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    </columnConstraints>
+                                                    <rowConstraints>
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    </rowConstraints>
+                                                </GridPane>
+                                            </children>
+                                        </AnchorPane>
+                                    </items>
+                                </SplitPane>
+                            </children>
+                        </AnchorPane>
+                    </items>
+                </SplitPane>
+                <ScrollPane id="choiceScrollPane" fx:id="choiceScrollPane" hbarPolicy="NEVER" layoutY="281.0" prefHeight="121.0" prefWidth="391.0" vmax="100.0">
+                    <content>
+                        <AnchorPane id="choiceAnchorPane" fx:id="choiceAnchorPane" prefHeight="230.0" prefWidth="375.0">
+                            <children>
+                                <ImageView id="choiceBackImageView" fx:id="choiceBackImageView" fitHeight="230.0" fitWidth="375.0" pickOnBounds="true">
+                                    <image>
+                                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                    </image>
+                                </ImageView>
+                                <Text id="choiceTextField1" fx:id="choiceTextField1" fill="WHITE" layoutX="-2.0" layoutY="18.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the number of tiles to draw:" />
+                                <Spinner id="choiceNumTileSpinner" fx:id="choiceNumTileSpinner" editable="true" layoutX="7.0" layoutY="24.0" prefHeight="26.0" prefWidth="107.0" scaleX="0.8" scaleY="0.7" scaleZ="0.8" />
+                                <Text id="choiceTextField2" fx:id="choiceTextField2" fill="WHITE" layoutX="-18.0" layoutY="64.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter coordinates x (row) , y (column) of the tiles to remove:" />
+                                <TextField id="choiceX1TextFied" fx:id="choiceX1TextFied" layoutX="11.0" layoutY="73.0" prefHeight="25.0" prefWidth="25.0" promptText="x" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
+                                <TextField id="choiceY1TextField" fx:id="choiceY1TextField" layoutX="38.0" layoutY="73.0" prefHeight="25.0" prefWidth="25.0" promptText="y" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
+                                <TextField id="choiceY2TextField" fx:id="choiceY2TextField" layoutX="145.0" layoutY="73.0" prefHeight="25.0" prefWidth="25.0" promptText="y" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
+                                <TextField id="choiceX3TextField" fx:id="choiceX3TextField" layoutX="219.0" layoutY="73.0" prefHeight="25.0" prefWidth="25.0" promptText="x" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
+                                <TextField id="choiceY3TextField" fx:id="choiceY3TextField" layoutX="249.0" layoutY="73.0" prefHeight="25.0" prefWidth="25.0" promptText="y" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
+                                <Text id="choiceTextField3" fx:id="choiceTextField3" fill="WHITE" layoutX="-33.0" layoutY="113.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the insertion order of the tiles in your library, from bottom to top:" wrappingWidth="466.7142028808594" />
+                                <TextField id="choiceOrder1TextField" fx:id="choiceOrder1TextField" layoutX="11.0" layoutY="121.0" prefHeight="25.0" prefWidth="25.0" promptText="1" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
+                                <TextField id="choiceOrder2TextField" fx:id="choiceOrder2TextField" layoutX="38.0" layoutY="121.0" prefHeight="25.0" prefWidth="25.0" promptText="3" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
+                                <TextField id="choiceOrder3TextField" fx:id="choiceOrder3TextField" layoutX="64.0" layoutY="121.0" prefHeight="25.0" prefWidth="25.0" promptText="2" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
+                                <Text id="choiceTextField4" fx:id="choiceTextField4" fill="WHITE" layoutX="-34.0" layoutY="159.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the column number in your library where you want to insert the tile(s):" wrappingWidth="476.7142639160156" />
+                                <TextField id="choiceShelfColumnNumTextField" fx:id="choiceShelfColumnNumTextField" layoutX="11.0" layoutY="164.0" prefHeight="26.0" prefWidth="37.0" promptText="0..4" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
+                                <Button id="choiceSendButton" fx:id="choiceSendButton" layoutX="307.0" layoutY="187.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="54.0" text="Send" />
+                                <TextField id="choiceX2TextFied" fx:id="choiceX2TextFied" layoutX="112.0" layoutY="73.0" prefHeight="25.0" prefWidth="25.0" promptText="x" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
+                                <ImageView id="choiceLogoImageView" fx:id="choiceLogoImageView" fitHeight="47.0" fitWidth="149.0" layoutX="222.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                    </image></ImageView>
+                            </children>
+                        </AnchorPane>
+                    </content></ScrollPane>
+            </children>
+        </Pane>
+        <Pane id="loginPane" fx:id="loginPane" prefHeight="403.0" prefWidth="600.0">
+            <children>
+                <ImageView id="loginBackImageView" fx:id="loginBackImageView" fitHeight="403.0" fitWidth="600.0" pickOnBounds="true">
+                    <image>
+                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                    </image>
+                </ImageView>
+                <ImageView id="loginLogoImageView" fx:id="loginLogoImageView" fitHeight="128.0" fitWidth="391.0" layoutX="105.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                    </image>
+                </ImageView>
+                <TextField id="usernameTextField" fx:id="usernameTextField" alignment="CENTER" layoutX="226.0" layoutY="188.0" promptText="Username" />
+                <TextField id="playerNumberTextField" fx:id="playerNumberTextField" alignment="CENTER" layoutX="225.0" layoutY="240.0" promptText="Game Player Number" />
+                <Button id="joinGameButton" fx:id="joinGameButton" alignment="CENTER" layoutX="265.0" layoutY="309.0" mnemonicParsing="false" onAction="#hideLoginPane" text="Join Game" />
+            </children>
+        </Pane>
+    </children>
+</Pane>
