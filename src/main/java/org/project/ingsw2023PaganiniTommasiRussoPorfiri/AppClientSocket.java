@@ -7,7 +7,7 @@ import java.rmi.RemoteException;
 public class AppClientSocket
 {
     public static void main( String[] args ) throws RemoteException {
-        ServerStub serverStub = new ServerStub("localhost", 1234);
+        ServerStub serverStub = new ServerStub("127.0.0.1", 1234);
         ClientImpl client = new ClientImpl(serverStub);
         new Thread() { //thread che si occupa di gestire i messaggi di rete in arrivo
             @Override

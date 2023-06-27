@@ -328,6 +328,8 @@ public class Player implements Serializable {
             totCounter += calculateGroupCounter(row, col + 1, visited, counter, false, totCounter, prevType);
         }
 
+        System.out.println("TotCounter: " + totCounter);
+
         if (starter) {
             return totCounter;
         }

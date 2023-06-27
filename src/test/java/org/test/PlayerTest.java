@@ -153,7 +153,7 @@ public class PlayerTest {
     // TODO aggiustare il punteggio totale
     @Test
     public void testCalculateTotalPoints() {
-        // 1 end of game + 1 pc + 8 cc + 3
+        // 1 end of game + 1 pc + 8 cc + 8 adiacents
         int points = 0;
         Player player = new Player("player1");
         Game game = new GameTwoPlayers(2, player);
@@ -187,11 +187,15 @@ public class PlayerTest {
         } catch (Exception e) {
             System.out.println("error");
         }
+<<<<<<< Updated upstream
 
         System.out.println("Adiacents: " +player.calculateAdjacentPoints());
         System.out.println("Personal: " +player.calculatePersonalPoints());
         System.out.println("Common: " + (player.getScore() - player.calculatePersonalPoints()- player.calculateAdjacentPoints()));
 
+=======
+        player.addEndOfGamePoint();
+>>>>>>> Stashed changes
         Assertions.assertEquals(18, points);
     }
 

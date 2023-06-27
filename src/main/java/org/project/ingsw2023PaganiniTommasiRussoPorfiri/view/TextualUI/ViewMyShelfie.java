@@ -2,7 +2,9 @@ package org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.TextualUI;
 
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.*;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.utils.*;
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.SwingUI.LoginGUI;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -22,6 +24,8 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
     private Game currentGame = null;
 
     private boolean iAlreadyDrawn = false;
+
+    public LoginGUI frameLogin = new LoginGUI(this);
 
 
 
@@ -180,7 +184,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
     }
 
     public void deliverGuiRequest(Choice c){
-        System.out.println("Waiting for the server... ");
+
         setState(State.WAITING_FOR_OUTCOME);
         setChanged();/*NOTIFICO AL SERVER che del client ha fatto scelta!!*/
         notifyObservers(c);
@@ -367,7 +371,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
 
             }catch (PositionEmptyException e) {
                 //non c'è bisogno di rimettere le tessere nella board!
-                e.printStackTrace();
+                //e.printStackTrace();
                 System.err.println("Error entering data!\n"+e.getMessage()+ "`\n Retry! \n");
             }
     }
@@ -380,6 +384,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                     case CPU_CHOICE -> {
                         switch (model.getPlayerChoice().getChoice()) {
                             case JOIN_GAME:
+
                                 this.player.setId(arg.getPlayer().getId());
                                 //aggiorno la variabile this.current_game_id e current_game
                                 for (int i = 0; i < model.getMyShelfie().getGames().size(); i++) {
@@ -397,13 +402,24 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                                                 //System.err.println("partita a cui ti sei unito in corso: " + model.getMyShelfie().getGames().get(i).toString());
                                                 this.currentGameId = model.getMyShelfie().getGames().get(i).getCurrentGameId();
                                                 //this.current_game = model.getMyShelfie().getGames().get(i);
-                                                break;
+                                                /*prova aggiornamento gui*/
+                                                SwingUtilities.invokeLater(() -> {
+                                                    this.frameLogin.usernameField.setText("You just joined the game and the match is under way!");
+                                                    this.frameLogin.joinGameButton.setEnabled(false);
+                                                });
+                                            break;
                                             case IN_WAIT://siccome non esiste una partita di un solo giocatore entrerò sempre qui!
+                                                /*prova aggiornamento gui*/
+                                                SwingUtilities.invokeLater(() -> {
+                                                    this.frameLogin.usernameField.setText("You just joined a game and you are waiting for more players!");
+                                                    this.frameLogin.joinGameButton.setEnabled(false);
+                                                });
+
                                                 System.out.println("\nYou just joined a game and you are waiting for more players!\n");
                                                 //System.err.println("partita a cui ti sei unito in corso: " + model.getMyShelfie().getGames().get(i).toString());
                                                 this.currentGameId = model.getMyShelfie().getGames().get(i).getCurrentGameId();
                                                 //this.current_game = model.getMyShelfie().getGames().get(i);
-                                                break;
+                                            break;
                                         }
                                     }
                                 }
@@ -437,6 +453,11 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
 
                         case JOIN_GAME:
                             System.out.println("Player: "+model.getMyShelfie().getGame(this.currentGameId).getPlayers().get(model.getMyShelfie().getGame(this.currentGameId).getPlayers().size()-1).getUsername()+" just joined the game!");
+                            /*prova aggiornamento gui*/
+                            SwingUtilities.invokeLater(() -> {
+                                JOptionPane.showMessageDialog(this.frameLogin, "Player: "+model.getMyShelfie().getGame(this.currentGameId).getPlayers().get(model.getMyShelfie().getGame(this.currentGameId).getPlayers().size()-1).getUsername()+" just joined the game!", "update", JOptionPane.ERROR_MESSAGE);
+                                this.frameLogin.joinGameButton.setEnabled(false);
+                            });
 
 
                         break;
@@ -457,7 +478,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
             e.printStackTrace();
         }
 
-        //se è il mio turno faccio qualcosa!!
+        //se è il mio turno faccio qualcosa!!//nota e' il mio turno sse la partita e. in corso
         if (model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer() != null) {
             if (model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getId() == this.player.getId()) {
                 System.out.println("Server answered!");

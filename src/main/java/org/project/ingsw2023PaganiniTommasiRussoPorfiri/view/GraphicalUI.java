@@ -29,12 +29,10 @@ public class GraphicalUI extends Observable<ChoiceMyShelfie> implements Runnable
     private final ActionListener playActionListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-
-                Choice c = new Choice(ChoiceMyShelfie.JOIN_GAME, new Player("test"),2);
-                setState(State.WAITING_FOR_OUTCOME);
-                setChanged();
-                notifyObservers(c);
-
+            Choice c = new Choice(ChoiceMyShelfie.JOIN_GAME, new Player("test"),2);
+            setState(State.WAITING_FOR_OUTCOME);
+            setChanged();
+            notifyObservers(c);
         }
     };
     private final LoginGUI frame = new LoginGUI();

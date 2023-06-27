@@ -156,7 +156,7 @@ public class LoginGUI extends JFrame {
 
                         viewMyShelfie.deliverGuiRequest(c);
                         //aggiorno la view testuale!
-                        viewMyShelfie.texView();
+                        //viewMyShelfie.texView();
 
                     }
                 } catch (NumberFormatException ex) {
