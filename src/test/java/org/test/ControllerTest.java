@@ -30,15 +30,23 @@ public class ControllerTest {
         ClientImpl client = new ClientImpl(server);
         Controller controller = new Controller(model, client);
         ChoiceMyShelfie choiceMyShelfie = ChoiceMyShelfie.DRAW_FROM_BOARD;
+
         int[] ordine = new int[1];
         ordine[0] = 1;
         ArrayList<TilePositionBoard> positions = new ArrayList<TilePositionBoard>();
         positions.add(new TilePositionBoard(3,1));
         DrawFromBoardMessage argument = new DrawFromBoardMessage(positions, 0, model.getMyShelfie().getGames().get(0).getCurrentGameId(), ordine);
-        Choice choice = new Choice(choiceMyShelfie, model.getMyShelfie().getGame(model.getMyShelfie().getGames().get(0).getCurrentGameId()).getCurrentPlayer(), argument);
-        Object myShelfieBefore = model.getMyShelfie();
+
+        Choice choice = new Choice(
+                choiceMyShelfie,
+                model.getMyShelfie().
+                        getGame(    model.getMyShelfie().getGames().get(0).getCurrentGameId()   ).getCurrentPlayer(),
+                argument);
+
+        ArrayList<TilePositionBoard> BordBefore = controller.getModel().getMyShelfie().getGames().get(0).getBoard().getPlacements();
         controller.update(client, choice);
-        Object myShelfieAfter = model.getMyShelfie();
-        assertNotEquals(myShelfieBefore.toString(), myShelfieAfter.toString());
+        ArrayList<TilePositionBoard> BoardAfter = controller.getModel().getMyShelfie().getGames().get(0).getBoard().getPlacements();
+
+        assertNotEquals(BordBefore.toString(), BoardAfter.toString());
     }
 }

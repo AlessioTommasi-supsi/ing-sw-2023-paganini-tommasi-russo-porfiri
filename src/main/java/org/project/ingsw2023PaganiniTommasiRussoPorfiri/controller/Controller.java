@@ -103,4 +103,11 @@ public class Controller {
         model.clear();
     }
 
+    public Turn getModel() {
+        return model;
+    }
+
+    public Client getClient() {
+        return client;
+    }
 }

@@ -119,6 +119,7 @@ public class PlayerTest {
         player.getShelves().addTile(new TilePositionShelves(1,2, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
         player.getShelves().addTile(new TilePositionShelves(1,3, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO)));
         game.updatePointsCommon();
+        assertEquals(8, player.getScore());
         Assertions.assertEquals(4, game.getPointCommonCard1());
     }
 
@@ -159,6 +160,17 @@ public class PlayerTest {
         game.setCurrentPlayer(player);
         CommonCard common = new CommonCardShape(5);
         game.setCommon1(common);
+        ArrayList<PersonalCard> personalCardParsers = new ArrayList<>();
+        try {
+            Gson gson = new Gson();
+            Reader reader = Files.newBufferedReader(Paths.get("PersonalCard.json"));
+            PersonalCard[] parser = gson.fromJson(reader,PersonalCard[].class);
+            personalCardParsers.add(parser[0]);
+            reader.close();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        player.setPC(personalCardParsers.get(0));
         player.getShelves().addTile(new TilePositionShelves(0,0, new TileObj(TileType.TROPHY, TileVariant.VARIANT_ONE)));
         player.getShelves().addTile(new TilePositionShelves(0,1, new TileObj(TileType.TROPHY, TileVariant.VARIANT_TWO)));
         player.getShelves().addTile(new TilePositionShelves(0,2, new TileObj(TileType.TROPHY, TileVariant.VARIANT_THREE)));
@@ -168,14 +180,19 @@ public class PlayerTest {
         player.getShelves().addTile(new TilePositionShelves(1,2, new TileObj(TileType.TROPHY, TileVariant.VARIANT_ONE)));
         player.getShelves().addTile(new TilePositionShelves(1,3, new TileObj(TileType.TROPHY, TileVariant.VARIANT_TWO)));
         game.updatePointsCommon();
+        player.addEndOfGamePoint();
         try {
             player.calcOverallScore();
             points = player.getScore();
         } catch (Exception e) {
             System.out.println("error");
         }
-        player.addEndOfGamePoint();
-        Assertions.assertEquals(13, points);
+
+        System.out.println("Adiacents: " +player.calculateAdjacentPoints());
+        System.out.println("Personal: " +player.calculatePersonalPoints());
+        System.out.println("Common: " + (player.getScore() - player.calculatePersonalPoints()- player.calculateAdjacentPoints()));
+
+        Assertions.assertEquals(18, points);
     }
 
     @Test
@@ -189,7 +206,7 @@ public class PlayerTest {
         player.getShelves().addTile(new TilePositionShelves(1,1, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
         player.getShelves().addTile(new TilePositionShelves(1,2, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
         player.getShelves().addTile(new TilePositionShelves(1,3, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
-        assertEquals(6, player.calculateAdjacentPoints());
+        assertEquals(8, player.calculateAdjacentPoints());
 
 
     }

@@ -20,14 +20,14 @@
             <children>
                 <ImageView id="gameBackgroungImageView" fx:id="gameBackgroungImageView" fitHeight="403.0" fitWidth="600.0" pickOnBounds="true">
                     <image>
-                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                        <Image url="@../../../GraphicResources/plainBackgrounds/d2b48c.png" />
                     </image>
                 </ImageView>
                 <Pane id="boardPane" fx:id="boardPane" prefHeight="280.0" prefWidth="391.0">
                     <children>
                         <ImageView id="boardImageView" fx:id="boardImageView" fitHeight="280.0" fitWidth="391.0" pickOnBounds="true">
                             <image>
-                                <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                <Image url="@../../../GraphicResources/boards/livingroom.png" />
                             </image>
                         </ImageView>
                         <GridPane id="boardGridPane" fx:id="boardGridPane" layoutX="15.0" layoutY="12.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="257.0" prefWidth="358.0">
@@ -68,12 +68,12 @@
                                             <children>
                                                 <ImageView id="commonCard1BackImageView" fx:id="commonCard1BackImageView" fitHeight="76.0" fitWidth="98.0" pickOnBounds="true">
                                                     <image>
-                                                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                                        <Image url="@../../../GraphicResources/plainBackgrounds/d2b48c.png" />
                                                     </image>
                                                 </ImageView>
                                                 <ImageView id="c1ImageView" fx:id="c1ImageView" fitHeight="76.0" fitWidth="98.0" pickOnBounds="true">
                                                     <image>
-                                                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                                        <Image url="@../../../GraphicResources/commonGoalCards/1.jpg" />
                                                     </image>
                                                 </ImageView>
                                             </children>
@@ -82,12 +82,12 @@
                                             <children>
                                                 <ImageView id="commonCard2BackImageView" fx:id="commonCard2BackImageView" fitHeight="76.0" fitWidth="98.0" pickOnBounds="true">
                                                     <image>
-                                                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                                        <Image url="@../../../GraphicResources/plainBackgrounds/d2b48c.png" />
                                                     </image>
                                                 </ImageView>
                                                 <ImageView id="commonCard2ImageView" fx:id="commonCard2ImageView" fitHeight="76.0" fitWidth="98.0" pickOnBounds="true">
                                                     <image>
-                                                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                                        <Image url="@../../../GraphicResources/commonGoalCards/2.jpg" />
                                                     </image>
                                                 </ImageView>
                                             </children>
@@ -100,12 +100,12 @@
                             <children>
                                 <ImageView id="personalCardBackImageView" fx:id="personalCardBackImageView" fitHeight="160.0" fitWidth="102.0" layoutX="-1.0" layoutY="2.0" pickOnBounds="true">
                                     <image>
-                                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                        <Image url="@../../../GraphicResources/plainBackgrounds/d2b48c.png" />
                                     </image>
                                 </ImageView>
                                 <ImageView id="personalCardImageView" fx:id="personalCardImageView" fitHeight="160.0" fitWidth="102.0" pickOnBounds="true">
                                     <image>
-                                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                        <Image url="@../../../GraphicResources/personalGoalCards/Personal_Goals6.png" />
                                     </image>
                                 </ImageView>
                             </children>
@@ -122,12 +122,12 @@
                                             <children>
                                                 <ImageView id="myShelfBackImageView" fx:id="myShelfBackImageView" fitHeight="116.0" fitWidth="102.0" pickOnBounds="true">
                                                     <image>
-                                                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                                        <Image url="@../../../GraphicResources/plainBackgrounds/d2b48c.png" />
                                                     </image>
                                                 </ImageView>
                                                 <ImageView id="myShelfImageView" fx:id="myShelfImageView" fitHeight="106.0" fitWidth="102.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                                     <image>
-                                                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                                        <Image url="@../../../GraphicResources/boards/bookshelf_orth.png" />
                                                     </image>
                                                 </ImageView>
                                                 <GridPane id="myShelfGridPane" fx:id="myShelfGridPane" layoutX="10.5" layoutY="18.5" prefHeight="86.0" prefWidth="80.0">
@@ -153,7 +153,7 @@
                                             <children>
                                                 <ImageView id="shelf2BackImageView" fx:id="shelf2BackImageView" fitHeight="116.0" fitWidth="102.0" pickOnBounds="true">
                                                     <image>
-                                                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                                        <Image url="@../../../GraphicResources/plainBackgrounds/d2b48c.png" />
                                                     </image>
                                                 </ImageView>
                                                 <ImageView id="shelf2ImageView" fx:id="shelf2ImageView" fitHeight="113.0" fitWidth="102.0" layoutX="-1.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -192,7 +192,7 @@
                                             <children>
                                                 <ImageView id="shelf3BackImageView" fx:id="shelf3BackImageView" fitHeight="116.0" fitWidth="102.0" pickOnBounds="true">
                                                     <image>
-                                                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                                        <Image url="@../../../GraphicResources/plainBackgrounds/d2b48c.png" />
                                                     </image>
                                                 </ImageView>
                                                 <ImageView id="shelf3ImageView" fx:id="shelf3ImageView" fitHeight="113.0" fitWidth="102.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -223,7 +223,7 @@
                                             <children>
                                                 <ImageView id="shelf4BackImageView" fx:id="shelf4BackImageView" fitHeight="116.0" fitWidth="102.0" pickOnBounds="true">
                                                     <image>
-                                                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                                        <Image url="@../../../GraphicResources/plainBackgrounds/d2b48c.png" />
                                                     </image>
                                                 </ImageView>
                                                 <ImageView id="shelf4ImageView" fx:id="shelf4ImageView" fitHeight="113.0" fitWidth="102.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -262,7 +262,7 @@
                             <children>
                                 <ImageView id="choiceBackImageView" fx:id="choiceBackImageView" fitHeight="230.0" fitWidth="375.0" pickOnBounds="true">
                                     <image>
-                                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                        <Image url="@../../../GraphicResources/plainBackgrounds/5d1916.png" />
                                     </image>
                                 </ImageView>
                                 <Text id="choiceTextField1" fx:id="choiceTextField1" fill="WHITE" layoutX="-2.0" layoutY="18.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the number of tiles to draw:" />
@@ -283,7 +283,7 @@
                                 <TextField id="choiceX2TextFied" fx:id="choiceX2TextFied" layoutX="112.0" layoutY="73.0" prefHeight="25.0" prefWidth="25.0" promptText="x" scaleX="0.8" scaleY="0.8" scaleZ="0.8" />
                                 <ImageView id="choiceLogoImageView" fx:id="choiceLogoImageView" fitHeight="47.0" fitWidth="149.0" layoutX="222.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                                        <Image url="@../../../GraphicResources/publisherMaterial/Title 2000x618px.png" />
                                     </image></ImageView>
                             </children>
                         </AnchorPane>
@@ -294,12 +294,12 @@
             <children>
                 <ImageView id="loginBackImageView" fx:id="loginBackImageView" fitHeight="403.0" fitWidth="600.0" pickOnBounds="true">
                     <image>
-                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                        <Image url="@../../../GraphicResources/misc/sfondo parquet.jpg" />
                     </image>
                 </ImageView>
                 <ImageView id="loginLogoImageView" fx:id="loginLogoImageView" fitHeight="128.0" fitWidth="391.0" layoutX="105.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../GraphicResources/boards/bookshelf.png" />
+                        <Image url="@../../../GraphicResources/publisherMaterial/Title 2000x618px.png" />
                     </image>
                 </ImageView>
                 <TextField id="usernameTextField" fx:id="usernameTextField" alignment="CENTER" layoutX="226.0" layoutY="188.0" promptText="Username" />

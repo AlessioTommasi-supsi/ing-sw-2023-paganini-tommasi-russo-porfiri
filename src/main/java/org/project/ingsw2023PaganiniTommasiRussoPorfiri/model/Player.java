@@ -232,27 +232,76 @@ public class Player implements Serializable {
                 }
 
                 try {
-                    tilesCounter = calculateGroupCounter(row, col, visited, 0, true, 0, shelves.getTilePosition(col, row).getTile().getType());
+                    tilesCounter = calculateGroupCounter(row, col, visited, 1, true, shelves.getTilePosition(col, row).getTile().getType());
                 }catch (Exception e){//succede quando tessere in shelves vuote
                     continue;
                 }
-
-                System.out.println("TilesCounter: " + tilesCounter);
-                tilesCounter = 3;
 
                 // Serve per la HashMap
                 if(tilesCounter > 6) {
                     tilesCounter = 6;
                 }
 
-
-                return tilesCounter < 3 ? 0 : givenAdjacencyPoints.get(tilesCounter);
+                totalPoints += givenAdjacencyPoints.get(tilesCounter);
             }
-        }
 
-        return 0;
+        }
+        return totalPoints;
     }
 
+    public boolean isValidPosition(int row, int col){
+        if (row < 0 || row >= 6 || col < 0 || col >= 5) {
+            return false;
+        }
+        else return true;
+    }
+
+    private int calculateGroupCounter(int row, int col, boolean[][] visited, int counter, boolean starter, TileType prevType) {
+        TileObj currentTile;
+
+        if (row < 0 || row >= 6 || col < 0 || col >= 5 || visited[row][col]) {
+            counter = 0;
+            return counter;
+        }
+        if(!(shelves.getTilePosition(row, col).getTile().getType().equals(prevType))){
+            return counter;
+        }
+
+        visited[row][col] = true;
+        counter ++;
+        currentTile = this.shelves.getTilePosition(row, col).getTile();
+
+
+        if (isValidPosition(row-1,col) && this.shelves.getTilePosition(row - 1, col).isOccupied() &&
+                this.shelves.getTilePosition(row - 1, col).getTile().getType().equals(currentTile.getType()))
+        {
+
+            counter += calculateGroupCounter(row - 1, col, visited, counter, false, prevType);
+        }
+        if (isValidPosition(row+1,col) && shelves.getTilePosition(row + 1, col).getTile() != null && shelves.getTilePosition(row + 1, col).getTile().getType().equals(currentTile.getType())) {
+            counter += calculateGroupCounter(row + 1, col, visited, counter, false, prevType);
+        }
+        if (isValidPosition(row,col-1) && shelves.getTilePosition(row, col-1).getTile() != null && shelves.getTilePosition(row, col-1).getTile().getType().equals(currentTile.getType())) {
+            counter += calculateGroupCounter(row, col - 1, visited, counter, false, prevType);
+        }
+        if (isValidPosition(row,col+1) && shelves.getTilePosition(row, col+1).getTile() != null && shelves.getTilePosition(row, col+1).getTile().getType().equals(currentTile.getType())) {
+            counter += calculateGroupCounter(row, col + 1, visited, counter, false, prevType);
+        }
+
+        /*
+        if (starter) {
+            return counter;
+        }*/
+        if(counter > 6) {
+            counter = 6;
+        }
+
+        return  counter;
+
+
+    }
+
+    /*
     private int calculateGroupCounter(int row, int col, boolean[][] visited, int counter, boolean starter, int totCounter, TileType prevType) {
         if (row < 0 || row >= 6 || col < 0 || col >= 5 || visited[row][col] || !shelves.getTilePosition(row, col).getTile().getType().equals(prevType)) {
             return counter;
@@ -284,6 +333,8 @@ public class Player implements Serializable {
         }
         return  0;
     }
+    */
+
 
 
 
