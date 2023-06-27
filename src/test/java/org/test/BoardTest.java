@@ -2,13 +2,13 @@ package org.test;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
-import org.project.model.*;
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.*;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.project.utils.*;
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.utils.*;
 
 class BoardTest {
     private Board board;

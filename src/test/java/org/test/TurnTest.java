@@ -3,7 +3,7 @@ package org.test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.project.model.*;
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.*;
 
 public class TurnTest {
 

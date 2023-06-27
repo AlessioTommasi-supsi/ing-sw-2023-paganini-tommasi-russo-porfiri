@@ -1,7 +1,7 @@
 package org.test;
 
-import org.project.model.*;
-import org.project.utils.*;
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.*;
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.utils.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

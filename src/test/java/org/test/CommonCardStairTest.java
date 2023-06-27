@@ -1,6 +1,6 @@
 package org.test;
 
-import org.project.model.*;
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

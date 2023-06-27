@@ -29,6 +29,7 @@ public class Player implements Serializable {
         this.shelves = p.getShelves();
         this.pC = p.getPC();
         this.score = p.getScore();
+        defineAdjacencyPoints();
     }
 
     public Player(String username) {
@@ -39,6 +40,7 @@ public class Player implements Serializable {
         this.shelves = new Shelves();
         this.pC = null;
         this.score = 0;
+        defineAdjacencyPoints();
     }
 
     public void setId(int id) {
@@ -230,17 +232,21 @@ public class Player implements Serializable {
                 }
 
                 try {
-                    tilesCounter = calculateGroupCounter(row, col, visited, 0, true, 0, shelves.getTilePosition(row, col).getTile().getType());
+                    tilesCounter = calculateGroupCounter(row, col, visited, 0, true, 0, shelves.getTilePosition(col, row).getTile().getType());
                 }catch (Exception e){//succede quando tessere in shelves vuote
                     continue;
                 }
+
+                System.out.println("TilesCounter: " + tilesCounter);
+                tilesCounter = 3;
 
                 // Serve per la HashMap
                 if(tilesCounter > 6) {
                     tilesCounter = 6;
                 }
 
-                return givenAdjacencyPoints.get(tilesCounter);
+
+                return tilesCounter < 3 ? 0 : givenAdjacencyPoints.get(tilesCounter);
             }
         }
 

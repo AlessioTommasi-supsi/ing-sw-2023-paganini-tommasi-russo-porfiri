@@ -1,7 +1,7 @@
 package org.test;
 
 import org.junit.jupiter.api.Assertions;
-import org.project.model.*;
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.*;
 import org.junit.Test;
 public class ChoiceTest {
 

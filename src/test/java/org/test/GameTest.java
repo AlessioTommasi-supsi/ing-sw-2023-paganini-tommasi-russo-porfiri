@@ -1,6 +1,6 @@
 package org.test;
 import org.junit.Test;
-import org.project.model.*;
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.*;
 import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.Assert.*;

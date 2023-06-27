@@ -1,6 +1,6 @@
 package org.test;
 
-import org.project.model.*;
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

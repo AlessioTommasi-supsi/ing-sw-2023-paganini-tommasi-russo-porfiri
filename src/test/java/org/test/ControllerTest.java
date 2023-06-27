@@ -2,13 +2,13 @@ package org.test;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import org.project.controller.Controller;
-import org.project.distributed.Client;
-import org.project.distributed.Server;
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.controller.Controller;
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.distributed.Client;
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.distributed.Server;
 
-import org.project.distributed.*;
-import org.project.model.*;
-import org.project.view.TextualUI.DrawFromBoardMessage;
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.distributed.*;
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.*;
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.TextualUI.DrawFromBoardMessage;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;

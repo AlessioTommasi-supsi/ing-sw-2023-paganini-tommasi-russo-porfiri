@@ -3,9 +3,9 @@ package org.test;
 import com.almasb.fxgl.core.collection.Array;
 import com.almasb.fxgl.entity.level.tiled.Tile;
 import com.google.gson.Gson;
-import org.project.model.*;
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.*;
 import org.junit.jupiter.api.Test;
-import org.project.utils.PositionAlreadyOccupiedException;
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.utils.PositionAlreadyOccupiedException;
 
 import java.io.Reader;
 import java.nio.file.Files;
