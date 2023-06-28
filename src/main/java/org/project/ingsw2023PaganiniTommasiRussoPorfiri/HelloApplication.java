@@ -33,9 +33,8 @@ public class HelloApplication extends Application {
         stage.setTitle("MyShelfie");
         stage.setScene(scene);
 
-
-        //stage.setWidth(1280d);
-        //stage.setHeight(720d);
+        //stage.setWidth(1920d);
+        //stage.setHeight(1080d);
         stage.setResizable(false);
         stage.setMaximized(false);
         stage.setFullScreen(false);
