@@ -432,7 +432,6 @@
                         </AnchorPane>
                     </items>
                 </SplitPane>
-                <ScrollPane id="choiceScrollPane" fx:id="choiceScrollPane" hbarPolicy="NEVER" layoutX="-1.0" layoutY="527.0" prefHeight="194.0" prefWidth="807.0" vmax="100.0" vvalue="46.0">
                 <ScrollPane id="choiceScrollPane" fx:id="choiceScrollPane" hbarPolicy="NEVER" layoutX="-1.0" layoutY="527.0" prefHeight="194.0" prefWidth="807.0" vmax="100.0" vvalue="100.0">
                     <content>
                         <AnchorPane id="choiceAnchorPane" fx:id="choiceAnchorPane" prefHeight="311.0" prefWidth="807.0">
@@ -451,33 +450,6 @@
                                 <Text id="choiceTextField2" fx:id="choiceTextField2" fill="WHITE" layoutX="-38.0" layoutY="89.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter coordinates x (row) , y (column) of the tiles to remove:">
                                     <font>
                                         <Font size="20.0" />
-                                    </font>
-                                </Text>
-                                <TextField id="choiceX1TextFied" fx:id="choiceX1TextFied" layoutX="16.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="x" />
-                                <TextField id="choiceY1TextField" fx:id="choiceY1TextField" layoutX="47.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="y" />
-                                <TextField id="choiceY2TextField" fx:id="choiceY2TextField" layoutX="148.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="y" />
-                                <TextField id="choiceX3TextField" fx:id="choiceX3TextField" layoutX="224.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="x" />
-                                <TextField id="choiceY3TextField" fx:id="choiceY3TextField" layoutX="255.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="y" />
-                                <Text id="choiceTextField3" fx:id="choiceTextField3" fill="WHITE" layoutX="-52.0" layoutY="162.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the insertion order of the tiles in your library, from bottom to top:" wrappingWidth="676.047607421875">
-                                    <font>
-                                        <Font size="20.0" />
-                                    </font>
-                                </Text>
-                                <TextField id="choiceOrder1TextField" fx:id="choiceOrder1TextField" layoutX="16.0" layoutY="171.0" prefHeight="28.0" prefWidth="28.0" promptText="1" />
-                                <TextField id="choiceOrder2TextField" fx:id="choiceOrder2TextField" layoutX="52.0" layoutY="171.0" prefHeight="28.0" prefWidth="28.0" promptText="3" />
-                                <TextField id="choiceOrder3TextField" fx:id="choiceOrder3TextField" layoutX="89.0" layoutY="171.0" prefHeight="28.0" prefWidth="28.0" promptText="2" />
-                                <Text id="choiceTextField4" fx:id="choiceTextField4" fill="WHITE" layoutX="-55.0" layoutY="237.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the column number in your library where you want to insert the tile(s):" wrappingWidth="696.7142944335938">
-                                    <font>
-                                        <Font size="20.0" />
-                                    </font>
-                                </Text>
-                                <TextField id="choiceShelfColumnNumTextField" fx:id="choiceShelfColumnNumTextField" layoutX="16.0" layoutY="254.0" prefHeight="32.0" prefWidth="40.0" promptText="0..4" />
-                                <Button id="choiceSendButton" fx:id="choiceSendButton" layoutX="630.0" layoutY="240.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="118.0" text="Send">
-                                    <font>
-                                        <Font name="System Bold" size="29.0" />
-                                    </font>
-                                </Button>
-                                <TextField id="choiceX2TextFied" fx:id="choiceX2TextFied" layoutX="117.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="x" />
                                     </font></Text>
                                 <TextField id="choiceX1TextFied" fx:id="choiceX1TextField" alignment="CENTER" layoutX="16.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="x" />
                                 <TextField id="choiceY1TextField" fx:id="choiceY1TextField" alignment="CENTER" layoutX="47.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="y" />
@@ -501,7 +473,6 @@
                                         <Font name="System Bold" size="29.0" />
                                     </font></Button>
                                 <TextField id="choiceX2TextFied" fx:id="choiceX2TextField" alignment="CENTER" layoutX="117.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="x" />
->>>>>>> Stashed changes
                                 <ImageView id="choiceLogoImageView" fx:id="choiceLogoImageView" fitHeight="84.0" fitWidth="255.0" layoutX="535.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@../../../GraphicResources/publisherMaterial/Title 2000x618px.png" />
@@ -513,7 +484,6 @@
                 </ScrollPane>
             </children>
         </Pane>
-        <Pane id="loginPane" fx:id="loginPane" prefHeight="720.0" prefWidth="1280.0" visible="false">
         <Pane id="loginPane" fx:id="loginPane" prefHeight="720.0" prefWidth="1280.0">
             <children>
                 <ImageView id="loginBackImageView" fx:id="loginBackImageView" fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true">
@@ -530,7 +500,6 @@
                     <font>
                         <Font size="29.0" />
                     </font></TextField>
-                <TextField id="playerNumberTextField" fx:id="playerNumberTextField" alignment="CENTER" layoutX="435.0" layoutY="443.0" prefHeight="62.2" prefWidth="389.0" promptText="Game Players Number">
                 <TextField id="playerNumberTextField" fx:id="playerNumberTextField" alignment="CENTER" layoutX="435.0" layoutY="443.0" prefHeight="62.2" prefWidth="389.0" promptText="Number of Players">
                     <font>
                         <Font size="29.0" />
@@ -546,7 +515,6 @@
                         <Image url="@../../../GraphicResources/publisherMaterial/Publisher.png" />
                     </image>
                 </ImageView>
-            <ImageView fitHeight="121.0" fitWidth="149.0" layoutX="4.0" layoutY="613.0" pickOnBounds="true" preserveRatio="true">
             <ImageView fitHeight="189.0" fitWidth="267.0" layoutX="4.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../GraphicResources/cat/orange-cat.png" />
