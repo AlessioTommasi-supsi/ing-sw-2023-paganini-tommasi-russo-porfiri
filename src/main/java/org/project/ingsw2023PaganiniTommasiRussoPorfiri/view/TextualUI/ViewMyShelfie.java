@@ -421,7 +421,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
 
                                                 Platform.startup(() -> {
                                                     Platform.runLater(() -> {
-                                                        this.initFxGui();
+                                                        //this.initFxGui();
 
                                                     });
                                                 });
@@ -484,12 +484,9 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
 
                             Platform.startup(() -> {
                                 Platform.runLater(() -> {
-                                    this.initFxGui();
+                                   // this.initFxGui();
                                 });
                             });
-
-
-
                         break;
                         case DRAW_FROM_BOARD:
                             System.out.println("Player: "+model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getUsername()+" HA PESCATO DALLA PLANCIA!");
@@ -602,6 +599,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
         return player;
     }
 
+    /*
     public void initFxGui(){
         this.frame = new HelloApplication();
         try {
@@ -613,5 +611,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
         this.controller = frame.getController();
         controller.updateBoard(this.currentGame.getBoard().getPlacements());
     }
+    */
+
 }
 

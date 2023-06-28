@@ -24,8 +24,6 @@ public class HelloController {
     @FXML
     Pane loginPane;
     @FXML
-    private Pane mainPane;
-    @FXML
     private TextField choiceX1TextField;
     @FXML
     private TextField choiceY1TextField;
@@ -59,10 +57,11 @@ public class HelloController {
         //loginPane.setDisable(true);
     }
 
+    /*
     public void updateBoard(ArrayList<TilePositionBoard> tilePositionBoards) {
         // TODO
         img3_1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/Gatti1.1.png"));
-    }
+    } */
 
     @FXML
     private void initialize() {
