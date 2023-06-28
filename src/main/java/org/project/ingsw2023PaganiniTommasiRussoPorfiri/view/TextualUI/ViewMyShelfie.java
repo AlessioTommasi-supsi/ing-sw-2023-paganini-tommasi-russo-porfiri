@@ -608,9 +608,18 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
         }
 
         this.controller = frame.getController();
-        System.out.println("file:src/main/resources/GraphicResources/itemTiles/"+this.currentGame.getBoard().getPlacements().get(0).getTile().getType().name()+""+this.currentGame.getBoard().getPlacements().get(0).getTile().getVariant().name()+".png");
 
-        controller.updateBoard(this.currentGame.getBoard().getPlacements());
+        this.controller.updateBoard(this.currentGame.getBoard().getPlacements());
+        //.DEBUG
+        //System.out.println("file:src/main/resources/GraphicResources/itemTiles/"+this.currentGame.getBoard().getPlacements().get(3).getTile().getType().getName()+""+this.currentGame.getBoard().getPlacements().get(0).getTile().getVariant().getNumber()+".png");
+        /*
+        for (int i = 0; i < this.currentGame.getBoard().getPlacements().size() ; i++){
+            //System.out.println(this.currentGame.getBoard().getPlacements().get(i).isOccupied());
+            System.out.println("file:src/main/resources/GraphicResources/itemTiles/"+this.currentGame.getBoard().getPlacements().get(i).getTile().getType().getName()+""+this.currentGame.getBoard().getPlacements().get(i).getTile().getVariant().getNumber()+".png");
+            System.out.println("X: "+this.currentGame.getBoard().getPlacements().get(i).getX() + " Y: " + this.currentGame.getBoard().getPlacements().get(i).getY());
+        }
+         */
+
 
 
     }

@@ -19,4 +19,7 @@ public enum TileType {
         return name().substring(0, 1);
     }
 
+    public String getName() {
+        return name;
+    }
 }

@@ -25,4 +25,7 @@ public enum TileVariant {
         }
     }
 
+    public String getNumber() {
+        return number;
+    }
 }
