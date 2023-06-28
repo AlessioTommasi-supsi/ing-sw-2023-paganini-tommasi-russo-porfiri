@@ -61,7 +61,7 @@ public class Shelves implements Serializable {
         return this.tilePositions.length;
     }
 
-    public int getMaxColums(){
+    public int getMaxColumns(){
         return this.tilePositions[0].length;
     }
 

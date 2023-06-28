@@ -27,7 +27,7 @@ public class CommonCardStair extends CommonCard implements Serializable {
     }
 
     private boolean checkStairForm(Shelves shelf, int x, int y, int maxRowActual) {
-        if(y==shelf.getMaxColums()) {
+        if(y==shelf.getMaxColumns()) {
             return true;
         }
         if(shelf.getTilePosition(x, y).isOccupied()) {

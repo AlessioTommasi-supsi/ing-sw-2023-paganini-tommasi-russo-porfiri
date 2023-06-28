@@ -23,13 +23,13 @@ public class CommonCardAngles extends CommonCard implements Serializable {
     private boolean checkAnglesTiles(Shelves shelf, TileType type, int x, int y) {
         if ((shelf.getTilePosition(x, y).isOccupied()) && (shelf.getTilePosition(x, y).getTile().getType() == type)){
             if (x == shelf.getMaxRows() - 1) {
-                if (y == shelf.getMaxColums() - 1) {
+                if (y == shelf.getMaxColumns() - 1) {
                     return checkAnglesTiles(shelf, type, 0, y);
                 } else {
-                    return checkAnglesTiles(shelf, type, x, shelf.getMaxColums() - 1);
+                    return checkAnglesTiles(shelf, type, x, shelf.getMaxColumns() - 1);
                 }
             } else {
-                if (y == shelf.getMaxColums() - 1) {
+                if (y == shelf.getMaxColumns() - 1) {
                     return true;
                 } else {
                     return checkAnglesTiles(shelf, type, shelf.getMaxRows() - 1, y);

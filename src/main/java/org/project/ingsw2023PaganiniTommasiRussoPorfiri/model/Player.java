@@ -271,11 +271,9 @@ public class Player implements Serializable {
         counter ++;
         currentTile = this.shelves.getTilePosition(row, col).getTile();
 
-
         if (isValidPosition(row-1,col) && this.shelves.getTilePosition(row - 1, col).isOccupied() &&
                 this.shelves.getTilePosition(row - 1, col).getTile().getType().equals(currentTile.getType()))
         {
-
             counter += calculateGroupCounter(row - 1, col, visited, counter, false, prevType);
         }
         if (isValidPosition(row+1,col) && shelves.getTilePosition(row + 1, col).getTile() != null && shelves.getTilePosition(row + 1, col).getTile().getType().equals(currentTile.getType())) {
@@ -297,8 +295,6 @@ public class Player implements Serializable {
         }
 
         return  counter;
-
-
     }
 
     /*

@@ -90,7 +90,7 @@ public class CommonCard3Types extends CommonCard implements Serializable {
     }
 
     private boolean checkHorizontal3Types(ArrayList<TileType> types, Shelves shelf, int x, int y) {
-        if(y == shelf.getMaxColums()) {
+        if(y == shelf.getMaxColumns()) {
             return true;
         }
         if(shelf.getTilePosition(x, y).isOccupied()) {
@@ -105,7 +105,7 @@ public class CommonCard3Types extends CommonCard implements Serializable {
     }
 
     private boolean checkHorizontal (ArrayList<TileType> types, Shelves shelf,int x, int y) {
-        if(y == shelf.getMaxColums()) {
+        if(y == shelf.getMaxColumns()) {
             return true;
         }
         if(shelf.getTilePosition(x, y).isOccupied()) {

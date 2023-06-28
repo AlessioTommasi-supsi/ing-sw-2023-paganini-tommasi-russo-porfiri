@@ -34,7 +34,7 @@ public class Board implements Serializable {
         protoBoard();
         addTiles();
     }
-    //Idea realizzativa: Una serie di elementi e caratteristiche del gioco dipendono dal numero di giocatori. Una di queste è la creazione delle giuste caselle della Board gi gioco.
+    //Idea realizzativa: Una serie di elementi e caratteristiche del gioco dipendono dal numero di giocatori. Una di queste è la creazione delle giuste caselle della Board di gioco.
     //Per realizzare opportunamente questi elementi dipendenti dal numero di giocatori, deciso di realizzare un factory method per la classe Game, definendola come classe astratta
     //e creando opportune sottoclassi concrete, una per tipo di partita con un certo numero di giocatori. Così facendo tutto ciò che del codice varia, di partita in partita
     //in base al numero di giocatori selezionato, è stato raggruppato nelle sottoclassi concrete di Game.

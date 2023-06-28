@@ -1,7 +1,6 @@
 package org.project.ingsw2023PaganiniTommasiRussoPorfiri.utils;
 
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.*;
-
 import java.util.Vector;
 
 public class Observable<Event extends Enum<Event>> {

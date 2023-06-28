@@ -5,8 +5,8 @@ public enum ChoiceMyShelfie {
     TERMINATE_TURNS,
     JOIN_GAME,
     SHOW_MY_SHELVES,
-    //per guardare la mia libreria non richiamerò server ma verrà vista quella che ho in locale!!
-    //che ogni volta che immetto qualcosa con IMMMETTI_IN_LIBRERIA verrà aggiornata!
+    //Per guardare la mia libreria non richiamerò server ma verrà vista quella che ho in locale!
+    //Ogni volta che immetto qualcosa con IMMMETTI_IN_LIBRERIA verrà aggiornata!
 
     SHOW_BOARD,
     SHOW_COMMON_CARDS,

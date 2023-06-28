@@ -45,7 +45,7 @@ public class CommonCardDiagonal extends CommonCard implements Serializable {
     }
 
     private boolean checkTypeOfTileRight (int x, int y, Shelves shelf, TileType type) {
-        if (y== shelf.getMaxColums()){
+        if (y== shelf.getMaxColumns()){
             return true;
         }
         if((shelf.getTilePosition(x, y).isOccupied()) && (shelf.getTilePosition(x, y).getTile().getType() == type)) {
