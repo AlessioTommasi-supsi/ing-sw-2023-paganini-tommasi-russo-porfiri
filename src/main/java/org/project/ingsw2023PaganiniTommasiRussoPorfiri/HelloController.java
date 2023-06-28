@@ -173,13 +173,13 @@ public class HelloController {
     public void updateBoard(ArrayList<TilePositionBoard> tilePositionBoards) {
         // TODO
         for (int i = 0; i < tilePositionBoards.size(); i++) {
-            if(tilePositionBoards.get(i).isMe(0, 4)){
-                boardR0C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/"+tilePositionBoards.get(i).getTile().getType().name()+""+tilePositionBoards.get(i).getTile().getVariant().name()+".png"));
-    /*
-    public void updateBoard(ArrayList<TilePositionBoard> tilePositionBoards) {
-        // TODO
-        img3_1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/Gatti1.1.png"));
-    } */
+            if (tilePositionBoards.get(i).isMe(0, 4)) {
+                boardR0C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().name() + "" + tilePositionBoards.get(i).getTile().getVariant().name() + ".png"));
+            }
+        }
+        boardR1C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/Gatti1.1.png"));
+        boardR1C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/"+tilePositionBoards.get(0).getTile().getType()+""+tilePositionBoards.get(0).getTile().getVariant()+".png"));
+    }
 
     @FXML
     private void initialize() {
@@ -192,13 +192,27 @@ public class HelloController {
             return null;
         };
 
-            }
+        //Creazione dei TextFormatter<String>
+        for (int i = 0; i < 12; i++) {
+            TextFormatter<String> textFormatter = new TextFormatter<>(integerFilter);
+            textFormattersList.add(textFormatter);
         }
 
-        boardR1C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/Gatti1.1.png"));
-        boardR1C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/"+tilePositionBoards.get(0).getTile().getType()+""+tilePositionBoards.get(0).getTile().getVariant()+".png"));
-    }
+        //Applicazione di ciascun TextFormatter a ciascun TextField che deve rispettare la caratteristica sopra
+        choiceX1TextField.setTextFormatter(textFormattersList.get(0));
+        choiceY1TextField.setTextFormatter(textFormattersList.get(1));
+        choiceX2TextField.setTextFormatter(textFormattersList.get(2));
+        choiceY2TextField.setTextFormatter(textFormattersList.get(3));
+        choiceX3TextField.setTextFormatter(textFormattersList.get(4));
+        choiceY3TextField.setTextFormatter(textFormattersList.get(5));
+        choiceOrder1TextField.setTextFormatter(textFormattersList.get(6));
+        choiceOrder2TextField.setTextFormatter(textFormattersList.get(7));
+        choiceOrder3TextField.setTextFormatter(textFormattersList.get(8));
+        choiceShelfColumnNumTextField.setTextFormatter(textFormattersList.get(9));
+        playerNumberTextField.setTextFormatter(textFormattersList.get(10));
 
+
+    }
 
     /*
     public void initialize(URL location, ResourceBundle resources) {
