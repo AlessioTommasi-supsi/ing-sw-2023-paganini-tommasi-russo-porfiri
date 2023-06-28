@@ -6,11 +6,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.TilePositionBoard;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
+import java.util.ArrayList;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.ArrayList;
@@ -47,6 +50,116 @@ public class HelloController {
     private TextField playerNumberTextField;
 
     ArrayList<TextFormatter<String>> textFormattersList = new ArrayList<>();
+    @FXML
+    ImageView boardR0C4;
+    @FXML
+    ImageView boardR0C5;
+    @FXML
+    ImageView boardR1C3;
+    @FXML
+    ImageView boardR1C4;
+    @FXML
+    ImageView boardR1C5;
+    @FXML
+    ImageView boardR2C2;
+    @FXML
+    ImageView boardR2C3;
+    @FXML
+    ImageView boardR2C4;
+    @FXML
+    ImageView boardR2C5;
+    @FXML
+    ImageView boardR2C6;
+    @FXML
+    ImageView boardR3C0;
+    @FXML
+    ImageView boardR3C1;
+    @FXML
+    ImageView boardR3C2;
+    @FXML
+    ImageView boardR3C3;
+    @FXML
+    ImageView boardR3C4;
+    @FXML
+    ImageView boardR3C5;
+    @FXML
+    ImageView boardR3C6;
+    @FXML
+    ImageView boardR3C7;
+    @FXML
+    ImageView boardR4C0;
+    @FXML
+    ImageView boardR4C1;
+    @FXML
+    ImageView boardR4C2;
+    @FXML
+    ImageView boardR4C3;
+
+    @FXML
+    ImageView boardR4C4;
+    @FXML
+    ImageView boardR4C5;
+    @FXML
+    ImageView boardR4C6;
+    @FXML
+    ImageView boardR4C7;
+    @FXML
+    ImageView boardR4C8;
+
+    @FXML
+    ImageView boardR5C1;
+    @FXML
+    ImageView boardR5C2;
+    @FXML
+    ImageView boardR5C3;
+
+    @FXML
+    ImageView boardR5C4;
+    @FXML
+    ImageView boardR5C5;
+    @FXML
+    ImageView boardR5C6;
+
+    @FXML
+    ImageView boardR5C7;
+
+    @FXML
+    ImageView boardR5C8;
+
+    @FXML
+    ImageView boardR6C2;
+
+    @FXML
+    ImageView boardR6C3;
+    @FXML
+    ImageView boardR6C4;
+
+    @FXML
+    ImageView boardR6C5;
+
+    @FXML
+    ImageView boardR6C6;
+
+    @FXML
+    ImageView boardR7C3;
+
+    @FXML
+    ImageView boardR7C4;
+
+    @FXML
+    ImageView boardR7C5;
+
+
+    @FXML
+    ImageView boardR8C3;
+
+    @FXML
+    ImageView boardR8C4;
+
+
+
+
+    @FXML
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
@@ -57,6 +170,11 @@ public class HelloController {
         //loginPane.setDisable(true);
     }
 
+    public void updateBoard(ArrayList<TilePositionBoard> tilePositionBoards) {
+        // TODO
+        for (int i = 0; i < tilePositionBoards.size(); i++) {
+            if(tilePositionBoards.get(i).isMe(0, 4)){
+                boardR0C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/"+tilePositionBoards.get(i).getTile().getType().name()+""+tilePositionBoards.get(i).getTile().getVariant().name()+".png"));
     /*
     public void updateBoard(ArrayList<TilePositionBoard> tilePositionBoards) {
         // TODO
@@ -74,31 +192,12 @@ public class HelloController {
             return null;
         };
 
-        //Creazione dei TextFormatter<String>
-        for (int i = 0; i < 12; i++) {
-            TextFormatter<String> textFormatter = new TextFormatter<>(integerFilter);
-            textFormattersList.add(textFormatter);
+            }
         }
 
-        //Applicazione di ciascun TextFormatter a ciascun TextField che deve rispettare la caratteristica sopra
-        choiceX1TextField.setTextFormatter(textFormattersList.get(0));
-        choiceY1TextField.setTextFormatter(textFormattersList.get(1));
-        choiceX2TextField.setTextFormatter(textFormattersList.get(2));
-        choiceY2TextField.setTextFormatter(textFormattersList.get(3));
-        choiceX3TextField.setTextFormatter(textFormattersList.get(4));
-        choiceY3TextField.setTextFormatter(textFormattersList.get(5));
-        choiceOrder1TextField.setTextFormatter(textFormattersList.get(6));
-        choiceOrder2TextField.setTextFormatter(textFormattersList.get(7));
-        choiceOrder3TextField.setTextFormatter(textFormattersList.get(8));
-        choiceShelfColumnNumTextField.setTextFormatter(textFormattersList.get(9));
-        playerNumberTextField.setTextFormatter(textFormattersList.get(10));
-
-
+        boardR1C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/Gatti1.1.png"));
+        boardR1C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/"+tilePositionBoards.get(0).getTile().getType()+""+tilePositionBoards.get(0).getTile().getVariant()+".png"));
     }
-
-
-
-
 
 
     /*

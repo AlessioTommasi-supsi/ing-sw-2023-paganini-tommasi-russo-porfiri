@@ -75,6 +75,9 @@ public class TilePositionBoard implements Serializable {
         }
         else throw new PositionEmptyException();
     }
+    public Boolean isMe(int x, int y){
+        return this.x == x && this.y == y;
+    }
 
     @Override
     public String toString() {

@@ -421,7 +421,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
 
                                                 Platform.startup(() -> {
                                                     Platform.runLater(() -> {
-                                                        //this.initFxGui();
+                                                        this.initFxGui();
 
                                                     });
                                                 });
@@ -484,7 +484,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
 
                             Platform.startup(() -> {
                                 Platform.runLater(() -> {
-                                   // this.initFxGui();
+                                    this.initFxGui();
                                 });
                             });
                         break;
@@ -599,7 +599,6 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
         return player;
     }
 
-    /*
     public void initFxGui(){
         this.frame = new HelloApplication();
         try {
@@ -609,9 +608,11 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
         }
 
         this.controller = frame.getController();
-        controller.updateBoard(this.currentGame.getBoard().getPlacements());
-    }
-    */
+        System.out.println("file:src/main/resources/GraphicResources/itemTiles/"+this.currentGame.getBoard().getPlacements().get(0).getTile().getType().name()+""+this.currentGame.getBoard().getPlacements().get(0).getTile().getVariant().name()+".png");
 
+        controller.updateBoard(this.currentGame.getBoard().getPlacements());
+
+
+    }
 }
 
