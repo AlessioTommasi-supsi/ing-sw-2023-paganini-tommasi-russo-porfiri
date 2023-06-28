@@ -4,20 +4,19 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.TilePositionBoard;
-
 import java.util.ArrayList;
-
 import java.util.function.UnaryOperator;
 
 public class HelloController {
     @FXML
     private Pane mainPane;
     @FXML
-    private Label welcomeText;
-    @FXML
     Pane loginPane;
+    @FXML
+    private Label welcomeText;
     @FXML
     private TextField choiceX1TextField;
     @FXML
@@ -42,6 +41,8 @@ public class HelloController {
     private TextField playerNumberTextField;
     @FXML
     private Spinner choiceNumTileSpinner;
+    @FXML
+    private Button joinGameButton;
     @FXML
     ImageView boardR0C4;
     @FXML
@@ -86,7 +87,6 @@ public class HelloController {
     ImageView boardR4C2;
     @FXML
     ImageView boardR4C3;
-
     @FXML
     ImageView boardR4C4;
     @FXML
@@ -97,61 +97,47 @@ public class HelloController {
     ImageView boardR4C7;
     @FXML
     ImageView boardR4C8;
-
     @FXML
     ImageView boardR5C1;
     @FXML
     ImageView boardR5C2;
     @FXML
     ImageView boardR5C3;
-
     @FXML
     ImageView boardR5C4;
     @FXML
     ImageView boardR5C5;
     @FXML
     ImageView boardR5C6;
-
     @FXML
     ImageView boardR5C7;
-
     @FXML
     ImageView boardR5C8;
-
     @FXML
     ImageView boardR6C2;
-
     @FXML
     ImageView boardR6C3;
     @FXML
     ImageView boardR6C4;
-
     @FXML
     ImageView boardR6C5;
-
     @FXML
     ImageView boardR6C6;
-
     @FXML
     ImageView boardR7C3;
-
     @FXML
     ImageView boardR7C4;
 
     @FXML
     ImageView boardR7C5;
-
-
     @FXML
     ImageView boardR8C3;
-
     @FXML
     ImageView boardR8C4;
 
     ArrayList<TextFormatter<String>> textFormattersList1 = new ArrayList<>();
     ArrayList<TextFormatter<String>> textFormattersList2 = new ArrayList<>();
-    ArrayList<TextFormatter<String>> textFormattersList3 = new ArrayList<>();
-    ArrayList<TextFormatter<String>> textFormattersList4 = new ArrayList<>();
+
 
     @FXML
     protected void onHelloButtonClick() {
@@ -162,6 +148,25 @@ public class HelloController {
         loginPane.setVisible(false);
         loginPane.setMouseTransparent(true);
         //loginPane.setDisable(true);
+    }
+    public void hideSecondSetOfCoordinates(){
+        choiceX2TextField.setVisible(false);
+        choiceY2TextField.setMouseTransparent(true);
+    }
+    public void hideThirdSetOfCoordinates(){
+        choiceX3TextField.setVisible(false);
+        choiceY3TextField.setMouseTransparent(true);
+    }
+    public void hideSecondInsertionOrderField(){
+        choiceOrder2TextField.setVisible(false);
+        choiceOrder2TextField.setMouseTransparent(true);
+    }
+    public void hideThirdInsertionOrderField(){
+        choiceOrder3TextField.setVisible(false);
+        choiceOrder3TextField.setMouseTransparent(true);
+    }
+    public void verifyLoginInformationAdded(){
+        if()
     }
 
     public void updateBoard(ArrayList<TilePositionBoard> tilePositionBoards) {
@@ -355,7 +360,7 @@ public class HelloController {
         // Operatore unario per limitare l'input ai numeri interi positivi di lunghezza == 1 oppure il backspace
         UnaryOperator<TextFormatter.Change> integerFilterXY = change -> {
             String newText = change.getControlNewText();
-            if ((newText.matches("\\d*") && newText.length() == 1 && Integer.valueOf(newText) >= 0 && Integer.valueOf(newText) <= 8) || newText.isEmpty()) { // Accetta solo numeri non negativi
+            if ((newText.matches("\\d*") && newText.length() == 1 && Integer.valueOf(newText) >= 0 && Integer.valueOf(newText) <= 8) || newText.isEmpty()) {
                 return change;
             }
             return null;
@@ -375,9 +380,10 @@ public class HelloController {
         choiceX3TextField.setTextFormatter(textFormattersList1.get(4));
         choiceY3TextField.setTextFormatter(textFormattersList1.get(5));
 
+
         UnaryOperator<TextFormatter.Change> integerFilterChoiceOrder = change -> {
             String newText = change.getControlNewText();
-            if ((newText.matches("\\d*") && newText.length() == 1) || newText.isEmpty() && Integer.valueOf(newText) >= 1 && Integer.valueOf(newText) <= 3) { // Accetta solo numeri non negativi
+            if ((newText.matches("\\d*") && newText.length() == 1 && Integer.valueOf(newText) >= 1 && Integer.valueOf(newText) <=3) || newText.isEmpty()) {
                 return change;
             }
             return null;
@@ -392,9 +398,10 @@ public class HelloController {
         choiceOrder2TextField.setTextFormatter(textFormattersList2.get(1));
         choiceOrder3TextField.setTextFormatter(textFormattersList2.get(2));
 
+
         UnaryOperator<TextFormatter.Change> integerFilterColumn = change -> {
             String newText = change.getControlNewText();
-            if ((newText.matches("\\d*") && newText.length() == 1) || newText.isEmpty() && Integer.valueOf(newText) >= 0 && Integer.valueOf(newText) <= 4) { // Accetta solo numeri non negativi
+            if ((newText.matches("\\d*") && newText.length() == 1 && Integer.valueOf(newText) >= 0 && Integer.valueOf(newText) <= 4) || newText.isEmpty()) {
                 return change;
             }
             return null;
@@ -403,9 +410,10 @@ public class HelloController {
         TextFormatter<String> textFormatterColumn = new TextFormatter<>(integerFilterColumn);
         choiceShelfColumnNumTextField.setTextFormatter(textFormatterColumn);
 
+
         UnaryOperator<TextFormatter.Change> integerFilterPlayerNum = change -> {
             String newText = change.getControlNewText();
-            if ((newText.matches("\\d*") && newText.length() == 1) || newText.isEmpty() && Integer.valueOf(newText) >= 2 && Integer.valueOf(newText) <= 4) { // Accetta solo numeri non negativi
+            if ((newText.matches("\\d*") && newText.length() == 1 && Integer.valueOf(newText) >= 2 && Integer.valueOf(newText) <= 4) || newText.isEmpty()) {
                 return change;
             }
             return null;
@@ -414,8 +422,23 @@ public class HelloController {
         TextFormatter<String> textFormatterPlayer = new TextFormatter<>(integerFilterPlayerNum);
         playerNumberTextField.setTextFormatter(textFormatterPlayer);
 
-        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 4);
+        //Proprietà dello Spinner
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 3);
         choiceNumTileSpinner.setValueFactory(valueFactory);
+        choiceNumTileSpinner.setEditable(false);
+
+        //Pressione invio comporta pressione joinGameButton
+        loginPane.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                joinGameButton.fire(); // Simula un click sul Button
+            }
+        });
+
+
+
+
+
+
 
     }
 
