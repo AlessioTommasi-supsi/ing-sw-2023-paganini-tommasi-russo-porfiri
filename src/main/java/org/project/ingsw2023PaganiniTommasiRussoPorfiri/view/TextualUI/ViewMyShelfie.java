@@ -103,6 +103,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                         case "BoardDoesNotContainThisPositionException":
                             this.iAlreadyDrawn = false;
                             Platform.runLater(() -> {
+                                this.controller.showError(model.getError(),this.frame.getStage());
                                 this.controller.setEnableSendButton(true);
                             });
                             break;

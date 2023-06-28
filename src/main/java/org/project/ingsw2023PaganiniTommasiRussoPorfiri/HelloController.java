@@ -2,6 +2,8 @@ package org.project.ingsw2023PaganiniTommasiRussoPorfiri;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -9,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.Choice;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.ChoiceMyShelfie;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.Player;
@@ -17,6 +20,7 @@ import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.TextualUI.DrawFromB
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.TextualUI.ViewMyShelfie;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.function.UnaryOperator;
 
 public class HelloController {
@@ -185,7 +189,7 @@ public class HelloController {
         choiceOrder3TextField.setVisible(false);
         choiceOrder3TextField.setMouseTransparent(true);
     }
-    /*
+
     public void verifyLoginInformationAdded(){
         //if()
     }
@@ -811,5 +815,43 @@ public class HelloController {
         });
         delay.play();
     }*/
+
+    public void showError(String ErrorMessage, Stage stage) {
+        MessageService messageService = new MessageService(ErrorMessage);
+
+        messageService.setOnSucceeded(event -> {
+            String message = messageService.getValue();
+            if (message != null) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Errore");
+                alert.setHeaderText(null);
+                alert.setContentText(message);
+
+                alert.initOwner(stage);
+
+                alert.setX(stage.getX() + stage.getWidth() / 2 - alert.getWidth() / 2);
+                alert.setY(stage.getY() + stage.getHeight() / 2 - alert.getHeight() / 2);
+
+                alert.showAndWait();
+            }
+        });
+        messageService.start();
+    }
+
+    private static class MessageService extends Service<String> {
+        String message;
+        public  MessageService(String message) {
+            this.message = message;
+        }
+        @Override
+        protected Task<String> createTask() {
+            return new Task<String>() {
+                @Override
+                protected String call() throws Exception {
+                        return "Messaggio di errore: "+message;
+                }
+            };
+        }
+    }
 
 }
