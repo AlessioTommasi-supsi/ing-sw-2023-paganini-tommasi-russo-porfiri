@@ -2,21 +2,13 @@ package org.project.ingsw2023PaganiniTommasiRussoPorfiri;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.TilePositionBoard;
-import javafx.util.Duration;
 
 import java.util.ArrayList;
-import java.util.ArrayList;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import java.util.ArrayList;
 import java.util.function.UnaryOperator;
 
 public class HelloController {
@@ -48,8 +40,8 @@ public class HelloController {
     private TextField choiceShelfColumnNumTextField;
     @FXML
     private TextField playerNumberTextField;
-
-    ArrayList<TextFormatter<String>> textFormattersList = new ArrayList<>();
+    @FXML
+    private Spinner choiceNumTileSpinner;
     @FXML
     ImageView boardR0C4;
     @FXML
@@ -156,8 +148,10 @@ public class HelloController {
     @FXML
     ImageView boardR8C4;
 
-
-
+    ArrayList<TextFormatter<String>> textFormattersList1 = new ArrayList<>();
+    ArrayList<TextFormatter<String>> textFormattersList2 = new ArrayList<>();
+    ArrayList<TextFormatter<String>> textFormattersList3 = new ArrayList<>();
+    ArrayList<TextFormatter<String>> textFormattersList4 = new ArrayList<>();
 
     @FXML
     protected void onHelloButtonClick() {
@@ -359,35 +353,72 @@ public class HelloController {
     @FXML
     private void initialize() {
         // Operatore unario per limitare l'input ai numeri interi positivi di lunghezza == 1 oppure il backspace
-        UnaryOperator<TextFormatter.Change> integerFilter = change -> {
+        UnaryOperator<TextFormatter.Change> integerFilterXY = change -> {
             String newText = change.getControlNewText();
-            if ((newText.matches("\\d*") && newText.length() == 1) || newText.isEmpty()) { // Accetta solo numeri non negativi
+            if ((newText.matches("\\d*") && newText.length() == 1 && Integer.valueOf(newText) >= 0 && Integer.valueOf(newText) <= 8) || newText.isEmpty()) { // Accetta solo numeri non negativi
                 return change;
             }
             return null;
         };
 
         //Creazione dei TextFormatter<String>
-        for (int i = 0; i < 12; i++) {
-            TextFormatter<String> textFormatter = new TextFormatter<>(integerFilter);
-            textFormattersList.add(textFormatter);
+        for (int i = 0; i < 6; i++) {
+            TextFormatter<String> textFormatter = new TextFormatter<>(integerFilterXY);
+            textFormattersList1.add(textFormatter);
         }
 
         //Applicazione di ciascun TextFormatter a ciascun TextField che deve rispettare la caratteristica sopra
-        choiceX1TextField.setTextFormatter(textFormattersList.get(0));
-        choiceY1TextField.setTextFormatter(textFormattersList.get(1));
-        choiceX2TextField.setTextFormatter(textFormattersList.get(2));
-        choiceY2TextField.setTextFormatter(textFormattersList.get(3));
-        choiceX3TextField.setTextFormatter(textFormattersList.get(4));
-        choiceY3TextField.setTextFormatter(textFormattersList.get(5));
-        choiceOrder1TextField.setTextFormatter(textFormattersList.get(6));
-        choiceOrder2TextField.setTextFormatter(textFormattersList.get(7));
-        choiceOrder3TextField.setTextFormatter(textFormattersList.get(8));
-        choiceShelfColumnNumTextField.setTextFormatter(textFormattersList.get(9));
-        playerNumberTextField.setTextFormatter(textFormattersList.get(10));
+        choiceX1TextField.setTextFormatter(textFormattersList1.get(0));
+        choiceY1TextField.setTextFormatter(textFormattersList1.get(1));
+        choiceX2TextField.setTextFormatter(textFormattersList1.get(2));
+        choiceY2TextField.setTextFormatter(textFormattersList1.get(3));
+        choiceX3TextField.setTextFormatter(textFormattersList1.get(4));
+        choiceY3TextField.setTextFormatter(textFormattersList1.get(5));
 
+        UnaryOperator<TextFormatter.Change> integerFilterChoiceOrder = change -> {
+            String newText = change.getControlNewText();
+            if ((newText.matches("\\d*") && newText.length() == 1) || newText.isEmpty() && Integer.valueOf(newText) >= 1 && Integer.valueOf(newText) <= 3) { // Accetta solo numeri non negativi
+                return change;
+            }
+            return null;
+        };
+
+        for (int i = 0; i < 3; i++) {
+            TextFormatter<String> textFormatter = new TextFormatter<>(integerFilterChoiceOrder);
+            textFormattersList2.add(textFormatter);
+        }
+
+        choiceOrder1TextField.setTextFormatter(textFormattersList2.get(0));
+        choiceOrder2TextField.setTextFormatter(textFormattersList2.get(1));
+        choiceOrder3TextField.setTextFormatter(textFormattersList2.get(2));
+
+        UnaryOperator<TextFormatter.Change> integerFilterColumn = change -> {
+            String newText = change.getControlNewText();
+            if ((newText.matches("\\d*") && newText.length() == 1) || newText.isEmpty() && Integer.valueOf(newText) >= 0 && Integer.valueOf(newText) <= 4) { // Accetta solo numeri non negativi
+                return change;
+            }
+            return null;
+        };
+
+        TextFormatter<String> textFormatterColumn = new TextFormatter<>(integerFilterColumn);
+        choiceShelfColumnNumTextField.setTextFormatter(textFormatterColumn);
+
+        UnaryOperator<TextFormatter.Change> integerFilterPlayerNum = change -> {
+            String newText = change.getControlNewText();
+            if ((newText.matches("\\d*") && newText.length() == 1) || newText.isEmpty() && Integer.valueOf(newText) >= 2 && Integer.valueOf(newText) <= 4) { // Accetta solo numeri non negativi
+                return change;
+            }
+            return null;
+        };
+
+        TextFormatter<String> textFormatterPlayer = new TextFormatter<>(integerFilterPlayerNum);
+        playerNumberTextField.setTextFormatter(textFormatterPlayer);
+
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 4);
+        choiceNumTileSpinner.setValueFactory(valueFactory);
 
     }
+
 
     /*
     public void initialize(URL location, ResourceBundle resources) {
