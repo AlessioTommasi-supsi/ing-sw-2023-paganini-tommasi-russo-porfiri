@@ -4,17 +4,26 @@ import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.TilePositionBoard;
 import javafx.util.Duration;
+
+import java.util.ArrayList;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class HelloController {
     @FXML
+    private Pane mainPane;
+    @FXML
     private Label welcomeText;
     @FXML
     Pane loginPane;
+
+    @FXML
+    ImageView img3_1;
 
     @FXML
     protected void onHelloButtonClick() {
@@ -23,6 +32,11 @@ public class HelloController {
 
     public void hideLoginPane(ActionEvent actionEvent) {
         loginPane.setOpacity(0);
+    }
+
+    public void updateBoard(ArrayList<TilePositionBoard> tilePositionBoards) {
+        // TODO
+        img3_1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/Gatti1.1.png"));
     }
 
     @FXML

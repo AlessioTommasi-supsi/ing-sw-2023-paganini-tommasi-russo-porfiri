@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.HelloApplication;
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.HelloController;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.*;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.utils.*;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.SwingUI.LoginGUI;
@@ -33,6 +34,8 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
     public LoginGUI frameLogin = new LoginGUI(this);
 
     public HelloApplication frame;
+
+    public HelloController controller;
 
     private int currentGameId = -1; //verrà assegnato dopo aver fatto join_game!!
 
@@ -406,7 +409,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                                                 System.out.println("\nYou just joined the game and the match is under way!\n");
                                                 //System.err.println("partita a cui ti sei unito in corso: " + model.getMyShelfie().getGames().get(i).toString());
                                                 this.currentGameId = model.getMyShelfie().getGames().get(i).getCurrentGameId();
-                                                //this.current_game = model.getMyShelfie().getGames().get(i);
+                                                this.currentGame = model.getMyShelfie().getGames().get(i);
                                                 /*prova aggiornamento gui*/
                                                 SwingUtilities.invokeLater(() -> {
                                                     this.frameLogin.usernameField.setText("You just joined the game and the match is under way!");
@@ -418,12 +421,8 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
 
                                                 Platform.startup(() -> {
                                                     Platform.runLater(() -> {
-                                                        this.frame = new HelloApplication();
-                                                        try {
-                                                            frame.start(new Stage());
-                                                        } catch (IOException e) {
-                                                            throw new RuntimeException(e);
-                                                        }
+                                                        this.initFxGui();
+
                                                     });
                                                 });
 
@@ -475,7 +474,6 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                             System.out.println("Player: "+model.getMyShelfie().getGame(this.currentGameId).getPlayers().get(model.getMyShelfie().getGame(this.currentGameId).getPlayers().size()-1).getUsername()+" just joined the game!");
                             /*prova aggiornamento gui*/
                             SwingUtilities.invokeLater(() -> {
-                                //JOptionPane.showMessageDialog(this.frameLogin, "Player: "+model.getMyShelfie().getGame(this.currentGameId).getPlayers().get(model.getMyShelfie().getGame(this.currentGameId).getPlayers().size()-1).getUsername()+" just joined the game!", "update", JOptionPane.ERROR_MESSAGE);
                                 this.frameLogin.joinGameButton.setEnabled(false);
 
                                 //se la partaita non e'piu in attesa starto la gui!
@@ -486,12 +484,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
 
                             Platform.startup(() -> {
                                 Platform.runLater(() -> {
-                                    this.frame = new HelloApplication();
-                                    try {
-                                        frame.start(new Stage());
-                                    } catch (IOException e) {
-                                        throw new RuntimeException(e);
-                                    }
+                                    this.initFxGui();
                                 });
                             });
 
@@ -607,6 +600,18 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
 
     public Player getPlayer() {
         return player;
+    }
+
+    public void initFxGui(){
+        this.frame = new HelloApplication();
+        try {
+            frame.start(new Stage());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        this.controller = frame.getController();
+        controller.updateBoard(this.currentGame.getBoard().getPlacements());
     }
 }
 

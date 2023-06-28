@@ -86,7 +86,8 @@ public class ControllerFX {
         commonGoalCard1ImageView.setImage(new Image("@../GraphicResources/commonGoalCards/1.jpg"));
         commonGoalCard2ImageView.setImage(new Image("@../GraphicResources/commonGoalCards/2.jpg"));
         personalGoalCardImageView.setImage(new Image("@../GraphicResources/personalGoalCards/Personal_Goals6.png"));
-        setupGridPane();*/
+        setupGridPane();
+        */
     }
 
     @FXML
