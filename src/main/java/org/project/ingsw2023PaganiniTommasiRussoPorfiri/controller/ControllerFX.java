@@ -74,7 +74,9 @@ public class ControllerFX {
     }
 
     public void hideLoginPane(ActionEvent actionEvent) {
-        loginPane.setOpacity(0);
+        loginPane.setVisible(false);
+        loginPane.setMouseTransparent(true);
+        loginPane.setDisable(true);
     }
 
     public void Initialize(Client o) {
