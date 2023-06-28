@@ -104,6 +104,17 @@
                                 <ImageView fx:id="boardR1C3" fitHeight="46.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
                             </children>
                         </GridPane>
+                  <Text fill="#3300ff" layoutX="278.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3" textAlignment="CENTER" wrappingWidth="80.53668403625488" />
+                  <Text fill="#3300ff" layoutX="361.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4" textAlignment="CENTER" wrappingWidth="80.53668403625488" />
+                  <Text fill="#3300ff" layoutX="477.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5" />
+                  <Text fill="#3300ff" layoutX="544.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6" />
+                  <Text fill="#3300ff" layoutX="641.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7" />
+                  <Text fill="#3300ff" layoutX="724.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8" />
+                  <Text fill="#3300ff" layoutX="234.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" />
+                  <Text fill="#3300ff" layoutX="153.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1" />
+                  <Text fill="#cf1212" layoutX="344.0" layoutY="481.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                  <Text fill="#cf1212" layoutX="263.0" layoutY="427.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1" />
+                  <Text fill="#cf1212" layoutX="180.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6" />
                     </children>
                 </Pane>
                 <SplitPane id="allCardsSplitPane" fx:id="allCardsSplitPane" dividerPositions="0.5" layoutX="807.0" prefHeight="330.0" prefWidth="474.0">
@@ -227,6 +238,7 @@
                                                         <ImageView fx:id="shelf1R0C4" fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
                                                     </children>
                                                 </GridPane>
+                                    <Text id="myShelvesTitle" fx:id="myPlayerUsername" fill="BLUE" layoutX="88.0" layoutY="12.0" strokeType="OUTSIDE" strokeWidth="0.0" text="My shelves" />
                                             </children>
                                         </AnchorPane>
                                         <AnchorPane id="shelf2AnchorPane" fx:id="shelf2AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="117.0" prefWidth="126.0" style="-fx-background-color: transparent;">
@@ -290,6 +302,7 @@
                                                         <ImageView fx:id="shelf2R0C4" fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
                                                     </children>
                                                 </GridPane>
+                                    <Text id="player1ShelvesTitle" fill="#cc1010" layoutX="3.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player1's shelves" textAlignment="CENTER" wrappingWidth="233.6000061035154" />
                                             </children>
                                         </AnchorPane>
                                     </items>
@@ -361,6 +374,7 @@
                                                         <ImageView fx:id="shelf3R0C4" fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
                                                     </children>
                                                 </GridPane>
+                                    <Text id="player2ShelvesTitle" fill="#815b1a" layoutX="4.0" layoutY="12.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player2's shelves" textAlignment="CENTER" wrappingWidth="233.6000061035155" />
                                             </children>
                                         </AnchorPane>
                                         <AnchorPane id="shelf4AnchorPane" fx:id="shelf4AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
@@ -424,6 +438,7 @@
                                                         <ImageView fx:id="shelf4R0C4" fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
                                                     </children>
                                                 </GridPane>
+                                    <Text id="player3ShelvesTitle" fill="#b719b7" layoutX="3.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player3's shelves" textAlignment="CENTER" wrappingWidth="233.6000061035154" />
                                             </children>
                                         </AnchorPane>
                                     </items>
@@ -468,7 +483,7 @@
                                         <Font size="20.0" />
                                     </font></Text>
                                 <TextField id="choiceShelfColumnNumTextField" fx:id="choiceShelfColumnNumTextField" alignment="CENTER" layoutX="16.0" layoutY="254.0" prefHeight="32.0" prefWidth="40.0" promptText="0..4" />
-                                <Button id="choiceSendButton" fx:id="choiceSendButton" onAction="#DrawFromBoard" layoutX="630.0" layoutY="240.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="118.0" text="Send" textFill="#992e2e">
+                                <Button id="choiceSendButton" fx:id="choiceSendButton" layoutX="630.0" layoutY="240.0" mnemonicParsing="false" onAction="#DrawFromBoard" prefHeight="62.0" prefWidth="118.0" text="Send" textFill="#992e2e">
                                     <font>
                                         <Font name="System Bold" size="29.0" />
                                     </font>
@@ -528,5 +543,12 @@
             </ImageView>
             </children>
         </Pane>
+      <Text fill="#3300ff" layoutX="70.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fill="#cf1212" layoutX="181.0" layoutY="373.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" />
+      <Text fill="#cf1212" layoutX="17.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3" />
+      <Text fill="#cf1212" layoutX="17.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4" />
+      <Text fill="#cf1212" layoutX="97.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5" />
+      <Text fill="#cf1212" layoutX="262.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7" />
+      <Text fill="#cf1212" layoutX="262.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8" />
     </children>
 </Pane>
