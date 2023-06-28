@@ -29,7 +29,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
     private Player player;
     private Game currentGame = null;
 
-    private boolean iAlreadyDrawn = false;
+    public boolean iAlreadyDrawn = false;
 
     public LoginGUI frameLogin = new LoginGUI(this);
 
@@ -40,28 +40,6 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
     private int currentGameId = -1; //verrà assegnato dopo aver fatto join_game!!
 
     public void update(TurnView model/*risposta dal server*/, Choice arg/*evento che il client remoto ha scelto*/) {
-
-        //se presente stampo qualcosa se no stringa vuota!
-        System.err.println(model.getError());
-
-
-        if (model.getError() != "") {
-            switch (model.getError()){
-                case "IllegalColumnException":
-                case "IllegalSizeOfTilesException":
-                case "DuplicatesInRequestedTilesException":
-                case "TilesAreNotRemovableException":
-                case "PositionEmptyException":
-                case "WrongNumberOfTilesException":
-                case "BoardDoesNotContainThisPositionException":
-                    this.iAlreadyDrawn = false;
-                break;
-
-            }
-        }
-
-
-
         try {
             if (model.getMyShelfie().getGame(this.currentGameId).getState().equals(GameStatus.OVER)){
                 //caso in cui ho terminato una partita
@@ -110,7 +88,33 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                 }
             }
             if (isMyGame){ //se il player che ha fatto l'azione è presente nel mio game
+
+                //se presente stampo qualcosa se no stringa vuota!
+                System.err.println(model.getError());
+
+                if (model.getError() != "" ) {
+                    switch (model.getError()){
+                        case "IllegalColumnException":
+                        case "IllegalSizeOfTilesException":
+                        case "DuplicatesInRequestedTilesException":
+                        case "TilesAreNotRemovableException":
+                        case "PositionEmptyException":
+                        case "WrongNumberOfTilesException":
+                        case "BoardDoesNotContainThisPositionException":
+                            this.iAlreadyDrawn = false;
+                            Platform.runLater(() -> {
+                                this.controller.setEnableSendButton(true);
+                            });
+                            break;
+
+                    }
+                }else{
+
+                }
+
                 choicePart( model, arg);
+                this.updateGui();
+
             }
         }
     }
@@ -419,12 +423,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
 
                                                 });
 
-                                                Platform.startup(() -> {
-                                                    Platform.runLater(() -> {
-                                                        this.initFxGui();
-
-                                                    });
-                                                });
+                                                this.initFxGui();
 
                                             break;
                                             case IN_WAIT://siccome non esiste una partita di un solo giocatore entrerò sempre qui!
@@ -464,7 +463,6 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                 case CPU_CHOICE -> {
                     switch (model.getPlayerChoice().getChoice()) {
 
-
                         case TERMINATE_TURNS:
                             System.out.println(model.getMyShelfie().getGame(this.currentGameId).precCurrentPlayer().getUsername()+" ha terminato il turno! ");
                             System.out.println("Now is: " + model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getUsername() + " turn");
@@ -482,14 +480,17 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                                 }
                             });
 
-                            Platform.startup(() -> {
-                                Platform.runLater(() -> {
-                                    this.initFxGui();
-                                });
-                            });
+                            this.initFxGui();
+
                         break;
                         case DRAW_FROM_BOARD:
                             System.out.println("Player: "+model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getUsername()+" HA PESCATO DALLA PLANCIA!");
+                            if(this.iAlreadyDrawn){
+                                System.out.println("ora termino il turno sulla gui!");
+                                Platform.runLater(() -> {
+                                    this.controller.terminateTurn();
+                                });
+                            }
                         break;
                         case EXIT:
                             System.out.println("Player: "+model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getUsername()+" HA FORZATO LA CHIUSURA DEL GIOCO ALLA FINE DEL GIRO!");
@@ -599,29 +600,63 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
         return player;
     }
 
+    public Game getCurrentGame() {
+        return currentGame;
+    }
+
     public void initFxGui(){
-        this.frame = new HelloApplication();
-        try {
-            frame.start(new Stage());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        Platform.startup(() -> {
+            Platform.runLater(() -> {
+                this.frame = new HelloApplication();
+                try {
+                    frame.start(new Stage());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
 
-        this.controller = frame.getController();
+                this.controller = frame.getController();
+                this.controller.viewMyShelfie = this;
 
-        this.controller.updateBoard(this.currentGame.getBoard().getPlacements());
-        //.DEBUG
-        //System.out.println("file:src/main/resources/GraphicResources/itemTiles/"+this.currentGame.getBoard().getPlacements().get(3).getTile().getType().getName()+""+this.currentGame.getBoard().getPlacements().get(0).getTile().getVariant().getNumber()+".png");
-        /*
-        for (int i = 0; i < this.currentGame.getBoard().getPlacements().size() ; i++){
-            //System.out.println(this.currentGame.getBoard().getPlacements().get(i).isOccupied());
-            System.out.println("file:src/main/resources/GraphicResources/itemTiles/"+this.currentGame.getBoard().getPlacements().get(i).getTile().getType().getName()+""+this.currentGame.getBoard().getPlacements().get(i).getTile().getVariant().getNumber()+".png");
-            System.out.println("X: "+this.currentGame.getBoard().getPlacements().get(i).getX() + " Y: " + this.currentGame.getBoard().getPlacements().get(i).getY());
-        }
-         */
+                this.controller.updateBoard(this.currentGame.getBoard().getPlacements());
 
+                this.controller.setEnableSendButton(this.currentGame.getCurrentPlayer().getUsername().equals(this.player.getUsername()));
+
+                //.DEBUG
+                //System.out.println("file:src/main/resources/GraphicResources/itemTiles/"+this.currentGame.getBoard().getPlacements().get(3).getTile().getType().getName()+""+this.currentGame.getBoard().getPlacements().get(0).getTile().getVariant().getNumber()+".png");
+                /*
+                for (int i = 0; i < this.currentGame.getBoard().getPlacements().size() ; i++){
+                    //System.out.println(this.currentGame.getBoard().getPlacements().get(i).isOccupied());
+                    System.out.println("file:src/main/resources/GraphicResources/itemTiles/"+this.currentGame.getBoard().getPlacements().get(i).getTile().getType().getName()+""+this.currentGame.getBoard().getPlacements().get(i).getTile().getVariant().getNumber()+".png");
+                    System.out.println("X: "+this.currentGame.getBoard().getPlacements().get(i).getX() + " Y: " + this.currentGame.getBoard().getPlacements().get(i).getY());
+                }
+                 */
+            });
+        });
+
+    }
+
+    public void updateGui(){
+
+            Platform.runLater(() -> {
+
+                this.controller.updateBoard(this.currentGame.getBoard().getPlacements());
+
+                //se e il mio turno attivo il bottone send inoltre verifico che non ho gia pescato
+                this.controller.setEnableSendButton(this.currentGame.getCurrentPlayer().getUsername().equals(this.player.getUsername()));
+
+                //.DEBUG
+                //System.out.println("file:src/main/resources/GraphicResources/itemTiles/"+this.currentGame.getBoard().getPlacements().get(3).getTile().getType().getName()+""+this.currentGame.getBoard().getPlacements().get(0).getTile().getVariant().getNumber()+".png");
+                /*
+                for (int i = 0; i < this.currentGame.getBoard().getPlacements().size() ; i++){
+                    //System.out.println(this.currentGame.getBoard().getPlacements().get(i).isOccupied());
+                    System.out.println("file:src/main/resources/GraphicResources/itemTiles/"+this.currentGame.getBoard().getPlacements().get(i).getTile().getType().getName()+""+this.currentGame.getBoard().getPlacements().get(i).getTile().getVariant().getNumber()+".png");
+                    System.out.println("X: "+this.currentGame.getBoard().getPlacements().get(i).getX() + " Y: " + this.currentGame.getBoard().getPlacements().get(i).getY());
+                }
+                 */
+            });
 
 
     }
+
 }
 

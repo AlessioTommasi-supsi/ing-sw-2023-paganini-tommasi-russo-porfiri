@@ -468,10 +468,11 @@
                                         <Font size="20.0" />
                                     </font></Text>
                                 <TextField id="choiceShelfColumnNumTextField" fx:id="choiceShelfColumnNumTextField" alignment="CENTER" layoutX="16.0" layoutY="254.0" prefHeight="32.0" prefWidth="40.0" promptText="0..4" />
-                                <Button id="choiceSendButton" fx:id="choiceSendButton" layoutX="630.0" layoutY="240.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="118.0" text="Send" textFill="#992e2e">
+                                <Button id="choiceSendButton" fx:id="choiceSendButton" onAction="#DrawFromBoard" layoutX="630.0" layoutY="240.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="118.0" text="Send" textFill="#992e2e">
                                     <font>
                                         <Font name="System Bold" size="29.0" />
-                                    </font></Button>
+                                    </font>
+                                </Button>
                                 <TextField id="choiceX2TextFied" fx:id="choiceX2TextField" alignment="CENTER" layoutX="117.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="x" />
                                 <ImageView id="choiceLogoImageView" fx:id="choiceLogoImageView" fitHeight="84.0" fitWidth="255.0" layoutX="535.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -484,7 +485,7 @@
                 </ScrollPane>
             </children>
         </Pane>
-        <Pane id="loginPane" fx:id="loginPane" prefHeight="720.0" prefWidth="1280.0">
+        <Pane id="loginPane" fx:id="loginPane" prefHeight="720.0" prefWidth="1280.0" visible="false">
             <children>
                 <ImageView id="loginBackImageView" fx:id="loginBackImageView" fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true">
                     <image>
