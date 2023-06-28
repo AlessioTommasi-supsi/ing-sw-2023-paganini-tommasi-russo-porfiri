@@ -187,15 +187,15 @@ public class PlayerTest {
         } catch (Exception e) {
             System.out.println("error");
         }
-<<<<<<< Updated upstream
+//<<<<<<< Updated upstream
 
         System.out.println("Adiacents: " +player.calculateAdjacentPoints());
         System.out.println("Personal: " +player.calculatePersonalPoints());
         System.out.println("Common: " + (player.getScore() - player.calculatePersonalPoints()- player.calculateAdjacentPoints()));
 
-=======
+//=======
         player.addEndOfGamePoint();
->>>>>>> Stashed changes
+//>>>>>>> Stashed changes
         Assertions.assertEquals(18, points);
     }
 
