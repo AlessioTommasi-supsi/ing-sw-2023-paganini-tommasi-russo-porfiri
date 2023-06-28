@@ -1,5 +1,7 @@
 package org.project.ingsw2023PaganiniTommasiRussoPorfiri;
 
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -134,6 +136,10 @@ public class HelloController {
     ImageView boardR8C3;
     @FXML
     ImageView boardR8C4;
+    @FXML
+    private TextField usernameTextField;
+    @FXML
+    private ScrollPane choiceScrollPane;
 
     ArrayList<TextFormatter<String>> textFormattersList1 = new ArrayList<>();
     ArrayList<TextFormatter<String>> textFormattersList2 = new ArrayList<>();
@@ -165,9 +171,10 @@ public class HelloController {
         choiceOrder3TextField.setVisible(false);
         choiceOrder3TextField.setMouseTransparent(true);
     }
+    /*
     public void verifyLoginInformationAdded(){
         if()
-    }
+    }*/
 
     public void updateBoard(ArrayList<TilePositionBoard> tilePositionBoards) {
         // TODO
@@ -357,7 +364,19 @@ public class HelloController {
 
     @FXML
     private void initialize() {
-        // Operatore unario per limitare l'input ai numeri interi positivi di lunghezza == 1 oppure il backspace
+        choiceX2TextField.setDisable(true);
+        choiceX2TextField.setOpacity(0.5);
+        choiceY2TextField.setDisable(true);
+        choiceY2TextField.setOpacity(0.5);
+        choiceX3TextField.setDisable(true);
+        choiceX3TextField.setOpacity(0.5);
+        choiceY3TextField.setDisable(true);
+        choiceY3TextField.setOpacity(0.5);
+        choiceOrder2TextField.setDisable(true);
+        choiceOrder2TextField.setOpacity(0.5);
+        choiceOrder3TextField.setDisable(true);
+        choiceOrder3TextField.setOpacity(0.5);
+
         UnaryOperator<TextFormatter.Change> integerFilterXY = change -> {
             String newText = change.getControlNewText();
             if ((newText.matches("\\d*") && newText.length() == 1 && Integer.valueOf(newText) >= 0 && Integer.valueOf(newText) <= 8) || newText.isEmpty()) {
@@ -366,13 +385,12 @@ public class HelloController {
             return null;
         };
 
-        //Creazione dei TextFormatter<String>
+
         for (int i = 0; i < 6; i++) {
             TextFormatter<String> textFormatter = new TextFormatter<>(integerFilterXY);
             textFormattersList1.add(textFormatter);
         }
 
-        //Applicazione di ciascun TextFormatter a ciascun TextField che deve rispettare la caratteristica sopra
         choiceX1TextField.setTextFormatter(textFormattersList1.get(0));
         choiceY1TextField.setTextFormatter(textFormattersList1.get(1));
         choiceX2TextField.setTextFormatter(textFormattersList1.get(2));
@@ -422,18 +440,73 @@ public class HelloController {
         TextFormatter<String> textFormatterPlayer = new TextFormatter<>(integerFilterPlayerNum);
         playerNumberTextField.setTextFormatter(textFormatterPlayer);
 
-        //Proprietà dello Spinner
+
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 3);
         choiceNumTileSpinner.setValueFactory(valueFactory);
         choiceNumTileSpinner.setEditable(false);
 
-        //Pressione invio comporta pressione joinGameButton
+
         loginPane.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
-                joinGameButton.fire(); // Simula un click sul Button
+                joinGameButton.fire();
             }
         });
 
+
+        BooleanBinding isFieldsEmpty = Bindings.createBooleanBinding(
+                () -> usernameTextField.getText().isEmpty() || playerNumberTextField.getText().isEmpty(),
+                usernameTextField.textProperty(),
+                playerNumberTextField.textProperty()
+        );
+        joinGameButton.disableProperty().bind(isFieldsEmpty);
+
+
+        choiceNumTileSpinner.valueProperty().addListener((observable, oldValue, newValue) -> {
+
+            int value = (int) newValue;
+            if (value == 1) {
+                choiceX2TextField.setDisable(true);
+                choiceX2TextField.setOpacity(0.5);
+                choiceY2TextField.setDisable(true);
+                choiceY2TextField.setOpacity(0.5);
+                choiceX3TextField.setDisable(true);
+                choiceX3TextField.setOpacity(0.5);
+                choiceY3TextField.setDisable(true);
+                choiceY3TextField.setOpacity(0.5);
+                choiceOrder2TextField.setDisable(true);
+                choiceOrder2TextField.setOpacity(0.5);
+                choiceOrder3TextField.setDisable(true);
+                choiceOrder3TextField.setOpacity(0.5);
+
+            } else if (value == 2) {
+                choiceX2TextField.setDisable(false);
+                choiceX2TextField.setOpacity(1);
+                choiceY2TextField.setDisable(false);
+                choiceY2TextField.setOpacity(1);
+                choiceX3TextField.setDisable(true);
+                choiceX3TextField.setOpacity(0.5);
+                choiceY3TextField.setDisable(true);
+                choiceY3TextField.setOpacity(0.5);
+                choiceOrder2TextField.setDisable(false);
+                choiceOrder2TextField.setOpacity(1);
+                choiceOrder3TextField.setDisable(true);
+                choiceOrder3TextField.setOpacity(0.5);
+
+            } else if (value == 3) {
+                choiceX2TextField.setDisable(false);
+                choiceX2TextField.setOpacity(1);
+                choiceY2TextField.setDisable(false);
+                choiceY2TextField.setOpacity(1);
+                choiceX3TextField.setDisable(false);
+                choiceX3TextField.setOpacity(1);
+                choiceY3TextField.setDisable(false);
+                choiceY3TextField.setOpacity(1);
+                choiceOrder2TextField.setDisable(false);
+                choiceOrder2TextField.setOpacity(1);
+                choiceOrder3TextField.setDisable(false);
+                choiceOrder3TextField.setOpacity(1);
+        }
+        });
 
 
 
