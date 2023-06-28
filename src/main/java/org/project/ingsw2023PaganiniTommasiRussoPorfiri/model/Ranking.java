@@ -20,6 +20,6 @@ public class Ranking implements Serializable {
     public String toString() {
         return "" +
                 "punteggio:" + points +
-                ", player=" + player ;
+                ", player=" + player.getUsername() ;
     }
 }

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnable {
 
@@ -52,6 +53,21 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                 }catch (Exception e){
                     e.printStackTrace();
                 }
+
+                String rankingString = IntStream.range(0, this.currentGame.getRank().size())
+                        .mapToObj(i -> {
+                            if (i == 0) {
+                                return "\n"+(i + 1) +".  "+ this.currentGame.getRank().get(i).toString() +"     WINNER!!";
+                            } else {
+                                return (i + 1) + ".  " + this.currentGame.getRank().get(i).toString();
+                            }
+                        })
+                        .collect(Collectors.joining("\n"));
+
+                Platform.runLater(() -> {
+                    this.controller.showInfoMessage(rankingString,this.frame.getStage());
+                });
+
                 //CLEAR STATE
                 currentGame = null;
                 currentGameId = -1;
@@ -103,14 +119,15 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                         case "BoardDoesNotContainThisPositionException":
                             this.iAlreadyDrawn = false;
                             Platform.runLater(() -> {
-                                this.controller.showError(model.getError(),this.frame.getStage());
+                                //controllo se e'il mio turno!
+                                if(model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getId() == this.player.getId()){
+                                    this.controller.showError(model.getError(),this.frame.getStage());
+                                }
                                 this.controller.setEnableSendButton(true);
                             });
                             break;
 
                     }
-                }else{
-
                 }
 
                 choicePart( model, arg);
@@ -467,6 +484,11 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                         case TERMINATE_TURNS:
                             System.out.println(model.getMyShelfie().getGame(this.currentGameId).precCurrentPlayer().getUsername()+" ha terminato il turno! ");
                             System.out.println("Now is: " + model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getUsername() + " turn");
+                            Platform.runLater(() -> {
+                                if(model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getId() == this.player.getId()){
+                                    this.controller.showInfoMessage("Tocca a te!",this.frame.getStage());
+                                }
+                            });
                         break;
 
                         case JOIN_GAME:
@@ -490,6 +512,8 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                                 System.out.println("ora termino il turno sulla gui!");
                                 Platform.runLater(() -> {
                                     this.controller.terminateTurn();
+                                    this.controller.showInfoMessage("Hai terminato il tuo turno!",this.frame.getStage());
+
                                 });
                             }
                         break;
@@ -639,12 +663,13 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
     public void updateGui(){
 
             Platform.runLater(() -> {
+                if (this.currentGame!=null) {
+                    this.controller.setEnableSendButton(this.currentGame.getCurrentPlayer().getUsername().equals(this.player.getUsername()));
 
-                this.controller.updateBoard(this.currentGame.getBoard().getPlacements());
+                    this.controller.updateBoard(this.currentGame.getBoard().getPlacements());
+                    //se e il mio turno attivo il bottone send inoltre verifico che non ho gia pescato
 
-                //se e il mio turno attivo il bottone send inoltre verifico che non ho gia pescato
-                this.controller.setEnableSendButton(this.currentGame.getCurrentPlayer().getUsername().equals(this.player.getUsername()));
-
+                }
                 //.DEBUG
                 //System.out.println("file:src/main/resources/GraphicResources/itemTiles/"+this.currentGame.getBoard().getPlacements().get(3).getTile().getType().getName()+""+this.currentGame.getBoard().getPlacements().get(0).getTile().getVariant().getNumber()+".png");
                 /*

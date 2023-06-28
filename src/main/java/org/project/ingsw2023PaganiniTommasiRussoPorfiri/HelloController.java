@@ -838,6 +838,28 @@ public class HelloController {
         messageService.start();
     }
 
+    public void showInfoMessage(String msg, Stage stage) {
+        MessageService messageService = new MessageService(msg);
+
+        messageService.setOnSucceeded(event -> {
+            String message = messageService.getValue();
+            if (message != null) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Messaggio");
+                alert.setHeaderText(null);
+                alert.setContentText(message);
+
+                alert.initOwner(stage);
+
+                alert.setX(stage.getX() + stage.getWidth() / 2 - alert.getWidth() / 2);
+                alert.setY(stage.getY() + stage.getHeight() / 2 - alert.getHeight() / 2);
+
+                alert.showAndWait();
+            }
+        });
+        messageService.start();
+    }
+
     private static class MessageService extends Service<String> {
         String message;
         public  MessageService(String message) {
@@ -848,7 +870,7 @@ public class HelloController {
             return new Task<String>() {
                 @Override
                 protected String call() throws Exception {
-                        return "Messaggio di errore: "+message;
+                        return "Messaggio: "+message;
                 }
             };
         }
