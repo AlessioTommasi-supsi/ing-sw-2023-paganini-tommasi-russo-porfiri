@@ -5,8 +5,7 @@ import java.io.Serializable;
 public class PersonalCard implements Serializable {
     public TilePositionShelves positionShelves[] ;
     private int points;
-
-    public String percorso;
+    public int PersonalCardNumber;
     public int CatXPosition;
     public int CatYPosition;
     public int BookXPosition;
@@ -26,6 +25,14 @@ public class PersonalCard implements Serializable {
 
     public void setPositionShelves(TilePositionShelves[] positionShelves) {
         this.positionShelves = positionShelves;
+    }
+
+    public int getPersonalCardNumber() {
+        return PersonalCardNumber;
+    }
+
+    public void setPersonalCardNumber(int personalCardNumber) {
+        PersonalCardNumber = personalCardNumber;
     }
 
     public void setPoints(int points) {
@@ -147,18 +154,19 @@ public class PersonalCard implements Serializable {
     @Override
     public String toString() {
         return "PersonalCard{\n" +
-                " CatXPosition=" + CatXPosition +
-                ", CatYPosition=" + CatYPosition +
-                ", BookXPosition=" + BookXPosition +
-                ", BookYPosition=" + BookYPosition +
-                ", FrameXPosition=" + FrameXPosition +
-                ", FrameYPosition=" + FrameYPosition +
-                ", TrophyXPosition=" + TrophyXPosition +
-                ", TrophyYPosition=" + TrophyYPosition +
-                ", GamesXPosition=" + GamesXPosition +
-                ", GamesYPosition=" + GamesYPosition +
-                ", PlantXPosition=" + PlantXPosition +
-                ", PlantYPosition=" + PlantYPosition +
+                " PersonalCardNumber =" + PersonalCardNumber +
+                " CatXPosition =" + CatXPosition +
+                ", CatYPosition =" + CatYPosition +
+                ", BookXPosition =" + BookXPosition +
+                ", BookYPosition =" + BookYPosition +
+                ", FrameXPosition =" + FrameXPosition +
+                ", FrameYPosition =" + FrameYPosition +
+                ", TrophyXPosition =" + TrophyXPosition +
+                ", TrophyYPosition =" + TrophyYPosition +
+                ", GamesXPosition =" + GamesXPosition +
+                ", GamesYPosition =" + GamesYPosition +
+                ", PlantXPosition =" + PlantXPosition +
+                ", PlantYPosition =" + PlantYPosition +
                  "\n}";
     }
 }

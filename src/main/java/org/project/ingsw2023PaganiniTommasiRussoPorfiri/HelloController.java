@@ -144,6 +144,66 @@ public class HelloController {
     @FXML
     private ImageView boardR8C4;
     @FXML
+    private ImageView shelf1R0C0;
+    @FXML
+    private ImageView shelf1R0C1;
+    @FXML
+    private ImageView shelf1R0C2;
+    @FXML
+    private ImageView shelf1R0C3;
+    @FXML
+    private ImageView shelf1R0C4;
+    @FXML
+    private ImageView shelf1R1C0;
+    @FXML
+    private ImageView shelf1R1C1;
+    @FXML
+    private ImageView shelf1R1C2;
+    @FXML
+    private ImageView shelf1R1C3;
+    @FXML
+    private ImageView shelf1R1C4;
+    @FXML
+    private ImageView shelf1R2C0;
+    @FXML
+    private ImageView shelf1R2C1;
+    @FXML
+    private ImageView shelf1R2C2;
+    @FXML
+    private ImageView shelf1R2C3;
+    @FXML
+    private ImageView shelf1R2C4;
+    @FXML
+    private ImageView shelf1R3C0;
+    @FXML
+    private ImageView shelf1R3C1;
+    @FXML
+    private ImageView shelf1R3C2;
+    @FXML
+    private ImageView shelf1R3C3;
+    @FXML
+    private ImageView shelf1R3C4;
+    @FXML
+    private ImageView shelf1R4C0;
+    @FXML
+    private ImageView shelf1R4C1;
+    @FXML
+    private ImageView shelf1R4C2;
+    @FXML
+    private ImageView shelf1R4C3;
+    @FXML
+    private ImageView shelf1R4C4;
+    @FXML
+    private ImageView shelf1R5C0;
+    @FXML
+    private ImageView shelf1R5C1;
+    @FXML
+    private ImageView shelf1R5C2;
+    @FXML
+    private ImageView shelf1R5C3;
+    @FXML
+    private ImageView shelf1R5C4;
+    @FXML
     private TextField usernameTextField;
     @FXML
     private ScrollPane choiceScrollPane;
@@ -151,383 +211,28 @@ public class HelloController {
     private Text choiceTextField1;
     @FXML
     private Button choiceSendButton;
-
     private ArrayList<TextFormatter<String>> textFormattersList1 = new ArrayList<>();
     private ArrayList<TextFormatter<String>> textFormattersList2 = new ArrayList<>();
-    @FXML
-    ImageView shelf1R0C0;
-
-    @FXML
-    ImageView shelf1R0C1;
-
-    @FXML
-    ImageView shelf1R0C2;
-
-    @FXML
-    ImageView shelf1R0C3;
-
-    @FXML
-    ImageView shelf1R0C4;
-
-    @FXML
-    ImageView shelf1R1C0;
-
-    @FXML
-    ImageView shelf1R1C1;
-
-    @FXML
-    ImageView shelf1R1C2;
-
-    @FXML
-    ImageView shelf1R1C3;
-
-    @FXML
-    ImageView shelf1R1C4;
-
-    @FXML
-    ImageView shelf1R2C0;
-
-    @FXML
-    ImageView shelf1R2C1;
-
-    @FXML
-    ImageView shelf1R2C2;
-
-    @FXML
-    ImageView shelf1R2C3;
-
-    @FXML
-    ImageView shelf1R2C4;
-
-    @FXML
-    ImageView shelf1R3C0;
-
-    @FXML
-    ImageView shelf1R3C1;
-
-    @FXML
-    ImageView shelf1R3C2;
-
-    @FXML
-    ImageView shelf1R3C3;
-
-    @FXML
-    ImageView shelf1R3C4;
-
-    @FXML
-    ImageView shelf1R4C0;
-
-    @FXML
-    ImageView shelf1R4C1;
-
-    @FXML
-    ImageView shelf1R4C2;
-
-    @FXML
-    ImageView shelf1R4C3;
-
-    @FXML
-    ImageView shelf1R4C4;
-
-    @FXML
-    ImageView shelf1R5C0;
-
-    @FXML
-    ImageView shelf1R5C1;
-
-    @FXML
-    ImageView shelf1R5C2;
-
-    @FXML
-    ImageView shelf1R5C3;
-
-    @FXML
-    ImageView shelf1R5C4;
-
-    @FXML
-    ImageView shelf2R0C0;
-
-    @FXML
-    ImageView shelf2R0C1;
-
-    @FXML
-    ImageView shelf2R0C2;
-
-    @FXML
-    ImageView shelf2R0C3;
-
-    @FXML
-    ImageView shelf2R0C4;
-
-    @FXML
-    ImageView shelf2R1C0;
-
-    @FXML
-    ImageView shelf2R1C1;
-
-    @FXML
-    ImageView shelf2R1C2;
-
-    @FXML
-    ImageView shelf2R1C3;
-
-    @FXML
-    ImageView shelf2R1C4;
-
-    @FXML
-    ImageView shelf2R2C0;
-
-    @FXML
-    ImageView shelf2R2C1;
-
-    @FXML
-    ImageView shelf2R2C2;
-
-    @FXML
-    ImageView shelf2R2C3;
-
-    @FXML
-    ImageView shelf2R2C4;
-
-    @FXML
-    ImageView shelf2R3C0;
-
-    @FXML
-    ImageView shelf2R3C1;
-
-    @FXML
-    ImageView shelf2R3C2;
-
-    @FXML
-    ImageView shelf2R3C3;
-
-    @FXML
-    ImageView shelf2R3C4;
-
-    @FXML
-    ImageView shelf2R4C0;
-
-    @FXML
-    ImageView shelf2R4C1;
-
-    @FXML
-    ImageView shelf2R4C2;
-
-    @FXML
-    ImageView shelf2R4C3;
-
-    @FXML
-    ImageView shelf2R4C4;
-
-    @FXML
-    ImageView shelf2R5C0;
-
-    @FXML
-    ImageView shelf2R5C1;
-
-    @FXML
-    ImageView shelf2R5C2;
-
-    @FXML
-    ImageView shelf2R5C3;
-
-    @FXML
-    ImageView shelf2R5C4;
-
-    @FXML
-    ImageView shelf3R0C0;
-
-    @FXML
-    ImageView shelf3R0C1;
-
-    @FXML
-    ImageView shelf3R0C2;
-
-    @FXML
-    ImageView shelf3R0C3;
-
-    @FXML
-    ImageView shelf3R0C4;
-
-    @FXML
-    ImageView shelf3R1C0;
-
-    @FXML
-    ImageView shelf3R1C1;
-
-    @FXML
-    ImageView shelf3R1C2;
-
-    @FXML
-    ImageView shelf3R1C3;
-
-    @FXML
-    ImageView shelf3R1C4;
-
-    @FXML
-    ImageView shelf3R2C0;
-
-    @FXML
-    ImageView shelf3R2C1;
-
-    @FXML
-    ImageView shelf3R2C2;
-
-    @FXML
-    ImageView shelf3R2C3;
-
-    @FXML
-    ImageView shelf3R2C4;
-
-    @FXML
-    ImageView shelf3R3C0;
-
-    @FXML
-    ImageView shelf3R3C1;
-
-    @FXML
-    ImageView shelf3R3C2;
-
-    @FXML
-    ImageView shelf3R3C3;
-
-    @FXML
-    ImageView shelf3R3C4;
-
-    @FXML
-    ImageView shelf3R4C0;
-
-    @FXML
-    ImageView shelf3R4C1;
-
-    @FXML
-    ImageView shelf3R4C2;
-
-    @FXML
-    ImageView shelf3R4C3;
-
-    @FXML
-    ImageView shelf3R4C4;
-
-    @FXML
-    ImageView shelf3R5C0;
-
-    @FXML
-    ImageView shelf3R5C1;
-
-    @FXML
-    ImageView shelf3R5C2;
-
-    @FXML
-    ImageView shelf3R5C3;
-
-    @FXML
-    ImageView shelf3R5C4;
-
-    @FXML
-    ImageView shelf4R0C0;
-
-    @FXML
-    ImageView shelf4R0C1;
-
-    @FXML
-    ImageView shelf4R0C2;
-
-    @FXML
-    ImageView shelf4R0C3;
-
-    @FXML
-    ImageView shelf4R0C4;
-
-    @FXML
-    ImageView shelf4R1C0;
-
-    @FXML
-    ImageView shelf4R1C1;
-
-    @FXML
-    ImageView shelf4R1C2;
-
-    @FXML
-    ImageView shelf4R1C3;
-
-    @FXML
-    ImageView shelf4R1C4;
-
-    @FXML
-    ImageView shelf4R2C0;
-
-    @FXML
-    ImageView shelf4R2C1;
-
-    @FXML
-    ImageView shelf4R2C2;
-
-    @FXML
-    ImageView shelf4R2C3;
-
-    @FXML
-    ImageView shelf4R2C4;
-
-    @FXML
-    ImageView shelf4R3C0;
-
-    @FXML
-    ImageView shelf4R3C1;
-
-    @FXML
-    ImageView shelf4R3C2;
-
-    @FXML
-    ImageView shelf4R3C3;
-
-    @FXML
-    ImageView shelf4R3C4;
-
-    @FXML
-    ImageView shelf4R4C0;
-
-    @FXML
-    ImageView shelf4R4C1;
-
-    @FXML
-    ImageView shelf4R4C2;
-
-    @FXML
-    ImageView shelf4R4C3;
-
-    @FXML
-    ImageView shelf4R4C4;
-
-    @FXML
-    ImageView shelf4R5C0;
-
-    @FXML
-    ImageView shelf4R5C1;
-
-    @FXML
-    ImageView shelf4R5C2;
-
-    @FXML
-    ImageView shelf4R5C3;
-
-    @FXML
-    ImageView shelf4R5C4;
-
-
-
-    @FXML
-    Text shp1Text;
-
-    @FXML
-    Text shp2Text;
-
-    @FXML
-    Text shp3Text;
-
-    @FXML
-    Text shp4Text;
     public ViewMyShelfie viewMyShelfie = null;
+    @FXML
+    private Text shp1Text;
+    @FXML
+    private Text shp2Text;
+    @FXML
+    private Text shp3Text;
+    @FXML
+    private Text shp4Text;
+    @FXML
+    private TextField c1Points;
+    @FXML
+    private TextField c2Points;
+    @FXML
+    private ImageView commonCard1ImageView;
+    @FXML
+    private ImageView commonCard2ImageView;
+    @FXML
+    private ImageView personalCardImageView;
+
 
     @FXML
     protected void onHelloButtonClick() {
@@ -556,13 +261,20 @@ public class HelloController {
         choiceOrder3TextField.setMouseTransparent(true);
     }
 
+    public void setPrivateCard(PersonalCard myPersonalCard) {
+        int cardNumber = myPersonalCard.getPersonalCardNumber();
+        String imagePath = "file:src/main/resources/GraphicResources/personalGoalCards/Personal_Goals" + cardNumber + ".png";
+        personalCardImageView.setImage(new javafx.scene.image.Image(imagePath));
+    }
+
+    public void setCommonCards(CommonCard c1, CommonCard c2){
+
+    }
+
     public void verifyLoginInformationAdded(){
         //if()
     }
 
-    public void setPrivateCard(PersonalCard personalCard){
-
-    }
 
 
     public void updateBoard(ArrayList<TilePositionBoard> tilePositionBoards) {
@@ -1554,6 +1266,9 @@ public class HelloController {
         choiceOrder2TextField.setOpacity(0.5);
         choiceOrder3TextField.setDisable(true);
         choiceOrder3TextField.setOpacity(0.5);
+
+        c1Points.setEditable(false);
+        c2Points.setEditable(false);
 
         UnaryOperator<TextFormatter.Change> integerFilterXY = change -> {
             String newText = change.getControlNewText();

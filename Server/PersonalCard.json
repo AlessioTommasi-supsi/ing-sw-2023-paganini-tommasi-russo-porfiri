@@ -1,6 +1,6 @@
 [
   {
-    "Percorso": "PersolalCard1.png",
+    "PersonalCardNumber": 1,
     "CatXPosition" : 4,
     "CatYPosition" : 4,
     "BookXPosition" : 3,
@@ -15,6 +15,7 @@
     "PlantYPosition" : 0
   },
   {
+    "PersonalCardNumber": 2,
     "CatXPosition" : 3,
     "CatYPosition" : 0,
     "BookXPosition" : 2,
@@ -29,6 +30,7 @@
     "PlantYPosition" : 1
   },
   {
+    "PersonalCardNumber": 3,
     "CatXPosition" : 2,
     "CatYPosition" : 1,
     "BookXPosition" : 0,
@@ -43,6 +45,7 @@
     "PlantYPosition" : 2
   },
   {
+    "PersonalCardNumber": 4,
     "CatXPosition" : 1,
     "CatYPosition" : 2,
     "BookXPosition" : 1,
@@ -57,6 +60,7 @@
     "PlantYPosition" : 3
   },
   {
+    "PersonalCardNumber": 5,
     "CatXPosition" : 0,
     "CatYPosition" : 3,
     "BookXPosition" : 2,
@@ -71,6 +75,7 @@
     "PlantYPosition" : 4
   },
   {
+    "PersonalCardNumber": 6,
     "CatXPosition" : 5,
     "CatYPosition" : 4,
     "BookXPosition" : 3,
@@ -85,6 +90,7 @@
     "PlantYPosition" : 0
   },
   {
+    "PersonalCardNumber": 7,
     "CatXPosition" : 5,
     "CatYPosition" : 0,
     "BookXPosition" : 0,
@@ -99,6 +105,7 @@
     "PlantYPosition" : 1
   },
   {
+    "PersonalCardNumber": 8,
     "CatXPosition" : 4,
     "CatYPosition" : 1,
     "BookXPosition" : 1,
@@ -113,6 +120,7 @@
     "PlantYPosition" : 0
   },
   {
+    "PersonalCardNumber": 9,
     "CatXPosition" : 3,
     "CatYPosition" : 2,
     "BookXPosition" : 2,
@@ -127,6 +135,7 @@
     "PlantYPosition" : 4
   },
   {
+    "PersonalCardNumber": 10,
     "CatXPosition" : 2,
     "CatYPosition" : 3,
     "BookXPosition" : 3,
@@ -141,6 +150,7 @@
     "PlantYPosition" : 3
   },
   {
+    "PersonalCardNumber": 11,
     "CatXPosition" : 1,
     "CatYPosition" : 4,
     "BookXPosition" : 4,
@@ -155,6 +165,7 @@
     "PlantYPosition" : 2
   },
   {
+    "PersonalCardNumber": 12,
     "CatXPosition" : 0,
     "CatYPosition" : 0,
     "BookXPosition" : 5,

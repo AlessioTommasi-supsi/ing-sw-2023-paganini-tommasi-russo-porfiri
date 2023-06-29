@@ -198,11 +198,16 @@
                                                         <Image url="@../../../GraphicResources/plainBackgrounds/d2b48c.png" />
                                                     </image>
                                                 </ImageView>
-                                                <ImageView id="c1ImageView" fx:id="c1ImageView" fitHeight="160.0" fitWidth="232.0" pickOnBounds="true">
+                                                <ImageView id="commonCard1ImageView" fx:id="commonCard1ImageView" fitHeight="160.0" fitWidth="232.0" pickOnBounds="true">
                                                     <image>
                                                         <Image url="@../../../GraphicResources/commonGoalCards/1.jpg" />
                                                     </image>
                                                 </ImageView>
+                                    <TextField fx:id="c1Points" layoutX="136.0" layoutY="41.0" maxWidth="66.0" prefHeight="66.0" promptText="Points" rotate="-7.7">
+                                       <font>
+                                          <Font name="System Bold" size="15.5" />
+                                       </font>
+                                    </TextField>
                                             </children>
                                         </AnchorPane>
                                         <AnchorPane id="commonCard2AnchorPane" fx:id="commonCard2AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -217,6 +222,11 @@
                                                         <Image url="@../../../GraphicResources/commonGoalCards/2.jpg" />
                                                     </image>
                                                 </ImageView>
+                                    <TextField fx:id="c2Points" layoutX="136.0" layoutY="41.0" maxWidth="66.0" prefHeight="66.0" promptText="Points" rotate="-7.7">
+                                       <font>
+                                          <Font name="System Bold" size="15.5" />
+                                       </font>
+                                    </TextField>
                                             </children>
                                         </AnchorPane>
                                     </items>
@@ -225,7 +235,7 @@
                         </AnchorPane>
                         <AnchorPane id="personalCardAnchorPane" fx:id="personalCardAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="166.0">
                             <children>
-                                <ImageView id="personalCardBackImageView" fx:id="personalCardBackImageView" fitHeight="160.0" fitWidth="102.0" layoutX="-1.0" layoutY="2.0" pickOnBounds="true">
+                                <ImageView id="personalCardBackImageView" fx:id="personalCardBackImageView" fitHeight="328.8" fitWidth="233.6" layoutX="-1.0" layoutY="2.0" pickOnBounds="true">
                                     <image>
                                         <Image url="@../../../GraphicResources/plainBackgrounds/d2b48c.png" />
                                     </image>
@@ -306,7 +316,10 @@
                                                         <ImageView fx:id="shelf1R0C4" fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
                                                     </children>
                                                 </GridPane>
-                                    <Text id="myShelvesTitle" fx:id="shp1Text" fill="#1616bc" layoutX="88.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player1's shelves" />
+                                    <Text id="myShelvesTitle" fx:id="shp1Text" fill="#1616bc" layoutX="4.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player1's shelves" textAlignment="CENTER" wrappingWidth="232.79999999999995">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></Text>
                                             </children>
                                         </AnchorPane>
                                         <AnchorPane id="shelf2AnchorPane" fx:id="shelf2AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="117.0" prefWidth="126.0" style="-fx-background-color: transparent;">
@@ -370,7 +383,10 @@
                                                         <ImageView fx:id="shelf2R0C4" fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
                                                     </children>
                                                 </GridPane>
-                                    <Text id="player1ShelvesTitle" fx:id="shp2Text" fill="#c11515" layoutX="3.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player2's shelves" textAlignment="CENTER" wrappingWidth="233.6000061035154" />
+                                    <Text id="player1ShelvesTitle" fx:id="shp2Text" fill="#c11515" layoutX="4.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player2's shelves" textAlignment="CENTER" wrappingWidth="233.6000061035154">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></Text>
                                             </children>
                                         </AnchorPane>
                                     </items>
@@ -442,7 +458,10 @@
                                                         <ImageView fx:id="shelf3R0C4" fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
                                                     </children>
                                                 </GridPane>
-                                    <Text id="player2ShelvesTitle" fx:id="shp3Text" fill="#765116" layoutX="4.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player3's shelves" textAlignment="CENTER" wrappingWidth="233.6000061035155" />
+                                    <Text id="player2ShelvesTitle" fx:id="shp3Text" fill="#765116" layoutX="4.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player3's shelves" textAlignment="CENTER" wrappingWidth="233.6000061035155">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></Text>
                                             </children>
                                         </AnchorPane>
                                         <AnchorPane id="shelf4AnchorPane" fx:id="shelf4AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
@@ -506,7 +525,10 @@
                                                         <ImageView fx:id="shelf4R0C4" fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
                                                     </children>
                                                 </GridPane>
-                                    <Text id="player3ShelvesTitle" fx:id="shpText" fill="#861286" layoutX="3.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player4's shelves" textAlignment="CENTER" wrappingWidth="233.6000061035154" />
+                                    <Text id="player3ShelvesTitle" fx:id="shpText" fill="#861286" layoutX="4.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player4's shelves" textAlignment="CENTER" wrappingWidth="233.6000061035154">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></Text>
                                             </children>
                                         </AnchorPane>
                                     </items>
@@ -524,34 +546,43 @@
                                         <Image url="@../../../GraphicResources/plainBackgrounds/5d1916.png" />
                                     </image>
                                 </ImageView>
-                                <Text id="choiceTextField1" fx:id="choiceTextField1" fill="WHITE" layoutX="-14.0" layoutY="21.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the number of tiles to draw:">
+                                <Text id="choiceTextField1" fx:id="choiceTextField1" fill="WHITE" layoutX="16.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the number of tiles to draw:">
                                     <font>
-                                        <Font size="20.0" />
+                                        <Font size="18.0" />
                                     </font>
                                 </Text>
                                 <Spinner id="choiceNumTileSpinner" fx:id="choiceNumTileSpinner" editable="true" layoutX="15.0" layoutY="34.0" prefHeight="25.0" prefWidth="102.0" />
-                                <Text id="choiceTextField2" fx:id="choiceTextField2" fill="WHITE" layoutX="-38.0" layoutY="89.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter coordinates x (row) , y (column) of the tiles to remove:">
+                                <Text id="choiceTextField2" fx:id="choiceTextField2" fill="WHITE" layoutX="16.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter coordinates x (row) , y (column) of the tiles to remove:">
                                     <font>
-                                        <Font size="20.0" />
+                                        <Font size="18.0" />
                                     </font></Text>
                                 <TextField id="choiceX1TextFied" fx:id="choiceX1TextField" alignment="CENTER" layoutX="16.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="x" />
                                 <TextField id="choiceY1TextField" fx:id="choiceY1TextField" alignment="CENTER" layoutX="47.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="y" />
                                 <TextField id="choiceY2TextField" fx:id="choiceY2TextField" alignment="CENTER" layoutX="148.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="y" />
                                 <TextField id="choiceX3TextField" fx:id="choiceX3TextField" alignment="CENTER" layoutX="224.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="x" />
                                 <TextField id="choiceY3TextField" fx:id="choiceY3TextField" alignment="CENTER" layoutX="255.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="y" />
-                                <Text id="choiceTextField3" fx:id="choiceTextField3" fill="WHITE" layoutX="-52.0" layoutY="162.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the insertion order of the tiles in your library, from bottom to top:" wrappingWidth="676.047607421875">
+                                <Text id="choiceTextField3" fx:id="choiceTextField3" fill="WHITE" layoutX="16.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the insertion order of the tiles in your library, from bottom to top:" wrappingWidth="676.047607421875">
                                     <font>
-                                        <Font size="20.0" />
+                                        <Font size="18.0" />
                                     </font></Text>
-                                <TextField id="choiceOrder1TextField" fx:id="choiceOrder1TextField" alignment="CENTER" layoutX="16.0" layoutY="171.0" prefHeight="28.0" prefWidth="28.0" promptText="1" />
-                                <TextField id="choiceOrder2TextField" fx:id="choiceOrder2TextField" alignment="CENTER" layoutX="53.0" layoutY="171.0" prefHeight="28.0" prefWidth="28.0" promptText="3" />
-                                <TextField id="choiceOrder3TextField" fx:id="choiceOrder3TextField" alignment="CENTER" layoutX="89.0" layoutY="171.0" prefHeight="28.0" prefWidth="28.0" promptText="2" />
-                                <Text id="choiceTextField4" fx:id="choiceTextField4" fill="WHITE" layoutX="-55.0" layoutY="237.0" scaleX="0.8" scaleY="0.8" scaleZ="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the column number in your library where you want to insert the tile(s):" wrappingWidth="696.7142944335938">
+                                <TextField id="choiceOrder1TextField" fx:id="choiceOrder1TextField" alignment="CENTER" layoutX="16.0" layoutY="171.0" prefHeight="28.0" prefWidth="28.0" promptText="1..3">
                                     <font>
-                                        <Font size="20.0" />
+                                        <Font size="11.0" />
+                                    </font></TextField>
+                                <TextField id="choiceOrder2TextField" fx:id="choiceOrder2TextField" alignment="CENTER" layoutX="53.0" layoutY="171.0" prefHeight="28.0" prefWidth="28.0" promptText="1..3">
+                                    <font>
+                                        <Font size="11.0" />
+                                    </font></TextField>
+                                <TextField id="choiceOrder3TextField" fx:id="choiceOrder3TextField" alignment="CENTER" layoutX="89.0" layoutY="171.0" prefHeight="28.0" prefWidth="28.0" promptText="1..3">
+                                    <font>
+                                        <Font size="11.0" />
+                                    </font></TextField>
+                                <Text id="choiceTextField4" fx:id="choiceTextField4" fill="WHITE" layoutX="16.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the column number in your library where you want to insert the tile(s):" wrappingWidth="696.7142944335938">
+                                    <font>
+                                        <Font size="18.0" />
                                     </font></Text>
                                 <TextField id="choiceShelfColumnNumTextField" fx:id="choiceShelfColumnNumTextField" alignment="CENTER" layoutX="16.0" layoutY="254.0" prefHeight="32.0" prefWidth="40.0" promptText="0..4" />
-                                <Button id="choiceSendButton" fx:id="choiceSendButton" layoutX="630.0" layoutY="240.0" mnemonicParsing="false" onAction="#DrawFromBoard" prefHeight="62.0" prefWidth="118.0" text="Send" textFill="#992e2e">
+                                <Button id="choiceSendButton" fx:id="choiceSendButton" layoutX="653.0" layoutY="243.0" mnemonicParsing="false" onAction="#DrawFromBoard" prefHeight="62.0" prefWidth="118.0" text="Send" textFill="#992e2e">
                                     <font>
                                         <Font name="System Bold" size="29.0" />
                                     </font>
@@ -562,6 +593,7 @@
                                         <Image url="@../../../GraphicResources/publisherMaterial/Title 2000x618px.png" />
                                     </image>
                                 </ImageView>
+                        <Text fill="YELLOW" layoutX="528.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="[ 1 for the first tile drawn, 2 for the second and 3 for the third. Enter 1,2,3 in any order you like ]" wrappingWidth="254.83146667480463" />
                             </children>
                         </AnchorPane>
                     </content>
