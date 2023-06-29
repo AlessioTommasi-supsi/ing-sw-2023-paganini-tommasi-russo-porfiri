@@ -83,14 +83,11 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
 
                 //.DEBUG
                 //e.printStackTrace();
-                System.err.println("");
+                System.err.println("");//fix magico non toccare
                 inGame(model, arg);
-
         }
-
          //.DEBUG
         //System.err.println(this.toString());
-
     }
 
     public void inGame(TurnView model/*risposta dal server*/, Choice arg/*evento che il client remoto ha scelto*/){
@@ -548,7 +545,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                                 Platform.runLater(() -> {
                                     this.controller.terminateTurn();
                                     this.controller.showInfoMessage("You just ended your turn!",this.frame.getStage());
-
+                                    this.iAlreadyDrawn = false;
                                 });
                             }
                         break;

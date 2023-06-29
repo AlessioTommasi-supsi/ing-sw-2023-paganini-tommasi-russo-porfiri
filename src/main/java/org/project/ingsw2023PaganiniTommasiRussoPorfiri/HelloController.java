@@ -1487,9 +1487,10 @@ public class HelloController {
 
         Choice c = new Choice(pc, this.viewMyShelfie.getPlayer(),message);
 
-        this.viewMyShelfie.deliverGuiRequest(c);
         this.viewMyShelfie.iAlreadyDrawn = true;
         this.setEnableSendButton(false);
+
+        this.viewMyShelfie.deliverGuiRequest(c);
     }
 
     public void terminateTurn(){
