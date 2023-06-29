@@ -56,4 +56,24 @@ public class GameTest {
         game.addPlayer(player);
 
     }
+
+    @Test
+    public void testOthers() throws Exception {
+        Player player = new Player("P");
+        player.setId(0);
+        Player player1 = new Player("A");
+        player1.setId(1);
+        Game game = new GameTwoPlayers(2, player);
+        game.setCurrentGameId(0);
+        game.addPlayer(player1);
+        game.setCurrentPlayer(player1);
+        game.nextCurrentPlayer();
+        Player player2 = game.precCurrentPlayer();
+        assertEquals(player2, game.precCurrentPlayer());
+        assertNotEquals(game.toString(), "");
+        game.startPartita();
+        assertEquals(game.getState(), GameStatus.IN_PROGRESS);
+        assertNotNull(game.getInstanceBoard());
+        game.getPlayer(0);
+    }
 }

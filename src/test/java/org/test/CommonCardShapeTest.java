@@ -143,4 +143,11 @@ public class CommonCardShapeTest {
         boolean result = commonCard.executeAlgorithm(player);
         assertFalse(result, "you have to create 2 squares formed of 4 tiles with the same type of tiles in your shelf");
     }
+
+    @Test
+    public void testOther() {
+        CommonCard commonCard = new CommonCardShape(6);
+        assertNotEquals(commonCard.getDescription(), "");
+        assertEquals(commonCard.getIndex(), 6);
+    }
 }
