@@ -45,7 +45,13 @@ We have adopted the Model-View-Controller (MVC) pattern for code organization. <
 | In-game chat                                  | ✅          |
 
 ---
-
+## Technology stack
+* javafx-controls:20
+* javafx-fxml:20
+* controlsfx:11.1.2
+* gson:2.10.1
+* junit:4.13.2
+---
 ## Starting the game
 
 ### Cloning and running
@@ -99,8 +105,8 @@ FAREEEEEEEEEE
 The game may not have a winner if a player disconnects during the game, as it will result in all players being
 disconnected, leaving the game without a winner.
 ---
-## Authors
-Scaglione Cugola, GC28.
+## Contributors
+Made with ❤️ by GC28, scaglione Cugola.
 > **Contact Information** <br>
 > mail: [alessio.tommasi@mail.polimi.it] &nbsp;&middot;&nbsp;
 > GitHub [@AlessioTommasi-polimi](https://github.com/AlessioTommasi-polimi) <br>
