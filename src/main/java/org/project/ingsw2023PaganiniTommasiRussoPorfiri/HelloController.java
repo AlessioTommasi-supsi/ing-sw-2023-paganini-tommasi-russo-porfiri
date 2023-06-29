@@ -204,6 +204,186 @@ public class HelloController {
     @FXML
     private ImageView shelf1R5C4;
     @FXML
+    private ImageView shelf2R0C0;
+    @FXML
+    private ImageView shelf2R0C1;
+    @FXML
+    private ImageView shelf2R0C2;
+    @FXML
+    private ImageView shelf2R0C3;
+    @FXML
+    private ImageView shelf2R0C4;
+    @FXML
+    private ImageView shelf2R1C0;
+    @FXML
+    private ImageView shelf2R1C1;
+    @FXML
+    private ImageView shelf2R1C2;
+    @FXML
+    private ImageView shelf2R1C3;
+    @FXML
+    private ImageView shelf2R1C4;
+    @FXML
+    private ImageView shelf2R2C0;
+    @FXML
+    private ImageView shelf2R2C1;
+    @FXML
+    private ImageView shelf2R2C2;
+    @FXML
+    private ImageView shelf2R2C3;
+    @FXML
+    private ImageView shelf2R2C4;
+    @FXML
+    private ImageView shelf2R3C0;
+    @FXML
+    private ImageView shelf2R3C1;
+    @FXML
+    private ImageView shelf2R3C2;
+    @FXML
+    private ImageView shelf2R3C3;
+    @FXML
+    private ImageView shelf2R3C4;
+    @FXML
+    private ImageView shelf2R4C0;
+    @FXML
+    private ImageView shelf2R4C1;
+    @FXML
+    private ImageView shelf2R4C2;
+    @FXML
+    private ImageView shelf2R4C3;
+    @FXML
+    private ImageView shelf2R4C4;
+    @FXML
+    private ImageView shelf2R5C0;
+    @FXML
+    private ImageView shelf2R5C1;
+    @FXML
+    private ImageView shelf2R5C2;
+    @FXML
+    private ImageView shelf2R5C3;
+    @FXML
+    private ImageView shelf2R5C4;
+    @FXML
+    private ImageView shelf3R0C0;
+    @FXML
+    private ImageView shelf3R0C1;
+    @FXML
+    private ImageView shelf3R0C2;
+    @FXML
+    private ImageView shelf3R0C3;
+    @FXML
+    private ImageView shelf3R0C4;
+    @FXML
+    private ImageView shelf3R1C0;
+    @FXML
+    private ImageView shelf3R1C1;
+    @FXML
+    private ImageView shelf3R1C2;
+    @FXML
+    private ImageView shelf3R1C3;
+    @FXML
+    private ImageView shelf3R1C4;
+    @FXML
+    private ImageView shelf3R2C0;
+    @FXML
+    private ImageView shelf3R2C1;
+    @FXML
+    private ImageView shelf3R2C2;
+    @FXML
+    private ImageView shelf3R2C3;
+    @FXML
+    private ImageView shelf3R2C4;
+    @FXML
+    private ImageView shelf3R3C0;
+    @FXML
+    private ImageView shelf3R3C1;
+    @FXML
+    private ImageView shelf3R3C2;
+    @FXML
+    private ImageView shelf3R3C3;
+    @FXML
+    private ImageView shelf3R3C4;
+    @FXML
+    private ImageView shelf3R4C0;
+    @FXML
+    private ImageView shelf3R4C1;
+    @FXML
+    private ImageView shelf3R4C2;
+    @FXML
+    private ImageView shelf3R4C3;
+    @FXML
+    private ImageView shelf3R4C4;
+    @FXML
+    private ImageView shelf3R5C0;
+    @FXML
+    private ImageView shelf3R5C1;
+    @FXML
+    private ImageView shelf3R5C2;
+    @FXML
+    private ImageView shelf3R5C3;
+    @FXML
+    private ImageView shelf3R5C4;
+    @FXML
+    private ImageView shelf4R0C0;
+    @FXML
+    private ImageView shelf4R0C1;
+    @FXML
+    private ImageView shelf4R0C2;
+    @FXML
+    private ImageView shelf4R0C3;
+    @FXML
+    private ImageView shelf4R0C4;
+    @FXML
+    private ImageView shelf4R1C0;
+    @FXML
+    private ImageView shelf4R1C1;
+    @FXML
+    private ImageView shelf4R1C2;
+    @FXML
+    private ImageView shelf4R1C3;
+    @FXML
+    private ImageView shelf4R1C4;
+    @FXML
+    private ImageView shelf4R2C0;
+    @FXML
+    private ImageView shelf4R2C1;
+    @FXML
+    private ImageView shelf4R2C2;
+    @FXML
+    private ImageView shelf4R2C3;
+    @FXML
+    private ImageView shelf4R2C4;
+    @FXML
+    private ImageView shelf4R3C0;
+    @FXML
+    private ImageView shelf4R3C1;
+    @FXML
+    private ImageView shelf4R3C2;
+    @FXML
+    private ImageView shelf4R3C3;
+    @FXML
+    private ImageView shelf4R3C4;
+    @FXML
+    private ImageView shelf4R4C0;
+    @FXML
+    private ImageView shelf4R4C1;
+    @FXML
+    private ImageView shelf4R4C2;
+    @FXML
+    private ImageView shelf4R4C3;
+    @FXML
+    private ImageView shelf4R4C4;
+    @FXML
+    private ImageView shelf4R5C0;
+    @FXML
+    private ImageView shelf4R5C1;
+    @FXML
+    private ImageView shelf4R5C2;
+    @FXML
+    private ImageView shelf4R5C3;
+    @FXML
+    private ImageView shelf4R5C4;
+    @FXML
     private TextField usernameTextField;
     @FXML
     private ScrollPane choiceScrollPane;
@@ -232,6 +412,7 @@ public class HelloController {
     private ImageView commonCard2ImageView;
     @FXML
     private ImageView personalCardImageView;
+
 
 
     @FXML
@@ -274,7 +455,6 @@ public class HelloController {
     public void verifyLoginInformationAdded(){
         //if()
     }
-
 
 
     public void updateBoard(ArrayList<TilePositionBoard> tilePositionBoards) {
@@ -644,6 +824,7 @@ public class HelloController {
         //boardR1C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/"+tilePositionBoards.get(0).getTile().getType().getName()+""+tilePositionBoards.get(0).getTile().getVariant().getNumber()+".png"));
     }
 
+
     public void initShelves(ArrayList<Player> players){
         try {
             shp1Text.setText(players.get(0).getUsername());
@@ -671,6 +852,7 @@ public class HelloController {
         //shelf1R0C0.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
 
     }
+
 
     public void upupdateShelves1(ArrayList<Player> players){
         //Shelves mazziere = #shelf1
@@ -1231,9 +1413,6 @@ public class HelloController {
         }
 
 
-
-
-
         DrawFromBoardMessage message = new DrawFromBoardMessage(tilesToRemove,columOfShelves,this.viewMyShelfie.getCurrentGame().getCurrentGameId(), order);
 
         ChoiceMyShelfie pc = ChoiceMyShelfie.DRAW_FROM_BOARD;
@@ -1243,8 +1422,6 @@ public class HelloController {
         this.viewMyShelfie.deliverGuiRequest(c);
         this.viewMyShelfie.iAlreadyDrawn = true;
         this.setEnableSendButton(false);
-
-
     }
 
     public void terminateTurn(){

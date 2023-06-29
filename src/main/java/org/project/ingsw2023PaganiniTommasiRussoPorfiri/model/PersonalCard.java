@@ -143,13 +143,6 @@ public class PersonalCard implements Serializable {
         return PlantYPosition;
     }
 
-    public String getPercorso() {
-        return percorso;
-    }
-
-    public void setPercorso(String percorso) {
-        this.percorso = percorso;
-    }
 
     @Override
     public String toString() {
