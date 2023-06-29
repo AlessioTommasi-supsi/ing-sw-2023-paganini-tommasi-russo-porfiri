@@ -449,7 +449,25 @@ public class HelloController {
     }
 
     public void setCommonCards(CommonCard c1, CommonCard c2){
+        int c1Index = c1.getIndex();
+        int c2Index = c2.getIndex();
+        String imagePath1 = "file:src/main/resources/GraphicResources/commonGoalCards/Common_Goals" + c1Index + ".jpg";
+        commonCard1ImageView.setImage(new javafx.scene.image.Image(imagePath1));
+        String imagePath2 = "file:src/main/resources/GraphicResources/commonGoalCards/Common_Goals" + c2Index + ".jpg";
+        commonCard2ImageView.setImage(new javafx.scene.image.Image(imagePath2));
+    }
 
+    public void UpdateCommonPoints(CommonCard c1, CommonCard c2){
+        int scoreC1 = c1.getScore();
+        int scoreC2 = c2.getScore();
+
+        c1Points.setEditable(true);
+        c2Points.setEditable(true);
+
+
+
+        c1Points.setEditable(false);
+        c2Points.setEditable(false);
     }
 
     public void verifyLoginInformationAdded(){

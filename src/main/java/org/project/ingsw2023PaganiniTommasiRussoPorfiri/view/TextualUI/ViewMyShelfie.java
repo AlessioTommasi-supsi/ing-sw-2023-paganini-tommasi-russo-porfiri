@@ -644,10 +644,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                 this.controller.viewMyShelfie = this;
 
                 this.controller.setPrivateCard(this.player.getPC());
-                /*
-                for(Player p : this.currentGame.getPlayers()){
-                    this.controller.setPrivateCard(p.getPC());
-                }*/
+                this.controller.setCommonCards(this.currentGame.getCommon1(), this.currentGame.getCommon2());
 
                 this.controller.updateBoard(this.currentGame.getBoard().getPlacements());
 

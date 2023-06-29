@@ -200,7 +200,7 @@
                                                 </ImageView>
                                                 <ImageView id="commonCard1ImageView" fx:id="commonCard1ImageView" fitHeight="160.0" fitWidth="232.0" pickOnBounds="true">
                                                     <image>
-                                                        <Image url="@../../../GraphicResources/commonGoalCards/1.jpg" />
+                                                        <Image url="@../../../GraphicResources/commonGoalCards/Common_Goals1.jpg" />
                                                     </image>
                                                 </ImageView>
                                     <TextField fx:id="c1Points" layoutX="136.0" layoutY="41.0" maxWidth="66.0" prefHeight="66.0" promptText="Points" rotate="-7.7">
@@ -219,7 +219,7 @@
                                                 </ImageView>
                                                 <ImageView id="commonCard2ImageView" fx:id="commonCard2ImageView" fitHeight="160.0" fitWidth="232.0" pickOnBounds="true">
                                                     <image>
-                                                        <Image url="@../../../GraphicResources/commonGoalCards/2.jpg" />
+                                                        <Image url="@../../../GraphicResources/commonGoalCards/Common_Goals9.jpg" />
                                                     </image>
                                                 </ImageView>
                                     <TextField fx:id="c2Points" layoutX="136.0" layoutY="41.0" maxWidth="66.0" prefHeight="66.0" promptText="Points" rotate="-7.7">
@@ -316,7 +316,7 @@
                                                         <ImageView fx:id="shelf1R0C4" fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
                                                     </children>
                                                 </GridPane>
-                                    <Text id="myShelvesTitle" fx:id="shp1Text" fill="#1616bc" layoutX="4.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player1's shelves" textAlignment="CENTER" wrappingWidth="232.79999999999995">
+                                    <Text id="shp1Text" fx:id="shp1Text" fill="#1616bc" layoutX="4.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player1's shelves" textAlignment="CENTER" wrappingWidth="232.79999999999995">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font></Text>
@@ -383,7 +383,7 @@
                                                         <ImageView fx:id="shelf2R0C4" fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
                                                     </children>
                                                 </GridPane>
-                                    <Text id="player1ShelvesTitle" fx:id="shp2Text" fill="#c11515" layoutX="4.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player2's shelves" textAlignment="CENTER" wrappingWidth="233.6000061035154">
+                                    <Text id="shp2Text" fx:id="shp2Text" fill="#c11515" layoutX="4.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player2's shelves" textAlignment="CENTER" wrappingWidth="233.6000061035154">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font></Text>
@@ -409,7 +409,7 @@
                                                         <Image url="@../../../GraphicResources/boards/bookshelf.png" />
                                                     </image>
                                                 </ImageView>
-                                                <GridPane id="shelf2GridPane" fx:id="shelf2GridPane2" layoutX="27.0" layoutY="26.0" prefHeight="137.0" prefWidth="178.0">
+                                                <GridPane id="shelf3GridPane" fx:id="shelf3GridPane" layoutX="27.0" layoutY="26.0" prefHeight="137.0" prefWidth="178.0">
                                                     <columnConstraints>
                                                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="58.4000244140625" minWidth="10.0" prefWidth="33.199951171875" />
                                                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="60.000048828125" minWidth="0.0" prefWidth="37.40002441406249" />
@@ -458,7 +458,7 @@
                                                         <ImageView fx:id="shelf3R0C4" fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
                                                     </children>
                                                 </GridPane>
-                                    <Text id="player2ShelvesTitle" fx:id="shp3Text" fill="#765116" layoutX="4.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player3's shelves" textAlignment="CENTER" wrappingWidth="233.6000061035155">
+                                    <Text id="shp3Text" fx:id="shp3Text" fill="#765116" layoutX="4.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player3's shelves" textAlignment="CENTER" wrappingWidth="233.6000061035155">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font></Text>
@@ -476,7 +476,7 @@
                                                         <Image url="@../../../GraphicResources/boards/bookshelf.png" />
                                                     </image>
                                                 </ImageView>
-                                                <GridPane id="shelf2GridPane" fx:id="shelf2GridPane21" layoutX="27.0" layoutY="26.0" prefHeight="137.0" prefWidth="178.0">
+                                                <GridPane id="shelf4GridPane" fx:id="shelf4GridPane" layoutX="27.0" layoutY="26.0" prefHeight="137.0" prefWidth="178.0">
                                                     <columnConstraints>
                                                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="58.4000244140625" minWidth="10.0" prefWidth="33.199951171875" />
                                                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="60.000048828125" minWidth="0.0" prefWidth="37.40002441406249" />
@@ -525,7 +525,7 @@
                                                         <ImageView fx:id="shelf4R0C4" fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
                                                     </children>
                                                 </GridPane>
-                                    <Text id="player3ShelvesTitle" fx:id="shpText" fill="#861286" layoutX="4.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player4's shelves" textAlignment="CENTER" wrappingWidth="233.6000061035154">
+                                    <Text id="shp4Text" fx:id="shp4Text" fill="#861286" layoutX="4.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player4's shelves" textAlignment="CENTER" wrappingWidth="233.6000061035154">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font></Text>
