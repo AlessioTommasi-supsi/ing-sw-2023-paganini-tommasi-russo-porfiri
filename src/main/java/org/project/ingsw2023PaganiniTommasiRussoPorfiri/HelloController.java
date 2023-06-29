@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -401,6 +402,7 @@ public class HelloController {
     @FXML
     private Text shp3Text;
     @FXML
+<<<<<<< Updated upstream
     private Text shp4Text;
     @FXML
     private TextField c1Points;
@@ -414,6 +416,16 @@ public class HelloController {
     private ImageView personalCardImageView;
 
 
+=======
+    Text shp4Text;
+
+    @FXML
+    private ImageView shelf3ImageView;
+
+    @FXML
+    private ImageView shelf4ImageView;
+    public ViewMyShelfie viewMyShelfie = null;
+>>>>>>> Stashed changes
 
     @FXML
     protected void onHelloButtonClick() {
@@ -847,8 +859,28 @@ public class HelloController {
         try {
             shp1Text.setText(players.get(0).getUsername());
             shp2Text.setText(players.get(1).getUsername());
-            //shp3Text.setText(players.get(2).getUsername());
-            //shp4Text.setText(players.get(3).getUsername());
+
+
+            switch (players.size()) {
+                case 2:
+                    shelf3ImageView.setVisible(false);
+                    shelf4ImageView.setVisible(false);
+                    shp3Text.setText("");
+                    shp4Text.setText("");
+                break;
+                case 3:
+                    shp3Text.setText(players.get(2).getUsername());
+                    shelf4ImageView.setVisible(false);
+                    shp4Text.setText("");
+                break;
+                case 4:
+                    shp3Text.setText(players.get(2).getUsername());
+                    shp4Text.setText(players.get(3).getUsername());
+                break;
+
+            }
+
+
         }catch (Exception e){
             //index out og bound e vengono inizializzati meno di 4 giocatori
             e.printStackTrace();
@@ -859,8 +891,19 @@ public class HelloController {
         try {
             upupdateShelves1(players);
             upupdateShelves2(players);
-            //upupdateShelves3(players);
-            //upupdateShelves4(players);
+
+
+            switch (players.size()) {
+                case 3:
+                    upupdateShelves3(players);
+                break;
+                case 4:
+                    upupdateShelves3(players);
+                    upupdateShelves4(players);
+                break;
+            }
+
+
         }catch (Exception e){
             //index out og bound e vengono inizializzati meno di 4 giocatori
             e.printStackTrace();
@@ -1407,7 +1450,6 @@ public class HelloController {
                     }
                 }
 
-                //this.showInfoMessage("");
             break;
         }
 
@@ -1418,19 +1460,31 @@ public class HelloController {
         //.DEBUG
         //this.showInfoMessage("Tiles to remove: " + tilesToRemove.size() + "Counter: " + counter , this.viewMyShelfie.frame.getStage());
 
-        order[0] = Integer.parseInt(choiceOrder1TextField.getText());;
-
-        switch (tilesToRemove.size()){
-            case 2:
-                order[1] = Integer.parseInt(choiceOrder2TextField.getText());
-            break;
-            case 3:
-                order[1] = Integer.parseInt(choiceOrder2TextField.getText());
-                order[2] = Integer.parseInt(choiceOrder3TextField.getText());
-            break;
+        try{
+            switch (tilesToRemove.size()){
+                case 1:
+                    order[0] = Integer.parseInt(choiceOrder1TextField.getText());
+                case 2:
+                    order[0] = Integer.parseInt(choiceOrder1TextField.getText());;
+                    order[1] = Integer.parseInt(choiceOrder2TextField.getText());
+                    break;
+                case 3:
+                    order[0] = Integer.parseInt(choiceOrder1TextField.getText());;
+                    order[1] = Integer.parseInt(choiceOrder2TextField.getText());
+                    order[2] = Integer.parseInt(choiceOrder3TextField.getText());
+                    break;
+            }
+        } catch (Exception e) {
+            //.DEBUG
+            //caso in cui la carta pescata non e' in una posizione corretta!
+            //e.printStackTrace();
         }
 
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         DrawFromBoardMessage message = new DrawFromBoardMessage(tilesToRemove,columOfShelves,this.viewMyShelfie.getCurrentGame().getCurrentGameId(), order);
 
         ChoiceMyShelfie pc = ChoiceMyShelfie.DRAW_FROM_BOARD;
