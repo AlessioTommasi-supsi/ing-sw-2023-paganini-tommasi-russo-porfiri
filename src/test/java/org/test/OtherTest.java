@@ -45,5 +45,7 @@ public class OtherTest {
         choice1.setArgument("1");
         assertEquals(choice1, turnView.getPlayerChoice());
         assertNotEquals(turnView.toString(), "");
+        assertNotNull(turnView.getError());
+        assertNotNull(Globals.getInstance());
     }
 }
