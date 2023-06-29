@@ -922,7 +922,16 @@ public class HelloController {
                 break;
 
                 case 3:
+                    shelf3GridPane.setVisible(true);
                     shp3Text.setText(players.get(2).getUsername());
+                    shelf3ImageView.setVisible(true);
+
+                    col0Shelf3.setVisible(true);
+                    col1Shelf3.setVisible(true);
+                    col2Shelf3.setVisible(true);
+                    col3Shelf3.setVisible(true);
+                    col4Shelf3.setVisible(true);
+                    invisibleCat3P.setVisible(true);
 
                     shelf4ImageView.setVisible(false);
                     String imagePath5 = "file:src/main/resources/GraphicResources/cat/cat-897x1024.png";
@@ -938,6 +947,20 @@ public class HelloController {
                 break;
 
                 case 4:
+                    shelf3GridPane.setVisible(true);
+                    shelf3ImageView.setVisible(true);
+
+                    col0Shelf3.setVisible(true);
+                    col1Shelf3.setVisible(true);
+                    col2Shelf3.setVisible(true);
+                    col3Shelf3.setVisible(true);
+                    col4Shelf3.setVisible(true);
+                    invisibleCat3P.setVisible(false);
+
+                    shelf4ImageView.setVisible(true);
+
+
+                    shelf4GridPane.setVisible(true);
                     shp3Text.setText(players.get(2).getUsername());
                     shp4Text.setText(players.get(3).getUsername());
                 break;
