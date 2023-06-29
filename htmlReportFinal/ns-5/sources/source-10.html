@@ -1,0 +1,156 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > GameTwoPlayers</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.project.ingsw2023PaganiniTommasiRussoPorfiri.model</a>
+</div>
+
+<h1>Coverage Summary for Class: GameTwoPlayers (org.project.ingsw2023PaganiniTommasiRussoPorfiri.model)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">GameTwoPlayers</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (23/23)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.project.ingsw2023PaganiniTommasiRussoPorfiri.model;
+&nbsp;
+&nbsp;import java.io.Serializable;
+&nbsp;
+&nbsp;public class GameTwoPlayers extends Game implements Serializable {
+&nbsp;    public GameTwoPlayers(int playerNumber, Player dealer){
+<b class="fc">&nbsp;        super(playerNumber, dealer);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void buildBoard() {
+<b class="fc">&nbsp;        return;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void defineCommonCardScores(){
+<b class="fc">&nbsp;        int[] tempScores = new int[3];</b>
+<b class="fc">&nbsp;        tempScores[0] = 0;</b>
+<b class="fc">&nbsp;        tempScores[1] = 4;</b>
+<b class="fc">&nbsp;        tempScores[2] = 8;</b>
+<b class="fc">&nbsp;        setCommonCardScores(tempScores);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void updatePointsCommon() {
+<b class="fc">&nbsp;        int pointsToSub = 4;  //punti da sottrarre a ogni completamento</b>
+<b class="fc">&nbsp;        CommonCard cc1 = this.getCommon1();</b>
+<b class="fc">&nbsp;        CommonCard cc2 = this.getCommon2();</b>
+<b class="fc">&nbsp;        Player currentPlayer = this.getCurrentPlayer();</b>
+&nbsp;        //se il player non ha ancora completato la commonCard
+<b class="fc">&nbsp;        if (!(currentPlayer.isCommonCard1Completed())) {</b>
+&nbsp;            //se il player completa l&#39;obiettivo aggiungi i punti altrimenti no
+<b class="fc">&nbsp;            if (cc1.executeAlgorithm(currentPlayer)) {</b>
+<b class="fc">&nbsp;                if (cc1.getScore() &gt;= 4) {</b>
+<b class="fc">&nbsp;                    currentPlayer.setScore(currentPlayer.getScore() + cc1.getScore());   //aggiorna i punti</b>
+<b class="fc">&nbsp;                    cc1.setScore(cc1.getScore() - pointsToSub); // sottrai i punti</b>
+<b class="fc">&nbsp;                    currentPlayer.setCommonCard1Completed(true);</b>
+&nbsp;                }
+&nbsp;            }
+&nbsp;        }
+<b class="fc">&nbsp;        if (!currentPlayer.isCommonCard2Completed()) {</b>
+<b class="fc">&nbsp;            if (cc2.executeAlgorithm(currentPlayer)) {</b>
+<b class="fc">&nbsp;                if (cc2.getScore() &gt;= 4) {</b>
+<b class="fc">&nbsp;                    currentPlayer.setScore(currentPlayer.getScore() + cc2.getScore());</b>
+<b class="fc">&nbsp;                    cc2.setScore(cc2.getScore() - pointsToSub);</b>
+<b class="fc">&nbsp;                    currentPlayer.setCommonCard2Completed(true);</b>
+&nbsp;                }
+&nbsp;            }
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-30 00:42</div>
+</div>
+</body>
+</html>

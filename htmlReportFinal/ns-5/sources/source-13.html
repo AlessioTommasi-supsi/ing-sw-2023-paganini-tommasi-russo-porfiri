@@ -1,0 +1,268 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > PersonalCard</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.project.ingsw2023PaganiniTommasiRussoPorfiri.model</a>
+</div>
+
+<h1>Coverage Summary for Class: PersonalCard (org.project.ingsw2023PaganiniTommasiRussoPorfiri.model)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PersonalCard</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (32/32)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (32/32)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.project.ingsw2023PaganiniTommasiRussoPorfiri.model;
+&nbsp;
+&nbsp;import java.io.Serializable;
+&nbsp;
+&nbsp;public class PersonalCard implements Serializable {
+&nbsp;    public TilePositionShelves positionShelves[] ;
+&nbsp;    private int points;
+&nbsp;    public int PersonalCardNumber;
+&nbsp;    public int CatXPosition;
+&nbsp;    public int CatYPosition;
+&nbsp;    public int BookXPosition;
+&nbsp;    public int BookYPosition;
+&nbsp;    public int FrameXPosition;
+&nbsp;    public int FrameYPosition;
+&nbsp;    public int TrophyXPosition;
+&nbsp;    public int TrophyYPosition;
+&nbsp;    public int GamesXPosition;
+&nbsp;    public int GamesYPosition;
+&nbsp;    public int PlantXPosition;
+&nbsp;    public int PlantYPosition;
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;    public PersonalCard() {</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setPositionShelves(TilePositionShelves[] positionShelves) {
+<b class="fc">&nbsp;        this.positionShelves = positionShelves;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getPersonalCardNumber() {
+<b class="fc">&nbsp;        return PersonalCardNumber;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setPersonalCardNumber(int personalCardNumber) {
+<b class="fc">&nbsp;        PersonalCardNumber = personalCardNumber;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setPoints(int points) {
+<b class="fc">&nbsp;        this.points = points;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCatXPosition(int catXPosition) {
+<b class="fc">&nbsp;        CatXPosition = catXPosition;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCatYPosition(int catYPosition) {
+<b class="fc">&nbsp;        CatYPosition = catYPosition;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setBookXPosition(int bookXPosition) {
+<b class="fc">&nbsp;        BookXPosition = bookXPosition;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setBookYPosition(int bookYPosition) {
+<b class="fc">&nbsp;        BookYPosition = bookYPosition;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setFrameXPosition(int frameXPosition) {
+<b class="fc">&nbsp;        FrameXPosition = frameXPosition;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setFrameYPosition(int frameYPosition) {
+<b class="fc">&nbsp;        FrameYPosition = frameYPosition;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setTrophyXPosition(int trophyXPosition) {
+<b class="fc">&nbsp;        TrophyXPosition = trophyXPosition;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setTrophyYPosition(int trophyYPosition) {
+<b class="fc">&nbsp;        TrophyYPosition = trophyYPosition;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setGamesXPosition(int gamesXPosition) {
+<b class="fc">&nbsp;        GamesXPosition = gamesXPosition;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setGamesYPosition(int gamesYPosition) {
+<b class="fc">&nbsp;        GamesYPosition = gamesYPosition;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setPlantXPosition(int plantXPosition) {
+<b class="fc">&nbsp;        PlantXPosition = plantXPosition;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setPlantYPosition(int plantYPosition) {
+<b class="fc">&nbsp;        PlantYPosition = plantYPosition;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public TilePositionShelves[] getPositionShelves() {
+<b class="fc">&nbsp;        return positionShelves;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getPoints() {
+<b class="fc">&nbsp;        return points;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getCatXPosition() {
+<b class="fc">&nbsp;        return CatXPosition;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getCatYPosition() {
+<b class="fc">&nbsp;        return CatYPosition;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getBookXPosition() {
+<b class="fc">&nbsp;        return BookXPosition;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getBookYPosition() {
+<b class="fc">&nbsp;        return BookYPosition;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getFrameXPosition() {
+<b class="fc">&nbsp;        return FrameXPosition;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getFrameYPosition() {
+<b class="fc">&nbsp;        return FrameYPosition;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getTrophyXPosition() {
+<b class="fc">&nbsp;        return TrophyXPosition;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getTrophyYPosition() {
+<b class="fc">&nbsp;        return TrophyYPosition;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getGamesXPosition() {
+<b class="fc">&nbsp;        return GamesXPosition;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getGamesYPosition() {
+<b class="fc">&nbsp;        return GamesYPosition;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getPlantXPosition() {
+<b class="fc">&nbsp;        return PlantXPosition;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getPlantYPosition() {
+<b class="fc">&nbsp;        return PlantYPosition;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="fc">&nbsp;        return &quot;PersonalCard{\n&quot; +</b>
+&nbsp;                &quot; PersonalCardNumber =&quot; + PersonalCardNumber +
+&nbsp;                &quot; CatXPosition =&quot; + CatXPosition +
+&nbsp;                &quot;, CatYPosition =&quot; + CatYPosition +
+&nbsp;                &quot;, BookXPosition =&quot; + BookXPosition +
+&nbsp;                &quot;, BookYPosition =&quot; + BookYPosition +
+&nbsp;                &quot;, FrameXPosition =&quot; + FrameXPosition +
+&nbsp;                &quot;, FrameYPosition =&quot; + FrameYPosition +
+&nbsp;                &quot;, TrophyXPosition =&quot; + TrophyXPosition +
+&nbsp;                &quot;, TrophyYPosition =&quot; + TrophyYPosition +
+&nbsp;                &quot;, GamesXPosition =&quot; + GamesXPosition +
+&nbsp;                &quot;, GamesYPosition =&quot; + GamesYPosition +
+&nbsp;                &quot;, PlantXPosition =&quot; + PlantXPosition +
+&nbsp;                &quot;, PlantYPosition =&quot; + PlantYPosition +
+&nbsp;                 &quot;\n}&quot;;
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-30 00:42</div>
+</div>
+</body>
+</html>
