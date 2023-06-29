@@ -1,0 +1,882 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ViewMyShelfie</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.TextualUI</a>
+</div>
+
+<h1>Coverage Summary for Class: ViewMyShelfie (org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.TextualUI)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ViewMyShelfie</td>
+<td class="coverageStat">
+  <span class="percent">
+    12,5%
+  </span>
+  <span class="absValue">
+    (4/32)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    4,4%
+  </span>
+  <span class="absValue">
+    (15/342)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">ViewMyShelfie$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/3)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">ViewMyShelfie$State</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    17,1%
+  </span>
+  <span class="absValue">
+    (6/35)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    5,2%
+  </span>
+  <span class="absValue">
+    (18/348)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.TextualUI;
+&nbsp;
+&nbsp;import javafx.application.Application;
+&nbsp;import javafx.application.Platform;
+&nbsp;import javafx.stage.Stage;
+&nbsp;import org.project.ingsw2023PaganiniTommasiRussoPorfiri.HelloApplication;
+&nbsp;import org.project.ingsw2023PaganiniTommasiRussoPorfiri.HelloController;
+&nbsp;import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.*;
+&nbsp;import org.project.ingsw2023PaganiniTommasiRussoPorfiri.utils.*;
+&nbsp;import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.SwingUI.LoginGUI;
+&nbsp;
+&nbsp;import javax.swing.*;
+&nbsp;import java.io.IOException;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.Arrays;
+&nbsp;import java.util.Scanner;
+&nbsp;import java.util.stream.Collectors;
+&nbsp;import java.util.stream.IntStream;
+&nbsp;
+<b class="fc">&nbsp;public class ViewMyShelfie extends Observable&lt;ChoiceMyShelfie&gt; implements Runnable {</b>
+&nbsp;
+<b class="fc">&nbsp;    private enum State {</b>
+<b class="fc">&nbsp;        WAITING_FOR_PLAYER,</b>
+<b class="fc">&nbsp;        WAITING_FOR_OUTCOME</b>
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    private State state = State.WAITING_FOR_PLAYER;</b>
+<b class="fc">&nbsp;    private final Object lock = new Object();</b>
+&nbsp;
+<b class="fc">&nbsp;    private Boolean endOfGameError = false;</b>
+&nbsp;
+&nbsp;    private Player player;
+<b class="fc">&nbsp;    private Game currentGame = null;</b>
+&nbsp;
+<b class="fc">&nbsp;    public boolean iAlreadyDrawn = false;</b>
+&nbsp;
+<b class="fc">&nbsp;    public LoginGUI frameLogin = new LoginGUI(this);</b>
+&nbsp;
+&nbsp;    public HelloApplication frame;
+&nbsp;
+&nbsp;    public HelloController controller;
+&nbsp;
+<b class="fc">&nbsp;    private int currentGameId = -1; //verrà assegnato dopo aver fatto join_game!!</b>
+&nbsp;
+&nbsp;    public void update(TurnView model/*risposta dal server*/, Choice arg/*evento che il client remoto ha scelto*/) {
+&nbsp;        try {
+<b class="fc">&nbsp;            if (model.getMyShelfie().getGame(this.currentGameId).getState().equals(GameStatus.OVER)){</b>
+&nbsp;                //caso in cui ho terminato una partita
+&nbsp;                //stampa del ranking
+<b class="nc">&nbsp;                this.currentGame =model.getMyShelfie().getGame(this.currentGameId);</b>
+<b class="nc">&nbsp;                System.out.println(&quot;RANKING: &quot;);</b>
+&nbsp;                try {
+<b class="nc">&nbsp;                    this.currentGame.getRanking().stream()</b>
+<b class="nc">&nbsp;                            .forEach((rank)-&gt;{System.out.println(rank.toString());});</b>
+<b class="nc">&nbsp;                }catch (Exception e){</b>
+<b class="nc">&nbsp;                    this.endOfGameError = true;</b>
+<b class="nc">&nbsp;                    e.printStackTrace();</b>
+<b class="nc">&nbsp;                }</b>
+&nbsp;
+<b class="nc">&nbsp;                String rankingString = IntStream.range(0, this.currentGame.getRank().size())</b>
+<b class="nc">&nbsp;                        .mapToObj(i -&gt; {</b>
+<b class="nc">&nbsp;                            if (i == 0) {</b>
+<b class="nc">&nbsp;                                return &quot;\n&quot;+(i + 1) +&quot;.  &quot;+ this.currentGame.getRank().get(i).toString() +&quot;     WINNER!!&quot;;</b>
+&nbsp;                            } else {
+<b class="nc">&nbsp;                                return (i + 1) + &quot;.  &quot; + this.currentGame.getRank().get(i).toString();</b>
+&nbsp;                            }
+&nbsp;                        })
+<b class="nc">&nbsp;                        .collect(Collectors.joining(&quot;\n&quot;));</b>
+&nbsp;
+<b class="nc">&nbsp;                Platform.runLater(() -&gt; {</b>
+<b class="nc">&nbsp;                    this.controller.showInfoMessage(rankingString,this.frame.getStage());</b>
+&nbsp;                });
+&nbsp;
+&nbsp;                //CLEAR STATE
+<b class="nc">&nbsp;                currentGame = null;</b>
+<b class="nc">&nbsp;                currentGameId = -1;</b>
+<b class="nc">&nbsp;                this.player.setShelves(new Shelves());</b>
+<b class="nc">&nbsp;                this.setState(State.WAITING_FOR_PLAYER);</b>
+<b class="nc">&nbsp;            }else {</b>
+<b class="nc">&nbsp;                inGame(model, arg);</b>
+&nbsp;            }
+<b class="fc">&nbsp;        } catch (Exception e){</b>
+&nbsp;
+&nbsp;                //.DEBUG
+&nbsp;                //e.printStackTrace();
+<b class="fc">&nbsp;                System.err.println(&quot;&quot;);//fix magico non toccare</b>
+<b class="fc">&nbsp;                inGame(model, arg);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;         //.DEBUG
+&nbsp;        //System.err.println(this.toString());
+&nbsp;    }
+&nbsp;
+&nbsp;    public void inGame(TurnView model/*risposta dal server*/, Choice arg/*evento che il client remoto ha scelto*/){
+<b class="fc">&nbsp;        if (currentGameId == -1){ //inizializzazione di tutte le variabili di gioco</b>
+<b class="fc">&nbsp;            joiningPart(model,arg);</b>
+&nbsp;        }else{
+&nbsp;            //aggiorno client -&gt; da fare ogni volta che avviene qualsiasi cosa!! -&gt; da non mettere fuori perché getMyShelfie() puo essere null!
+<b class="nc">&nbsp;            this.currentGame = model.getMyShelfie().getGame(this.currentGameId);</b>
+<b class="nc">&nbsp;            this.player= this.currentGame.getPlayer(this.player.getId());//così ho a portata di mano la shelves aggiornata!</b>
+&nbsp;
+&nbsp;            //ho gia fatto join!
+&nbsp;            //faccio operazioni sse sono avvenute sul mio game!
+<b class="nc">&nbsp;            boolean isMyGame = false;</b>
+<b class="nc">&nbsp;            for (Player p : this.currentGame.getPlayers()){</b>
+<b class="nc">&nbsp;                if (p.getId() == arg.getPlayer().getId()){</b>
+<b class="nc">&nbsp;                    isMyGame = true;</b>
+&nbsp;                }
+<b class="nc">&nbsp;            }</b>
+<b class="nc">&nbsp;            if (isMyGame){ //se il player che ha fatto l&#39;azione è presente nel mio game</b>
+&nbsp;
+&nbsp;                //se presente stampo qualcosa se no stringa vuota!
+<b class="nc">&nbsp;                System.err.println(model.getError());</b>
+&nbsp;
+<b class="nc">&nbsp;                if (model.getError() != &quot;&quot; ) {</b>
+<b class="nc">&nbsp;                    switch (model.getError()){</b>
+&nbsp;                        case &quot;IllegalColumnException&quot;:
+&nbsp;                        case &quot;IllegalSizeOfTilesException&quot;:
+&nbsp;                        case &quot;DuplicatesInRequestedTilesException&quot;:
+&nbsp;                        case &quot;TilesAreNotRemovableException&quot;:
+&nbsp;                        case &quot;PositionEmptyException&quot;:
+&nbsp;                        case &quot;WrongNumberOfTilesException&quot;:
+&nbsp;                        case &quot;BoardDoesNotContainThisPositionException&quot;:
+<b class="nc">&nbsp;                            this.iAlreadyDrawn = false;</b>
+<b class="nc">&nbsp;                            Platform.runLater(() -&gt; {</b>
+&nbsp;                                //controllo se e&#39;il mio turno!
+<b class="nc">&nbsp;                                if(model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getId() == this.player.getId()){</b>
+<b class="nc">&nbsp;                                    this.controller.showError(model.getError(),this.frame.getStage());</b>
+&nbsp;                                }
+<b class="nc">&nbsp;                                this.controller.setEnableSendButton(true);</b>
+&nbsp;                            });
+&nbsp;                            break;
+&nbsp;
+&nbsp;                    }
+&nbsp;                }
+&nbsp;
+<b class="nc">&nbsp;                choicePart( model, arg);</b>
+<b class="nc">&nbsp;                this.updateGui();</b>
+&nbsp;
+&nbsp;            }
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    //PRIMA ESECUZIONE
+&nbsp;    @Override
+&nbsp;    public void run() {
+&nbsp;        try {
+&nbsp;            //creazione del giocatore
+<b class="nc">&nbsp;            System.out.println(&quot;\n\n&quot; +</b>
+&nbsp;                    &quot;  __  __              _____   _              _    __   _        \n&quot; +
+&nbsp;                    &quot; |  \\/  |            / ____| | |            | |  / _| (_)       \n&quot; +
+&nbsp;                    &quot; | \\  / |  _   _    | (___   | |__     ___  | | | |_   _    ___ \n&quot; +
+&nbsp;                    &quot; | |\\/| | | | | |    \\___ \\  | &#39;_ \\   / _ \\ | | |  _| | |  / _ \\\n&quot; +
+&nbsp;                    &quot; | |  | | | |_| |    ____) | | | | | |  __/ | | | |   | | |  __/\n&quot; +
+&nbsp;                    &quot; |_|  |_|  \\__, |   |_____/  |_| |_|  \\___| |_| |_|   |_|  \\___|\n&quot; +
+&nbsp;                    &quot;            __/ |                                               \n&quot; +
+&nbsp;                    &quot;           |___/                                                \n&quot;);
+&nbsp;
+<b class="nc">&nbsp;            System.out.println(&quot;\nWELCOME NEW PLAYER! To start playing you must first enter your data&quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Username: &quot;);</b>
+<b class="nc">&nbsp;            Scanner s = new Scanner(System.in);</b>
+<b class="nc">&nbsp;            this.player = new Player(s.next());</b>
+&nbsp;
+<b class="nc">&nbsp;            texView();</b>
+&nbsp;            //fine creazione
+&nbsp;
+<b class="nc">&nbsp;        }catch (Exception e){</b>
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void texView(){
+&nbsp;        //noinspection InfiniteLoopStatement
+&nbsp;        while (true) {
+<b class="nc">&nbsp;            while (getState() == State.WAITING_FOR_OUTCOME) {</b>
+<b class="nc">&nbsp;                synchronized (lock) {</b>
+&nbsp;                    try {
+<b class="nc">&nbsp;                        lock.wait();</b>
+<b class="nc">&nbsp;                    } catch (InterruptedException e) {</b>
+<b class="nc">&nbsp;                        System.err.println(&quot;Interrupted while waiting for server: &quot; + e.getMessage());</b>
+<b class="nc">&nbsp;                    }</b>
+<b class="nc">&nbsp;                }</b>
+&nbsp;            }
+<b class="nc">&nbsp;            if (this.currentGame == null) {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;\n&quot; +</b>
+&nbsp;                        &quot;____          ________ _      _____ ____  __  __ ______   _______ ____    __  ____     __   _____ _    _ ______ _      ______ _____ ______   _ \n&quot; +
+&nbsp;                        &quot; \\ \\        /  / ____ | |   / ____/  __ \\|  \\/  | ____| |__   __/ __   \\ |  \\/  \\ \\   / /  / ____| |  | |  ____| |    |  ____|_   _|  ____| | |\n&quot; +
+&nbsp;                        &quot;  \\ \\  //\\  / /| |__  | |   | |   | |  | | \\  / | |__       | | | |  | | | \\  / |\\ \\_/ /  | (___ | |__| | |__  | |    | |__    | | | |__    | |\n&quot; +
+&nbsp;                        &quot;   \\ \\//  \\/ / |  __| | |   | |   | |  | | |\\/| |  __|      | | | |  | | | |\\/| | \\   /    \\___ \\|  __  |  __| | |    |  __|   | | |  __|   | |\n&quot; +
+&nbsp;                        &quot;    \\  //\\  /  | |____| |___| |___| |__| | |  | | |____     | | | |__| | | |  | |  | |     ____) | |  | | |____| |____| |     _| |_| |____  |_|\n&quot; +
+&nbsp;                        &quot;     \\//  \\/   |______|______\\_____\\____/|_|  |_|______|    |_|  \\____/  |_|  |_|  |_|    |_____/|_|  |_|______|______|_|    |_____|______| (_)\n&quot;);
+&nbsp;
+&nbsp;                /* Player chooses  POSSIBLE ONLY JOINGAME! */
+<b class="nc">&nbsp;                ChoiceMyShelfie pc = ChoiceMyShelfie.JOIN_GAME;</b>
+<b class="nc">&nbsp;                Object argument = askPlayerArgumentMyshelfie(pc);</b>
+&nbsp;
+<b class="nc">&nbsp;                Choice c =new Choice(pc,player, argument);</b>
+&nbsp;
+<b class="nc">&nbsp;                System.out.println(&quot;Waiting for the server... &quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;                setState(State.WAITING_FOR_OUTCOME);</b>
+<b class="nc">&nbsp;                setChanged();/*NOTIFICO AL SERVER che del client ha fatto scelta!!*/</b>
+<b class="nc">&nbsp;                notifyObservers(c);</b>
+<b class="nc">&nbsp;            }else {</b>
+<b class="nc">&nbsp;                ChoiceMyShelfie pc = askPlayerChoiceMyShelfie();</b>
+<b class="nc">&nbsp;                Object argument = askPlayerArgumentMyshelfie(pc);</b>
+&nbsp;
+<b class="nc">&nbsp;                Choice c =new Choice(pc,player, argument);</b>
+&nbsp;
+<b class="nc">&nbsp;                System.out.println(&quot;Waiting for the server... &quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;                setState(State.WAITING_FOR_OUTCOME);</b>
+<b class="nc">&nbsp;                setChanged();/*NOTIFICO AL SERVER che del client ha fatto scelta!!*/</b>
+<b class="nc">&nbsp;                notifyObservers(c);</b>
+<b class="nc">&nbsp;            }</b>
+&nbsp;
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void deliverGuiRequest(Choice c){
+&nbsp;        try {
+<b class="nc">&nbsp;            setState(State.WAITING_FOR_OUTCOME);</b>
+<b class="nc">&nbsp;            setChanged();/*NOTIFICO AL SERVER che del client ha fatto scelta!!*/</b>
+<b class="nc">&nbsp;            notifyObservers(c);</b>
+<b class="nc">&nbsp;        }catch (Exception e){</b>
+<b class="nc">&nbsp;            System.err.println(&quot;Error occurred delivering gui request! &quot;);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public ChoiceMyShelfie askPlayerChoiceMyShelfie() {
+<b class="nc">&nbsp;        Scanner s = new Scanner(System.in);</b>
+<b class="nc">&nbsp;        System.out.println(&quot;\nNow is your turn! &quot;);</b>
+<b class="nc">&nbsp;        System.out.println(</b>
+&nbsp;                &quot;Signs: &quot; +
+<b class="nc">&nbsp;                        Arrays.stream(ChoiceMyShelfie.values())</b>
+<b class="nc">&nbsp;                                .map(ChoiceMyShelfie::name)</b>
+<b class="nc">&nbsp;                                .collect(</b>
+<b class="nc">&nbsp;                                        Collectors.joining(&quot;,&quot;, &quot;[&quot;, &quot;]&quot;)));</b>
+<b class="nc">&nbsp;        System.out.println(&quot;\nMake your choice: &quot;);</b>
+&nbsp;        while (true) {
+<b class="nc">&nbsp;            String input = s.next();</b>
+&nbsp;            try {
+<b class="nc">&nbsp;                switch (ChoiceMyShelfie.valueOf(input)){</b>
+&nbsp;                    case SHOW_MY_SHELVES:
+<b class="nc">&nbsp;                        System.out.println(&quot;Your current shelves are: \n&quot;);</b>
+&nbsp;                        try {
+<b class="nc">&nbsp;                            printTilePositionShelves(this.player.getShelves().showShelves());</b>
+<b class="nc">&nbsp;                        }catch (Exception e){</b>
+<b class="nc">&nbsp;                            System.err.println(&quot;Error occurred displaying your shelves! &quot;);</b>
+<b class="nc">&nbsp;                            e.printStackTrace();</b>
+<b class="nc">&nbsp;                        }</b>
+<b class="nc">&nbsp;                        return askPlayerChoiceMyShelfie();</b>
+&nbsp;                    case SHOW_COMMON_CARDS:
+<b class="nc">&nbsp;                        System.out.println(&quot;Common Cards are:  \n&quot;);</b>
+&nbsp;                        try {
+<b class="nc">&nbsp;                            System.out.println(&quot;Common Card 1: &quot; + this.currentGame.getCommon1().getDescription());</b>
+<b class="nc">&nbsp;                            System.out.println(&quot;  point: &quot; + this.currentGame.getPointCommonCard1());</b>
+<b class="nc">&nbsp;                            System.out.println(&quot;Common Card 2: &quot; + this.currentGame.getCommon2().getDescription());</b>
+<b class="nc">&nbsp;                            System.out.println(&quot;  point: &quot; + this.currentGame.getPointCommonCard2());</b>
+<b class="nc">&nbsp;                        }catch (Exception e){</b>
+<b class="nc">&nbsp;                            System.err.println(&quot;Error occurred displaying COMMON CARD! &quot;);</b>
+<b class="nc">&nbsp;                            e.printStackTrace();</b>
+<b class="nc">&nbsp;                        }</b>
+<b class="nc">&nbsp;                        return askPlayerChoiceMyShelfie();</b>
+&nbsp;
+&nbsp;                    case SHOW_PERSONAL_CARDS:
+<b class="nc">&nbsp;                        System.out.println(&quot;Your Personal Card is: \n&quot;);</b>
+&nbsp;                        try {
+<b class="nc">&nbsp;                            System.out.println(&quot;Personal Card: &quot; + this.player.getPC().toString());</b>
+<b class="nc">&nbsp;                        }catch (Exception e){</b>
+<b class="nc">&nbsp;                            System.err.println(&quot;Error occurred displaying PERSONAL CARD! &quot;);</b>
+<b class="nc">&nbsp;                            e.printStackTrace();</b>
+<b class="nc">&nbsp;                        }</b>
+<b class="nc">&nbsp;                        return askPlayerChoiceMyShelfie();</b>
+&nbsp;
+&nbsp;
+&nbsp;                    case SHOW_BOARD:
+<b class="nc">&nbsp;                        System.out.println(&quot; Current BOARD: \n&quot;);</b>
+&nbsp;                        try {
+&nbsp;                            //V1
+&nbsp;                            //this.current_game.getBoard().showBoard().stream().forEach(placement-&gt;System.out.println(placement.toString()));
+&nbsp;                            //V2
+<b class="nc">&nbsp;                            printTilePositionBoard(this.currentGame.getBoard().showBoard());</b>
+<b class="nc">&nbsp;                        }catch (Exception e){</b>
+<b class="nc">&nbsp;                            System.err.println(&quot;Error occurred displaying your BOARD! &quot;);</b>
+<b class="nc">&nbsp;                            e.printStackTrace();</b>
+<b class="nc">&nbsp;                        }</b>
+<b class="nc">&nbsp;                        return askPlayerChoiceMyShelfie();</b>
+&nbsp;                    case SHOW_CHAT:
+<b class="nc">&nbsp;                        System.out.println(&quot;\n Chat: \n&quot;);</b>
+&nbsp;                        try {
+<b class="nc">&nbsp;                            this.currentGame.getChat().stream().forEach(message-&gt;System.out.println(message));</b>
+&nbsp;
+<b class="nc">&nbsp;                        }catch (Exception e){</b>
+<b class="nc">&nbsp;                            System.err.println(&quot;Error occurred while displaying your GAME CHAT! &quot;);</b>
+<b class="nc">&nbsp;                            e.printStackTrace();</b>
+<b class="nc">&nbsp;                        }</b>
+<b class="nc">&nbsp;                        return askPlayerChoiceMyShelfie();</b>
+&nbsp;                    case DRAW_FROM_BOARD:
+<b class="nc">&nbsp;                        if (this.iAlreadyDrawn == true) {</b>
+<b class="nc">&nbsp;                            System.out.println(&quot;You have already drawn a tile from the board! &quot;);</b>
+<b class="nc">&nbsp;                            return askPlayerChoiceMyShelfie();</b>
+&nbsp;                        }else {
+<b class="nc">&nbsp;                            this.iAlreadyDrawn = true;</b>
+&nbsp;                        }
+<b class="nc">&nbsp;                    break;</b>
+&nbsp;
+&nbsp;                    case TERMINATE_TURNS:
+<b class="nc">&nbsp;                        if (this.iAlreadyDrawn == false) {</b>
+<b class="nc">&nbsp;                            System.out.println(&quot;You have to draw a tile from the board! &quot;);</b>
+<b class="nc">&nbsp;                            return askPlayerChoiceMyShelfie();</b>
+&nbsp;                        }else {
+<b class="nc">&nbsp;                            this.iAlreadyDrawn = false;</b>
+&nbsp;                        }
+&nbsp;                }
+<b class="nc">&nbsp;                return ChoiceMyShelfie.valueOf(input);</b>
+<b class="nc">&nbsp;            } catch (IllegalArgumentException e) {</b>
+<b class="nc">&nbsp;                System.err.println(&quot;I don&#39;t know this choice: &quot; + input);</b>
+<b class="nc">&nbsp;                System.err.println(&quot;Try again...&quot;);</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private Object askPlayerArgumentMyshelfie(ChoiceMyShelfie pc) {
+<b class="nc">&nbsp;        System.out.println();</b>
+<b class="nc">&nbsp;        Scanner s = new Scanner(System.in);</b>
+&nbsp;
+<b class="nc">&nbsp;        switch (pc){</b>
+&nbsp;            case JOIN_GAME:
+<b class="nc">&nbsp;                System.out.println(&quot;Enter the number of players in the game: &quot;);</b>
+<b class="nc">&nbsp;                return  Integer.parseInt(s.next());</b>
+&nbsp;
+&nbsp;            case TERMINATE_TURNS:
+<b class="nc">&nbsp;                return this.currentGameId;//oggetto da passare come argomento è l&#39;id della partita corrente.</b>
+&nbsp;            case DRAW_FROM_BOARD:
+&nbsp;                try{
+&nbsp;                    //faccio qui tutti i controlli così sono sicuro di passare al server solo i dati giusti tanto la board viene aggiornata a ogni turno!
+&nbsp;
+<b class="nc">&nbsp;                    System.out.println(&quot;Enter the number of tiles to draw: &quot;);</b>
+<b class="nc">&nbsp;                    int counter = Integer.parseInt(s.next());</b>
+<b class="nc">&nbsp;                    ArrayList&lt;TilePositionBoard&gt; tilesToRemove = new ArrayList&lt;TilePositionBoard&gt;();</b>
+<b class="nc">&nbsp;                    ArrayList&lt;TilePositionBoard&gt; boardPlacementsCopy = currentGame.getBoard().getPlacements();</b>
+&nbsp;
+<b class="nc">&nbsp;                    for (int i = 0; i &lt; counter; i++) {</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;Enter the x coordinate, corresponding to the row of the tile to draw: &quot;);</b>
+<b class="nc">&nbsp;                        int x = Integer.parseInt(s.next());</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;Enter the y coordinate, corresponding to the column of the tile to draw: &quot;);</b>
+<b class="nc">&nbsp;                        int y = Integer.parseInt(s.next());</b>
+&nbsp;
+<b class="nc">&nbsp;                        for(TilePositionBoard item : boardPlacementsCopy){</b>
+<b class="nc">&nbsp;                            if(item.getX() == x &amp;&amp; item.getY() == y){</b>
+<b class="nc">&nbsp;                                tilesToRemove.add(i, item);</b>
+<b class="nc">&nbsp;                                break;</b>
+&nbsp;                            }
+<b class="nc">&nbsp;                        }</b>
+&nbsp;
+&nbsp;                        //tilesToRemove.get(0).setTile(new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE));
+&nbsp;
+&nbsp;
+&nbsp;                    }
+&nbsp;
+<b class="nc">&nbsp;                    int order[] = new int[tilesToRemove.size()];</b>
+<b class="nc">&nbsp;                    ArrayList&lt;TilePositionBoard&gt; orderedTilesToRemove = new ArrayList&lt;TilePositionBoard&gt;();</b>
+&nbsp;
+&nbsp;                    while(true) {
+&nbsp;                        try {
+<b class="nc">&nbsp;                            for (int i = 0; i &lt; tilesToRemove.size(); i++) {</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;Enter in what order you want to insert the tile into position: x &quot; + tilesToRemove.get(i).getX() + &quot; y &quot;+tilesToRemove.get(i).getY()+&quot; to place in the library: &quot;);</b>
+<b class="nc">&nbsp;                                order[i] = Integer.parseInt(s.next());</b>
+&nbsp;                            }
+&nbsp;                            //devo provare a fare rimozione!! solo per essere sicuro che i dati sono corretti; ordinamento effettivo verrà fatto dal controller
+<b class="nc">&nbsp;                            for (int i = 0; i &lt; tilesToRemove.size(); i++) {</b>
+<b class="nc">&nbsp;                                orderedTilesToRemove.add(tilesToRemove.get(order[i] - 1));</b>
+&nbsp;                            }
+<b class="nc">&nbsp;                            break;//ordinamento andato a buon fine</b>
+<b class="nc">&nbsp;                        } catch (Exception e2) {</b>
+<b class="nc">&nbsp;                            System.err.println(&quot;Error occurred while ordering tiles! &quot;);</b>
+<b class="nc">&nbsp;                            e2.printStackTrace();</b>
+<b class="nc">&nbsp;                        }</b>
+&nbsp;                    }
+&nbsp;                    //.DEBUG
+&nbsp;                    //System.err.println(&quot;Tiles you have chosen to remove: &quot;+tilesToRemove);
+&nbsp;                    //for(int i = 0; i &lt; orderedTilesToRemove.size();i++) {
+&nbsp;                    //    System.out.println(&quot;tile: &quot; + orderedTilesToRemove.get(i));
+&nbsp;                    //}
+<b class="nc">&nbsp;                    System.out.println(&quot;Insert the column of your library where to put this tile: &quot;);</b>
+<b class="nc">&nbsp;                    int columOfShelves = Integer.parseInt(s.next());</b>
+&nbsp;
+&nbsp;                    //checkInput(tilesToRemove,columOfShelves);
+<b class="nc">&nbsp;                    return new DrawFromBoardMessage(tilesToRemove,columOfShelves,this.currentGameId,order);</b>
+<b class="nc">&nbsp;                }catch (Exception e){</b>
+<b class="nc">&nbsp;                    System.err.println(&quot;Generic error occurred! &quot;);</b>
+<b class="nc">&nbsp;                    e.printStackTrace();</b>
+&nbsp;                }
+<b class="nc">&nbsp;            break;</b>
+&nbsp;            case SEND_MESSAGE:
+&nbsp;                try{
+&nbsp;                    //faccio qui tutti i controlli così sono sicuro di passare al server solo i dati giusti tanto la board viene aggiornata a ogni turno!
+&nbsp;
+<b class="nc">&nbsp;                    s = new Scanner(System.in);</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;Enter the message to send: &quot;);</b>
+<b class="nc">&nbsp;                    String message = s.nextLine();</b>
+&nbsp;
+<b class="nc">&nbsp;                    return new SendMessage(this.player.getUsername()+&quot;: &quot;+message,this.currentGameId);</b>
+<b class="nc">&nbsp;                }catch (Exception e){</b>
+<b class="nc">&nbsp;                    System.err.println(&quot;Generic error occurred while sending message! &quot;);</b>
+<b class="nc">&nbsp;                    e.printStackTrace();</b>
+&nbsp;                }
+&nbsp;            case EXIT:
+<b class="nc">&nbsp;                return this.currentGameId;//oggetto da passare come argomento è l&#39;id della partita corrente.</b>
+&nbsp;
+&nbsp;        }
+<b class="nc">&nbsp;        return null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void checkInput(ArrayList&lt;TilePositionBoard&gt; tilesToRemove, int columOfShelves) throws Exception{
+&nbsp;        try {
+&nbsp;            //PROVA A VEDERE SE FUNZIONA MA SECONDO ME NO! POICHE GAME RITORNATO DA SERVER E&#39; FINAL!! (non piu) pero brutto!
+&nbsp;            //RIMOZIONE DA BOARD:
+<b class="nc">&nbsp;            ArrayList&lt;TileObj&gt; tilesRemoved=this.currentGame.getBoard().removeTiles(tilesToRemove);</b>
+&nbsp;
+&nbsp;            //INSERIMENTO IN SHELVS:
+&nbsp;            //this.player.putTilesInShelf(tilesRemoved,columOfShelves);
+&nbsp;
+&nbsp;            }
+&nbsp;            //ERRORI DI RIMOZIONE DA BOARD!
+<b class="nc">&nbsp;            catch (TilesAreNotRemovableException e){</b>
+&nbsp;                //non c&#39;è bisogno di rimettere le tessere nella board!
+<b class="nc">&nbsp;                e.printStackTrace();</b>
+<b class="nc">&nbsp;                System.err.println(&quot;Error entering data!\n&quot;+e.getMessage()+ &quot;`\n Retry! \n&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;            }catch (PositionEmptyException e) {</b>
+&nbsp;                //non c&#39;è bisogno di rimettere le tessere nella board!
+&nbsp;                //e.printStackTrace();
+<b class="nc">&nbsp;                System.err.println(&quot;Error entering data!\n&quot;+e.getMessage()+ &quot;`\n Retry! \n&quot;);</b>
+<b class="nc">&nbsp;            }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void joiningPart(TurnView model, Choice arg) {
+&nbsp;        //USERNAME DEVE ESSERE UNIVOCO
+<b class="fc">&nbsp;        if (this.player != null) {</b>
+<b class="nc">&nbsp;            if(arg.getPlayer().getUsername().equals( this.player.getUsername())){</b>
+<b class="nc">&nbsp;                switch (model.getPlayerChoice().getState()) {</b>
+&nbsp;                    case CPU_CHOICE -&gt; {
+<b class="nc">&nbsp;                        switch (model.getPlayerChoice().getChoice()) {</b>
+&nbsp;                            case JOIN_GAME:
+<b class="nc">&nbsp;                                this.player.setId(arg.getPlayer().getId());</b>
+&nbsp;
+&nbsp;                                //aggiorno la variabile this.current_game_id e current_game
+<b class="nc">&nbsp;                                for (int i = 0; i &lt; model.getMyShelfie().getGames().size(); i++) {</b>
+<b class="nc">&nbsp;                                    boolean isPlayerInThisGame = false;</b>
+<b class="nc">&nbsp;                                    for (int j = 0; j &lt; model.getMyShelfie().getGames().get(i).getPlayers().size(); j++) {</b>
+<b class="nc">&nbsp;                                        if (model.getMyShelfie().getGames().get(i).getPlayers().get(j).getId() == this.player.getId()) {</b>
+<b class="nc">&nbsp;                                            isPlayerInThisGame = true;</b>
+<b class="nc">&nbsp;                                            break;</b>
+&nbsp;                                        }
+&nbsp;                                    }
+<b class="nc">&nbsp;                                    if (isPlayerInThisGame == true){</b>
+<b class="nc">&nbsp;                                        switch (model.getMyShelfie().getGames().get(i).getState()) {//le partite saranno o in attesa o in corso!</b>
+&nbsp;                                            case IN_PROGRESS://non dovrebbe mai arrivarci!
+<b class="nc">&nbsp;                                                System.out.println(&quot;\nYou just joined the game and the match is under way!\n&quot;);</b>
+&nbsp;                                                //System.err.println(&quot;partita a cui ti sei unito in corso: &quot; + model.getMyShelfie().getGames().get(i).toString());
+<b class="nc">&nbsp;                                                this.currentGameId = model.getMyShelfie().getGames().get(i).getCurrentGameId();</b>
+<b class="nc">&nbsp;                                                this.currentGame = model.getMyShelfie().getGames().get(i);</b>
+<b class="nc">&nbsp;                                                this.player.setPC(model.getMyShelfie().getGames().get(i).getPlayer(this.player.getId()).getPC());</b>
+&nbsp;                                                /*prova aggiornamento gui*/
+<b class="nc">&nbsp;                                                SwingUtilities.invokeLater(() -&gt; {</b>
+<b class="nc">&nbsp;                                                    this.frameLogin.usernameField.setText(&quot;You just joined the game and the match is under way!&quot;);</b>
+<b class="nc">&nbsp;                                                    this.frameLogin.joinGameButton.setEnabled(false);</b>
+&nbsp;                                                    //grazie a me la partita si e&#39;startata!
+<b class="nc">&nbsp;                                                    this.frameLogin.setVisible(false);</b>
+&nbsp;
+&nbsp;                                                });
+&nbsp;
+<b class="nc">&nbsp;                                                this.initFxGui();</b>
+&nbsp;
+<b class="nc">&nbsp;                                            break;</b>
+&nbsp;                                            case IN_WAIT://siccome non esiste una partita di un solo giocatore entrerò sempre qui!
+&nbsp;                                                /*prova aggiornamento gui*/
+<b class="nc">&nbsp;                                                SwingUtilities.invokeLater(() -&gt; {</b>
+<b class="nc">&nbsp;                                                    this.frameLogin.usernameField.setText(&quot;You just joined a game and you are waiting for more players!&quot;);</b>
+<b class="nc">&nbsp;                                                    this.frameLogin.joinGameButton.setEnabled(false);</b>
+&nbsp;                                                });
+&nbsp;
+<b class="nc">&nbsp;                                                System.out.println(&quot;\nYou just joined a game and you are waiting for more players!\n&quot;);</b>
+&nbsp;                                                //System.err.println(&quot;partita a cui ti sei unito in corso: &quot; + model.getMyShelfie().getGames().get(i).toString());
+<b class="nc">&nbsp;                                                this.currentGameId = model.getMyShelfie().getGames().get(i).getCurrentGameId();</b>
+&nbsp;                                                //this.current_game = model.getMyShelfie().getGames().get(i);
+&nbsp;                                            break;
+&nbsp;                                        }
+&nbsp;                                    }
+&nbsp;                                }
+&nbsp;                                //stampo i dati della partita a cui mi sono unito.
+<b class="nc">&nbsp;                                break;</b>
+&nbsp;                            default:
+<b class="nc">&nbsp;                                System.err.println(&quot;You have to join the game first!&quot;);</b>
+&nbsp;                        }
+<b class="nc">&nbsp;                    }</b>
+<b class="nc">&nbsp;                    default -&gt; System.err.println(&quot;Error state! Ignoring event from &quot; + model.toString() + &quot;: &quot; + arg.toString());</b>
+&nbsp;                }
+&nbsp;
+<b class="nc">&nbsp;                System.out.println(&quot;The server answered!&quot;);</b>
+&nbsp;                //this.setState(State.WAITING_FOR_PLAYER);
+&nbsp;            }
+&nbsp;        }
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    public void choicePart(TurnView model, Choice arg) {
+&nbsp;        try {
+<b class="nc">&nbsp;            switch (model.getPlayerChoice().getState()) {</b>
+&nbsp;                case CPU_CHOICE -&gt; {
+<b class="nc">&nbsp;                    switch (model.getPlayerChoice().getChoice()) {</b>
+&nbsp;
+&nbsp;                        case TERMINATE_TURNS:
+<b class="nc">&nbsp;                            System.out.println(model.getMyShelfie().getGame(this.currentGameId).precCurrentPlayer().getUsername()+&quot; has just ended their turn! &quot;);</b>
+<b class="nc">&nbsp;                            System.out.println(&quot;Now is: &quot; + model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getUsername() + &quot; turn&quot;);</b>
+<b class="nc">&nbsp;                            Platform.runLater(() -&gt; {</b>
+<b class="nc">&nbsp;                                if(model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getId() == this.player.getId()){</b>
+<b class="nc">&nbsp;                                    this.controller.showInfoMessage(&quot;It&#39;s your turn!&quot;,this.frame.getStage());</b>
+&nbsp;                                }
+&nbsp;                            });
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;
+&nbsp;                        case JOIN_GAME:
+<b class="nc">&nbsp;                            System.out.println(&quot;Player: &quot;+model.getMyShelfie().getGame(this.currentGameId).getPlayers().get(model.getMyShelfie().getGame(this.currentGameId).getPlayers().size()-1).getUsername()+&quot; just joined the game!&quot;);</b>
+&nbsp;                            /*prova aggiornamento gui*/
+<b class="nc">&nbsp;                            SwingUtilities.invokeLater(() -&gt; {</b>
+<b class="nc">&nbsp;                                this.frameLogin.joinGameButton.setEnabled(false);</b>
+&nbsp;
+&nbsp;                                //se la partaita non e&#39;piu in attesa starto la gui!
+<b class="nc">&nbsp;                                if(model.getMyShelfie().getGame(this.currentGameId).getState() == GameStatus.IN_PROGRESS){</b>
+<b class="nc">&nbsp;                                    this.frameLogin.setVisible(false);</b>
+&nbsp;                                }
+&nbsp;                            });
+&nbsp;
+<b class="nc">&nbsp;                            this.initFxGui();</b>
+&nbsp;
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                        case DRAW_FROM_BOARD:
+<b class="nc">&nbsp;                            System.out.println(&quot;Player: &quot;+model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getUsername()+&quot; HA PESCATO DALLA PLANCIA!&quot;);</b>
+<b class="nc">&nbsp;                            if(this.iAlreadyDrawn){</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;I&#39;m ending the turn on the GUI&quot;);</b>
+<b class="nc">&nbsp;                                Platform.runLater(() -&gt; {</b>
+<b class="nc">&nbsp;                                    this.controller.terminateTurn();</b>
+<b class="nc">&nbsp;                                    this.controller.showInfoMessage(&quot;You just ended your turn!&quot;,this.frame.getStage());</b>
+<b class="nc">&nbsp;                                    this.iAlreadyDrawn = false;</b>
+&nbsp;                                });
+&nbsp;                            }
+&nbsp;                        break;
+&nbsp;                        case EXIT:
+<b class="nc">&nbsp;                            System.out.println(&quot;Player: &quot;+model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getUsername()+&quot; HAS FORCED THE LAST ROUND BEFORE THE GAME ENDS!&quot;);</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                        case SEND_MESSAGE:
+<b class="nc">&nbsp;                            System.out.println(&quot;Player: &quot;+model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getUsername()+&quot; HAS SEND A MESSAGE!&quot;);</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                        default:
+<b class="nc">&nbsp;                            System.err.println(&quot;Not implemented yet&quot;);</b>
+&nbsp;                    }
+<b class="nc">&nbsp;                }</b>
+<b class="nc">&nbsp;                default -&gt; System.err.println(&quot;Error state! Ignoring event from &quot; + model.toString() + &quot;: &quot; + arg.toString());</b>
+&nbsp;            }
+<b class="nc">&nbsp;        } catch (Exception e) {</b>
+<b class="nc">&nbsp;            System.out.println(&quot;This game generated an error: &quot; + model.getMyShelfie().getGame(this.currentGameId).toString());</b>
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+&nbsp;        //se è il mio turno faccio qualcosa!!
+&nbsp;        // nota e&#39; il mio turno sse la partita e. in corso
+<b class="nc">&nbsp;        if (model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer() != null) {</b>
+<b class="nc">&nbsp;            if (model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getId() == this.player.getId()) {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Server answered!&quot;);</b>
+<b class="nc">&nbsp;                this.setState(State.WAITING_FOR_PLAYER);</b>
+&nbsp;
+&nbsp;            }
+&nbsp;
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    private State getState() {
+<b class="nc">&nbsp;        synchronized (lock) {</b>
+<b class="nc">&nbsp;            return state;</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void setState(State state) {
+<b class="nc">&nbsp;        synchronized (lock) {</b>
+<b class="nc">&nbsp;            this.state = state;</b>
+<b class="nc">&nbsp;            lock.notifyAll();</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="nc">&nbsp;        return &quot;View_my_shelfie{&quot; +</b>
+&nbsp;                &quot;\nstate=&quot; + state +
+&nbsp;                &quot;,\n lock=&quot; + lock +
+&nbsp;                &quot;,\n player=&quot; + player +
+&nbsp;                &quot;,\n currentGame=&quot; + currentGame +
+&nbsp;                &quot;,\n currentGameId=&quot; + currentGameId +
+&nbsp;                &quot;\n}&quot;;
+&nbsp;    }
+&nbsp;
+&nbsp;    public void printTilePositionBoard(ArrayList&lt;TilePositionBoard&gt; board) {
+&nbsp;        // Trova le dimensioni massime della matrice
+<b class="nc">&nbsp;        int maxX = 0;</b>
+<b class="nc">&nbsp;        int maxY = 0;</b>
+<b class="nc">&nbsp;        for (TilePositionBoard tile : board) {</b>
+<b class="nc">&nbsp;            if (tile.getX() &gt; maxX)</b>
+<b class="nc">&nbsp;                maxX = tile.getX();</b>
+<b class="nc">&nbsp;            if (tile.getY() &gt; maxY)</b>
+<b class="nc">&nbsp;                maxY = tile.getY();</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+&nbsp;        // Crea la matrice 2D
+<b class="nc">&nbsp;        TilePositionBoard[][] matrix = new TilePositionBoard[maxX + 1][maxY + 1];</b>
+<b class="nc">&nbsp;        for (TilePositionBoard tile : board) {</b>
+<b class="nc">&nbsp;            matrix[tile.getX()][tile.getY()] = tile;</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+&nbsp;        // Stampa la matrice 2D
+<b class="nc">&nbsp;        for (int y = 0; y &lt;= maxY; y++) {</b>
+<b class="nc">&nbsp;            for (int x = 0; x &lt;= maxX; x++) {</b>
+<b class="nc">&nbsp;                TilePositionBoard tile = matrix[x][y];</b>
+<b class="nc">&nbsp;                if (tile != null) {</b>
+<b class="nc">&nbsp;                    System.out.print(tile + &quot; &quot;);</b>
+&nbsp;                } else {
+&nbsp;                    // Stampa uno spazio vuoto
+<b class="nc">&nbsp;                    System.out.print(&quot;------------------- &quot;);</b>
+&nbsp;                }
+&nbsp;            }
+<b class="nc">&nbsp;            System.out.println();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void printTilePositionShelves(TilePositionShelves[][] shelves) {
+&nbsp;
+&nbsp;        // Stampa la matrice 2D
+<b class="nc">&nbsp;        for (int x = shelves.length-1; x &gt; -1; x--) {</b>
+<b class="nc">&nbsp;            for (int y = 0; y &lt; shelves[y].length; y++) {</b>
+<b class="nc">&nbsp;                TilePositionShelves tile = shelves[x][y];</b>
+<b class="nc">&nbsp;                if (tile != null) {</b>
+<b class="nc">&nbsp;                    System.out.print(tile + &quot; &quot;);</b>
+&nbsp;                } else {
+&nbsp;                    // Stampa uno spazio vuoto
+<b class="nc">&nbsp;                    System.out.print(&quot;- &quot;);</b>
+&nbsp;                }
+&nbsp;            }
+<b class="nc">&nbsp;            System.out.println();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setPlayer(Player player) {
+<b class="nc">&nbsp;        this.player = player;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Player getPlayer() {
+<b class="nc">&nbsp;        return player;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Game getCurrentGame() {
+<b class="nc">&nbsp;        return currentGame;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void initFxGui(){
+<b class="nc">&nbsp;        Platform.startup(() -&gt; {</b>
+<b class="nc">&nbsp;            Platform.runLater(() -&gt; {</b>
+<b class="nc">&nbsp;                this.frame = new HelloApplication();</b>
+&nbsp;                try {
+<b class="nc">&nbsp;                    frame.start(new Stage());</b>
+<b class="nc">&nbsp;                } catch (IOException e) {</b>
+<b class="nc">&nbsp;                    throw new RuntimeException(e);</b>
+<b class="nc">&nbsp;                }</b>
+&nbsp;
+<b class="nc">&nbsp;                this.controller = frame.getController();</b>
+<b class="nc">&nbsp;                this.controller.viewMyShelfie = this;</b>
+&nbsp;
+<b class="nc">&nbsp;                this.controller.setPrivateCard(this.player.getPC());</b>
+<b class="nc">&nbsp;                this.controller.setCommonCards(this.currentGame.getCommon1(), this.currentGame.getCommon2());</b>
+&nbsp;
+<b class="nc">&nbsp;                this.controller.updateBoard(this.currentGame.getBoard().getPlacements());</b>
+&nbsp;
+<b class="nc">&nbsp;                this.controller.setEnableSendButton(this.currentGame.getCurrentPlayer().getUsername().equals(this.player.getUsername()));</b>
+<b class="nc">&nbsp;                this.controller.UpdateCommonPoints(this.currentGame.getCommon1(), this.getCurrentGame().getCommon2());</b>
+<b class="nc">&nbsp;                this.controller.initShelves(this.currentGame.getPlayers());</b>
+&nbsp;
+&nbsp;                //.DEBUG
+&nbsp;                //System.out.println(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot;+this.currentGame.getBoard().getPlacements().get(3).getTile().getType().getName()+&quot;&quot;+this.currentGame.getBoard().getPlacements().get(0).getTile().getVariant().getNumber()+&quot;.png&quot;);
+&nbsp;                /*
+&nbsp;                for (int i = 0; i &lt; this.currentGame.getBoard().getPlacements().size() ; i++){
+&nbsp;                    //System.out.println(this.currentGame.getBoard().getPlacements().get(i).isOccupied());
+&nbsp;                    System.out.println(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot;+this.currentGame.getBoard().getPlacements().get(i).getTile().getType().getName()+&quot;&quot;+this.currentGame.getBoard().getPlacements().get(i).getTile().getVariant().getNumber()+&quot;.png&quot;);
+&nbsp;                    System.out.println(&quot;X: &quot;+this.currentGame.getBoard().getPlacements().get(i).getX() + &quot; Y: &quot; + this.currentGame.getBoard().getPlacements().get(i).getY());
+&nbsp;                }
+&nbsp;                 */
+&nbsp;            });
+&nbsp;        });
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    public void updateGui(){
+&nbsp;
+<b class="nc">&nbsp;            Platform.runLater(() -&gt; {</b>
+&nbsp;                try {
+<b class="nc">&nbsp;                    if (this.currentGame != null) {</b>
+<b class="nc">&nbsp;                        this.controller.setEnableSendButton(this.currentGame.getCurrentPlayer().getUsername().equals(this.player.getUsername()));</b>
+<b class="nc">&nbsp;                        this.controller.UpdateCommonPoints(this.currentGame.getCommon1(), this.getCurrentGame().getCommon2());</b>
+<b class="nc">&nbsp;                        this.controller.updateBoard(this.currentGame.getBoard().getPlacements());</b>
+<b class="nc">&nbsp;                        this.controller.updateShelves(this.currentGame.getPlayers());</b>
+&nbsp;                        //se e il mio turno attivo il bottone send inoltre verifico che non ho gia pescato
+&nbsp;
+&nbsp;                    }
+<b class="nc">&nbsp;                }catch (Exception e) {</b>
+&nbsp;                    //.DEBUG
+&nbsp;                    //e.printStackTrace();
+<b class="nc">&nbsp;                }</b>
+&nbsp;                //.DEBUG
+&nbsp;                //System.out.println(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot;+this.currentGame.getBoard().getPlacements().get(3).getTile().getType().getName()+&quot;&quot;+this.currentGame.getBoard().getPlacements().get(0).getTile().getVariant().getNumber()+&quot;.png&quot;);
+&nbsp;                /*
+&nbsp;                for (int i = 0; i &lt; this.currentGame.getBoard().getPlacements().size() ; i++){
+&nbsp;                    //System.out.println(this.currentGame.getBoard().getPlacements().get(i).isOccupied());
+&nbsp;                    System.out.println(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot;+this.currentGame.getBoard().getPlacements().get(i).getTile().getType().getName()+&quot;&quot;+this.currentGame.getBoard().getPlacements().get(i).getTile().getVariant().getNumber()+&quot;.png&quot;);
+&nbsp;                    System.out.println(&quot;X: &quot;+this.currentGame.getBoard().getPlacements().get(i).getX() + &quot; Y: &quot; + this.currentGame.getBoard().getPlacements().get(i).getY());
+&nbsp;                }
+&nbsp;                 */
+&nbsp;            });
+&nbsp;
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;}
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-29 23:48</div>
+</div>
+</body>
+</html>

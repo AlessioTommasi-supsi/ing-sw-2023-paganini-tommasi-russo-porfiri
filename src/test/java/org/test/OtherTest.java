@@ -25,7 +25,8 @@ public class OtherTest {
         TileType type = TileType.CAT;
         assertNotEquals(type.getName(), "");
         TileVariant variant = TileVariant.VARIANT_ONE;
-        assertEquals(variant.getNumber(), 1);
+        System.out.println(variant.getNumber());
+        assertEquals(variant.getNumber(), "1");
         Player player = new Player("player1");
         Ranking rank = new Ranking(player, 8);
         assertNotEquals(rank.toString(), "");

@@ -1,0 +1,512 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Game</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.project.ingsw2023PaganiniTommasiRussoPorfiri.model</a>
+</div>
+
+<h1>Coverage Summary for Class: Game (org.project.ingsw2023PaganiniTommasiRussoPorfiri.model)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Game</td>
+<td class="coverageStat">
+  <span class="percent">
+    81,1%
+  </span>
+  <span class="absValue">
+    (30/37)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    87,8%
+  </span>
+  <span class="absValue">
+    (115/131)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">Game$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    82,1%
+  </span>
+  <span class="absValue">
+    (32/39)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    88%
+  </span>
+  <span class="absValue">
+    (117/133)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.project.ingsw2023PaganiniTommasiRussoPorfiri.model;
+&nbsp;
+&nbsp;import com.google.gson.Gson;
+&nbsp;
+&nbsp;import java.io.Reader;
+&nbsp;import java.io.Serializable;
+&nbsp;import java.nio.file.Files;
+&nbsp;import java.nio.file.Paths;
+&nbsp;import java.util.*;
+&nbsp;
+&nbsp;/**
+&nbsp; * I giocatori entrano sequenzialmente all&#39;interno della partita. La posizione del giocatore in partita è data in base all&#39;ordine di entrata, quindi la posizione è l&#39;indice dell&#39;array.
+&nbsp; */
+&nbsp;public abstract class Game implements Serializable {
+&nbsp;
+&nbsp;    public ArrayList&lt;PersonalCard&gt; getPersonalCardDeck() {
+<b class="nc">&nbsp;        return personalCardDeck;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean isFullLibrary() {
+<b class="nc">&nbsp;        return fullLibrary;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private Player currentPlayer;
+&nbsp;    private int currentGameId;
+&nbsp;    private Board board;
+&nbsp;    private ArrayList&lt;Player&gt; players;//ordinato in base all ordine nel quale i giocatori si sono uniti alla partita e quindi anche in ordine di chi tocca a giocare!
+&nbsp;    private int playerNumber;//numeri di giocatori che ci sono in questa partita!
+&nbsp;    private Player dealer;
+<b class="fc">&nbsp;    private GameStatus state = GameStatus.IN_WAIT;</b>
+<b class="fc">&nbsp;    private ArrayList&lt;PersonalCard&gt; personalCardDeck = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;    private int ranking[]=null;</b>
+&nbsp;    private ArrayList&lt;Ranking&gt; rank;
+&nbsp;    private int[] commonCardScores;
+&nbsp;    private CommonCard common1;
+&nbsp;    private CommonCard common2;
+&nbsp;
+&nbsp;    //Struttura: Player.Username: messaggio
+<b class="fc">&nbsp;    private ArrayList&lt;String&gt; chat = new ArrayList&lt;String&gt;();</b>
+&nbsp;
+&nbsp;    //quando è a true devo completare il turno e poi finire la partita!
+<b class="fc">&nbsp;    private boolean fullLibrary = false;</b>
+&nbsp;
+<b class="fc">&nbsp;    public Game(int playerNumber, Player mazziere) {</b>
+<b class="fc">&nbsp;        GsonParse(this.personalCardDeck);</b>
+<b class="fc">&nbsp;        this.playerNumber = playerNumber;</b>
+<b class="fc">&nbsp;        this.dealer =mazziere;</b>
+<b class="fc">&nbsp;        players= new ArrayList&lt;Player&gt;();</b>
+<b class="fc">&nbsp;        rank= new ArrayList&lt;Ranking&gt;();</b>
+<b class="fc">&nbsp;        this.currentGameId = Globals.incrementGameId();</b>
+<b class="fc">&nbsp;        mazziere.setPC(drawPersonal());</b>
+&nbsp;        //.DEBUG
+&nbsp;        //System.out.println(mazziere.toString());
+<b class="fc">&nbsp;        players.add(mazziere);</b>
+<b class="fc">&nbsp;        this.board = new Board();</b>
+<b class="fc">&nbsp;        buildBoard();</b>
+&nbsp;
+<b class="fc">&nbsp;        drawCommon();</b>
+&nbsp;
+&nbsp;        //currentPlayer viene detto solo quando la partita passa da in attesa a in corso!
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    public Board getInstanceBoard() {
+<b class="fc">&nbsp;        return board;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ArrayList&lt;Player&gt; getPlayers() {
+<b class="fc">&nbsp;        return  players;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getPlayerNumber() {
+<b class="fc">&nbsp;        return playerNumber;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Player getDealer() {
+<b class="fc">&nbsp;        return dealer;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public int[] getCommonCardScores() {
+<b class="nc">&nbsp;        return commonCardScores;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCommonCardScores(int[] commonCardScores) {
+<b class="nc">&nbsp;        this.commonCardScores = commonCardScores;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public CommonCard getCommon1() {
+<b class="fc">&nbsp;        return common1;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public CommonCard getCommon2() {
+<b class="fc">&nbsp;        return common2;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCurrentPlayer(Player currentPlayer) {
+<b class="fc">&nbsp;        this.currentPlayer = currentPlayer;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public void setCurrentGameId(int currentGameId) {
+<b class="fc">&nbsp;        this.currentGameId = currentGameId;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCommon1(CommonCard extP){
+<b class="fc">&nbsp;        common1 = extP;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCommon2(CommonCard extP){
+<b class="fc">&nbsp;        common2 = extP;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public GameStatus getState() {
+<b class="fc">&nbsp;        return state;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ArrayList&lt;Ranking&gt; getRanking() throws Exception{
+<b class="fc">&nbsp;        if(this.state != GameStatus.OVER){</b>
+<b class="nc">&nbsp;            throw new Exception(&quot;You can&#39;t take the scores because the game isn&#39;t over yet!&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return rank;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ArrayList&lt;Ranking&gt; getRank() {
+<b class="nc">&nbsp;        return rank;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Player getCurrentPlayer() {
+<b class="fc">&nbsp;        return currentPlayer;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getCurrentGameId() {
+<b class="fc">&nbsp;        return currentGameId;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Board getBoard() {
+<b class="fc">&nbsp;        return board;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getPointCommonCard1() {
+<b class="fc">&nbsp;        return this.common1.getScore();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getPointCommonCard2() {
+<b class="fc">&nbsp;        return this.common2.getScore();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Player getPlayer(int idPlayer) {
+<b class="fc">&nbsp;        for (int i = 0; i &lt; players.size(); i++) {</b>
+<b class="fc">&nbsp;            if (idPlayer == players.get(i).getId()){</b>
+<b class="fc">&nbsp;                return players.get(i);</b>
+&nbsp;            }
+&nbsp;        }
+<b class="nc">&nbsp;        return null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void GsonParse(ArrayList&lt;PersonalCard&gt; personalCardParsers) {
+&nbsp;        try {
+&nbsp;            // create Gson instance
+&nbsp;
+&nbsp;            try {
+<b class="fc">&nbsp;                Gson gson = new Gson();</b>
+&nbsp;
+&nbsp;                // create a reader
+<b class="fc">&nbsp;                Reader reader = Files.newBufferedReader(Paths.get(&quot;PersonalCard.json&quot;));</b>
+&nbsp;
+&nbsp;                // convert a JSON string to a User object
+<b class="fc">&nbsp;                PersonalCard[] user = gson.fromJson(reader,PersonalCard[].class);</b>
+&nbsp;
+<b class="fc">&nbsp;                personalCardParsers.add(user[0]);</b>
+&nbsp;
+<b class="fc">&nbsp;                personalCardParsers.add(user[1]);</b>
+<b class="fc">&nbsp;                personalCardParsers.add(user[2]);</b>
+<b class="fc">&nbsp;                personalCardParsers.add(user[3]);</b>
+<b class="fc">&nbsp;                personalCardParsers.add(user[4]);</b>
+<b class="fc">&nbsp;                personalCardParsers.add(user[5]);</b>
+<b class="fc">&nbsp;                personalCardParsers.add(user[6]);</b>
+<b class="fc">&nbsp;                personalCardParsers.add(user[7]);</b>
+<b class="fc">&nbsp;                personalCardParsers.add(user[8]);</b>
+<b class="fc">&nbsp;                personalCardParsers.add(user[9]);</b>
+<b class="fc">&nbsp;                personalCardParsers.add(user[10]);</b>
+<b class="fc">&nbsp;                personalCardParsers.add(user[11]);</b>
+&nbsp;
+&nbsp;                // close reader
+<b class="fc">&nbsp;                reader.close();</b>
+&nbsp;
+<b class="nc">&nbsp;            }catch (Exception e){</b>
+<b class="nc">&nbsp;                e.printStackTrace();</b>
+<b class="fc">&nbsp;            }</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        } catch (Exception ex) {</b>
+<b class="nc">&nbsp;            ex.printStackTrace();</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public PersonalCard drawPersonal() {
+<b class="fc">&nbsp;        Random rand = new Random();</b>
+<b class="fc">&nbsp;        int num = rand.nextInt(this.personalCardDeck.size());</b>
+<b class="fc">&nbsp;        PersonalCard personalCard = this.personalCardDeck.get(num);</b>
+<b class="fc">&nbsp;        this.personalCardDeck.remove(num);</b>
+<b class="fc">&nbsp;        return personalCard;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void addPlayer(Player p)throws Exception {
+<b class="fc">&nbsp;        if (this.state != GameStatus.IN_WAIT){</b>
+<b class="nc">&nbsp;            throw new Exception(&quot;Players cannot be added unless the game is on hold!&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        p.setPC(drawPersonal());</b>
+&nbsp;        //.DEBUG
+&nbsp;        //System.out.println(p.toString());
+<b class="fc">&nbsp;        players.add(p);</b>
+&nbsp;
+<b class="fc">&nbsp;        if (this.playerNumber == this.players.size()) {</b>
+&nbsp;            //System.err.println(this.toString() +&quot;this.players.size()= &quot;+this.players.size());
+<b class="fc">&nbsp;            this.state = GameStatus.IN_PROGRESS;</b>
+<b class="fc">&nbsp;            this.currentPlayer = this.players.get(0);//il primo giocatore è quello che inizia!</b>
+&nbsp;        }
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public void startPartita(){
+<b class="fc">&nbsp;        this.state = GameStatus.IN_PROGRESS;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void fullLibrary(){
+<b class="fc">&nbsp;        if (this.fullLibrary ==false){ //aggiungo punti solo al primo player che mi completa la partita!</b>
+<b class="fc">&nbsp;            this.fullLibrary = true;</b>
+<b class="fc">&nbsp;            this.currentPlayer.addEndOfGamePoint();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public void end() throws Exception {
+<b class="fc">&nbsp;        if (this.fullLibrary == true &amp;&amp; (this.players.indexOf(this.currentPlayer) == 0/*ho terminato giro*/)) {</b>
+<b class="fc">&nbsp;            this.state = GameStatus.OVER;</b>
+&nbsp;
+&nbsp;            //calcolo i punti di ogni giocatore e ne faccio il ranking
+&nbsp;            //indice di ranking e Indice dei giocatori quando si sono uniti alla partita.
+&nbsp;
+&nbsp;            int point[];
+&nbsp;
+&nbsp;            //funzionalità ranking!
+<b class="fc">&nbsp;            point = new int[this.playerNumber];</b>
+&nbsp;
+<b class="fc">&nbsp;            for (int i = 0; i &lt; players.size(); i++) {</b>
+<b class="fc">&nbsp;                players.get(i).calcOverallScore();</b>
+<b class="fc">&nbsp;                point[i] = players.get(i).getScore();</b>
+&nbsp;            }
+&nbsp;
+<b class="fc">&nbsp;            this.ranking = new int[this.playerNumber];</b>
+&nbsp;
+<b class="fc">&nbsp;            for (int i = 0; i &lt; players.size(); i++) {</b>
+<b class="fc">&nbsp;                rank.add(new Ranking(players.get(i), point[i]));</b>
+&nbsp;            }
+&nbsp;
+&nbsp;            //ordino rank in base ai punti dal piu alto al piu basso
+<b class="fc">&nbsp;            Collections.sort(rank, new Comparator&lt;Ranking&gt;() {</b>
+&nbsp;                @Override
+&nbsp;                public int compare(Ranking o1, Ranking o2) {
+<b class="fc">&nbsp;                    return o2.getPoints() - o1.getPoints();</b>
+&nbsp;                }
+&nbsp;            });
+&nbsp;
+<b class="fc">&nbsp;            int index = 0;</b>
+<b class="fc">&nbsp;            int max =point[0];</b>
+&nbsp;            //assegno il ranking
+<b class="fc">&nbsp;            for (int j = 0; j &lt; this.playerNumber; j++) {</b>
+<b class="fc">&nbsp;                for (int i = 1; i &lt; players.size() ; i++) {</b>
+<b class="fc">&nbsp;                    if (point[i] &gt; max) {</b>
+<b class="nc">&nbsp;                        max = point[i];</b>
+<b class="nc">&nbsp;                        index = i;</b>
+&nbsp;                    }
+&nbsp;                }
+<b class="fc">&nbsp;                point[index] = -1;</b>
+<b class="fc">&nbsp;                this.ranking[j] = index;</b>
+&nbsp;            }
+&nbsp;            //fine funzionalità ranking
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void drawCommon() {
+<b class="fc">&nbsp;        ArrayList&lt;CommonCard&gt; commonCards = new ArrayList&lt;CommonCard&gt;();</b>
+<b class="fc">&nbsp;        commonCards.add(new CommonCardShape(0));</b>
+<b class="fc">&nbsp;        commonCards.add(new CommonCardDiagonal(1));</b>
+<b class="fc">&nbsp;        commonCards.add(new CommonCardAngles(2));</b>
+<b class="fc">&nbsp;        commonCards.add(new CommonCard3Types(3));</b>
+<b class="fc">&nbsp;        commonCards.add(new CommonCardShape(4));</b>
+<b class="fc">&nbsp;        commonCards.add(new CommonCard3Types(5));</b>
+<b class="fc">&nbsp;        commonCards.add(new CommonCardShape(6));</b>
+<b class="fc">&nbsp;        commonCards.add(new CommonCard3Types(7));</b>
+<b class="fc">&nbsp;        commonCards.add(new CommonCard3Types(8));</b>
+<b class="fc">&nbsp;        commonCards.add(new CommonCardX(9));</b>
+<b class="fc">&nbsp;        commonCards.add(new CommonCard8Tiles(10));</b>
+<b class="fc">&nbsp;        commonCards.add(new CommonCardStair(11));</b>
+<b class="fc">&nbsp;        Random rand = new Random();</b>
+<b class="fc">&nbsp;        int index1 = rand.nextInt(12);</b>
+<b class="fc">&nbsp;        this.common1 = commonCards.get(index1);</b>
+<b class="fc">&nbsp;        int index2 = rand.nextInt(12);</b>
+<b class="fc">&nbsp;        while(index2==index1) {</b>
+<b class="fc">&nbsp;            index2 = rand.nextInt(12);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        this.common2 = commonCards.get(index2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="fc">&nbsp;        return &quot;Game{&quot; +</b>
+&nbsp;                &quot;board=&quot; + board +
+<b class="fc">&nbsp;                &quot;, players=&quot; + players.toString() +</b>
+&nbsp;                &quot;, playerNumber=&quot; + playerNumber +
+&nbsp;                &quot;, dealer=&quot; + dealer +
+&nbsp;                &quot;, state=&quot; + state +
+<b class="fc">&nbsp;                &quot;, ranking=&quot; + Arrays.toString(ranking) +</b>
+&nbsp;                &quot;, rank=&quot; + rank +
+&nbsp;                &#39;}&#39;;
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public void setBoard(ArrayList&lt;TilePositionBoard&gt; extP){
+<b class="fc">&nbsp;        this.board.setPlacements(extP);</b>
+<b class="fc">&nbsp;        this.board.addTiles();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public abstract void buildBoard();  //Factory Method
+&nbsp;
+&nbsp;    public abstract void defineCommonCardScores();
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    //Metodo che aggiorna i punti del player corrente
+&nbsp;    //se il player ha completato la commonCard1 aggiungi i punti altrimenti no
+&nbsp;    //viene eseguito a ogni volta che tocca in giocatore!
+&nbsp;    /*Abbiamo deciso stare qui perché:
+&nbsp;     * perché i punteggi dati dalle common card sono in relazione stretta con il gioco, siccome ogni currentPlayet a ogni turno
+&nbsp;     * aggiorna gli obbiettivi comuni completati.
+&nbsp;     *
+&nbsp;     * ATTENZIONE: .Alessio
+&nbsp;     *   -ricordati da richiamarlo a ogni turno prima di terminaTURN
+&nbsp;     *   -totale punteggio è in Player.score -&gt; ranking aggiornato automaticamente ingame con la funzione Game::end()
+&nbsp;     *
+&nbsp;     * */
+&nbsp;    public abstract void updatePointsCommon();
+&nbsp;
+&nbsp;    public void nextCurrentPlayer() {
+<b class="fc">&nbsp;        this.currentPlayer = this.players.get((this.players.indexOf(this.currentPlayer) + 1) % this.players.size());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Player precCurrentPlayer() {
+<b class="fc">&nbsp;        return this.players.indexOf(this.currentPlayer) - 1 % this.players.size() &gt; 0 ? this.players.get((this.players.indexOf(this.currentPlayer) - 1) % this.players.size()) : this.players.get(this.players.size() - 1);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /*NON FUNZIONANTE
+&nbsp;    public ArrayList setRanking() {
+&nbsp;        for(Player p : players){
+&nbsp;            p.calcOverallScore();
+&nbsp;        }
+&nbsp;
+&nbsp;        Collections.sort(players, new Comparator&lt;Player&gt;()) {
+&nbsp;            @Override
+&nbsp;            public int compare(Player p1, Player p2) {
+&nbsp;                return p2.getScore() - p1.getScore();
+&nbsp;            }
+&nbsp;        }
+&nbsp;
+&nbsp;        this.rank.addAll(players);
+&nbsp;    }
+&nbsp;     */
+&nbsp;
+&nbsp;    public ArrayList&lt;String&gt; getChat() {
+<b class="nc">&nbsp;        return chat;</b>
+&nbsp;    }
+&nbsp;    public void addChatMessage(String message) {
+<b class="nc">&nbsp;        this.chat.add(message);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-29 23:48</div>
+</div>
+</body>
+</html>
