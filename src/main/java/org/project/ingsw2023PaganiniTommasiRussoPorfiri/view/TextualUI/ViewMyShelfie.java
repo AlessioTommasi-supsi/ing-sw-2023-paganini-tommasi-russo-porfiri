@@ -280,6 +280,16 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                             e.printStackTrace();
                         }
                         return askPlayerChoiceMyShelfie();
+                    case SHOW_CHAT:
+                        System.out.println("\n Chat: \n");
+                        try {
+                            this.currentGame.getChat().stream().forEach(message->System.out.println(message));
+
+                        }catch (Exception e){
+                            System.err.println("Error occurred while displaying your GAME CHAT! ");
+                            e.printStackTrace();
+                        }
+                        return askPlayerChoiceMyShelfie();
                     case DRAW_FROM_BOARD:
                         if (this.iAlreadyDrawn == true) {
                             System.out.println("You have already drawn a tile from the board! ");
@@ -374,6 +384,20 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                     return new DrawFromBoardMessage(tilesToRemove,columOfShelves,this.currentGameId,order);
                 }catch (Exception e){
                     System.err.println("Generic error occurred! ");
+                    e.printStackTrace();
+                }
+            break;
+            case SEND_MESSAGE:
+                try{
+                    //faccio qui tutti i controlli così sono sicuro di passare al server solo i dati giusti tanto la board viene aggiornata a ogni turno!
+
+                    s = new Scanner(System.in);
+                    System.out.println("Enter the message to send: ");
+                    String message = s.nextLine();
+
+                    return new SendMessage(this.player.getUsername()+": "+message,this.currentGameId);
+                }catch (Exception e){
+                    System.err.println("Generic error occurred while sending message! ");
                     e.printStackTrace();
                 }
             case EXIT:
@@ -520,6 +544,9 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                         break;
                         case EXIT:
                             System.out.println("Player: "+model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getUsername()+" HAS FORCED THE LAST ROUND BEFORE THE GAME ENDS!");
+                        break;
+                        case SEND_MESSAGE:
+                            System.out.println("Player: "+model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getUsername()+" HAS SEND A MESSAGE!");
                         break;
                         default:
                             System.err.println("Not implemented yet");

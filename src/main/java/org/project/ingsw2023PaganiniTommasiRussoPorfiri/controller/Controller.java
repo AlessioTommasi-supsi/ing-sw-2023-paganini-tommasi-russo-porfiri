@@ -4,6 +4,7 @@ import org.project.ingsw2023PaganiniTommasiRussoPorfiri.distributed.*;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.*;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.utils.*;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.TextualUI.DrawFromBoardMessage;
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.TextualUI.SendMessage;
 
 import java.util.ArrayList;
 
@@ -69,7 +70,12 @@ public class Controller {
                     //.DEBUG
                     //System.err.println("BOARD: ");
                     //model.getMyShelfie().getGame(drawMessage.getCurrentGameId()).getBoard().printTilePositionBoard(null);
-                    break;
+                break;
+                case SEND_MESSAGE:
+                    SendMessage message = (SendMessage) arg.getArgument();
+                    model.getMyShelfie().getGame(message.getCurrentGameId()).addChatMessage(message.getMessage());
+
+                break;
                 case TERMINATE_TURNS:
                     model.getMyShelfie().getGame((Integer) arg.getArgument()).nextCurrentPlayer();
                     //se necessario ripristino la board!

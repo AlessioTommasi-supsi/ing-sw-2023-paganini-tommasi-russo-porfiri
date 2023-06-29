@@ -11,8 +11,8 @@ public enum ChoiceMyShelfie {
     SHOW_BOARD,
     SHOW_COMMON_CARDS,
     SHOW_PERSONAL_CARDS,
-
-
+    SHOW_CHAT,
+    SEND_MESSAGE,
     //.DEBUG
     EXIT
 }

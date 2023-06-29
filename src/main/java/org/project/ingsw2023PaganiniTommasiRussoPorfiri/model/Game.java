@@ -35,7 +35,8 @@ public abstract class Game implements Serializable {
     private CommonCard common1;
     private CommonCard common2;
 
-    pri
+    //Struttura: Player.Username: messaggio
+    private ArrayList<String> chat = new ArrayList<String>();
 
     //quando è a true devo completare il turno e poi finire la partita!
     private boolean fullLibrary = false;
@@ -371,4 +372,12 @@ public abstract class Game implements Serializable {
         this.rank.addAll(players);
     }
      */
+
+    public ArrayList<String> getChat() {
+        return chat;
+    }
+    public void addChatMessage(String message) {
+        this.chat.add(message);
+    }
+
 }
