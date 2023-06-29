@@ -12,10 +12,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.Choice;
-import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.ChoiceMyShelfie;
-import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.Player;
-import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.TilePositionBoard;
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.*;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.TextualUI.DrawFromBoardMessage;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.TextualUI.ViewMyShelfie;
 
@@ -157,7 +154,107 @@ public class HelloController {
 
     private ArrayList<TextFormatter<String>> textFormattersList1 = new ArrayList<>();
     private ArrayList<TextFormatter<String>> textFormattersList2 = new ArrayList<>();
+    @FXML
+    ImageView shelf1R0C0;
 
+    @FXML
+    ImageView shelf1R0C1;
+
+    @FXML
+    ImageView shelf1R0C2;
+
+    @FXML
+    ImageView shelf1R0C3;
+
+    @FXML
+    ImageView shelf1R0C4;
+
+    @FXML
+    ImageView shelf1R1C0;
+
+    @FXML
+    ImageView shelf1R1C1;
+
+    @FXML
+    ImageView shelf1R1C2;
+
+    @FXML
+    ImageView shelf1R1C3;
+
+    @FXML
+    ImageView shelf1R1C4;
+
+    @FXML
+    ImageView shelf1R2C0;
+
+    @FXML
+    ImageView shelf1R2C1;
+
+    @FXML
+    ImageView shelf1R2C2;
+
+    @FXML
+    ImageView shelf1R2C3;
+
+    @FXML
+    ImageView shelf1R2C4;
+
+    @FXML
+    ImageView shelf1R3C0;
+
+    @FXML
+    ImageView shelf1R3C1;
+
+    @FXML
+    ImageView shelf1R3C2;
+
+    @FXML
+    ImageView shelf1R3C3;
+
+    @FXML
+    ImageView shelf1R3C4;
+
+    @FXML
+    ImageView shelf1R4C0;
+
+    @FXML
+    ImageView shelf1R4C1;
+
+    @FXML
+    ImageView shelf1R4C2;
+
+    @FXML
+    ImageView shelf1R4C3;
+
+    @FXML
+    ImageView shelf1R4C4;
+
+    @FXML
+    ImageView shelf1R5C0;
+
+    @FXML
+    ImageView shelf1R5C1;
+
+    @FXML
+    ImageView shelf1R5C2;
+
+    @FXML
+    ImageView shelf1R5C3;
+
+    @FXML
+    ImageView shelf1R5C4;
+
+    @FXML
+    Text shp1Text;
+
+    @FXML
+    Text shp2Text;
+
+    @FXML
+    Text shp3Text;
+
+    @FXML
+    Text shp4Text;
     public ViewMyShelfie viewMyShelfie = null;
 
     @FXML
@@ -190,6 +287,11 @@ public class HelloController {
     public void verifyLoginInformationAdded(){
         //if()
     }
+
+    public void setPrivateCard(PersonalCard personalCard){
+
+    }
+
 
     public void updateBoard(ArrayList<TilePositionBoard> tilePositionBoards) {
         // TODO
@@ -558,8 +660,16 @@ public class HelloController {
         //boardR1C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/"+tilePositionBoards.get(0).getTile().getType().getName()+""+tilePositionBoards.get(0).getTile().getVariant().getNumber()+".png"));
     }
 
+    public void initShelves(ArrayList<Player> players){
+        shp1Text.setText(players.get(0).getUsername());
+        shp2Text.setText(players.get(1).getUsername());
+        shp3Text.setText(players.get(2).getUsername());
+        shp4Text.setText(players.get(3).getUsername());
+
+    }
     public void updateShelves(ArrayList<Player> players){
-        //TODO
+
+
     }
 
     public void setEnableSendButton(boolean enable){

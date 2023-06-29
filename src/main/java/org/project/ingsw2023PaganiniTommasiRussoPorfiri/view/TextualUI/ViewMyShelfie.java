@@ -642,9 +642,14 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                 this.controller = frame.getController();
                 this.controller.viewMyShelfie = this;
 
+                this.controller.setPrivateCard(this.player.getPC());
+
+
                 this.controller.updateBoard(this.currentGame.getBoard().getPlacements());
 
                 this.controller.setEnableSendButton(this.currentGame.getCurrentPlayer().getUsername().equals(this.player.getUsername()));
+
+                this.controller.initShelves(this.currentGame.getPlayers());
 
                 //.DEBUG
                 //System.out.println("file:src/main/resources/GraphicResources/itemTiles/"+this.currentGame.getBoard().getPlacements().get(3).getTile().getType().getName()+""+this.currentGame.getBoard().getPlacements().get(0).getTile().getVariant().getNumber()+".png");
@@ -663,12 +668,18 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
     public void updateGui(){
 
             Platform.runLater(() -> {
-                if (this.currentGame!=null) {
-                    this.controller.setEnableSendButton(this.currentGame.getCurrentPlayer().getUsername().equals(this.player.getUsername()));
+                try {
+                    if (this.currentGame != null) {
+                        this.controller.setEnableSendButton(this.currentGame.getCurrentPlayer().getUsername().equals(this.player.getUsername()));
 
-                    this.controller.updateBoard(this.currentGame.getBoard().getPlacements());
-                    //se e il mio turno attivo il bottone send inoltre verifico che non ho gia pescato
+                        this.controller.updateBoard(this.currentGame.getBoard().getPlacements());
+                        this.controller.updateShelves(this.currentGame.getPlayers());
+                        //se e il mio turno attivo il bottone send inoltre verifico che non ho gia pescato
 
+                    }
+                }catch (Exception e) {
+                    //.DEBUG
+                    //e.printStackTrace();
                 }
                 //.DEBUG
                 //System.out.println("file:src/main/resources/GraphicResources/itemTiles/"+this.currentGame.getBoard().getPlacements().get(3).getTile().getType().getName()+""+this.currentGame.getBoard().getPlacements().get(0).getTile().getVariant().getNumber()+".png");

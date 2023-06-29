@@ -306,7 +306,7 @@
                                                         <ImageView fx:id="shelf1R0C4" fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
                                                     </children>
                                                 </GridPane>
-                                    <Text id="myShelvesTitle" fx:id="myPlayerUsername" fill="#1616bc" layoutX="88.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="My shelves" />
+                                    <Text id="myShelvesTitle" fx:id="shp1Text" fill="#1616bc" layoutX="88.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player1's shelves" />
                                             </children>
                                         </AnchorPane>
                                         <AnchorPane id="shelf2AnchorPane" fx:id="shelf2AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="117.0" prefWidth="126.0" style="-fx-background-color: transparent;">
@@ -370,7 +370,7 @@
                                                         <ImageView fx:id="shelf2R0C4" fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
                                                     </children>
                                                 </GridPane>
-                                    <Text id="player1ShelvesTitle" fill="#c11515" layoutX="3.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player1's shelves" textAlignment="CENTER" wrappingWidth="233.6000061035154" />
+                                    <Text id="player1ShelvesTitle" fx:id="shp2Text" fill="#c11515" layoutX="3.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player2's shelves" textAlignment="CENTER" wrappingWidth="233.6000061035154" />
                                             </children>
                                         </AnchorPane>
                                     </items>
@@ -442,7 +442,7 @@
                                                         <ImageView fx:id="shelf3R0C4" fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
                                                     </children>
                                                 </GridPane>
-                                    <Text id="player2ShelvesTitle" fill="#765116" layoutX="4.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player2's shelves" textAlignment="CENTER" wrappingWidth="233.6000061035155" />
+                                    <Text id="player2ShelvesTitle" fx:id="shp3Text" fill="#765116" layoutX="4.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player3's shelves" textAlignment="CENTER" wrappingWidth="233.6000061035155" />
                                             </children>
                                         </AnchorPane>
                                         <AnchorPane id="shelf4AnchorPane" fx:id="shelf4AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
@@ -506,7 +506,7 @@
                                                         <ImageView fx:id="shelf4R0C4" fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
                                                     </children>
                                                 </GridPane>
-                                    <Text id="player3ShelvesTitle" fill="#861286" layoutX="3.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player3's shelves" textAlignment="CENTER" wrappingWidth="233.6000061035154" />
+                                    <Text id="player3ShelvesTitle" fx:id="shpText" fill="#861286" layoutX="3.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player4's shelves" textAlignment="CENTER" wrappingWidth="233.6000061035154" />
                                             </children>
                                         </AnchorPane>
                                     </items>
