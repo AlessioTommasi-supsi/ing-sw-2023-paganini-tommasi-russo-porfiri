@@ -1,0 +1,458 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Board</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.project.ingsw2023PaganiniTommasiRussoPorfiri.model</a>
+</div>
+
+<h1>Coverage Summary for Class: Board (org.project.ingsw2023PaganiniTommasiRussoPorfiri.model)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Board</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (21/21)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    97,1%
+  </span>
+  <span class="absValue">
+    (169/174)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.project.ingsw2023PaganiniTommasiRussoPorfiri.model;
+&nbsp;
+&nbsp;import org.project.ingsw2023PaganiniTommasiRussoPorfiri.*;
+&nbsp;import org.project.ingsw2023PaganiniTommasiRussoPorfiri.utils.*;
+&nbsp;
+&nbsp;import java.io.Serializable;
+&nbsp;import java.util.*;
+&nbsp;
+&nbsp;
+&nbsp;public class Board implements Serializable {
+&nbsp;    private ArrayList&lt;TilePositionBoard&gt; placements;
+&nbsp;    private TileObjBag bag;
+&nbsp;
+&nbsp;    
+&nbsp;    //Sarà il gioco a creare i placements giusti in base a quante persone ho!
+<b class="fc">&nbsp;    public Board(ArrayList&lt;TilePositionBoard&gt; extPlacements, TileObjBag extBag) {</b>
+<b class="fc">&nbsp;        this.placements = new ArrayList&lt;TilePositionBoard&gt;();</b>
+<b class="fc">&nbsp;        for (TilePositionBoard p :extPlacements) {</b>
+<b class="fc">&nbsp;            this.placements.add(new TilePositionBoard(p));</b>
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        this.bag= new TileObjBag(extBag);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;    public Board(Board extBoard) {</b>
+<b class="fc">&nbsp;        this.placements = extBoard.getPlacements();</b>
+<b class="fc">&nbsp;        this.bag= extBoard.getBag();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;    public Board() {</b>
+<b class="fc">&nbsp;        this.placements = new ArrayList&lt;TilePositionBoard&gt;();</b>
+<b class="fc">&nbsp;        this.bag = new TileObjBag();</b>
+<b class="fc">&nbsp;        protoBoard();</b>
+<b class="fc">&nbsp;        addTiles();</b>
+&nbsp;    }
+&nbsp;    //Idea realizzativa: Una serie di elementi e caratteristiche del gioco dipendono dal numero di giocatori. Una di queste è la creazione delle giuste caselle della Board di gioco.
+&nbsp;    //Per realizzare opportunamente questi elementi dipendenti dal numero di giocatori, deciso di realizzare un factory method per la classe Game, definendola come classe astratta
+&nbsp;    //e creando opportune sottoclassi concrete, una per tipo di partita con un certo numero di giocatori. Così facendo tutto ciò che del codice varia, di partita in partita
+&nbsp;    //in base al numero di giocatori selezionato, è stato raggruppato nelle sottoclassi concrete di Game.
+&nbsp;    //Il costruttore senza parametri di Board si limiterà a creare una base comune a ciascuna Board possibile. Questa base comune coincide con una Board da due giocatori.
+&nbsp;    //Dunque: all&#39;inizio in base al numero di giocatori, viene istanziato uno specifico sottotipo di Game (ad esempio GameThreePlayers). Nel costruttore di questo verrà creata una nuova Board
+&nbsp;    //con this.board = new Board() e successivamente verrà invocato il metodo buildBoard() (definito in Game) che in base al numero di giocatori aggiungerà le caselle specifiche mancanti allo scheletro comune.
+&nbsp;
+&nbsp;
+&nbsp;    public ArrayList&lt;TilePositionBoard&gt; getPlacements() {
+<b class="fc">&nbsp;        ArrayList&lt;TilePositionBoard&gt; ap = new ArrayList&lt;TilePositionBoard&gt;();</b>
+<b class="fc">&nbsp;        for (TilePositionBoard p: this.placements) {</b>
+&nbsp;            try{
+<b class="fc">&nbsp;                ap.add(new TilePositionBoard(p));</b>
+<b class="nc">&nbsp;            }catch (Exception e){</b>
+<b class="nc">&nbsp;                continue;</b>
+<b class="fc">&nbsp;            }</b>
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        return ap;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public TileObjBag getBag() {
+<b class="fc">&nbsp;        return new TileObjBag(this.bag);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ArrayList&lt;TilePositionBoard&gt; showBoard() {
+<b class="fc">&nbsp;        return this.placements;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public void setPlacements(ArrayList&lt;TilePositionBoard&gt; extPlacements) {
+<b class="fc">&nbsp;        this.placements.addAll(extPlacements);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    //Crea la struttura (lo scheletro) del core di una qualunque board. Ovvero crea la struttura di una board da due giocatori, comune a qualunque board da due o più giocatori.
+&nbsp;    private void protoBoard(){
+&nbsp;        int j;
+&nbsp;
+<b class="fc">&nbsp;        int i=1;</b>
+<b class="fc">&nbsp;        for(j=4; j&lt;6; j++){</b>
+<b class="fc">&nbsp;            this.placements.add(new TilePositionBoard(i,j));</b>
+&nbsp;        }
+<b class="fc">&nbsp;        i=2;</b>
+<b class="fc">&nbsp;        for(j=3; j&lt;6; j++){</b>
+<b class="fc">&nbsp;            this.placements.add(new TilePositionBoard(i,j));</b>
+&nbsp;        }
+<b class="fc">&nbsp;        i=3;</b>
+<b class="fc">&nbsp;        for(j=1; j&lt;7; j++){</b>
+<b class="fc">&nbsp;            this.placements.add(new TilePositionBoard(i,j));</b>
+&nbsp;        }
+<b class="fc">&nbsp;        i=4;</b>
+<b class="fc">&nbsp;        for(j=1; j&lt;8; j++){</b>
+<b class="fc">&nbsp;            this.placements.add(new TilePositionBoard(i,j));</b>
+&nbsp;        }
+<b class="fc">&nbsp;        i=5;</b>
+<b class="fc">&nbsp;        for(j=2; j&lt;8; j++){</b>
+<b class="fc">&nbsp;            this.placements.add(new TilePositionBoard(i,j));</b>
+&nbsp;        }
+<b class="fc">&nbsp;        i=6;</b>
+<b class="fc">&nbsp;        for(j=3; j&lt;6; j++){</b>
+<b class="fc">&nbsp;            this.placements.add(new TilePositionBoard(i,j));</b>
+&nbsp;        }
+<b class="fc">&nbsp;        i=7;</b>
+<b class="fc">&nbsp;        for(j=3; j&lt;5; j++){</b>
+<b class="fc">&nbsp;            this.placements.add(new TilePositionBoard(i,j));</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    //Duplice utilizzo:
+&nbsp;    //1) Invocato nel costruttore, in seguito all&#39;invocazione di protoBoard() per riempire tutte le TilePositionBoard precedentemente generate.
+&nbsp;    //2) Invocato da restoreBoard() quando la board necessita di essere ripristinata.
+&nbsp;    public void addTiles(){
+<b class="fc">&nbsp;        for(TilePositionBoard p : this.placements){</b>
+<b class="fc">&nbsp;            if(this.bag.BagSize()!= 0){</b>
+&nbsp;                try {
+<b class="fc">&nbsp;                    p.setTile(this.bag.extractFromBag());</b>
+<b class="fc">&nbsp;                } catch (PositionAlreadyOccupiedException e) {</b>
+<b class="fc">&nbsp;                    continue;</b>
+<b class="fc">&nbsp;                }</b>
+&nbsp;            }
+&nbsp;            else break;
+<b class="fc">&nbsp;        }</b>
+&nbsp;    }  //Metodo che userò anche per riempire la board quando vuota
+&nbsp;
+&nbsp;    public void addTiles(ArrayList&lt;TilePositionBoard&gt; tilesRemoved){
+<b class="fc">&nbsp;        for(TilePositionBoard etp : tilesRemoved){</b>
+<b class="fc">&nbsp;            for(TilePositionBoard btp : placements){</b>
+<b class="fc">&nbsp;                if(((etp.getX() == btp.getX()) &amp;&amp; (etp.getY() == btp.getY()))){</b>
+&nbsp;                    try{
+<b class="fc">&nbsp;                        btp.setTile(etp.getTile());</b>
+&nbsp;                    }
+<b class="nc">&nbsp;                    catch (PositionAlreadyOccupiedException e){</b>
+<b class="nc">&nbsp;                        continue;</b>
+<b class="fc">&nbsp;                    }</b>
+&nbsp;                }
+<b class="fc">&nbsp;            }</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean tileIsRemovable(TilePositionBoard position){
+<b class="fc">&nbsp;        int counter = 0;</b>
+&nbsp;
+&nbsp;        //La posizione è svuotabile del proprio TileObj se contiene un tile e ha almeno un lato adiacente libero.
+<b class="fc">&nbsp;        if(position.isOccupied()){</b>
+<b class="fc">&nbsp;            int x = position.getX();</b>
+<b class="fc">&nbsp;            int y = position.getY();</b>
+<b class="fc">&nbsp;            for(TilePositionBoard item : placements){</b>
+<b class="fc">&nbsp;                if ((item.getX() == x &amp;&amp; (item.getY() == y - 1 || item.getY() == y + 1)) || ((item.getX() == x - 1 || item.getX() == x + 1) &amp;&amp; item.getY() == y)) {</b>
+<b class="fc">&nbsp;                    counter++;</b>
+<b class="fc">&nbsp;                    if(!item.isOccupied()){</b>
+<b class="fc">&nbsp;                        return true; //Lo slot position ha almeno un lato adiacente vuoto.</b>
+&nbsp;                    }
+&nbsp;                }
+<b class="fc">&nbsp;            }</b>
+<b class="fc">&nbsp;            if(counter&lt;4){</b>
+<b class="fc">&nbsp;                return true;</b>
+&nbsp;            } //Per le tessere ai bordi che in Board non hanno tutte e 4 le posizioni adiacenti.
+&nbsp;              //Se sono arrivato fin qui e le posizioni adiacenti sono tutte occupate, ma quelle presenti in Board sono in numero &lt;4
+&nbsp;              //allora mi trovo su una tessera del bordo, certamente rimovibile.
+&nbsp;        }
+<b class="fc">&nbsp;        return false;  //Se arrivo fin qui non ho trovato nessun lato adiacente libero e la mia tessera non è sul bordo. Quindi la posizione non è svuotabile.</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public ArrayList&lt;TileObj&gt; removeTiles(ArrayList&lt;TilePositionBoard&gt; tilesToRemove) throws TilesAreNotRemovableException, PositionEmptyException, WrongNumberOfTilesException, BoardDoesNotContainThisPositionException, DuplicatesInRequestedTilesException {
+<b class="fc">&nbsp;        ArrayList&lt;TileObj&gt; TilesRemoved = new ArrayList&lt;TileObj&gt;();</b>
+<b class="fc">&nbsp;        int tilesCounter = 0;</b>
+&nbsp;
+&nbsp;        //Le TilePositionBoard contenute nell&#39;ArrayList passato come parametro, causa TurnView, non sono gli oggetti della Board, ma oggetti copia contenenti copie esatte dei valori degli attributi.
+&nbsp;        //Tramite questo for a ciascuna posizione contenuta nell&#39;ArrayList sostituisco il riferimento al corrispondente vero oggetto TilePositionBoard della Board.
+<b class="fc">&nbsp;        for (int i = 0; i &lt; tilesToRemove.size() ; i++) {</b>
+<b class="fc">&nbsp;            for (int j = 0; j &lt; this.placements.size(); j++) {</b>
+<b class="fc">&nbsp;                if (tilesToRemove.get(i).equals(placements.get(j))) {  //rivedere questo if</b>
+<b class="fc">&nbsp;                    tilesToRemove.remove(tilesToRemove.get(i));</b>
+<b class="fc">&nbsp;                    tilesToRemove.add(placements.get(j));</b>
+&nbsp;                }
+&nbsp;            }
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        for(TilePositionBoard boardPosition : tilesToRemove){</b>
+<b class="fc">&nbsp;            tilesCounter++;</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;
+<b class="fc">&nbsp;        for(TilePositionBoard posToRemove : tilesToRemove){</b>
+<b class="fc">&nbsp;            if(!isABoardPosition(posToRemove)){</b>
+<b class="fc">&nbsp;                throw new BoardDoesNotContainThisPositionException(posToRemove.getX(), posToRemove.getY());</b>
+&nbsp;            }
+<b class="fc">&nbsp;            if(!tileIsRemovable(posToRemove)){</b>
+<b class="fc">&nbsp;                throw new TilesAreNotRemovableException();</b>
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+&nbsp;
+&nbsp;        //Se il numero di tessere contenute nell&#39;ArrayList passato come parametro è 0 oppure &gt;3 allora restituisce errore.
+&nbsp;        //Da regole di gioco: è solo possibile prelevare da 1 a 3 tessere.
+<b class="fc">&nbsp;        if (tilesCounter &lt; 1 || tilesCounter &gt; 3) {</b>
+<b class="fc">&nbsp;            throw new WrongNumberOfTilesException(tilesCounter);</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        if (!arePositionsDifferentFromEachOther(tilesToRemove)) {</b>
+<b class="fc">&nbsp;            throw new DuplicatesInRequestedTilesException();</b>
+&nbsp;        }
+&nbsp;        
+&nbsp;        //Verifica se le posizioni passate sono tutte sulla stessa riga (uguale x) o tutte sulla stessa colonna (uguale y).
+<b class="fc">&nbsp;        if(!(tilesAreInSameLine(tilesToRemove) || tilesAreInSameColumn(tilesToRemove))){</b>
+<b class="fc">&nbsp;            throw new TilesAreNotRemovableException();</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        //Rimuove ciascun TileObj dalla corrispondente TilePositionBoard in board. Infine il metodo restituisce questi TileObj rimossi.
+<b class="fc">&nbsp;        for(TilePositionBoard boardPosition : tilesToRemove){</b>
+<b class="fc">&nbsp;            TilesRemoved.add(boardPosition.removeTile());</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;
+<b class="fc">&nbsp;        return TilesRemoved;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public boolean tilesAreInSameLine(ArrayList&lt;TilePositionBoard&gt; extTilesPos){
+<b class="fc">&nbsp;        for(int i=0; i &lt; extTilesPos.size()-1; i++){</b>
+<b class="fc">&nbsp;            TilePositionBoard currentTile = extTilesPos.get(i);</b>
+<b class="fc">&nbsp;            TilePositionBoard nextTile = extTilesPos.get(i+1);</b>
+&nbsp;
+<b class="fc">&nbsp;            if(!(nextTile.getX() == currentTile.getX() &amp;&amp;</b>
+<b class="fc">&nbsp;                    ((nextTile.getY() == currentTile.getY()-1) || (nextTile.getY() == currentTile.getY()+1)))){</b>
+<b class="fc">&nbsp;                return false;</b>
+&nbsp;            }
+&nbsp;        }
+<b class="fc">&nbsp;        return  true;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean tilesAreInSameColumn(ArrayList&lt;TilePositionBoard&gt; extTilesPos){
+<b class="fc">&nbsp;        for(int i=0; i &lt; extTilesPos.size()-1; i++){</b>
+<b class="fc">&nbsp;            TilePositionBoard currentTile = extTilesPos.get(i);</b>
+<b class="fc">&nbsp;            TilePositionBoard nextTile = extTilesPos.get(i+1);</b>
+&nbsp;
+<b class="fc">&nbsp;            if(!(nextTile.getY() == currentTile.getY() &amp;&amp;</b>
+<b class="fc">&nbsp;                    ((nextTile.getX() == currentTile.getX()-1) || (nextTile.getX() == currentTile.getX()+1)))){</b>
+<b class="fc">&nbsp;                return false;</b>
+&nbsp;            }
+&nbsp;        }
+<b class="fc">&nbsp;        return  true;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean isABoardPosition(TilePositionBoard pos){
+<b class="fc">&nbsp;        int x = pos.getX();</b>
+<b class="fc">&nbsp;        int y = pos.getY();</b>
+&nbsp;
+<b class="fc">&nbsp;        for(TilePositionBoard t : this.placements){</b>
+<b class="fc">&nbsp;            if(t.getX() == x &amp;&amp; t.getY() == y){</b>
+<b class="fc">&nbsp;                return true;</b>
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean arePositionsDifferentFromEachOther(ArrayList&lt;TilePositionBoard&gt; tpb){
+<b class="fc">&nbsp;        for(int i=0; i&lt;tpb.size()-1; i++){</b>
+<b class="fc">&nbsp;            for(int j=i+1; j&lt;tpb.size(); j++){</b>
+<b class="fc">&nbsp;                if(tpb.get(i).equals(tpb.get(j))){</b>
+<b class="fc">&nbsp;                    return false;</b>
+&nbsp;                }
+&nbsp;            }
+&nbsp;        }
+<b class="fc">&nbsp;        return true;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public boolean boardIsEmpty(){
+<b class="fc">&nbsp;        for(TilePositionBoard t : this.placements){</b>
+<b class="fc">&nbsp;            if(t.isOccupied()){</b>
+<b class="fc">&nbsp;                return false;</b>
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        return true;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    //La Board va ripristinata in due casi: se contiene solo tessere isolate, oppure se non contiene alcuna tessera.
+&nbsp;    public boolean boardNeedsRestore(){
+&nbsp;        int x,y;
+&nbsp;
+<b class="fc">&nbsp;        if(boardIsEmpty()){</b>
+<b class="fc">&nbsp;            return true;</b>
+&nbsp;        }
+&nbsp;        
+<b class="fc">&nbsp;        for(TilePositionBoard t : this.placements) {</b>
+<b class="fc">&nbsp;            if(t.isOccupied()){</b>
+<b class="fc">&nbsp;                x = t.getX();</b>
+<b class="fc">&nbsp;                y = t.getY();</b>
+<b class="fc">&nbsp;                for (TilePositionBoard item : placements) {</b>
+<b class="fc">&nbsp;                    if ((item.getX() == x &amp;&amp; (item.getY() == y - 1 || item.getY() == y + 1)) || ((item.getX() == x - 1 || item.getX() == x + 1) &amp;&amp; item.getY() == y)) {</b>
+<b class="fc">&nbsp;                        if (item.isOccupied()) {</b>
+<b class="fc">&nbsp;                            return false;</b>
+&nbsp;                        }
+&nbsp;                    }
+<b class="fc">&nbsp;                }</b>
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        return true;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void restoreBoard(){
+<b class="fc">&nbsp;        if(boardNeedsRestore()){</b>
+<b class="fc">&nbsp;            addTiles();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    //.debug
+&nbsp;    //Nuke Board-ton. Use carefully!
+&nbsp;    public void initializeBoard(){
+<b class="fc">&nbsp;        for(TilePositionBoard tp : placements){</b>
+&nbsp;            try{
+<b class="fc">&nbsp;                tp.removeTile();</b>
+<b class="fc">&nbsp;            } catch(PositionEmptyException e){</b>
+<b class="fc">&nbsp;                continue;</b>
+<b class="fc">&nbsp;            }</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    //.debug
+&nbsp;    public void printTilePositionBoard(ArrayList&lt;TilePositionBoard&gt; board) {
+<b class="fc">&nbsp;        if (board == null) {</b>
+<b class="nc">&nbsp;            board = this.placements;</b>
+&nbsp;        }
+&nbsp;        // Trova le dimensioni massime della matrice
+<b class="fc">&nbsp;        int maxX = 0;</b>
+<b class="fc">&nbsp;        int maxY = 0;</b>
+<b class="fc">&nbsp;        for (TilePositionBoard tile : board) {</b>
+<b class="fc">&nbsp;            if (tile.getX() &gt; maxX)</b>
+<b class="fc">&nbsp;                maxX = tile.getX();</b>
+<b class="fc">&nbsp;            if (tile.getY() &gt; maxY)</b>
+<b class="fc">&nbsp;                maxY = tile.getY();</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;
+&nbsp;        // Crea la matrice 2D
+<b class="fc">&nbsp;        TilePositionBoard[][] matrix = new TilePositionBoard[maxX + 1][maxY + 1];</b>
+<b class="fc">&nbsp;        for (TilePositionBoard tile : board) {</b>
+<b class="fc">&nbsp;            matrix[tile.getX()][tile.getY()] = tile;</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;
+&nbsp;        // Stampa la matrice 2D
+<b class="fc">&nbsp;        for (int y = 0; y &lt;= maxY; y++) {</b>
+<b class="fc">&nbsp;            for (int x = 0; x &lt;= maxX; x++) {</b>
+<b class="fc">&nbsp;                TilePositionBoard tile = matrix[x][y];</b>
+<b class="fc">&nbsp;                if (tile != null) {</b>
+<b class="fc">&nbsp;                    System.out.print(tile + &quot; &quot;);</b>
+&nbsp;                } else {
+&nbsp;                    // Stampa uno spazio vuoto
+<b class="fc">&nbsp;                    System.out.print(&quot;- &quot;);</b>
+&nbsp;                }
+&nbsp;            }
+<b class="fc">&nbsp;            System.out.println();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-28 23:19</div>
+</div>
+</body>
+</html>

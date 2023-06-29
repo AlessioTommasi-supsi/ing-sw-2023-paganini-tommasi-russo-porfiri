@@ -1,0 +1,170 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > GameThreePlayers</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.project.ingsw2023PaganiniTommasiRussoPorfiri.model</a>
+</div>
+
+<h1>Coverage Summary for Class: GameThreePlayers (org.project.ingsw2023PaganiniTommasiRussoPorfiri.model)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">GameThreePlayers</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (2/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    34,4%
+  </span>
+  <span class="absValue">
+    (11/32)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.project.ingsw2023PaganiniTommasiRussoPorfiri.model;
+&nbsp;
+&nbsp;import java.io.Serializable;
+&nbsp;import java.util.ArrayList;
+&nbsp;
+&nbsp;public class GameThreePlayers extends Game implements Serializable {
+&nbsp;    public GameThreePlayers(int playerNumber, Player dealer){
+<b class="fc">&nbsp;        super(playerNumber, dealer);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void buildBoard() {
+<b class="fc">&nbsp;        ArrayList&lt;TilePositionBoard&gt; tempP = new ArrayList&lt;TilePositionBoard&gt;();</b>
+<b class="fc">&nbsp;        tempP.add(new TilePositionBoard(0,5));</b>
+<b class="fc">&nbsp;        tempP.add(new TilePositionBoard(2,2));</b>
+<b class="fc">&nbsp;        tempP.add(new TilePositionBoard(2,6));</b>
+<b class="fc">&nbsp;        tempP.add(new TilePositionBoard(3,0));</b>
+<b class="fc">&nbsp;        tempP.add(new TilePositionBoard(5,8));</b>
+<b class="fc">&nbsp;        tempP.add(new TilePositionBoard(6,2));</b>
+<b class="fc">&nbsp;        tempP.add(new TilePositionBoard(6,6));</b>
+<b class="fc">&nbsp;        tempP.add(new TilePositionBoard(8,3));</b>
+&nbsp;
+<b class="fc">&nbsp;        setBoard(tempP);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void defineCommonCardScores(){
+<b class="nc">&nbsp;        int[] tempScores = new int[4];</b>
+<b class="nc">&nbsp;        tempScores[0] = 0;</b>
+<b class="nc">&nbsp;        for (int i = 1; i &lt; 5; i++) {</b>
+<b class="nc">&nbsp;            tempScores[i] = (i+1)*2;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        setCommonCardScores(tempScores);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void updatePointsCommon() {
+<b class="nc">&nbsp;        int pointsToSub = 2;  //punti da sottrarre a ogni completamento</b>
+<b class="nc">&nbsp;        CommonCard cc1 = this.getCommon1();</b>
+<b class="nc">&nbsp;        CommonCard cc2 = this.getCommon2();</b>
+<b class="nc">&nbsp;        Player currentPlayer = this.getCurrentPlayer();</b>
+&nbsp;        //se il player non ha ancora completato la commonCard
+<b class="nc">&nbsp;        if (!(currentPlayer.isCommonCard1Completed())) {</b>
+&nbsp;            //se il player completa l&#39;obiettivo aggiungi i punti altrimenti no
+<b class="nc">&nbsp;            if (cc1.executeAlgorithm(currentPlayer)) {</b>
+<b class="nc">&nbsp;                if (cc1.getScore()&gt;=4){</b>
+<b class="nc">&nbsp;                    currentPlayer.setScore(currentPlayer.getScore() + cc1.getScore());   //aggiorna i punti</b>
+<b class="nc">&nbsp;                    cc1.setScore(cc1.getScore() - pointsToSub); // sottrai i punti</b>
+<b class="nc">&nbsp;                    currentPlayer.setCommonCard1Completed(true);</b>
+&nbsp;                }
+&nbsp;
+&nbsp;            }
+&nbsp;        }
+<b class="nc">&nbsp;        if (!currentPlayer.isCommonCard2Completed()) {</b>
+<b class="nc">&nbsp;            if (cc2.executeAlgorithm(currentPlayer)) {</b>
+<b class="nc">&nbsp;                if (cc2.getScore()&gt;=4){</b>
+<b class="nc">&nbsp;                    currentPlayer.setScore(currentPlayer.getScore() + cc2.getScore());</b>
+<b class="nc">&nbsp;                    cc2.setScore(cc2.getScore() - pointsToSub);</b>
+<b class="nc">&nbsp;                    currentPlayer.setCommonCard2Completed(true);</b>
+&nbsp;                }
+&nbsp;            }
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-28 23:19</div>
+</div>
+</body>
+</html>

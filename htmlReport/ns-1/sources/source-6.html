@@ -1,0 +1,560 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > HelloController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.project.ingsw2023PaganiniTommasiRussoPorfiri</a>
+</div>
+
+<h1>Coverage Summary for Class: HelloController (org.project.ingsw2023PaganiniTommasiRussoPorfiri)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">HelloController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/14)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/150)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.project.ingsw2023PaganiniTommasiRussoPorfiri;
+&nbsp;
+&nbsp;import javafx.event.ActionEvent;
+&nbsp;import javafx.fxml.FXML;
+&nbsp;import javafx.scene.control.*;
+&nbsp;import javafx.scene.image.ImageView;
+&nbsp;import javafx.scene.input.KeyCode;
+&nbsp;import javafx.scene.layout.Pane;
+&nbsp;import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.TilePositionBoard;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.function.UnaryOperator;
+&nbsp;
+<b class="nc">&nbsp;public class HelloController {</b>
+&nbsp;    @FXML
+&nbsp;    private Pane mainPane;
+&nbsp;    @FXML
+&nbsp;    Pane loginPane;
+&nbsp;    @FXML
+&nbsp;    private Label welcomeText;
+&nbsp;    @FXML
+&nbsp;    private TextField choiceX1TextField;
+&nbsp;    @FXML
+&nbsp;    private TextField choiceY1TextField;
+&nbsp;    @FXML
+&nbsp;    private TextField choiceX2TextField;
+&nbsp;    @FXML
+&nbsp;    private TextField choiceY2TextField;
+&nbsp;    @FXML
+&nbsp;    private TextField choiceX3TextField;
+&nbsp;    @FXML
+&nbsp;    private TextField choiceY3TextField;
+&nbsp;    @FXML
+&nbsp;    private TextField choiceOrder1TextField;
+&nbsp;    @FXML
+&nbsp;    private TextField choiceOrder2TextField;
+&nbsp;    @FXML
+&nbsp;    private TextField choiceOrder3TextField;
+&nbsp;    @FXML
+&nbsp;    private TextField choiceShelfColumnNumTextField;
+&nbsp;    @FXML
+&nbsp;    private TextField playerNumberTextField;
+&nbsp;    @FXML
+&nbsp;    private Spinner choiceNumTileSpinner;
+&nbsp;    @FXML
+&nbsp;    private Button joinGameButton;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR0C4;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR0C5;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR1C3;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR1C4;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR1C5;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR2C2;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR2C3;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR2C4;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR2C5;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR2C6;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR3C0;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR3C1;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR3C2;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR3C3;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR3C4;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR3C5;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR3C6;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR3C7;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR4C0;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR4C1;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR4C2;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR4C3;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR4C4;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR4C5;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR4C6;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR4C7;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR4C8;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR5C1;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR5C2;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR5C3;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR5C4;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR5C5;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR5C6;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR5C7;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR5C8;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR6C2;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR6C3;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR6C4;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR6C5;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR6C6;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR7C3;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR7C4;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR7C5;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR8C3;
+&nbsp;    @FXML
+&nbsp;    ImageView boardR8C4;
+&nbsp;
+<b class="nc">&nbsp;    ArrayList&lt;TextFormatter&lt;String&gt;&gt; textFormattersList1 = new ArrayList&lt;&gt;();</b>
+<b class="nc">&nbsp;    ArrayList&lt;TextFormatter&lt;String&gt;&gt; textFormattersList2 = new ArrayList&lt;&gt;();</b>
+&nbsp;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    protected void onHelloButtonClick() {
+<b class="nc">&nbsp;        welcomeText.setText(&quot;Welcome to JavaFX Application!&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void hideLoginPane(ActionEvent actionEvent) {
+<b class="nc">&nbsp;        loginPane.setVisible(false);</b>
+<b class="nc">&nbsp;        loginPane.setMouseTransparent(true);</b>
+&nbsp;        //loginPane.setDisable(true);
+&nbsp;    }
+&nbsp;    public void hideSecondSetOfCoordinates(){
+<b class="nc">&nbsp;        choiceX2TextField.setVisible(false);</b>
+<b class="nc">&nbsp;        choiceY2TextField.setMouseTransparent(true);</b>
+&nbsp;    }
+&nbsp;    public void hideThirdSetOfCoordinates(){
+<b class="nc">&nbsp;        choiceX3TextField.setVisible(false);</b>
+<b class="nc">&nbsp;        choiceY3TextField.setMouseTransparent(true);</b>
+&nbsp;    }
+&nbsp;    public void hideSecondInsertionOrderField(){
+<b class="nc">&nbsp;        choiceOrder2TextField.setVisible(false);</b>
+<b class="nc">&nbsp;        choiceOrder2TextField.setMouseTransparent(true);</b>
+&nbsp;    }
+&nbsp;    public void hideThirdInsertionOrderField(){
+<b class="nc">&nbsp;        choiceOrder3TextField.setVisible(false);</b>
+<b class="nc">&nbsp;        choiceOrder3TextField.setMouseTransparent(true);</b>
+&nbsp;    }
+&nbsp;    /*public void verifyLoginInformationAdded(){
+&nbsp;        if()
+&nbsp;    }*/
+&nbsp;
+&nbsp;    public void updateBoard(ArrayList&lt;TilePositionBoard&gt; tilePositionBoards) {
+&nbsp;        // TODO
+<b class="nc">&nbsp;        for (int i = 0; i &lt; tilePositionBoards.size() &amp;&amp; tilePositionBoards.get(i).isOccupied(); i++) {</b>
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(0, 4)) {</b>
+<b class="nc">&nbsp;                boardR0C4.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(0, 5)) {</b>
+<b class="nc">&nbsp;                boardR0C5.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(1, 3)) {</b>
+<b class="nc">&nbsp;                boardR1C3.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(1, 4)) {</b>
+<b class="nc">&nbsp;                boardR1C4.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(1, 5)) {</b>
+<b class="nc">&nbsp;                boardR1C5.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(2, 2)) {</b>
+<b class="nc">&nbsp;                boardR2C2.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(2, 3)) {</b>
+<b class="nc">&nbsp;                boardR2C3.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(2, 4)) {</b>
+<b class="nc">&nbsp;                boardR2C4.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(2, 5)) {</b>
+<b class="nc">&nbsp;                boardR2C5.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(2, 6)) {</b>
+<b class="nc">&nbsp;                boardR2C6.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(3, 0)) {</b>
+<b class="nc">&nbsp;                boardR3C0.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(3, 1)) {</b>
+<b class="nc">&nbsp;                boardR3C1.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(3, 2)) {</b>
+<b class="nc">&nbsp;                boardR3C2.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(3, 3)) {</b>
+<b class="nc">&nbsp;                boardR3C3.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(3, 4)) {</b>
+<b class="nc">&nbsp;                boardR3C4.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(3, 5)) {</b>
+<b class="nc">&nbsp;                boardR3C5.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(3, 6)) {</b>
+<b class="nc">&nbsp;                boardR3C6.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(3, 7)) {</b>
+<b class="nc">&nbsp;                boardR3C7.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(4, 0)) {</b>
+<b class="nc">&nbsp;                boardR4C0.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(4, 1)) {</b>
+<b class="nc">&nbsp;                boardR4C1.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(4, 2)) {</b>
+<b class="nc">&nbsp;                boardR4C2.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(4, 3)) {</b>
+<b class="nc">&nbsp;                boardR4C3.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(4, 4)) {</b>
+<b class="nc">&nbsp;                boardR4C4.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(4, 5)) {</b>
+<b class="nc">&nbsp;                boardR4C5.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(4, 6)) {</b>
+<b class="nc">&nbsp;                boardR4C6.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(4, 7)) {</b>
+<b class="nc">&nbsp;                boardR4C7.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(4, 8)) {</b>
+<b class="nc">&nbsp;                boardR4C8.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(5, 1)) {</b>
+<b class="nc">&nbsp;                boardR5C1.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(5, 2)) {</b>
+<b class="nc">&nbsp;                boardR5C2.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(5, 3)) {</b>
+<b class="nc">&nbsp;                boardR5C3.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(5, 4)) {</b>
+<b class="nc">&nbsp;                boardR5C4.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(5, 5)) {</b>
+<b class="nc">&nbsp;                boardR5C5.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(5, 6)) {</b>
+<b class="nc">&nbsp;                boardR5C6.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(5, 7)) {</b>
+<b class="nc">&nbsp;                boardR5C7.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(5, 8)) {</b>
+<b class="nc">&nbsp;                boardR5C8.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(6, 2)) {</b>
+<b class="nc">&nbsp;                boardR6C2.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(6, 3)) {</b>
+<b class="nc">&nbsp;                boardR6C3.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(6, 4)) {</b>
+<b class="nc">&nbsp;                boardR6C4.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(6, 5)) {</b>
+<b class="nc">&nbsp;                boardR6C5.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(6, 6)) {</b>
+<b class="nc">&nbsp;                boardR6C6.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(7, 3)) {</b>
+<b class="nc">&nbsp;                boardR7C3.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(7, 4)) {</b>
+<b class="nc">&nbsp;                boardR7C4.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(7, 5)) {</b>
+<b class="nc">&nbsp;                boardR7C5.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(8, 3)) {</b>
+<b class="nc">&nbsp;                boardR8C3.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (tilePositionBoards.get(i).isMe(8, 4)) {</b>
+<b class="nc">&nbsp;                boardR8C4.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot; + tilePositionBoards.get(i).getTile().getType().getName() + &quot;&quot; + tilePositionBoards.get(i).getTile().getVariant().getNumber() + &quot;.png&quot;));</b>
+&nbsp;            }
+&nbsp;        }
+&nbsp;        //boardR1C3.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/Gatti1.1.png&quot;));
+&nbsp;        //boardR1C3.setImage(new javafx.scene.image.Image(&quot;file:src/main/resources/GraphicResources/itemTiles/&quot;+tilePositionBoards.get(0).getTile().getType().getName()+&quot;&quot;+tilePositionBoards.get(0).getTile().getVariant().getNumber()+&quot;.png&quot;));
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private void initialize() {
+&nbsp;        // Operatore unario per limitare l&#39;input ai numeri interi positivi di lunghezza == 1 oppure il backspace
+<b class="nc">&nbsp;        UnaryOperator&lt;TextFormatter.Change&gt; integerFilterXY = change -&gt; {</b>
+<b class="nc">&nbsp;            String newText = change.getControlNewText();</b>
+<b class="nc">&nbsp;            if ((newText.matches(&quot;\\d*&quot;) &amp;&amp; newText.length() == 1 &amp;&amp; Integer.valueOf(newText) &gt;= 0 &amp;&amp; Integer.valueOf(newText) &lt;= 8) || newText.isEmpty()) {</b>
+<b class="nc">&nbsp;                return change;</b>
+&nbsp;            }
+<b class="nc">&nbsp;            return null;</b>
+&nbsp;        };
+&nbsp;
+&nbsp;        //Creazione dei TextFormatter&lt;String&gt;
+<b class="nc">&nbsp;        for (int i = 0; i &lt; 6; i++) {</b>
+<b class="nc">&nbsp;            TextFormatter&lt;String&gt; textFormatter = new TextFormatter&lt;&gt;(integerFilterXY);</b>
+<b class="nc">&nbsp;            textFormattersList1.add(textFormatter);</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        //Applicazione di ciascun TextFormatter a ciascun TextField che deve rispettare la caratteristica sopra
+<b class="nc">&nbsp;        choiceX1TextField.setTextFormatter(textFormattersList1.get(0));</b>
+<b class="nc">&nbsp;        choiceY1TextField.setTextFormatter(textFormattersList1.get(1));</b>
+<b class="nc">&nbsp;        choiceX2TextField.setTextFormatter(textFormattersList1.get(2));</b>
+<b class="nc">&nbsp;        choiceY2TextField.setTextFormatter(textFormattersList1.get(3));</b>
+<b class="nc">&nbsp;        choiceX3TextField.setTextFormatter(textFormattersList1.get(4));</b>
+<b class="nc">&nbsp;        choiceY3TextField.setTextFormatter(textFormattersList1.get(5));</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        UnaryOperator&lt;TextFormatter.Change&gt; integerFilterChoiceOrder = change -&gt; {</b>
+<b class="nc">&nbsp;            String newText = change.getControlNewText();</b>
+<b class="nc">&nbsp;            if ((newText.matches(&quot;\\d*&quot;) &amp;&amp; newText.length() == 1 &amp;&amp; Integer.valueOf(newText) &gt;= 1 &amp;&amp; Integer.valueOf(newText) &lt;=3) || newText.isEmpty()) {</b>
+<b class="nc">&nbsp;                return change;</b>
+&nbsp;            }
+<b class="nc">&nbsp;            return null;</b>
+&nbsp;        };
+&nbsp;
+<b class="nc">&nbsp;        for (int i = 0; i &lt; 3; i++) {</b>
+<b class="nc">&nbsp;            TextFormatter&lt;String&gt; textFormatter = new TextFormatter&lt;&gt;(integerFilterChoiceOrder);</b>
+<b class="nc">&nbsp;            textFormattersList2.add(textFormatter);</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        choiceOrder1TextField.setTextFormatter(textFormattersList2.get(0));</b>
+<b class="nc">&nbsp;        choiceOrder2TextField.setTextFormatter(textFormattersList2.get(1));</b>
+<b class="nc">&nbsp;        choiceOrder3TextField.setTextFormatter(textFormattersList2.get(2));</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        UnaryOperator&lt;TextFormatter.Change&gt; integerFilterColumn = change -&gt; {</b>
+<b class="nc">&nbsp;            String newText = change.getControlNewText();</b>
+<b class="nc">&nbsp;            if ((newText.matches(&quot;\\d*&quot;) &amp;&amp; newText.length() == 1 &amp;&amp; Integer.valueOf(newText) &gt;= 0 &amp;&amp; Integer.valueOf(newText) &lt;= 4) || newText.isEmpty()) {</b>
+<b class="nc">&nbsp;                return change;</b>
+&nbsp;            }
+<b class="nc">&nbsp;            return null;</b>
+&nbsp;        };
+&nbsp;
+<b class="nc">&nbsp;        TextFormatter&lt;String&gt; textFormatterColumn = new TextFormatter&lt;&gt;(integerFilterColumn);</b>
+<b class="nc">&nbsp;        choiceShelfColumnNumTextField.setTextFormatter(textFormatterColumn);</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        UnaryOperator&lt;TextFormatter.Change&gt; integerFilterPlayerNum = change -&gt; {</b>
+<b class="nc">&nbsp;            String newText = change.getControlNewText();</b>
+<b class="nc">&nbsp;            if ((newText.matches(&quot;\\d*&quot;) &amp;&amp; newText.length() == 1 &amp;&amp; Integer.valueOf(newText) &gt;= 2 &amp;&amp; Integer.valueOf(newText) &lt;= 4) || newText.isEmpty()) {</b>
+<b class="nc">&nbsp;                return change;</b>
+&nbsp;            }
+<b class="nc">&nbsp;            return null;</b>
+&nbsp;        };
+&nbsp;
+<b class="nc">&nbsp;        TextFormatter&lt;String&gt; textFormatterPlayer = new TextFormatter&lt;&gt;(integerFilterPlayerNum);</b>
+<b class="nc">&nbsp;        playerNumberTextField.setTextFormatter(textFormatterPlayer);</b>
+&nbsp;
+&nbsp;        //Proprietà dello Spinner
+<b class="nc">&nbsp;        SpinnerValueFactory&lt;Integer&gt; valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 3);</b>
+<b class="nc">&nbsp;        choiceNumTileSpinner.setValueFactory(valueFactory);</b>
+<b class="nc">&nbsp;        choiceNumTileSpinner.setEditable(false);</b>
+&nbsp;
+&nbsp;        //Pressione invio comporta pressione joinGameButton
+<b class="nc">&nbsp;        loginPane.setOnKeyPressed(event -&gt; {</b>
+<b class="nc">&nbsp;            if (event.getCode() == KeyCode.ENTER) {</b>
+<b class="nc">&nbsp;                joinGameButton.fire(); // Simula un click sul Button</b>
+&nbsp;            }
+&nbsp;        });
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /*
+&nbsp;    public void initialize(URL location, ResourceBundle resources) {
+&nbsp;        // Esempio di ridimensionamento del Pane dopo 5 secondi
+&nbsp;        PauseTransition delay = new PauseTransition(Duration.seconds(2));
+&nbsp;        delay.setOnFinished(event -&gt; {
+&nbsp;            mainPane.setPrefWidth(1280);
+&nbsp;            mainPane.setPrefHeight(720);
+&nbsp;        });
+&nbsp;        delay.play();
+&nbsp;    }*/
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-28 23:19</div>
+</div>
+</body>
+</html>
