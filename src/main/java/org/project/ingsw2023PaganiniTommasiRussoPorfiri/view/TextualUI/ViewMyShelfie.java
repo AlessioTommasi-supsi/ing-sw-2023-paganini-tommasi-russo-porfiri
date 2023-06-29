@@ -675,6 +675,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
 
                         this.controller.updateBoard(this.currentGame.getBoard().getPlacements());
                         this.controller.updateShelves(this.currentGame.getPlayers());
+                        this.controller.UpdateCommonPoints(this.currentGame.getCommon1(), this.getCurrentGame().getCommon2());
                         //se e il mio turno attivo il bottone send inoltre verifico che non ho gia pescato
 
                     }
