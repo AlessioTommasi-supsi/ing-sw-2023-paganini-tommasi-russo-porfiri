@@ -1,6 +1,6 @@
 # Software engineering project
 
-Made by group 28, composed of: Alessio, Emanuele, Mattia, Giampiero. 
+Made by group 28, composed of: Alessio, Emanuele, Mattia, Giampiero. <br>
 This project is the final test for the Software Engineering course of Computer Science Engineering at the Polytechnic of Milan.
 ---
 ![Title](https://user-images.githubusercontent.com/126590912/237023835-855ab60b-0444-4b1a-87fa-f940cd771a04.png)
