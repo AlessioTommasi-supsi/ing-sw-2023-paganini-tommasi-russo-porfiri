@@ -100,6 +100,9 @@ public class GameTest {
         game1.setCommon1(common);
         game2.setCommon1(common);
         game3.setCommon1(common);
+        game1.setCurrentPlayer(player);
+        game2.setCurrentPlayer(player);
+        game3.setCurrentPlayer(player);
         game1.updatePointsCommon();
         game2.updatePointsCommon();
         game3.updatePointsCommon();
