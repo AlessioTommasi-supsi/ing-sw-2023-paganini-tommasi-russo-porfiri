@@ -454,6 +454,11 @@
                                                         <Image url="@../../../GraphicResources/plainBackgrounds/d2b48c.png" />
                                                     </image>
                                                 </ImageView>
+                                    <ImageView fx:id="invisibleCat3P" fitHeight="150.0" fitWidth="200.0" layoutX="51.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../../GraphicResources/cat/cat-897x1024-left.png" />
+                                       </image>
+                                    </ImageView>
                                                 <ImageView id="shelf3ImageView" fx:id="shelf3ImageView" fitHeight="176.0" fitWidth="233.6" layoutY="14.0" pickOnBounds="true">
                                                     <image>
                                                         <Image url="@../../../GraphicResources/boards/bookshelf.png" />
@@ -546,6 +551,11 @@
                                                         <Image url="@../../../GraphicResources/plainBackgrounds/d2b48c.png" />
                                                     </image>
                                                 </ImageView>
+                                    <ImageView fx:id="invisibleCat4P" fitHeight="150.0" fitWidth="200.0" layoutX="51.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../../GraphicResources/cat/cat-897x1024.png" />
+                                       </image>
+                                    </ImageView>
                                                 <ImageView id="shelf4ImageView" fx:id="shelf4ImageView" fitHeight="176.0" fitWidth="233.6" layoutY="14.0" pickOnBounds="true">
                                                     <image>
                                                         <Image url="@../../../GraphicResources/boards/bookshelf.png" />

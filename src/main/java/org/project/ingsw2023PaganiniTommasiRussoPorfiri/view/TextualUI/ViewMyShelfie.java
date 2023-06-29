@@ -683,7 +683,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                 this.controller.updateBoard(this.currentGame.getBoard().getPlacements());
 
                 this.controller.setEnableSendButton(this.currentGame.getCurrentPlayer().getUsername().equals(this.player.getUsername()));
-
+                this.controller.UpdateCommonPoints(this.currentGame.getCommon1(), this.getCurrentGame().getCommon2());
                 this.controller.initShelves(this.currentGame.getPlayers());
 
                 //.DEBUG
@@ -706,10 +706,9 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                 try {
                     if (this.currentGame != null) {
                         this.controller.setEnableSendButton(this.currentGame.getCurrentPlayer().getUsername().equals(this.player.getUsername()));
-
+                        this.controller.UpdateCommonPoints(this.currentGame.getCommon1(), this.getCurrentGame().getCommon2());
                         this.controller.updateBoard(this.currentGame.getBoard().getPlacements());
                         this.controller.updateShelves(this.currentGame.getPlayers());
-                        this.controller.UpdateCommonPoints(this.currentGame.getCommon1(), this.getCurrentGame().getCommon2());
                         //se e il mio turno attivo il bottone send inoltre verifico che non ho gia pescato
 
                     }

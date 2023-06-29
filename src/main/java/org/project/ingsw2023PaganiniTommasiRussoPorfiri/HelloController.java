@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -416,9 +417,41 @@ public class HelloController {
 
     @FXML
     private ImageView shelf3ImageView;
-
+    @FXML
+    private GridPane shelf3GridPane;
+    @FXML
+    private Text col0Shelf3;
+    @FXML
+    private Text col1Shelf3;
+    @FXML
+    private Text col2Shelf3;
+    @FXML
+    private Text col3Shelf3;
+    @FXML
+    private Text col4Shelf3;
     @FXML
     private ImageView shelf4ImageView;
+    @FXML
+    private GridPane shelf4GridPane;
+    @FXML
+    private Text col0Shelf4;
+    @FXML
+    private Text col1Shelf4;
+    @FXML
+    private Text col2Shelf4;
+    @FXML
+    private Text col3Shelf4;
+    @FXML
+    private Text col4Shelf4;
+    @FXML
+    private ImageView invisibleCat3P;
+    @FXML
+    private ImageView invisibleCat4P;
+
+
+
+
+
 
 
 
@@ -864,15 +897,46 @@ public class HelloController {
             switch (players.size()) {
                 case 2:
                     shelf3ImageView.setVisible(false);
+                    String imagePath3 = "file:src/main/resources/GraphicResources/cat/cat-897x1024-left.png";
+                    invisibleCat3P.setImage(new javafx.scene.image.Image(imagePath3));
+                    invisibleCat3P.setVisible(true);
+                    shelf3GridPane.setVisible(false);
+                    col0Shelf3.setVisible(false);
+                    col1Shelf3.setVisible(false);
+                    col2Shelf3.setVisible(false);
+                    col3Shelf3.setVisible(false);
+                    col4Shelf3.setVisible(false);
+
                     shelf4ImageView.setVisible(false);
-                    shp3Text.setText("");
-                    shp4Text.setText("");
+                    String imagePath4 = "file:src/main/resources/GraphicResources/cat/cat-897x1024.png";
+                    invisibleCat4P.setImage(new javafx.scene.image.Image(imagePath4));
+                    invisibleCat4P.setVisible(true);
+                    shelf4GridPane.setVisible(false);
+                    col0Shelf4.setVisible(false);
+                    col1Shelf4.setVisible(false);
+                    col2Shelf4.setVisible(false);
+                    col3Shelf4.setVisible(false);
+                    col4Shelf4.setVisible(false);
+                    shp3Text.setText("[Only two players]");
+                    shp4Text.setText("[Only two players]");
                 break;
+
                 case 3:
                     shp3Text.setText(players.get(2).getUsername());
+
                     shelf4ImageView.setVisible(false);
-                    shp4Text.setText("");
+                    String imagePath5 = "file:src/main/resources/GraphicResources/cat/cat-897x1024.png";
+                    invisibleCat4P.setImage(new javafx.scene.image.Image(imagePath5));
+                    invisibleCat4P.setVisible(true);
+                    shelf4GridPane.setVisible(false);
+                    col0Shelf4.setVisible(false);
+                    col1Shelf4.setVisible(false);
+                    col2Shelf4.setVisible(false);
+                    col3Shelf4.setVisible(false);
+                    col4Shelf4.setVisible(false);
+                    shp4Text.setText("[Only three players]");
                 break;
+
                 case 4:
                     shp3Text.setText(players.get(2).getUsername());
                     shp4Text.setText(players.get(3).getUsername());
