@@ -1,0 +1,371 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > GameGUI</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.SwingUI</a>
+</div>
+
+<h1>Coverage Summary for Class: GameGUI (org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.SwingUI)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">GameGUI</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/123)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.SwingUI;
+&nbsp;
+&nbsp;import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.SwingUI.custom.*;
+&nbsp;import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.SwingUI.custom.CustomPanel;
+&nbsp;
+&nbsp;import javax.swing.*;
+&nbsp;import java.awt.*;
+&nbsp;
+&nbsp;public class GameGUI extends JFrame {
+&nbsp;    private CustomPanel board;
+&nbsp;    private CustomPanel myShelf;
+&nbsp;    private CustomPanel othersShelves;
+&nbsp;    private CustomPanel commonCards;
+&nbsp;    private CustomPanel personalCard;
+&nbsp;    private CustomPanel controlPanel;
+&nbsp;
+&nbsp;    private JLabel imageLabel1;
+&nbsp;    private JLabel imageLabel2;
+&nbsp;    private JLabel imageLabel3;
+&nbsp;    private JLabel imageLabel4;
+&nbsp;    private JLabel imageLabel5;
+&nbsp;    private JLabel imageLabel6;
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;    public GameGUI() {</b>
+<b class="nc">&nbsp;        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);</b>
+<b class="nc">&nbsp;        setLayout(new GridBagLayout());</b>
+&nbsp;
+&nbsp;        // Crea un oggetto GridBagConstraints per impostare le proprietà di posizionamento dei componenti
+<b class="nc">&nbsp;        GridBagConstraints constraints = new GridBagConstraints();</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        board = new CustomPanel(new ImageIcon(getClass().getResource(&quot;/GraphicResources/boards/livingroom.png&quot;)));</b>
+<b class="nc">&nbsp;        imageLabel1 = new JLabel(riduciImmaginePanel(new ImageIcon(board.getBoardImage())));</b>
+<b class="nc">&nbsp;        board.add(imageLabel1);</b>
+<b class="nc">&nbsp;        board.setPreferredSize(new Dimension(400, 400));</b>
+<b class="nc">&nbsp;        add(board);</b>
+&nbsp;
+<b class="nc">&nbsp;        myShelf = new CustomPanel(new ImageIcon(getClass().getResource(&quot;/GraphicResources/boards/livingroom.png&quot;)));</b>
+<b class="nc">&nbsp;        imageLabel2 = new JLabel(riduciImmaginePanel(new ImageIcon(myShelf.getBoardImage())));</b>
+<b class="nc">&nbsp;        myShelf.add(imageLabel2);</b>
+<b class="nc">&nbsp;        myShelf.setPreferredSize(new Dimension(400, 400));</b>
+<b class="nc">&nbsp;        add(myShelf);</b>
+&nbsp;
+<b class="nc">&nbsp;        othersShelves = new CustomPanel(new ImageIcon(getClass().getResource(&quot;/GraphicResources/boards/livingroom.png&quot;)));</b>
+<b class="nc">&nbsp;        imageLabel3 = new JLabel(riduciImmaginePanel(new ImageIcon(othersShelves.getBoardImage())));</b>
+<b class="nc">&nbsp;        othersShelves.add(imageLabel3);</b>
+<b class="nc">&nbsp;        othersShelves.setPreferredSize(new Dimension(400, 400));</b>
+<b class="nc">&nbsp;        add(othersShelves);</b>
+&nbsp;
+<b class="nc">&nbsp;        commonCards = new CustomPanel(new ImageIcon(getClass().getResource(&quot;/GraphicResources/boards/livingroom.png&quot;)));</b>
+<b class="nc">&nbsp;        imageLabel4 = new JLabel(riduciImmaginePanel(new ImageIcon(commonCards.getBoardImage())));</b>
+<b class="nc">&nbsp;        commonCards.add(imageLabel4);</b>
+<b class="nc">&nbsp;        commonCards.setPreferredSize(new Dimension(400, 400));</b>
+<b class="nc">&nbsp;        add(commonCards);</b>
+&nbsp;
+<b class="nc">&nbsp;        personalCard = new CustomPanel(new ImageIcon(getClass().getResource(&quot;/GraphicResources/boards/livingroom.png&quot;)));</b>
+<b class="nc">&nbsp;        imageLabel5 = new JLabel(riduciImmaginePanel(new ImageIcon(personalCard.getBoardImage())));</b>
+<b class="nc">&nbsp;        personalCard.add(imageLabel5);</b>
+<b class="nc">&nbsp;        personalCard.setPreferredSize(new Dimension(400, 400));</b>
+<b class="nc">&nbsp;        add(personalCard);</b>
+&nbsp;
+<b class="nc">&nbsp;        controlPanel = new CustomPanel(new ImageIcon(getClass().getResource(&quot;/GraphicResources/boards/livingroom.png&quot;)));</b>
+<b class="nc">&nbsp;        imageLabel6 = new JLabel(riduciImmaginePanel(new ImageIcon(controlPanel.getBoardImage())));</b>
+<b class="nc">&nbsp;        controlPanel.add(imageLabel6);</b>
+<b class="nc">&nbsp;        controlPanel.setPreferredSize(new Dimension(400, 400));</b>
+<b class="nc">&nbsp;        add(controlPanel);</b>
+&nbsp;
+&nbsp;
+&nbsp;        /*
+&nbsp;        myShelf.setVisible(true);
+&nbsp;        imageLabel2 = new JLabel(new ImageIcon(getClass().getResource(&quot;/boards/bookshelf.png&quot;)));
+&nbsp;        myShelf.add(imageLabel2);
+&nbsp;        myShelf.setPreferredSize(new Dimension(400, 400));
+&nbsp;        add(myShelf);
+&nbsp;       */
+&nbsp;
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        constraints.gridx = 0;</b>
+<b class="nc">&nbsp;        constraints.gridy = 0;</b>
+<b class="nc">&nbsp;        constraints.gridwidth = 2;</b>
+<b class="nc">&nbsp;        constraints.gridheight = 2;</b>
+<b class="nc">&nbsp;        constraints.fill = GridBagConstraints.BOTH; // Il pannello si espande sia in larghezza che in altezza</b>
+<b class="nc">&nbsp;        constraints.weightx = 1.0; // Il pannello occupa tutto lo spazio disponibile in larghezza</b>
+<b class="nc">&nbsp;        constraints.weighty = 1.0; // Il pannello occupa tutto lo spazio disponibile in altezza</b>
+<b class="nc">&nbsp;        add(board, constraints);</b>
+&nbsp;
+&nbsp;        // Imposta la posizione e le dimensioni del pannello &quot;controlPanel&quot;
+<b class="nc">&nbsp;        constraints.gridx = 0;</b>
+<b class="nc">&nbsp;        constraints.gridy = 2;</b>
+<b class="nc">&nbsp;        constraints.gridwidth = 2;</b>
+<b class="nc">&nbsp;        constraints.gridheight = 1;</b>
+<b class="nc">&nbsp;        constraints.fill = GridBagConstraints.BOTH;</b>
+<b class="nc">&nbsp;        constraints.weightx = 1.0;</b>
+<b class="nc">&nbsp;        constraints.weighty = 0.0; // Il pannello non si espande in altezza</b>
+<b class="nc">&nbsp;        add(controlPanel, constraints);</b>
+&nbsp;
+&nbsp;        // Imposta la posizione e le dimensioni del pannello &quot;commonCards&quot;
+<b class="nc">&nbsp;        constraints.gridx = 2;</b>
+<b class="nc">&nbsp;        constraints.gridy = 0;</b>
+<b class="nc">&nbsp;        constraints.gridwidth = 1;</b>
+<b class="nc">&nbsp;        constraints.gridheight = 2;</b>
+<b class="nc">&nbsp;        constraints.fill = GridBagConstraints.BOTH;</b>
+<b class="nc">&nbsp;        constraints.weightx = 0.0; // Il pannello non si espande in larghezza</b>
+<b class="nc">&nbsp;        constraints.weighty = 1.0;</b>
+<b class="nc">&nbsp;        add(commonCards, constraints);</b>
+&nbsp;
+&nbsp;        // Imposta la posizione e le dimensioni del pannello &quot;myShelf&quot;
+<b class="nc">&nbsp;        constraints.gridx = 0;</b>
+<b class="nc">&nbsp;        constraints.gridy = 3;</b>
+<b class="nc">&nbsp;        constraints.gridwidth = 1;</b>
+<b class="nc">&nbsp;        constraints.gridheight = 1;</b>
+<b class="nc">&nbsp;        constraints.fill = GridBagConstraints.BOTH;</b>
+<b class="nc">&nbsp;        constraints.weightx = 1.0;</b>
+<b class="nc">&nbsp;        constraints.weighty = 0.0;</b>
+<b class="nc">&nbsp;        add(myShelf, constraints);</b>
+&nbsp;
+&nbsp;        // Imposta la posizione e le dimensioni del pannello &quot;personalCard&quot;
+<b class="nc">&nbsp;        constraints.gridx = 1;</b>
+<b class="nc">&nbsp;        constraints.gridy = 3;</b>
+<b class="nc">&nbsp;        constraints.gridwidth = 1;</b>
+<b class="nc">&nbsp;        constraints.gridheight = 1;</b>
+<b class="nc">&nbsp;        constraints.fill = GridBagConstraints.BOTH;</b>
+<b class="nc">&nbsp;        constraints.weightx = 1.0;</b>
+<b class="nc">&nbsp;        constraints.weighty = 0.0;</b>
+<b class="nc">&nbsp;        add(personalCard, constraints);</b>
+&nbsp;
+&nbsp;
+&nbsp;        /*
+&nbsp;        imageLabel1.addComponentListener(new ComponentAdapter() {
+&nbsp;            @Override
+&nbsp;            public void componentResized(ComponentEvent e) {
+&nbsp;                resizeBoardImage();
+&nbsp;            }
+&nbsp;
+&nbsp;        }); */
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;        // Imposta il layout manager del pannello &quot;controlPanel&quot; come FlowLayout
+<b class="nc">&nbsp;        controlPanel.setLayout(new FlowLayout());</b>
+&nbsp;
+&nbsp;        // Aggiungi i componenti desiderati al pannello &quot;controlPanel&quot;
+<b class="nc">&nbsp;        JButton button1 = new JButton(&quot;Button 1&quot;);</b>
+<b class="nc">&nbsp;        JButton button2 = new JButton(&quot;Button 2&quot;);</b>
+<b class="nc">&nbsp;        ImageIcon titleImage = new ImageIcon(getClass().getResource(&quot;/GraphicResources/misc/base_pagina2.jpg&quot;));</b>
+<b class="nc">&nbsp;        JTextField textField = new JTextField(10);</b>
+<b class="nc">&nbsp;        controlPanel.add(button1);</b>
+<b class="nc">&nbsp;        controlPanel.add(button2);</b>
+<b class="nc">&nbsp;        controlPanel.add(textField);</b>
+&nbsp;
+&nbsp;        // Imposta il layout manager del pannello &quot;controlPanel&quot; come GridLayout con 2 colonne e 3 righe
+<b class="nc">&nbsp;        controlPanel.setLayout(new GridLayout(3, 2, 10, 10));</b>
+&nbsp;
+&nbsp;        // Crea i bottoni con icone e testo desiderati
+<b class="nc">&nbsp;        button1.setIcon(new ImageIcon(&quot;withdraw.png&quot;)); // Sostituisci &quot;withdraw.png&quot; con il percorso dell&#39;icona per il prelievo dalla board</b>
+<b class="nc">&nbsp;        button1.setText(&quot;Draw from Board and insert into Shelf&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        button2.setIcon(new ImageIcon(&quot;withdraw.png&quot;)); // Sostituisci &quot;withdraw.png&quot; con il percorso dell&#39;icona per il prelievo dalla board</b>
+<b class="nc">&nbsp;        button2.setText(&quot;Insert into Shelf&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        JButton button3 = new JButton();</b>
+<b class="nc">&nbsp;        button3.setIcon(new ImageIcon(&quot;personal.png&quot;)); // Sostituisci &quot;personal.png&quot; con il percorso dell&#39;icona per la verifica dell&#39;obiettivo personale</b>
+<b class="nc">&nbsp;        button3.setText(&quot;Verify the Personal Card&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        JButton button4 = new JButton();</b>
+<b class="nc">&nbsp;        button4.setIcon(new ImageIcon(&quot;common.png&quot;)); // Sostituisci &quot;common.png&quot; con il percorso dell&#39;icona per la verifica degli obiettivi comuni</b>
+<b class="nc">&nbsp;        button4.setText(&quot;Verify the Common Cards&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        JButton button5 = new JButton();</b>
+<b class="nc">&nbsp;        button5.setIcon(new ImageIcon(&quot;others.png&quot;)); // Sostituisci &quot;others.png&quot; con il percorso dell&#39;icona per la visualizzazione delle librerie degli altri giocatori</b>
+<b class="nc">&nbsp;        button5.setText(&quot;Show other players&#39;s libraries&quot;);</b>
+&nbsp;
+&nbsp;        // Aggiungi i bottoni al pannello &quot;controlPanel&quot;
+<b class="nc">&nbsp;        controlPanel.add(button1);</b>
+<b class="nc">&nbsp;        controlPanel.add(button2);</b>
+<b class="nc">&nbsp;        controlPanel.add(button3);</b>
+<b class="nc">&nbsp;        controlPanel.add(button4);</b>
+<b class="nc">&nbsp;        controlPanel.add(button5);</b>
+&nbsp;
+&nbsp;        // Imposta la posizione e le dimensioni del pannello &quot;controlPanel&quot;
+<b class="nc">&nbsp;        constraints.gridx = 0;</b>
+<b class="nc">&nbsp;        constraints.gridy = 2;</b>
+<b class="nc">&nbsp;        constraints.gridwidth = 2;</b>
+<b class="nc">&nbsp;        constraints.gridheight = 1;</b>
+<b class="nc">&nbsp;        constraints.fill = GridBagConstraints.BOTH;</b>
+<b class="nc">&nbsp;        constraints.weightx = 1.0;</b>
+<b class="nc">&nbsp;        constraints.weighty = 0.0;</b>
+<b class="nc">&nbsp;        add(controlPanel, constraints);</b>
+&nbsp;
+&nbsp;        // Imposta la posizione e le dimensioni degli altri pannelli come desiderato
+&nbsp;
+<b class="nc">&nbsp;        pack();</b>
+<b class="nc">&nbsp;        setLocationRelativeTo(null);</b>
+<b class="nc">&nbsp;        setVisible(true);</b>
+&nbsp;    }
+&nbsp;
+&nbsp; /*
+&nbsp;    private void resizeBoardImage() {
+&nbsp;        int containerWidth = imageLabel1.getWidth();
+&nbsp;        int containerHeight = imageLabel1.getHeight();
+&nbsp;
+&nbsp;        if (containerWidth &gt; 0 &amp;&amp; containerHeight &gt; 0) {
+&nbsp;            try {
+&nbsp;                BufferedImage originalImage = ImageIO.read(getClass().getResource(&quot;/boards/livingroom.png&quot;));
+&nbsp;                int originalWidth = originalImage.getWidth();
+&nbsp;                int originalHeight = originalImage.getHeight();
+&nbsp;
+&nbsp;                double widthRatio = (double) containerWidth / originalWidth;
+&nbsp;                double heightRatio = (double) containerHeight / originalHeight;
+&nbsp;
+&nbsp;                double scaleFactor = Math.max(widthRatio, heightRatio);
+&nbsp;
+&nbsp;                int scaledWidth = (int) (originalWidth * scaleFactor);
+&nbsp;                int scaledHeight = (int) (originalHeight * scaleFactor);
+&nbsp;
+&nbsp;                Image resizedTitle = originalImage.getScaledInstance(scaledWidth, scaledHeight, Image.SCALE_SMOOTH);
+&nbsp;                imageLabel1.setIcon(new ImageIcon(resizedTitle));
+&nbsp;            } catch (IOException ex) {
+&nbsp;                ex.printStackTrace();
+&nbsp;            }
+&nbsp;        }
+&nbsp;
+&nbsp;    } */
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    public ImageIcon riduciImmaginePanel(ImageIcon extImageIcon) {
+<b class="nc">&nbsp;        Image originalImage = extImageIcon.getImage();</b>
+<b class="nc">&nbsp;        int width = originalImage.getWidth(null);</b>
+<b class="nc">&nbsp;        int height = originalImage.getHeight(null);</b>
+&nbsp;
+<b class="nc">&nbsp;        int newWidth = 200;</b>
+<b class="nc">&nbsp;        int newHeight = 200;</b>
+&nbsp;
+<b class="nc">&nbsp;        if (width &gt; height) {</b>
+<b class="nc">&nbsp;            newHeight = (int) (((double) height / width) * newWidth);</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            newWidth = (int) (((double) width / height) * newHeight);</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        Image scaledImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);</b>
+<b class="nc">&nbsp;        return new ImageIcon(scaledImage);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    //non richiamabile in una classe che estende jframe, ma solo in una che estende jcomponent
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp; /*
+&nbsp;    public static void main(String[] args) {
+&nbsp;        JFrame frame = new JFrame(&quot;Riduci immagine&quot;);
+&nbsp;        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+&nbsp;        frame.setSize(300, 300);
+&nbsp;        frame.add(new RiduciImmaginePanel());
+&nbsp;        frame.setVisible(true);
+&nbsp;    }*/
+&nbsp;
+&nbsp;    public static void main(String[] args) {
+<b class="nc">&nbsp;        SwingUtilities.invokeLater(GameGUI::new);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-30 00:54</div>
+</div>
+</body>
+</html>
