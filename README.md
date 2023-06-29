@@ -102,7 +102,7 @@ disconnected, leaving the game without a winner.
 ## Authors
 Scaglione Cugola, GC28.
 > **Contact Information** <br>
-> mail: [alessiotom@live.it] &nbsp;&middot;&nbsp;
+> mail: [alessio.tommasi@mail.polimi.it] &nbsp;&middot;&nbsp;
 > GitHub [@AlessioTommasi-polimi](https://github.com/AlessioTommasi-polimi) <br>
 > mail: [giampiero.porfiri@mail.polimi.it] &nbsp;&middot;&nbsp;
 > GitHub [@Giampiero-Porfiri](https://github.com/Giampiero-Porfiri) <br>
