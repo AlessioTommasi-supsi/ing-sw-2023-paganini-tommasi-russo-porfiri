@@ -34,6 +34,7 @@ public class OtherTest {
         model.setPlayerChoice(choice);
         TurnView turnView = new TurnView(model);
         Choice choice1 = turnView.getPlayerChoice();
+        assertEquals(choice1.getArgument(), "");
         assertEquals(choice1, turnView.getPlayerChoice());
         assertNotEquals(turnView.toString(), "");
     }
