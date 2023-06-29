@@ -420,6 +420,12 @@ public class HelloController {
     @FXML
     private ImageView shelf4ImageView;
 
+
+
+
+
+
+
     @FXML
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
@@ -469,7 +475,8 @@ public class HelloController {
         c1Points.setEditable(true);
         c2Points.setEditable(true);
 
-
+        c1Points.setText(String.valueOf(scoreC1));
+        c2Points.setText(String.valueOf(scoreC2));
 
         c1Points.setEditable(false);
         c2Points.setEditable(false);

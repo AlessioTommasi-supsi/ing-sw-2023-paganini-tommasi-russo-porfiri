@@ -203,9 +203,9 @@
                                                         <Image url="@../../../GraphicResources/commonGoalCards/Common_Goals1.jpg" />
                                                     </image>
                                                 </ImageView>
-                                                <TextField fx:id="c1Points" layoutX="136.0" layoutY="41.0" maxWidth="66.0" prefHeight="66.0" promptText="Points" rotate="-7.7">
+                                                <TextField fx:id="c1Points" alignment="CENTER" layoutX="136.0" layoutY="41.0" maxWidth="66.0" prefHeight="66.0" rotate="-7.7" text="9">
                                                     <font>
-                                                        <Font name="System Bold" size="15.5" />
+                                                        <Font name="System Bold" size="31.0" />
                                                     </font>
                                                 </TextField>
                                             </children>
@@ -222,9 +222,9 @@
                                                         <Image url="@../../../GraphicResources/commonGoalCards/Common_Goals9.jpg" />
                                                     </image>
                                                 </ImageView>
-                                                <TextField fx:id="c2Points" layoutX="136.0" layoutY="41.0" maxWidth="66.0" prefHeight="66.0" promptText="Points" rotate="-7.7">
+                                                <TextField fx:id="c2Points" alignment="CENTER" layoutX="136.0" layoutY="41.0" maxWidth="66.0" prefHeight="66.0" rotate="-7.7" text="1">
                                                     <font>
-                                                        <Font name="System Bold" size="15.5" />
+                                                        <Font name="System Bold" size="31.0" />
                                                     </font>
                                                 </TextField>
                                             </children>
@@ -320,6 +320,31 @@
                                                     <font>
                                                         <Font name="System Bold" size="12.0" />
                                                     </font></Text>
+                                    <Text fill="#3300ff" layoutX="38.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#3300ff" layoutX="74.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#3300ff" layoutX="106.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="22.13671875">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#3300ff" layoutX="144.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3" textAlignment="CENTER" wrappingWidth="22.136718749999773">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#3300ff" layoutX="181.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4" textAlignment="CENTER" wrappingWidth="22.136718749999773">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Text>
                                             </children>
                                         </AnchorPane>
                                         <AnchorPane id="shelf2AnchorPane" fx:id="shelf2AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="117.0" prefWidth="126.0" style="-fx-background-color: transparent;">
@@ -387,6 +412,31 @@
                                                     <font>
                                                         <Font name="System Bold" size="12.0" />
                                                     </font></Text>
+                                    <Text fill="RED" layoutX="38.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="RED" layoutX="74.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="RED" layoutX="106.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="22.13671875">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="RED" layoutX="144.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3" textAlignment="CENTER" wrappingWidth="22.136718749999773">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="RED" layoutX="181.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4" textAlignment="CENTER" wrappingWidth="22.136718749999773">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Text>
                                             </children>
                                         </AnchorPane>
                                     </items>
@@ -458,10 +508,35 @@
                                                         <ImageView fx:id="shelf3R0C4" fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
                                                     </children>
                                                 </GridPane>
-                                                <Text id="shp3Text" fx:id="shp3Text" fill="#765116" layoutX="4.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player3's shelves" textAlignment="CENTER" wrappingWidth="233.6000061035155">
+                                                <Text id="shp3Text" fx:id="shp3Text" fill="#a6660d" layoutX="4.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player3's shelves" textAlignment="CENTER" wrappingWidth="233.6000061035155">
                                                     <font>
                                                         <Font name="System Bold" size="12.0" />
                                                     </font></Text>
+                                    <Text id="col0Shelf3" fx:id="col0Shelf3" fill="#ff9900" layoutX="39.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text id="col1Shelf3" fx:id="col1Shelf3" fill="#ff9900" layoutX="75.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text id="col2Shelf3" fx:id="col2Shelf3" fill="#ff9900" layoutX="107.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="22.13671875">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text id="col3Shelf3" fx:id="col3Shelf3" fill="#ff9900" layoutX="145.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3" textAlignment="CENTER" wrappingWidth="22.136718749999773">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text id="col4Shelf3" fx:id="col4Shelf3" fill="#ff9900" layoutX="182.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4" textAlignment="CENTER" wrappingWidth="22.136718749999773">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Text>
                                             </children>
                                         </AnchorPane>
                                         <AnchorPane id="shelf4AnchorPane" fx:id="shelf4AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
@@ -529,6 +604,31 @@
                                                     <font>
                                                         <Font name="System Bold" size="12.0" />
                                                     </font></Text>
+                                    <Text id="col0Shelf4" fx:id="col0Shelf4" fill="MAGENTA" layoutX="35.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text id="col1Shelf4" fx:id="col1Shelf4" fill="MAGENTA" layoutX="74.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text id="col2Shelf4" fx:id="col2Shelf4" fill="MAGENTA" layoutX="103.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="22.13671875">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text id="col3Shelf4" fx:id="col3Shelf4" fill="MAGENTA" layoutX="141.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3" textAlignment="CENTER" wrappingWidth="22.136718749999773">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text id="col4Shelf4" fx:id="col4Shelf4" fill="MAGENTA" layoutX="178.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4" textAlignment="CENTER" wrappingWidth="22.136718749999773">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Text>
                                             </children>
                                         </AnchorPane>
                                     </items>
@@ -561,7 +661,7 @@
                                 <TextField id="choiceY2TextField" fx:id="choiceY2TextField" alignment="CENTER" layoutX="148.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="y" />
                                 <TextField id="choiceX3TextField" fx:id="choiceX3TextField" alignment="CENTER" layoutX="224.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="x" />
                                 <TextField id="choiceY3TextField" fx:id="choiceY3TextField" alignment="CENTER" layoutX="255.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="y" />
-                                <Text id="choiceTextField3" fx:id="choiceTextField3" fill="WHITE" layoutX="16.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the insertion order of the tiles in your library, from bottom to top:" wrappingWidth="676.047607421875">
+                                <Text id="choiceTextField3" fx:id="choiceTextField3" fill="WHITE" layoutX="16.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the insertion order of the tiles in your library, from bottom to top:">
                                     <font>
                                         <Font size="18.0" />
                                     </font></Text>
