@@ -35,6 +35,8 @@ public abstract class Game implements Serializable {
     private CommonCard common1;
     private CommonCard common2;
 
+    pri
+
     //quando è a true devo completare il turno e poi finire la partita!
     private boolean fullLibrary = false;
 
