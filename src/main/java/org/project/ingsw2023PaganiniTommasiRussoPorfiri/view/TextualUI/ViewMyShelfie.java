@@ -13,9 +13,12 @@ import javax.swing.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import static java.lang.Thread.sleep;
 
 public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnable {
 
@@ -665,52 +668,61 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
     }
 
     public void initFxGui(){
+
         Platform.startup(() -> {
             Platform.runLater(() -> {
                 this.frame = new HelloApplication();
                 try {
+                    sleep(new Random().nextInt(1000));
                     frame.start(new Stage());
-                } catch (IOException e) {
+                    this.controller = frame.getController();
+                    this.controller.viewMyShelfie = this;
+
+                    this.initComponentGui();
+                } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
-
-                this.controller = frame.getController();
-                this.controller.viewMyShelfie = this;
-
-                this.controller.setPrivateCard(this.player.getPC());
-                this.controller.setCommonCards(this.currentGame.getCommon1(), this.currentGame.getCommon2());
-
-                this.controller.updateBoard(this.currentGame.getBoard().getPlacements());
-
-                this.controller.setEnableSendButton(this.currentGame.getCurrentPlayer().getUsername().equals(this.player.getUsername()));
-                this.controller.UpdateCommonPoints(this.currentGame.getCommon1(), this.getCurrentGame().getCommon2());
-                this.controller.initShelves(this.currentGame.getPlayers());
-
-                //.DEBUG
-                //System.out.println("file:src/main/resources/GraphicResources/itemTiles/"+this.currentGame.getBoard().getPlacements().get(3).getTile().getType().getName()+""+this.currentGame.getBoard().getPlacements().get(0).getTile().getVariant().getNumber()+".png");
-                /*
-                for (int i = 0; i < this.currentGame.getBoard().getPlacements().size() ; i++){
-                    //System.out.println(this.currentGame.getBoard().getPlacements().get(i).isOccupied());
-                    System.out.println("file:src/main/resources/GraphicResources/itemTiles/"+this.currentGame.getBoard().getPlacements().get(i).getTile().getType().getName()+""+this.currentGame.getBoard().getPlacements().get(i).getTile().getVariant().getNumber()+".png");
-                    System.out.println("X: "+this.currentGame.getBoard().getPlacements().get(i).getX() + " Y: " + this.currentGame.getBoard().getPlacements().get(i).getY());
-                }
-                 */
             });
         });
-
+        //this.initComponentGui();
+        this.updateGui();
     }
+    public void initComponentGui(){
+        //Platform.runLater(() -> {
 
+
+            this.controller.setPrivateCard(this.player.getPC());
+            this.controller.setCommonCards(this.currentGame.getCommon1(), this.currentGame.getCommon2());
+
+            this.controller.updateBoard(this.currentGame.getBoard().getPlacements());
+
+            this.controller.setEnableSendButton(this.currentGame.getCurrentPlayer().getUsername().equals(this.player.getUsername()));
+
+            this.controller.initShelves(this.currentGame.getPlayers());
+
+            //.DEBUG
+            //System.out.println("file:src/main/resources/GraphicResources/itemTiles/"+this.currentGame.getBoard().getPlacements().get(3).getTile().getType().getName()+""+this.currentGame.getBoard().getPlacements().get(0).getTile().getVariant().getNumber()+".png");
+            /*
+            for (int i = 0; i < this.currentGame.getBoard().getPlacements().size() ; i++){
+                //System.out.println(this.currentGame.getBoard().getPlacements().get(i).isOccupied());
+                System.out.println("file:src/main/resources/GraphicResources/itemTiles/"+this.currentGame.getBoard().getPlacements().get(i).getTile().getType().getName()+""+this.currentGame.getBoard().getPlacements().get(i).getTile().getVariant().getNumber()+".png");
+                System.out.println("X: "+this.currentGame.getBoard().getPlacements().get(i).getX() + " Y: " + this.currentGame.getBoard().getPlacements().get(i).getY());
+            }
+             */
+        //});
+    }
     public void updateGui(){
 
             Platform.runLater(() -> {
                 try {
+                    this.initComponentGui();
                     if (this.currentGame != null) {
                         this.controller.setEnableSendButton(this.currentGame.getCurrentPlayer().getUsername().equals(this.player.getUsername()));
                         this.controller.UpdateCommonPoints(this.currentGame.getCommon1(), this.getCurrentGame().getCommon2());
                         this.controller.updateBoard(this.currentGame.getBoard().getPlacements());
                         this.controller.updateShelves(this.currentGame.getPlayers());
                         //se e il mio turno attivo il bottone send inoltre verifico che non ho gia pescato
-
+                        //this.controller.initShelves(this.currentGame.getPlayers());
                     }
                 }catch (Exception e) {
                     //.DEBUG
