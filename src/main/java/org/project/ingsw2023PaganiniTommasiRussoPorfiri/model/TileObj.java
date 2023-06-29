@@ -8,7 +8,6 @@ public class TileObj implements Serializable {
     private TileType type;
     private TileVariant variant;
 
-
     public TileObj(TileType chosenType, TileVariant chosenVariant) {
         this.type = chosenType;
         this.variant = chosenVariant;

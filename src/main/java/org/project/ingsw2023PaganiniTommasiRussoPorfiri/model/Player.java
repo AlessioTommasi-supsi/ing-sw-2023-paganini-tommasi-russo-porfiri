@@ -157,7 +157,6 @@ public class Player implements Serializable {
         }catch (NullPointerException e){
             System.err.println("Shelves not initialized.");
         }
-
         return counter;
     }
 
@@ -176,20 +175,6 @@ public class Player implements Serializable {
                 ", score=" + score +
                 '}';
     }
-
-    // da qui in poi non funzionante
-
-    /* non serve perché score aggiornato a ogni turno da Game!
-    public int calculateCommonPoints(CommonCard cC) {
-        //TODO implementare variabili e metodi per common card
-        int points = cC.getPoints();
-        if(points > 3) {
-            updatePoints(points - 2);
-            return points;
-        }
-        return 0;
-    }
-    */
 
     public int calculatePersonalPoints() {
         int counter;
@@ -217,7 +202,6 @@ public class Player implements Serializable {
         int totalPoints = 0;
         boolean[][] visited = new boolean[6][5];
 
-        // TODO verificare che sono false senza \/
         for (int row = 0; row < 6; row++) {
             for (int col = 0; col < 5; col++) {
                 visited[row][col] = false;
@@ -230,18 +214,15 @@ public class Player implements Serializable {
                 if(visited[row][col]) {
                     continue;
                 }
-
                 try {
-                    tilesCounter = calculateGroupCounter(row, col, visited, 1, true, shelves.getTilePosition(col, row).getTile().getType());
+                    tilesCounter = calculateGroupCounter(row, col, visited, 1, shelves.getTilePosition(col, row).getTile().getType());
                 }catch (Exception e){//succede quando tessere in shelves vuote
                     continue;
                 }
-
                 // Serve per la HashMap
                 if(tilesCounter > 6) {
                     tilesCounter = 6;
                 }
-
                 totalPoints += givenAdjacencyPoints.get(tilesCounter);
             }
 
@@ -256,7 +237,7 @@ public class Player implements Serializable {
         else return true;
     }
 
-    private int calculateGroupCounter(int row, int col, boolean[][] visited, int counter, boolean starter, TileType prevType) {
+    private int calculateGroupCounter(int row, int col, boolean[][] visited, int counter, TileType prevType) {
         TileObj currentTile;
 
         if (row < 0 || row >= 6 || col < 0 || col >= 5 || visited[row][col]) {
@@ -272,69 +253,25 @@ public class Player implements Serializable {
         currentTile = this.shelves.getTilePosition(row, col).getTile();
 
         if (isValidPosition(row-1,col) && this.shelves.getTilePosition(row - 1, col).isOccupied() &&
-                this.shelves.getTilePosition(row - 1, col).getTile().getType().equals(currentTile.getType()))
-        {
-            counter += calculateGroupCounter(row - 1, col, visited, counter, false, prevType);
+                this.shelves.getTilePosition(row - 1, col).getTile().getType().equals(currentTile.getType())) {
+            counter += calculateGroupCounter(row - 1, col, visited, counter, prevType);
         }
         if (isValidPosition(row+1,col) && shelves.getTilePosition(row + 1, col).getTile() != null && shelves.getTilePosition(row + 1, col).getTile().getType().equals(currentTile.getType())) {
-            counter += calculateGroupCounter(row + 1, col, visited, counter, false, prevType);
+            counter += calculateGroupCounter(row + 1, col, visited, counter, prevType);
         }
         if (isValidPosition(row,col-1) && shelves.getTilePosition(row, col-1).getTile() != null && shelves.getTilePosition(row, col-1).getTile().getType().equals(currentTile.getType())) {
-            counter += calculateGroupCounter(row, col - 1, visited, counter, false, prevType);
+            counter += calculateGroupCounter(row, col - 1, visited, counter, prevType);
         }
         if (isValidPosition(row,col+1) && shelves.getTilePosition(row, col+1).getTile() != null && shelves.getTilePosition(row, col+1).getTile().getType().equals(currentTile.getType())) {
-            counter += calculateGroupCounter(row, col + 1, visited, counter, false, prevType);
+            counter += calculateGroupCounter(row, col + 1, visited, counter, prevType);
         }
 
-        /*
-        if (starter) {
-            return counter;
-        }*/
         if(counter > 6) {
             counter = 6;
         }
 
-        return  counter;
+        return counter;
     }
-
-    /*
-    private int calculateGroupCounter(int row, int col, boolean[][] visited, int counter, boolean starter, int totCounter, TileType prevType) {
-        if (row < 0 || row >= 6 || col < 0 || col >= 5 || visited[row][col] || !shelves.getTilePosition(row, col).getTile().getType().equals(prevType)) {
-            return counter;
-        }
-
-        visited[row][col] = true;
-        counter ++;
-
-        TileObj currentTile;
-        currentTile = this.shelves.getTilePosition(row, col).getTile();
-
-        if (row - 1 >= 0 && this.shelves.getTilePosition(row - 1, col).getTile()!= null &&
-                this.shelves.getTilePosition(row - 1, col).getTile().getType().equals(currentTile.getType()))
-        {
-            totCounter += calculateGroupCounter(row - 1, col, visited, counter, false, totCounter, prevType);
-        }
-        if (row + 1 < shelves.getMaxRows() && shelves.getTilePosition(row + 1, col).getTile() != null && shelves.getTilePosition(row + 1, col).getTile().getType().equals(currentTile.getType())) {
-            totCounter += calculateGroupCounter(row + 1, col, visited, counter, false, totCounter, prevType);
-        }
-        if (col - 1 >= 0 && shelves.getTilePosition(row, col-1).getTile() != null && shelves.getTilePosition(row, col-1).getTile().getType().equals(currentTile.getType())) {
-            totCounter += calculateGroupCounter(row, col - 1, visited, counter, false, totCounter, prevType);
-        }
-        if (col + 1 < shelves.getMaxColums() && shelves.getTilePosition(row, col+1).getTile() != null && shelves.getTilePosition(row, col+1).getTile().getType().equals(currentTile.getType())) {
-            totCounter += calculateGroupCounter(row, col + 1, visited, counter, false, totCounter, prevType);
-        }
-
-        System.out.println("TotCounter: " + totCounter);
-
-        if (starter) {
-            return totCounter;
-        }
-        return  0;
-    }
-    */
-
-
-
 
     //da chiamato in Game::end()!
     public void calcOverallScore() throws Exception {

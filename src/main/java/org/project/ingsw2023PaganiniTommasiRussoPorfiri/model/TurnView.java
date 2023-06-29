@@ -38,7 +38,7 @@ public class TurnView implements Serializable {
         return "TurnView{" +
                 "playerChoice=" + playerChoice +
                 ", myShelfie=" + myShelfie +
-                ", errore=" + error +
+                ", error=" + error +
                 '}';
     }
 }

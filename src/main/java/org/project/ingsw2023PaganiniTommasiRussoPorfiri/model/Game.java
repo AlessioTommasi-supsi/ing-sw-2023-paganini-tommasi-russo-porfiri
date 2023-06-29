@@ -38,7 +38,6 @@ public abstract class Game implements Serializable {
     //quando è a true devo completare il turno e poi finire la partita!
     private boolean fullLibrary = false;
 
-
     public Game(int playerNumber, Player mazziere) {
         GsonParse(this.personalCardDeck);
         this.playerNumber = playerNumber;

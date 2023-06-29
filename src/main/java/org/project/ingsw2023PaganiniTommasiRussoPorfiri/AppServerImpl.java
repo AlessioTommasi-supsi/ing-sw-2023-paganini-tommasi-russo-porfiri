@@ -17,7 +17,7 @@ public class AppServerImpl extends UnicastRemoteObject implements AppServer
 
     private static AppServerImpl instance;
 
-    private static ServerImpl serverImpl=null;
+    private static ServerImpl serverImpl = null;
 
     private final ExecutorService executorService = Executors.newCachedThreadPool();
 

@@ -20,21 +20,21 @@ public class TilePositionBoard implements Serializable {
     }
 
     public TilePositionBoard(int abscissa, int ordinate, TileObj tile){
-        this.x= abscissa;
-        this.y= ordinate;
-        this.tileInSlot= new TileObj(tile);
-        this.occupied= true;
+        this.x = abscissa;
+        this.y = ordinate;
+        this.tileInSlot = new TileObj(tile);
+        this.occupied = true;
     }
 
     public TilePositionBoard(TilePositionBoard tp){
-        this.x= tp.getX();
-        this.y= tp.getY();
+        this.x = tp.getX();
+        this.y = tp.getY();
         try {
             this.tileInSlot = new TileObj(tp.getTile());
         }catch (Exception e){
             this.tileInSlot = null;
         }
-        this.occupied= tp.isOccupied();
+        this.occupied = tp.isOccupied();
 
     }
 
@@ -60,8 +60,8 @@ public class TilePositionBoard implements Serializable {
 
     public void setTile(TileObj tile) throws PositionAlreadyOccupiedException {
         if(!this.occupied){
-            this.tileInSlot= tile;
-            this.occupied= true;
+            this.tileInSlot = tile;
+            this.occupied = true;
         }
         else throw new PositionAlreadyOccupiedException();
     }
@@ -69,8 +69,8 @@ public class TilePositionBoard implements Serializable {
     public TileObj removeTile() throws PositionEmptyException {
         if(this.tileInSlot != null && this.occupied){
             TileObj tempTile = new TileObj(this.tileInSlot);
-            this.tileInSlot= null;
-            this.occupied=false;
+            this.tileInSlot = null;
+            this.occupied = false;
             return tempTile;
         }
         else throw new PositionEmptyException();

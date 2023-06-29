@@ -482,11 +482,11 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                     switch (model.getPlayerChoice().getChoice()) {
 
                         case TERMINATE_TURNS:
-                            System.out.println(model.getMyShelfie().getGame(this.currentGameId).precCurrentPlayer().getUsername()+" ha terminato il turno! ");
+                            System.out.println(model.getMyShelfie().getGame(this.currentGameId).precCurrentPlayer().getUsername()+" has just ended their turn! ");
                             System.out.println("Now is: " + model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getUsername() + " turn");
                             Platform.runLater(() -> {
                                 if(model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getId() == this.player.getId()){
-                                    this.controller.showInfoMessage("Tocca a te!",this.frame.getStage());
+                                    this.controller.showInfoMessage("It's your turn!",this.frame.getStage());
                                 }
                             });
                         break;
@@ -509,16 +509,16 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                         case DRAW_FROM_BOARD:
                             System.out.println("Player: "+model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getUsername()+" HA PESCATO DALLA PLANCIA!");
                             if(this.iAlreadyDrawn){
-                                System.out.println("ora termino il turno sulla gui!");
+                                System.out.println("I'm ending the turn on the GUI");
                                 Platform.runLater(() -> {
                                     this.controller.terminateTurn();
-                                    this.controller.showInfoMessage("Hai terminato il tuo turno!",this.frame.getStage());
+                                    this.controller.showInfoMessage("You just ended your turn!",this.frame.getStage());
 
                                 });
                             }
                         break;
                         case EXIT:
-                            System.out.println("Player: "+model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getUsername()+" HA FORZATO LA CHIUSURA DEL GIOCO ALLA FINE DEL GIRO!");
+                            System.out.println("Player: "+model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getUsername()+" HAS FORCED THE LAST ROUND BEFORE THE GAME ENDS!");
                         break;
                         default:
                             System.err.println("Not implemented yet");

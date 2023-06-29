@@ -8,8 +8,6 @@ public class CommonCardStair extends CommonCard implements Serializable {
         super(index,"Check if the tiles on your shelf are in stair form");
     }
 
-
-
     public boolean executeAlgorithm(Player player) {
         int x=0;
         int y=0;

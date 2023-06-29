@@ -23,7 +23,6 @@ public class GameThreePlayers extends Game implements Serializable {
         setBoard(tempP);
     }
 
-
     @Override
     public void defineCommonCardScores(){
         int[] tempScores = new int[4];
@@ -62,6 +61,4 @@ public class GameThreePlayers extends Game implements Serializable {
             }
         }
     }
-
-
 }

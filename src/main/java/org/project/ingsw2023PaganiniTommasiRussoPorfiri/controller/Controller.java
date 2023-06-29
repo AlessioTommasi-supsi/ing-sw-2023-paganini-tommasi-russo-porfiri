@@ -37,7 +37,7 @@ public class Controller {
                     System.err.println("Games number: "+model.getMyShelfie().getGames().size());
                     /*
                     model.getMyShelfie().getGames().stream()
-                            .forEach(game -> System.out.println("nuovo gioco: "+game.toString()));
+                            .forEach(game -> System.out.println("new game: "+game.toString()));
                     `*/
                 break;
 
@@ -52,13 +52,13 @@ public class Controller {
                     }catch (IllegalSizeOfTilesException e1){
                         //devo rimettere le tessere nella plancia!
                         model.getMyShelfie().getGame(drawMessage.getCurrentGameId()).getBoard().addTiles(drawMessage.getTilesToRemove());
-                        //DEFULT
+                        //DEFAULT
                         model.error = e1.getClass().getSimpleName();
                         e1.printStackTrace();
                     }catch (IllegalColumnException e2){
                         //devo rimettere le tessere nella plancia!
                         model.getMyShelfie().getGame(drawMessage.getCurrentGameId()).getBoard().addTiles(drawMessage.getTilesToRemove());
-                        //DEFULT
+                        //DEFAULT
                         model.error = e2.getClass().getSimpleName();
                         e2.printStackTrace();
                     }catch (FullLibraryException e3){

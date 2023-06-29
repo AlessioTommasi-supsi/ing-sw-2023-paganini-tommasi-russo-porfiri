@@ -19,8 +19,6 @@ public class GraphicalUI extends Observable<ChoiceMyShelfie> implements Runnable
         WAITING_FOR_OUTCOME
     }
 
-
-
     private State state = State.WAITING_FOR_PLAYER;
     private final Object lock = new Object();
 

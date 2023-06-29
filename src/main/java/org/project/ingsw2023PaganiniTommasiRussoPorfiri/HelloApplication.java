@@ -43,8 +43,6 @@ public class HelloApplication extends Application {
         controller = fxmlLoader.getController();
         stage.setScene(scene);
         stage.setTitle("MyShelfie");
-        stage.setWidth(1280d);
-        stage.setHeight(720d);
         stage.setResizable(false);
         stage.setMaximized(false);
         stage.setFullScreen(false);

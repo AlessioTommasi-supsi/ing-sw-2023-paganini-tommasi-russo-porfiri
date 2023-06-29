@@ -55,7 +55,7 @@ public class Turn extends Observable<Turn.Event> implements Serializable {
     public String toString() {
         return "Turn{'\n'" +
                 "'\n'playerChoice=" + playerChoice +
-                "'\n', errore='" + error + '\'' +
+                "'\n', error='" + error + '\'' +
                 "'\n', myShelfie=" + myShelfie +
                 '}';
     }

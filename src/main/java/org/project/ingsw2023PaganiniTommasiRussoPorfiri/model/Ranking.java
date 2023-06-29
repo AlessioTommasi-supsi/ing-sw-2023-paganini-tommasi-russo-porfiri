@@ -9,7 +9,7 @@ public class Ranking implements Serializable {
 
     public Ranking(Player p, int points) {
         this.points = points;
-        player =p;
+        player = p;
     }
 
     public int getPoints() {
@@ -19,7 +19,7 @@ public class Ranking implements Serializable {
     @Override
     public String toString() {
         return "" +
-                "punteggio:" + points +
-                ", player=" + player.getUsername() ;
+                "points:" + points +
+                ", player=" + player.getUsername();
     }
 }

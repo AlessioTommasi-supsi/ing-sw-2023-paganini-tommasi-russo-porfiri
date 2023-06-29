@@ -27,7 +27,7 @@ public class HelloController {
     @FXML
     private Pane mainPane;
     @FXML
-    Pane loginPane;
+    private Pane loginPane;
     @FXML
     private Label welcomeText;
     @FXML
@@ -57,111 +57,108 @@ public class HelloController {
     @FXML
     private Button joinGameButton;
     @FXML
-    ImageView boardR0C4;
+    private ImageView boardR0C4;
     @FXML
-    ImageView boardR0C5;
+    private ImageView boardR0C5;
     @FXML
-    ImageView boardR1C3;
+    private ImageView boardR1C3;
     @FXML
-    ImageView boardR1C4;
+    private ImageView boardR1C4;
     @FXML
-    ImageView boardR1C5;
+    private ImageView boardR1C5;
     @FXML
-    ImageView boardR2C2;
+    private ImageView boardR2C2;
     @FXML
-    ImageView boardR2C3;
+    private ImageView boardR2C3;
     @FXML
-    ImageView boardR2C4;
+    private ImageView boardR2C4;
     @FXML
-    ImageView boardR2C5;
+    private ImageView boardR2C5;
     @FXML
-    ImageView boardR2C6;
+    private ImageView boardR2C6;
     @FXML
-    ImageView boardR3C0;
+    private ImageView boardR3C0;
     @FXML
-    ImageView boardR3C1;
+    private ImageView boardR3C1;
     @FXML
-    ImageView boardR3C2;
+    private ImageView boardR3C2;
     @FXML
-    ImageView boardR3C3;
+    private ImageView boardR3C3;
     @FXML
-    ImageView boardR3C4;
+    private ImageView boardR3C4;
     @FXML
-    ImageView boardR3C5;
+    private ImageView boardR3C5;
     @FXML
-    ImageView boardR3C6;
+    private ImageView boardR3C6;
     @FXML
-    ImageView boardR3C7;
+    private ImageView boardR3C7;
     @FXML
-    ImageView boardR4C0;
+    private ImageView boardR4C0;
     @FXML
-    ImageView boardR4C1;
+    private ImageView boardR4C1;
     @FXML
-    ImageView boardR4C2;
+    private ImageView boardR4C2;
     @FXML
-    ImageView boardR4C3;
+    private ImageView boardR4C3;
     @FXML
-    ImageView boardR4C4;
+    private ImageView boardR4C4;
     @FXML
-    ImageView boardR4C5;
+    private ImageView boardR4C5;
     @FXML
-    ImageView boardR4C6;
+    private ImageView boardR4C6;
     @FXML
-    ImageView boardR4C7;
+    private ImageView boardR4C7;
     @FXML
-    ImageView boardR4C8;
+    private ImageView boardR4C8;
     @FXML
-    ImageView boardR5C1;
+    private ImageView boardR5C1;
     @FXML
-    ImageView boardR5C2;
+    private ImageView boardR5C2;
     @FXML
-    ImageView boardR5C3;
+    private ImageView boardR5C3;
     @FXML
-    ImageView boardR5C4;
+    private ImageView boardR5C4;
     @FXML
-    ImageView boardR5C5;
+    private ImageView boardR5C5;
     @FXML
-    ImageView boardR5C6;
+    private ImageView boardR5C6;
     @FXML
-    ImageView boardR5C7;
+    private ImageView boardR5C7;
     @FXML
-    ImageView boardR5C8;
+    private ImageView boardR5C8;
     @FXML
-    ImageView boardR6C2;
+    private ImageView boardR6C2;
     @FXML
-    ImageView boardR6C3;
+    private ImageView boardR6C3;
     @FXML
-    ImageView boardR6C4;
+    private ImageView boardR6C4;
     @FXML
-    ImageView boardR6C5;
+    private ImageView boardR6C5;
     @FXML
-    ImageView boardR6C6;
+    private ImageView boardR6C6;
     @FXML
-    ImageView boardR7C3;
+    private ImageView boardR7C3;
     @FXML
-    ImageView boardR7C4;
-
+    private ImageView boardR7C4;
     @FXML
-    ImageView boardR7C5;
+    private ImageView boardR7C5;
     @FXML
-    ImageView boardR8C3;
+    private ImageView boardR8C3;
     @FXML
-    ImageView boardR8C4;
+    private ImageView boardR8C4;
     @FXML
     private TextField usernameTextField;
     @FXML
     private ScrollPane choiceScrollPane;
-
     @FXML
-    Text choiceTextField1;
-
+    private Text choiceTextField1;
     @FXML
-    Button choiceSendButton;
+    private Button choiceSendButton;
 
-    ArrayList<TextFormatter<String>> textFormattersList1 = new ArrayList<>();
-    ArrayList<TextFormatter<String>> textFormattersList2 = new ArrayList<>();
+    private ArrayList<TextFormatter<String>> textFormattersList1 = new ArrayList<>();
+    private ArrayList<TextFormatter<String>> textFormattersList2 = new ArrayList<>();
 
-    public ViewMyShelfie viewMyShelfie=null;
+    public ViewMyShelfie viewMyShelfie = null;
 
     @FXML
     protected void onHelloButtonClick() {
@@ -614,7 +611,9 @@ public class HelloController {
                 x3 = Integer.parseInt(choiceX3TextField.getText());
                 y3 = Integer.parseInt(choiceY3TextField.getText());
                 o2= Integer.parseInt(choiceOrder2TextField.getText());
-                o2= Integer.parseInt(choiceOrder3TextField.getText());
+                //TODO: was this a mistake? Duplicate o2
+                //o2= Integer.parseInt(choiceOrder2TextField.getText());
+                o3= Integer.parseInt(choiceOrder3TextField.getText());
 
                 for(TilePositionBoard item : boardPlacementsCopy){
                     if(item.getX() == x2 && item.getY() == y2){
@@ -622,7 +621,9 @@ public class HelloController {
                         break;
                     }
                     if(item.getX() == x3 && item.getY() == y3){
-                        tilesToRemove.add(o2-1, item);
+                        //TODO: was this a mistake? Duplicate o2
+                        //tilesToRemove.add(o2-1, item);
+                        tilesToRemove.add(o3-1, item);
                         break;
                     }
                 }
@@ -668,7 +669,8 @@ public class HelloController {
 
         UnaryOperator<TextFormatter.Change> integerFilterXY = change -> {
             String newText = change.getControlNewText();
-            if ((newText.matches("\\d*") && newText.length() == 1 && Integer.valueOf(newText) >= 0 && Integer.valueOf(newText) <= 8) || newText.isEmpty()) {
+            if ((newText.matches("\\d*") && newText.length() == 1 && Integer.valueOf(newText) >= 0
+                    && Integer.valueOf(newText) <= 8) || newText.isEmpty()) {
                 return change;
             }
             return null;
@@ -690,7 +692,8 @@ public class HelloController {
 
         UnaryOperator<TextFormatter.Change> integerFilterChoiceOrder = change -> {
             String newText = change.getControlNewText();
-            if ((newText.matches("\\d*") && newText.length() == 1 && Integer.valueOf(newText) >= 1 && Integer.valueOf(newText) <=3) || newText.isEmpty()) {
+            if ((newText.matches("\\d*") && newText.length() == 1 && Integer.valueOf(newText) >= 1 &&
+                    Integer.valueOf(newText) <= 3) || newText.isEmpty()) {
                 return change;
             }
             return null;
@@ -708,7 +711,8 @@ public class HelloController {
 
         UnaryOperator<TextFormatter.Change> integerFilterColumn = change -> {
             String newText = change.getControlNewText();
-            if ((newText.matches("\\d*") && newText.length() == 1 && Integer.valueOf(newText) >= 0 && Integer.valueOf(newText) <= 4) || newText.isEmpty()) {
+            if ((newText.matches("\\d*") && newText.length() == 1 &&
+                    Integer.valueOf(newText) >= 0 && Integer.valueOf(newText) <= 4) || newText.isEmpty()) {
                 return change;
             }
             return null;
@@ -720,7 +724,8 @@ public class HelloController {
 
         UnaryOperator<TextFormatter.Change> integerFilterPlayerNum = change -> {
             String newText = change.getControlNewText();
-            if ((newText.matches("\\d*") && newText.length() == 1 && Integer.valueOf(newText) >= 2 && Integer.valueOf(newText) <= 4) || newText.isEmpty()) {
+            if ((newText.matches("\\d*") && newText.length() == 1 &&
+                    Integer.valueOf(newText) >= 2 && Integer.valueOf(newText) <= 4) || newText.isEmpty()) {
                 return change;
             }
             return null;
@@ -766,7 +771,6 @@ public class HelloController {
                 choiceOrder2TextField.setOpacity(0.5);
                 choiceOrder3TextField.setDisable(true);
                 choiceOrder3TextField.setOpacity(0.5);
-
             } else if (value == 2) {
                 choiceX2TextField.setDisable(false);
                 choiceX2TextField.setOpacity(1);
@@ -780,7 +784,6 @@ public class HelloController {
                 choiceOrder2TextField.setOpacity(1);
                 choiceOrder3TextField.setDisable(true);
                 choiceOrder3TextField.setOpacity(0.5);
-
             } else if (value == 3) {
                 choiceX2TextField.setDisable(false);
                 choiceX2TextField.setOpacity(1);
@@ -796,25 +799,7 @@ public class HelloController {
                 choiceOrder3TextField.setOpacity(1);
         }
         });
-
-
-
-
-
-
     }
-
-
-    /*
-    public void initialize(URL location, ResourceBundle resources) {
-        // Esempio di ridimensionamento del Pane dopo 5 secondi
-        PauseTransition delay = new PauseTransition(Duration.seconds(2));
-        delay.setOnFinished(event -> {
-            mainPane.setPrefWidth(1280);
-            mainPane.setPrefHeight(720);
-        });
-        delay.play();
-    }*/
 
     public void showError(String ErrorMessage, Stage stage) {
         MessageService messageService = new MessageService(ErrorMessage);
@@ -823,7 +808,7 @@ public class HelloController {
             String message = messageService.getValue();
             if (message != null) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Errore");
+                alert.setTitle("Error");
                 alert.setHeaderText(null);
                 alert.setContentText(message);
 
@@ -845,7 +830,7 @@ public class HelloController {
             String message = messageService.getValue();
             if (message != null) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Messaggio");
+                alert.setTitle("Message");
                 alert.setHeaderText(null);
                 alert.setContentText(message);
 
@@ -870,7 +855,7 @@ public class HelloController {
             return new Task<String>() {
                 @Override
                 protected String call() throws Exception {
-                        return "Messaggio: "+message;
+                        return "Message: " + message;
                 }
             };
         }
