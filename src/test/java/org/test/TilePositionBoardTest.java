@@ -113,5 +113,14 @@ public class TilePositionBoardTest {
         Assert.assertTrue(localPosition.isOccupied());
     }
 
+    @Test
+    public void testIsMe() {
+        int localX = 3;
+        int localY = 4;
+        TileObj localTile = new TileObj(TileType.CAT, TileVariant.VARIANT_THREE);
+        TilePositionBoard tempBoard = new TilePositionBoard(localX, localY, localTile);
+        tempBoard.isMe(3, 4);
+    }
+
 
 }

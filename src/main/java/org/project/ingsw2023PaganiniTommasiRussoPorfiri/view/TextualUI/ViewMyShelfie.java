@@ -13,9 +13,12 @@ import javax.swing.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import static java.lang.Thread.sleep;
 
 public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnable {
 
@@ -670,41 +673,45 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                 this.frame = new HelloApplication();
                 try {
                     frame.start(new Stage());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
+                    this.controller = frame.getController();
+                    this.controller.viewMyShelfie = this;
+                    this.initComponentGui();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-
-                this.controller = frame.getController();
-                this.controller.viewMyShelfie = this;
-
-                this.controller.setPrivateCard(this.player.getPC());
-                this.controller.setCommonCards(this.currentGame.getCommon1(), this.currentGame.getCommon2());
-
-                this.controller.updateBoard(this.currentGame.getBoard().getPlacements());
-
-                this.controller.setEnableSendButton(this.currentGame.getCurrentPlayer().getUsername().equals(this.player.getUsername()));
-                this.controller.UpdateCommonPoints(this.currentGame.getCommon1(), this.getCurrentGame().getCommon2());
-                this.controller.initShelves(this.currentGame.getPlayers());
-
-                //.DEBUG
-                //System.out.println("file:src/main/resources/GraphicResources/itemTiles/"+this.currentGame.getBoard().getPlacements().get(3).getTile().getType().getName()+""+this.currentGame.getBoard().getPlacements().get(0).getTile().getVariant().getNumber()+".png");
-                /*
-                for (int i = 0; i < this.currentGame.getBoard().getPlacements().size() ; i++){
-                    //System.out.println(this.currentGame.getBoard().getPlacements().get(i).isOccupied());
-                    System.out.println("file:src/main/resources/GraphicResources/itemTiles/"+this.currentGame.getBoard().getPlacements().get(i).getTile().getType().getName()+""+this.currentGame.getBoard().getPlacements().get(i).getTile().getVariant().getNumber()+".png");
-                    System.out.println("X: "+this.currentGame.getBoard().getPlacements().get(i).getX() + " Y: " + this.currentGame.getBoard().getPlacements().get(i).getY());
-                }
-                 */
+                this.initComponentGui();
             });
         });
-
+        this.updateGui();
     }
+    public void initComponentGui(){
+        this.controller.initShelves(this.currentGame.getPlayers());
+        this.controller.setPrivateCard(this.player.getPC());
+        this.controller.setCommonCards(this.currentGame.getCommon1(), this.currentGame.getCommon2());
 
+        //gia fatta nell update
+        //this.controller.updateBoard(this.currentGame.getBoard().getPlacements());
+        //this.controller.setEnableSendButton(this.currentGame.getCurrentPlayer().getUsername().equals(this.player.getUsername()));
+        //this.controller.UpdateCommonPoints(this.currentGame.getCommon1(), this.getCurrentGame().getCommon2());
+
+
+        //.DEBUG
+        //System.out.println("file:src/main/resources/GraphicResources/itemTiles/"+this.currentGame.getBoard().getPlacements().get(3).getTile().getType().getName()+""+this.currentGame.getBoard().getPlacements().get(0).getTile().getVariant().getNumber()+".png");
+        /*
+        for (int i = 0; i < this.currentGame.getBoard().getPlacements().size() ; i++){
+            //System.out.println(this.currentGame.getBoard().getPlacements().get(i).isOccupied());
+            System.out.println("file:src/main/resources/GraphicResources/itemTiles/"+this.currentGame.getBoard().getPlacements().get(i).getTile().getType().getName()+""+this.currentGame.getBoard().getPlacements().get(i).getTile().getVariant().getNumber()+".png");
+            System.out.println("X: "+this.currentGame.getBoard().getPlacements().get(i).getX() + " Y: " + this.currentGame.getBoard().getPlacements().get(i).getY());
+        }
+         */
+    }
     public void updateGui(){
 
             Platform.runLater(() -> {
                 try {
+                    this.initComponentGui();
                     if (this.currentGame != null) {
+                        //this.initComponentGui();
                         this.controller.setEnableSendButton(this.currentGame.getCurrentPlayer().getUsername().equals(this.player.getUsername()));
                         this.controller.UpdateCommonPoints(this.currentGame.getCommon1(), this.getCurrentGame().getCommon2());
                         this.controller.updateBoard(this.currentGame.getBoard().getPlacements());

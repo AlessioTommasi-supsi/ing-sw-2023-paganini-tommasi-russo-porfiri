@@ -124,6 +124,26 @@ public class PlayerTest {
     }
 
     @Test
+    public void testCheckCommonCard2() {
+        Player player = new Player("player1");
+        Game game = new GameTwoPlayers(2, player);
+        game.setCurrentPlayer(player);
+        CommonCard common = new CommonCardShape(5);
+        game.setCommon2(common);
+        player.getShelves().addTile(new TilePositionShelves(0,0, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
+        player.getShelves().addTile(new TilePositionShelves(0,1, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO)));
+        player.getShelves().addTile(new TilePositionShelves(0,2, new TileObj(TileType.CAT, TileVariant.VARIANT_THREE)));
+        player.getShelves().addTile(new TilePositionShelves(0,3, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO)));
+        player.getShelves().addTile(new TilePositionShelves(1,0, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
+        player.getShelves().addTile(new TilePositionShelves(1,1, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO)));
+        player.getShelves().addTile(new TilePositionShelves(1,2, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
+        player.getShelves().addTile(new TilePositionShelves(1,3, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO)));
+        game.updatePointsCommon();
+        assertEquals(8, player.getScore());
+        Assertions.assertEquals(4, game.getPointCommonCard2());
+    }
+
+    @Test
     public void testAddEndOfGamePoint() {
         player.addEndOfGamePoint();
         assertEquals(1, player.getScore());
@@ -284,5 +304,30 @@ public class PlayerTest {
         boolean returnCondition = false;
         if (counterTilesPersonal == 1) {returnCondition = true;}
         assertTrue(returnCondition);
+    }
+
+    @Test
+    public void testOther() {
+        Player player = new Player("Player2");
+        Player player1 = new Player(player);
+        boolean turn = player1.getTurn();
+        assertEquals(player1.getTurn(), turn);
+        int id = player.getId();
+        assertEquals(player.getId(), id);
+        ArrayList<PersonalCard> personalCardParsers = new ArrayList<>();
+        try {
+            Gson gson = new Gson();
+            Reader reader = Files.newBufferedReader(Paths.get("PersonalCard.json"));
+            PersonalCard[] parser = gson.fromJson(reader,PersonalCard[].class);
+            personalCardParsers.add(parser[0]);
+            reader.close();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        PersonalCard pC = personalCardParsers.get(0);
+        Player player2 = new Player(id + 1, "test", pC);
+        player2.setCommonCard2Completed(true);
+        assertTrue(player2.isCommonCard2Completed());
+        Globals.incrementPlayerId();
     }
 }

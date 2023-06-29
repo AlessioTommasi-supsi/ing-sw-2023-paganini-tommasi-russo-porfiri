@@ -1,0 +1,161 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Choice</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.project.ingsw2023PaganiniTommasiRussoPorfiri.model</a>
+</div>
+
+<h1>Coverage Summary for Class: Choice (org.project.ingsw2023PaganiniTommasiRussoPorfiri.model)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Choice</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (10/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (16/16)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.project.ingsw2023PaganiniTommasiRussoPorfiri.model;
+&nbsp;
+&nbsp;import java.io.Serializable;
+&nbsp;
+&nbsp;public class Choice implements Serializable {
+&nbsp;    private ChoiceMyShelfie choice;
+&nbsp;    private Turn.Event state;
+&nbsp;    private Object argument;
+&nbsp;    private Player player;
+&nbsp;
+<b class="fc">&nbsp;    public Choice(ChoiceMyShelfie choice, Player player, Object argument) {</b>
+<b class="fc">&nbsp;        this.choice = choice;</b>
+<b class="fc">&nbsp;        this.argument = argument;</b>
+<b class="fc">&nbsp;        this.player = player;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Turn.Event getState() {
+<b class="fc">&nbsp;        return state;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setState(Turn.Event state) {
+<b class="fc">&nbsp;        this.state = state;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ChoiceMyShelfie getChoice() {
+<b class="fc">&nbsp;        return choice;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setChoice(ChoiceMyShelfie choice) {
+<b class="fc">&nbsp;        this.choice = choice;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Object getArgument() {
+<b class="fc">&nbsp;        return argument;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setArgument(Object argument) {
+<b class="fc">&nbsp;        this.argument = argument;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Player getPlayer() {
+<b class="fc">&nbsp;        return player;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setPlayer(Player player) {
+<b class="fc">&nbsp;        this.player = player;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="fc">&nbsp;        return &quot;Choice{&quot; +</b>
+<b class="fc">&nbsp;                &quot;choice=&quot; + choice.toString() +</b>
+&nbsp;                &quot;, state=&quot; + state +
+<b class="fc">&nbsp;                &quot;, argument=&quot; + argument.toString() +</b>
+<b class="fc">&nbsp;                &quot;, player=&quot; + player.toString() +</b>
+&nbsp;                &#39;}&#39;;
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-30 00:54</div>
+</div>
+</body>
+</html>

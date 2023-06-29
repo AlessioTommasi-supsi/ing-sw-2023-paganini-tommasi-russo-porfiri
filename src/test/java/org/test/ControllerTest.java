@@ -48,5 +48,6 @@ public class ControllerTest {
         ArrayList<TilePositionBoard> BoardAfter = controller.getModel().getMyShelfie().getGames().get(0).getBoard().getPlacements();
 
         assertNotEquals(BordBefore.toString(), BoardAfter.toString());
+        controller.getClient();
     }
 }

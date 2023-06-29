@@ -54,4 +54,8 @@ public class ShelvesTest {
         shelves.displayShelves();
     }
 
+    @Test
+    public void testShowShelf() {
+        shelves.showShelves();
+    }
 }

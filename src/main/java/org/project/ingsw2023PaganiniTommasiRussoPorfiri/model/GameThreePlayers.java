@@ -27,7 +27,7 @@ public class GameThreePlayers extends Game implements Serializable {
     public void defineCommonCardScores(){
         int[] tempScores = new int[4];
         tempScores[0] = 0;
-        for (int i = 1; i < 5; i++) {
+        for (int i = 1; i < 4; i++) {
             tempScores[i] = (i+1)*2;
         }
         setCommonCardScores(tempScores);
