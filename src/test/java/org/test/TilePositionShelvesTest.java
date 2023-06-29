@@ -77,4 +77,10 @@ public class TilePositionShelvesTest {
         Assert.assertTrue(localPosition.isOccupied());
     }
 
+    @Test
+    public void testOther() {
+        TilePositionShelves tilePositionShelves = new TilePositionShelves(0,0, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE));
+        Assert.assertNotEquals(tilePositionShelves.toString(), "");
+    }
+
 }
