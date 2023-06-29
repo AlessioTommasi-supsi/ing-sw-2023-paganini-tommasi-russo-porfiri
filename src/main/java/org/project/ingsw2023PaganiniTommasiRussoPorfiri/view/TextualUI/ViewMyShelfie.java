@@ -414,8 +414,8 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                     case CPU_CHOICE -> {
                         switch (model.getPlayerChoice().getChoice()) {
                             case JOIN_GAME:
-
                                 this.player.setId(arg.getPlayer().getId());
+
                                 //aggiorno la variabile this.current_game_id e current_game
                                 for (int i = 0; i < model.getMyShelfie().getGames().size(); i++) {
                                     boolean isPlayerInThisGame = false;
@@ -432,6 +432,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                                                 //System.err.println("partita a cui ti sei unito in corso: " + model.getMyShelfie().getGames().get(i).toString());
                                                 this.currentGameId = model.getMyShelfie().getGames().get(i).getCurrentGameId();
                                                 this.currentGame = model.getMyShelfie().getGames().get(i);
+                                                this.player.setPC(model.getMyShelfie().getGames().get(i).getPlayer(this.player.getId()).getPC());
                                                 /*prova aggiornamento gui*/
                                                 SwingUtilities.invokeLater(() -> {
                                                     this.frameLogin.usernameField.setText("You just joined the game and the match is under way!");
@@ -643,7 +644,6 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                 this.controller.viewMyShelfie = this;
 
                 this.controller.setPrivateCard(this.player.getPC());
-
 
                 this.controller.updateBoard(this.currentGame.getBoard().getPlacements());
 
