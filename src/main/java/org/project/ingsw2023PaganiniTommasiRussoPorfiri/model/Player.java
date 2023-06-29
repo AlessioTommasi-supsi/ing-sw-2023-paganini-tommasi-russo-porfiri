@@ -292,6 +292,7 @@ public class Player implements Serializable {
 
         ArrayList<TileObj> orderedTilesToRemove = new ArrayList<>();
         //ordinamento per immissione in libreria
+
         for (int i = 0; i < tilesToPut.size(); i++) {
             orderedTilesToRemove.add(tilesToPut.get(ordine[i] - 1));
         }

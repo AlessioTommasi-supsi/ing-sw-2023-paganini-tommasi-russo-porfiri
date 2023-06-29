@@ -933,18 +933,27 @@ public class HelloController {
     }
 
     public void initShelves(ArrayList<Player> players){
-        shp1Text.setText(players.get(0).getUsername());
-        shp2Text.setText(players.get(1).getUsername());
-        shp3Text.setText(players.get(2).getUsername());
-        shp4Text.setText(players.get(3).getUsername());
+        try {
+            shp1Text.setText(players.get(0).getUsername());
+            shp2Text.setText(players.get(1).getUsername());
+            //shp3Text.setText(players.get(2).getUsername());
+            //shp4Text.setText(players.get(3).getUsername());
+        }catch (Exception e){
+            //index out og bound e vengono inizializzati meno di 4 giocatori
+            e.printStackTrace();
+        }
 
     }
     public void updateShelves(ArrayList<Player> players){
-        upupdateShelves1(players);
-        upupdateShelves2(players);
-        upupdateShelves3(players);
-        upupdateShelves4(players);
-
+        try {
+            upupdateShelves1(players);
+            upupdateShelves2(players);
+            //upupdateShelves3(players);
+            //upupdateShelves4(players);
+        }catch (Exception e){
+            //index out og bound e vengono inizializzati meno di 4 giocatori
+            e.printStackTrace();
+        }
 
         //this.shelf1R0C0 = players.get(0).getShelves().getTilePosition(0, 0).getTile();
         //shelf1R0C0.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
@@ -1450,26 +1459,22 @@ public class HelloController {
         int y2;
         int y3;
 
-        int o1= Integer.parseInt(choiceOrder1TextField.getText());
-        int o2;
-        int o3;
-
         for(TilePositionBoard item : boardPlacementsCopy){
             if(item.getX() == x1 && item.getY() == y1){
-                tilesToRemove.add( item);
+                tilesToRemove.add(item);
                 break;
             }
         }
 
         switch(counter){
             case 2:
+
                 x2= Integer.parseInt(choiceX2TextField.getText());
                 y2 = Integer.parseInt(choiceY2TextField.getText());
-                o2= Integer.parseInt(choiceOrder2TextField.getText());
 
                 for(TilePositionBoard item : boardPlacementsCopy){
                     if(item.getX() == x2 && item.getY() == y2){
-                        tilesToRemove.add(o2-1, item);
+                        tilesToRemove.add( item);
                         break;
                     }
                 }
@@ -1480,29 +1485,42 @@ public class HelloController {
                 y2 = Integer.parseInt(choiceY2TextField.getText());
                 x3 = Integer.parseInt(choiceX3TextField.getText());
                 y3 = Integer.parseInt(choiceY3TextField.getText());
-                o2= Integer.parseInt(choiceOrder2TextField.getText());
-                //TODO: was this a mistake? Duplicate o2
-                //o2= Integer.parseInt(choiceOrder2TextField.getText());
-                o3= Integer.parseInt(choiceOrder3TextField.getText());
 
                 for(TilePositionBoard item : boardPlacementsCopy){
                     if(item.getX() == x2 && item.getY() == y2){
-                        tilesToRemove.add(o2-1, item);
-                        break;
+                        tilesToRemove.add(item);
                     }
                     if(item.getX() == x3 && item.getY() == y3){
-                        //TODO: was this a mistake? Duplicate o2
-                        //tilesToRemove.add(o2-1, item);
-                        tilesToRemove.add(o3-1, item);
-                        break;
+                        tilesToRemove.add(item);
                     }
                 }
+
+                //this.showInfoMessage("");
             break;
         }
 
         int columOfShelves = Integer.parseInt(choiceShelfColumnNumTextField.getText());
 
-        int order[] = {1,2,3};
+        int order[] = new int[tilesToRemove.size()];
+
+        //.DEBUG
+        //this.showInfoMessage("Tiles to remove: " + tilesToRemove.size() + "Counter: " + counter , this.viewMyShelfie.frame.getStage());
+
+        order[0] = Integer.parseInt(choiceOrder1TextField.getText());;
+
+        switch (tilesToRemove.size()){
+            case 2:
+                order[1] = Integer.parseInt(choiceOrder2TextField.getText());
+            break;
+            case 3:
+                order[1] = Integer.parseInt(choiceOrder2TextField.getText());
+                order[2] = Integer.parseInt(choiceOrder3TextField.getText());
+            break;
+        }
+
+
+
+
 
         DrawFromBoardMessage message = new DrawFromBoardMessage(tilesToRemove,columOfShelves,this.viewMyShelfie.getCurrentGame().getCurrentGameId(), order);
 
