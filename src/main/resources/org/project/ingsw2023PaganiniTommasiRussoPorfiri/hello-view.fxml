@@ -661,7 +661,7 @@
                                 <TextField id="choiceY2TextField" fx:id="choiceY2TextField" alignment="CENTER" layoutX="148.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="y" />
                                 <TextField id="choiceX3TextField" fx:id="choiceX3TextField" alignment="CENTER" layoutX="224.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="x" />
                                 <TextField id="choiceY3TextField" fx:id="choiceY3TextField" alignment="CENTER" layoutX="255.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="y" />
-                                <Text id="choiceTextField3" fx:id="choiceTextField3" fill="WHITE" layoutX="16.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the insertion order of the tiles in your library, from bottom to top:" wrappingWidth="676.047607421875">
+                                <Text id="choiceTextField3" fx:id="choiceTextField3" fill="WHITE" layoutX="16.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the insertion order of the tiles in your library, from bottom to top:">
                                     <font>
                                         <Font size="18.0" />
                                     </font></Text>
