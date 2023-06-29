@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 
 public abstract class CommonCard  implements Serializable {
-    private int index ;
+    private int index;
     private int score;
     private String description = "Not assigned";
 
