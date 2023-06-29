@@ -512,27 +512,27 @@
                                                     <font>
                                                         <Font name="System Bold" size="12.0" />
                                                     </font></Text>
-                                    <Text id="col0Shelf3" fill="#ff9900" layoutX="39.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                    <Text id="col0Shelf3" fx:id="col0Shelf3" fill="#ff9900" layoutX="39.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                        <font>
                                           <Font name="System Bold Italic" size="12.0" />
                                        </font>
                                     </Text>
-                                    <Text id="col1Shelf3" fill="#ff9900" layoutX="75.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
+                                    <Text id="col1Shelf3" fx:id="col1Shelf3" fill="#ff9900" layoutX="75.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
                                        <font>
                                           <Font name="System Bold Italic" size="12.0" />
                                        </font>
                                     </Text>
-                                    <Text id="col2Shelf3" fill="#ff9900" layoutX="107.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="22.13671875">
+                                    <Text id="col2Shelf3" fx:id="col2Shelf3" fill="#ff9900" layoutX="107.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="22.13671875">
                                        <font>
                                           <Font name="System Bold Italic" size="12.0" />
                                        </font>
                                     </Text>
-                                    <Text id="col3Shelf3" fill="#ff9900" layoutX="145.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3" textAlignment="CENTER" wrappingWidth="22.136718749999773">
+                                    <Text id="col3Shelf3" fx:id="col3Shelf3" fill="#ff9900" layoutX="145.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3" textAlignment="CENTER" wrappingWidth="22.136718749999773">
                                        <font>
                                           <Font name="System Bold Italic" size="12.0" />
                                        </font>
                                     </Text>
-                                    <Text id="col4Shelf3" fill="#ff9900" layoutX="182.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4" textAlignment="CENTER" wrappingWidth="22.136718749999773">
+                                    <Text id="col4Shelf3" fx:id="col4Shelf3" fill="#ff9900" layoutX="182.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4" textAlignment="CENTER" wrappingWidth="22.136718749999773">
                                        <font>
                                           <Font name="System Bold Italic" size="12.0" />
                                        </font>
@@ -604,27 +604,27 @@
                                                     <font>
                                                         <Font name="System Bold" size="12.0" />
                                                     </font></Text>
-                                    <Text id="col0Shelf4" fill="MAGENTA" layoutX="35.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                    <Text id="col0Shelf4" fx:id="col0Shelf4" fill="MAGENTA" layoutX="35.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                        <font>
                                           <Font name="System Bold Italic" size="12.0" />
                                        </font>
                                     </Text>
-                                    <Text id="col1Shelf4" fill="MAGENTA" layoutX="74.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
+                                    <Text id="col1Shelf4" fx:id="col1Shelf4" fill="MAGENTA" layoutX="74.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
                                        <font>
                                           <Font name="System Bold Italic" size="12.0" />
                                        </font>
                                     </Text>
-                                    <Text id="col2Shelf4" fill="MAGENTA" layoutX="103.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="22.13671875">
+                                    <Text id="col2Shelf4" fx:id="col2Shelf4" fill="MAGENTA" layoutX="103.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="22.13671875">
                                        <font>
                                           <Font name="System Bold Italic" size="12.0" />
                                        </font>
                                     </Text>
-                                    <Text id="col3Shelf4" fill="MAGENTA" layoutX="141.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3" textAlignment="CENTER" wrappingWidth="22.136718749999773">
+                                    <Text id="col3Shelf4" fx:id="col3Shelf4" fill="MAGENTA" layoutX="141.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3" textAlignment="CENTER" wrappingWidth="22.136718749999773">
                                        <font>
                                           <Font name="System Bold Italic" size="12.0" />
                                        </font>
                                     </Text>
-                                    <Text id="col4Shelf4" fill="MAGENTA" layoutX="178.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4" textAlignment="CENTER" wrappingWidth="22.136718749999773">
+                                    <Text id="col4Shelf4" fx:id="col4Shelf4" fill="MAGENTA" layoutX="178.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4" textAlignment="CENTER" wrappingWidth="22.136718749999773">
                                        <font>
                                           <Font name="System Bold Italic" size="12.0" />
                                        </font>
