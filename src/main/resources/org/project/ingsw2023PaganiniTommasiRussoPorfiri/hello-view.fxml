@@ -4,7 +4,9 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,6 +14,9 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -153,9 +158,10 @@
                         <Text fill="#cf1212" strokeType="OUTSIDE" strokeWidth="0.0" text="3" />
                         <Text fill="#cf1212" strokeType="OUTSIDE" strokeWidth="0.0" text="4" />
                         <Text fill="#cf1212" strokeType="OUTSIDE" strokeWidth="0.0" text="5" />
-                        <Text fill="#cf1212" strokeType="OUTSIDE" strokeWidth="0.0" text="7" />
-                        <Text fill="#cf1212" strokeType="OUTSIDE" strokeWidth="0.0" text="8" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                        <Text fill="#cf1212" layoutX="262.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font></Text>
                         <Text fill="#3300ff" layoutX="70.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                             <font>
                                 <Font name="System Bold Italic" size="12.0" />
@@ -183,6 +189,11 @@
                                 <Font name="System Bold Italic" size="12.0" />
                             </font>
                         </Text>
+                  <ImageView fx:id="endToken" fitHeight="59.0" fitWidth="62.0" layoutX="664.0" layoutY="365.0" pickOnBounds="true" preserveRatio="true" rotate="8.1">
+                     <image>
+                        <Image url="@../../../GraphicResources/scoring%20tokens/end%20game.jpg" />
+                     </image>
+                  </ImageView>
                     </children>
                 </Pane>
                 <SplitPane id="allCardsSplitPane" fx:id="allCardsSplitPane" dividerPositions="0.5" layoutX="807.0" prefHeight="330.0" prefWidth="474.0">
@@ -203,11 +214,24 @@
                                                         <Image url="@../../../GraphicResources/commonGoalCards/Common_Goals1.jpg" />
                                                     </image>
                                                 </ImageView>
-                                                <TextField fx:id="c1Points" alignment="CENTER" layoutX="136.0" layoutY="41.0" maxWidth="66.0" prefHeight="66.0" rotate="-7.7" text="9">
-                                                    <font>
-                                                        <Font name="System Bold" size="31.0" />
-                                                    </font>
+                                    <AnchorPane layoutX="137.0" layoutY="42.0" prefHeight="66.0" prefWidth="66.0" rotate="-7.1">
+                                       <children>
+                                          <ImageView fitHeight="67.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../GraphicResources/scoring%20tokens/scoring_back_EMPTY.jpg" />
+                                             </image>
+                                          </ImageView>
+                                          <AnchorPane prefHeight="66.0" prefWidth="66.0">
+                                             <children>
+                                                <TextField fx:id="c1Points" alignment="CENTER" maxWidth="66.0" prefHeight="66.0" style="-fx-background-color: rgba(0, 0, 0, 0.5);" text="1">
+                                                   <font>
+                                                      <Font name="System Bold" size="31.0" />
+                                                   </font>
                                                 </TextField>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </AnchorPane>
                                             </children>
                                         </AnchorPane>
                                         <AnchorPane id="commonCard2AnchorPane" fx:id="commonCard2AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -222,11 +246,24 @@
                                                         <Image url="@../../../GraphicResources/commonGoalCards/Common_Goals9.jpg" />
                                                     </image>
                                                 </ImageView>
-                                                <TextField fx:id="c2Points" alignment="CENTER" layoutX="136.0" layoutY="41.0" maxWidth="66.0" prefHeight="66.0" rotate="-7.7" text="1">
-                                                    <font>
-                                                        <Font name="System Bold" size="31.0" />
-                                                    </font>
-                                                </TextField>
+                                    <AnchorPane layoutX="137.0" layoutY="42.0" prefHeight="67.0" prefWidth="67.0" rotate="-7.1">
+                                       <children>
+                                          <ImageView fitHeight="67.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../GraphicResources/scoring%20tokens/scoring_back_EMPTY.jpg" />
+                                             </image>
+                                          </ImageView>
+                                          <AnchorPane prefHeight="66.0" prefWidth="66.0">
+                                             <children>
+                                                            <TextField fx:id="c2Points" alignment="CENTER" maxWidth="66.0" prefHeight="66.0" style="-fx-background-color: rgba(0, 0, 0, 0.5);" text="1">
+                                                                <font>
+                                                                    <Font name="System Bold" size="31.0" />
+                                                                </font>
+                                                            </TextField>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </AnchorPane>
                                             </children>
                                         </AnchorPane>
                                     </items>
@@ -345,6 +382,11 @@
                                           <Font name="System Bold Italic" size="12.0" />
                                        </font>
                                     </Text>
+                                    <ImageView fx:id="chair" fitHeight="30.0" fitWidth="27.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../GraphicResources/misc/firstplayertoken.png" />
+                                       </image>
+                                    </ImageView>
                                             </children>
                                         </AnchorPane>
                                         <AnchorPane id="shelf2AnchorPane" fx:id="shelf2AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="117.0" prefWidth="126.0" style="-fx-background-color: transparent;">
@@ -647,15 +689,17 @@
                         </AnchorPane>
                     </items>
                 </SplitPane>
-                <ScrollPane id="choiceScrollPane" fx:id="choiceScrollPane" hbarPolicy="NEVER" layoutX="-1.0" layoutY="527.0" prefHeight="194.0" prefWidth="807.0" vmax="100.0">
+                <ScrollPane id="choiceScrollPane" fx:id="choiceScrollPane" hbarPolicy="NEVER" layoutX="-1.0" layoutY="527.0" prefHeight="194.0" prefWidth="807.0" vmax="100.0" vvalue="100.0">
                     <content>
                         <AnchorPane id="choiceAnchorPane" fx:id="choiceAnchorPane" prefHeight="311.0" prefWidth="807.0">
                             <children>
-                                <ImageView id="choiceBackImageView" fx:id="choiceBackImageView" fitHeight="330.0" fitWidth="807.0" pickOnBounds="true">
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                                <ImageView id="choiceBackImageView" fx:id="choiceBackImageView" fitHeight="527.0" fitWidth="807.0" pickOnBounds="true">
                                     <image>
                                         <Image url="@../../../GraphicResources/plainBackgrounds/5d1916.png" />
                                     </image>
                                 </ImageView>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" />
                                 <Text id="choiceTextField1" fx:id="choiceTextField1" fill="WHITE" layoutX="16.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the number of tiles to draw:">
                                     <font>
                                         <Font size="18.0" />
@@ -692,10 +736,26 @@
                                         <Font size="18.0" />
                                     </font></Text>
                                 <TextField id="choiceShelfColumnNumTextField" fx:id="choiceShelfColumnNumTextField" alignment="CENTER" layoutX="16.0" layoutY="254.0" prefHeight="32.0" prefWidth="40.0" promptText="0..4" />
-                                <Button id="choiceSendButton" fx:id="choiceSendButton" layoutX="653.0" layoutY="243.0" mnemonicParsing="false" onAction="#DrawFromBoard" prefHeight="62.0" prefWidth="118.0" text="Send" textFill="#992e2e">
+                                <Button id="choiceSendButton" fx:id="choiceSendButton" layoutX="653.0" layoutY="243.0" mnemonicParsing="false" onAction="#DrawFromBoard" prefHeight="62.0" prefWidth="118.0" text="Send">
                                     <font>
                                         <Font name="System Bold" size="29.0" />
                                     </font>
+                           <textFill>
+                              <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.8421052694320679" green="0.7620533108711243" blue="0.15594542026519775" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="0.7368420958518982" green="0.5142884850502014" blue="0.1009746566414833" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </RadialGradient>
+                           </textFill>
                                 </Button>
                                 <TextField id="choiceX2TextFied" fx:id="choiceX2TextField" alignment="CENTER" layoutX="117.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="x" />
                                 <ImageView id="choiceLogoImageView" fx:id="choiceLogoImageView" fitHeight="84.0" fitWidth="255.0" layoutX="535.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
@@ -704,6 +764,70 @@
                                     </image>
                                 </ImageView>
                                 <Text fill="YELLOW" layoutX="528.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="[ 1 for the first tile drawn, 2 for the second and 3 for the third. Enter 1,2,3 in any order you like ]" wrappingWidth="254.83146667480463" />
+                        <SplitPane dividerPositions="0.8535353535353536" layoutX="140.0" layoutY="337.0" orientation="VERTICAL" prefHeight="160.0" prefWidth="526.0">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <Pane layoutX="-5.0" layoutY="-2.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="34.0" prefWidth="531.0" style="-fx-background-color: brown;">
+                                       <effect>
+                                          <InnerShadow choke="0.25" height="37.38" radius="16.4475" width="30.41" />
+                                       </effect>
+                                       <children>
+                                          <Text fill="WHITE" layoutX="181.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game chat" textAlignment="CENTER" wrappingWidth="169.701171875">
+                                             <font>
+                                                <Font name="System Bold" size="25.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </Pane>
+                                    <ScrollPane layoutX="-1.0" layoutY="37.0" prefHeight="92.0" prefWidth="527.0">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <TextArea fx:id="gameChatHistory" editable="false" layoutY="1.0" prefHeight="330.0" prefWidth="510.0" />
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                    </ScrollPane>
+                                 </children></AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <SplitPane dividerPositions="0.9" prefHeight="22.0" prefWidth="525.6">
+                                      <items>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0">
+                                             <children>
+                                                <TextField fx:id="gameChatInput" layoutY="-3.0" prefHeight="0.0" prefWidth="474.0" />
+                                             </children></AnchorPane>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0">
+                                             <children>
+                                                <Button fx:id="gameChatSend" alignment="CENTER" layoutX="-1.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="6.0" prefWidth="52.0" text="Send" textAlignment="CENTER">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                   <textFill>
+                                                      <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                                         <stops>
+                                                            <Stop>
+                                                               <color>
+                                                                  <Color red="0.5789473652839661" green="0.1179337203502655" blue="0.1179337203502655" />
+                                                               </color>
+                                                            </Stop>
+                                                            <Stop offset="1.0">
+                                                               <color>
+                                                                  <Color red="0.8315789699554443" green="0.10471735149621964" blue="0.10471735149621964" />
+                                                               </color>
+                                                            </Stop>
+                                                         </stops>
+                                                      </RadialGradient>
+                                                   </textFill>
+                                                </Button>
+                                             </children></AnchorPane>
+                                      </items>
+                                    </SplitPane>
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
                             </children>
                         </AnchorPane>
                     </content>
