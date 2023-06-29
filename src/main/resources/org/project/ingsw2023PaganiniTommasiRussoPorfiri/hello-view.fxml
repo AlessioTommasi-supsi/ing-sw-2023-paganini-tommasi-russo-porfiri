@@ -203,19 +203,11 @@
                                                         <Image url="@../../../GraphicResources/commonGoalCards/Common_Goals1.jpg" />
                                                     </image>
                                                 </ImageView>
-<<<<<<< Updated upstream
-                                    <TextField fx:id="c1Points" layoutX="136.0" layoutY="41.0" maxWidth="66.0" prefHeight="66.0" promptText="Points" rotate="-7.7">
-                                       <font>
-                                          <Font name="System Bold" size="15.5" />
-                                       </font>
-                                    </TextField>
-=======
                                                 <TextField fx:id="c1Points" layoutX="136.0" layoutY="41.0" maxWidth="66.0" prefHeight="66.0" promptText="Points" rotate="-7.7">
                                                     <font>
                                                         <Font name="System Bold" size="15.5" />
                                                     </font>
                                                 </TextField>
->>>>>>> Stashed changes
                                             </children>
                                         </AnchorPane>
                                         <AnchorPane id="commonCard2AnchorPane" fx:id="commonCard2AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -230,19 +222,11 @@
                                                         <Image url="@../../../GraphicResources/commonGoalCards/Common_Goals9.jpg" />
                                                     </image>
                                                 </ImageView>
-<<<<<<< Updated upstream
-                                    <TextField fx:id="c2Points" layoutX="136.0" layoutY="41.0" maxWidth="66.0" prefHeight="66.0" promptText="Points" rotate="-7.7">
-                                       <font>
-                                          <Font name="System Bold" size="15.5" />
-                                       </font>
-                                    </TextField>
-=======
                                                 <TextField fx:id="c2Points" layoutX="136.0" layoutY="41.0" maxWidth="66.0" prefHeight="66.0" promptText="Points" rotate="-7.7">
                                                     <font>
                                                         <Font name="System Bold" size="15.5" />
                                                     </font>
                                                 </TextField>
->>>>>>> Stashed changes
                                             </children>
                                         </AnchorPane>
                                     </items>
@@ -332,16 +316,10 @@
                                                         <ImageView fx:id="shelf1R0C4" fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
                                                     </children>
                                                 </GridPane>
-                                    <Text id="shp1Text" fx:id="shp1Text" fill="#1616bc" layoutX="4.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player1's shelves" textAlignment="CENTER" wrappingWidth="232.79999999999995">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font></Text>
-=======
                                                 <Text id="shp1Text" fx:id="shp1Text" fill="#1616bc" layoutX="4.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player1's shelves" textAlignment="CENTER" wrappingWidth="232.79999999999995">
                                                     <font>
                                                         <Font name="System Bold" size="12.0" />
                                                     </font></Text>
->>>>>>> Stashed changes
                                             </children>
                                         </AnchorPane>
                                         <AnchorPane id="shelf2AnchorPane" fx:id="shelf2AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="117.0" prefWidth="126.0" style="-fx-background-color: transparent;">
@@ -405,16 +383,10 @@
                                                         <ImageView fx:id="shelf2R0C4" fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
                                                     </children>
                                                 </GridPane>
-                                    <Text id="shp2Text" fx:id="shp2Text" fill="#c11515" layoutX="4.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player2's shelves" textAlignment="CENTER" wrappingWidth="233.6000061035154">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font></Text>
-=======
                                                 <Text id="shp2Text" fx:id="shp2Text" fill="#c11515" layoutX="4.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player2's shelves" textAlignment="CENTER" wrappingWidth="233.6000061035154">
                                                     <font>
                                                         <Font name="System Bold" size="12.0" />
                                                     </font></Text>
->>>>>>> Stashed changes
                                             </children>
                                         </AnchorPane>
                                     </items>
@@ -486,16 +458,10 @@
                                                         <ImageView fx:id="shelf3R0C4" fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
                                                     </children>
                                                 </GridPane>
-                                    <Text id="shp3Text" fx:id="shp3Text" fill="#765116" layoutX="4.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player3's shelves" textAlignment="CENTER" wrappingWidth="233.6000061035155">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font></Text>
-=======
                                                 <Text id="shp3Text" fx:id="shp3Text" fill="#765116" layoutX="4.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player3's shelves" textAlignment="CENTER" wrappingWidth="233.6000061035155">
                                                     <font>
                                                         <Font name="System Bold" size="12.0" />
                                                     </font></Text>
->>>>>>> Stashed changes
                                             </children>
                                         </AnchorPane>
                                         <AnchorPane id="shelf4AnchorPane" fx:id="shelf4AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
@@ -559,16 +525,10 @@
                                                         <ImageView fx:id="shelf4R0C4" fitHeight="19.0" fitWidth="27.0" layoutX="160.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
                                                     </children>
                                                 </GridPane>
-                                    <Text id="shp4Text" fx:id="shp4Text" fill="#861286" layoutX="4.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player4's shelves" textAlignment="CENTER" wrappingWidth="233.6000061035154">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font></Text>
-=======
                                                 <Text id="shp4Text" fx:id="shp4Text" fill="#861286" layoutX="4.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player4's shelves" textAlignment="CENTER" wrappingWidth="233.6000061035154">
                                                     <font>
                                                         <Font name="System Bold" size="12.0" />
                                                     </font></Text>
->>>>>>> Stashed changes
                                             </children>
                                         </AnchorPane>
                                     </items>
@@ -633,11 +593,7 @@
                                         <Image url="@../../../GraphicResources/publisherMaterial/Title 2000x618px.png" />
                                     </image>
                                 </ImageView>
-<<<<<<< Updated upstream
-                        <Text fill="YELLOW" layoutX="528.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="[ 1 for the first tile drawn, 2 for the second and 3 for the third. Enter 1,2,3 in any order you like ]" wrappingWidth="254.83146667480463" />
-=======
                                 <Text fill="YELLOW" layoutX="528.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="[ 1 for the first tile drawn, 2 for the second and 3 for the third. Enter 1,2,3 in any order you like ]" wrappingWidth="254.83146667480463" />
->>>>>>> Stashed changes
                             </children>
                         </AnchorPane>
                     </content>

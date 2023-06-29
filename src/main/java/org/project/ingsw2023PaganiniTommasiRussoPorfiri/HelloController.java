@@ -402,7 +402,6 @@ public class HelloController {
     @FXML
     private Text shp3Text;
     @FXML
-<<<<<<< Updated upstream
     private Text shp4Text;
     @FXML
     private TextField c1Points;
@@ -415,17 +414,11 @@ public class HelloController {
     @FXML
     private ImageView personalCardImageView;
 
-
-=======
-    Text shp4Text;
-
     @FXML
     private ImageView shelf3ImageView;
 
     @FXML
     private ImageView shelf4ImageView;
-    public ViewMyShelfie viewMyShelfie = null;
->>>>>>> Stashed changes
 
     @FXML
     protected void onHelloButtonClick() {
@@ -1481,10 +1474,6 @@ public class HelloController {
         }
 
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
         DrawFromBoardMessage message = new DrawFromBoardMessage(tilesToRemove,columOfShelves,this.viewMyShelfie.getCurrentGame().getCurrentGameId(), order);
 
         ChoiceMyShelfie pc = ChoiceMyShelfie.DRAW_FROM_BOARD;
