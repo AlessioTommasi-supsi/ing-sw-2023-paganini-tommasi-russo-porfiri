@@ -27,6 +27,8 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
     private State state = State.WAITING_FOR_PLAYER;
     private final Object lock = new Object();
 
+    private Boolean endOfGameError = false;
+
     private Player player;
     private Game currentGame = null;
 
@@ -51,6 +53,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                     this.currentGame.getRanking().stream()
                             .forEach((rank)->{System.out.println(rank.toString());});
                 }catch (Exception e){
+                    this.endOfGameError = true;
                     e.printStackTrace();
                 }
 
@@ -77,9 +80,12 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                 inGame(model, arg);
             }
         } catch (Exception e){
-            //.DEBUG
-            //e.printStackTrace();
-            inGame(model, arg);
+
+                //.DEBUG
+                //e.printStackTrace();
+                System.err.println("");
+                inGame(model, arg);
+
         }
 
          //.DEBUG
@@ -214,10 +220,14 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
     }
 
     public void deliverGuiRequest(Choice c){
+        try {
+            setState(State.WAITING_FOR_OUTCOME);
+            setChanged();/*NOTIFICO AL SERVER che del client ha fatto scelta!!*/
+            notifyObservers(c);
+        }catch (Exception e){
+            System.err.println("Error occurred delivering gui request! ");
+        }
 
-        setState(State.WAITING_FOR_OUTCOME);
-        setChanged();/*NOTIFICO AL SERVER che del client ha fatto scelta!!*/
-        notifyObservers(c);
     }
 
 

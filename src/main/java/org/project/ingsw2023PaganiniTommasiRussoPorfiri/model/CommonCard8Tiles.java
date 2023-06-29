@@ -21,6 +21,8 @@ public class CommonCard8Tiles extends CommonCard implements Serializable {
         for(int i = 0; i < 6; i++) {
             for (int j=0;j<5;j++) {
                 if (player.getShelves().getTilePosition(i, j).isOccupied()) {
+                    //.DEBUG
+                    /*
                     System.out.println("Book size");
                     System.out.println(listOfBooks.size());
                     System.out.println("Cat size");
@@ -36,6 +38,8 @@ public class CommonCard8Tiles extends CommonCard implements Serializable {
                     System.out.println("Position: " + player.getShelves().getTilePosition(i, j).getX() + " " + player.getShelves().getTilePosition(i, j).getY());
                     System.out.println("Type: " + player.getShelves().getTilePosition(i, j).getTile().getType());
                     System.out.println("------");
+
+                     */
                     TileType type = player.getShelves().getTilePosition(i, j).getTile().getType();
                     switch (type) {
 
