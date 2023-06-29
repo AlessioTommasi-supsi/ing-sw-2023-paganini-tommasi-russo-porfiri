@@ -1,25 +1,53 @@
 # Progetto di ingegneria del software
-Gruppo GC28 composto DA alessio, emanuele, mattia, giampiero
-
-
-
+Group 28 composed of Alessio, Emanuele, Mattia, Giampiero. This project is the final test for the Software Engineering
+course of Computer Science Engineering at the Polytechnic of Milan.
+---
 ![Title](https://user-images.githubusercontent.com/126590912/237023835-855ab60b-0444-4b1a-87fa-f940cd771a04.png)
 
-## Key Features
+## Project Specification
+The project involves creating a Java version of the board game MyShelfie, developed by Cranio Games.<br><br>
+Our project focuses on implementing a distributed system consisting of a server with multiple clients capable
+of handling multiple games. <br><br>
+We have adopted the Model-View-Controller (MVC) pattern for code organization. <br><br>The system provides both a command-line interface (CLI) and a graphical user interface (GUI) for user interaction.
+* [Download detailed requirements here!](https://github.com/AlessioTommasi-polimi/ing-sw-2023-paganini-tommasi-russo-porfiri/blob/main/documentation/requirements.pdf)
+* [Download detailed rolebook here!](https://github.com/AlessioTommasi-polimi/ing-sw-2023-paganini-tommasi-russo-porfiri/blob/main/documentation/MyShelfie_Rulebook_ITA.pdf)
+---
+## Implemented functionalities
 
+### Game specific
 
+| Objective        |  |
+|------------------|------------|
+| Simplified rules | ✅          |
+| Complete rules   | ✅          |
 
-* [download detailed requirements here!](https://github.com/AlessioTommasi-polimi/ing-sw-2023-paganini-tommasi-russo-porfiri/blob/main/documentation/requirements.pdf)
+### Game agnostic
 
-  - Funzionalita avanzate:
-    * Partite multiple
-    * Chat
-  - Regole Complete
+#### Server
+| Objective                                                      |  |
+|----------------------------------------------------------------|------------|
+| Rules implementation                                           | ✅          |
+| Single instantiation (with multiple games management)          | ✅          |
+| Client-server connection through RMI and socket implementation | ✅          |
 
-* [download detailed rolebook here!](https://github.com/AlessioTommasi-polimi/ing-sw-2023-paganini-tommasi-russo-porfiri/blob/main/documentation/MyShelfie_Rulebook_ITA.pdf)
+#### Client
+| Objective                                  |  |
+|--------------------------------------------|------------|
+| Multiple instantiation on the same machine | ✅          |
+| GUI implemented through JavaFX             | ✅          |
+| Client-socket or client-RMI jar            | ✅          |
 
-## How To Use
+### Advanced functionalities
+| Objective                                     |  |
+|-----------------------------------------------|------------|
+| Server managing multiple games simultaneously | ✅          |
+| In-game chat                                  | ✅          |
 
+---
+
+## Starting the game
+
+### Cloning and running
 To clone and run this application, you'll need [Git](https://git-scm.com) and Java installed on your computer.
 From your command line:
 
@@ -31,21 +59,53 @@ $ git clone https://github.com/AlessioTommasi-polimi/ing-sw-2023-paganini-tommas
 $ cd ./ing-sw-2023-paganini-tommasi-russo-porfiri/src/main/java/org/example
 
 # Start Server
-$ java AppServerImpl.java
+$ cd Server
+$ java -jar softeng-gc28.java
 
-# Run the Client app you can chose between RMI and Socket
-$ java AppClientSocket.java
+# Run the Client  Socket
+$ cd ../ClientSocket
+$ java -jar softeng-gc28.java
 
-# Run the Client app you can chose between RMI and Socket
-$ java AppClientRMI.java
+# or Run the Client RMI (or both)
+$ cd ../ClientRMI
+$ java -jar softeng-gc28.java
 
 ```
 
 > **Note**
-> this may non work if you havent alredy compiled the project.
-
-
+> This may not work if you haven't already compiled the project.
 ---
+## Gameplay
+### Before the game
+On the login page, the user is prompted to enter their player username and specify the number of players who will participate in the game.
 
+If a game with the specified number of players does not exist, a new room will be created for them.
+
+If a game with the specified number of players already exists, the player will join that room and wait for additional
+users until the room reaches its maximum player capacity, which was determined during the room's creation.
+### After the game
+
+TODO
+
+TODO
+
+TODO
+
+FAREEEEEEEEEE
+
+
+### Game interruptions
+The game may not have a winner if a player disconnects during the game, as it will result in all players being
+disconnected, leaving the game without a winner.
+---
+## Authors
+Scaglione Cugola, GC28.
+> **Contact Information** <br>
 > mail: [alessiotom@live.it] &nbsp;&middot;&nbsp;
-> GitHub [@AlessioTommasi-polimi](https://github.com/AlessioTommasi-polimi) &nbsp;&middot;&nbsp;
+> GitHub [@AlessioTommasi-polimi](https://github.com/AlessioTommasi-polimi) <br>
+> mail: [giampiero.porfiri@mail.polimi.it] &nbsp;&middot;&nbsp;
+> GitHub [@Giampiero-Porfiri](https://github.com/Giampiero-Porfiri) <br>
+> mail: [emanuele.russo@mail.polimi.it] &nbsp;&middot;&nbsp;
+> GitHub [@EmanueleRuss0](https://github.com/EmanueleRuss0) <br>
+> mail: [mattia.paganini@mail.polimi.it] &nbsp;&middot;&nbsp;
+> GitHub [@MattiaPaganini](https://github.com/MattiaPaganini) <br>
