@@ -6,6 +6,7 @@ public class PersonalCard implements Serializable {
     public TilePositionShelves positionShelves[] ;
     private int points;
 
+    public String percorso;
     public int CatXPosition;
     public int CatYPosition;
     public int BookXPosition;
@@ -133,6 +134,14 @@ public class PersonalCard implements Serializable {
 
     public int getPlantYPosition() {
         return PlantYPosition;
+    }
+
+    public String getPercorso() {
+        return percorso;
+    }
+
+    public void setPercorso(String percorso) {
+        this.percorso = percorso;
     }
 
     @Override
