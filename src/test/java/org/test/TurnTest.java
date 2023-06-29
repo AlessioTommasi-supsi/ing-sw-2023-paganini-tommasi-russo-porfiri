@@ -36,11 +36,11 @@ public class TurnTest {
         Choice choice = new Choice(ChoiceMyShelfie.JOIN_GAME, new Player("John"), 2);
         turn.setMyShelfie(myShelfie);
         turn.setPlayerChoice(choice);
-        turn.error = "Errore di esempio";
+        turn.error = "Example error";
 
         String expectedString = "Turn{'\n'" +
                 "'\n'playerChoice=" + choice.toString() +
-                "'\n', errore='Errore di esempio'" +
+                "'\n', error='Example error'" +
                 "'\n', myShelfie=" + myShelfie.toString() +
                 '}';
 

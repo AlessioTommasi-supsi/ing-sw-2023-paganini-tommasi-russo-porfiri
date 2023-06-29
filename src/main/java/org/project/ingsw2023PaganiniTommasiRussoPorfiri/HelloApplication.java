@@ -25,11 +25,8 @@ import java.util.Random;
 
 public class HelloApplication extends Application {
     HelloController controller;
-
     Scene scene;
-
     Stage stage;
-
 
     public HelloController getController() {
         return controller;
@@ -49,8 +46,6 @@ public class HelloApplication extends Application {
         //stage.setFullScreenExitHint("");
         //stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         stage.show();
-
-
     }
 
     public static void main(String[] args) {
@@ -64,4 +59,6 @@ public class HelloApplication extends Application {
     public Stage getStage() {
         return stage;
     }
+
+
 }
