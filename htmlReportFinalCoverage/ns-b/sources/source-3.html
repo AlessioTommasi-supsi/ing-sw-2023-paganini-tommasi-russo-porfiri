@@ -124,8 +124,8 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;import javafx.application.Application;
 &nbsp;import javafx.application.Platform;
 &nbsp;import javafx.stage.Stage;
-&nbsp;import org.project.ingsw2023PaganiniTommasiRussoPorfiri.HelloApplication;
-&nbsp;import org.project.ingsw2023PaganiniTommasiRussoPorfiri.HelloController;
+&nbsp;import org.project.ingsw2023PaganiniTommasiRussoPorfiri.GuiApplication;
+&nbsp;import org.project.ingsw2023PaganiniTommasiRussoPorfiri.GuiController;
 &nbsp;import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.*;
 &nbsp;import org.project.ingsw2023PaganiniTommasiRussoPorfiri.utils.*;
 &nbsp;import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.SwingUI.LoginGUI;
@@ -164,7 +164,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;
 &nbsp;    public HelloController controller;
 &nbsp;
-<b class="fc">&nbsp;    private int currentGameId = -1; //verrà assegnato dopo aver fatto join_game!!</b>
+<b class="fc">&nbsp;    private int currentGameId = -1; //verrï¿½ assegnato dopo aver fatto join_game!!</b>
 &nbsp;
 &nbsp;    public void update(TurnView model/*risposta dal server*/, Choice arg/*evento che il client remoto ha scelto*/) {
 &nbsp;        try {
@@ -218,9 +218,9 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="fc">&nbsp;        if (currentGameId == -1){ //inizializzazione di tutte le variabili di gioco</b>
 <b class="fc">&nbsp;            joiningPart(model,arg);</b>
 &nbsp;        }else{
-&nbsp;            //aggiorno client -&gt; da fare ogni volta che avviene qualsiasi cosa!! -&gt; da non mettere fuori perché getMyShelfie() puo essere null!
+&nbsp;            //aggiorno client -&gt; da fare ogni volta che avviene qualsiasi cosa!! -&gt; da non mettere fuori perchï¿½ getMyShelfie() puo essere null!
 <b class="nc">&nbsp;            this.currentGame = model.getMyShelfie().getGame(this.currentGameId);</b>
-<b class="nc">&nbsp;            this.player= this.currentGame.getPlayer(this.player.getId());//così ho a portata di mano la shelves aggiornata!</b>
+<b class="nc">&nbsp;            this.player= this.currentGame.getPlayer(this.player.getId());//cosï¿½ ho a portata di mano la shelves aggiornata!</b>
 &nbsp;
 &nbsp;            //ho gia fatto join!
 &nbsp;            //faccio operazioni sse sono avvenute sul mio game!
@@ -230,7 +230,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="nc">&nbsp;                    isMyGame = true;</b>
 &nbsp;                }
 <b class="nc">&nbsp;            }</b>
-<b class="nc">&nbsp;            if (isMyGame){ //se il player che ha fatto l&#39;azione è presente nel mio game</b>
+<b class="nc">&nbsp;            if (isMyGame){ //se il player che ha fatto l&#39;azione ï¿½ presente nel mio game</b>
 &nbsp;
 &nbsp;                //se presente stampo qualcosa se no stringa vuota!
 <b class="nc">&nbsp;                System.err.println(model.getError());</b>
@@ -456,10 +456,10 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="nc">&nbsp;                return  Integer.parseInt(s.next());</b>
 &nbsp;
 &nbsp;            case TERMINATE_TURNS:
-<b class="nc">&nbsp;                return this.currentGameId;//oggetto da passare come argomento è l&#39;id della partita corrente.</b>
+<b class="nc">&nbsp;                return this.currentGameId;//oggetto da passare come argomento ï¿½ l&#39;id della partita corrente.</b>
 &nbsp;            case DRAW_FROM_BOARD:
 &nbsp;                try{
-&nbsp;                    //faccio qui tutti i controlli così sono sicuro di passare al server solo i dati giusti tanto la board viene aggiornata a ogni turno!
+&nbsp;                    //faccio qui tutti i controlli cosï¿½ sono sicuro di passare al server solo i dati giusti tanto la board viene aggiornata a ogni turno!
 &nbsp;
 <b class="nc">&nbsp;                    System.out.println(&quot;Enter the number of tiles to draw: &quot;);</b>
 <b class="nc">&nbsp;                    int counter = Integer.parseInt(s.next());</b>
@@ -493,7 +493,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="nc">&nbsp;                                System.out.println(&quot;Enter in what order you want to insert the tile into position: x &quot; + tilesToRemove.get(i).getX() + &quot; y &quot;+tilesToRemove.get(i).getY()+&quot; to place in the library: &quot;);</b>
 <b class="nc">&nbsp;                                order[i] = Integer.parseInt(s.next());</b>
 &nbsp;                            }
-&nbsp;                            //devo provare a fare rimozione!! solo per essere sicuro che i dati sono corretti; ordinamento effettivo verrà fatto dal controller
+&nbsp;                            //devo provare a fare rimozione!! solo per essere sicuro che i dati sono corretti; ordinamento effettivo verrï¿½ fatto dal controller
 <b class="nc">&nbsp;                            for (int i = 0; i &lt; tilesToRemove.size(); i++) {</b>
 <b class="nc">&nbsp;                                orderedTilesToRemove.add(tilesToRemove.get(order[i] - 1));</b>
 &nbsp;                            }
@@ -520,7 +520,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="nc">&nbsp;            break;</b>
 &nbsp;            case SEND_MESSAGE:
 &nbsp;                try{
-&nbsp;                    //faccio qui tutti i controlli così sono sicuro di passare al server solo i dati giusti tanto la board viene aggiornata a ogni turno!
+&nbsp;                    //faccio qui tutti i controlli cosï¿½ sono sicuro di passare al server solo i dati giusti tanto la board viene aggiornata a ogni turno!
 &nbsp;
 <b class="nc">&nbsp;                    s = new Scanner(System.in);</b>
 <b class="nc">&nbsp;                    System.out.println(&quot;Enter the message to send: &quot;);</b>
@@ -532,7 +532,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="nc">&nbsp;                    e.printStackTrace();</b>
 &nbsp;                }
 &nbsp;            case EXIT:
-<b class="nc">&nbsp;                return this.currentGameId;//oggetto da passare come argomento è l&#39;id della partita corrente.</b>
+<b class="nc">&nbsp;                return this.currentGameId;//oggetto da passare come argomento ï¿½ l&#39;id della partita corrente.</b>
 &nbsp;
 &nbsp;        }
 <b class="nc">&nbsp;        return null;</b>
@@ -550,12 +550,12 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;            }
 &nbsp;            //ERRORI DI RIMOZIONE DA BOARD!
 <b class="nc">&nbsp;            catch (TilesAreNotRemovableException e){</b>
-&nbsp;                //non c&#39;è bisogno di rimettere le tessere nella board!
+&nbsp;                //non c&#39;ï¿½ bisogno di rimettere le tessere nella board!
 <b class="nc">&nbsp;                e.printStackTrace();</b>
 <b class="nc">&nbsp;                System.err.println(&quot;Error entering data!\n&quot;+e.getMessage()+ &quot;`\n Retry! \n&quot;);</b>
 &nbsp;
 <b class="nc">&nbsp;            }catch (PositionEmptyException e) {</b>
-&nbsp;                //non c&#39;è bisogno di rimettere le tessere nella board!
+&nbsp;                //non c&#39;ï¿½ bisogno di rimettere le tessere nella board!
 &nbsp;                //e.printStackTrace();
 <b class="nc">&nbsp;                System.err.println(&quot;Error entering data!\n&quot;+e.getMessage()+ &quot;`\n Retry! \n&quot;);</b>
 <b class="nc">&nbsp;            }</b>
@@ -600,7 +600,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="nc">&nbsp;                                                this.initFxGui();</b>
 &nbsp;
 <b class="nc">&nbsp;                                            break;</b>
-&nbsp;                                            case IN_WAIT://siccome non esiste una partita di un solo giocatore entrerò sempre qui!
+&nbsp;                                            case IN_WAIT://siccome non esiste una partita di un solo giocatore entrerï¿½ sempre qui!
 &nbsp;                                                /*prova aggiornamento gui*/
 <b class="nc">&nbsp;                                                SwingUtilities.invokeLater(() -&gt; {</b>
 <b class="nc">&nbsp;                                                    this.frameLogin.usernameField.setText(&quot;You just joined a game and you are waiting for more players!&quot;);</b>
@@ -690,7 +690,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="nc">&nbsp;            e.printStackTrace();</b>
 <b class="nc">&nbsp;        }</b>
 &nbsp;
-&nbsp;        //se è il mio turno faccio qualcosa!!
+&nbsp;        //se ï¿½ il mio turno faccio qualcosa!!
 &nbsp;        // nota e&#39; il mio turno sse la partita e. in corso
 <b class="nc">&nbsp;        if (model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer() != null) {</b>
 <b class="nc">&nbsp;            if (model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getId() == this.player.getId()) {</b>

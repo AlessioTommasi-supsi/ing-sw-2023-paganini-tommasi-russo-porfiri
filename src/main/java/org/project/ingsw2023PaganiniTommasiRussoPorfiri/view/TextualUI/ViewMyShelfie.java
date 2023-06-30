@@ -1,19 +1,16 @@
 package org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.TextualUI;
 
-import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
-import org.project.ingsw2023PaganiniTommasiRussoPorfiri.HelloApplication;
-import org.project.ingsw2023PaganiniTommasiRussoPorfiri.HelloController;
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.GuiController;
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.GuiApplication;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.*;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.utils.*;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.SwingUI.LoginGUI;
 
 import javax.swing.*;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Random;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -39,9 +36,9 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
 
     public LoginGUI frameLogin = new LoginGUI(this);
 
-    public HelloApplication frame;
+    public GuiApplication frame;
 
-    public HelloController controller;
+    public GuiController controller;
 
     private int currentGameId = -1; //verrà assegnato dopo aver fatto join_game!!
 
@@ -666,7 +663,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
     public void initFxGui(){
         Platform.startup(() -> {
             Platform.runLater(() -> {
-                this.frame = new HelloApplication();
+                this.frame = new GuiApplication();
                 try {
                     frame.start(new Stage());
                     this.controller = frame.getController();
