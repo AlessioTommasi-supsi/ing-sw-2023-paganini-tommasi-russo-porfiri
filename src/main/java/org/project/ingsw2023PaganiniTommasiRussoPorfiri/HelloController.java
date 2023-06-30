@@ -1592,7 +1592,7 @@ public class HelloController {
         int order[] = new int[tilesToRemove.size()];
 
         //.DEBUG
-        this.showInfoMessage("Tiles to remove: " + tilesToRemove.size() + "Counter: " + counter , this.viewMyShelfie.frame.getStage());
+        //this.showInfoMessage("Tiles to remove: " + tilesToRemove.size() + "Counter: " + counter , this.viewMyShelfie.frame.getStage());
 
         try{
             switch (tilesToRemove.size()){
