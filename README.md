@@ -1,6 +1,6 @@
 # Software engineering project
 
-Made by group 28, composed of: Alessio, Emanuele, Mattia, Giampiero. <br>
+Made by group 28, composed of: Alessio Tommasi, Emanuele Russo, Mattia Paganini, Giampiero Porfiri. <br>
 This project is the final test for the Software Engineering course of Computer Science Engineering at the Polytechnic of Milan.
 ---
 ![Title](https://user-images.githubusercontent.com/126590912/237023835-855ab60b-0444-4b1a-87fa-f940cd771a04.png)
@@ -91,19 +91,12 @@ If a game with the specified number of players does not exist, a new room will b
 If a game with the specified number of players already exists, the player will join that room and wait for additional
 users until the room reaches its maximum player capacity, which was determined during the room's creation.
 ### After the game
-
-TODO
-
-TODO
-
-TODO
-
-FAREEEEEEEEEE
-
-
+When the game ends, the player will have the opportunity to take a look at the game's rankings and the shelves, after which they can close the application and re-run it to play another match. 
 ### Game interruptions
+
 The game may not have a winner if a player disconnects during the game, as it will result in all players being
 disconnected, leaving the game without a winner.
+
 ---
 ## Contributors
 Made with ❤️ by GC28, scaglione Cugola.
