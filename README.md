@@ -92,11 +92,11 @@ If a game with the specified number of players already exists, the player will j
 users until the room reaches its maximum player capacity, which was determined during the room's creation.
 ### After the game
 When the game ends, the player will have the opportunity to take a look at the game's rankings and the shelves, after which they can close it and re-run the application to play another match. 
-
-
 ### Game interruptions
+
 The game may not have a winner if a player disconnects during the game, as it will result in all players being
 disconnected, leaving the game without a winner.
+
 ---
 ## Contributors
 Made with ❤️ by GC28, scaglione Cugola.
