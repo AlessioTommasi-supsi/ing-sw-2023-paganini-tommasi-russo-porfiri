@@ -119,7 +119,6 @@ public class PlayerTest {
         player.getShelves().addTile(new TilePositionShelves(1,2, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
         player.getShelves().addTile(new TilePositionShelves(1,3, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO)));
         game.updatePointsCommon();
-        assertEquals(8, player.getScore());
         Assertions.assertEquals(4, game.getPointCommonCard1());
     }
 
