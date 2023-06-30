@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 
 import static java.lang.Thread.sleep;
 
-public class HelloController {
+public class GuiController {
     @FXML
     private Pane mainPane;
     @FXML
