@@ -357,10 +357,6 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                                 break;
                             }
                         }
-
-                        //tilesToRemove.get(0).setTile(new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE));
-
-
                     }
 
                     int order[] = new int[tilesToRemove.size()];
@@ -679,7 +675,6 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                this.initComponentGui();
             });
         });
         this.updateGui();
@@ -711,13 +706,12 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                 try {
                     this.initComponentGui();
                     if (this.currentGame != null) {
-                        //this.initComponentGui();
                         this.controller.setEnableSendButton(this.currentGame.getCurrentPlayer().getUsername().equals(this.player.getUsername()));
                         this.controller.UpdateCommonPoints(this.currentGame.getCommon1(), this.getCurrentGame().getCommon2());
                         this.controller.updateBoard(this.currentGame.getBoard().getPlacements());
                         this.controller.updateShelves(this.currentGame.getPlayers());
+                        this.controller.updateChat();
                         //se e il mio turno attivo il bottone send inoltre verifico che non ho gia pescato
-
                     }
                 }catch (Exception e) {
                     //.DEBUG

@@ -31,6 +31,11 @@ public class AppServerImpl extends UnicastRemoteObject implements AppServer
         return instance;
     }
 
+    private void stop() {
+        executorService.shutdownNow();
+        System.out.println("Server stopped.");
+    }
+
     public static void main(String[] args) {
 
         Thread rmiThread = new Thread() {
@@ -95,13 +100,18 @@ public class AppServerImpl extends UnicastRemoteObject implements AppServer
                         else
                             serverImpl =new ServerImpl(serverImpl.model);
 
-
                         serverImpl.register(clientSkeleton);
                         while (true) {
                             clientSkeleton.receive(serverImpl);
                         }
                     } catch (RemoteException e) {
                         System.err.println("Cannot receive from client. Closing this connection...");
+                        try {
+                            socket.close();
+                            getInstance().executorService.shutdownNow();
+                        } catch (IOException ex) {
+                            System.err.println("Cannot close socket");
+                        }
                     } finally {
                         try {
                             socket.close();

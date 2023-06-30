@@ -189,7 +189,7 @@
                                 <Font name="System Bold Italic" size="12.0" />
                             </font>
                         </Text>
-                  <ImageView fx:id="endToken" fitHeight="59.0" fitWidth="62.0" layoutX="664.0" layoutY="365.0" pickOnBounds="true" preserveRatio="true" rotate="8.1">
+                  <ImageView fx:id="endToken" fitHeight="53.0" fitWidth="64.0" layoutX="669.0" layoutY="367.0" pickOnBounds="true" preserveRatio="true" rotate="7.8" visible="false">
                      <image>
                         <Image url="@../../../GraphicResources/scoring%20tokens/end%20game.jpg" />
                      </image>
@@ -216,7 +216,7 @@
                                                 </ImageView>
                                     <AnchorPane layoutX="137.0" layoutY="42.0" prefHeight="66.0" prefWidth="66.0" rotate="-7.1">
                                        <children>
-                                          <ImageView fitHeight="67.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fx:id="c1PointsImage" fitHeight="67.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@../../../GraphicResources/scoring%20tokens/scoring_back_EMPTY.jpg" />
                                              </image>
@@ -248,7 +248,7 @@
                                                 </ImageView>
                                     <AnchorPane layoutX="137.0" layoutY="42.0" prefHeight="67.0" prefWidth="67.0" rotate="-7.1">
                                        <children>
-                                          <ImageView fitHeight="67.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fx:id="c2PointsImage" fitHeight="67.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@../../../GraphicResources/scoring%20tokens/scoring_back_EMPTY.jpg" />
                                              </image>
@@ -689,7 +689,7 @@
                         </AnchorPane>
                     </items>
                 </SplitPane>
-                <ScrollPane id="choiceScrollPane" fx:id="choiceScrollPane" hbarPolicy="NEVER" layoutX="-1.0" layoutY="527.0" prefHeight="194.0" prefWidth="807.0" vmax="100.0" vvalue="100.0">
+                <ScrollPane id="choiceScrollPane" fx:id="choiceScrollPane" hbarPolicy="NEVER" layoutX="-1.0" layoutY="527.0" prefHeight="194.0" prefWidth="807.0" vmax="100.0">
                     <content>
                         <AnchorPane id="choiceAnchorPane" fx:id="choiceAnchorPane" prefHeight="311.0" prefWidth="807.0">
                             <children>
@@ -788,11 +788,11 @@
                                       <items>
                                         <AnchorPane minHeight="0.0" minWidth="0.0">
                                              <children>
-                                                <TextField fx:id="gameChatInput" layoutY="-3.0" prefHeight="0.0" prefWidth="474.0" />
+                                                <TextField fx:id="gameChatInput" layoutY="-3.0"  prefHeight="0.0" prefWidth="474.0" />
                                              </children></AnchorPane>
                                         <AnchorPane minHeight="0.0" minWidth="0.0">
                                              <children>
-                                                <Button fx:id="gameChatSend" alignment="CENTER" layoutX="-1.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="6.0" prefWidth="52.0" text="Send" textAlignment="CENTER">
+                                                <Button fx:id="gameChatSend" alignment="CENTER" layoutX="-1.0" layoutY="-2.0" mnemonicParsing="false" onAction="#sendChatMessage" prefHeight="6.0" prefWidth="52.0" text="Send" textAlignment="CENTER">
                                                    <font>
                                                       <Font name="System Bold" size="12.0" />
                                                    </font>
