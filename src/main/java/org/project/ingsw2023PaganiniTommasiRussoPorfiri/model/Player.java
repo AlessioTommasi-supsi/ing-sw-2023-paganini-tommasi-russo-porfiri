@@ -281,14 +281,7 @@ public class Player implements Serializable {
     // manca un putTyle in shelves che accetta solo la colonna in cui io devo aggiungere le tiles!
     // qualcosa che avevamo detto essere gravity?
     public void putTilesInShelf(ArrayList<TileObj> tilesToPut, int col, int ordine[]) throws Exception {
-        /*TODO!
-        * ricorda genera eccezione
-        * se non riesce a mettere le tiles
-            -> libreria piena, in questa colonna non ci possono stare quel numero di tiles   IllegalSizeOfTilesException
-            -> colonna non giusta   IllegalColumnException
-        * se riesce a mettere le tiles
-        *   con le tiles immesse la libreria  diventa piena     FullLibraryException
-        * */
+
 
         ArrayList<TileObj> orderedTilesToRemove = new ArrayList<>();
         //ordinamento per immissione in libreria

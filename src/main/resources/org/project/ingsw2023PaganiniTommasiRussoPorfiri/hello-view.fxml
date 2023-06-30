@@ -191,7 +191,7 @@
                         </Text>
                   <ImageView fx:id="endToken" fitHeight="53.0" fitWidth="64.0" layoutX="669.0" layoutY="367.0" pickOnBounds="true" preserveRatio="true" rotate="7.8" visible="false">
                      <image>
-                        <Image url="@../../../GraphicResources/scoring%20tokens/end%20game.jpg" />
+                        <Image url="@../../../GraphicResources/scoring tokens/end game.jpg" />
                      </image>
                   </ImageView>
                     </children>
@@ -218,7 +218,7 @@
                                        <children>
                                           <ImageView fx:id="c1PointsImage" fitHeight="67.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../GraphicResources/scoring%20tokens/scoring_back_EMPTY.jpg" />
+                                                <Image url="@../../../GraphicResources/scoring tokens/scoring_back_EMPTY.jpg" />
                                              </image>
                                           </ImageView>
                                           <AnchorPane prefHeight="66.0" prefWidth="66.0">
@@ -250,7 +250,7 @@
                                        <children>
                                           <ImageView fx:id="c2PointsImage" fitHeight="67.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../GraphicResources/scoring%20tokens/scoring_back_EMPTY.jpg" />
+                                                <Image url="@../../../GraphicResources/scoring tokens/scoring_back_EMPTY.jpg" />
                                              </image>
                                           </ImageView>
                                           <AnchorPane prefHeight="66.0" prefWidth="66.0">
