@@ -223,7 +223,7 @@
                                           </ImageView>
                                           <AnchorPane prefHeight="66.0" prefWidth="66.0">
                                              <children>
-                                                <TextField fx:id="c1Points" alignment="CENTER" maxWidth="66.0" prefHeight="66.0" style="-fx-background-color: rgba(0, 0, 0, 0.5);" text="1">
+                                                <TextField fx:id="c1Points" alignment="CENTER" maxWidth="66.0" prefHeight="66.0" style="-fx-background-color: rgba(0, 0, 0, 0.5);" text="8">
                                                    <font>
                                                       <Font name="System Bold" size="31.0" />
                                                    </font>
@@ -255,7 +255,7 @@
                                           </ImageView>
                                           <AnchorPane prefHeight="66.0" prefWidth="66.0">
                                              <children>
-                                                            <TextField fx:id="c2Points" alignment="CENTER" maxWidth="66.0" prefHeight="66.0" style="-fx-background-color: rgba(0, 0, 0, 0.5);" text="1">
+                                                            <TextField fx:id="c2Points" alignment="CENTER" maxWidth="66.0" prefHeight="66.0" style="-fx-background-color: rgba(0, 0, 0, 0.5);" text="8">
                                                                 <font>
                                                                     <Font name="System Bold" size="31.0" />
                                                                 </font>
@@ -796,7 +796,7 @@
                                       <items>
                                         <AnchorPane minHeight="0.0" minWidth="0.0">
                                              <children>
-                                                <TextField fx:id="gameChatInput" layoutY="-3.0"  prefHeight="0.0" prefWidth="474.0" />
+                                                <TextField fx:id="gameChatInput" layoutY="-3.0" prefHeight="0.0" prefWidth="474.0" />
                                              </children></AnchorPane>
                                         <AnchorPane minHeight="0.0" minWidth="0.0">
                                              <children>

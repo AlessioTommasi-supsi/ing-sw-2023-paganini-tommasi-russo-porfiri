@@ -9,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
@@ -20,10 +19,11 @@ import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.TextualUI.SendMessa
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.TextualUI.ViewMyShelfie;
 
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.function.UnaryOperator;
-import java.util.ArrayList;
 import java.util.stream.Collectors;
+
+import static java.lang.Thread.sleep;
+
 public class HelloController {
     @FXML
     private Pane mainPane;
@@ -530,7 +530,7 @@ public class HelloController {
     }
 
     public void updateBoard(ArrayList<TilePositionBoard> tilePositionBoards) {
-        // TODO
+
         for (int i = 0; i < tilePositionBoards.size() ; i++) {
             if(tilePositionBoards.get(i).isOccupied()) {
                 if (tilePositionBoards.get(i).isMe(0, 4)) {
@@ -897,13 +897,13 @@ public class HelloController {
     }
 
 
-    public void initShelves(ArrayList<Player> players){
+    public void initShelves(ArrayList<Player> players, int numOfPlayers){
         try {
             shp1Text.setText(players.get(0).getUsername());
             shp2Text.setText(players.get(1).getUsername());
 
 
-            switch (players.size()) {
+            switch (numOfPlayers) {
                 case 2:
                     shelf3ImageView.setVisible(false);
                     String imagePath3 = "file:src/main/resources/GraphicResources/cat/cat-897x1024-left.png";
@@ -987,25 +987,35 @@ public class HelloController {
         }
 
     }
-    public void updateShelves(ArrayList<Player> players){
+
+    public void updateShelves(ArrayList<Player> players, int numOfPlayers){
         try {
-            upupdateShelves1(players);
-            upupdateShelves2(players);
 
+            updateShelves1(players);
+            updateShelves2(players);
 
-            switch (players.size()) {
+            //sleep(1000);
+
+            if(numOfPlayers >= 3) {
+                updateShelves3(players);
+                if(numOfPlayers == 4) {
+                    updateShelves4(players);
+                }
+            }
+
+            /*switch (players.size()) {
                 case 3:
-                    upupdateShelves3(players);
+                    updateShelves3(players);
                 break;
                 case 4:
-                    upupdateShelves3(players);
-                    upupdateShelves4(players);
+                    updateShelves3(players);
+                    updateShelves4(players);
                 break;
-            }
+            }*/
 
 
         }catch (Exception e){
-            //index out og bound e vengono inizializzati meno di 4 giocatori
+            //index out of bound e vengono inizializzati meno di 4 giocatori
             e.printStackTrace();
         }
 
@@ -1015,7 +1025,7 @@ public class HelloController {
     }
 
 
-    public void upupdateShelves1(ArrayList<Player> players){
+    public void updateShelves1(ArrayList<Player> players){
         //Shelves mazziere = #shelf1
         //TilePositionShelves[6][5]
         TilePositionShelves[][] tilePositions = players.get(0).getShelves().showShelves();
@@ -1136,7 +1146,7 @@ public class HelloController {
         }
     }
 
-    public void upupdateShelves2(ArrayList<Player> players){
+    public void updateShelves2(ArrayList<Player> players){
         //TilePositionShelves[6][5]
         TilePositionShelves[][] tilePositions = players.get(1).getShelves().showShelves();
 
@@ -1256,7 +1266,7 @@ public class HelloController {
         }
     }
 
-    public void upupdateShelves3(ArrayList<Player> players){
+    public void updateShelves3(ArrayList<Player> players){
         TilePositionShelves[][] tilePositions = players.get(2).getShelves().showShelves();
 
         if (tilePositions[0][0].isOccupied()){
@@ -1375,7 +1385,7 @@ public class HelloController {
         }
     }
 
-    public void upupdateShelves4(ArrayList<Player> players){
+    public void updateShelves4(ArrayList<Player> players){
         TilePositionShelves[][] tilePositions = players.get(3).getShelves().showShelves();
 
         if (tilePositions[0][0].isOccupied()){
@@ -1543,7 +1553,7 @@ public class HelloController {
 
                 for(TilePositionBoard item : boardPlacementsCopy){
                     if(item.getX() == x2 && item.getY() == y2){
-                        tilesToRemove.add( item);
+                        tilesToRemove.add(item);
                         break;
                     }
                 }
@@ -1572,7 +1582,7 @@ public class HelloController {
             break;
         }
 
-        int columOfShelves = -1;
+        int columOfShelves;
         try {
             columOfShelves = Integer.parseInt(choiceShelfColumnNumTextField.getText());
         }catch (Exception e){
@@ -1582,7 +1592,7 @@ public class HelloController {
         int order[] = new int[tilesToRemove.size()];
 
         //.DEBUG
-        //this.showInfoMessage("Tiles to remove: " + tilesToRemove.size() + "Counter: " + counter , this.viewMyShelfie.frame.getStage());
+        this.showInfoMessage("Tiles to remove: " + tilesToRemove.size() + "Counter: " + counter , this.viewMyShelfie.frame.getStage());
 
         try{
             switch (tilesToRemove.size()){
@@ -1638,6 +1648,20 @@ public class HelloController {
     public void terminateTurn(){
         this.viewMyShelfie.deliverGuiRequest( new Choice(ChoiceMyShelfie.TERMINATE_TURNS, this.viewMyShelfie.getPlayer(),this.viewMyShelfie.getCurrentGame().getCurrentGameId()));
         this.setEnableSendButton(false);
+        Game gameRef = viewMyShelfie.getCurrentGame();
+        if(gameRef.getCurrentPlayer().getShelves().isFull() && !gameRef.isEnded()) {
+            endToken.setVisible(true);
+            gameRef.setHasEnded(true);
+        }
+        if(gameRef.isEnded()) {
+            int i = gameRef.getLastTurnCounter();
+            i++;
+            gameRef.setLastTurnCounter(i);
+            if(i == gameRef.getPlayerNumber()) {
+                //TODO
+                //MyShelfie myShelfieRe
+            }
+        }
     }
     public void sendChatMessage(){
 

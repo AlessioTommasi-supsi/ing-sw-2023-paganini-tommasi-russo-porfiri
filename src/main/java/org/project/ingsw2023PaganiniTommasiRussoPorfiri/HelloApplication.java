@@ -23,10 +23,14 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.util.Random;
 
+import static java.lang.Thread.sleep;
+
 public class HelloApplication extends Application {
     HelloController controller;
     Scene scene;
     Stage stage;
+    private static final Object lock = new Object();
+    private static int threadCount = 0;
 
     public HelloController getController() {
         return controller;
@@ -49,7 +53,28 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+
+        Thread thread = new Thread(() -> {
+            synchronized (lock) {
+                threadCount++;
+                launch();
+                try {
+                    sleep(2000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                threadCount--;
+            }
+        });
+
+        /*
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }*/
+
+        thread.start();
     }
 
     public Scene getScene() {
