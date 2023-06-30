@@ -4,7 +4,6 @@ import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.*;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.Choice;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.GraphicalUI;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.TextualUI.*;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -15,25 +14,53 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class LoginGUI extends JFrame {
-    public JButton joinGameButton; // Pulsante "Join Game"
-    public JPanel bareMetalPanel; // Pannello principale
-    public JTextField usernameField; // Campo di testo per l'username
-    public JTextField playerNumberField; // Campo di testo per il numero di giocatori
-    public JLabel imageContainer; // Contenitore per l'immagine
-    public JLabel titleLabel; // Etichetta del titolo
 
-    ViewMyShelfie viewMyShelfie; // Riferimento alla classe textuale
+    public JButton joinGameButton = new JButton();
+    public JPanel bareMetalPanel = new JPanel();
+    public JTextField usernameField = new JTextField();
+    public JTextField playerNumberField = new JTextField();
+    public JLabel imageContainer = new JLabel();
+    public JLabel titleLabel = new JLabel();
+
+
+    ViewMyShelfie viewMyShelfie;
     public LoginGUI() {
-        setTitle("MyShelfie"); // Imposta il titolo della finestra
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Imposta il comportamento di chiusura
-        setLayout(new BorderLayout()); // Imposta il layout principale della finestra
+        setResizable(false);
+        setSize(1280, 720);
+        setLocationRelativeTo(null);
+        setVisible(true);
+        joinGameButton.setBackground(new Color(139, 69, 19));
+        joinGameButton.setForeground(Color.WHITE); // Testo bianco
+        joinGameButton.setFont(new Font("Arial", Font.BOLD, 14));
 
-        // Crea imageContainer come pannello di sfondo
+        // Impostazione delle dimensioni dei componenti in proporzione alla finestra principale
+        int frameWidth = 1280;
+        int frameHeight = 720;
+
+// Calcola le dimensioni dei componenti in base alla proporzione della finestra principale
+        int joinGameButtonWidth = (int) (frameWidth * 0.2);  // 20% della larghezza del frame
+        int joinGameButtonHeight = (int) (frameHeight * 0.1);  // 10% dell'altezza del frame
+
+        int textFieldWidth = (int) (frameWidth * 0.2);  // 20% della larghezza del frame
+        int textFieldHeight = (int) (frameHeight * 0.05);  // 5% dell'altezza del frame
+
+        int titleLabelWidth = (int) (frameWidth * 0.5);  // 50% della larghezza del frame
+        int titleLabelHeight = (int) (frameHeight * 0.2);  // 20% dell'altezza del frame
+
+// Imposta le dimensioni dei componenti
+        joinGameButton.setPreferredSize(new Dimension(joinGameButtonWidth, joinGameButtonHeight));
+        usernameField.setPreferredSize(new Dimension(textFieldWidth, textFieldHeight));
+        playerNumberField.setPreferredSize(new Dimension(textFieldWidth, textFieldHeight));
+        titleLabel.setPreferredSize(new Dimension(titleLabelWidth, titleLabelHeight));
+
+        setTitle("MyShelfie");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setLayout(new BorderLayout());
+
         imageContainer = new JLabel();
         imageContainer.setLayout(new BorderLayout());
         add(imageContainer, BorderLayout.CENTER);
 
-        // Aggiungi un ComponentListener a imageContainer
         imageContainer.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
@@ -42,25 +69,24 @@ public class LoginGUI extends JFrame {
         });
 
         bareMetalPanel = new JPanel();
-        bareMetalPanel.setOpaque(false); // Rendi il pannello trasparente
-        bareMetalPanel.setLayout(new GridBagLayout()); // Imposta il layout del pannello come GridBagLayout
+        bareMetalPanel.setOpaque(false);
+        bareMetalPanel.setLayout(new GridBagLayout());
         bareMetalPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         imageContainer.add(bareMetalPanel, BorderLayout.CENTER);
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.anchor = GridBagConstraints.CENTER; // Centra il contenuto orizzontalmente
+        gbc.anchor = GridBagConstraints.CENTER;
         gbc.insets = new Insets(5, 0, 5, 10);
 
-        // Aggiungi un JLabel per l'immagine di titolo sopra al primo JTextField
+
         ImageIcon titleImage = new ImageIcon(getClass().getResource("/GraphicResources/publisherMaterial/Title 2000x618px.png"));
         titleLabel = new JLabel(titleImage);
-        titleLabel.setHorizontalAlignment(SwingConstants.CENTER); // Centra il titolo orizzontalmente
-        titleLabel.setVerticalAlignment(SwingConstants.CENTER); // Centra il titolo verticalmente
+        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        titleLabel.setVerticalAlignment(SwingConstants.CENTER);
         bareMetalPanel.add(titleLabel, gbc);
 
-        // Aggiungi un ComponentListener a titleLabel
         titleLabel.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
@@ -72,48 +98,36 @@ public class LoginGUI extends JFrame {
 
         JLabel usernameLabel = new JLabel("Username:");
         bareMetalPanel.add(usernameLabel, gbc);
-
         gbc.gridy = 2;
-
-        // Crea un JPanel come sfondo per il JTextField dell'username
         JPanel usernameFieldBackground = new JPanel();
-        usernameFieldBackground.setOpaque(false); // Rendi il pannello trasparente
+        usernameFieldBackground.setOpaque(false);
         usernameFieldBackground.setLayout(new BorderLayout());
         usernameField = new JTextField();
         usernameFieldBackground.add(usernameField, BorderLayout.CENTER);
-
-        // Aggiungi un rettangolo con bordi smussati come sfondo
         usernameFieldBackground.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
-
-        usernameField.setPreferredSize(new Dimension(200, 30)); // Imposta le dimensioni del campo di input
+        usernameField.setPreferredSize(new Dimension(200, 30));
         bareMetalPanel.add(usernameFieldBackground, gbc);
-
         gbc.gridy = 3;
-
         JLabel playerNumberLabel = new JLabel("Player Number:");
         bareMetalPanel.add(playerNumberLabel, gbc);
-
         gbc.gridy = 4;
 
-        // Crea un JPanel come sfondo per il JTextField del numero di giocatori
         JPanel playerNumberFieldBackground = new JPanel();
-        playerNumberFieldBackground.setOpaque(false); // Rendi il pannello trasparente
+        playerNumberFieldBackground.setOpaque(false);
         playerNumberFieldBackground.setLayout(new BorderLayout());
         playerNumberField = new JTextField();
         playerNumberFieldBackground.add(playerNumberField, BorderLayout.CENTER);
 
-        // Aggiungi un rettangolo con bordi smussati come sfondo
         playerNumberFieldBackground.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
 
-        playerNumberField.setPreferredSize(new Dimension(200, 30)); // Imposta le dimensioni del campo di input
+        playerNumberField.setPreferredSize(new Dimension(200, 30));
         bareMetalPanel.add(playerNumberFieldBackground, gbc);
 
         gbc.gridy = 5;
         gbc.insets = new Insets(10, 0, 0, 0);
 
-        // Crea il pannello del pulsante
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setOpaque(false); // Rendi il pannello trasparente
+        buttonPanel.setOpaque(false);
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 
         joinGameButton = new JButton("Join Game");
@@ -124,18 +138,48 @@ public class LoginGUI extends JFrame {
 
         buttonPanel.add(joinGameButton);
 
-        gbc.gridy = 6; // Posizione nel grid modificata per il pulsante
+        gbc.gridy = 6;
         bareMetalPanel.add(buttonPanel, gbc);
 
-        setExtendedState(JFrame.MAXIMIZED_BOTH); // Rendi la finestra a schermo intero
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setVisible(true);
 
     }
 
 
     public LoginGUI(ViewMyShelfie viewMyShelfie) {
-        this();//richiamo costruttore
+        this();
         this.viewMyShelfie = viewMyShelfie;
+
+
+        setResizable(false);
+        setSize(1280, 720);
+        setLocationRelativeTo(null);
+        setVisible(true);
+        joinGameButton.setBackground(new Color(139, 69, 19));
+        joinGameButton.setForeground(Color.WHITE);
+        joinGameButton.setFont(new Font("Arial", Font.BOLD, 14));
+
+        // Impostazione delle dimensioni dei componenti in proporzione alla finestra principale
+        int frameWidth = 1280;
+        int frameHeight = 720;
+
+// Calcola le dimensioni dei componenti in base alla proporzione della finestra principale
+        int joinGameButtonWidth = (int) (frameWidth * 0.2);  // 20% della larghezza del frame
+        int joinGameButtonHeight = (int) (frameHeight * 0.1);  // 10% dell'altezza del frame
+
+        int textFieldWidth = (int) (frameWidth * 0.2);  // 20% della larghezza del frame
+        int textFieldHeight = (int) (frameHeight * 0.05);  // 5% dell'altezza del frame
+
+        int titleLabelWidth = (int) (frameWidth * 0.5);  // 50% della larghezza del frame
+        int titleLabelHeight = (int) (frameHeight * 0.2);  // 20% dell'altezza del frame
+
+// Imposta le dimensioni dei componenti
+        joinGameButton.setPreferredSize(new Dimension(joinGameButtonWidth, joinGameButtonHeight));
+        usernameField.setPreferredSize(new Dimension(textFieldWidth, textFieldHeight));
+        playerNumberField.setPreferredSize(new Dimension(textFieldWidth, textFieldHeight));
+        titleLabel.setPreferredSize(new Dimension(titleLabelWidth, titleLabelHeight));
+
         joinGameButton.addActionListener(e -> {
             String username = usernameField.getText();
             String playerNumber = playerNumberField.getText();
@@ -296,4 +340,5 @@ public class LoginGUI extends JFrame {
     public void setTitleLabel(JLabel titleLabel) {
         this.titleLabel = titleLabel;
     }
+
 }
