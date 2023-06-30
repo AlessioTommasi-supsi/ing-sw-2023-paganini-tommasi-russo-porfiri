@@ -91,7 +91,7 @@ If a game with the specified number of players does not exist, a new room will b
 If a game with the specified number of players already exists, the player will join that room and wait for additional
 users until the room reaches its maximum player capacity, which was determined during the room's creation.
 ### After the game
-When the game ends, the player will have the opportunity to take a look at the game's rankings and the shelves, after which they can close it and re-run the application to play another match. 
+When the game ends, the player will have the opportunity to take a look at the game's rankings and the shelves, after which they can close the application and re-run it to play another match. 
 ### Game interruptions
 
 The game may not have a winner if a player disconnects during the game, as it will result in all players being
