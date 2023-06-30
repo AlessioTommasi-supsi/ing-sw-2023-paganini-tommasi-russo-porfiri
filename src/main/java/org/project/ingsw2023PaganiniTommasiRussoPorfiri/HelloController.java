@@ -16,12 +16,14 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.*;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.TextualUI.DrawFromBoardMessage;
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.TextualUI.SendMessage;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.TextualUI.ViewMyShelfie;
 
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.function.UnaryOperator;
-
+import java.util.ArrayList;
+import java.util.stream.Collectors;
 public class HelloController {
     @FXML
     private Pane mainPane;
@@ -451,11 +453,11 @@ public class HelloController {
     private ImageView endToken;
 
 
+    @FXML
+    private TextArea gameChatHistory;
 
-
-
-
-
+    @FXML
+    private TextField gameChatInput;
 
 
 
@@ -521,6 +523,11 @@ public class HelloController {
         //if()
     }
 
+    public void updateChat(){
+        this.gameChatHistory.setText(this.viewMyShelfie.getCurrentGame().getChat().stream()
+                .collect(Collectors.joining("\n"))
+        );
+    }
 
     public void updateBoard(ArrayList<TilePositionBoard> tilePositionBoards) {
         // TODO
@@ -1630,6 +1637,16 @@ public class HelloController {
 
     public void terminateTurn(){
         this.viewMyShelfie.deliverGuiRequest( new Choice(ChoiceMyShelfie.TERMINATE_TURNS, this.viewMyShelfie.getPlayer(),this.viewMyShelfie.getCurrentGame().getCurrentGameId()));
+        this.setEnableSendButton(false);
+    }
+    public void sendChatMessage(){
+
+        String message = this.gameChatInput.getText();
+
+        this.viewMyShelfie.deliverGuiRequest( new Choice(ChoiceMyShelfie.SEND_MESSAGE, this.viewMyShelfie.getPlayer(),
+                new SendMessage(this.viewMyShelfie.getPlayer().getUsername()+": "+message, this.viewMyShelfie.getCurrentGame().getCurrentGameId())
+        ));
+
         this.setEnableSendButton(false);
     }
 

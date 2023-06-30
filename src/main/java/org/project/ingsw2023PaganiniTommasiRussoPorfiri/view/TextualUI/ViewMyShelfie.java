@@ -675,12 +675,9 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                this.initComponentGui();
             });
         });
         this.updateGui();
-        //this.updateGui();
-        //this.updateGui();
     }
     public void initComponentGui(){
         this.controller.initShelves(this.currentGame.getPlayers());
@@ -713,6 +710,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                         this.controller.UpdateCommonPoints(this.currentGame.getCommon1(), this.getCurrentGame().getCommon2());
                         this.controller.updateBoard(this.currentGame.getBoard().getPlacements());
                         this.controller.updateShelves(this.currentGame.getPlayers());
+                        this.controller.updateChat();
                         //se e il mio turno attivo il bottone send inoltre verifico che non ho gia pescato
                     }
                 }catch (Exception e) {
