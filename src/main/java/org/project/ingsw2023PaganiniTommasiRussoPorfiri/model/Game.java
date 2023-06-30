@@ -21,6 +21,24 @@ public abstract class Game implements Serializable {
         return fullLibrary;
     }
 
+    public boolean isEnded() {
+        return hasEnded;
+    }
+
+    public void setHasEnded(boolean hasEnded) {
+        this.hasEnded = hasEnded;
+    }
+
+    public int getLastTurnCounter() {
+        return lastTurnCounter;
+    }
+
+    public void setLastTurnCounter(int lastTurnCounter) {
+        this.lastTurnCounter = lastTurnCounter;
+    }
+
+    private int lastTurnCounter;
+    private boolean hasEnded;
     private Player currentPlayer;
     private int currentGameId;
     private Board board;
@@ -94,6 +112,10 @@ public abstract class Game implements Serializable {
 
     public CommonCard getCommon2() {
         return common2;
+    }
+
+    public void setState(GameStatus state) {
+        this.state = state;
     }
 
     public void setCurrentPlayer(Player currentPlayer) {

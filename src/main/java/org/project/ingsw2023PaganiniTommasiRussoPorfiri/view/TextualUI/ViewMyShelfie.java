@@ -528,7 +528,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                             SwingUtilities.invokeLater(() -> {
                                 this.frameLogin.joinGameButton.setEnabled(false);
 
-                                //se la partaita non e'piu in attesa starto la gui!
+                                //se la partita non è piu in attesa starto la gui!
                                 if(model.getMyShelfie().getGame(this.currentGameId).getState() == GameStatus.IN_PROGRESS){
                                     this.frameLogin.setVisible(false);
                                 }
@@ -538,7 +538,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
 
                         break;
                         case DRAW_FROM_BOARD:
-                            System.out.println("Player: "+model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getUsername()+" HA PESCATO DALLA PLANCIA!");
+                            System.out.println("Player: "+model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getUsername()+" HAS DRAWN FROM BOARD!");
                             if(this.iAlreadyDrawn){
                                 System.out.println("I'm ending the turn on the GUI");
                                 Platform.runLater(() -> {
@@ -552,7 +552,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                             System.out.println("Player: "+model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getUsername()+" HAS FORCED THE LAST ROUND BEFORE THE GAME ENDS!");
                         break;
                         case SEND_MESSAGE:
-                            System.out.println("Player: "+model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getUsername()+" HAS SEND A MESSAGE!");
+                            System.out.println("Player: "+model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getUsername()+" HAS SENT A MESSAGE!");
                         break;
                         default:
                             System.err.println("Not implemented yet");
@@ -680,7 +680,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
         this.updateGui();
     }
     public void initComponentGui(){
-        this.controller.initShelves(this.currentGame.getPlayers());
+        this.controller.initShelves(this.currentGame.getPlayers(), this.currentGame.getPlayerNumber());
         this.controller.setPrivateCard(this.player.getPC());
         this.controller.setCommonCards(this.currentGame.getCommon1(), this.currentGame.getCommon2());
 
@@ -709,7 +709,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                         this.controller.setEnableSendButton(this.currentGame.getCurrentPlayer().getUsername().equals(this.player.getUsername()));
                         this.controller.UpdateCommonPoints(this.currentGame.getCommon1(), this.getCurrentGame().getCommon2());
                         this.controller.updateBoard(this.currentGame.getBoard().getPlacements());
-                        this.controller.updateShelves(this.currentGame.getPlayers());
+                        this.controller.updateShelves(this.currentGame.getPlayers(), this.currentGame.getPlayerNumber());
                         this.controller.updateChat();
                         //se e il mio turno attivo il bottone send inoltre verifico che non ho gia pescato
                     }
