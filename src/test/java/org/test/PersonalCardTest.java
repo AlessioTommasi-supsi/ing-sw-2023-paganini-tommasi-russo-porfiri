@@ -116,4 +116,11 @@ public class PersonalCardTest {
         personalCard.setFrameYPosition(0);
         assertEquals(0, personalCard.getFrameYPosition());
     }
+
+    @Test
+    public void testOther() {
+        PersonalCard personalCard = new PersonalCard();
+        personalCard.setPersonalCardNumber(0);
+        assertEquals(personalCard.getPersonalCardNumber(), 0);
+    }
 }

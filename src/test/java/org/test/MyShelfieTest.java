@@ -101,4 +101,10 @@ public class MyShelfieTest {
         Assertions.assertTrue(actualMessage.contains(expectedMessage));
     }
 
+    @Test
+    public void testMyShelfieC() {
+        MyShelfie myShelfie = new MyShelfie();
+        MyShelfie myShelfie2 = new MyShelfie(myShelfie);
+    }
+
 }

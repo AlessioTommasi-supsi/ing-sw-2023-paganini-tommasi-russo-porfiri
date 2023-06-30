@@ -328,5 +328,6 @@ public class PlayerTest {
         Player player2 = new Player(id + 1, "test", pC);
         player2.setCommonCard2Completed(true);
         assertTrue(player2.isCommonCard2Completed());
+        Globals.incrementPlayerId();
     }
 }

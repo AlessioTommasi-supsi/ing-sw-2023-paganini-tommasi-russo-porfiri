@@ -35,8 +35,17 @@ public class OtherTest {
         model.setPlayerChoice(choice);
         TurnView turnView = new TurnView(model);
         Choice choice1 = turnView.getPlayerChoice();
+        choice1.setChoice(ChoiceMyShelfie.SEND_MESSAGE);
+        Player playerTest = choice1.getPlayer();
+        assertEquals(playerTest, choice1.getPlayer());
+        choice1.setPlayer(playerTest);
+        Turn.Event state = choice1.getState();
+        assertEquals(state, choice1.getState());
         assertEquals(choice1.getArgument(), "");
+        choice1.setArgument("1");
         assertEquals(choice1, turnView.getPlayerChoice());
         assertNotEquals(turnView.toString(), "");
+        assertNotNull(turnView.getError());
+        assertNotNull(Globals.getInstance());
     }
 }

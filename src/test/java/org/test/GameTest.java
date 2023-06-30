@@ -3,6 +3,8 @@ import org.junit.Test;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.*;
 import org.junit.jupiter.api.BeforeEach;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 public class GameTest {
@@ -75,5 +77,45 @@ public class GameTest {
         assertEquals(game.getState(), GameStatus.IN_PROGRESS);
         assertNotNull(game.getInstanceBoard());
         game.getPlayer(0);
+    }
+
+    @Test
+    public void testOther2() {
+        Player player = new Player("P");
+        player.getShelves().addTile(new TilePositionShelves(0,0, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
+        player.getShelves().addTile(new TilePositionShelves(0,1, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO)));
+        player.getShelves().addTile(new TilePositionShelves(0,2, new TileObj(TileType.CAT, TileVariant.VARIANT_THREE)));
+        player.getShelves().addTile(new TilePositionShelves(0,3, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO)));
+        player.getShelves().addTile(new TilePositionShelves(1,0, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
+        player.getShelves().addTile(new TilePositionShelves(1,1, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO)));
+        player.getShelves().addTile(new TilePositionShelves(1,2, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
+        player.getShelves().addTile(new TilePositionShelves(1,3, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO)));
+        Game game1 = new GameTwoPlayers(2, player);
+        Game game2 = new GameThreePlayers(3, player);
+        Game game3 = new GameFourPlayers(4, player);
+        game1.defineCommonCardScores();
+        game2.defineCommonCardScores();
+        game3.defineCommonCardScores();
+        CommonCard common = new CommonCardShape(5);
+        game1.setCommon1(common);
+        game2.setCommon1(common);
+        game3.setCommon1(common);
+        game1.setCurrentPlayer(player);
+        game2.setCurrentPlayer(player);
+        game3.setCurrentPlayer(player);
+        game1.updatePointsCommon();
+        game2.updatePointsCommon();
+        game3.updatePointsCommon();
+        boolean result = game1.isFullLibrary();
+        assertEquals(result, game1.isFullLibrary());
+        game1.setCommonCardScores(game2.getCommonCardScores());
+        game1.getCommonCardScores();
+        ArrayList<Ranking> ranking = game1.getRank();
+        assertEquals(ranking, game1.getRank());
+        game1.addChatMessage("test");
+        ArrayList<String> chat = game1.getChat();
+        assertEquals(chat, game1.getChat());
+        ArrayList<PersonalCard> personalCards = game1.getPersonalCardDeck();
+        assertEquals(personalCards, game1.getPersonalCardDeck());
     }
 }
