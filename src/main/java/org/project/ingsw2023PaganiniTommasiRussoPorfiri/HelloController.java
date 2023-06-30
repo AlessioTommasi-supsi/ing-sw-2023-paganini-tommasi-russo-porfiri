@@ -447,6 +447,8 @@ public class HelloController {
     private ImageView invisibleCat3P;
     @FXML
     private ImageView invisibleCat4P;
+    @FXML
+    private ImageView endToken;
 
 
 
@@ -922,16 +924,16 @@ public class HelloController {
                 break;
 
                 case 3:
-                    shelf3GridPane.setVisible(true);
                     shp3Text.setText(players.get(2).getUsername());
-                    shelf3ImageView.setVisible(true);
 
+                    shelf3ImageView.setVisible(true);
+                    invisibleCat3P.setVisible(false);
+                    shelf3GridPane.setVisible(true);
                     col0Shelf3.setVisible(true);
                     col1Shelf3.setVisible(true);
                     col2Shelf3.setVisible(true);
                     col3Shelf3.setVisible(true);
                     col4Shelf3.setVisible(true);
-                    invisibleCat3P.setVisible(true);
 
                     shelf4ImageView.setVisible(false);
                     String imagePath5 = "file:src/main/resources/GraphicResources/cat/cat-897x1024.png";
@@ -947,22 +949,26 @@ public class HelloController {
                 break;
 
                 case 4:
-                    shelf3GridPane.setVisible(true);
-                    shelf3ImageView.setVisible(true);
+                    shp3Text.setText(players.get(2).getUsername());
+                    shp4Text.setText(players.get(3).getUsername());
 
+                    shelf3ImageView.setVisible(true);
+                    invisibleCat3P.setVisible(false);
+                    shelf3GridPane.setVisible(true);
                     col0Shelf3.setVisible(true);
                     col1Shelf3.setVisible(true);
                     col2Shelf3.setVisible(true);
                     col3Shelf3.setVisible(true);
                     col4Shelf3.setVisible(true);
-                    invisibleCat3P.setVisible(false);
 
                     shelf4ImageView.setVisible(true);
-
-
+                    invisibleCat4P.setVisible(false);
                     shelf4GridPane.setVisible(true);
-                    shp3Text.setText(players.get(2).getUsername());
-                    shp4Text.setText(players.get(3).getUsername());
+                    col0Shelf4.setVisible(true);
+                    col1Shelf4.setVisible(true);
+                    col2Shelf4.setVisible(true);
+                    col3Shelf4.setVisible(true);
+                    col4Shelf4.setVisible(true);
                 break;
 
             }
@@ -1492,12 +1498,20 @@ public class HelloController {
 
         ArrayList<TilePositionBoard> tilesToRemove = new ArrayList<TilePositionBoard>();
         ArrayList<TilePositionBoard> boardPlacementsCopy = this.viewMyShelfie.getCurrentGame().getBoard().getPlacements();
+        int x1;
+        int y1;
 
-        int x1 = Integer.parseInt(choiceX1TextField.getText());
+        try {
+             x1 = Integer.parseInt(choiceX1TextField.getText());
+             y1 = Integer.parseInt(choiceY1TextField.getText());
+        }catch (Exception e){
+            this.showError("Error! At least one field is still empty! Please fill in all fields!",this.viewMyShelfie.frame.getStage());
+            return;
+        }
+
         int x2;
         int x3;
 
-        int y1 = Integer.parseInt(choiceY1TextField.getText());
         int y2;
         int y3;
 
@@ -1511,8 +1525,14 @@ public class HelloController {
         switch(counter){
             case 2:
 
-                x2= Integer.parseInt(choiceX2TextField.getText());
-                y2 = Integer.parseInt(choiceY2TextField.getText());
+
+                try {
+                    x2 = Integer.parseInt(choiceX2TextField.getText());
+                    y2 = Integer.parseInt(choiceY2TextField.getText());
+                }catch (Exception e){
+                    this.showError("Error! At least one field is still empty! Please fill in all fields!",this.viewMyShelfie.frame.getStage());
+                    return;
+                }
 
                 for(TilePositionBoard item : boardPlacementsCopy){
                     if(item.getX() == x2 && item.getY() == y2){
@@ -1523,10 +1543,15 @@ public class HelloController {
             break;
 
             case 3:
-                x2= Integer.parseInt(choiceX2TextField.getText());
-                y2 = Integer.parseInt(choiceY2TextField.getText());
-                x3 = Integer.parseInt(choiceX3TextField.getText());
-                y3 = Integer.parseInt(choiceY3TextField.getText());
+                try {
+                    x2 = Integer.parseInt(choiceX2TextField.getText());
+                    y2 = Integer.parseInt(choiceY2TextField.getText());
+                    x3 = Integer.parseInt(choiceX3TextField.getText());
+                    y3 = Integer.parseInt(choiceY3TextField.getText());
+                } catch (Exception e) {
+                    this.showError("Error! At least one field is still empty! Please fill in all fields!",this.viewMyShelfie.frame.getStage());
+                    return;
+                }
 
                 for(TilePositionBoard item : boardPlacementsCopy){
                     if(item.getX() == x2 && item.getY() == y2){
@@ -1540,8 +1565,13 @@ public class HelloController {
             break;
         }
 
-        int columOfShelves = Integer.parseInt(choiceShelfColumnNumTextField.getText());
-
+        int columOfShelves = -1;
+        try {
+            columOfShelves = Integer.parseInt(choiceShelfColumnNumTextField.getText());
+        }catch (Exception e){
+            this.showError("Error! At least one field is still empty! Please fill in all fields!",this.viewMyShelfie.frame.getStage());
+            return;
+        }
         int order[] = new int[tilesToRemove.size()];
 
         //.DEBUG
@@ -1550,25 +1580,43 @@ public class HelloController {
         try{
             switch (tilesToRemove.size()){
                 case 1:
-                    order[0] = Integer.parseInt(choiceOrder1TextField.getText());
+                    try {
+                        order[0] = Integer.parseInt(choiceOrder1TextField.getText());
+                    } catch (Exception e) {
+                        this.showError("Error! At least one field is still empty! Please fill in all fields!", this.viewMyShelfie.frame.getStage());
+                        return;
+                    }
+                    break;
                 case 2:
-                    order[0] = Integer.parseInt(choiceOrder1TextField.getText());;
-                    order[1] = Integer.parseInt(choiceOrder2TextField.getText());
+                    try {
+                        order[0] = Integer.parseInt(choiceOrder1TextField.getText());
+                        order[1] = Integer.parseInt(choiceOrder2TextField.getText());
+                    } catch (Exception e) {
+                        this.showError("Error! At least one field is still empty! Please fill in all fields!", this.viewMyShelfie.frame.getStage());
+                        return;
+                    }
                     break;
                 case 3:
-                    order[0] = Integer.parseInt(choiceOrder1TextField.getText());;
-                    order[1] = Integer.parseInt(choiceOrder2TextField.getText());
-                    order[2] = Integer.parseInt(choiceOrder3TextField.getText());
+                    try {
+                        order[0] = Integer.parseInt(choiceOrder1TextField.getText());
+                        order[1] = Integer.parseInt(choiceOrder2TextField.getText());
+                        order[2] = Integer.parseInt(choiceOrder3TextField.getText());
+                    } catch (Exception e) {
+                        this.showError("Error! At least one field is still empty! Please fill in all fields!", this.viewMyShelfie.frame.getStage());
+                        return;
+                    }
                     break;
             }
         } catch (Exception e) {
+            this.showError(e.getMessage(),this.viewMyShelfie.frame.getStage());
+            return;
             //.DEBUG
-            //caso in cui la carta pescata non e' in una posizione corretta!
+            //caso in cui la carta pescata non è in una posizione corretta!
             //e.printStackTrace();
         }
 
 
-        DrawFromBoardMessage message = new DrawFromBoardMessage(tilesToRemove,columOfShelves,this.viewMyShelfie.getCurrentGame().getCurrentGameId(), order);
+        DrawFromBoardMessage message = new DrawFromBoardMessage(tilesToRemove, columOfShelves, this.viewMyShelfie.getCurrentGame().getCurrentGameId(), order);
 
         ChoiceMyShelfie pc = ChoiceMyShelfie.DRAW_FROM_BOARD;
 
@@ -1602,6 +1650,13 @@ public class HelloController {
 
         c1Points.setEditable(false);
         c2Points.setEditable(false);
+
+
+        c1Points.setStyle("-fx-text-fill: black;");
+        c2Points.setStyle("-fx-text-fill: black;");
+
+        c1Points.setOpacity(0.4);
+        c2Points.setOpacity(0.4);
 
         UnaryOperator<TextFormatter.Change> integerFilterXY = change -> {
             String newText = change.getControlNewText();

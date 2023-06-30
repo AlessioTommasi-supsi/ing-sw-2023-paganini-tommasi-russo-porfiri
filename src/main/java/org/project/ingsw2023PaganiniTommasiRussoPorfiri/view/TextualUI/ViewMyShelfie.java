@@ -679,6 +679,8 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
             });
         });
         this.updateGui();
+        //this.updateGui();
+        //this.updateGui();
     }
     public void initComponentGui(){
         this.controller.initShelves(this.currentGame.getPlayers());
