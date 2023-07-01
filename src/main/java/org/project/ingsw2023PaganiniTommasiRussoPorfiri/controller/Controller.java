@@ -50,6 +50,7 @@ public class Controller {
                     //sicuramente dovrò modificare la libreria del player corrente!
                     try {
                         model.getMyShelfie().getGame(drawMessage.getCurrentGameId()).getCurrentPlayer().putTilesInShelf(tilesRemoved, drawMessage.getColumnOfShelves(), drawMessage.getOrdine());
+
                     }catch (IllegalSizeOfTilesException e1){
                         //devo rimettere le tessere nella plancia!
                         model.getMyShelfie().getGame(drawMessage.getCurrentGameId()).getBoard().addTiles(drawMessage.getTilesToRemove());
@@ -81,7 +82,6 @@ public class Controller {
                     //se necessario ripristino la board!
                     model.getMyShelfie().getGame((Integer) arg.getArgument()).getBoard().restoreBoard();
                     //aggiornamento punti comuni
-                    //MATTIA CONTROLLA PERCHE NON VA!
                     try {
                         model.getMyShelfie().getGame((Integer) arg.getArgument()).updatePointsCommon();
                     }catch (Exception e){

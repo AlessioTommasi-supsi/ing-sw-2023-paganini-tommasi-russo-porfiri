@@ -1,5 +1,7 @@
 package org.project.ingsw2023PaganiniTommasiRussoPorfiri.model;
 
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.utils.PositionAlreadyOccupiedException;
+
 import java.io.Serializable;
 
 public class Shelves implements Serializable {
@@ -33,10 +35,9 @@ public class Shelves implements Serializable {
         return filledCounter == 30;
     }
 
-    public void addTile(TilePositionShelves p) {
-        int x = p.getX();
-        int y = p.getY();
-        this.tilePositions[x][y] = new TilePositionShelves(p);
+    public void addTile(int x, int y, TileObj tile) throws PositionAlreadyOccupiedException {
+
+        this.tilePositions[x][y].setTile(tile);
         this.filledCounter ++;
     }
 

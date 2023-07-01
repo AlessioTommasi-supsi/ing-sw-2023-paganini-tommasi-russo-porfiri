@@ -105,11 +105,6 @@ public class Player implements Serializable {
         givenAdjacencyPoints.put(6, 8);
     }
 
-    public void putTile(Set<TilePositionShelves> pt) {
-        for (TilePositionShelves p : pt) {
-            shelves.addTile(p);
-        }
-    }
 
     public void addPoints(int add) {
         this.score += add;
@@ -313,7 +308,9 @@ public class Player implements Serializable {
             throw new IllegalSizeOfTilesException(tilesToPut.size());
 
         for (TileObj tileObj : tilesToPut) {
-            shelves.getTilePosition2(col, countTilesInColumn).setTile(tileObj);
+            shelves.addTile(countTilesInColumn, col, tileObj);
+
+            //shelves.getTilePosition2(col, countTilesInColumn).setTile(tileObj);
             countTilesInColumn++;
         }
         if (shelves.getFilledCounter() == 30) throw new FullLibraryException();

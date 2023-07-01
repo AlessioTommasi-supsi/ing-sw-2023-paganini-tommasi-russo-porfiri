@@ -29,15 +29,15 @@ public abstract class Game implements Serializable {
         this.hasEnded = hasEnded;
     }
 
-    public int getLastTurnCounter() {
-        return lastTurnCounter;
+    public int getFirstFullLibPlayerId() {
+        return firstFullLibPlayerId;
     }
 
-    public void setLastTurnCounter(int lastTurnCounter) {
-        this.lastTurnCounter = lastTurnCounter;
+    public void setFirstFullLibPlayerId(int firstFullLibPlayerId) {
+        this.firstFullLibPlayerId = firstFullLibPlayerId;
     }
 
-    private int lastTurnCounter;
+    private int firstFullLibPlayerId;
     private boolean hasEnded;
     private Player currentPlayer;
     private int currentGameId;
@@ -257,8 +257,11 @@ public abstract class Game implements Serializable {
     }
 
 
+
     public void end() throws Exception {
-        if (this.fullLibrary == true && (this.players.indexOf(this.currentPlayer) == 0/*ho terminato giro*/)) {
+        if (this.getState().equals(GameStatus.OVER) ||
+                (this.getState().equals(GameStatus.LAST_TURN) && this.firstFullLibPlayerId == this.currentPlayer.getId())) {
+
             this.state = GameStatus.OVER;
 
             //calcolo i punti di ogni giocatore e ne faccio il ranking
@@ -400,6 +403,52 @@ public abstract class Game implements Serializable {
     }
     public void addChatMessage(String message) {
         this.chat.add(message);
+    }
+
+    public void explicitEnd() throws Exception {
+        this.state = GameStatus.OVER;
+
+        //calcolo i punti di ogni giocatore e ne faccio il ranking
+        //indice di ranking e Indice dei giocatori quando si sono uniti alla partita.
+
+        int point[];
+
+        //funzionalità ranking!
+        point = new int[this.playerNumber];
+
+        for (int i = 0; i < players.size(); i++) {
+            players.get(i).calcOverallScore();
+            point[i] = players.get(i).getScore();
+        }
+
+        this.ranking = new int[this.playerNumber];
+
+        for (int i = 0; i < players.size(); i++) {
+            rank.add(new Ranking(players.get(i), point[i]));
+        }
+
+        //ordino rank in base ai punti dal piu alto al piu basso
+        Collections.sort(rank, new Comparator<Ranking>() {
+            @Override
+            public int compare(Ranking o1, Ranking o2) {
+                return o2.getPoints() - o1.getPoints();
+            }
+        });
+
+        int index = 0;
+        int max =point[0];
+        //assegno il ranking
+        for (int j = 0; j < this.playerNumber; j++) {
+            for (int i = 1; i < players.size() ; i++) {
+                if (point[i] > max) {
+                    max = point[i];
+                    index = i;
+                }
+            }
+            point[index] = -1;
+            this.ranking[j] = index;
+        }
+        //fine funzionalità ranking
     }
 
 }
