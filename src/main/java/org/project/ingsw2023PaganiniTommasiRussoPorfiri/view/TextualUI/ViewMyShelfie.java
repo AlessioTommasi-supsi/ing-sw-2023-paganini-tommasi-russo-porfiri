@@ -364,6 +364,10 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                             for (int i = 0; i < tilesToRemove.size(); i++) {
                                 System.out.println("Enter in what order you want to insert the tile into position: x " + tilesToRemove.get(i).getX() + " y "+tilesToRemove.get(i).getY()+" to place in the library: ");
                                 order[i] = Integer.parseInt(s.next());
+                                if (order[i] < 0 || order[i] > tilesToRemove.size()) {
+                                    System.out.println("Invalid order! ");
+                                    i--;
+                                }
                             }
                             //devo provare a fare rimozione!! solo per essere sicuro che i dati sono corretti; ordinamento effettivo verrà fatto dal controller
                             for (int i = 0; i < tilesToRemove.size(); i++) {
@@ -539,7 +543,11 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                             if(this.iAlreadyDrawn){
                                 System.out.println("I'm ending the turn on the GUI");
                                 Platform.runLater(() -> {
-                                    this.controller.terminateTurn();
+                                    try {
+                                        this.controller.terminateTurn();
+                                    } catch (Exception e) {
+                                        //e.printStackTrace();
+                                    }
                                     this.controller.showInfoMessage("You just ended your turn!",this.frame.getStage());
                                     this.iAlreadyDrawn = false;
                                 });
