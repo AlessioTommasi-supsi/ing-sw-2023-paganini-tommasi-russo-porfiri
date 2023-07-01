@@ -1699,21 +1699,8 @@ public class GuiController {
     public void terminateTurn(){
         this.viewMyShelfie.deliverGuiRequest( new Choice(ChoiceMyShelfie.TERMINATE_TURNS, this.viewMyShelfie.getPlayer(),this.viewMyShelfie.getCurrentGame().getCurrentGameId()));
         this.setEnableSendButton(false);
-        Game gameRef = viewMyShelfie.getCurrentGame();
-        if(gameRef.getCurrentPlayer().getShelves().isFull() && !gameRef.isEnded() && gameRef != null) {
-            endToken.setVisible(true);
-            gameRef.setHasEnded(true);
-        }
-        if(gameRef.isEnded()) {
-            int i = gameRef.getLastTurnCounter();
-            i++;
-            gameRef.setLastTurnCounter(i);
-            if(i == gameRef.getPlayerNumber()) {
-                //TODO
-                //MyShelfie myShelfieRe
-            }
-        }
     }
+
     public void sendChatMessage(){
 
         String message = this.gameChatInput.getText();

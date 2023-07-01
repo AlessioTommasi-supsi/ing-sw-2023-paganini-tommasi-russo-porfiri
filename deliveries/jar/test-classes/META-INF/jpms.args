@@ -1,0 +1,4 @@
+--patch-module
+org.project.ingsw2023PaganiniTommasiRussoPorfiri=_
+--add-reads
+org.project.ingsw2023PaganiniTommasiRussoPorfiri=ALL-UNNAMED

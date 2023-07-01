@@ -713,7 +713,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                     this.initComponentGui();
                     if (this.currentGame != null) {
                         this.controller.setEnableSendButton(this.currentGame.getCurrentPlayer().getUsername().equals(this.player.getUsername()));
-                        this.controller.UpdateCommonPoints(this.currentGame.getCommon1(), this.getCurrentGame().getCommon2());
+                        this.controller.updateCommonPoints(this.currentGame.getCommon1(), this.getCurrentGame().getCommon2());
                         this.controller.updateBoard(this.currentGame.getBoard().getPlacements());
                         this.controller.updateShelves(this.currentGame.getPlayers(), this.currentGame.getPlayerNumber());
                         this.controller.updateChat();
