@@ -1632,6 +1632,13 @@ public class GuiController {
             //e.printStackTrace();
         }
 
+        for(int i = 0; i < order.length; i++){
+            if(order[i] > tilesToRemove.size() || order[i] < 1){
+                this.showError("Error! The order of the tiles is not correct! Please check the order of the tiles!",this.viewMyShelfie.frame.getStage());
+                return;
+            }
+        }
+
 
         DrawFromBoardMessage message = new DrawFromBoardMessage(tilesToRemove, columOfShelves, this.viewMyShelfie.getCurrentGame().getCurrentGameId(), order);
 
@@ -1649,7 +1656,7 @@ public class GuiController {
         this.viewMyShelfie.deliverGuiRequest( new Choice(ChoiceMyShelfie.TERMINATE_TURNS, this.viewMyShelfie.getPlayer(),this.viewMyShelfie.getCurrentGame().getCurrentGameId()));
         this.setEnableSendButton(false);
         Game gameRef = viewMyShelfie.getCurrentGame();
-        if(gameRef.getCurrentPlayer().getShelves().isFull() && !gameRef.isEnded()) {
+        if(gameRef.getCurrentPlayer().getShelves().isFull() && !gameRef.isEnded() && gameRef != null) {
             endToken.setVisible(true);
             gameRef.setHasEnded(true);
         }
