@@ -126,6 +126,7 @@ public class ViewMyShelfie extends Observable<ChoiceMyShelfie> implements Runnab
                                 if(model.getMyShelfie().getGame(this.currentGameId).getCurrentPlayer().getId() == this.player.getId()){
                                     this.controller.showError(model.getError(),this.frame.getStage());
                                 }
+                                this.updateGui();
                                 this.controller.setEnableSendButton(true);
                             });
                             break;

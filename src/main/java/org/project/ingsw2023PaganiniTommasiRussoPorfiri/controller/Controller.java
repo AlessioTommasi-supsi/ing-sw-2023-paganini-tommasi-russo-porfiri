@@ -44,8 +44,9 @@ public class Controller {
 
                 case DRAW_FROM_BOARD:
                     DrawFromBoardMessage drawMessage = (DrawFromBoardMessage) arg.getArgument();
+
                     //RIMOZIONE DA BOARD
-                    ArrayList<TileObj> tilesRemoved = model.getMyShelfie().getGame(drawMessage.getCurrentGameId()).getBoard().removeTiles(drawMessage.getTilesToRemove());
+                    ArrayList<TileObj> tilesRemoved = model.getMyShelfie().getGame(drawMessage.getCurrentGameId()).getBoard().removeTiles((ArrayList<TilePositionBoard>) drawMessage.getTilesToRemove().clone());
                     //IMMETTI IN LIBRERIA
                     //sicuramente dovrò modificare la libreria del player corrente!
                     try {
