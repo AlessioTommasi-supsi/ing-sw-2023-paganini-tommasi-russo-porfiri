@@ -48,6 +48,9 @@ We have adopted the Model-View-Controller (MVC) pattern for code organization. <
 ## Technology stack
 * javafx-controls:20
 * javafx-fxml:20
+* maven-compiler-plugin
+* javafx-maven-plugin
+* maven-shade-plugin
 * controlsfx:11.1.2
 * gson:2.10.1
 * junit:4.13.2
@@ -63,7 +66,7 @@ From your command line:
 $ git clone https://github.com/AlessioTommasi-polimi/ing-sw-2023-paganini-tommasi-russo-porfiri.git
 
 # Go into the repository
-$ cd ./ing-sw-2023-paganini-tommasi-russo-porfiri/src/main/java/org/example
+$ cd ./ing-sw-2023-paganini-tommasi-russo-porfiri/deliverables/jar
 
 # Start Server
 $ cd Server
