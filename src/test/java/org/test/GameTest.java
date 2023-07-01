@@ -2,6 +2,7 @@ package org.test;
 import org.junit.Test;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.*;
 import org.junit.jupiter.api.BeforeEach;
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.utils.PositionAlreadyOccupiedException;
 
 import java.util.ArrayList;
 
@@ -21,7 +22,7 @@ public class GameTest {
     public void testAddPlayer() throws Exception {
 
         game = new GameTwoPlayers(2, new Player("paperino"));
-        Player player = new Player("gian giacomo giovanni");
+        Player player = new Player("gian giacomo");
         game.addPlayer(player);
 
         assertEquals(2, game.getPlayers().size());
@@ -29,7 +30,7 @@ public class GameTest {
     }
 
     @Test
-    public void testEnd() throws Exception {
+    public void explicitEndTest() throws Exception {
 
         game = new GameTwoPlayers(2, new Player("topolino"));
 
@@ -39,19 +40,19 @@ public class GameTest {
 
         game.fullLibrary();
 
-        game.end();
+        game.explicitEnd();
         assertEquals(GameStatus.OVER, game.getState());
 
-        //tesst ranking currentplayer dovrebbe avere 1 punto (quindi essere) mentre l altro 0
+        //test ranking currentPlayer dovrebbe avere 1 punto (quindi essere) mentre l'altro 0
         //indice dell attributo ranking e Indice del player che in base ai punti totalizzati nella partita
-        //rank e'lista dei player ordinata in base al loro punteggio (dal piu alto al piu basso)
+        //rank è lista dei player ordinata in base al loro punteggio (dal piu alto al piu basso)
         assertEquals(1, game.getRanking().get(0).getPoints());
         assertEquals(0, game.getRanking().get(1).getPoints());
 
     }
 
     @Test(expected = Exception.class)
-    public void testAddPlayerAlredyStartedGame() throws Exception {
+    public void testAddPlayerAlreadyStartedGame() throws Exception {
         Player player = new Player("gian giacomo giovanni");
         game.startPartita(); // Avvio della partita
         // Aggiunta di un giocatore quando la partita è in corso (stato diverso da IN_ATTESA)
@@ -80,16 +81,16 @@ public class GameTest {
     }
 
     @Test
-    public void testOther2() {
+    public void testOther2() throws PositionAlreadyOccupiedException {
         Player player = new Player("P");
-        player.getShelves().addTile(new TilePositionShelves(0,0, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(0,1, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO)));
-        player.getShelves().addTile(new TilePositionShelves(0,2, new TileObj(TileType.CAT, TileVariant.VARIANT_THREE)));
-        player.getShelves().addTile(new TilePositionShelves(0,3, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO)));
-        player.getShelves().addTile(new TilePositionShelves(1,0, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(1,1, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO)));
-        player.getShelves().addTile(new TilePositionShelves(1,2, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(1,3, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO)));
+        player.getShelves().addTile(0,0, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(0,1, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO));
+        player.getShelves().addTile(0,2, new TileObj(TileType.CAT, TileVariant.VARIANT_THREE));
+        player.getShelves().addTile(0,3, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO));
+        player.getShelves().addTile(1,0, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(1,1, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO));
+        player.getShelves().addTile(1,2, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(1,3, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO));
         Game game1 = new GameTwoPlayers(2, player);
         Game game2 = new GameThreePlayers(3, player);
         Game game3 = new GameFourPlayers(4, player);

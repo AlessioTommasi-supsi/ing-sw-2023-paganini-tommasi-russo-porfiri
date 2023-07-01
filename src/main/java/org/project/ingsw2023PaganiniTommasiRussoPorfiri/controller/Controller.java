@@ -44,12 +44,14 @@ public class Controller {
 
                 case DRAW_FROM_BOARD:
                     DrawFromBoardMessage drawMessage = (DrawFromBoardMessage) arg.getArgument();
+
                     //RIMOZIONE DA BOARD
-                    ArrayList<TileObj> tilesRemoved = model.getMyShelfie().getGame(drawMessage.getCurrentGameId()).getBoard().removeTiles(drawMessage.getTilesToRemove());
+                    ArrayList<TileObj> tilesRemoved = model.getMyShelfie().getGame(drawMessage.getCurrentGameId()).getBoard().removeTiles((ArrayList<TilePositionBoard>) drawMessage.getTilesToRemove().clone());
                     //IMMETTI IN LIBRERIA
                     //sicuramente dovrò modificare la libreria del player corrente!
                     try {
                         model.getMyShelfie().getGame(drawMessage.getCurrentGameId()).getCurrentPlayer().putTilesInShelf(tilesRemoved, drawMessage.getColumnOfShelves(), drawMessage.getOrdine());
+
                     }catch (IllegalSizeOfTilesException e1){
                         //devo rimettere le tessere nella plancia!
                         model.getMyShelfie().getGame(drawMessage.getCurrentGameId()).getBoard().addTiles(drawMessage.getTilesToRemove());
@@ -81,7 +83,6 @@ public class Controller {
                     //se necessario ripristino la board!
                     model.getMyShelfie().getGame((Integer) arg.getArgument()).getBoard().restoreBoard();
                     //aggiornamento punti comuni
-                    //MATTIA CONTROLLA PERCHE NON VA!
                     try {
                         model.getMyShelfie().getGame((Integer) arg.getArgument()).updatePointsCommon();
                     }catch (Exception e){

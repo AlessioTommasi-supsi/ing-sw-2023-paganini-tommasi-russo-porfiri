@@ -19,7 +19,7 @@ module org.project.ingsw2023PaganiniTommasiRussoPorfiri {
     opens org.project.ingsw2023PaganiniTommasiRussoPorfiri.model to com.google.gson;
 
     exports org.project.ingsw2023PaganiniTommasiRussoPorfiri;
-    //exports org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.JavaFxUI;
+    exports org.project.ingsw2023PaganiniTommasiRussoPorfiri.view;
     exports org.project.ingsw2023PaganiniTommasiRussoPorfiri.model;
     exports org.project.ingsw2023PaganiniTommasiRussoPorfiri.distributed;
     exports org.project.ingsw2023PaganiniTommasiRussoPorfiri.utils;

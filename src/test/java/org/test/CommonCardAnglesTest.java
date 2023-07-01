@@ -2,26 +2,28 @@ package org.test;
 
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.*;
 import org.junit.jupiter.api.Test;
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.utils.PositionAlreadyOccupiedException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CommonCardAnglesTest {
 
     @Test
-    public void testExecuteAlgorithm() {
+    public void testExecuteAlgorithm() throws PositionAlreadyOccupiedException {
         Player player = new Player("Player1");
 
-        player.getShelves().addTile(new TilePositionShelves(0,0, new TileObj(TileType.CAT, TileVariant.VARIANT_THREE)));
-        player.getShelves().addTile(new TilePositionShelves(1,0, new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(2,0, new TileObj(TileType.FRAME, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(3,0, new TileObj(TileType.GAMES, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(4,0, new TileObj(TileType.PLANT, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(5,0, new TileObj(TileType.CAT, TileVariant.VARIANT_THREE)));
-        player.getShelves().addTile(new TilePositionShelves(0,4, new TileObj(TileType.CAT, TileVariant.VARIANT_THREE)));
-        player.getShelves().addTile(new TilePositionShelves(1,4, new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(2,4, new TileObj(TileType.FRAME, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(3,4, new TileObj(TileType.PLANT, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(4,4, new TileObj(TileType.GAMES, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(5,4, new TileObj(TileType.CAT, TileVariant.VARIANT_THREE)));
+        player.getShelves().addTile(0, 0, new TileObj(TileType.CAT, TileVariant.VARIANT_THREE));
+        player.getShelves().addTile(1, 0, new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(2, 0, new TileObj(TileType.FRAME, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(3, 0, new TileObj(TileType.GAMES, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(4, 0, new TileObj(TileType.PLANT, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(5, 0, new TileObj(TileType.CAT, TileVariant.VARIANT_THREE));
+        player.getShelves().addTile(0, 4, new TileObj(TileType.CAT, TileVariant.VARIANT_THREE));
+        player.getShelves().addTile(1, 4, new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(2, 4, new TileObj(TileType.FRAME, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(3, 4, new TileObj(TileType.PLANT, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(4, 4, new TileObj(TileType.GAMES, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(5, 4, new TileObj(TileType.CAT, TileVariant.VARIANT_THREE));
 
         CommonCard commonCard = new CommonCardAngles(2);
 
@@ -30,21 +32,22 @@ public class CommonCardAnglesTest {
     }
 
     @Test
-    public void testExecuteAlgorithmFalse() {
+    public void testExecuteAlgorithmFalse() throws PositionAlreadyOccupiedException {
         Player player = new Player("Player1");
 
-        player.getShelves().addTile(new TilePositionShelves(0,0, new TileObj(TileType.CAT, TileVariant.VARIANT_THREE)));
-        player.getShelves().addTile(new TilePositionShelves(1,0, new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(2,0, new TileObj(TileType.FRAME, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(3,0, new TileObj(TileType.GAMES, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(4,0, new TileObj(TileType.PLANT, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(5,0, new TileObj(TileType.BOOK, TileVariant.VARIANT_THREE)));
-        player.getShelves().addTile(new TilePositionShelves(0,4, new TileObj(TileType.CAT, TileVariant.VARIANT_THREE)));
-        player.getShelves().addTile(new TilePositionShelves(1,4, new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(2,4, new TileObj(TileType.FRAME, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(3,4, new TileObj(TileType.PLANT, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(4,4, new TileObj(TileType.GAMES, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(5,4, new TileObj(TileType.CAT, TileVariant.VARIANT_THREE)));
+        player.getShelves().addTile(0, 0, new TileObj(TileType.CAT, TileVariant.VARIANT_THREE));
+        player.getShelves().addTile(1, 0, new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(2, 0, new TileObj(TileType.FRAME, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(3, 0, new TileObj(TileType.GAMES, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(4, 0, new TileObj(TileType.PLANT, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(5, 0, new TileObj(TileType.BOOK, TileVariant.VARIANT_THREE));
+        player.getShelves().addTile(0, 4, new TileObj(TileType.CAT, TileVariant.VARIANT_THREE));
+        player.getShelves().addTile(1, 4, new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(2, 4, new TileObj(TileType.FRAME, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(3, 4, new TileObj(TileType.PLANT, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(4, 4, new TileObj(TileType.GAMES, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(5, 4, new TileObj(TileType.CAT, TileVariant.VARIANT_THREE));
+
 
         CommonCard commonCard = new CommonCardAngles(2);
 

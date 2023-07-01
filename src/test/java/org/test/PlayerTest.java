@@ -8,6 +8,7 @@ import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.project.ingsw2023PaganiniTommasiRussoPorfiri.utils.PositionAlreadyOccupiedException;
 
 import java.io.Reader;
 import java.nio.file.Files;
@@ -29,7 +30,7 @@ public class PlayerTest {
     Set<TilePositionShelves> tilePositions;
 
     @Before
-    public void setUp() {
+    public void setUp() throws PositionAlreadyOccupiedException {
         dealer = new Player("Emidio");
         player = new Player("Egidio");
         game = new GameTwoPlayers(2, dealer);
@@ -57,15 +58,15 @@ public class PlayerTest {
         personalCard = new PersonalCard();
 
         player.setShelves(shelves);
-        player.getShelves().addTile(new TilePositionShelves(0, 0, new TileObj(TileType.BOOK, TileVariant.VARIANT_TWO)));
-        player.getShelves().addTile(new TilePositionShelves(1, 0, new TileObj(TileType.BOOK, TileVariant.VARIANT_TWO)));
-        player.getShelves().addTile(new TilePositionShelves(0, 1, new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(1, 1, new TileObj(TileType.BOOK, TileVariant.VARIANT_TWO)));
+        player.getShelves().addTile(0, 0, new TileObj(TileType.BOOK, TileVariant.VARIANT_TWO));
+        player.getShelves().addTile(1, 0, new TileObj(TileType.BOOK, TileVariant.VARIANT_TWO));
+        player.getShelves().addTile(0, 1, new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(1, 1, new TileObj(TileType.BOOK, TileVariant.VARIANT_TWO));
 
-        player.getShelves().addTile(new TilePositionShelves(0, 2, new TileObj(TileType.BOOK, TileVariant.VARIANT_TWO)));
-        player.getShelves().addTile(new TilePositionShelves(1, 2, new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(0, 3, new TileObj(TileType.BOOK, TileVariant.VARIANT_TWO)));
-        player.getShelves().addTile(new TilePositionShelves(1, 3, new TileObj(TileType.BOOK, TileVariant.VARIANT_THREE)));
+        player.getShelves().addTile(0, 2, new TileObj(TileType.BOOK, TileVariant.VARIANT_TWO));
+        player.getShelves().addTile(1, 2, new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(0, 3, new TileObj(TileType.BOOK, TileVariant.VARIANT_TWO));
+        player.getShelves().addTile(1, 3, new TileObj(TileType.BOOK, TileVariant.VARIANT_THREE));
         player.setShelves(shelves);
     }
 
@@ -75,13 +76,6 @@ public class PlayerTest {
         player = null;
     }
 
-    @Test
-    public void testPutTile() {
-        tilePositions = new HashSet<>();
-        tilePositions.add(new TilePositionShelves(0, 4, new TileObj(TileType.BOOK, TileVariant.VARIANT_THREE)));
-        player.putTile(tilePositions);
-        Assertions.assertEquals(9, player.getShelves().getFilledCounter());
-    }
 
     @Test
     public void testAddPoints() {
@@ -104,39 +98,39 @@ public class PlayerTest {
     }
 
     @Test
-    public void testCheckCommonCard() {
+    public void testCheckCommonCard() throws PositionAlreadyOccupiedException {
         Player player = new Player("player1");
         Game game = new GameTwoPlayers(2, player);
         game.setCurrentPlayer(player);
         CommonCard common = new CommonCardShape(5);
         game.setCommon1(common);
-        player.getShelves().addTile(new TilePositionShelves(0,0, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(0,1, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO)));
-        player.getShelves().addTile(new TilePositionShelves(0,2, new TileObj(TileType.CAT, TileVariant.VARIANT_THREE)));
-        player.getShelves().addTile(new TilePositionShelves(0,3, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO)));
-        player.getShelves().addTile(new TilePositionShelves(1,0, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(1,1, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO)));
-        player.getShelves().addTile(new TilePositionShelves(1,2, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(1,3, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO)));
+        player.getShelves().addTile(0,0, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(0,1, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO));
+        player.getShelves().addTile(0,2, new TileObj(TileType.CAT, TileVariant.VARIANT_THREE));
+        player.getShelves().addTile(0,3, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO));
+        player.getShelves().addTile(1,0, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(1,1, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO));
+        player.getShelves().addTile(1,2, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(1,3, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO));
         game.updatePointsCommon();
         Assertions.assertEquals(4, game.getPointCommonCard1());
     }
 
     @Test
-    public void testCheckCommonCard2() {
+    public void testCheckCommonCard2() throws PositionAlreadyOccupiedException {
         Player player = new Player("player1");
         Game game = new GameTwoPlayers(2, player);
         game.setCurrentPlayer(player);
         CommonCard common = new CommonCardShape(5);
         game.setCommon2(common);
-        player.getShelves().addTile(new TilePositionShelves(0,0, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(0,1, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO)));
-        player.getShelves().addTile(new TilePositionShelves(0,2, new TileObj(TileType.CAT, TileVariant.VARIANT_THREE)));
-        player.getShelves().addTile(new TilePositionShelves(0,3, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO)));
-        player.getShelves().addTile(new TilePositionShelves(1,0, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(1,1, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO)));
-        player.getShelves().addTile(new TilePositionShelves(1,2, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(1,3, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO)));
+        player.getShelves().addTile(0,0, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(0,1, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO));
+        player.getShelves().addTile(0,2, new TileObj(TileType.CAT, TileVariant.VARIANT_THREE));
+        player.getShelves().addTile(0,3, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO));
+        player.getShelves().addTile(1,0, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(1,1, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO));
+        player.getShelves().addTile(1,2, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(1,3, new TileObj(TileType.CAT, TileVariant.VARIANT_TWO));
         game.updatePointsCommon();
         Assertions.assertEquals(4, game.getPointCommonCard2());
     }
@@ -163,14 +157,14 @@ public class PlayerTest {
             e.printStackTrace();
         }
         player.setPC(personalCardParsers.get(0));
-        player.getShelves().addTile(new TilePositionShelves(0,2, new TileObj(TileType.TROPHY, TileVariant.VARIANT_ONE)));
+        player.getShelves().addTile(0,2, new TileObj(TileType.TROPHY, TileVariant.VARIANT_ONE));
         int points = player.calculatePersonalPoints();
         assertEquals(1, points);
     }
 
 
     @Test
-    public void testCalculateTotalPoints() {
+    public void testCalculateTotalPoints() throws PositionAlreadyOccupiedException {
         // 1 end of game + 1 pc + 8 cc + 8 adiacents
         int points = 0;
         Player player = new Player("player1");
@@ -189,14 +183,14 @@ public class PlayerTest {
             e.printStackTrace();
         }
         player.setPC(personalCardParsers.get(0));
-        player.getShelves().addTile(new TilePositionShelves(0,0, new TileObj(TileType.TROPHY, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(0,1, new TileObj(TileType.TROPHY, TileVariant.VARIANT_TWO)));
-        player.getShelves().addTile(new TilePositionShelves(0,2, new TileObj(TileType.TROPHY, TileVariant.VARIANT_THREE)));
-        player.getShelves().addTile(new TilePositionShelves(0,3, new TileObj(TileType.TROPHY, TileVariant.VARIANT_TWO)));
-        player.getShelves().addTile(new TilePositionShelves(1,0, new TileObj(TileType.TROPHY, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(1,1, new TileObj(TileType.TROPHY, TileVariant.VARIANT_TWO)));
-        player.getShelves().addTile(new TilePositionShelves(1,2, new TileObj(TileType.TROPHY, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(1,3, new TileObj(TileType.TROPHY, TileVariant.VARIANT_TWO)));
+        player.getShelves().addTile(0,0, new TileObj(TileType.TROPHY, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(0,1, new TileObj(TileType.TROPHY, TileVariant.VARIANT_TWO));
+        player.getShelves().addTile(0,2, new TileObj(TileType.TROPHY, TileVariant.VARIANT_THREE));
+        player.getShelves().addTile(0,3, new TileObj(TileType.TROPHY, TileVariant.VARIANT_TWO));
+        player.getShelves().addTile(1,0, new TileObj(TileType.TROPHY, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(1,1, new TileObj(TileType.TROPHY, TileVariant.VARIANT_TWO));
+        player.getShelves().addTile(1,2, new TileObj(TileType.TROPHY, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(1,3, new TileObj(TileType.TROPHY, TileVariant.VARIANT_TWO));
         game.updatePointsCommon();
         player.addEndOfGamePoint();
         try {
@@ -214,23 +208,23 @@ public class PlayerTest {
     }
 
     @Test
-    public void testCalculateAdjacentPoints() {
+    public void testCalculateAdjacentPoints() throws PositionAlreadyOccupiedException {
         Player player = new Player("player1");
-        player.getShelves().addTile(new TilePositionShelves(0,0, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(0,1, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(0,2, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(0,3, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(1,0, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(1,1, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(1,2, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
-        player.getShelves().addTile(new TilePositionShelves(1,3, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE)));
+        player.getShelves().addTile(0,0, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(0,1, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(0,2, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(0,3, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(1,0, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(1,1, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(1,2, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE));
+        player.getShelves().addTile(1,3, new TileObj(TileType.CAT, TileVariant.VARIANT_ONE));
         assertEquals(8, player.calculateAdjacentPoints());
 
 
     }
 
     @Test
-    public void testCheckPersonalCardFalse() {
+    public void testCheckPersonalCardFalse() throws PositionAlreadyOccupiedException {
         ArrayList<PersonalCard> personalCardParsers = new ArrayList<>();
         try {
             Gson gson = new Gson();
@@ -263,7 +257,7 @@ public class PlayerTest {
         PersonalCard personalCardTest = personalCardParsers.get(0);
         Player player = new Player("Player1");
         int counterTilesPersonal = -1;
-        player.getShelves().addTile(new TilePositionShelves(0,2, new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE)));
+        player.getShelves().addTile(0,2, new TileObj(TileType.BOOK, TileVariant.VARIANT_ONE));
         counterTilesPersonal = player.checkPersonalCard(personalCardTest);
         boolean returnCondition = false;
         if (counterTilesPersonal == 1) {returnCondition = true;}
@@ -271,7 +265,7 @@ public class PlayerTest {
     }
 
     @Test
-    public void testCheckPersonalCardTrue() {
+    public void testCheckPersonalCardTrue() throws PositionAlreadyOccupiedException {
         ArrayList<PersonalCard> personalCardParsers = new ArrayList<>();
         try {
             Gson gson = new Gson();
@@ -296,7 +290,7 @@ public class PlayerTest {
         PersonalCard personalCardTest = personalCardParsers.get(0);
         Player player = new Player("Player1");
         int counterTilesPersonal = 0;
-        player.getShelves().addTile(new TilePositionShelves(0,2, new TileObj(TileType.TROPHY, TileVariant.VARIANT_ONE)));
+        player.getShelves().addTile(0,2, new TileObj(TileType.TROPHY, TileVariant.VARIANT_ONE));
             counterTilesPersonal = player.checkPersonalCard(personalCardTest);
         boolean returnCondition = false;
         if (counterTilesPersonal == 1) {returnCondition = true;}

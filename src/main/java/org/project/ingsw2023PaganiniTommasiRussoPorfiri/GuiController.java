@@ -17,11 +17,9 @@ import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.*;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.TextualUI.DrawFromBoardMessage;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.TextualUI.SendMessage;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.TextualUI.ViewMyShelfie;
-
 import java.util.ArrayList;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
-
 import static java.lang.Thread.sleep;
 
 public class GuiController {
@@ -451,21 +449,17 @@ public class GuiController {
     private ImageView invisibleCat4P;
     @FXML
     private ImageView endToken;
-
-
     @FXML
     private TextArea gameChatHistory;
-
     @FXML
     private TextField gameChatInput;
 
 
 
 
-
     @FXML
     protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+        welcomeText.setText("Welcome to MyShelfie Application!");
     }
 
     public void hideLoginPane(ActionEvent actionEvent) {
@@ -492,20 +486,20 @@ public class GuiController {
 
     public void setPrivateCard(PersonalCard myPersonalCard) {
         int cardNumber = myPersonalCard.getPersonalCardNumber();
-        String imagePath = "file:src/main/resources/GraphicResources/personalGoalCards/Personal_Goals" + cardNumber + ".png";
+        String imagePath = getClass().getResource("/GraphicResources/personalGoalCards/Personal_Goals" + cardNumber + ".png").toExternalForm();
         personalCardImageView.setImage(new javafx.scene.image.Image(imagePath));
     }
 
     public void setCommonCards(CommonCard c1, CommonCard c2){
         int c1Index = c1.getIndex();
         int c2Index = c2.getIndex();
-        String imagePath1 = "file:src/main/resources/GraphicResources/commonGoalCards/Common_Goals" + c1Index + ".jpg";
+        String imagePath1 = getClass().getResource("/GraphicResources/commonGoalCards/Common_Goals" + c1Index + ".jpg").toExternalForm();
         commonCard1ImageView.setImage(new javafx.scene.image.Image(imagePath1));
-        String imagePath2 = "file:src/main/resources/GraphicResources/commonGoalCards/Common_Goals" + c2Index + ".jpg";
+        String imagePath2 = getClass().getResource("/GraphicResources/commonGoalCards/Common_Goals" + c2Index + ".jpg").toExternalForm();
         commonCard2ImageView.setImage(new javafx.scene.image.Image(imagePath2));
     }
 
-    public void UpdateCommonPoints(CommonCard c1, CommonCard c2){
+    public void updateCommonPoints(CommonCard c1, CommonCard c2) {
         int scoreC1 = c1.getScore();
         int scoreC2 = c2.getScore();
 
@@ -534,184 +528,230 @@ public class GuiController {
         for (int i = 0; i < tilePositionBoards.size() ; i++) {
             if(tilePositionBoards.get(i).isOccupied()) {
                 if (tilePositionBoards.get(i).isMe(0, 4)) {
-                    boardR0C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePathROC4 = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR0C4.setImage(new javafx.scene.image.Image(imagePathROC4));
                 }
 
                 if (tilePositionBoards.get(i).isMe(0, 5)) {
-                    boardR0C5.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
-                }
+                    String imagePathR0C5 = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR0C5.setImage(new javafx.scene.image.Image(imagePathR0C5));                }
 
                 if (tilePositionBoards.get(i).isMe(1, 3)) {
-                    boardR1C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePathR1C3 = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR1C3.setImage(new javafx.scene.image.Image(imagePathR1C3));
                 }
 
                 if (tilePositionBoards.get(i).isMe(1, 4)) {
-                    boardR1C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
-                }
+                    String imagePathR1C4 = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR1C4.setImage(new javafx.scene.image.Image(imagePathR1C4));                }
 
                 if (tilePositionBoards.get(i).isMe(1, 5)) {
-                    boardR1C5.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePathR1C5 = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR1C5.setImage(new javafx.scene.image.Image(imagePathR1C5));
                 }
 
                 if (tilePositionBoards.get(i).isMe(2, 2)) {
-                    boardR2C2.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePathR2C2 = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR2C2.setImage(new javafx.scene.image.Image(imagePathR2C2));
                 }
+
                 if (tilePositionBoards.get(i).isMe(2, 3)) {
-                    boardR2C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePathR2C3 = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR2C3.setImage(new javafx.scene.image.Image(imagePathR2C3));
                 }
 
                 if (tilePositionBoards.get(i).isMe(2, 4)) {
-                    boardR2C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePathR2C4 = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR2C4.setImage(new javafx.scene.image.Image(imagePathR2C4));
                 }
 
                 if (tilePositionBoards.get(i).isMe(2, 5)) {
-                    boardR2C5.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePathR2C5 = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR2C5.setImage(new javafx.scene.image.Image(imagePathR2C5));
                 }
+
                 if (tilePositionBoards.get(i).isMe(2, 6)) {
-                    boardR2C6.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePathR2C6 = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR2C6.setImage(new javafx.scene.image.Image(imagePathR2C6));
                 }
 
                 if (tilePositionBoards.get(i).isMe(3, 0)) {
-                    boardR3C0.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePathR3C0 = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR3C0.setImage(new javafx.scene.image.Image(imagePathR3C0));
                 }
 
                 if (tilePositionBoards.get(i).isMe(3, 1)) {
-                    boardR3C1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePathR3C1 = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR3C1.setImage(new javafx.scene.image.Image(imagePathR3C1));
                 }
 
                 if (tilePositionBoards.get(i).isMe(3, 2)) {
-                    boardR3C2.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePathR3C2 = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR3C2.setImage(new javafx.scene.image.Image(imagePathR3C2));
                 }
 
                 if (tilePositionBoards.get(i).isMe(3, 3)) {
-                    boardR3C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR3C3.setImage(new javafx.scene.image.Image(imagePath));
                 }
 
                 if (tilePositionBoards.get(i).isMe(3, 4)) {
-                    boardR3C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR3C4.setImage(new javafx.scene.image.Image(imagePath));
                 }
 
                 if (tilePositionBoards.get(i).isMe(3, 5)) {
-                    boardR3C5.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR3C5.setImage(new javafx.scene.image.Image(imagePath));
                 }
 
                 if (tilePositionBoards.get(i).isMe(3, 6)) {
-                    boardR3C6.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR3C6.setImage(new javafx.scene.image.Image(imagePath));
                 }
 
                 if (tilePositionBoards.get(i).isMe(3, 7)) {
-                    boardR3C7.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR3C7.setImage(new javafx.scene.image.Image(imagePath));
                 }
 
                 if (tilePositionBoards.get(i).isMe(4, 0)) {
-                    boardR4C0.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR4C0.setImage(new javafx.scene.image.Image(imagePath));
                 }
 
                 if (tilePositionBoards.get(i).isMe(4, 1)) {
-                    boardR4C1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR4C1.setImage(new javafx.scene.image.Image(imagePath));
                 }
 
                 if (tilePositionBoards.get(i).isMe(4, 2)) {
-                    boardR4C2.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR4C2.setImage(new javafx.scene.image.Image(imagePath));
                 }
+
                 if (tilePositionBoards.get(i).isMe(4, 3)) {
-                    boardR4C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR4C3.setImage(new javafx.scene.image.Image(imagePath));
                 }
 
                 if (tilePositionBoards.get(i).isMe(4, 4)) {
-                    boardR4C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR4C4.setImage(new javafx.scene.image.Image(imagePath));
                 }
 
                 if (tilePositionBoards.get(i).isMe(4, 5)) {
-                    boardR4C5.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR4C5.setImage(new javafx.scene.image.Image(imagePath));
                 }
 
                 if (tilePositionBoards.get(i).isMe(4, 6)) {
-                    boardR4C6.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR4C6.setImage(new javafx.scene.image.Image(imagePath));
                 }
 
                 if (tilePositionBoards.get(i).isMe(4, 7)) {
-                    boardR4C7.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR4C7.setImage(new javafx.scene.image.Image(imagePath));
                 }
+
                 if (tilePositionBoards.get(i).isMe(4, 8)) {
-                    boardR4C8.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR4C8.setImage(new javafx.scene.image.Image(imagePath));
                 }
+
                 if (tilePositionBoards.get(i).isMe(5, 1)) {
-                    boardR5C1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR5C1.setImage(new javafx.scene.image.Image(imagePath));
                 }
 
                 if (tilePositionBoards.get(i).isMe(5, 2)) {
-                    boardR5C2.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR5C2.setImage(new javafx.scene.image.Image(imagePath));
                 }
 
                 if (tilePositionBoards.get(i).isMe(5, 3)) {
-                    boardR5C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR5C3.setImage(new javafx.scene.image.Image(imagePath));
                 }
 
-
                 if (tilePositionBoards.get(i).isMe(5, 4)) {
-                    boardR5C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR5C4.setImage(new javafx.scene.image.Image(imagePath));
                 }
 
                 if (tilePositionBoards.get(i).isMe(5, 5)) {
-                    boardR5C5.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR5C5.setImage(new javafx.scene.image.Image(imagePath));
                 }
 
                 if (tilePositionBoards.get(i).isMe(5, 6)) {
-                    boardR5C6.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR5C6.setImage(new javafx.scene.image.Image(imagePath));
                 }
 
-
                 if (tilePositionBoards.get(i).isMe(5, 7)) {
-                    boardR5C7.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR5C7.setImage(new javafx.scene.image.Image(imagePath));
                 }
 
                 if (tilePositionBoards.get(i).isMe(5, 8)) {
-                    boardR5C8.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR5C8.setImage(new javafx.scene.image.Image(imagePath));
                 }
 
-
                 if (tilePositionBoards.get(i).isMe(6, 2)) {
-                    boardR6C2.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR6C2.setImage(new javafx.scene.image.Image(imagePath));
                 }
 
                 if (tilePositionBoards.get(i).isMe(6, 3)) {
-                    boardR6C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR6C3.setImage(new javafx.scene.image.Image(imagePath));
                 }
 
                 if (tilePositionBoards.get(i).isMe(6, 4)) {
-                    boardR6C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR6C4.setImage(new javafx.scene.image.Image(imagePath));
                 }
 
-
                 if (tilePositionBoards.get(i).isMe(6, 5)) {
-                    boardR6C5.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR6C5.setImage(new javafx.scene.image.Image(imagePath));
                 }
 
                 if (tilePositionBoards.get(i).isMe(6, 6)) {
-                    boardR6C6.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR6C6.setImage(new javafx.scene.image.Image(imagePath));
                 }
 
-
                 if (tilePositionBoards.get(i).isMe(7, 3)) {
-                    boardR7C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR7C3.setImage(new javafx.scene.image.Image(imagePath));
                 }
 
                 if (tilePositionBoards.get(i).isMe(7, 4)) {
-                    boardR7C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR7C4.setImage(new javafx.scene.image.Image(imagePath));
                 }
 
                 if (tilePositionBoards.get(i).isMe(7, 5)) {
-                    boardR7C5.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR7C5.setImage(new javafx.scene.image.Image(imagePath));
                 }
+
                 if (tilePositionBoards.get(i).isMe(8, 3)) {
-                    boardR8C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR8C3.setImage(new javafx.scene.image.Image(imagePath));
                 }
 
                 if (tilePositionBoards.get(i).isMe(8, 4)) {
-                    boardR8C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
+                    String imagePath = getClass().getResource("/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png").toExternalForm();
+                    boardR8C4.setImage(new javafx.scene.image.Image(imagePath));
                 }
-            }else {//rimuovi immagine
+
+            } else {        //rimuovi immagine
+
                 if (tilePositionBoards.get(i).isMe(0, 4)) {
                     boardR0C4.setImage(null);
                 }
@@ -793,6 +833,7 @@ public class GuiController {
                 if (tilePositionBoards.get(i).isMe(4, 2)) {
                     boardR4C2.setImage(null);
                 }
+
                 if (tilePositionBoards.get(i).isMe(4, 3)) {
                     boardR4C3.setImage(null);
                 }
@@ -826,7 +867,6 @@ public class GuiController {
                 if (tilePositionBoards.get(i).isMe(5, 3)) {
                     boardR5C3.setImage(null);
                 }
-
 
                 if (tilePositionBoards.get(i).isMe(5, 4)) {
                     boardR5C4.setImage(null);
@@ -906,7 +946,7 @@ public class GuiController {
             switch (numOfPlayers) {
                 case 2:
                     shelf3ImageView.setVisible(false);
-                    String imagePath3 = "file:src/main/resources/GraphicResources/cat/cat-897x1024-left.png";
+                    String imagePath3 = getClass().getResource("/GraphicResources/cat/cat-897x1024-left.png").toExternalForm();
                     invisibleCat3P.setImage(new javafx.scene.image.Image(imagePath3));
                     invisibleCat3P.setVisible(true);
                     shelf3GridPane.setVisible(false);
@@ -917,7 +957,7 @@ public class GuiController {
                     col4Shelf3.setVisible(false);
 
                     shelf4ImageView.setVisible(false);
-                    String imagePath4 = "file:src/main/resources/GraphicResources/cat/cat-897x1024.png";
+                    String imagePath4 = getClass().getResource("/GraphicResources/cat/cat-897x1024.png").toExternalForm();
                     invisibleCat4P.setImage(new javafx.scene.image.Image(imagePath4));
                     invisibleCat4P.setVisible(true);
                     shelf4GridPane.setVisible(false);
@@ -943,7 +983,7 @@ public class GuiController {
                     col4Shelf3.setVisible(true);
 
                     shelf4ImageView.setVisible(false);
-                    String imagePath5 = "file:src/main/resources/GraphicResources/cat/cat-897x1024.png";
+                    String imagePath5 = getClass().getResource("/GraphicResources/cat/cat-897x1024.png").toExternalForm();
                     invisibleCat4P.setImage(new javafx.scene.image.Image(imagePath5));
                     invisibleCat4P.setVisible(true);
                     shelf4GridPane.setVisible(false);
@@ -980,7 +1020,6 @@ public class GuiController {
 
             }
 
-
         }catch (Exception e){
             //index out og bound e vengono inizializzati meno di 4 giocatori
             e.printStackTrace();
@@ -990,11 +1029,8 @@ public class GuiController {
 
     public void updateShelves(ArrayList<Player> players, int numOfPlayers){
         try {
-
             updateShelves1(players);
             updateShelves2(players);
-
-            //sleep(1000);
 
             if(numOfPlayers >= 3) {
                 updateShelves3(players);
@@ -1003,24 +1039,10 @@ public class GuiController {
                 }
             }
 
-            /*switch (players.size()) {
-                case 3:
-                    updateShelves3(players);
-                break;
-                case 4:
-                    updateShelves3(players);
-                    updateShelves4(players);
-                break;
-            }*/
-
-
         }catch (Exception e){
             //index out of bound e vengono inizializzati meno di 4 giocatori
             e.printStackTrace();
         }
-
-        //this.shelf1R0C0 = players.get(0).getShelves().getTilePosition(0, 0).getTile();
-        //shelf1R0C0.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositionBoards.get(i).getTile().getType().getName() + "" + tilePositionBoards.get(i).getTile().getVariant().getNumber() + ".png"));
 
     }
 
@@ -1031,119 +1053,125 @@ public class GuiController {
         TilePositionShelves[][] tilePositions = players.get(0).getShelves().showShelves();
 
         if (tilePositions[0][0].isOccupied()){
-            shelf1R0C0.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[0][0].getTile().getType().getName() + "" + tilePositions[0][0].getTile().getVariant().getNumber() + ".png"));
+            shelf1R0C0.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[0][0].getTile().getType().getName() + "" + tilePositions[0][0].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
+
         if (tilePositions[0][1].isOccupied()){
-            shelf1R0C1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[0][1].getTile().getType().getName() + "" + tilePositions[0][1].getTile().getVariant().getNumber() + ".png"));
+            shelf1R0C1.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[0][1].getTile().getType().getName() + "" + tilePositions[0][1].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[0][2].isOccupied()){
-            shelf1R0C2.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[0][2].getTile().getType().getName() + "" + tilePositions[0][2].getTile().getVariant().getNumber() + ".png"));
+            shelf1R0C2.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[0][2].getTile().getType().getName() + "" + tilePositions[0][2].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[0][3].isOccupied()){
-            shelf1R0C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[0][3].getTile().getType().getName() + "" + tilePositions[0][3].getTile().getVariant().getNumber() + ".png"));
+            shelf1R0C3.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[0][3].getTile().getType().getName() + "" + tilePositions[0][3].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[0][4].isOccupied()){
-            shelf1R0C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[0][4].getTile().getType().getName() + "" + tilePositions[0][4].getTile().getVariant().getNumber() + ".png"));
+            shelf1R0C4.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[0][4].getTile().getType().getName() + "" + tilePositions[0][4].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[1][0].isOccupied()){
-            shelf1R1C0.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[1][0].getTile().getType().getName() + "" + tilePositions[1][0].getTile().getVariant().getNumber() + ".png"));
+            shelf1R1C0.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[1][0].getTile().getType().getName() + "" + tilePositions[1][0].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[1][1].isOccupied()){
-            shelf1R1C1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[1][1].getTile().getType().getName() + "" + tilePositions[1][1].getTile().getVariant().getNumber() + ".png"));
+            shelf1R1C1.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[1][1].getTile().getType().getName() + "" + tilePositions[1][1].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
+
         if (tilePositions[1][2].isOccupied()){
-            shelf1R1C2.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[1][2].getTile().getType().getName() + "" + tilePositions[1][2].getTile().getVariant().getNumber() + ".png"));
+            shelf1R1C2.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[1][2].getTile().getType().getName() + "" + tilePositions[1][2].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[1][3].isOccupied()){
-            shelf1R1C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[1][3].getTile().getType().getName() + "" + tilePositions[1][3].getTile().getVariant().getNumber() + ".png"));
+            shelf1R1C3.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[1][3].getTile().getType().getName() + "" + tilePositions[1][3].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[1][4].isOccupied()){
-            shelf1R1C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[1][4].getTile().getType().getName() + "" + tilePositions[1][4].getTile().getVariant().getNumber() + ".png"));
+            shelf1R1C4.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[1][4].getTile().getType().getName() + "" + tilePositions[1][4].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[2][0].isOccupied()){
-            shelf1R2C0.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[2][0].getTile().getType().getName() + "" + tilePositions[2][0].getTile().getVariant().getNumber() + ".png"));
+            shelf1R2C0.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[2][0].getTile().getType().getName() + "" + tilePositions[2][0].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[2][1].isOccupied()){
-            shelf1R2C1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[2][1].getTile().getType().getName() + "" + tilePositions[2][1].getTile().getVariant().getNumber() + ".png"));
+            shelf1R2C1.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[2][1].getTile().getType().getName() + "" + tilePositions[2][1].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[2][2].isOccupied()){
-            shelf1R2C2.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[2][2].getTile().getType().getName() + "" + tilePositions[2][2].getTile().getVariant().getNumber() + ".png"));
+            shelf1R2C2.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[2][2].getTile().getType().getName() + "" + tilePositions[2][2].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[2][3].isOccupied()){
-            shelf1R2C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[2][3].getTile().getType().getName() + "" + tilePositions[2][3].getTile().getVariant().getNumber() + ".png"));
+            shelf1R2C3.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[2][3].getTile().getType().getName() + "" + tilePositions[2][3].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[2][4].isOccupied()){
-            shelf1R2C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[2][4].getTile().getType().getName() + "" + tilePositions[2][4].getTile().getVariant().getNumber() + ".png"));
+            shelf1R2C4.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[2][4].getTile().getType().getName() + "" + tilePositions[2][4].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[3][0].isOccupied()){
-            shelf1R3C0.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[3][0].getTile().getType().getName() + "" + tilePositions[3][0].getTile().getVariant().getNumber() + ".png"));
+            shelf1R3C0.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[3][0].getTile().getType().getName() + "" + tilePositions[3][0].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[3][1].isOccupied()){
-            shelf1R3C1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[3][1].getTile().getType().getName() + "" + tilePositions[3][1].getTile().getVariant().getNumber() + ".png"));
+            shelf1R3C1.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[3][1].getTile().getType().getName() + "" + tilePositions[3][1].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
+
         if (tilePositions[3][2].isOccupied()){
-            shelf1R3C2.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[3][2].getTile().getType().getName() + "" + tilePositions[3][2].getTile().getVariant().getNumber() + ".png"));
+            shelf1R3C2.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[3][2].getTile().getType().getName() + "" + tilePositions[3][2].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[3][3].isOccupied()){
-            shelf1R3C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[3][3].getTile().getType().getName() + "" + tilePositions[3][3].getTile().getVariant().getNumber() + ".png"));
+            shelf1R3C3.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[3][3].getTile().getType().getName() + "" + tilePositions[3][3].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[3][4].isOccupied()){
-            shelf1R3C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[3][4].getTile().getType().getName() + "" + tilePositions[3][4].getTile().getVariant().getNumber() + ".png"));
+            shelf1R3C4.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[3][4].getTile().getType().getName() + "" + tilePositions[3][4].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[4][0].isOccupied()){
-            shelf1R4C0.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[4][0].getTile().getType().getName() + "" + tilePositions[4][0].getTile().getVariant().getNumber() + ".png"));
+            shelf1R4C0.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[4][0].getTile().getType().getName() + "" + tilePositions[4][0].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[4][1].isOccupied()){
-            shelf1R4C1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[4][1].getTile().getType().getName() + "" + tilePositions[4][1].getTile().getVariant().getNumber() + ".png"));
+            shelf1R4C1.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[4][1].getTile().getType().getName() + "" + tilePositions[4][1].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
+
         if (tilePositions[4][2].isOccupied()){
-            shelf1R4C2.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[4][2].getTile().getType().getName() + "" + tilePositions[4][2].getTile().getVariant().getNumber() + ".png"));
+            shelf1R4C2.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[4][2].getTile().getType().getName() + "" + tilePositions[4][2].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[4][3].isOccupied()){
-            shelf1R4C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[4][3].getTile().getType().getName() + "" + tilePositions[4][3].getTile().getVariant().getNumber() + ".png"));
+            shelf1R4C3.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[4][3].getTile().getType().getName() + "" + tilePositions[4][3].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[4][4].isOccupied()){
-            shelf1R4C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[4][4].getTile().getType().getName() + "" + tilePositions[4][4].getTile().getVariant().getNumber() + ".png"));
+            shelf1R4C4.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[4][4].getTile().getType().getName() + "" + tilePositions[4][4].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[5][0].isOccupied()){
-            shelf1R5C0.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[5][0].getTile().getType().getName() + "" + tilePositions[5][0].getTile().getVariant().getNumber() + ".png"));
+            shelf1R5C0.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[5][0].getTile().getType().getName() + "" + tilePositions[5][0].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[5][1].isOccupied()){
-            shelf1R5C1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[5][1].getTile().getType().getName() + "" + tilePositions[5][1].getTile().getVariant().getNumber() + ".png"));
+            shelf1R5C1.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[5][1].getTile().getType().getName() + "" + tilePositions[5][1].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
+
         if (tilePositions[5][2].isOccupied()){
-            shelf1R5C2.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[5][2].getTile().getType().getName() + "" + tilePositions[5][2].getTile().getVariant().getNumber() + ".png"));
+            shelf1R5C2.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[5][2].getTile().getType().getName() + "" + tilePositions[5][2].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[5][3].isOccupied()){
-            shelf1R5C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[5][3].getTile().getType().getName() + "" + tilePositions[5][3].getTile().getVariant().getNumber() + ".png"));
+            shelf1R5C3.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[5][3].getTile().getType().getName() + "" + tilePositions[5][3].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[5][4].isOccupied()){
-            shelf1R5C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[5][4].getTile().getType().getName() + "" + tilePositions[5][4].getTile().getVariant().getNumber() + ".png"));
+            shelf1R5C4.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[5][4].getTile().getType().getName() + "" + tilePositions[5][4].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
+
     }
 
     public void updateShelves2(ArrayList<Player> players){
@@ -1151,118 +1179,123 @@ public class GuiController {
         TilePositionShelves[][] tilePositions = players.get(1).getShelves().showShelves();
 
         if (tilePositions[0][0].isOccupied()){
-            shelf2R0C0.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[0][0].getTile().getType().getName() + "" + tilePositions[0][0].getTile().getVariant().getNumber() + ".png"));
+            shelf2R0C0.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[0][0].getTile().getType().getName() + "" + tilePositions[0][0].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
+
         if (tilePositions[0][1].isOccupied()){
-            shelf2R0C1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[0][1].getTile().getType().getName() + "" + tilePositions[0][1].getTile().getVariant().getNumber() + ".png"));
+            shelf2R0C1.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[0][1].getTile().getType().getName() + "" + tilePositions[0][1].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[0][2].isOccupied()){
-            shelf2R0C2.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[0][2].getTile().getType().getName() + "" + tilePositions[0][2].getTile().getVariant().getNumber() + ".png"));
+            shelf2R0C2.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[0][2].getTile().getType().getName() + "" + tilePositions[0][2].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[0][3].isOccupied()){
-            shelf2R0C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[0][3].getTile().getType().getName() + "" + tilePositions[0][3].getTile().getVariant().getNumber() + ".png"));
+            shelf2R0C3.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[0][3].getTile().getType().getName() + "" + tilePositions[0][3].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[0][4].isOccupied()){
-            shelf2R0C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[0][4].getTile().getType().getName() + "" + tilePositions[0][4].getTile().getVariant().getNumber() + ".png"));
+            shelf2R0C4.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[0][4].getTile().getType().getName() + "" + tilePositions[0][4].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[1][0].isOccupied()){
-            shelf2R1C0.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[1][0].getTile().getType().getName() + "" + tilePositions[1][0].getTile().getVariant().getNumber() + ".png"));
+            shelf2R1C0.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[1][0].getTile().getType().getName() + "" + tilePositions[1][0].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[1][1].isOccupied()){
-            shelf2R1C1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[1][1].getTile().getType().getName() + "" + tilePositions[1][1].getTile().getVariant().getNumber() + ".png"));
+            shelf2R1C1.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[1][1].getTile().getType().getName() + "" + tilePositions[1][1].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
+
         if (tilePositions[1][2].isOccupied()){
-            shelf2R1C2.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[1][2].getTile().getType().getName() + "" + tilePositions[1][2].getTile().getVariant().getNumber() + ".png"));
+            shelf2R1C2.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[1][2].getTile().getType().getName() + "" + tilePositions[1][2].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[1][3].isOccupied()){
-            shelf2R1C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[1][3].getTile().getType().getName() + "" + tilePositions[1][3].getTile().getVariant().getNumber() + ".png"));
+            shelf2R1C3.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[1][3].getTile().getType().getName() + "" + tilePositions[1][3].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[1][4].isOccupied()){
-            shelf2R1C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[1][4].getTile().getType().getName() + "" + tilePositions[1][4].getTile().getVariant().getNumber() + ".png"));
+            shelf2R1C4.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[1][4].getTile().getType().getName() + "" + tilePositions[1][4].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[2][0].isOccupied()){
-            shelf2R2C0.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[2][0].getTile().getType().getName() + "" + tilePositions[2][0].getTile().getVariant().getNumber() + ".png"));
+            shelf2R2C0.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[2][0].getTile().getType().getName() + "" + tilePositions[2][0].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[2][1].isOccupied()){
-            shelf2R2C1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[2][1].getTile().getType().getName() + "" + tilePositions[2][1].getTile().getVariant().getNumber() + ".png"));
+            shelf2R2C1.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[2][1].getTile().getType().getName() + "" + tilePositions[2][1].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[2][2].isOccupied()){
-            shelf2R2C2.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[2][2].getTile().getType().getName() + "" + tilePositions[2][2].getTile().getVariant().getNumber() + ".png"));
+            shelf2R2C2.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[2][2].getTile().getType().getName() + "" + tilePositions[2][2].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[2][3].isOccupied()){
-            shelf2R2C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[2][3].getTile().getType().getName() + "" + tilePositions[2][3].getTile().getVariant().getNumber() + ".png"));
+            shelf2R2C3.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[2][3].getTile().getType().getName() + "" + tilePositions[2][3].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[2][4].isOccupied()){
-            shelf2R2C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[2][4].getTile().getType().getName() + "" + tilePositions[2][4].getTile().getVariant().getNumber() + ".png"));
+            shelf2R2C4.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[2][4].getTile().getType().getName() + "" + tilePositions[2][4].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[3][0].isOccupied()){
-            shelf2R3C0.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[3][0].getTile().getType().getName() + "" + tilePositions[3][0].getTile().getVariant().getNumber() + ".png"));
+            shelf2R3C0.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[3][0].getTile().getType().getName() + "" + tilePositions[3][0].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[3][1].isOccupied()){
-            shelf2R3C1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[3][1].getTile().getType().getName() + "" + tilePositions[3][1].getTile().getVariant().getNumber() + ".png"));
+            shelf2R3C1.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[3][1].getTile().getType().getName() + "" + tilePositions[3][1].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
+
         if (tilePositions[3][2].isOccupied()){
-            shelf2R3C2.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[3][2].getTile().getType().getName() + "" + tilePositions[3][2].getTile().getVariant().getNumber() + ".png"));
+            shelf2R3C2.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[3][2].getTile().getType().getName() + "" + tilePositions[3][2].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[3][3].isOccupied()){
-            shelf2R3C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[3][3].getTile().getType().getName() + "" + tilePositions[3][3].getTile().getVariant().getNumber() + ".png"));
+            shelf2R3C3.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[3][3].getTile().getType().getName() + "" + tilePositions[3][3].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[3][4].isOccupied()){
-            shelf2R3C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[3][4].getTile().getType().getName() + "" + tilePositions[3][4].getTile().getVariant().getNumber() + ".png"));
+            shelf2R3C4.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[3][4].getTile().getType().getName() + "" + tilePositions[3][4].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[4][0].isOccupied()){
-            shelf2R4C0.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[4][0].getTile().getType().getName() + "" + tilePositions[4][0].getTile().getVariant().getNumber() + ".png"));
+            shelf2R4C0.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[4][0].getTile().getType().getName() + "" + tilePositions[4][0].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[4][1].isOccupied()){
-            shelf2R4C1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[4][1].getTile().getType().getName() + "" + tilePositions[4][1].getTile().getVariant().getNumber() + ".png"));
+            shelf2R4C1.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[4][1].getTile().getType().getName() + "" + tilePositions[4][1].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
+
         if (tilePositions[4][2].isOccupied()){
-            shelf2R4C2.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[4][2].getTile().getType().getName() + "" + tilePositions[4][2].getTile().getVariant().getNumber() + ".png"));
+            shelf2R4C2.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[4][2].getTile().getType().getName() + "" + tilePositions[4][2].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[4][3].isOccupied()){
-            shelf2R4C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[4][3].getTile().getType().getName() + "" + tilePositions[4][3].getTile().getVariant().getNumber() + ".png"));
+            shelf2R4C3.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[4][3].getTile().getType().getName() + "" + tilePositions[4][3].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[4][4].isOccupied()){
-            shelf2R4C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[4][4].getTile().getType().getName() + "" + tilePositions[4][4].getTile().getVariant().getNumber() + ".png"));
+            shelf2R4C4.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[4][4].getTile().getType().getName() + "" + tilePositions[4][4].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[5][0].isOccupied()){
-            shelf2R5C0.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[5][0].getTile().getType().getName() + "" + tilePositions[5][0].getTile().getVariant().getNumber() + ".png"));
+            shelf2R5C0.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[5][0].getTile().getType().getName() + "" + tilePositions[5][0].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[5][1].isOccupied()){
-            shelf2R5C1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[5][1].getTile().getType().getName() + "" + tilePositions[5][1].getTile().getVariant().getNumber() + ".png"));
+            shelf2R5C1.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[5][1].getTile().getType().getName() + "" + tilePositions[5][1].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
+
         if (tilePositions[5][2].isOccupied()){
-            shelf2R5C2.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[5][2].getTile().getType().getName() + "" + tilePositions[5][2].getTile().getVariant().getNumber() + ".png"));
+            shelf2R5C2.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[5][2].getTile().getType().getName() + "" + tilePositions[5][2].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[5][3].isOccupied()){
-            shelf2R5C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[5][3].getTile().getType().getName() + "" + tilePositions[5][3].getTile().getVariant().getNumber() + ".png"));
+            shelf2R5C3.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[5][3].getTile().getType().getName() + "" + tilePositions[5][3].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[5][4].isOccupied()){
-            shelf2R5C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[5][4].getTile().getType().getName() + "" + tilePositions[5][4].getTile().getVariant().getNumber() + ".png"));
+            shelf2R5C4.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[5][4].getTile().getType().getName() + "" + tilePositions[5][4].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
     }
 
@@ -1270,237 +1303,248 @@ public class GuiController {
         TilePositionShelves[][] tilePositions = players.get(2).getShelves().showShelves();
 
         if (tilePositions[0][0].isOccupied()){
-            shelf3R0C0.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[0][0].getTile().getType().getName() + "" + tilePositions[0][0].getTile().getVariant().getNumber() + ".png"));
+            shelf3R0C0.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[0][0].getTile().getType().getName() + "" + tilePositions[0][0].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
+
         if (tilePositions[0][1].isOccupied()){
-            shelf3R0C1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[0][1].getTile().getType().getName() + "" + tilePositions[0][1].getTile().getVariant().getNumber() + ".png"));
+            shelf3R0C1.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[0][1].getTile().getType().getName() + "" + tilePositions[0][1].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[0][2].isOccupied()){
-            shelf3R0C2.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[0][2].getTile().getType().getName() + "" + tilePositions[0][2].getTile().getVariant().getNumber() + ".png"));
+            shelf3R0C2.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[0][2].getTile().getType().getName() + "" + tilePositions[0][2].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[0][3].isOccupied()){
-            shelf3R0C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[0][3].getTile().getType().getName() + "" + tilePositions[0][3].getTile().getVariant().getNumber() + ".png"));
+            shelf3R0C3.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[0][3].getTile().getType().getName() + "" + tilePositions[0][3].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[0][4].isOccupied()){
-            shelf3R0C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[0][4].getTile().getType().getName() + "" + tilePositions[0][4].getTile().getVariant().getNumber() + ".png"));
+            shelf3R0C4.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[0][4].getTile().getType().getName() + "" + tilePositions[0][4].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[1][0].isOccupied()){
-            shelf3R1C0.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[1][0].getTile().getType().getName() + "" + tilePositions[1][0].getTile().getVariant().getNumber() + ".png"));
+            shelf3R1C0.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[1][0].getTile().getType().getName() + "" + tilePositions[1][0].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[1][1].isOccupied()){
-            shelf3R1C1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[1][1].getTile().getType().getName() + "" + tilePositions[1][1].getTile().getVariant().getNumber() + ".png"));
+            shelf3R1C1.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[1][1].getTile().getType().getName() + "" + tilePositions[1][1].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
+
         if (tilePositions[1][2].isOccupied()){
-            shelf3R1C2.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[1][2].getTile().getType().getName() + "" + tilePositions[1][2].getTile().getVariant().getNumber() + ".png"));
+            shelf3R1C2.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[1][2].getTile().getType().getName() + "" + tilePositions[1][2].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[1][3].isOccupied()){
-            shelf3R1C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[1][3].getTile().getType().getName() + "" + tilePositions[1][3].getTile().getVariant().getNumber() + ".png"));
+            shelf3R1C3.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[1][3].getTile().getType().getName() + "" + tilePositions[1][3].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[1][4].isOccupied()){
-            shelf3R1C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[1][4].getTile().getType().getName() + "" + tilePositions[1][4].getTile().getVariant().getNumber() + ".png"));
+            shelf3R1C4.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[1][4].getTile().getType().getName() + "" + tilePositions[1][4].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[2][0].isOccupied()){
-            shelf3R2C0.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[2][0].getTile().getType().getName() + "" + tilePositions[2][0].getTile().getVariant().getNumber() + ".png"));
+            shelf3R2C0.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[2][0].getTile().getType().getName() + "" + tilePositions[2][0].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[2][1].isOccupied()){
-            shelf3R2C1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[2][1].getTile().getType().getName() + "" + tilePositions[2][1].getTile().getVariant().getNumber() + ".png"));
+            shelf3R2C1.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[2][1].getTile().getType().getName() + "" + tilePositions[2][1].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[2][2].isOccupied()){
-            shelf3R2C2.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[2][2].getTile().getType().getName() + "" + tilePositions[2][2].getTile().getVariant().getNumber() + ".png"));
+            shelf3R2C2.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[2][2].getTile().getType().getName() + "" + tilePositions[2][2].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[2][3].isOccupied()){
-            shelf3R2C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[2][3].getTile().getType().getName() + "" + tilePositions[2][3].getTile().getVariant().getNumber() + ".png"));
+            shelf3R2C3.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[2][3].getTile().getType().getName() + "" + tilePositions[2][3].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[2][4].isOccupied()){
-            shelf3R2C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[2][4].getTile().getType().getName() + "" + tilePositions[2][4].getTile().getVariant().getNumber() + ".png"));
+            shelf3R2C4.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[2][4].getTile().getType().getName() + "" + tilePositions[2][4].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[3][0].isOccupied()){
-            shelf3R3C0.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[3][0].getTile().getType().getName() + "" + tilePositions[3][0].getTile().getVariant().getNumber() + ".png"));
+            shelf3R3C0.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[3][0].getTile().getType().getName() + "" + tilePositions[3][0].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[3][1].isOccupied()){
-            shelf3R3C1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[3][1].getTile().getType().getName() + "" + tilePositions[3][1].getTile().getVariant().getNumber() + ".png"));
+            shelf3R3C1.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[3][1].getTile().getType().getName() + "" + tilePositions[3][1].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
+
         if (tilePositions[3][2].isOccupied()){
-            shelf3R3C2.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[3][2].getTile().getType().getName() + "" + tilePositions[3][2].getTile().getVariant().getNumber() + ".png"));
+            shelf3R3C2.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[3][2].getTile().getType().getName() + "" + tilePositions[3][2].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[3][3].isOccupied()){
-            shelf3R3C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[3][3].getTile().getType().getName() + "" + tilePositions[3][3].getTile().getVariant().getNumber() + ".png"));
+            shelf3R3C3.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[3][3].getTile().getType().getName() + "" + tilePositions[3][3].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[3][4].isOccupied()){
-            shelf3R3C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[3][4].getTile().getType().getName() + "" + tilePositions[3][4].getTile().getVariant().getNumber() + ".png"));
+            shelf3R3C4.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[3][4].getTile().getType().getName() + "" + tilePositions[3][4].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[4][0].isOccupied()){
-            shelf3R4C0.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[4][0].getTile().getType().getName() + "" + tilePositions[4][0].getTile().getVariant().getNumber() + ".png"));
+            shelf3R4C0.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[4][0].getTile().getType().getName() + "" + tilePositions[4][0].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[4][1].isOccupied()){
-            shelf3R4C1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[4][1].getTile().getType().getName() + "" + tilePositions[4][1].getTile().getVariant().getNumber() + ".png"));
+            shelf3R4C1.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[4][1].getTile().getType().getName() + "" + tilePositions[4][1].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
+
         if (tilePositions[4][2].isOccupied()){
-            shelf3R4C2.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[4][2].getTile().getType().getName() + "" + tilePositions[4][2].getTile().getVariant().getNumber() + ".png"));
+            shelf3R4C2.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[4][2].getTile().getType().getName() + "" + tilePositions[4][2].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[4][3].isOccupied()){
-            shelf3R4C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[4][3].getTile().getType().getName() + "" + tilePositions[4][3].getTile().getVariant().getNumber() + ".png"));
+            shelf3R4C3.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[4][3].getTile().getType().getName() + "" + tilePositions[4][3].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[4][4].isOccupied()){
-            shelf3R4C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[4][4].getTile().getType().getName() + "" + tilePositions[4][4].getTile().getVariant().getNumber() + ".png"));
+            shelf3R4C4.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[4][4].getTile().getType().getName() + "" + tilePositions[4][4].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[5][0].isOccupied()){
-            shelf3R5C0.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[5][0].getTile().getType().getName() + "" + tilePositions[5][0].getTile().getVariant().getNumber() + ".png"));
+            shelf3R5C0.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[5][0].getTile().getType().getName() + "" + tilePositions[5][0].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[5][1].isOccupied()){
-            shelf3R5C1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[5][1].getTile().getType().getName() + "" + tilePositions[5][1].getTile().getVariant().getNumber() + ".png"));
+            shelf3R5C1.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[5][1].getTile().getType().getName() + "" + tilePositions[5][1].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
+
         if (tilePositions[5][2].isOccupied()){
-            shelf3R5C2.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[5][2].getTile().getType().getName() + "" + tilePositions[5][2].getTile().getVariant().getNumber() + ".png"));
+            shelf3R5C2.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[5][2].getTile().getType().getName() + "" + tilePositions[5][2].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[5][3].isOccupied()){
-            shelf3R5C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[5][3].getTile().getType().getName() + "" + tilePositions[5][3].getTile().getVariant().getNumber() + ".png"));
+            shelf3R5C3.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[5][3].getTile().getType().getName() + "" + tilePositions[5][3].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[5][4].isOccupied()){
-            shelf3R5C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[5][4].getTile().getType().getName() + "" + tilePositions[5][4].getTile().getVariant().getNumber() + ".png"));
+            shelf3R5C4.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[5][4].getTile().getType().getName() + "" + tilePositions[5][4].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
+
     }
 
     public void updateShelves4(ArrayList<Player> players){
         TilePositionShelves[][] tilePositions = players.get(3).getShelves().showShelves();
 
         if (tilePositions[0][0].isOccupied()){
-            shelf4R0C0.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[0][0].getTile().getType().getName() + "" + tilePositions[0][0].getTile().getVariant().getNumber() + ".png"));
+            shelf4R0C0.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[0][0].getTile().getType().getName() + "" + tilePositions[0][0].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
+
         if (tilePositions[0][1].isOccupied()){
-            shelf4R0C1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[0][1].getTile().getType().getName() + "" + tilePositions[0][1].getTile().getVariant().getNumber() + ".png"));
+            shelf4R0C1.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[0][1].getTile().getType().getName() + "" + tilePositions[0][1].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[0][2].isOccupied()){
-            shelf4R0C2.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[0][2].getTile().getType().getName() + "" + tilePositions[0][2].getTile().getVariant().getNumber() + ".png"));
+            shelf4R0C2.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[0][2].getTile().getType().getName() + "" + tilePositions[0][2].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[0][3].isOccupied()){
-            shelf4R0C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[0][3].getTile().getType().getName() + "" + tilePositions[0][3].getTile().getVariant().getNumber() + ".png"));
+            shelf4R0C3.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[0][3].getTile().getType().getName() + "" + tilePositions[0][3].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[0][4].isOccupied()){
-            shelf4R0C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[0][4].getTile().getType().getName() + "" + tilePositions[0][4].getTile().getVariant().getNumber() + ".png"));
+            shelf4R0C4.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[0][4].getTile().getType().getName() + "" + tilePositions[0][4].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[1][0].isOccupied()){
-            shelf4R1C0.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[1][0].getTile().getType().getName() + "" + tilePositions[1][0].getTile().getVariant().getNumber() + ".png"));
+            shelf4R1C0.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[1][0].getTile().getType().getName() + "" + tilePositions[1][0].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[1][1].isOccupied()){
-            shelf4R1C1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[1][1].getTile().getType().getName() + "" + tilePositions[1][1].getTile().getVariant().getNumber() + ".png"));
+            shelf4R1C1.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[1][1].getTile().getType().getName() + "" + tilePositions[1][1].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
+
         if (tilePositions[1][2].isOccupied()){
-            shelf4R1C2.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[1][2].getTile().getType().getName() + "" + tilePositions[1][2].getTile().getVariant().getNumber() + ".png"));
+            shelf4R1C2.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[1][2].getTile().getType().getName() + "" + tilePositions[1][2].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[1][3].isOccupied()){
-            shelf4R1C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[1][3].getTile().getType().getName() + "" + tilePositions[1][3].getTile().getVariant().getNumber() + ".png"));
+            shelf4R1C3.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[1][3].getTile().getType().getName() + "" + tilePositions[1][3].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[1][4].isOccupied()){
-            shelf4R1C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[1][4].getTile().getType().getName() + "" + tilePositions[1][4].getTile().getVariant().getNumber() + ".png"));
+            shelf4R1C4.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[1][4].getTile().getType().getName() + "" + tilePositions[1][4].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[2][0].isOccupied()){
-            shelf4R2C0.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[2][0].getTile().getType().getName() + "" + tilePositions[2][0].getTile().getVariant().getNumber() + ".png"));
+            shelf4R2C0.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[2][0].getTile().getType().getName() + "" + tilePositions[2][0].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[2][1].isOccupied()){
-            shelf4R2C1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[2][1].getTile().getType().getName() + "" + tilePositions[2][1].getTile().getVariant().getNumber() + ".png"));
+            shelf4R2C1.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[2][1].getTile().getType().getName() + "" + tilePositions[2][1].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[2][2].isOccupied()){
-            shelf4R2C2.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[2][2].getTile().getType().getName() + "" + tilePositions[2][2].getTile().getVariant().getNumber() + ".png"));
+            shelf4R2C2.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[2][2].getTile().getType().getName() + "" + tilePositions[2][2].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[2][3].isOccupied()){
-            shelf4R2C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[2][3].getTile().getType().getName() + "" + tilePositions[2][3].getTile().getVariant().getNumber() + ".png"));
+            shelf4R2C3.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[2][3].getTile().getType().getName() + "" + tilePositions[2][3].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[2][4].isOccupied()){
-            shelf4R2C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[2][4].getTile().getType().getName() + "" + tilePositions[2][4].getTile().getVariant().getNumber() + ".png"));
+            shelf4R2C4.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[2][4].getTile().getType().getName() + "" + tilePositions[2][4].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[3][0].isOccupied()){
-            shelf4R3C0.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[3][0].getTile().getType().getName() + "" + tilePositions[3][0].getTile().getVariant().getNumber() + ".png"));
+            shelf4R3C0.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[3][0].getTile().getType().getName() + "" + tilePositions[3][0].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[3][1].isOccupied()){
-            shelf4R3C1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[3][1].getTile().getType().getName() + "" + tilePositions[3][1].getTile().getVariant().getNumber() + ".png"));
+            shelf4R3C1.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[3][1].getTile().getType().getName() + "" + tilePositions[3][1].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
+
         if (tilePositions[3][2].isOccupied()){
-            shelf4R3C2.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[3][2].getTile().getType().getName() + "" + tilePositions[3][2].getTile().getVariant().getNumber() + ".png"));
+            shelf4R3C2.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[3][2].getTile().getType().getName() + "" + tilePositions[3][2].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[3][3].isOccupied()){
-            shelf4R3C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[3][3].getTile().getType().getName() + "" + tilePositions[3][3].getTile().getVariant().getNumber() + ".png"));
+            shelf4R3C3.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[3][3].getTile().getType().getName() + "" + tilePositions[3][3].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[3][4].isOccupied()){
-            shelf4R3C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[3][4].getTile().getType().getName() + "" + tilePositions[3][4].getTile().getVariant().getNumber() + ".png"));
+            shelf4R3C4.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[3][4].getTile().getType().getName() + "" + tilePositions[3][4].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[4][0].isOccupied()){
-            shelf4R4C0.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[4][0].getTile().getType().getName() + "" + tilePositions[4][0].getTile().getVariant().getNumber() + ".png"));
+            shelf4R4C0.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[4][0].getTile().getType().getName() + "" + tilePositions[4][0].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[4][1].isOccupied()){
-            shelf4R4C1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[4][1].getTile().getType().getName() + "" + tilePositions[4][1].getTile().getVariant().getNumber() + ".png"));
+            shelf4R4C1.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[4][1].getTile().getType().getName() + "" + tilePositions[4][1].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
+
         if (tilePositions[4][2].isOccupied()){
-            shelf4R4C2.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[4][2].getTile().getType().getName() + "" + tilePositions[4][2].getTile().getVariant().getNumber() + ".png"));
+            shelf4R4C2.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[4][2].getTile().getType().getName() + "" + tilePositions[4][2].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[4][3].isOccupied()){
-            shelf4R4C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[4][3].getTile().getType().getName() + "" + tilePositions[4][3].getTile().getVariant().getNumber() + ".png"));
+            shelf4R4C3.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[4][3].getTile().getType().getName() + "" + tilePositions[4][3].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[4][4].isOccupied()){
-            shelf4R4C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[4][4].getTile().getType().getName() + "" + tilePositions[4][4].getTile().getVariant().getNumber() + ".png"));
+            shelf4R4C4.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[4][4].getTile().getType().getName() + "" + tilePositions[4][4].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[5][0].isOccupied()){
-            shelf4R5C0.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[5][0].getTile().getType().getName() + "" + tilePositions[5][0].getTile().getVariant().getNumber() + ".png"));
+            shelf4R5C0.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[5][0].getTile().getType().getName() + "" + tilePositions[5][0].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[5][1].isOccupied()){
-            shelf4R5C1.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[5][1].getTile().getType().getName() + "" + tilePositions[5][1].getTile().getVariant().getNumber() + ".png"));
+            shelf4R5C1.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[5][1].getTile().getType().getName() + "" + tilePositions[5][1].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
+
         if (tilePositions[5][2].isOccupied()){
-            shelf4R5C2.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[5][2].getTile().getType().getName() + "" + tilePositions[5][2].getTile().getVariant().getNumber() + ".png"));
+            shelf4R5C2.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[5][2].getTile().getType().getName() + "" + tilePositions[5][2].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[5][3].isOccupied()){
-            shelf4R5C3.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[5][3].getTile().getType().getName() + "" + tilePositions[5][3].getTile().getVariant().getNumber() + ".png"));
+            shelf4R5C3.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[5][3].getTile().getType().getName() + "" + tilePositions[5][3].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
 
         if (tilePositions[5][4].isOccupied()){
-            shelf4R5C4.setImage(new javafx.scene.image.Image("file:src/main/resources/GraphicResources/itemTiles/" + tilePositions[5][4].getTile().getType().getName() + "" + tilePositions[5][4].getTile().getVariant().getNumber() + ".png"));
+            shelf4R5C4.setImage(new javafx.scene.image.Image(getClass().getResource("/GraphicResources/itemTiles/" + tilePositions[5][4].getTile().getType().getName() + "" + tilePositions[5][4].getTile().getVariant().getNumber() + ".png").toExternalForm()));
         }
     }
 
@@ -1632,6 +1676,13 @@ public class GuiController {
             //e.printStackTrace();
         }
 
+        for(int i = 0; i < order.length; i++){
+            if(order[i] > tilesToRemove.size() || order[i] < 1){
+                this.showError("Error! The order of the tiles is not correct! Please check the order of the tiles!",this.viewMyShelfie.frame.getStage());
+                return;
+            }
+        }
+
 
         DrawFromBoardMessage message = new DrawFromBoardMessage(tilesToRemove, columOfShelves, this.viewMyShelfie.getCurrentGame().getCurrentGameId(), order);
 
@@ -1649,7 +1700,7 @@ public class GuiController {
         this.viewMyShelfie.deliverGuiRequest( new Choice(ChoiceMyShelfie.TERMINATE_TURNS, this.viewMyShelfie.getPlayer(),this.viewMyShelfie.getCurrentGame().getCurrentGameId()));
         this.setEnableSendButton(false);
         Game gameRef = viewMyShelfie.getCurrentGame();
-        if(gameRef.getCurrentPlayer().getShelves().isFull() && !gameRef.isEnded()) {
+        if(gameRef.getCurrentPlayer().getShelves().isFull() && !gameRef.isEnded() && gameRef != null) {
             endToken.setVisible(true);
             gameRef.setHasEnded(true);
         }
