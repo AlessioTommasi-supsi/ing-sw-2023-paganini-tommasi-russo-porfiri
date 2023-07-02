@@ -26,7 +26,7 @@ public class CommonCard3Types extends CommonCard implements Serializable {
     public boolean executeAlgorithm(Player player) {
         int counter = 0;
         switch(form) {
-            case("Horizontal 3 types") -> {
+            case("Horizontal 3 types") : {
                 for(int i=0;i<6;i++) {
                     ArrayList<TileType> types = new ArrayList<>();
                     if (checkHorizontal3Types(types, player.getShelves(), i, 0)) {
@@ -37,7 +37,7 @@ public class CommonCard3Types extends CommonCard implements Serializable {
                     }
                 }
             }
-            case("Vertical 3 types") -> {
+            case("Vertical 3 types") : {
                 for (int i=0; i < 5;i++) {
                     ArrayList<TileType> types = new ArrayList<>();
                     if (checkVertical3Types(types, player.getShelves(), 0, i)) {
@@ -48,7 +48,7 @@ public class CommonCard3Types extends CommonCard implements Serializable {
                     }
                 }
             }
-            case ("Horizontal") -> {
+            case ("Horizontal") : {
                 for(int i=0;i<6;i++) {
                     ArrayList<TileType> types = new ArrayList<>();
                     if (checkHorizontal(types, player.getShelves(), i, 0)) {
@@ -59,7 +59,7 @@ public class CommonCard3Types extends CommonCard implements Serializable {
                     }
                 }
             }
-            case ("Vertical") -> {
+            case ("Vertical") : {
                 for (int i=0; i < 5;i++) {
                     ArrayList<TileType> types = new ArrayList<>();
                     if (checkVertical(types, player.getShelves(), 0, i)) {

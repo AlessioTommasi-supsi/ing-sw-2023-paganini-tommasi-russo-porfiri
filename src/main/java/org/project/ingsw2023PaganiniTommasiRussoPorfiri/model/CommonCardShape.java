@@ -23,7 +23,7 @@ public class CommonCardShape extends CommonCard implements Serializable {
 
     public boolean executeAlgorithm(Player player) {
         switch(form) {
-            case "Square" -> {
+            case "Square" : {
                 this.arrayBool = new boolean[5][4];
                 for(int i=0;i<5;i++) {
                     for (int j = 0;j<4;j++) {
@@ -54,7 +54,7 @@ public class CommonCardShape extends CommonCard implements Serializable {
                     }
                 }
             }
-            case "SmallRectangle" -> {
+            case "SmallRectangle" : {
                 this.arrayBool = new boolean[5][5];
                 for(int i = 0;i<5;i++) {
                     for (int j=0;j<5;j++) {
@@ -79,7 +79,7 @@ public class CommonCardShape extends CommonCard implements Serializable {
                     }
                 }
             }
-            case "LargeRectangle" -> {
+            case "LargeRectangle" : {
                 this.arrayBool = new boolean[3][5];
                 for(int i=0;i<3;i++) {
                     for(int j=0;j<5;j++) {
