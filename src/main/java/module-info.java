@@ -3,7 +3,6 @@ module org.project.ingsw2023PaganiniTommasiRussoPorfiri {
     requires javafx.fxml;
     requires javafx.graphics;
     requires javafx.web;
-    requires junit;
 
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
