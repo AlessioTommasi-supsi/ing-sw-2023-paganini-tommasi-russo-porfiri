@@ -54,6 +54,7 @@ public class CommonCardShape extends CommonCard implements Serializable {
                     }
                 }
             }
+            break;
             case "SmallRectangle" : {
                 this.arrayBool = new boolean[5][5];
                 for(int i = 0;i<5;i++) {
@@ -79,6 +80,7 @@ public class CommonCardShape extends CommonCard implements Serializable {
                     }
                 }
             }
+            break;
             case "LargeRectangle" : {
                 this.arrayBool = new boolean[3][5];
                 for(int i=0;i<3;i++) {
@@ -107,6 +109,7 @@ public class CommonCardShape extends CommonCard implements Serializable {
                     }
                 }
             }
+            break;
         }
         return false;
     }

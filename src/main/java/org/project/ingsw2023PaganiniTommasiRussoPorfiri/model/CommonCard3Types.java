@@ -37,6 +37,7 @@ public class CommonCard3Types extends CommonCard implements Serializable {
                     }
                 }
             }
+            break;
             case("Vertical 3 types") : {
                 for (int i=0; i < 5;i++) {
                     ArrayList<TileType> types = new ArrayList<>();
@@ -48,6 +49,7 @@ public class CommonCard3Types extends CommonCard implements Serializable {
                     }
                 }
             }
+            break;
             case ("Horizontal") : {
                 for(int i=0;i<6;i++) {
                     ArrayList<TileType> types = new ArrayList<>();
@@ -59,6 +61,7 @@ public class CommonCard3Types extends CommonCard implements Serializable {
                     }
                 }
             }
+            break;
             case ("Vertical") : {
                 for (int i=0; i < 5;i++) {
                     ArrayList<TileType> types = new ArrayList<>();
@@ -70,6 +73,7 @@ public class CommonCard3Types extends CommonCard implements Serializable {
                     }
                 }
             }
+            break;
         }
         return false;
     }
