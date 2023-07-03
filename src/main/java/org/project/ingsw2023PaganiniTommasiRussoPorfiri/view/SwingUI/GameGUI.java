@@ -2,10 +2,12 @@ package org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.SwingUI;
 
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.SwingUI.custom.*;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.SwingUI.custom.CustomPanel;
-
 import javax.swing.*;
 import java.awt.*;
 
+//Classe deprecata rappresentante una bozza iniziale di una GUI di gioco in Swing
+//Deciso di ricominciare da zero e implementarla altrove, completamente in JavaFX
+@Deprecated
 public class GameGUI extends JFrame {
     private CustomPanel board;
     private CustomPanel myShelf;
@@ -26,7 +28,7 @@ public class GameGUI extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new GridBagLayout());
 
-        // Crea un oggetto GridBagConstraints per impostare le proprietà di posizionamento dei componenti
+        //Creazione di un oggetto GridBagConstraints per impostare le proprietà di posizionamento dei componenti
         GridBagConstraints constraints = new GridBagConstraints();
 
 
@@ -66,7 +68,6 @@ public class GameGUI extends JFrame {
         controlPanel.setPreferredSize(new Dimension(400, 400));
         add(controlPanel);
 
-
         /*
         myShelf.setVisible(true);
         imageLabel2 = new JLabel(new ImageIcon(getClass().getResource("/boards/bookshelf.png")));
@@ -75,38 +76,36 @@ public class GameGUI extends JFrame {
         add(myShelf);
        */
 
-
-
         constraints.gridx = 0;
         constraints.gridy = 0;
         constraints.gridwidth = 2;
         constraints.gridheight = 2;
-        constraints.fill = GridBagConstraints.BOTH; // Il pannello si espande sia in larghezza che in altezza
-        constraints.weightx = 1.0; // Il pannello occupa tutto lo spazio disponibile in larghezza
-        constraints.weighty = 1.0; // Il pannello occupa tutto lo spazio disponibile in altezza
+        constraints.fill = GridBagConstraints.BOTH; //Il pannello si espande sia in larghezza che in altezza
+        constraints.weightx = 1.0; //Il pannello occupa tutto lo spazio disponibile in larghezza
+        constraints.weighty = 1.0; //Il pannello occupa tutto lo spazio disponibile in altezza
         add(board, constraints);
 
-        // Imposta la posizione e le dimensioni del pannello "controlPanel"
+        //Impostazione della posizione e delle dimensioni del pannello "controlPanel"
         constraints.gridx = 0;
         constraints.gridy = 2;
         constraints.gridwidth = 2;
         constraints.gridheight = 1;
         constraints.fill = GridBagConstraints.BOTH;
         constraints.weightx = 1.0;
-        constraints.weighty = 0.0; // Il pannello non si espande in altezza
+        constraints.weighty = 0.0; //Il pannello non si espande in altezza
         add(controlPanel, constraints);
 
-        // Imposta la posizione e le dimensioni del pannello "commonCards"
+        //Impostazione della posizione e delle dimensioni del pannello "commonCards"
         constraints.gridx = 2;
         constraints.gridy = 0;
         constraints.gridwidth = 1;
         constraints.gridheight = 2;
         constraints.fill = GridBagConstraints.BOTH;
-        constraints.weightx = 0.0; // Il pannello non si espande in larghezza
+        constraints.weightx = 0.0; //Il pannello non si espande in larghezza
         constraints.weighty = 1.0;
         add(commonCards, constraints);
 
-        // Imposta la posizione e le dimensioni del pannello "myShelf"
+        //Impostazione della posizione e delle dimensioni del pannello "myShelf"
         constraints.gridx = 0;
         constraints.gridy = 3;
         constraints.gridwidth = 1;
@@ -116,7 +115,7 @@ public class GameGUI extends JFrame {
         constraints.weighty = 0.0;
         add(myShelf, constraints);
 
-        // Imposta la posizione e le dimensioni del pannello "personalCard"
+        //Impostazione della posizione e delle dimensioni del pannello "personalCard"
         constraints.gridx = 1;
         constraints.gridy = 3;
         constraints.gridwidth = 1;
@@ -125,7 +124,6 @@ public class GameGUI extends JFrame {
         constraints.weightx = 1.0;
         constraints.weighty = 0.0;
         add(personalCard, constraints);
-
 
         /*
         imageLabel1.addComponentListener(new ComponentAdapter() {
@@ -137,11 +135,10 @@ public class GameGUI extends JFrame {
         }); */
 
 
-
-        // Imposta il layout manager del pannello "controlPanel" come FlowLayout
+        //Impostazione del layout manager del pannello "controlPanel" come FlowLayout
         controlPanel.setLayout(new FlowLayout());
 
-        // Aggiungi i componenti desiderati al pannello "controlPanel"
+        //Aggiunta dei componenti desiderati al pannello "controlPanel"
         JButton button1 = new JButton("Button 1");
         JButton button2 = new JButton("Button 2");
         ImageIcon titleImage = new ImageIcon(getClass().getResource("/GraphicResources/misc/base_pagina2.jpg"));
@@ -150,36 +147,36 @@ public class GameGUI extends JFrame {
         controlPanel.add(button2);
         controlPanel.add(textField);
 
-        // Imposta il layout manager del pannello "controlPanel" come GridLayout con 2 colonne e 3 righe
+        //Impostazione del layout manager del pannello "controlPanel" come GridLayout con 2 colonne e 3 righe
         controlPanel.setLayout(new GridLayout(3, 2, 10, 10));
 
-        // Crea i bottoni con icone e testo desiderati
-        button1.setIcon(new ImageIcon("withdraw.png")); // Sostituisci "withdraw.png" con il percorso dell'icona per il prelievo dalla board
+        // Creazione dei bottoni con icone e testo desiderati
+        button1.setIcon(new ImageIcon("withdraw.png"));
         button1.setText("Draw from Board and insert into Shelf");
 
-        button2.setIcon(new ImageIcon("withdraw.png")); // Sostituisci "withdraw.png" con il percorso dell'icona per il prelievo dalla board
+        button2.setIcon(new ImageIcon("withdraw.png"));
         button2.setText("Insert into Shelf");
 
         JButton button3 = new JButton();
-        button3.setIcon(new ImageIcon("personal.png")); // Sostituisci "personal.png" con il percorso dell'icona per la verifica dell'obiettivo personale
+        button3.setIcon(new ImageIcon("personal.png"));
         button3.setText("Verify the Personal Card");
 
         JButton button4 = new JButton();
-        button4.setIcon(new ImageIcon("common.png")); // Sostituisci "common.png" con il percorso dell'icona per la verifica degli obiettivi comuni
+        button4.setIcon(new ImageIcon("common.png"));
         button4.setText("Verify the Common Cards");
 
         JButton button5 = new JButton();
-        button5.setIcon(new ImageIcon("others.png")); // Sostituisci "others.png" con il percorso dell'icona per la visualizzazione delle librerie degli altri giocatori
+        button5.setIcon(new ImageIcon("others.png"));
         button5.setText("Show other players's libraries");
 
-        // Aggiungi i bottoni al pannello "controlPanel"
+
         controlPanel.add(button1);
         controlPanel.add(button2);
         controlPanel.add(button3);
         controlPanel.add(button4);
         controlPanel.add(button5);
 
-        // Imposta la posizione e le dimensioni del pannello "controlPanel"
+        //Impostazione della posizione e delle dimensioni del pannello "controlPanel"
         constraints.gridx = 0;
         constraints.gridy = 2;
         constraints.gridwidth = 2;
@@ -189,8 +186,8 @@ public class GameGUI extends JFrame {
         constraints.weighty = 0.0;
         add(controlPanel, constraints);
 
-        // Imposta la posizione e le dimensioni degli altri pannelli come desiderato
 
+        //Impostazione della posizione e delle dimensioni degli altri pannelli
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
@@ -243,13 +240,6 @@ public class GameGUI extends JFrame {
         Image scaledImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
         return new ImageIcon(scaledImage);
     }
-
-
-
-
-
-    //non richiamabile in una classe che estende jframe, ma solo in una che estende jcomponent
-
 
 
  /*

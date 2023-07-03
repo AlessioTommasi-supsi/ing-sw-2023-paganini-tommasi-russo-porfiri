@@ -21,24 +21,8 @@ public abstract class Game implements Serializable {
         return fullLibrary;
     }
 
-    public boolean isEnded() {
-        return hasEnded;
-    }
-
-    public void setHasEnded(boolean hasEnded) {
-        this.hasEnded = hasEnded;
-    }
-
-    public int getFirstFullLibPlayerId() {
-        return firstFullLibPlayerId;
-    }
-
-    public void setFirstFullLibPlayerId(int firstFullLibPlayerId) {
-        this.firstFullLibPlayerId = firstFullLibPlayerId;
-    }
 
     private int firstFullLibPlayerId;
-    private boolean hasEnded;
     private Player currentPlayer;
     private int currentGameId;
     private Board board;

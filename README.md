@@ -16,10 +16,10 @@ We have adopted the Model-View-Controller (MVC) pattern for code organization. <
 
 ---
 
-# Sommario
+# Summary
 
-- [Sommario](#sommario)
-- [UML & Documentation](#UML-e-Documentazione)
+- [Sommario](#Summary)
+- [UML & Documentation](#uml-and-documentation)
 - - [Sequence Diagram](#Sequence-Diagram)
 - [Implemented functionalities](#implemented-functionalities)
 - - [Game specific](#game-specific)
@@ -30,13 +30,14 @@ We have adopted the Model-View-Controller (MVC) pattern for code organization. <
 - [Technology stack](#technology-stack)
 - [Required dependencies](#required-dependencies)
 - [Setup](#setup)
+- [Compile and packaging](#compile-and-packaging)
 - [GamePlay](#gameplay)
 - -[Graphical User Interface](#graphical-interface-guide)
 - -[Examples](#examples)
 - [Implemented Functionalities](#implemented-functionalities)
 - [Contributors](#contributors)
 
-## UML e Documentazione
+## UML and Documentation
 <br>
 
 ![Connection diagram 1.png](deliveries%2Fdocumentation%2Fuml%2FDetailed%2FConnection%20diagram%201.png)
@@ -116,10 +117,10 @@ $ git clone https://github.com/AlessioTommasi-polimi/ing-sw-2023-paganini-tommas
 $ cd ./ing-sw-2023-paganini-tommasi-russo-porfiri
 ```
 
-## Compilazione e packaging
-I jar sono stati realizzati con l'ausilio di Maven Shade Plugin.
-Di seguito sono forniti i jar precompilati.
-Per compilare i jar autonomamente, posizionarsi nella root del progetto e lanciare il comando:
+## Compile and packaging
+The jars were made with the help of Maven Shade Plugin.
+Below are the precompiled jars.
+To compile the jars independently, position yourself in the root of the project and launch the command:
 ```bash
 $ mvn clean package
 ```

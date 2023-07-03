@@ -3,6 +3,7 @@ package org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.SwingUI.custom;
 import javax.swing.*;
 import java.awt.*;
 
+@Deprecated
 public class CustomPanel extends JPanel {
 
     private ImageIcon imageIcon;

@@ -1,8 +1,6 @@
 package org.project.ingsw2023PaganiniTommasiRussoPorfiri.distributed;
 
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.*;
-import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.GraphicalUI;
-import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.SwingUI.LoginGUI;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.TextualUI.ViewMyShelfie;
 
 import java.rmi.RemoteException;

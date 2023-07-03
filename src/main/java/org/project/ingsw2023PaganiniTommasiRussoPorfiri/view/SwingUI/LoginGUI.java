@@ -2,12 +2,10 @@ package org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.SwingUI;
 
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.*;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.model.Choice;
-import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.GraphicalUI;
 import org.project.ingsw2023PaganiniTommasiRussoPorfiri.view.TextualUI.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.image.BufferedImage;
@@ -21,9 +19,8 @@ public class LoginGUI extends JFrame {
     public JTextField playerNumberField = new JTextField();
     public JLabel imageContainer = new JLabel();
     public JLabel titleLabel = new JLabel();
-
-
     ViewMyShelfie viewMyShelfie;
+
     public LoginGUI() {
         setResizable(false);
         setSize(1280, 720);
@@ -33,21 +30,21 @@ public class LoginGUI extends JFrame {
         joinGameButton.setForeground(Color.WHITE); // Testo bianco
         joinGameButton.setFont(new Font("Arial", Font.BOLD, 14));
 
-        // Impostazione delle dimensioni dei componenti in proporzione alla finestra principale
+        //Dimensioni finestra principale (Il JFrame LoginGUI)
         int frameWidth = 1280;
         int frameHeight = 720;
 
-// Calcola le dimensioni dei componenti in base alla proporzione della finestra principale
-        int joinGameButtonWidth = (int) (frameWidth * 0.2);  // 20% della larghezza del frame
-        int joinGameButtonHeight = (int) (frameHeight * 0.1);  // 10% dell'altezza del frame
+        //Calcolo delle dimensioni dei componenti in base alla proporzione della finestra principale
+        int joinGameButtonWidth = (int) (frameWidth * 0.2);  //20% della larghezza del frame
+        int joinGameButtonHeight = (int) (frameHeight * 0.1);  //10% dell'altezza del frame
 
-        int textFieldWidth = (int) (frameWidth * 0.2);  // 20% della larghezza del frame
-        int textFieldHeight = (int) (frameHeight * 0.05);  // 5% dell'altezza del frame
+        int textFieldWidth = (int) (frameWidth * 0.2);
+        int textFieldHeight = (int) (frameHeight * 0.05);
 
-        int titleLabelWidth = (int) (frameWidth * 0.5);  // 50% della larghezza del frame
-        int titleLabelHeight = (int) (frameHeight * 0.2);  // 20% dell'altezza del frame
+        int titleLabelWidth = (int) (frameWidth * 0.5);
+        int titleLabelHeight = (int) (frameHeight * 0.2);
 
-// Imposta le dimensioni dei componenti
+        //Impostazione delle dimensioni dei componenti
         joinGameButton.setPreferredSize(new Dimension(joinGameButtonWidth, joinGameButtonHeight));
         usernameField.setPreferredSize(new Dimension(textFieldWidth, textFieldHeight));
         playerNumberField.setPreferredSize(new Dimension(textFieldWidth, textFieldHeight));
@@ -160,21 +157,21 @@ public class LoginGUI extends JFrame {
         joinGameButton.setForeground(Color.WHITE);
         joinGameButton.setFont(new Font("Arial", Font.BOLD, 14));
 
-        // Impostazione delle dimensioni dei componenti in proporzione alla finestra principale
+        //Impostazione delle dimensioni dei componenti in proporzione alla finestra principale
         int frameWidth = 1280;
         int frameHeight = 720;
 
-// Calcola le dimensioni dei componenti in base alla proporzione della finestra principale
-        int joinGameButtonWidth = (int) (frameWidth * 0.2);  // 20% della larghezza del frame
-        int joinGameButtonHeight = (int) (frameHeight * 0.1);  // 10% dell'altezza del frame
+        //Calcolo delle dimensioni dei componenti in base alla proporzione della finestra principale
+        int joinGameButtonWidth = (int) (frameWidth * 0.2);
+        int joinGameButtonHeight = (int) (frameHeight * 0.1);
 
-        int textFieldWidth = (int) (frameWidth * 0.2);  // 20% della larghezza del frame
-        int textFieldHeight = (int) (frameHeight * 0.05);  // 5% dell'altezza del frame
+        int textFieldWidth = (int) (frameWidth * 0.2);
+        int textFieldHeight = (int) (frameHeight * 0.05);
 
-        int titleLabelWidth = (int) (frameWidth * 0.5);  // 50% della larghezza del frame
-        int titleLabelHeight = (int) (frameHeight * 0.2);  // 20% dell'altezza del frame
+        int titleLabelWidth = (int) (frameWidth * 0.5);
+        int titleLabelHeight = (int) (frameHeight * 0.2);
 
-// Imposta le dimensioni dei componenti
+        //Impostazione delle dimensioni dei componenti
         joinGameButton.setPreferredSize(new Dimension(joinGameButtonWidth, joinGameButtonHeight));
         usernameField.setPreferredSize(new Dimension(textFieldWidth, textFieldHeight));
         playerNumberField.setPreferredSize(new Dimension(textFieldWidth, textFieldHeight));
@@ -187,7 +184,7 @@ public class LoginGUI extends JFrame {
             if (username.isEmpty() || playerNumber.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Please fill all the fields", "Error", JOptionPane.ERROR_MESSAGE);
             }
-             else {
+            else {
                 try {
                     int playerNumberInt = Integer.parseInt(playerNumber);
                     if (playerNumberInt < 2 || playerNumberInt > 4) {

@@ -1021,7 +1021,7 @@ public class GuiController {
             }
 
         }catch (Exception e){
-            //index out og bound e vengono inizializzati meno di 4 giocatori
+            //index out of bound e vengono inizializzati meno di 4 giocatori
             e.printStackTrace();
         }
 
