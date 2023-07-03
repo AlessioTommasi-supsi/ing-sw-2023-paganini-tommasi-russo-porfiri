@@ -33,7 +33,6 @@ public class Player implements Serializable {
     }
 
     public Player(String username) {
-        //this.id = Globals.incrementPlayerId();//non puo funzionare dara sempre 1 perché ogni client esegue un nuovo programma!
         this.id = -1;// -1 e poi viene assegnato id giusto da controller non appena si fa join_game!
         this.username = username;
         this.yourTurn = false;
