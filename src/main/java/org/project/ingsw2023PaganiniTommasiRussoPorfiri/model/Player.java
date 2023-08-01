@@ -217,7 +217,9 @@ public class Player implements Serializable {
                 if(tilesCounter > 6) {
                     tilesCounter = 6;
                 }
-                totalPoints += givenAdjacencyPoints.get(tilesCounter);
+                if(givenAdjacencyPoints.containsKey(tilesCounter)){
+                    totalPoints += givenAdjacencyPoints.get(tilesCounter);
+                }
             }
 
         }

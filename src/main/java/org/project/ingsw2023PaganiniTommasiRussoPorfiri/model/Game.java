@@ -241,55 +241,13 @@ public abstract class Game implements Serializable {
     }
 
 
-
+    //Metodo che chiamo da controller, solo se un giocatore ha già completato una libreria.
+    //Qui ultimo turno già avviato e verifico solo di aver finito il giro, quindi in caso concludo la partita.
     public void end() throws Exception {
-        if (this.getState().equals(GameStatus.OVER) ||
-                (this.getState().equals(GameStatus.LAST_TURN) && this.firstFullLibPlayerId == this.currentPlayer.getId())) {
-
-            this.state = GameStatus.OVER;
-
-            //calcolo i punti di ogni giocatore e ne faccio il ranking
-            //indice di ranking e Indice dei giocatori quando si sono uniti alla partita.
-
-            int point[];
-
-            //funzionalità ranking!
-            point = new int[this.playerNumber];
-
-            for (int i = 0; i < players.size(); i++) {
-                players.get(i).calcOverallScore();
-                point[i] = players.get(i).getScore();
-            }
-
-            this.ranking = new int[this.playerNumber];
-
-            for (int i = 0; i < players.size(); i++) {
-                rank.add(new Ranking(players.get(i), point[i]));
-            }
-
-            //ordino rank in base ai punti dal piu alto al piu basso
-            Collections.sort(rank, new Comparator<Ranking>() {
-                @Override
-                public int compare(Ranking o1, Ranking o2) {
-                    return o2.getPoints() - o1.getPoints();
-                }
-            });
-
-            int index = 0;
-            int max =point[0];
-            //assegno il ranking
-            for (int j = 0; j < this.playerNumber; j++) {
-                for (int i = 1; i < players.size() ; i++) {
-                    if (point[i] > max) {
-                        max = point[i];
-                        index = i;
-                    }
-                }
-                point[index] = -1;
-                this.ranking[j] = index;
-            }
-            //fine funzionalità ranking
+        if (this.fullLibrary == true && (this.players.indexOf(this.currentPlayer) == playerNumber-1/*ho terminato giro*/)) {
+            this.explicitEnd();
         }
+
     }
 
     public void drawCommon() {

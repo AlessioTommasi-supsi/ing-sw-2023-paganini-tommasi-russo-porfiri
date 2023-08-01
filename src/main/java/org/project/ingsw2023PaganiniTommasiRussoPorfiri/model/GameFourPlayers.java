@@ -62,7 +62,7 @@ public class GameFourPlayers extends Game implements Serializable {
         }
         if (!currentPlayer.isCommonCard2Completed()) {
             if (cc2.executeAlgorithm(currentPlayer)) {
-                if (cc1.getScore()>=2){
+                if (cc2.getScore()>=2){
                     currentPlayer.setScore(currentPlayer.getScore() + cc2.getScore());
                     cc2.setScore(cc2.getScore() - pointsToSub);
                     currentPlayer.setCommonCard2Completed(true);

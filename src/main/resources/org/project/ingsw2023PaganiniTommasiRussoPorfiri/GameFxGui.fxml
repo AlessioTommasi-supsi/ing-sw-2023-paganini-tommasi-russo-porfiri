@@ -712,6 +712,7 @@
                                     </font></Text>
                                 <TextField id="choiceX1TextFied" fx:id="choiceX1TextField" alignment="CENTER" layoutX="16.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="x" />
                                 <TextField id="choiceY1TextField" fx:id="choiceY1TextField" alignment="CENTER" layoutX="47.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="y" />
+                                <TextField id="choiceX2TextFied" fx:id="choiceX2TextField" alignment="CENTER" layoutX="117.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="x" />
                                 <TextField id="choiceY2TextField" fx:id="choiceY2TextField" alignment="CENTER" layoutX="148.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="y" />
                                 <TextField id="choiceX3TextField" fx:id="choiceX3TextField" alignment="CENTER" layoutX="224.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="x" />
                                 <TextField id="choiceY3TextField" fx:id="choiceY3TextField" alignment="CENTER" layoutX="255.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="y" />
@@ -757,7 +758,6 @@
                               </RadialGradient>
                            </textFill>
                                 </Button>
-                                <TextField id="choiceX2TextFied" fx:id="choiceX2TextField" alignment="CENTER" layoutX="117.0" layoutY="99.0" prefHeight="28.0" prefWidth="28.0" promptText="x" />
                                 <ImageView id="choiceLogoImageView" fx:id="choiceLogoImageView" fitHeight="84.0" fitWidth="255.0" layoutX="535.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@../../../GraphicResources/publisherMaterial/Title 2000x618px.png" />
